@@ -1,0 +1,17 @@
+{
+	"$schema": "https://alixan-ui.dev/schema/registry-item.json",
+	"name": "button",
+	"type": "component",
+	"title": "Button",
+	"description": "Production-ready button component for Nuxt 4 with variants, sizes and leading/trailing slots.",
+	"files": [
+		{
+			"source": "templates/button/Button.vue",
+			"target": "components/ui/Button.vue"
+		},
+		{
+			"source": "templates/utils/cn.ts",
+			"target": "utils/cn.ts"
+		}
+	]
+}

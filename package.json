@@ -1,17 +1,36 @@
 {
-  "name": "alixan-ui-nuxt",
-  "type": "module",
-  "private": true,
-  "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
-  },
-  "dependencies": {
-    "nuxt": "^4.4.4",
-    "vue": "^3.5.33",
-    "vue-router": "^5.0.6"
-  }
+	"name": "alixan-ui",
+	"version": "0.1.0",
+	"type": "module",
+	"private": false,
+	"scripts": {
+		"build": "nuxt build",
+		"dev": "nuxt dev",
+		"generate": "nuxt generate",
+		"preview": "nuxt preview",
+		"postinstall": "node ./scripts/postinstall.mjs"
+	},
+	"dependencies": {
+		"@nuxtjs/google-fonts": "^3.2.0",
+		"lucide-vue-next": "^0.525.0",
+		"nuxt": "^4.4.4",
+		"vue": "^3.5.33",
+		"vue-router": "^5.0.6"
+	},
+	"devDependencies": {
+		"@tailwindcss/vite": "^4.3.0",
+		"sass": "^1.99.0",
+		"tailwindcss": "^4.3.0",
+		"typescript": "^6.0.3"
+	},
+	"bin": {
+		"alixan-ui": "./cli/index.js"
+	},
+	"files": [
+		"cli",
+		"registry",
+		"scripts",
+		"templates",
+		"README.md"
+	]
 }

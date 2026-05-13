@@ -1,0 +1,10 @@
+{
+	"$schema": "https://alixan-ui.dev/schema/registry.json",
+	"components": [
+		{
+			"name": "button",
+			"title": "Button",
+			"description": "Versatile action button with filled, outlined and ghost variants."
+		}
+	]
+}
