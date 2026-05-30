@@ -116,7 +116,7 @@ const variants = [
 
 					<div class="rounded-[calc(var(--radius)+0.8rem)] border border-[var(--border)] bg-[var(--foreground)] p-6 text-[var(--background)] shadow-[0_18px_50px_rgba(15,23,42,0.14)]">
 						<p class="text-sm text-white/65">CLI</p>
-						<pre class="mt-3 overflow-x-auto rounded-2xl bg-white/6 p-4 text-sm text-white/90"><code>npx alixan-ui add button</code></pre>
+						<pre class="mt-3 overflow-x-auto rounded-2xl bg-white/6 p-4 text-sm text-white/90"><code>npx alixan-ui-nuxt add button</code></pre>
 						<p class="mt-4 text-sm leading-6 text-white/70">
 							Команда читает registry JSON и копирует готовый `.vue`-шаблон прямо в `components/ui`.
 						</p>

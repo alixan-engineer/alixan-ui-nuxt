@@ -115,9 +115,9 @@ function addComponent(name) {
 function printHelp() {
 	console.log('Alixan UI\n');
 	console.log('Usage:');
-	console.log('  npx alixan-ui add button');
-	console.log('  npx alixan-ui list');
-	console.log('  npx alixan-ui add button --force');
+	console.log('  npx alixan-ui-nuxt add button');
+	console.log('  npx alixan-ui-nuxt list');
+	console.log('  npx alixan-ui-nuxt add button --force');
 	console.log(`\nProject root: ${projectRoot}`);
 }
 

@@ -1,5 +1,5 @@
 {
-	"name": "alixan-ui",
+	"name": "alixan-ui-nuxt",
 	"version": "0.1.1",
 	"type": "module",
 	"private": false,
@@ -24,7 +24,7 @@
 		"typescript": "^6.0.3"
 	},
 	"bin": {
-		"alixan-ui": "./cli/index.js"
+		"alixan-ui-nuxt": "./cli/index.js"
 	},
 	"files": [
 		"cli",
