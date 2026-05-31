@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { Copy, Eye, EyeOff, Lock, Mail } from '@lucide/vue';
 
+useSeoMeta({
+	title: 'Input - Alixan UI',
+	ogTitle: 'Input - Alixan UI',
+	twitterTitle: 'Input - Alixan UI',
+});
+
 const tocLinks = [
 	{ label: 'Installation', href: '#installation' },
 	{ label: 'Usage', href: '#usage' },

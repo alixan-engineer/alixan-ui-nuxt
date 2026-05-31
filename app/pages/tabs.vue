@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { Copy } from '@lucide/vue';
 
+useSeoMeta({
+	title: 'Tabs - Alixan UI',
+	ogTitle: 'Tabs - Alixan UI',
+	twitterTitle: 'Tabs - Alixan UI',
+});
+
 const tocLinks = [
 	{ label: 'Installation', href: '#installation' },
 	{ label: 'Usage', href: '#usage' },

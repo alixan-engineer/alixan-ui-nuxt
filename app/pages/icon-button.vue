@@ -2,6 +2,12 @@
 import { ArrowUpRight, Copy } from '@lucide/vue';
 import { buttonColors, buttonVariants } from '~/shared/button-options';
 
+useSeoMeta({
+	title: 'Icon Button - Alixan UI',
+	ogTitle: 'Icon Button - Alixan UI',
+	twitterTitle: 'Icon Button - Alixan UI',
+});
+
 const tocLinks = [
 	{ label: 'Installation', href: '#installation' },
 	{ label: 'Usage', href: '#usage' },

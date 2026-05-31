@@ -2,6 +2,12 @@
 import { ArrowRight, Copy, GitBranch } from '@lucide/vue';
 import { buttonColors, buttonVariants } from '~/shared/button-options';
 
+useSeoMeta({
+	title: 'Button - Alixan UI',
+	ogTitle: 'Button - Alixan UI',
+	twitterTitle: 'Button - Alixan UI',
+});
+
 const tocLinks = [
 	{ label: 'Installation', href: '#installation' },
 	{ label: 'Usage', href: '#usage' },

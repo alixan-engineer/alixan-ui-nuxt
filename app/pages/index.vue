@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { ArrowRight, Copy, Terminal } from '@lucide/vue';
 
+useSeoMeta({
+	title: 'Installation - Alixan UI',
+	ogTitle: 'Installation - Alixan UI',
+	twitterTitle: 'Installation - Alixan UI',
+});
+
 const tocLinks = [
 	{ label: 'Create Project', href: '#create-project' },
 	{ label: 'Add Tailwind CSS', href: '#add-tailwind-css' },
