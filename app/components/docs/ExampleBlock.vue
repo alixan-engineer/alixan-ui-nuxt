@@ -1,22 +1,18 @@
 <script setup lang="ts">
-import { Copy } from 'lucide-vue-next';
+import { Copy } from '@lucide/vue';
 
-interface ExampleBlockProps {
-	code: string;
-}
-
-defineProps<ExampleBlockProps>();
+defineProps<{ code: string }>();
 </script>
 
 <template>
-	<div class="overflow-hidden rounded-xl border bg-background">
-		<div class="flex min-h-[260px] items-center justify-center p-8">
+	<div class="island divide-y">
+		<div class="min-h-65 p-8 flex items-center justify-center">
 			<slot />
 		</div>
 
-		<div class="relative border-t bg-secondary/60">
-			<Copy class="absolute right-4 top-4 size-4 text-muted-foreground" />
-			<pre class="overflow-x-auto p-6 pr-12 text-sm leading-7"><code>{{ code }}</code></pre>
+		<div class="relative">
+			<Copy class="absolute right-4 top-4 size-5 text-muted-foreground" />
+			<pre class="p-6 pr-12 text-sm leading-7"><code>{{ code }}</code></pre>
 		</div>
 	</div>
 </template>

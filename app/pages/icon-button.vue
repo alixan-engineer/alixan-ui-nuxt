@@ -1,19 +1,23 @@
 <script setup lang="ts">
-import { ArrowUpRight, CircleFadingArrowUp, Copy, LoaderCircle, Plus } from 'lucide-vue-next';
+import { ArrowUpRight, Copy } from '@lucide/vue';
+import { buttonColors, buttonVariants } from '~/shared/button-options';
 
 const tocLinks = [
 	{ label: 'Installation', href: '#installation' },
-	{ label: 'Preview', href: '#preview' },
+	{ label: 'Usage', href: '#usage' },
 	{ label: 'Size', href: '#size' },
-	{ label: 'Default', href: '#default' },
-	{ label: 'Outline', href: '#outline' },
-	{ label: 'Ghost', href: '#ghost' },
-	{ label: 'Destructive', href: '#destructive' },
-	{ label: 'Rounded', href: '#rounded' },
-	{ label: 'Spinner', href: '#spinner' },
-	{ label: 'Disabled', href: '#disabled' },
 	{ label: 'API Reference', href: '#api-reference' },
 ] as const;
+
+const { setToc, clearToc } = usePageToc();
+
+onMounted(() => {
+	setToc(tocLinks);
+});
+
+onBeforeUnmount(() => {
+	clearToc();
+});
 
 const iconButtonProps = [
 	{
@@ -40,17 +44,64 @@ const iconButtonProps = [
 		default: "'md'",
 		description: 'Controls square size and icon size.',
 	},
-	{
-		name: 'disabled',
-		type: 'boolean',
-		default: 'false',
-		description: 'Disables pointer events and lowers opacity.',
-	},
 ];
 
 const examples = {
+	combinations: `<script setup lang="ts">
+import { ArrowUpRight } from '@lucide/vue'
+import { IconButton } from '@/components/ui/icon-button'
+<\/script>
+
+<template>
+  <div class="space-y-4">
+    <div class="flex flex-wrap items-center gap-2">
+      <IconButton label="Default" variant="filled" color="default">
+        <ArrowUpRight />
+      </IconButton>
+      <IconButton label="Primary" variant="filled" color="primary">
+        <ArrowUpRight />
+      </IconButton>
+      <IconButton label="Secondary" variant="filled" color="secondary">
+        <ArrowUpRight />
+      </IconButton>
+      <IconButton label="Destructive" variant="filled" color="destructive">
+        <ArrowUpRight />
+      </IconButton>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-2">
+      <IconButton label="Default outline" variant="outlined" color="default">
+        <ArrowUpRight />
+      </IconButton>
+      <IconButton label="Primary outline" variant="outlined" color="primary">
+        <ArrowUpRight />
+      </IconButton>
+      <IconButton label="Secondary outline" variant="outlined" color="secondary">
+        <ArrowUpRight />
+      </IconButton>
+      <IconButton label="Destructive outline" variant="outlined" color="destructive">
+        <ArrowUpRight />
+      </IconButton>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-2">
+      <IconButton label="Default ghost" variant="ghost" color="default">
+        <ArrowUpRight />
+      </IconButton>
+      <IconButton label="Primary ghost" variant="ghost" color="primary">
+        <ArrowUpRight />
+      </IconButton>
+      <IconButton label="Secondary ghost" variant="ghost" color="secondary">
+        <ArrowUpRight />
+      </IconButton>
+      <IconButton label="Destructive ghost" variant="ghost" color="destructive">
+        <ArrowUpRight />
+      </IconButton>
+    </div>
+  </div>
+</template>`,
 	size: `<script setup lang="ts">
-import { ArrowUpRight } from 'lucide-vue-next'
+import { ArrowUpRight } from '@lucide/vue'
 import { IconButton } from '@/components/ui/icon-button'
 <\/script>
 
@@ -67,142 +118,72 @@ import { IconButton } from '@/components/ui/icon-button'
     </IconButton>
   </div>
 </template>`,
-	default: `<script setup lang="ts">
-import { ArrowUpRight } from 'lucide-vue-next'
-import { IconButton } from '@/components/ui/icon-button'
-<\/script>
-
-<template>
-  <IconButton label="Open">
-    <ArrowUpRight />
-  </IconButton>
-</template>`,
-	outline: `<script setup lang="ts">
-import { ArrowUpRight } from 'lucide-vue-next'
-import { IconButton } from '@/components/ui/icon-button'
-<\/script>
-
-<template>
-  <IconButton label="Open" variant="outlined" color="default">
-    <ArrowUpRight />
-  </IconButton>
-</template>`,
-	ghost: `<script setup lang="ts">
-import { ArrowUpRight } from 'lucide-vue-next'
-import { IconButton } from '@/components/ui/icon-button'
-<\/script>
-
-<template>
-  <IconButton label="Open" variant="ghost" color="default">
-    <ArrowUpRight />
-  </IconButton>
-</template>`,
-	destructive: `<script setup lang="ts">
-import { Plus } from 'lucide-vue-next'
-import { IconButton } from '@/components/ui/icon-button'
-<\/script>
-
-<template>
-  <IconButton label="Delete" color="destructive">
-    <Plus />
-  </IconButton>
-</template>`,
-	rounded: `<script setup lang="ts">
-import { ArrowUpRight } from 'lucide-vue-next'
-import { IconButton } from '@/components/ui/icon-button'
-<\/script>
-
-<template>
-  <IconButton
-    label="Upload"
-    variant="outlined"
-    color="default"
-    class="rounded-full"
-  >
-    <ArrowUpRight />
-  </IconButton>
-</template>`,
-	spinner: `<script setup lang="ts">
-import { LoaderCircle } from 'lucide-vue-next'
-import { IconButton } from '@/components/ui/icon-button'
-<\/script>
-
-<template>
-  <IconButton label="Loading" variant="outlined" color="default" disabled>
-    <LoaderCircle class="animate-spin" />
-  </IconButton>
-</template>`,
-	disabled: `<script setup lang="ts">
-import { Plus } from 'lucide-vue-next'
-import { IconButton } from '@/components/ui/icon-button'
-<\/script>
-
-<template>
-  <IconButton label="Add" disabled>
-    <Plus />
-  </IconButton>
-</template>`,
 };
 </script>
 
 <template>
-	<div class="grid gap-10 lg:grid-cols-[minmax(0,760px)_260px]">
-		<article class="min-w-0 space-y-12">
+	<article class="mx-auto min-w-0 max-w-[760px] space-y-12">
 		<header class="space-y-3">
-			<h1 class="text-4xl font-semibold tracking-normal">Icon Button</h1>
+			<h1 class="text-4xl font-semibold">Icon Button</h1>
 			<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
 				Displays an icon-only button with a required accessible label.
 			</p>
 		</header>
 
 		<section id="installation" class="space-y-5">
-			<h2 class="text-2xl font-semibold tracking-normal">Installation</h2>
-
+			<h2 class="text-2xl font-semibold">Installation</h2>
 			<div class="island">
-				<div class="flex items-center justify-between border-b px-4 py-3">
-					<div class="flex items-center gap-4 text-sm">
-						<span class="font-medium">npm</span>
-						<span class="text-muted-foreground">pnpm</span>
-						<span class="text-muted-foreground">yarn</span>
-						<span class="text-muted-foreground">bun</span>
-					</div>
-					<Copy class="size-4 text-muted-foreground" />
+				<div class="px-4 py-3 flex items-center gap-4 border-b text-m">
+					<span class="font-medium">npm</span>
+					<span class="text-muted-foreground">pnpm</span>
+					<span class="text-muted-foreground">yarn</span>
+					<span class="text-muted-foreground">bun</span>
+					<div class="flex-1" />
+					<Copy class="size-5 text-muted-foreground" />
 				</div>
-				<pre
-					class="overflow-x-auto p-4 text-sm"
-				><code>npx alixan-ui-nuxt add icon-button</code></pre>
+				<p class="p-4 text-md">npx alixan-ui-nuxt add icon-button</p>
 			</div>
 		</section>
 
-		<section
-			id="preview"
-			class="overflow-hidden rounded-xl border bg-background"
-		>
-			<div class="flex min-h-[280px] items-center justify-center p-8">
-				<IconButton label="Submit" variant="outlined" color="default">
-					<CircleFadingArrowUp />
-				</IconButton>
+		<section id="usage" class="space-y-5">
+			<div class="space-y-2">
+				<h2 class="text-2xl font-semibold">Usage</h2>
+				<p class="text-muted-foreground leading-7">
+					IconButton uses the same variant and color system as Button, but keeps
+					the control square for icon-only actions. Always provide a label so
+					the action remains clear for assistive technologies.
+				</p>
 			</div>
-
-			<div class="relative border-t bg-secondary/60">
-				<Copy class="absolute right-4 top-4 size-4 text-muted-foreground" />
-				<pre
-					class="overflow-x-auto p-6 pr-12 text-sm leading-7"
-				><code>&lt;script setup lang="ts"&gt;
-import { CircleFadingArrowUp } from 'lucide-vue-next'
-import { IconButton } from '@/components/ui/icon-button'
-&lt;/script&gt;
-
-&lt;template&gt;
-  &lt;IconButton label="Submit" variant="outlined" color="default"&gt;
-    &lt;CircleFadingArrowUp /&gt;
-  &lt;/IconButton&gt;
-&lt;/template&gt;</code></pre>
+			<div class="space-y-4">
+				<ExampleBlock :code="examples.combinations">
+					<div class="space-y-4">
+						<div
+							v-for="variant in buttonVariants"
+							:key="`matrix-${variant}`"
+							class="space-y-2"
+						>
+							<p class="text-sm text-muted-foreground">
+								{{ variant }}
+							</p>
+							<div class="flex flex-wrap items-center gap-2">
+								<IconButton
+									v-for="color in buttonColors"
+									:key="`${variant}-${color}`"
+									:variant="variant"
+									:color="color"
+									:label="`${variant} ${color}`"
+								>
+									<ArrowUpRight />
+								</IconButton>
+							</div>
+						</div>
+					</div>
+				</ExampleBlock>
 			</div>
 		</section>
 
 		<section id="size" class="space-y-4">
-			<h2 class="text-2xl font-semibold tracking-normal">Size</h2>
+			<h2 class="text-2xl font-semibold">Size</h2>
 			<ExampleBlock :code="examples.size">
 				<div class="flex items-center gap-2">
 					<IconButton label="Small action" size="sm">
@@ -218,107 +199,32 @@ import { IconButton } from '@/components/ui/icon-button'
 			</ExampleBlock>
 		</section>
 
-		<section id="default" class="space-y-4">
-			<h2 class="text-2xl font-semibold tracking-normal">Default</h2>
-			<ExampleBlock :code="examples.default">
-				<IconButton label="Open">
-					<ArrowUpRight />
-				</IconButton>
-			</ExampleBlock>
-		</section>
-
-		<section id="outline" class="space-y-4">
-			<h2 class="text-2xl font-semibold tracking-normal">Outline</h2>
-			<ExampleBlock :code="examples.outline">
-				<IconButton label="Open" variant="outlined" color="default">
-					<ArrowUpRight />
-				</IconButton>
-			</ExampleBlock>
-		</section>
-
-		<section id="ghost" class="space-y-4">
-			<h2 class="text-2xl font-semibold tracking-normal">Ghost</h2>
-			<ExampleBlock :code="examples.ghost">
-				<IconButton label="Open" variant="ghost" color="default">
-					<ArrowUpRight />
-				</IconButton>
-			</ExampleBlock>
-		</section>
-
-		<section id="destructive" class="space-y-4">
-			<h2 class="text-2xl font-semibold tracking-normal">Destructive</h2>
-			<ExampleBlock :code="examples.destructive">
-				<IconButton label="Delete" color="destructive">
-					<Plus />
-				</IconButton>
-			</ExampleBlock>
-		</section>
-
-		<section id="rounded" class="space-y-4">
-			<h2 class="text-2xl font-semibold tracking-normal">Rounded</h2>
-			<ExampleBlock :code="examples.rounded">
-				<IconButton
-					label="Upload"
-					variant="outlined"
-					color="default"
-					class="rounded-full"
-				>
-					<ArrowUpRight />
-				</IconButton>
-			</ExampleBlock>
-		</section>
-
-		<section id="spinner" class="space-y-4">
-			<h2 class="text-2xl font-semibold tracking-normal">Spinner</h2>
-			<ExampleBlock :code="examples.spinner">
-				<IconButton label="Loading" variant="outlined" color="default" disabled>
-					<LoaderCircle class="animate-spin" />
-				</IconButton>
-			</ExampleBlock>
-		</section>
-
-		<section id="disabled" class="space-y-4">
-			<h2 class="text-2xl font-semibold tracking-normal">Disabled</h2>
-			<ExampleBlock :code="examples.disabled">
-				<IconButton label="Add" disabled>
-					<Plus />
-				</IconButton>
-			</ExampleBlock>
-		</section>
-
-		<section id="api-reference" class="space-y-8">
-			<h2 class="text-2xl font-semibold tracking-normal">API Reference</h2>
-
-			<div class="space-y-4">
-				<h3 class="text-xl font-semibold">IconButton</h3>
-				<div class="overflow-hidden rounded-xl border">
-					<table class="w-full text-left text-sm">
-						<thead class="border-b bg-secondary text-muted-foreground">
-							<tr>
-								<th class="px-4 py-3 font-medium">Prop</th>
-								<th class="px-4 py-3 font-medium">Type</th>
-								<th class="px-4 py-3 font-medium">Default</th>
-								<th class="px-4 py-3 font-medium">Description</th>
-							</tr>
-						</thead>
-						<tbody class="divide-y">
-							<tr v-for="item in iconButtonProps" :key="item.name">
-								<td class="px-4 py-3 font-medium">{{ item.name }}</td>
-								<td class="px-4 py-3 text-muted-foreground">{{ item.type }}</td>
-								<td class="px-4 py-3 text-muted-foreground">
-									{{ item.default }}
-								</td>
-								<td class="px-4 py-3 text-muted-foreground">
-									{{ item.description }}
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+		<section id="api-reference" class="space-y-4">
+			<h2 class="text-2xl font-semibold">API Reference</h2>
+			<div class="overflow-hidden rounded-xl border">
+				<table class="w-full text-left text-sm">
+					<thead class="border-b bg-secondary text-muted-foreground">
+						<tr>
+							<th class="px-4 py-3 font-medium">Prop</th>
+							<th class="px-4 py-3 font-medium">Type</th>
+							<th class="px-4 py-3 font-medium">Default</th>
+							<th class="px-4 py-3 font-medium">Description</th>
+						</tr>
+					</thead>
+					<tbody class="divide-y">
+						<tr v-for="item in iconButtonProps" :key="item.name">
+							<td class="px-4 py-3 font-medium">{{ item.name }}</td>
+							<td class="px-4 py-3 text-muted-foreground">{{ item.type }}</td>
+							<td class="px-4 py-3 text-muted-foreground">
+								{{ item.default }}
+							</td>
+							<td class="px-4 py-3 text-muted-foreground">
+								{{ item.description }}
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</section>
-		</article>
-
-		<PageToc :links="tocLinks" />
-	</div>
+	</article>
 </template>

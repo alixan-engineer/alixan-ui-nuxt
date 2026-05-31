@@ -12,12 +12,11 @@ type IconButtonColor = 'default' | 'primary' | 'secondary' | 'destructive';
 type IconButtonSize = 'sm' | 'md' | 'lg';
 
 interface IconButtonProps {
-	label: string;
+	label?: string;
 	type?: 'button' | 'submit' | 'reset';
 	variant?: IconButtonVariant;
 	color?: IconButtonColor;
 	size?: IconButtonSize;
-	disabled?: boolean;
 }
 
 const props = withDefaults(defineProps<IconButtonProps>(), {
@@ -25,18 +24,20 @@ const props = withDefaults(defineProps<IconButtonProps>(), {
 	variant: 'filled',
 	color: 'primary',
 	size: 'md',
-	disabled: false,
 });
 
 const attrs = useAttrs();
 
 const sizeClasses: Record<IconButtonSize, string> = {
 	sm: 'size-9 rounded-sm [&_svg]:size-4',
-	md: 'size-11 rounded-lg [&_svg]:size-4',
-	lg: 'size-12 rounded-2xl [&_svg]:size-5',
+	md: 'size-11 rounded-lg [&_svg]:size-5',
+	lg: 'size-12 rounded-2xl [&_svg]:size-6',
 };
 
-const toneClasses: Record<IconButtonVariant, Record<IconButtonColor, string>> = {
+const toneClasses: Record<
+	IconButtonVariant,
+	Record<IconButtonColor, string>
+> = {
 	filled: {
 		default: 'border-foreground bg-foreground text-background',
 		primary: 'border-primary bg-primary text-primary-foreground',
@@ -69,7 +70,6 @@ const toneClasses: Record<IconButtonVariant, Record<IconButtonColor, string>> = 
 const iconButtonClass = computed(() =>
 	cn(
 		'inline-flex shrink-0 items-center justify-center border font-medium transition-colors',
-		'disabled:pointer-events-none disabled:opacity-50',
 		sizeClasses[props.size],
 		toneClasses[props.variant][props.color],
 		attrs.class,
@@ -81,7 +81,6 @@ const iconButtonClass = computed(() =>
 	<button
 		v-bind="{ ...attrs, class: undefined }"
 		:type="type"
-		:disabled="disabled"
 		:aria-label="label"
 		:class="iconButtonClass"
 	>

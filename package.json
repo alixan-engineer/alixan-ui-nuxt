@@ -10,8 +10,8 @@
 		"preview": "nuxt preview"
 	},
 	"dependencies": {
+		"@lucide/vue": "^1.17.0",
 		"@nuxtjs/google-fonts": "^3.2.0",
-		"lucide-vue-next": "^0.525.0",
 		"nuxt": "^4.4.4",
 		"vue": "^3.5.33",
 		"vue-router": "^5.0.6"

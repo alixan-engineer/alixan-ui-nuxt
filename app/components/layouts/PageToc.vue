@@ -1,85 +1,62 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 
-interface TocLink {
-	label: string;
-	href: `#${string}`;
-	child?: boolean;
-}
+import type { PageTocLink } from '~/composables/usePageToc';
 
 interface PageTocProps {
-	links: readonly TocLink[];
+	links: readonly PageTocLink[];
 }
 
 const props = defineProps<PageTocProps>();
+const route = useRoute();
 
-const activeId = ref(props.links[0]?.href.slice(1) ?? '');
-let observer: IntersectionObserver | undefined;
+const activeHash = ref(route.hash || props.links[0]?.href || '');
 
-const activeHref = computed(() => `#${activeId.value}`);
+const activeHref = computed(() => activeHash.value || props.links[0]?.href || '');
+
+function syncActiveHash(): void {
+	activeHash.value = window.location.hash || props.links[0]?.href || '';
+}
+
+watch(
+	() => [props.links, route.hash],
+	() => {
+		activeHash.value = route.hash || props.links[0]?.href || '';
+	},
+	{ deep: true },
+);
 
 onMounted(() => {
-	if (window.location.hash) {
-		activeId.value = window.location.hash.slice(1);
-	}
-
-	const sections = props.links
-		.map((link) => document.getElementById(link.href.slice(1)))
-		.filter((section): section is HTMLElement => Boolean(section));
-
-	if (!sections.length) {
-		return;
-	}
-
-	const scrollRoot = document.getElementById('root');
-
-	observer = new IntersectionObserver(
-		(entries) => {
-			const visibleEntry = entries
-				.filter((entry) => entry.isIntersecting)
-				.sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
-
-			if (visibleEntry?.target.id) {
-				activeId.value = visibleEntry.target.id;
-			}
-		},
-		{
-			root: scrollRoot,
-			rootMargin: '-96px 0px -62% 0px',
-			threshold: [0, 0.2, 0.6],
-		},
-	);
-
-	for (const section of sections) {
-		observer.observe(section);
-	}
+	syncActiveHash();
+	window.addEventListener('hashchange', syncActiveHash);
 });
 
 onBeforeUnmount(() => {
-	observer?.disconnect();
+	window.removeEventListener('hashchange', syncActiveHash);
 });
 
 function setActiveLink(href: string): void {
-	activeId.value = href.slice(1);
+	activeHash.value = href;
 }
 </script>
 
 <template>
 	<aside class="hidden lg:block">
-		<div class="sticky top-14 h-[calc(100vh-3.5rem)] overflow-y-auto px-4 py-8">
-			<p class="mb-4 text-xs font-medium text-muted-foreground">On This Page</p>
-
+		<div
+			class="sticky top-14 h-[calc(100vh-3.5rem)] overflow-y-auto px-4 py-6 space-y-3"
+		>
+			<p class="text-sm font-medium text-muted-foreground">On This Page</p>
 			<nav class="space-y-2 text-sm">
 				<a
 					v-for="link in links"
 					:key="link.href"
 					:href="link.href"
 					@click="setActiveLink(link.href)"
-					class="block transition-colors hover:text-foreground"
+					class="block transition-colors hover:text-foreground text-sm"
 					:class="[
 						activeHref === link.href
-							? 'font-medium text-foreground'
-							: 'text-muted-foreground',
+							? 'font-bold text-foreground'
+							: 'font-normal text-muted-foreground/80',
 						link.child ? 'pl-4' : '',
 					]"
 				>

@@ -17,7 +17,6 @@ interface ButtonProps {
 	variant?: ButtonVariant;
 	color?: ButtonColor;
 	size?: ButtonSize;
-	disabled?: boolean;
 }
 
 const props = withDefaults(defineProps<ButtonProps>(), {
@@ -25,7 +24,6 @@ const props = withDefaults(defineProps<ButtonProps>(), {
 	variant: 'filled',
 	color: 'primary',
 	size: 'md',
-	disabled: false,
 	label: undefined,
 });
 
@@ -79,7 +77,6 @@ const buttonClass = computed(() =>
 		'transition-[transform,background-color,border-color,color,box-shadow,opacity] duration-200 ease-out',
 		'shadow-[0_1px_2px_rgba(15,23,42,0.04)]',
 		'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background',
-		'disabled:pointer-events-none disabled:opacity-50',
 		'active:translate-y-px',
 		sizeClasses[props.size],
 		toneClasses[props.variant][props.color],
@@ -92,7 +89,6 @@ const buttonClass = computed(() =>
 	<button
 		v-bind="{ ...attrs, class: undefined }"
 		:type="type"
-		:disabled="disabled"
 		:class="buttonClass"
 	>
 		<span

@@ -17,7 +17,6 @@ interface ButtonProps {
 	variant?: ButtonVariant;
 	color?: ButtonColor;
 	size?: ButtonSize;
-	disabled?: boolean;
 }
 
 const props = withDefaults(defineProps<ButtonProps>(), {
@@ -25,7 +24,6 @@ const props = withDefaults(defineProps<ButtonProps>(), {
 	variant: 'filled',
 	color: 'primary',
 	size: 'md',
-	disabled: false,
 	label: undefined,
 });
 
@@ -33,7 +31,7 @@ const attrs = useAttrs();
 const slots = useSlots();
 
 const sizeClasses: Record<ButtonSize, string> = {
-	sm: 'h-9 rounded-sm px-3 text-sm',
+	sm: 'h-9 rounded-sm px-3 text-md',
 	md: 'h-11 rounded-lg px-4 text-base',
 	lg: 'h-12 rounded-2xl px-5 text-base',
 };
@@ -73,7 +71,6 @@ const hasDefaultSlot = computed(() => Boolean(slots.default));
 const buttonClass = computed(() =>
 	cn(
 		'inline-flex items-center justify-center gap-2 border font-medium whitespace-nowrap transition-colors',
-		'disabled:pointer-events-none disabled:opacity-50',
 		sizeClasses[props.size],
 		toneClasses[props.variant][props.color],
 		attrs.class,
@@ -85,7 +82,6 @@ const buttonClass = computed(() =>
 	<button
 		v-bind="{ ...attrs, class: undefined }"
 		:type="type"
-		:disabled="disabled"
 		:class="buttonClass"
 	>
 		<span
