@@ -1,0 +1,17 @@
+{
+	"$schema": "https://nuxt.ui.alixan.kz/schema/registry-item.json",
+	"name": "switch",
+	"type": "component",
+	"title": "Switch",
+	"description": "Compact boolean switch control.",
+	"files": [
+		{
+			"source": "templates/switch/Switch.vue",
+			"target": "components/ui/Switch.vue"
+		},
+		{
+			"source": "templates/utils/cn.ts",
+			"target": "utils/cn.ts"
+		}
+	]
+}

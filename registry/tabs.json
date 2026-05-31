@@ -1,0 +1,17 @@
+{
+	"$schema": "https://nuxt.ui.alixan.kz/schema/registry-item.json",
+	"name": "tabs",
+	"type": "component",
+	"title": "Tabs",
+	"description": "Tabs component with Material and Cupertino designs.",
+	"files": [
+		{
+			"source": "templates/tabs/Tabs.vue",
+			"target": "components/ui/Tabs.vue"
+		},
+		{
+			"source": "templates/utils/cn.ts",
+			"target": "utils/cn.ts"
+		}
+	]
+}

@@ -2,17 +2,22 @@
 import { cn } from '~~/utils/cn';
 
 const route = useRoute();
+const { t } = useI18n();
 
 const menuSections = [
 	{
-		label: 'Sections',
-		items: [{ label: 'Installation', to: '/' }],
+		labelKey: 'sidebar.sections',
+		items: [{ labelKey: 'sidebar.installation', to: '/' }],
 	},
 	{
-		label: 'Components',
+		labelKey: 'sidebar.components',
 		items: [
-			{ label: 'Button', to: '/button' },
-			{ label: 'Icon Button', to: '/icon-button' },
+			{ labelKey: 'component.button', to: '/button' },
+			{ labelKey: 'component.iconButton', to: '/icon-button' },
+			{ labelKey: 'component.input', to: '/input' },
+			{ labelKey: 'component.search', to: '/search' },
+			{ labelKey: 'component.tabs', to: '/tabs' },
+			{ labelKey: 'component.switch', to: '/switch' },
 		],
 	},
 ];
@@ -28,16 +33,16 @@ function isActiveRoute(to: string): boolean {
 			<nav class="space-y-8">
 				<div
 					v-for="section in menuSections"
-					:key="section.label"
+					:key="section.labelKey"
 					class="space-y-2"
 				>
 					<p class="px-3 text-sm font-medium text-muted-foreground">
-						{{ section.label }}
+						{{ t(section.labelKey) }}
 					</p>
 					<div>
 						<Button
 							v-for="item in section.items"
-							:key="item.label"
+							:key="item.labelKey"
 							type="button"
 							variant="ghost"
 							color="default"
@@ -52,7 +57,7 @@ function isActiveRoute(to: string): boolean {
 							"
 							@click="navigateTo(item.to)"
 						>
-							{{ item.label }}
+							{{ t(item.labelKey) }}
 						</Button>
 					</div>
 				</div>

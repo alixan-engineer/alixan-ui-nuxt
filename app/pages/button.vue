@@ -199,8 +199,7 @@ import { Button } from '@/components/ui/button'
 </script>
 
 <template>
-	<article class="mx-auto min-w-0 max-w-[760px] space-y-12">
-		<header class="space-y-3">
+	<header class="space-y-3">
 			<h1 class="text-4xl font-semibold">Button</h1>
 			<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
 				Displays a button for actions in forms, toolbars and navigation.
@@ -336,5 +335,4 @@ import { Button } from '@/components/ui/button'
 				</table>
 			</div>
 		</section>
-	</article>
 </template>

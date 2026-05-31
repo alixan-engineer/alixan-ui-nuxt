@@ -47,31 +47,34 @@ const sizeClasses: Record<ButtonSize, string> = {
 
 const toneClasses: Record<ButtonVariant, Record<ButtonColor, string>> = {
 	filled: {
-		default: 'border-foreground bg-foreground text-background',
-		primary: 'border-primary bg-primary text-primary-foreground',
-		secondary: 'border-secondary bg-secondary text-secondary-foreground',
+		default:
+			'border-foreground bg-foreground text-background hover:bg-foreground/90 focus-visible:bg-foreground/90',
+		primary:
+			'border-primary bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:bg-primary/90',
+		secondary:
+			'border-secondary bg-secondary text-secondary-foreground hover:bg-secondary/80 focus-visible:bg-secondary/80',
 		destructive:
-			'border-destructive bg-destructive text-destructive-foreground',
+			'border-destructive bg-destructive text-destructive-foreground hover:bg-destructive/90 focus-visible:bg-destructive/90',
 	},
 	outlined: {
 		default:
-			'border-border bg-transparent text-foreground hover:bg-secondary hover:text-secondary-foreground',
+			'border-border bg-transparent text-foreground hover:bg-secondary hover:text-secondary-foreground focus-visible:bg-secondary focus-visible:text-secondary-foreground',
 		primary:
-			'border-primary/25 bg-transparent text-primary hover:bg-primary/10',
+			'border-primary/25 bg-transparent text-primary hover:bg-primary/10 focus-visible:bg-primary/10',
 		secondary:
-			'border-border bg-secondary/70 text-secondary-foreground hover:bg-secondary',
+			'border-border bg-secondary/70 text-secondary-foreground hover:bg-secondary focus-visible:bg-secondary',
 		destructive:
-			'border-destructive/25 bg-transparent text-destructive hover:bg-destructive/10',
+			'border-destructive/25 bg-transparent text-destructive hover:bg-destructive/10 focus-visible:bg-destructive/10',
 	},
 	ghost: {
 		default:
-			'border-transparent bg-transparent text-foreground hover:bg-secondary hover:text-secondary-foreground',
+			'border-transparent bg-transparent text-foreground hover:bg-secondary hover:text-secondary-foreground focus-visible:bg-secondary focus-visible:text-secondary-foreground',
 		primary:
-			'border-transparent bg-transparent text-primary hover:bg-primary/10',
+			'border-transparent bg-transparent text-primary hover:bg-primary/10 focus-visible:bg-primary/10',
 		secondary:
-			'border-transparent bg-transparent text-secondary-foreground hover:bg-secondary',
+			'border-transparent bg-transparent text-secondary-foreground hover:bg-secondary focus-visible:bg-secondary',
 		destructive:
-			'border-transparent bg-transparent text-destructive hover:bg-destructive/10',
+			'border-transparent bg-transparent text-destructive hover:bg-destructive/10 focus-visible:bg-destructive/10',
 	},
 };
 
@@ -79,7 +82,7 @@ const hasDefaultSlot = computed(() => Boolean(slots.default));
 
 const buttonClass = computed(() =>
 	cn(
-		'inline-flex items-center justify-center gap-2 border font-medium whitespace-nowrap transition-colors',
+		'inline-flex items-center justify-center gap-2 border font-medium whitespace-nowrap transition-colors cursor-pointer focus-visible:outline-none',
 		sizeClasses[props.size],
 		toneClasses[props.variant][props.color],
 		attrs.class,
@@ -97,11 +100,7 @@ const buttonClass = computed(() =>
 		:type="to || href ? undefined : type"
 		:class="buttonClass"
 	>
-		<span
-			v-if="$slots.leading"
-			class="flex items-center justify-center"
-			aria-hidden="true"
-		>
+		<span v-if="$slots.leading" class="flex items-center justify-center">
 			<slot name="leading" />
 		</span>
 
@@ -111,11 +110,7 @@ const buttonClass = computed(() =>
 			</slot>
 		</span>
 
-		<span
-			v-if="$slots.trailing"
-			class="flex items-center justify-center"
-			aria-hidden="true"
-		>
+		<span v-if="$slots.trailing" class="flex items-center justify-center">
 			<slot name="trailing" />
 		</span>
 	</component>

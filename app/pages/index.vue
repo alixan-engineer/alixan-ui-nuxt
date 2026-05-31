@@ -47,8 +47,7 @@ const usageCode = `<template>
 </script>
 
 <template>
-	<article class="mx-auto min-w-0 max-w-[760px] space-y-12">
-		<header class="space-y-3">
+	<header class="space-y-3">
 			<h1 class="text-4xl font-semibold">Installation</h1>
 			<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
 				Install Alixan UI in a Nuxt project. Components are copied directly
@@ -186,5 +185,4 @@ const usageCode = `<template>
 				<pre class="border-t p-4 text-md"><code>{{ commands.force }}</code></pre>
 			</div>
 		</section>
-	</article>
 </template>

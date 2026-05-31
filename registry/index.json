@@ -5,6 +5,26 @@
 			"name": "button",
 			"title": "Button",
 			"description": "Versatile action button with filled, outlined and ghost variants."
+		},
+		{
+			"name": "input",
+			"title": "Input",
+			"description": "Text input with floating label and icon slots."
+		},
+		{
+			"name": "search",
+			"title": "Search",
+			"description": "Search field with built-in debounce, search icon and clear button."
+		},
+		{
+			"name": "tabs",
+			"title": "Tabs",
+			"description": "Tabs component with Material and Cupertino designs."
+		},
+		{
+			"name": "switch",
+			"title": "Switch",
+			"description": "Compact boolean switch control."
 		}
 	]
 }
