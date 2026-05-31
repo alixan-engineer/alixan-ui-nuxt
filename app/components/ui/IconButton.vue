@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed, useAttrs } from 'vue';
-
+import { computed, resolveComponent, useAttrs } from 'vue';
+import type { RouteLocationRaw } from 'vue-router';
 import { cn } from '~~/utils/cn';
 
 defineOptions({
@@ -10,6 +10,7 @@ defineOptions({
 type IconButtonVariant = 'filled' | 'outlined' | 'ghost';
 type IconButtonColor = 'default' | 'primary' | 'secondary' | 'destructive';
 type IconButtonSize = 'sm' | 'md' | 'lg';
+type IconButtonTarget = '_blank' | '_self' | '_parent' | '_top';
 
 interface IconButtonProps {
 	label?: string;
@@ -17,6 +18,9 @@ interface IconButtonProps {
 	variant?: IconButtonVariant;
 	color?: IconButtonColor;
 	size?: IconButtonSize;
+	to?: RouteLocationRaw;
+	href?: string;
+	target?: IconButtonTarget;
 }
 
 const props = withDefaults(defineProps<IconButtonProps>(), {
@@ -24,13 +28,17 @@ const props = withDefaults(defineProps<IconButtonProps>(), {
 	variant: 'filled',
 	color: 'primary',
 	size: 'md',
+	to: undefined,
+	href: undefined,
+	target: undefined,
 });
 
 const attrs = useAttrs();
+const NuxtLink = resolveComponent('NuxtLink');
 
 const sizeClasses: Record<IconButtonSize, string> = {
-	sm: 'size-9 rounded-sm [&_svg]:size-4',
-	md: 'size-11 rounded-lg [&_svg]:size-5',
+	sm: 'size-9 rounded-lg [&_svg]:size-4',
+	md: 'size-11 rounded-xl [&_svg]:size-5',
 	lg: 'size-12 rounded-2xl [&_svg]:size-6',
 };
 
@@ -78,12 +86,16 @@ const iconButtonClass = computed(() =>
 </script>
 
 <template>
-	<button
+	<component
+		:is="to ? NuxtLink : href ? 'a' : 'button'"
 		v-bind="{ ...attrs, class: undefined }"
-		:type="type"
+		:to="to"
+		:href="href"
+		:target="target"
+		:type="to || href ? undefined : type"
 		:aria-label="label"
 		:class="iconButtonClass"
 	>
 		<slot />
-	</button>
+	</component>
 </template>

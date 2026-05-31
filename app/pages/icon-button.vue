@@ -6,6 +6,7 @@ const tocLinks = [
 	{ label: 'Installation', href: '#installation' },
 	{ label: 'Usage', href: '#usage' },
 	{ label: 'Size', href: '#size' },
+	{ label: 'Navigation', href: '#navigation' },
 	{ label: 'API Reference', href: '#api-reference' },
 ] as const;
 
@@ -43,6 +44,24 @@ const iconButtonProps = [
 		type: "'sm' | 'md' | 'lg'",
 		default: "'md'",
 		description: 'Controls square size and icon size.',
+	},
+	{
+		name: 'to',
+		type: 'RouteLocationRaw',
+		default: '-',
+		description: 'Renders the icon button as a NuxtLink when provided.',
+	},
+	{
+		name: 'href',
+		type: 'string',
+		default: '-',
+		description: 'Renders the icon button as a native anchor when provided.',
+	},
+	{
+		name: 'target',
+		type: "'_blank' | '_self' | '_parent' | '_top'",
+		default: '-',
+		description: 'Anchor target. Works with href links.',
 	},
 ];
 
@@ -114,6 +133,28 @@ import { IconButton } from '@/components/ui/icon-button'
       <ArrowUpRight />
     </IconButton>
     <IconButton label="Large action" size="lg">
+      <ArrowUpRight />
+    </IconButton>
+  </div>
+</template>`,
+	navigation: `<script setup lang="ts">
+import { ArrowUpRight } from '@lucide/vue'
+import { IconButton } from '@/components/ui/icon-button'
+<\/script>
+
+<template>
+  <div class="flex items-center gap-2">
+    <IconButton label="Open icon button docs" to="/icon-button">
+      <ArrowUpRight />
+    </IconButton>
+
+    <IconButton
+      label="Open GitHub"
+      href="https://github.com"
+      target="_blank"
+      variant="outlined"
+      color="default"
+    >
       <ArrowUpRight />
     </IconButton>
   </div>
@@ -193,6 +234,27 @@ import { IconButton } from '@/components/ui/icon-button'
 						<ArrowUpRight />
 					</IconButton>
 					<IconButton label="Large action" size="lg">
+						<ArrowUpRight />
+					</IconButton>
+				</div>
+			</ExampleBlock>
+		</section>
+
+		<section id="navigation" class="space-y-4">
+			<h2 class="text-2xl font-semibold">Navigation</h2>
+			<ExampleBlock :code="examples.navigation">
+				<div class="flex items-center gap-2">
+					<IconButton label="Open icon button docs" to="/icon-button">
+						<ArrowUpRight />
+					</IconButton>
+
+					<IconButton
+						label="Open GitHub"
+						href="https://github.com"
+						target="_blank"
+						variant="outlined"
+						color="default"
+					>
 						<ArrowUpRight />
 					</IconButton>
 				</div>

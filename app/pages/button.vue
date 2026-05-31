@@ -6,6 +6,7 @@ const tocLinks = [
 	{ label: 'Installation', href: '#installation' },
 	{ label: 'Usage', href: '#usage' },
 	{ label: 'Size', href: '#size' },
+	{ label: 'Navigation', href: '#navigation' },
 	{ label: 'With Icon', href: '#with-icon' },
 	{ label: 'API Reference', href: '#api-reference' },
 ] as const;
@@ -45,6 +46,24 @@ const buttonProps = [
 		default: "'md'",
 		description: 'Controls height, padding and text size.',
 	},
+	{
+		name: 'to',
+		type: 'RouteLocationRaw',
+		default: '-',
+		description: 'Renders the button as a NuxtLink when provided.',
+	},
+	{
+		name: 'href',
+		type: 'string',
+		default: '-',
+		description: 'Renders the button as a native anchor when provided.',
+	},
+	{
+		name: 'target',
+		type: "'_blank' | '_self' | '_parent' | '_top'",
+		default: '-',
+		description: 'Anchor target. Works with href links.',
+	},
 ];
 
 const examples = {
@@ -62,6 +81,26 @@ import { Button } from '@/components/ui/button'
     </Button>
     <Button size="lg">
       Large
+    </Button>
+  </div>
+</template>`,
+	navigation: `<script setup lang="ts">
+import { Button } from '@/components/ui/button'
+<\/script>
+
+<template>
+  <div class="flex items-center gap-2">
+    <Button to="/icon-button">
+      NuxtLink
+    </Button>
+
+    <Button
+      href="https://github.com"
+      target="_blank"
+      variant="outlined"
+      color="default"
+    >
+      External link
     </Button>
   </div>
 </template>`,
@@ -226,6 +265,23 @@ import { Button } from '@/components/ui/button'
 					<Button size="sm">Small</Button>
 					<Button>Default</Button>
 					<Button size="lg">Large</Button>
+				</div>
+			</ExampleBlock>
+		</section>
+
+		<section id="navigation" class="space-y-4">
+			<h2 class="text-2xl font-semibold tracking-normal">Navigation</h2>
+			<ExampleBlock :code="examples.navigation">
+				<div class="flex flex-wrap items-center gap-2">
+					<Button to="/icon-button">NuxtLink</Button>
+					<Button
+						href="https://github.com"
+						target="_blank"
+						variant="outlined"
+						color="default"
+					>
+						External link
+					</Button>
 				</div>
 			</ExampleBlock>
 		</section>

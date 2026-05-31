@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed, useAttrs, useSlots } from 'vue';
+import { computed, resolveComponent, useAttrs, useSlots } from 'vue';
+import type { RouteLocationRaw } from 'vue-router';
 
 import { cn } from '~~/utils/cn';
 
@@ -10,6 +11,7 @@ defineOptions({
 type ButtonVariant = 'filled' | 'outlined' | 'ghost';
 type ButtonColor = 'default' | 'primary' | 'secondary' | 'destructive';
 type ButtonSize = 'sm' | 'md' | 'lg';
+type ButtonTarget = '_blank' | '_self' | '_parent' | '_top';
 
 interface ButtonProps {
 	label?: string;
@@ -17,6 +19,9 @@ interface ButtonProps {
 	variant?: ButtonVariant;
 	color?: ButtonColor;
 	size?: ButtonSize;
+	to?: RouteLocationRaw;
+	href?: string;
+	target?: ButtonTarget;
 }
 
 const props = withDefaults(defineProps<ButtonProps>(), {
@@ -25,10 +30,14 @@ const props = withDefaults(defineProps<ButtonProps>(), {
 	color: 'primary',
 	size: 'md',
 	label: undefined,
+	to: undefined,
+	href: undefined,
+	target: undefined,
 });
 
 const attrs = useAttrs();
 const slots = useSlots();
+const NuxtLink = resolveComponent('NuxtLink');
 
 const sizeClasses: Record<ButtonSize, string> = {
 	sm: 'h-9 px-3.5 text-sm',
@@ -86,9 +95,13 @@ const buttonClass = computed(() =>
 </script>
 
 <template>
-	<button
+	<component
+		:is="to ? NuxtLink : href ? 'a' : 'button'"
 		v-bind="{ ...attrs, class: undefined }"
-		:type="type"
+		:to="to"
+		:href="href"
+		:target="target"
+		:type="to || href ? undefined : type"
 		:class="buttonClass"
 	>
 		<span
@@ -112,5 +125,5 @@ const buttonClass = computed(() =>
 		>
 			<slot name="trailing" />
 		</span>
-	</button>
+	</component>
 </template>

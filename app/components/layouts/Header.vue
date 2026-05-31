@@ -7,7 +7,7 @@ import { ArrowLeft, Settings } from '@lucide/vue';
 		<div
 			class="w-full max-w-container min-h-14 mx-auto px-4 flex items-center gap-4"
 		>
-			<IconButton variant="ghost" color="default">
+			<IconButton variant="ghost" color="default" href="https://ui.alixan.kz/">
 				<ArrowLeft />
 			</IconButton>
 			<NuxtLink to="/" class="flex items-center gap-2">

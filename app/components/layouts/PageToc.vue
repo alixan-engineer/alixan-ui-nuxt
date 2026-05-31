@@ -2,6 +2,7 @@
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 
 import type { PageTocLink } from '~/composables/usePageToc';
+import { cn } from '~~/utils/cn';
 
 interface PageTocProps {
 	links: readonly PageTocLink[];
@@ -52,13 +53,15 @@ function setActiveLink(href: string): void {
 					:key="link.href"
 					:href="link.href"
 					@click="setActiveLink(link.href)"
-					class="block transition-colors hover:text-foreground text-sm"
-					:class="[
-						activeHref === link.href
-							? 'font-bold text-foreground'
-							: 'font-normal text-muted-foreground/80',
-						link.child ? 'pl-4' : '',
-					]"
+					:class="
+						cn(
+							'block transition-colors hover:text-foreground text-sm',
+							activeHref === link.href
+								? 'font-bold text-foreground'
+								: 'font-normal text-muted-foreground/80',
+							link.child ? 'pl-4' : '',
+						)
+					"
 				>
 					{{ link.label }}
 				</a>
