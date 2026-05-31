@@ -7,8 +7,7 @@
 		"build": "nuxt build",
 		"dev": "nuxt dev",
 		"generate": "nuxt generate",
-		"preview": "nuxt preview",
-		"postinstall": "node ./scripts/postinstall.mjs"
+		"preview": "nuxt preview"
 	},
 	"dependencies": {
 		"@nuxtjs/google-fonts": "^3.2.0",
@@ -29,7 +28,6 @@
 	"files": [
 		"cli",
 		"registry",
-		"scripts",
 		"templates",
 		"README.md"
 	]

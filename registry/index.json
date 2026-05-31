@@ -1,5 +1,5 @@
 {
-	"$schema": "https://alixan-ui.dev/schema/registry.json",
+	"$schema": "https://nuxt.ui.alixan.kz/schema/registry.json",
 	"components": [
 		{
 			"name": "button",
