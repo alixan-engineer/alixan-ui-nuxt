@@ -1,6 +1,6 @@
 type Locale = 'en' | 'ru';
 
-type MessageKey =
+export type MessageKey =
 	| 'app.back'
 	| 'app.theme'
 	| 'app.language'

@@ -7,13 +7,17 @@ defineOptions({
 	inheritAttrs: false,
 });
 
+type TabsDesign = 'material' | 'cupertino';
+
 interface TabsProps {
 	tabs?: string[];
+	design?: TabsDesign;
 	full?: boolean;
 }
 
 const props = withDefaults(defineProps<TabsProps>(), {
 	tabs: () => [],
+	design: 'cupertino',
 	full: false,
 });
 
@@ -32,9 +36,23 @@ const rootClass = computed(() =>
 	cn(props.full ? 'w-full' : 'w-fit max-w-full', attrs.class),
 );
 
-const tabButtonClass = computed(() =>
-	props.full ? 'flex-1' : 'shrink-0',
-);
+const tabButtonClass = computed(() => (props.full ? 'flex-1' : 'shrink-0'));
+
+const materialIndicatorStyle = computed(() => {
+	if (!props.tabs.length) {
+		return {
+			left: '0%',
+			width: '0%',
+		};
+	}
+
+	const width = 100 / props.tabs.length;
+
+	return {
+		left: `${safeSelected.value * width}%`,
+		width: `${width}%`,
+	};
+});
 
 function selectTab(index: number): void {
 	selected.value = index;
@@ -43,8 +61,40 @@ function selectTab(index: number): void {
 
 <template>
 	<div v-if="tabs.length" :class="rootClass">
+		<div v-if="design === 'material'" class="relative h-12 w-full">
+			<div
+				class="absolute bottom-0 flex h-0.5 justify-center rounded-full transition-all duration-300"
+				:style="materialIndicatorStyle"
+				aria-hidden="true"
+			>
+				<div class="size-full max-w-[100px] rounded-full bg-primary" />
+			</div>
+
+			<nav class="flex h-full overflow-x-auto border-b" aria-label="Tabs">
+				<button
+					v-for="(tab, index) in tabs"
+					:key="`${tab}-${index}`"
+					type="button"
+					:aria-selected="safeSelected === index"
+					:class="
+						cn(
+							'h-full px-4 text-center text-base transition-colors focus-visible:bg-secondary focus-visible:outline-none',
+							tabButtonClass,
+							safeSelected === index
+								? 'font-medium text-primary'
+								: 'text-foreground/50 hover:text-foreground',
+						)
+					"
+					@click="selectTab(index)"
+				>
+					{{ tab }}
+				</button>
+			</nav>
+		</div>
+
 		<nav
-			class="flex h-9 w-full items-center overflow-x-auto rounded-2xl bg-secondary/70 p-1"
+			v-else
+			class="flex h-11 w-full items-center overflow-x-auto rounded-xl bg-secondary p-1"
 			aria-label="Tabs"
 		>
 			<button
@@ -54,10 +104,10 @@ function selectTab(index: number): void {
 				:aria-selected="safeSelected === index"
 				:class="
 					cn(
-						'h-full rounded-xl px-3.5 text-center text-base transition-all duration-200 focus-visible:outline-none',
+						'h-full rounded-xl px-3 text-center text-base transition-all duration-200 focus-visible:outline-none',
 						tabButtonClass,
 						safeSelected === index
-							? 'bg-background text-foreground shadow-[0_2px_8px_rgba(15,23,42,0.14)]'
+							? 'bg-background text-foreground'
 							: 'text-foreground hover:bg-background/40 focus-visible:bg-background/40',
 					)
 				"

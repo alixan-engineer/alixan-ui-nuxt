@@ -1,8 +1,20 @@
 <script setup lang="ts">
+import type { MessageKey } from '~/composables/useI18n';
+
 import { cn } from '~~/utils/cn';
 
 const route = useRoute();
 const { t } = useI18n();
+
+interface MenuItem {
+	labelKey: MessageKey;
+	to: string;
+}
+
+interface MenuSection {
+	labelKey: MessageKey;
+	items: MenuItem[];
+}
 
 const menuSections = [
 	{
@@ -20,7 +32,7 @@ const menuSections = [
 			{ labelKey: 'component.switch', to: '/switch' },
 		],
 	},
-];
+] satisfies MenuSection[];
 
 function isActiveRoute(to: string): boolean {
 	return route.path === to;
