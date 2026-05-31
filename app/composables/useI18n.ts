@@ -12,7 +12,11 @@ export type MessageKey =
 	| 'component.input'
 	| 'component.search'
 	| 'component.tabs'
-	| 'component.switch';
+	| 'component.switch'
+	| 'component.dialog'
+	| 'component.drawer'
+	| 'component.select'
+	| 'component.dropdownMenu';
 
 const messages: Record<Locale, Record<MessageKey, string>> = {
 	en: {
@@ -28,6 +32,10 @@ const messages: Record<Locale, Record<MessageKey, string>> = {
 		'component.search': 'Search',
 		'component.tabs': 'Tabs',
 		'component.switch': 'Switch',
+		'component.dialog': 'Dialog',
+		'component.drawer': 'Drawer',
+		'component.select': 'Select',
+		'component.dropdownMenu': 'Dropdown Menu',
 	},
 	ru: {
 		'app.back': 'Назад в Alixan',
@@ -42,6 +50,10 @@ const messages: Record<Locale, Record<MessageKey, string>> = {
 		'component.search': 'Поиск',
 		'component.tabs': 'Табы',
 		'component.switch': 'Переключатель',
+		'component.dialog': 'Диалог',
+		'component.drawer': 'Панель',
+		'component.select': 'Селект',
+		'component.dropdownMenu': 'Выпадающее меню',
 	},
 };
 

@@ -30,6 +30,10 @@ const menuSections = [
 			{ labelKey: 'component.search', to: '/search' },
 			{ labelKey: 'component.tabs', to: '/tabs' },
 			{ labelKey: 'component.switch', to: '/switch' },
+			{ labelKey: 'component.dialog', to: '/dialog' },
+			{ labelKey: 'component.drawer', to: '/drawer' },
+			{ labelKey: 'component.select', to: '/select' },
+			{ labelKey: 'component.dropdownMenu', to: '/dropdown-menu' },
 		],
 	},
 ] satisfies MenuSection[];

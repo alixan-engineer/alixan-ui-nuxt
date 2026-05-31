@@ -1,0 +1,17 @@
+{
+	"$schema": "https://nuxt.ui.alixan.kz/schema/registry-item.json",
+	"name": "drawer",
+	"type": "component",
+	"title": "Drawer",
+	"description": "Side drawer with overlay, teleport and composable slots.",
+	"files": [
+		{
+			"source": "templates/drawer/Drawer.vue",
+			"target": "components/ui/Drawer.vue"
+		},
+		{
+			"source": "templates/utils/cn.ts",
+			"target": "utils/cn.ts"
+		}
+	]
+}

@@ -1,0 +1,17 @@
+{
+	"$schema": "https://nuxt.ui.alixan.kz/schema/registry-item.json",
+	"name": "dropdown-menu",
+	"type": "component",
+	"title": "Dropdown Menu",
+	"description": "Action menu with teleported overlay and safe outside click handling.",
+	"files": [
+		{
+			"source": "templates/dropdown-menu/DropdownMenu.vue",
+			"target": "components/ui/DropdownMenu.vue"
+		},
+		{
+			"source": "templates/utils/cn.ts",
+			"target": "utils/cn.ts"
+		}
+	]
+}
