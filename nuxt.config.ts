@@ -6,7 +6,7 @@ export default defineNuxtConfig({
 		rootId: 'root',
 	},
 	devServer: {
-		port: 9000,
+		port: 9002,
 	},
 	devtools: {
 		enabled: true,

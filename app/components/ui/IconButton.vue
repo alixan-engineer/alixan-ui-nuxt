@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, useAttrs, useSlots } from 'vue';
+import { computed, useAttrs } from 'vue';
 
 import { cn } from '~~/utils/cn';
 
@@ -7,38 +7,36 @@ defineOptions({
 	inheritAttrs: false,
 });
 
-type ButtonVariant = 'filled' | 'outlined' | 'ghost';
-type ButtonColor = 'default' | 'primary' | 'secondary' | 'destructive';
-type ButtonSize = 'sm' | 'md' | 'lg';
+type IconButtonVariant = 'filled' | 'outlined' | 'ghost';
+type IconButtonColor = 'default' | 'primary' | 'secondary' | 'destructive';
+type IconButtonSize = 'sm' | 'md' | 'lg';
 
-interface ButtonProps {
-	label?: string;
+interface IconButtonProps {
+	label: string;
 	type?: 'button' | 'submit' | 'reset';
-	variant?: ButtonVariant;
-	color?: ButtonColor;
-	size?: ButtonSize;
+	variant?: IconButtonVariant;
+	color?: IconButtonColor;
+	size?: IconButtonSize;
 	disabled?: boolean;
 }
 
-const props = withDefaults(defineProps<ButtonProps>(), {
+const props = withDefaults(defineProps<IconButtonProps>(), {
 	type: 'button',
 	variant: 'filled',
 	color: 'primary',
 	size: 'md',
 	disabled: false,
-	label: undefined,
 });
 
 const attrs = useAttrs();
-const slots = useSlots();
 
-const sizeClasses: Record<ButtonSize, string> = {
-	sm: 'h-9 rounded-sm px-3 text-sm',
-	md: 'h-11 rounded-lg px-4 text-base',
-	lg: 'h-12 rounded-2xl px-5 text-base',
+const sizeClasses: Record<IconButtonSize, string> = {
+	sm: 'size-9 rounded-sm [&_svg]:size-4',
+	md: 'size-11 rounded-lg [&_svg]:size-4',
+	lg: 'size-12 rounded-2xl [&_svg]:size-5',
 };
 
-const toneClasses: Record<ButtonVariant, Record<ButtonColor, string>> = {
+const toneClasses: Record<IconButtonVariant, Record<IconButtonColor, string>> = {
 	filled: {
 		default: 'border-foreground bg-foreground text-background',
 		primary: 'border-primary bg-primary text-primary-foreground',
@@ -68,11 +66,9 @@ const toneClasses: Record<ButtonVariant, Record<ButtonColor, string>> = {
 	},
 };
 
-const hasDefaultSlot = computed(() => Boolean(slots.default));
-
-const buttonClass = computed(() =>
+const iconButtonClass = computed(() =>
 	cn(
-		'inline-flex items-center justify-center gap-2 border font-medium whitespace-nowrap transition-colors',
+		'inline-flex shrink-0 items-center justify-center border font-medium transition-colors',
 		'disabled:pointer-events-none disabled:opacity-50',
 		sizeClasses[props.size],
 		toneClasses[props.variant][props.color],
@@ -86,28 +82,9 @@ const buttonClass = computed(() =>
 		v-bind="{ ...attrs, class: undefined }"
 		:type="type"
 		:disabled="disabled"
-		:class="buttonClass"
+		:aria-label="label"
+		:class="iconButtonClass"
 	>
-		<span
-			v-if="$slots.leading"
-			class="flex items-center justify-center"
-			aria-hidden="true"
-		>
-			<slot name="leading" />
-		</span>
-
-		<span v-if="hasDefaultSlot || label" class="truncate">
-			<slot>
-				{{ label }}
-			</slot>
-		</span>
-
-		<span
-			v-if="$slots.trailing"
-			class="flex items-center justify-center"
-			aria-hidden="true"
-		>
-			<slot name="trailing" />
-		</span>
+		<slot />
 	</button>
 </template>
