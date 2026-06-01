@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import DrawerPreviewContent from '~/components/examples/DrawerPreviewContent.vue';
+
 useSeoMeta({
 	title: 'Drawer - Alixan UI',
 	ogTitle: 'Drawer - Alixan UI',
@@ -21,15 +23,117 @@ onBeforeUnmount(() => {
 	clearToc();
 });
 
-const open = ref(false);
+const drawer = useDrawer();
 
-const drawerProps = [
-	{ name: 'modelValue', type: 'boolean', default: 'false', description: 'Controls drawer visibility with v-model.' },
-	{ name: 'title', type: 'string', default: '-', description: 'Drawer title.' },
-	{ name: 'description', type: 'string', default: '-', description: 'Optional text under the title.' },
-	{ name: 'side', type: "'right' | 'left' | 'bottom'", default: "'right'", description: 'Drawer placement.' },
-	{ name: 'closeOnOverlay', type: 'boolean', default: 'true', description: 'Closes drawer when the click-catcher overlay is pressed.' },
+const drawerServiceApi = [
+	{
+		name: 'component',
+		type: 'Component',
+		default: '-',
+		description: 'Vue component rendered inside DrawerHost.',
+	},
+	{
+		name: 'title',
+		type: 'string',
+		default: '-',
+		description: 'Passed to DrawerHeader.',
+	},
+	{
+		name: 'width',
+		type: 'string',
+		default: "'420px'",
+		description: 'Drawer max-width.',
+	},
+	{
+		name: 'height',
+		type: 'string',
+		default: "'420px'",
+		description: 'Drawer max-height for top and bottom positions.',
+	},
+	{
+		name: 'position',
+		type: "'top' | 'right' | 'bottom' | 'left'",
+		default: "'bottom'",
+		description: 'Drawer placement.',
+	},
+	{
+		name: 'data',
+		type: 'Record<string, unknown>',
+		default: '{}',
+		description: 'Data passed to the dynamic component.',
+	},
 ];
+
+const code = `// app.vue
+// Add DrawerHost once near the root of your app.
+<template>
+  <NuxtPage />
+  <DrawerHost />
+</template>
+
+// example.vue
+// Open any Vue component as a drawer and pass options/data.
+<script setup lang="ts">
+import WorkspaceDrawer from '~/components/WorkspaceDrawer.vue'
+
+const drawer = useDrawer()
+
+const openDrawer = () => {
+  drawer.open(WorkspaceDrawer, {
+    width: '420px',
+    height: '360px',
+    position: 'bottom',
+    title: 'Workspace settings',
+    data: {
+      workspaceName: 'Alixan UI',
+    },
+  })
+}
+<\/script>
+
+<template>
+  <Button @click="openDrawer">Open drawer</Button>
+</template>
+
+// WorkspaceDrawer.vue
+// This component is rendered inside DrawerHost.
+// It receives data and close from drawer.open().
+<script setup lang="ts">
+interface WorkspaceDrawerData {
+  workspaceName: string
+}
+
+defineProps<{
+  data: WorkspaceDrawerData
+  close: () => void
+}>()
+<\/script>
+
+<template>
+  <div class="size-full flex flex-col divide-y">
+    <div class="flex-1 space-y-3 p-4">
+      <Input :model-value="data.workspaceName" label="Workspace name" />
+      <Switch label="Enable notifications" />
+    </div>
+
+    <div class="flex items-center justify-end gap-2 p-4">
+      <Button variant="outlined" label="Cancel" @click="close" />
+      <Button label="Save" @click="close" />
+    </div>
+  </div>
+</template>`;
+
+const openDrawer = (): void => {
+	drawer.open(DrawerPreviewContent, {
+		width: '420px',
+		height: '360px',
+		position: 'bottom',
+		title: 'Workspace settings',
+		data: {
+			workspaceName: 'Alixan UI',
+		},
+	});
+};
 </script>
 
 <template>
@@ -47,17 +151,8 @@ const drawerProps = [
 
 	<section id="usage" class="space-y-5">
 		<h2 class="text-2xl font-semibold">Usage</h2>
-		<ExampleBlock code="<Drawer v-model=&quot;open&quot; title=&quot;Settings&quot;>...</Drawer>">
-			<Button @click="open = true">Open drawer</Button>
-			<Drawer v-model="open" title="Settings" description="Update workspace preferences.">
-				<div class="space-y-3">
-					<Input label="Workspace name" />
-					<Switch label="Enable notifications" />
-				</div>
-				<template #footer>
-					<Button @click="open = false">Save</Button>
-				</template>
-			</Drawer>
+		<ExampleBlock :code="code">
+			<Button @click="openDrawer">Open drawer</Button>
 		</ExampleBlock>
 	</section>
 
@@ -65,12 +160,24 @@ const drawerProps = [
 		<h2 class="text-2xl font-semibold">API Reference</h2>
 		<div class="overflow-hidden rounded-xl border">
 			<table class="w-full text-left text-sm">
+				<thead class="border-b bg-secondary text-muted-foreground">
+					<tr>
+						<th class="px-4 py-3 font-medium">Option</th>
+						<th class="px-4 py-3 font-medium">Type</th>
+						<th class="px-4 py-3 font-medium">Default</th>
+						<th class="px-4 py-3 font-medium">Description</th>
+					</tr>
+				</thead>
 				<tbody class="divide-y">
-					<tr v-for="item in drawerProps" :key="item.name">
+					<tr v-for="item in drawerServiceApi" :key="item.name">
 						<td class="px-4 py-3 font-medium">{{ item.name }}</td>
 						<td class="px-4 py-3 text-muted-foreground">{{ item.type }}</td>
-						<td class="px-4 py-3 text-muted-foreground">{{ item.default }}</td>
-						<td class="px-4 py-3 text-muted-foreground">{{ item.description }}</td>
+						<td class="px-4 py-3 text-muted-foreground">
+							{{ item.default }}
+						</td>
+						<td class="px-4 py-3 text-muted-foreground">
+							{{ item.description }}
+						</td>
 					</tr>
 				</tbody>
 			</table>

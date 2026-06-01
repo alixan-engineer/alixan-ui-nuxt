@@ -12,6 +12,7 @@ const tocLinks = [
 	{ label: 'Usage', href: '#usage' },
 	{ label: 'State', href: '#state' },
 	{ label: 'With Icon', href: '#with-icon' },
+	{ label: 'Examples', href: '#examples' },
 	{ label: 'API Reference', href: '#api-reference' },
 ] as const;
 
@@ -30,6 +31,74 @@ const stateValue = ref('readonly@example.com');
 const iconValue = ref('');
 const passwordValue = ref('');
 const isPasswordVisible = ref(false);
+const basicExampleValue = ref('');
+const requiredValue = ref('');
+const emailExampleValue = ref('');
+const passwordExampleValue = ref('');
+const lengthExampleValue = ref('');
+const phoneValue = ref('');
+const isExamplePasswordVisible = ref(false);
+
+const isRequired = (value: string): string =>
+	value.trim().length ? '' : 'This field is required';
+
+const minLength = (value: string, length: number): string =>
+	value.length >= length ? '' : `Minimum ${length} characters`;
+
+const maxLength = (value: string, length: number): string =>
+	value.length <= length ? '' : `Maximum ${length} characters`;
+
+const isEmail = (value: string): string =>
+	/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? '' : 'Enter a valid email';
+
+const maskKazakhstanPhone = (value: string): string => {
+	const digits = value.replace(/\D/g, '').replace(/^8/, '7').slice(0, 11);
+	const normalized = digits.startsWith('7') ? digits : `7${digits}`;
+	const parts = normalized.slice(1);
+	const area = parts.slice(0, 3);
+	const first = parts.slice(3, 6);
+	const second = parts.slice(6, 8);
+	const third = parts.slice(8, 10);
+
+	if (!area) {
+		return '+7';
+	}
+
+	if (!first) {
+		return `+7 (${area}`;
+	}
+
+	if (!second) {
+		return `+7 (${area}) ${first}`;
+	}
+
+	if (!third) {
+		return `+7 (${area}) ${first}-${second}`;
+	}
+
+	return `+7 (${area}) ${first}-${second}-${third}`;
+};
+
+const requiredError = computed(
+	() =>
+		isRequired(requiredValue.value) ||
+		minLength(requiredValue.value, 3) ||
+		maxLength(requiredValue.value, 20),
+);
+const emailError = computed(() =>
+	emailExampleValue.value ? isEmail(emailExampleValue.value) : '',
+);
+const lengthError = computed(
+	() =>
+		minLength(lengthExampleValue.value, 6) ||
+		maxLength(lengthExampleValue.value, 12),
+);
+
+const handlePhoneInput = (event: Event): void => {
+	const target = event.target as HTMLInputElement;
+
+	phoneValue.value = maskKazakhstanPhone(target.value);
+};
 
 const inputProps = [
 	{
@@ -160,6 +229,120 @@ const isPasswordVisible = ref(false)
     </Input>
   </div>
 </template>`,
+	basicExample: `<script setup lang="ts">
+const name = ref('')
+<\/script>
+
+<template>
+  <Input v-model="name" label="Project name" />
+</template>`,
+	requiredExample: `<script setup lang="ts">
+const value = ref('')
+
+const isRequired = (value: string) =>
+  value.trim().length ? '' : 'This field is required'
+
+const minLength = (value: string, length: number) =>
+  value.length >= length ? '' : \`Minimum \${length} characters\`
+
+const maxLength = (value: string, length: number) =>
+  value.length <= length ? '' : \`Maximum \${length} characters\`
+
+const error = computed(
+  () => isRequired(value.value) || minLength(value.value, 3) || maxLength(value.value, 20),
+)
+<\/script>
+
+<template>
+  <Input v-model="value" label="Username" :error="error" />
+</template>`,
+	emailExample: `<script setup lang="ts">
+const email = ref('')
+
+const isEmail = (value: string) =>
+  /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(value) ? '' : 'Enter a valid email'
+
+const emailError = computed(() => email.value ? isEmail(email.value) : '')
+<\/script>
+
+<template>
+  <Input v-model="email" label="Email" type="email" :error="emailError" />
+</template>`,
+	passwordExample: `<script setup lang="ts">
+import { Eye, EyeOff } from '@lucide/vue'
+
+const password = ref('')
+const visible = ref(false)
+<\/script>
+
+<template>
+  <Input
+    v-model="password"
+    label="Password"
+    :type="visible ? 'text' : 'password'"
+  >
+    <template #trailing>
+      <IconButton
+        size="sm"
+        :label="visible ? 'Hide password' : 'Show password'"
+        @click="visible = !visible"
+      >
+        <EyeOff v-if="visible" />
+        <Eye v-else />
+      </IconButton>
+    </template>
+  </Input>
+</template>`,
+	lengthExample: `<script setup lang="ts">
+const value = ref('')
+
+const minLength = (value: string, length: number) =>
+  value.length >= length ? '' : \`Minimum \${length} characters\`
+
+const maxLength = (value: string, length: number) =>
+  value.length <= length ? '' : \`Maximum \${length} characters\`
+
+const error = computed(() => minLength(value.value, 6) || maxLength(value.value, 12))
+<\/script>
+
+<template>
+  <Input v-model="value" label="Code" :error="error" hint="6-12 characters" />
+</template>`,
+	phoneExample: `<script setup lang="ts">
+const phone = ref('')
+
+const maskKazakhstanPhone = (value: string): string => {
+  const digits = value.replace(/\\D/g, '').replace(/^8/, '7').slice(0, 11)
+  const normalized = digits.startsWith('7') ? digits : \`7\${digits}\`
+  const parts = normalized.slice(1)
+  const area = parts.slice(0, 3)
+  const first = parts.slice(3, 6)
+  const second = parts.slice(6, 8)
+  const third = parts.slice(8, 10)
+
+  if (!area) return '+7'
+  if (!first) return \`+7 (\${area}\`
+  if (!second) return \`+7 (\${area}) \${first}\`
+  if (!third) return \`+7 (\${area}) \${first}-\${second}\`
+
+  return \`+7 (\${area}) \${first}-\${second}-\${third}\`
+}
+
+const handlePhoneInput = (event: Event) => {
+  const target = event.target as HTMLInputElement
+  phone.value = maskKazakhstanPhone(target.value)
+}
+<\/script>
+
+<template>
+  <Input
+    v-model="phone"
+    label="Phone"
+    type="tel"
+    placeholder="+7 (___) ___-__-__"
+    @input="handlePhoneInput"
+  />
+</template>`,
 };
 </script>
 
@@ -236,6 +419,95 @@ const isPasswordVisible = ref(false)
 				</Input>
 			</div>
 		</ExampleBlock>
+	</section>
+
+	<section id="examples" class="space-y-5">
+		<div class="space-y-2">
+			<h2 class="text-2xl font-semibold">Examples</h2>
+			<p class="text-muted-foreground leading-7">
+				Small validation and mask helpers can live near the form. No extra
+				dependency is required.
+			</p>
+		</div>
+
+		<div class="grid gap-5">
+			<ExampleBlock :code="examples.basicExample">
+				<div class="w-full max-w-sm">
+					<Input v-model="basicExampleValue" label="Project name" />
+				</div>
+			</ExampleBlock>
+
+			<ExampleBlock :code="examples.requiredExample">
+				<div class="w-full max-w-sm">
+					<Input
+						v-model="requiredValue"
+						label="Username"
+						:error="requiredError"
+					/>
+				</div>
+			</ExampleBlock>
+
+			<ExampleBlock :code="examples.emailExample">
+				<div class="w-full max-w-sm">
+					<Input
+						v-model="emailExampleValue"
+						label="Email"
+						type="email"
+						:error="emailError"
+					/>
+				</div>
+			</ExampleBlock>
+
+			<ExampleBlock :code="examples.passwordExample">
+				<div class="w-full max-w-sm">
+					<Input
+						v-model="passwordExampleValue"
+						label="Password"
+						:type="isExamplePasswordVisible ? 'text' : 'password'"
+					>
+						<template #trailing>
+							<IconButton
+								variant="ghost"
+								color="default"
+								size="sm"
+								:label="
+									isExamplePasswordVisible
+										? 'Hide password'
+										: 'Show password'
+								"
+								@click="isExamplePasswordVisible = !isExamplePasswordVisible"
+							>
+								<EyeOff v-if="isExamplePasswordVisible" />
+								<Eye v-else />
+							</IconButton>
+						</template>
+					</Input>
+				</div>
+			</ExampleBlock>
+
+			<ExampleBlock :code="examples.lengthExample">
+				<div class="w-full max-w-sm">
+					<Input
+						v-model="lengthExampleValue"
+						label="Code"
+						:error="lengthError"
+						hint="6-12 characters"
+					/>
+				</div>
+			</ExampleBlock>
+
+			<ExampleBlock :code="examples.phoneExample">
+				<div class="w-full max-w-sm">
+					<Input
+						v-model="phoneValue"
+						label="Phone"
+						type="tel"
+						placeholder="+7 (___) ___-__-__"
+						@input="handlePhoneInput"
+					/>
+				</div>
+			</ExampleBlock>
+		</div>
 	</section>
 
 	<section id="api-reference" class="space-y-4">

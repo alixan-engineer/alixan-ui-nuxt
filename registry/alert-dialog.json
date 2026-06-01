@@ -1,0 +1,21 @@
+{
+	"$schema": "https://nuxt.ui.alixan.kz/schema/registry-item.json",
+	"name": "alert-dialog",
+	"type": "component",
+	"title": "Alert Dialog",
+	"description": "Cupertino-style message dialog for clear blocking feedback.",
+	"files": [
+		{
+			"source": "templates/alert-dialog/AlertDialog.vue",
+			"target": "components/ui/AlertDialog.vue"
+		},
+		{
+			"source": "templates/button/Button.vue",
+			"target": "components/ui/Button.vue"
+		},
+		{
+			"source": "templates/utils/cn.ts",
+			"target": "utils/cn.ts"
+		}
+	]
+}

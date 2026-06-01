@@ -67,7 +67,7 @@ const selectTab = (index: number): void => {
 				:style="materialIndicatorStyle"
 				aria-hidden="true"
 			>
-				<div class="size-full max-w-[100px] rounded-full bg-primary" />
+				<div class="size-full max-w-25 rounded-full bg-primary" />
 			</div>
 
 			<nav class="flex h-full overflow-x-auto border-b" aria-label="Tabs">
@@ -104,7 +104,7 @@ const selectTab = (index: number): void => {
 				:aria-selected="safeSelected === index"
 				:class="
 					cn(
-						'h-full rounded-xl px-3 text-center text-base transition-all duration-200 focus-visible:outline-none',
+						'h-full rounded-xl px-3 text-center text-base focus-visible:outline-none',
 						tabButtonClass,
 						safeSelected === index
 							? 'bg-background text-foreground'

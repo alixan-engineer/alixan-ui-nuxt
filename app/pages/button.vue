@@ -14,6 +14,8 @@ const tocLinks = [
 	{ label: 'Size', href: '#size' },
 	{ label: 'Navigation', href: '#navigation' },
 	{ label: 'With Icon', href: '#with-icon' },
+	{ label: 'Loading', href: '#loading' },
+	{ label: 'Disable', href: '#disable' },
 	{ label: 'API Reference', href: '#api-reference' },
 ] as const;
 
@@ -26,6 +28,17 @@ onMounted(() => {
 onBeforeUnmount(() => {
 	clearToc();
 });
+
+const loader = useGlobalLoader();
+const isDisableAlertOpen = ref(false);
+
+const showGlobalLoader = (): void => {
+	loader.show({ label: 'Saving changes...' });
+
+	window.setTimeout(() => {
+		loader.hide();
+	}, 3000);
+};
 
 const buttonProps = [
 	{
@@ -201,6 +214,37 @@ import { Button } from '@/components/ui/button'
     </Button>
   </div>
 </template>`,
+	loading: `<script setup lang="ts">
+const loader = useGlobalLoader()
+
+const save = () => {
+  loader.show({ label: 'Saving changes...' })
+
+  window.setTimeout(() => {
+    loader.hide()
+  }, 3000)
+}
+<\/script>
+
+<template>
+  <Button @click="save">Save changes</Button>
+</template>`,
+	disable: `<script setup lang="ts">
+const open = ref(false)
+<\/script>
+
+<template>
+  <Button variant="outlined" @click="open = true">
+    Export report
+  </Button>
+
+  <AlertDialog
+    v-model="open"
+    title="Action unavailable"
+    description="Export will be available after the report is generated."
+    button-label="Got it"
+  />
+</template>`,
 };
 </script>
 
@@ -298,6 +342,44 @@ import { Button } from '@/components/ui/button'
 						</template>
 					</Button>
 				</div>
+			</ExampleBlock>
+		</section>
+
+		<section id="loading" class="space-y-4">
+			<div class="space-y-2">
+				<h2 class="text-2xl font-semibold tracking-normal">Loading</h2>
+				<p class="text-muted-foreground leading-7">
+					Button does not include a built-in spinner state. If the button keeps
+					spinning inline, the user can still navigate away and lose the action
+					context. A global loader blocks the surface, communicates one active
+					operation, and keeps the experience easier to understand.
+				</p>
+			</div>
+			<ExampleBlock :code="examples.loading">
+				<Button @click="showGlobalLoader">Save changes</Button>
+			</ExampleBlock>
+		</section>
+
+		<section id="disable" class="space-y-4">
+			<div class="space-y-2">
+				<h2 class="text-2xl font-semibold tracking-normal">Disable</h2>
+				<p class="text-muted-foreground leading-7">
+					Prefer not to disable buttons. Keep the action visible and active,
+					then explain why it cannot run with a warning message. This gives the
+					user feedback instead of a dead control.
+				</p>
+			</div>
+			<ExampleBlock :code="examples.disable">
+				<Button variant="outlined" @click="isDisableAlertOpen = true">
+					Export report
+				</Button>
+
+				<AlertDialog
+					v-model="isDisableAlertOpen"
+					title="Action unavailable"
+					description="Export will be available after the report is generated."
+					button-label="Got it"
+				/>
 			</ExampleBlock>
 		</section>
 

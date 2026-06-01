@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { X } from '@lucide/vue';
 import { computed, watch } from 'vue';
 
 import { cn } from '~~/utils/cn';
@@ -8,19 +7,21 @@ defineOptions({
 	inheritAttrs: false,
 });
 
-type DrawerSide = 'right' | 'left' | 'bottom';
+type DrawerPosition = 'top' | 'right' | 'bottom' | 'left';
 
 interface DrawerProps {
+	width?: string;
+	height?: string;
 	title?: string;
-	description?: string;
-	side?: DrawerSide;
+	position?: DrawerPosition;
 	closeOnOverlay?: boolean;
 }
 
 const props = withDefaults(defineProps<DrawerProps>(), {
+	width: '420px',
+	height: '420px',
 	title: '',
-	description: '',
-	side: 'right',
+	position: 'bottom',
 	closeOnOverlay: true,
 });
 
@@ -30,35 +31,39 @@ const emit = defineEmits<{
 
 const open = defineModel<boolean>({ default: false });
 
-const drawerClass = computed(() => {
-	const sides: Record<DrawerSide, string> = {
-		right: 'right-0 top-0 h-full w-full max-w-md rounded-l-3xl',
-		left: 'left-0 top-0 h-full w-full max-w-md rounded-r-3xl',
-		bottom: 'bottom-0 left-0 max-h-[85vh] w-full rounded-t-3xl',
-	};
-
-	return sides[props.side];
-});
-
-const transitionClasses = computed(() => {
-	if (props.side === 'left') {
+const drawerStyle = computed(() => {
+	if (props.position === 'top' || props.position === 'bottom') {
 		return {
-			enterFrom: '-translate-x-full',
-			leaveTo: '-translate-x-full',
-		};
-	}
-
-	if (props.side === 'bottom') {
-		return {
-			enterFrom: 'translate-y-full',
-			leaveTo: 'translate-y-full',
+			maxWidth: props.width,
+			maxHeight: props.height,
 		};
 	}
 
 	return {
-		enterFrom: 'translate-x-full',
-		leaveTo: 'translate-x-full',
+		maxWidth: props.width,
 	};
+});
+
+const positionClass = computed(() => {
+	const positions: Record<DrawerPosition, string> = {
+		top: 'inset-x-0 top-0 mx-auto h-full w-full rounded-b-3xl',
+		right: 'right-0 top-0 h-full w-full rounded-l-3xl',
+		bottom: 'bottom-0 inset-x-0 mx-auto h-full w-full rounded-t-3xl',
+		left: 'left-0 top-0 h-full w-full rounded-r-3xl',
+	};
+
+	return positions[props.position];
+});
+
+const transitionClass = computed(() => {
+	const positions: Record<DrawerPosition, string> = {
+		top: '-translate-y-full',
+		right: 'translate-x-full',
+		bottom: 'translate-y-full',
+		left: '-translate-x-full',
+	};
+
+	return positions[props.position];
 });
 
 const closeDrawer = (): void => {
@@ -106,33 +111,34 @@ onBeforeUnmount(() => {
 <template>
 	<Teleport to="body">
 		<Transition
-			enter-active-class="transition duration-200 ease-out"
+			enter-active-class="transition"
 			enter-from-class="opacity-0"
 			enter-to-class="opacity-100"
-			leave-active-class="transition duration-150 ease-in"
+			leave-active-class="transition"
 			leave-from-class="opacity-100"
 			leave-to-class="opacity-0"
 		>
 			<div
 				v-if="open"
-				class="fixed inset-0 z-[9998] bg-black/30 backdrop-blur-[2px]"
+				class="fixed inset-0 z-9998 bg-black/30"
 				@mousedown.stop="handleOverlayMouseDown"
 				@click.stop
 			>
 				<Transition
 					appear
-					enter-active-class="transition duration-300 ease-out"
-					:enter-from-class="`${transitionClasses.enterFrom} opacity-90`"
+					enter-active-class="transition"
+					:enter-from-class="`${transitionClass} opacity-95`"
 					enter-to-class="translate-x-0 translate-y-0 opacity-100"
-					leave-active-class="transition duration-200 ease-in"
+					leave-active-class="transition"
 					leave-from-class="translate-x-0 translate-y-0 opacity-100"
-					:leave-to-class="`${transitionClasses.leaveTo} opacity-90`"
+					:leave-to-class="`${transitionClass} opacity-95`"
 				>
 					<aside
+						:style="drawerStyle"
 						:class="
 							cn(
 								'fixed flex flex-col overflow-hidden border bg-background shadow-2xl',
-								drawerClass,
+								positionClass,
 								$attrs.class,
 							)
 						"
@@ -140,45 +146,15 @@ onBeforeUnmount(() => {
 						aria-modal="true"
 						@mousedown.stop
 					>
-						<header
-							v-if="title || description || $slots.header"
-							class="flex min-h-14 items-start justify-between gap-4 border-b px-6 py-4"
-						>
-							<slot name="header">
-								<div class="min-w-0 space-y-1">
-									<h2 v-if="title" class="text-lg font-semibold">
-										{{ title }}
-									</h2>
-									<p
-										v-if="description"
-										class="text-sm leading-6 text-muted-foreground"
-									>
-										{{ description }}
-									</p>
-								</div>
-							</slot>
-							<IconButton
-								label="Close drawer"
-								variant="ghost"
-								color="default"
-								size="sm"
-								class="-mr-2 shrink-0"
-								@click="closeDrawer"
-							>
-								<X />
-							</IconButton>
-						</header>
-
-						<div class="flex-1 overflow-auto p-6">
+						<DrawerHeader
+							v-if="title"
+							:title="title"
+							:close="closeDrawer"
+							class="border-b"
+						/>
+						<div class="flex-1 overflow-auto">
 							<slot />
 						</div>
-
-						<footer
-							v-if="$slots.footer"
-							class="flex items-center justify-end gap-2 border-t p-4"
-						>
-							<slot name="footer" />
-						</footer>
 					</aside>
 				</Transition>
 			</div>

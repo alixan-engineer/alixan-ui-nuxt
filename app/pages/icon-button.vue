@@ -13,6 +13,8 @@ const tocLinks = [
 	{ label: 'Usage', href: '#usage' },
 	{ label: 'Size', href: '#size' },
 	{ label: 'Navigation', href: '#navigation' },
+	{ label: 'Loading', href: '#loading' },
+	{ label: 'Disable', href: '#disable' },
 	{ label: 'API Reference', href: '#api-reference' },
 ] as const;
 
@@ -25,6 +27,17 @@ onMounted(() => {
 onBeforeUnmount(() => {
 	clearToc();
 });
+
+const loader = useGlobalLoader();
+const isDisableAlertOpen = ref(false);
+
+const showGlobalLoader = (): void => {
+	loader.show({ label: 'Saving action...' });
+
+	window.setTimeout(() => {
+		loader.hide();
+	}, 3000);
+};
 
 const iconButtonProps = [
 	{
@@ -165,6 +178,43 @@ import { IconButton } from '@/components/ui/icon-button'
     </IconButton>
   </div>
 </template>`,
+	loading: `<script setup lang="ts">
+import { ArrowUpRight } from '@lucide/vue'
+
+const loader = useGlobalLoader()
+
+const save = () => {
+  loader.show({ label: 'Saving action...' })
+
+  window.setTimeout(() => {
+    loader.hide()
+  }, 3000)
+}
+<\/script>
+
+<template>
+  <IconButton label="Save action" @click="save">
+    <ArrowUpRight />
+  </IconButton>
+</template>`,
+	disable: `<script setup lang="ts">
+import { ArrowUpRight } from '@lucide/vue'
+
+const open = ref(false)
+<\/script>
+
+<template>
+  <IconButton label="Export report" variant="outlined" @click="open = true">
+    <ArrowUpRight />
+  </IconButton>
+
+  <AlertDialog
+    v-model="open"
+    title="Action unavailable"
+    description="Export will be available after the report is generated."
+    button-label="Got it"
+  />
+</template>`,
 };
 </script>
 
@@ -252,6 +302,49 @@ import { IconButton } from '@/components/ui/icon-button'
 						<ArrowUpRight />
 					</IconButton>
 				</div>
+			</ExampleBlock>
+		</section>
+
+		<section id="loading" class="space-y-4">
+			<div class="space-y-2">
+				<h2 class="text-2xl font-semibold">Loading</h2>
+				<p class="text-muted-foreground leading-7">
+					IconButton does not include an inline spinner. Inline loading can
+					leave the user free to navigate away and lose the action context. Use
+					a global loader when the operation should be treated as one blocking
+					action.
+				</p>
+			</div>
+			<ExampleBlock :code="examples.loading">
+				<IconButton label="Save action" @click="showGlobalLoader">
+					<ArrowUpRight />
+				</IconButton>
+			</ExampleBlock>
+		</section>
+
+		<section id="disable" class="space-y-4">
+			<div class="space-y-2">
+				<h2 class="text-2xl font-semibold">Disable</h2>
+				<p class="text-muted-foreground leading-7">
+					Do not make the icon action silent and unavailable. Keep it active,
+					then show a warning dialog that explains what the user needs to do.
+				</p>
+			</div>
+			<ExampleBlock :code="examples.disable">
+				<IconButton
+					label="Export report"
+					variant="outlined"
+					@click="isDisableAlertOpen = true"
+				>
+					<ArrowUpRight />
+				</IconButton>
+
+				<AlertDialog
+					v-model="isDisableAlertOpen"
+					title="Action unavailable"
+					description="Export will be available after the report is generated."
+					button-label="Got it"
+				/>
 			</ExampleBlock>
 		</section>
 

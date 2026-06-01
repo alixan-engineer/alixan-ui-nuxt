@@ -24,6 +24,7 @@ onBeforeUnmount(() => {
 });
 
 const dialog = useDialog();
+const projectName = ref('Alixan UI');
 
 const dialogServiceApi = [
 	{
@@ -76,7 +77,10 @@ const openDialog = () => {
     height: '400px', // maxHeight
     title: 'Create project',
     data: {
-      projectId: 1,
+      projectName: 'Alixan UI',
+      onSave: (value: string) => {
+        projectName.value = value
+      },
     },
   })
 }
@@ -91,7 +95,8 @@ const openDialog = () => {
 // It receives data and close from dialog.open().
 <script setup lang="ts">
 interface ProjectDialogData {
-  projectId: number
+  projectName: string
+  onSave: (value: string) => void
 }
 
 const props = defineProps<{
@@ -99,22 +104,27 @@ const props = defineProps<{
   close: () => void
 }>()
 
-const projectId = ref<number | null>(null)
+const projectName = ref('')
 
 onMounted(() => {
-  projectId.value = props.data.projectId
+  projectName.value = props.data.projectName
 })
+
+const save = () => {
+  props.data.onSave(projectName.value)
+  props.close()
+}
 <\/script>
 
 <template>
   <div class="size-full flex flex-col divide-y">
     <div class="flex-1 p-4">
-      <Input v-model="projectId" label="Project ID" />
+      <Input v-model="projectName" label="Project name" />
     </div>
 
     <div class="flex items-center justify-end gap-2 p-4">
       <Button variant="outlined" label="Cancel" @click="close" />
-      <Button label="Create" @click="close" />
+      <Button label="Save" @click="save" />
     </div>
   </div>
 </template>`;
@@ -125,7 +135,10 @@ const openDialog = (): void => {
 		height: '400px',
 		title: 'Create project',
 		data: {
-			projectId: 1,
+			projectName: projectName.value,
+			onSave: (value: string) => {
+				projectName.value = value;
+			},
 		},
 	});
 };
@@ -147,7 +160,13 @@ const openDialog = (): void => {
 	<section id="usage" class="space-y-5">
 		<h2 class="text-2xl font-semibold">Usage</h2>
 		<ExampleBlock :code="code">
-			<Button @click="openDialog">Open dialog</Button>
+			<div class="flex flex-wrap items-center justify-center gap-3">
+				<Button @click="openDialog">Open dialog</Button>
+				<p class="text-sm text-muted-foreground">
+					Project name:
+					<span class="font-medium text-foreground">{{ projectName }}</span>
+				</p>
+			</div>
 		</ExampleBlock>
 	</section>
 

@@ -1,0 +1,17 @@
+{
+	"$schema": "https://nuxt.ui.alixan.kz/schema/registry-item.json",
+	"name": "otp",
+	"type": "component",
+	"title": "OTP Input",
+	"description": "One-time password input with change and submit events.",
+	"files": [
+		{
+			"source": "templates/otp/OtpInput.vue",
+			"target": "components/ui/OtpInput.vue"
+		},
+		{
+			"source": "templates/utils/cn.ts",
+			"target": "utils/cn.ts"
+		}
+	]
+}

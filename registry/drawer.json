@@ -10,6 +10,18 @@
 			"target": "components/ui/Drawer.vue"
 		},
 		{
+			"source": "templates/drawer/DrawerHeader.vue",
+			"target": "components/ui/DrawerHeader.vue"
+		},
+		{
+			"source": "templates/drawer/DrawerHost.vue",
+			"target": "components/ui/DrawerHost.vue"
+		},
+		{
+			"source": "templates/drawer/useDrawer.ts",
+			"target": "composables/useDrawer.ts"
+		},
+		{
 			"source": "templates/utils/cn.ts",
 			"target": "utils/cn.ts"
 		}

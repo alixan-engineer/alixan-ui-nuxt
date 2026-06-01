@@ -12,6 +12,11 @@
 			"description": "Text input with floating label and icon slots."
 		},
 		{
+			"name": "otp",
+			"title": "OTP Input",
+			"description": "One-time password input with change and submit events."
+		},
+		{
 			"name": "chip",
 			"title": "Chip",
 			"description": "Compact interactive chip for filters, selections and removable tokens."
@@ -42,6 +47,11 @@
 			"description": "Modal dialog with overlay, teleport, slots and smooth transitions."
 		},
 		{
+			"name": "alert-dialog",
+			"title": "Alert Dialog",
+			"description": "Cupertino-style message dialog for clear blocking feedback."
+		},
+		{
 			"name": "drawer",
 			"title": "Drawer",
 			"description": "Side drawer with overlay, teleport and composable slots."
@@ -55,6 +65,16 @@
 			"name": "dropdown-menu",
 			"title": "Dropdown Menu",
 			"description": "Action menu with teleported overlay and safe outside click handling."
+		},
+		{
+			"name": "global-loader",
+			"title": "Global Loader",
+			"description": "Full-screen loading overlay with composable control."
+		},
+		{
+			"name": "toast",
+			"title": "Toast",
+			"description": "Notification stack with success, warning, error and info states."
 		}
 	]
 }

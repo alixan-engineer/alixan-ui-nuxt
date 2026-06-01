@@ -13,6 +13,7 @@ const props = withDefaults(defineProps<CopyButtonProps>(), {
 });
 
 const copied = ref(false);
+const toast = useToast();
 
 const copyText = async (): Promise<void> => {
 	if (!import.meta.client) {
@@ -21,6 +22,7 @@ const copyText = async (): Promise<void> => {
 
 	await navigator.clipboard.writeText(props.text);
 	copied.value = true;
+	toast.open('Code copied', 'success');
 
 	window.setTimeout(() => {
 		copied.value = false;

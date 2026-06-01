@@ -33,4 +33,7 @@ watch(
 	</div>
 
 	<DialogHost />
+	<DrawerHost />
+	<GlobalLoaderHost />
+	<ToastHost />
 </template>

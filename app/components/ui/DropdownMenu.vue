@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { ChevronDown } from '@lucide/vue';
-import { computed, nextTick, ref } from 'vue';
+import { computed, nextTick, ref, useAttrs, watch } from 'vue';
 
 import { cn } from '~~/utils/cn';
 
@@ -8,48 +7,29 @@ defineOptions({
 	inheritAttrs: false,
 });
 
-type DropdownAlign = 'left' | 'right' | 'center';
-
-interface DropdownMenuItem {
-	label: string;
-	value?: string | number;
-	disabled?: boolean;
-	destructive?: boolean;
-}
+type DropdownPosition = 'topRight' | 'bottomRight' | 'bottomLeft' | 'topLeft';
 
 interface DropdownMenuProps {
-	items?: DropdownMenuItem[];
-	label?: string;
-	align?: DropdownAlign;
+	width?: string;
+	height?: string;
+	position?: DropdownPosition;
 }
 
 const props = withDefaults(defineProps<DropdownMenuProps>(), {
-	items: () => [],
-	label: 'Options',
-	align: 'right',
+	width: '320px',
+	height: 'auto',
+	position: 'bottomLeft',
 });
 
-const emit = defineEmits<{
-	select: [item: DropdownMenuItem];
-}>();
-
+const open = defineModel<boolean>('open', { default: false });
+const attrs = useAttrs();
 const triggerRef = ref<HTMLElement | null>(null);
-const open = ref(false);
-const menuStyle = ref<Record<string, string>>({});
+const popoverRef = ref<HTMLElement | null>(null);
+const popoverStyle = ref<Record<string, string>>({});
 
-const placementClass = computed(() => {
-	if (props.align === 'left') {
-		return 'left';
-	}
+const rootClass = computed(() => cn('inline-flex', attrs.class));
 
-	if (props.align === 'center') {
-		return 'center';
-	}
-
-	return 'right';
-});
-
-const updateMenuPosition = (): void => {
+const updatePopoverPosition = async (): Promise<void> => {
 	const trigger = triggerRef.value;
 
 	if (!trigger || !import.meta.client) {
@@ -57,107 +37,169 @@ const updateMenuPosition = (): void => {
 	}
 
 	const rect = trigger.getBoundingClientRect();
-	const width = Math.max(rect.width, 160);
-	const offset = 4;
-	let left = rect.right - width;
+	const offset = 6;
+	const preferredWidth = Number.parseFloat(props.width);
+	const fallbackWidth = Number.isFinite(preferredWidth)
+		? preferredWidth
+		: Math.max(rect.width, 220);
 
-	if (placementClass.value === 'left') {
-		left = rect.left;
+	popoverStyle.value = {
+		width: props.width,
+		maxHeight: props.height,
+		minWidth: `${Math.min(Math.max(rect.width, 160), fallbackWidth)}px`,
+		visibility: 'hidden',
+	};
+
+	await nextTick();
+
+	const popoverRect = popoverRef.value?.getBoundingClientRect();
+	const width = popoverRect?.width ?? fallbackWidth;
+	const height = popoverRect?.height ?? 220;
+	const viewportWidth = window.innerWidth;
+	const viewportHeight = window.innerHeight;
+	const space = {
+		top: rect.top - offset,
+		right: viewportWidth - rect.right - offset,
+		bottom: viewportHeight - rect.bottom - offset,
+		left: rect.left - offset,
+	};
+
+	let vertical: 'top' | 'bottom' = props.position.startsWith('top')
+		? 'top'
+		: 'bottom';
+	let horizontal: 'left' | 'right' = props.position.endsWith('Right')
+		? 'right'
+		: 'left';
+
+	if (vertical === 'bottom' && space.bottom < height && space.top > space.bottom) {
+		vertical = 'top';
 	}
 
-	if (placementClass.value === 'center') {
-		left = rect.left + rect.width / 2 - width / 2;
+	if (vertical === 'top' && space.top < height && space.bottom > space.top) {
+		vertical = 'bottom';
 	}
 
-	left = Math.max(8, Math.min(left, window.innerWidth - width - 8));
+	if (horizontal === 'left' && space.right < width && space.left > space.right) {
+		horizontal = 'right';
+	}
 
-	menuStyle.value = {
-		top: `${rect.bottom + offset}px`,
+	if (horizontal === 'right' && space.left < width && space.right > space.left) {
+		horizontal = 'left';
+	}
+
+	const rawTop =
+		vertical === 'bottom' ? rect.bottom + offset : rect.top - height - offset;
+	const rawLeft =
+		horizontal === 'left' ? rect.left : rect.right - width;
+
+	const top = Math.max(8, Math.min(rawTop, viewportHeight - height - 8));
+	const left = Math.max(8, Math.min(rawLeft, viewportWidth - width - 8));
+
+	popoverStyle.value = {
+		width: props.width,
+		maxHeight: props.height,
+		minWidth: `${Math.min(Math.max(rect.width, 160), fallbackWidth)}px`,
 		left: `${left}px`,
-		minWidth: `${width}px`,
+		top: `${top}px`,
+		visibility: 'visible',
 	};
 };
 
-const openMenu = async (): Promise<void> => {
+const close = (): void => {
+	open.value = false;
+};
+
+const openPopover = async (): Promise<void> => {
 	open.value = true;
 	await nextTick();
-	updateMenuPosition();
-	window.addEventListener('resize', closeMenu);
-	window.addEventListener('scroll', closeMenu, true);
+	await updatePopoverPosition();
 };
 
-const closeMenu = (): void => {
-	open.value = false;
-	window.removeEventListener('resize', closeMenu);
-	window.removeEventListener('scroll', closeMenu, true);
-};
-
-const toggleMenu = (): void => {
+const toggle = (): void => {
 	if (open.value) {
-		closeMenu();
+		close();
 		return;
 	}
 
-	openMenu();
+	openPopover();
 };
 
-const selectItem = (item: DropdownMenuItem): void => {
-	if (item.disabled) {
+const handleKeydown = (event: KeyboardEvent): void => {
+	if (event.key === 'Escape' && open.value) {
+		close();
+	}
+};
+
+watch(open, async value => {
+	if (!import.meta.client) {
 		return;
 	}
 
-	emit('select', item);
-	closeMenu();
-};
+	if (value) {
+		await nextTick();
+		await updatePopoverPosition();
+		window.addEventListener('resize', close);
+		window.addEventListener('scroll', close, true);
+		document.addEventListener('keydown', handleKeydown);
+		return;
+	}
 
-onBeforeUnmount(closeMenu);
+	window.removeEventListener('resize', close);
+	window.removeEventListener('scroll', close, true);
+	document.removeEventListener('keydown', handleKeydown);
+});
+
+onBeforeUnmount(() => {
+	if (!import.meta.client) {
+		return;
+	}
+
+	window.removeEventListener('resize', close);
+	window.removeEventListener('scroll', close, true);
+	document.removeEventListener('keydown', handleKeydown);
+});
 </script>
 
 <template>
-	<div ref="triggerRef" :class="cn('inline-flex', $attrs.class)">
-		<slot name="trigger" :open="open" :toggle="toggleMenu">
-			<Button variant="outlined" color="default" size="md" @click="toggleMenu">
-				{{ label }}
-				<ChevronDown
-					:class="
-						cn(
-							'size-4 transition-transform',
-							open ? 'rotate-180' : '',
-						)
-					"
-				/>
-			</Button>
-		</slot>
+	<div ref="triggerRef" :class="rootClass" @click="toggle">
+		<slot name="trigger" />
 
 		<Teleport to="body">
-			<div
-				v-if="open"
-				class="fixed inset-0 z-[9998]"
-				@mousedown.stop="closeMenu"
-				@click.stop
-			/>
-			<div
-				v-if="open"
-				class="fixed z-[9999] max-h-80 overflow-auto rounded-lg border bg-popover p-1 shadow-md"
-				:style="menuStyle"
-				@mousedown.stop
+			<Transition
+				enter-active-class="transition"
+				enter-from-class="opacity-0"
+				enter-to-class="opacity-100"
+				leave-active-class="transition"
+				leave-from-class="opacity-100"
+				leave-to-class="opacity-0"
 			>
-				<button
-					v-for="item in items"
-					:key="item.value ?? item.label"
-					type="button"
-					:disabled="item.disabled"
-					:class="
-						cn(
-							'flex min-h-9 w-full cursor-pointer items-center rounded-md px-3 text-left text-md hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50',
-							item.destructive ? 'text-destructive hover:bg-destructive/10 focus-visible:bg-destructive/10' : '',
-						)
-					"
-					@click="selectItem(item)"
+				<div
+					v-if="open"
+					class="fixed inset-0 z-9998"
+					@mousedown.stop="close"
+					@click.stop
+				/>
+			</Transition>
+
+			<Transition
+				enter-active-class="transition"
+				enter-from-class="scale-95 opacity-0"
+				enter-to-class="scale-100 opacity-100"
+				leave-active-class="transition"
+				leave-from-class="scale-100 opacity-100"
+				leave-to-class="scale-95 opacity-0"
+			>
+				<div
+					v-if="open"
+					ref="popoverRef"
+					class="fixed z-9999 overflow-auto rounded-2xl border bg-background p-1 shadow-2xl origin-top-left"
+					:style="popoverStyle"
+					@mousedown.stop
+					@click.stop
 				>
-					<span class="truncate">{{ item.label }}</span>
-				</button>
-			</div>
+					<slot />
+				</div>
+			</Transition>
 		</Teleport>
 	</div>
 </template>
