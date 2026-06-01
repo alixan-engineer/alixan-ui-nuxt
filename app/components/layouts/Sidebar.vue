@@ -24,21 +24,31 @@ const menuSections = [
 	},
 	{
 		labelKey: 'sidebar.guides',
-		items: [{ labelKey: 'component.icons', to: '/icons' }],
+		items: [
+			{ labelKey: 'component.icons', to: '/icons' },
+			{ labelKey: 'guide.i18n', to: '/i18n' },
+		],
 	},
 	{
 		labelKey: 'sidebar.components',
 		items: [
 			{ labelKey: 'component.button', to: '/button' },
 			{ labelKey: 'component.iconButton', to: '/icon-button' },
-			{ labelKey: 'component.input', to: '/input' },
-			{ labelKey: 'component.otp', to: '/otp' },
 			{ labelKey: 'component.chip', to: '/chip' },
-			{ labelKey: 'component.search', to: '/search' },
-			{ labelKey: 'component.select', to: '/select' },
 			{ labelKey: 'component.tabs', to: '/tabs' },
 			{ labelKey: 'component.switch', to: '/switch' },
 			{ labelKey: 'component.status', to: '/status' },
+		],
+	},
+	{
+		labelKey: 'sidebar.forms',
+		items: [
+			{ labelKey: 'component.input', to: '/input' },
+			{ labelKey: 'component.otp', to: '/otp' },
+			{ labelKey: 'component.select', to: '/select' },
+			{ labelKey: 'component.search', to: '/search' },
+			{ labelKey: 'component.autocomplete', to: '/autocomplete' },
+			{ labelKey: 'component.calendar', to: '/calendar' },
 		],
 	},
 	{
@@ -46,6 +56,7 @@ const menuSections = [
 		items: [
 			{ labelKey: 'component.dialog', to: '/dialog' },
 			{ labelKey: 'component.alertDialog', to: '/alert-dialog' },
+			{ labelKey: 'component.confirmDialog', to: '/confirm-dialog' },
 			{ labelKey: 'component.drawer', to: '/drawer' },
 			{ labelKey: 'component.dropdownMenu', to: '/dropdown-menu' },
 			{ labelKey: 'component.globalLoader', to: '/global-loader' },

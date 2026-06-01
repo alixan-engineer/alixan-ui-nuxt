@@ -24,7 +24,7 @@ watch(
 		<Sidebar />
 
 		<main
-			class="max-w-190 mx-auto px-5 py-10 sm:px-8 lg:px-10 lg:py-12 space-y-12"
+			class="w-full max-w-190 mx-auto px-5 py-10 sm:px-8 lg:px-10 lg:py-12 space-y-12"
 		>
 			<NuxtPage />
 		</main>

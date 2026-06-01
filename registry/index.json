@@ -12,6 +12,26 @@
 			"description": "Text input with floating label and icon slots."
 		},
 		{
+			"name": "email-input",
+			"title": "Email Input",
+			"description": "Email input wrapper with built-in email validation."
+		},
+		{
+			"name": "password-input",
+			"title": "Password Input",
+			"description": "Password input wrapper with visibility toggle."
+		},
+		{
+			"name": "phone-input",
+			"title": "Phone Input",
+			"description": "Phone input wrapper with country code prefix and digit mask."
+		},
+		{
+			"name": "username-input",
+			"title": "Username Input",
+			"description": "Username input wrapper with required min and max validation."
+		},
+		{
 			"name": "otp",
 			"title": "OTP Input",
 			"description": "One-time password input with change and submit events."
@@ -25,6 +45,16 @@
 			"name": "search",
 			"title": "Search",
 			"description": "Search field with built-in debounce, search icon and clear button."
+		},
+		{
+			"name": "autocomplete",
+			"title": "Autocomplete",
+			"description": "Searchable select input with chip multi-select variant."
+		},
+		{
+			"name": "calendar",
+			"title": "Calendar",
+			"description": "Readonly input-style date picker with day and range modes."
 		},
 		{
 			"name": "tabs",
@@ -50,6 +80,11 @@
 			"name": "alert-dialog",
 			"title": "Alert Dialog",
 			"description": "Cupertino-style message dialog for clear blocking feedback."
+		},
+		{
+			"name": "confirm-dialog",
+			"title": "Confirm Dialog",
+			"description": "Cupertino-style confirmation dialog with cancel and submit actions."
 		},
 		{
 			"name": "drawer",

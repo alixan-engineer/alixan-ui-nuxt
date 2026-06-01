@@ -1,0 +1,21 @@
+{
+	"$schema": "https://nuxt.ui.alixan.kz/schema/registry-item.json",
+	"name": "phone-input",
+	"type": "component",
+	"title": "Phone Input",
+	"description": "Phone input wrapper with country code prefix and digit mask.",
+	"files": [
+		{
+			"source": "templates/input/PhoneInput.vue",
+			"target": "components/ui/PhoneInput.vue"
+		},
+		{
+			"source": "templates/input/Input.vue",
+			"target": "components/ui/Input.vue"
+		},
+		{
+			"source": "templates/utils/cn.ts",
+			"target": "utils/cn.ts"
+		}
+	]
+}

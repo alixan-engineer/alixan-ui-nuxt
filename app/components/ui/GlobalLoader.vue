@@ -4,7 +4,7 @@ interface GlobalLoaderProps {
 }
 
 withDefaults(defineProps<GlobalLoaderProps>(), {
-	label: 'Loading...',
+	label: '',
 });
 </script>
 
@@ -17,7 +17,7 @@ withDefaults(defineProps<GlobalLoaderProps>(), {
 				class="size-11 rounded-full border-4 border-secondary border-t-primary animate-spin"
 				aria-hidden="true"
 			/>
-			<p class="text-sm font-medium text-muted-foreground">
+			<p v-if="label" class="text-md font-medium text-muted-foreground">
 				{{ label }}
 			</p>
 		</div>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ArrowUpRight } from '@lucide/vue';
+import AlertDialog from '~/components/ui/AlertDialog.vue';
 import { buttonColors, buttonVariants } from '~/shared/button-options';
 
 useSeoMeta({
@@ -29,7 +30,7 @@ onBeforeUnmount(() => {
 });
 
 const loader = useGlobalLoader();
-const isDisableAlertOpen = ref(false);
+const dialog = useDialog();
 
 const showGlobalLoader = (): void => {
 	loader.show({ label: 'Saving action...' });
@@ -37,6 +38,18 @@ const showGlobalLoader = (): void => {
 	window.setTimeout(() => {
 		loader.hide();
 	}, 3000);
+};
+
+const openDisableAlert = (): void => {
+	dialog.open(AlertDialog, {
+		width: '360px',
+		height: '280px',
+		data: {
+			title: 'Action unavailable',
+			description: 'Export will be available after the report is generated.',
+			buttonLabel: 'Got it',
+		},
+	});
 };
 
 const iconButtonProps = [
@@ -200,20 +213,25 @@ const save = () => {
 	disable: `<script setup lang="ts">
 import { ArrowUpRight } from '@lucide/vue'
 
-const open = ref(false)
+const dialog = useDialog()
+
+const openAlert = () => {
+  dialog.open(AlertDialog, {
+    width: '360px',
+    height: '280px',
+    data: {
+      title: 'Action unavailable',
+      description: 'Export will be available after the report is generated.',
+      buttonLabel: 'Got it',
+    },
+  })
+}
 <\/script>
 
 <template>
-  <IconButton label="Export report" variant="outlined" @click="open = true">
+  <IconButton label="Export report" variant="outlined" @click="openAlert">
     <ArrowUpRight />
   </IconButton>
-
-  <AlertDialog
-    v-model="open"
-    title="Action unavailable"
-    description="Export will be available after the report is generated."
-    button-label="Got it"
-  />
 </template>`,
 };
 </script>
@@ -334,17 +352,10 @@ const open = ref(false)
 				<IconButton
 					label="Export report"
 					variant="outlined"
-					@click="isDisableAlertOpen = true"
+					@click="openDisableAlert"
 				>
 					<ArrowUpRight />
 				</IconButton>
-
-				<AlertDialog
-					v-model="isDisableAlertOpen"
-					title="Action unavailable"
-					description="Export will be available after the report is generated."
-					button-label="Got it"
-				/>
 			</ExampleBlock>
 		</section>
 

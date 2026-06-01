@@ -1,0 +1,21 @@
+{
+	"$schema": "https://nuxt.ui.alixan.kz/schema/registry-item.json",
+	"name": "username-input",
+	"type": "component",
+	"title": "Username Input",
+	"description": "Username input wrapper with required min and max validation.",
+	"files": [
+		{
+			"source": "templates/input/UsernameInput.vue",
+			"target": "components/ui/UsernameInput.vue"
+		},
+		{
+			"source": "templates/input/Input.vue",
+			"target": "components/ui/Input.vue"
+		},
+		{
+			"source": "templates/utils/cn.ts",
+			"target": "utils/cn.ts"
+		}
+	]
+}

@@ -1,0 +1,21 @@
+{
+	"$schema": "https://nuxt.ui.alixan.kz/schema/registry-item.json",
+	"name": "calendar",
+	"type": "component",
+	"title": "Calendar",
+	"description": "Readonly input-style calendar with day and range modes.",
+	"files": [
+		{
+			"source": "templates/calendar/Calendar.vue",
+			"target": "components/ui/Calendar.vue"
+		},
+		{
+			"source": "templates/input/Input.vue",
+			"target": "components/ui/Input.vue"
+		},
+		{
+			"source": "templates/utils/cn.ts",
+			"target": "utils/cn.ts"
+		}
+	]
+}

@@ -7,12 +7,10 @@ type OtpLength = 4 | 5 | 6 | 7 | 8;
 
 interface OtpInputProps {
 	length?: OtpLength;
-	label?: string;
 }
 
 const props = withDefaults(defineProps<OtpInputProps>(), {
 	length: 6,
-	label: 'One-time password',
 });
 
 const emit = defineEmits<{
@@ -29,6 +27,17 @@ const indexes = computed(() =>
 	Array.from({ length: safeLength.value }, (_, index) => index),
 );
 const code = computed(() => values.value.join(''));
+const hasSeparatorAfter = (index: number): boolean => {
+	if (safeLength.value === 6) {
+		return index === 2;
+	}
+
+	if (safeLength.value === 8) {
+		return index === 1 || index === 3 || index === 5;
+	}
+
+	return false;
+};
 
 const syncFromModel = (): void => {
 	values.value = indexes.value.map((index) => model.value[index] ?? '');
@@ -107,31 +116,33 @@ watch(
 </script>
 
 <template>
-	<div class="space-y-2">
-		<p v-if="label" class="text-sm font-medium text-muted-foreground">
-			{{ label }}
-		</p>
+	<div>
 		<div class="flex items-center gap-2">
-			<input
-				v-for="index in indexes"
-				:key="index"
-				:ref="(element) => setInputRef(element as Element | null, index)"
-				:value="values[index]"
-				type="text"
-				inputmode="numeric"
-				autocomplete="one-time-code"
-				maxlength="1"
-				aria-label="OTP digit"
-				:class="
-					cn(
-						'size-12 rounded-2xl border bg-background text-center text-lg font-semibold text-foreground hover:border-foreground/20 focus:border-primary focus:outline-none',
-						values[index] ? 'border-primary/50' : 'border-border',
-					)
-				"
-				@input="handleInput($event, index)"
-				@keydown="handleKeydown($event, index)"
-				@paste="handlePaste"
-			/>
+			<template v-for="index in indexes" :key="index">
+				<input
+					:ref="(element) => setInputRef(element as Element | null, index)"
+					:value="values[index]"
+					type="text"
+					inputmode="numeric"
+					autocomplete="one-time-code"
+					maxlength="1"
+					aria-label="OTP digit"
+					:class="
+						cn(
+							'size-12 rounded-2xl border bg-background text-center text-lg font-semibold text-foreground hover:border-foreground/20 focus:border-primary focus:outline-none',
+							values[index] ? 'border-primary/50' : 'border-border',
+						)
+					"
+					@input="handleInput($event, index)"
+					@keydown="handleKeydown($event, index)"
+					@paste="handlePaste"
+				/>
+				<span
+					v-if="hasSeparatorAfter(index)"
+					class="h-px w-3 rounded-full bg-border"
+					aria-hidden="true"
+				/>
+			</template>
 		</div>
 	</div>
 </template>

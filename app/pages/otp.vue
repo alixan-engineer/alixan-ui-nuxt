@@ -39,12 +39,6 @@ const otpProps = [
 		default: '6',
 		description: 'Number of OTP digits. Values are clamped between 4 and 8.',
 	},
-	{
-		name: 'label',
-		type: 'string',
-		default: "'One-time password'",
-		description: 'Optional label displayed above the input group.',
-	},
 ];
 
 const otpEvents = [
@@ -74,8 +68,8 @@ const verify = (value: string) => {
 </template>`,
 	length: `<template>
   <div class="grid gap-4">
-    <OtpInput :length="4" label="4 digits" />
-    <OtpInput :length="8" label="8 digits" />
+    <OtpInput :length="4" />
+    <OtpInput :length="8" />
   </div>
 </template>`,
 };
@@ -115,8 +109,8 @@ const handleSubmit = (value: string): void => {
 		<h2 class="text-2xl font-semibold">Length</h2>
 		<ExampleBlock :code="examples.length">
 			<div class="grid gap-4">
-				<OtpInput v-model="lengthValue" :length="4" label="4 digits" />
-				<OtpInput :length="8" label="8 digits" />
+				<OtpInput v-model="lengthValue" :length="4" />
+				<OtpInput :length="8" />
 			</div>
 		</ExampleBlock>
 	</section>

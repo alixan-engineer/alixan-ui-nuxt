@@ -11,8 +11,14 @@ const tocLinks = [
 	{ label: 'Installation', href: '#installation' },
 	{ label: 'Usage', href: '#usage' },
 	{ label: 'State', href: '#state' },
+	{ label: 'Validation', href: '#validation' },
+	{ label: 'Length', href: '#length' },
 	{ label: 'With Icon', href: '#with-icon' },
-	{ label: 'Examples', href: '#examples' },
+	{ label: 'Variants', href: '#variants' },
+	{ label: 'Email', href: '#variant-email', child: true },
+	{ label: 'Password', href: '#variant-password', child: true },
+	{ label: 'Phone', href: '#variant-phone', child: true },
+	{ label: 'Username', href: '#variant-username', child: true },
 	{ label: 'API Reference', href: '#api-reference' },
 ] as const;
 
@@ -31,74 +37,12 @@ const stateValue = ref('readonly@example.com');
 const iconValue = ref('');
 const passwordValue = ref('');
 const isPasswordVisible = ref(false);
-const basicExampleValue = ref('');
 const requiredValue = ref('');
 const emailExampleValue = ref('');
 const passwordExampleValue = ref('');
 const lengthExampleValue = ref('');
 const phoneValue = ref('');
-const isExamplePasswordVisible = ref(false);
-
-const isRequired = (value: string): string =>
-	value.trim().length ? '' : 'This field is required';
-
-const minLength = (value: string, length: number): string =>
-	value.length >= length ? '' : `Minimum ${length} characters`;
-
-const maxLength = (value: string, length: number): string =>
-	value.length <= length ? '' : `Maximum ${length} characters`;
-
-const isEmail = (value: string): string =>
-	/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? '' : 'Enter a valid email';
-
-const maskKazakhstanPhone = (value: string): string => {
-	const digits = value.replace(/\D/g, '').replace(/^8/, '7').slice(0, 11);
-	const normalized = digits.startsWith('7') ? digits : `7${digits}`;
-	const parts = normalized.slice(1);
-	const area = parts.slice(0, 3);
-	const first = parts.slice(3, 6);
-	const second = parts.slice(6, 8);
-	const third = parts.slice(8, 10);
-
-	if (!area) {
-		return '+7';
-	}
-
-	if (!first) {
-		return `+7 (${area}`;
-	}
-
-	if (!second) {
-		return `+7 (${area}) ${first}`;
-	}
-
-	if (!third) {
-		return `+7 (${area}) ${first}-${second}`;
-	}
-
-	return `+7 (${area}) ${first}-${second}-${third}`;
-};
-
-const requiredError = computed(
-	() =>
-		isRequired(requiredValue.value) ||
-		minLength(requiredValue.value, 3) ||
-		maxLength(requiredValue.value, 20),
-);
-const emailError = computed(() =>
-	emailExampleValue.value ? isEmail(emailExampleValue.value) : '',
-);
-const lengthError = computed(
-	() =>
-		minLength(lengthExampleValue.value, 6) ||
-		maxLength(lengthExampleValue.value, 12),
-);
-
-const handlePhoneInput = (event: Event): void => {
-	const target = event.target as HTMLInputElement;
-
-	phoneValue.value = maskKazakhstanPhone(target.value);
-};
+const usernameValue = ref('');
 
 const inputProps = [
 	{
@@ -136,6 +80,37 @@ const inputProps = [
 		type: "'on' | 'off'",
 		default: '-',
 		description: 'Controls the native browser autocomplete behavior.',
+	},
+	{
+		name: 'autofocus',
+		type: 'boolean',
+		default: 'false',
+		description: 'Focuses the input on mount.',
+	},
+	{
+		name: 'required',
+		type: 'boolean',
+		default: 'false',
+		description: 'Shows "Заполните поле" after blur when the value is empty.',
+	},
+	{
+		name: 'min',
+		type: 'number',
+		default: '-',
+		description: 'Minimum text length validation shown after blur.',
+	},
+	{
+		name: 'max',
+		type: 'number',
+		default: '-',
+		description: 'Maximum text length validation shown after blur.',
+	},
+	{
+		name: 'mask',
+		type: 'string',
+		default: '-',
+		description:
+			'Digit mask where # is a digit. When mask is set, the floating label is hidden.',
 	},
 	{
 		name: 'hint',
@@ -229,119 +204,56 @@ const isPasswordVisible = ref(false)
     </Input>
   </div>
 </template>`,
-	basicExample: `<script setup lang="ts">
-const name = ref('')
-<\/script>
-
-<template>
-  <Input v-model="name" label="Project name" />
-</template>`,
 	requiredExample: `<script setup lang="ts">
 const value = ref('')
-
-const isRequired = (value: string) =>
-  value.trim().length ? '' : 'This field is required'
-
-const minLength = (value: string, length: number) =>
-  value.length >= length ? '' : \`Minimum \${length} characters\`
-
-const maxLength = (value: string, length: number) =>
-  value.length <= length ? '' : \`Maximum \${length} characters\`
-
-const error = computed(
-  () => isRequired(value.value) || minLength(value.value, 3) || maxLength(value.value, 20),
-)
 <\/script>
 
 <template>
-  <Input v-model="value" label="Username" :error="error" />
+  <Input v-model="value" label="Username" required :min="3" :max="20" />
 </template>`,
 	emailExample: `<script setup lang="ts">
 const email = ref('')
-
-const isEmail = (value: string) =>
-  /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(value) ? '' : 'Enter a valid email'
-
-const emailError = computed(() => email.value ? isEmail(email.value) : '')
 <\/script>
 
 <template>
-  <Input v-model="email" label="Email" type="email" :error="emailError" />
+  <EmailInput v-model="email" required />
 </template>`,
 	passwordExample: `<script setup lang="ts">
-import { Eye, EyeOff } from '@lucide/vue'
-
 const password = ref('')
-const visible = ref(false)
 <\/script>
 
 <template>
-  <Input
+  <PasswordInput
     v-model="password"
-    label="Password"
-    :type="visible ? 'text' : 'password'"
-  >
-    <template #trailing>
-      <IconButton
-        size="sm"
-        :label="visible ? 'Hide password' : 'Show password'"
-        @click="visible = !visible"
-      >
-        <EyeOff v-if="visible" />
-        <Eye v-else />
-      </IconButton>
-    </template>
-  </Input>
+    required
+    :min="8"
+    :max="32"
+  />
 </template>`,
 	lengthExample: `<script setup lang="ts">
 const value = ref('')
-
-const minLength = (value: string, length: number) =>
-  value.length >= length ? '' : \`Minimum \${length} characters\`
-
-const maxLength = (value: string, length: number) =>
-  value.length <= length ? '' : \`Maximum \${length} characters\`
-
-const error = computed(() => minLength(value.value, 6) || maxLength(value.value, 12))
 <\/script>
 
 <template>
-  <Input v-model="value" label="Code" :error="error" hint="6-12 characters" />
+  <Input v-model="value" label="Code" :min="6" :max="12" hint="6-12 characters" />
 </template>`,
 	phoneExample: `<script setup lang="ts">
 const phone = ref('')
-
-const maskKazakhstanPhone = (value: string): string => {
-  const digits = value.replace(/\\D/g, '').replace(/^8/, '7').slice(0, 11)
-  const normalized = digits.startsWith('7') ? digits : \`7\${digits}\`
-  const parts = normalized.slice(1)
-  const area = parts.slice(0, 3)
-  const first = parts.slice(3, 6)
-  const second = parts.slice(6, 8)
-  const third = parts.slice(8, 10)
-
-  if (!area) return '+7'
-  if (!first) return \`+7 (\${area}\`
-  if (!second) return \`+7 (\${area}) \${first}\`
-  if (!third) return \`+7 (\${area}) \${first}-\${second}\`
-
-  return \`+7 (\${area}) \${first}-\${second}-\${third}\`
-}
-
-const handlePhoneInput = (event: Event) => {
-  const target = event.target as HTMLInputElement
-  phone.value = maskKazakhstanPhone(target.value)
-}
 <\/script>
 
 <template>
-  <Input
+  <PhoneInput
     v-model="phone"
-    label="Phone"
-    type="tel"
-    placeholder="+7 (___) ___-__-__"
-    @input="handlePhoneInput"
+    country-code="+7"
+    placeholder="777 777 77 77"
   />
+</template>`,
+	usernameExample: `<script setup lang="ts">
+const username = ref('')
+<\/script>
+
+<template>
+  <UsernameInput v-model="username" />
 </template>`,
 };
 </script>
@@ -358,6 +270,10 @@ const handlePhoneInput = (event: Event) => {
 	<section id="installation" class="space-y-5">
 		<h2 class="text-2xl font-semibold">Installation</h2>
 		<InstallCommandBlock component="input" />
+		<p class="text-sm leading-7 text-muted-foreground">
+			This command installs only the base <code>Input</code> component with
+			built-in validation props.
+		</p>
 	</section>
 
 	<section id="usage" class="space-y-5">
@@ -382,6 +298,36 @@ const handlePhoneInput = (event: Event) => {
 				<Input v-model="stateValue" label="Readonly" readonly />
 				<Input label="Disabled" disabled />
 				<Input label="Email" error="Enter a valid email address" />
+			</div>
+		</ExampleBlock>
+	</section>
+
+	<section id="validation" class="space-y-4">
+		<h2 class="text-2xl font-semibold">Validation</h2>
+		<ExampleBlock :code="examples.requiredExample">
+			<div class="w-full max-w-sm">
+				<Input
+					v-model="requiredValue"
+					label="Username"
+					required
+					:min="3"
+					:max="20"
+				/>
+			</div>
+		</ExampleBlock>
+	</section>
+
+	<section id="length" class="space-y-4">
+		<h2 class="text-2xl font-semibold">Length</h2>
+		<ExampleBlock :code="examples.lengthExample">
+			<div class="w-full max-w-sm">
+				<Input
+					v-model="lengthExampleValue"
+					label="Code"
+					:min="6"
+					:max="12"
+					hint="6-12 characters"
+				/>
 			</div>
 		</ExampleBlock>
 	</section>
@@ -421,92 +367,76 @@ const handlePhoneInput = (event: Event) => {
 		</ExampleBlock>
 	</section>
 
-	<section id="examples" class="space-y-5">
+	<section id="variants" class="space-y-5">
 		<div class="space-y-2">
-			<h2 class="text-2xl font-semibold">Examples</h2>
+			<h2 class="text-2xl font-semibold">Variants</h2>
 			<p class="text-muted-foreground leading-7">
-				Small validation and mask helpers can live near the form. No extra
-				dependency is required.
+				Install focused wrappers when you want a dedicated component for a
+				specific input pattern.
 			</p>
 		</div>
 
 		<div class="grid gap-5">
-			<ExampleBlock :code="examples.basicExample">
-				<div class="w-full max-w-sm">
-					<Input v-model="basicExampleValue" label="Project name" />
+			<div id="variant-email" class="scroll-mt-24 space-y-3">
+				<div class="space-y-3">
+					<h3 class="text-lg font-semibold">Email Input</h3>
+					<InstallCommandBlock component="email-input" />
 				</div>
-			</ExampleBlock>
+				<ExampleBlock :code="examples.emailExample">
+					<div class="w-full max-w-sm mx-auto">
+						<EmailInput v-model="emailExampleValue" required />
+					</div>
+				</ExampleBlock>
+			</div>
 
-			<ExampleBlock :code="examples.requiredExample">
-				<div class="w-full max-w-sm">
-					<Input
-						v-model="requiredValue"
-						label="Username"
-						:error="requiredError"
-					/>
+			<div id="variant-password" class="scroll-mt-24 space-y-3">
+				<div class="space-y-3">
+					<h3 class="text-lg font-semibold">Password Input</h3>
+					<InstallCommandBlock component="password-input" />
 				</div>
-			</ExampleBlock>
+				<ExampleBlock :code="examples.passwordExample">
+					<div class="w-full max-w-sm mx-auto">
+						<PasswordInput
+							v-model="passwordExampleValue"
+							required
+							:min="8"
+							:max="32"
+						/>
+					</div>
+				</ExampleBlock>
+			</div>
 
-			<ExampleBlock :code="examples.emailExample">
-				<div class="w-full max-w-sm">
-					<Input
-						v-model="emailExampleValue"
-						label="Email"
-						type="email"
-						:error="emailError"
-					/>
+			<div id="variant-phone" class="scroll-mt-24 space-y-3">
+				<div class="space-y-2">
+					<h3 class="text-lg font-semibold">Phone Input</h3>
+					<InstallCommandBlock component="phone-input" />
+					<p class="text-muted-foreground leading-7">
+						Default country code is <code>+7</code>. The input keeps it as a
+						prefix and applies <code>### ### ## ##</code> to the number.
+					</p>
 				</div>
-			</ExampleBlock>
+				<ExampleBlock :code="examples.phoneExample">
+					<div class="w-full max-w-sm mx-auto">
+						<PhoneInput
+							v-model="phoneValue"
+							country-code="+7"
+							placeholder="777 777 77 77"
+						/>
+					</div>
+				</ExampleBlock>
+			</div>
 
-			<ExampleBlock :code="examples.passwordExample">
-				<div class="w-full max-w-sm">
-					<Input
-						v-model="passwordExampleValue"
-						label="Password"
-						:type="isExamplePasswordVisible ? 'text' : 'password'"
-					>
-						<template #trailing>
-							<IconButton
-								variant="ghost"
-								color="default"
-								size="sm"
-								:label="
-									isExamplePasswordVisible
-										? 'Hide password'
-										: 'Show password'
-								"
-								@click="isExamplePasswordVisible = !isExamplePasswordVisible"
-							>
-								<EyeOff v-if="isExamplePasswordVisible" />
-								<Eye v-else />
-							</IconButton>
-						</template>
-					</Input>
+			<div id="variant-username" class="scroll-mt-24 space-y-3">
+				<div class="space-y-3">
+					<h3 class="text-lg font-semibold">Username Input</h3>
+					<InstallCommandBlock component="username-input" />
 				</div>
-			</ExampleBlock>
-
-			<ExampleBlock :code="examples.lengthExample">
-				<div class="w-full max-w-sm">
-					<Input
-						v-model="lengthExampleValue"
-						label="Code"
-						:error="lengthError"
-						hint="6-12 characters"
-					/>
-				</div>
-			</ExampleBlock>
-
-			<ExampleBlock :code="examples.phoneExample">
-				<div class="w-full max-w-sm">
-					<Input
-						v-model="phoneValue"
-						label="Phone"
-						type="tel"
-						placeholder="+7 (___) ___-__-__"
-						@input="handlePhoneInput"
-					/>
-				</div>
-			</ExampleBlock>
+				<ExampleBlock :code="examples.usernameExample">
+					<div class="w-full max-w-sm mx-auto">
+						<UsernameInput v-model="usernameValue" />
+					</div>
+				</ExampleBlock>
+			</div>
 		</div>
 	</section>
 

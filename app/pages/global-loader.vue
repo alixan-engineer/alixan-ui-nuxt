@@ -39,7 +39,7 @@ const loaderApi = [
 	{
 		name: 'label',
 		type: 'string',
-		default: "'Loading...'",
+		default: "''",
 		description: 'Optional label displayed below the spinner.',
 	},
 ];
@@ -56,7 +56,7 @@ const code = `// app.vue
 const loader = useGlobalLoader()
 
 const load = () => {
-  loader.show({ label: 'Loading data...' })
+  loader.show()
 
   window.setTimeout(() => {
     loader.hide()
@@ -69,7 +69,7 @@ const load = () => {
 </template>`;
 
 const showLoader = (): void => {
-	loader.show({ label: 'Loading data...' });
+	loader.show();
 
 	window.setTimeout(() => {
 		loader.hide();

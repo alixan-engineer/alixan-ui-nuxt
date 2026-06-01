@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Sparkles } from '@lucide/vue';
+import AlertDialog from '~/components/ui/AlertDialog.vue';
 
 useSeoMeta({
 	title: 'Alert Dialog - Alixan UI',
@@ -23,61 +23,74 @@ onBeforeUnmount(() => {
 	clearToc();
 });
 
-const open = ref(false);
+const dialog = useDialog();
 
 const alertDialogProps = [
 	{
-		name: 'modelValue',
-		type: 'boolean',
-		default: 'false',
-		description: 'Controls dialog visibility with v-model.',
-	},
-	{
-		name: 'title',
+		name: 'data.title',
 		type: 'string',
-		default: "''",
+		default: '-',
 		description: 'Dialog title.',
 	},
 	{
-		name: 'description',
+		name: 'data.description',
 		type: 'string',
-		default: "''",
+		default: '-',
 		description: 'Short explanation shown under the title.',
 	},
 	{
-		name: 'buttonLabel',
+		name: 'data.buttonLabel',
 		type: 'string',
 		default: "'OK'",
 		description: 'Primary action label.',
 	},
 	{
-		name: 'imageSrc',
+		name: 'data.imageSrc',
 		type: 'string',
-		default: "''",
+		default: '-',
 		description: 'Optional image shown in the illustration area.',
+	},
+	{
+		name: 'data.onAction',
+		type: '() => void',
+		default: '-',
+		description: 'Callback called before closing the dialog.',
 	},
 ];
 
 const code = `<script setup lang="ts">
-import { Sparkles } from '@lucide/vue'
+import AlertDialog from '~/components/ui/AlertDialog.vue'
 
-const open = ref(false)
+const dialog = useDialog()
+
+const openAlert = () => {
+  dialog.open(AlertDialog, {
+    width: '360px',
+    height: '280px',
+    data: {
+      title: 'Action unavailable',
+      description: 'This feature is not available yet. Try again later.',
+      buttonLabel: 'Got it',
+    },
+  })
+}
 <\/script>
 
 <template>
-  <Button @click="open = true">Open alert</Button>
-
-  <AlertDialog
-    v-model="open"
-    title="Action unavailable"
-    description="This feature is not available yet. Try again later."
-    button-label="Got it"
-  >
-    <template #illustration>
-      <Sparkles class="size-9" />
-    </template>
-  </AlertDialog>
+  <Button @click="openAlert">Open alert</Button>
 </template>`;
+
+const openAlert = (): void => {
+	dialog.open(AlertDialog, {
+		width: '360px',
+		height: '280px',
+		data: {
+			title: 'Action unavailable',
+			description: 'This feature is not available yet. Try again later.',
+			buttonLabel: 'Got it',
+		},
+	});
+};
 </script>
 
 <template>
@@ -96,18 +109,7 @@ const open = ref(false)
 	<section id="usage" class="space-y-5">
 		<h2 class="text-2xl font-semibold">Usage</h2>
 		<ExampleBlock :code="code">
-			<Button @click="open = true">Open alert</Button>
-
-			<AlertDialog
-				v-model="open"
-				title="Action unavailable"
-				description="This feature is not available yet. Try again later."
-				button-label="Got it"
-			>
-				<template #illustration>
-					<Sparkles class="size-9" />
-				</template>
-			</AlertDialog>
+			<Button @click="openAlert">Open alert</Button>
 		</ExampleBlock>
 	</section>
 

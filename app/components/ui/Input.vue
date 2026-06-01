@@ -1,6 +1,15 @@
 <script setup lang="ts">
 import { X } from '@lucide/vue';
-import { computed, ref, useAttrs, useId, useSlots } from 'vue';
+import {
+	computed,
+	nextTick,
+	onMounted,
+	ref,
+	useAttrs,
+	useId,
+	useSlots,
+	watch,
+} from 'vue';
 
 import { cn } from '~~/utils/cn';
 
@@ -22,6 +31,11 @@ interface InputProps {
 	disabled?: boolean;
 	readonly?: boolean;
 	hasClearButton?: boolean;
+	autofocus?: boolean;
+	required?: boolean;
+	min?: number;
+	max?: number;
+	mask?: string;
 }
 
 const props = withDefaults(defineProps<InputProps>(), {
@@ -35,6 +49,11 @@ const props = withDefaults(defineProps<InputProps>(), {
 	disabled: false,
 	readonly: false,
 	hasClearButton: true,
+	autofocus: false,
+	required: false,
+	min: undefined,
+	max: undefined,
+	mask: undefined,
 });
 
 const emit = defineEmits<{
@@ -48,14 +67,39 @@ const model = defineModel<string | number | null>({ default: '' });
 const attrs = useAttrs();
 const slots = useSlots();
 const generatedId = useId();
+const inputRef = ref<HTMLInputElement | null>(null);
 const isFocused = ref(false);
+const isTouched = ref(false);
 
 const inputId = computed(() => props.id ?? generatedId);
 const messageId = computed(() => `${inputId.value}-message`);
 const hasLeading = computed(() => Boolean(slots.leading));
 const hasTrailing = computed(() => Boolean(slots.trailing));
-const hasValue = computed(
-	() => model.value !== null && model.value !== undefined && model.value !== '',
+const hasMask = computed(() => Boolean(props.mask));
+const visibleLabel = computed(() => (hasMask.value ? undefined : props.label));
+const visiblePlaceholder = computed(() => props.placeholder);
+const stringValue = computed(() => String(model.value ?? ''));
+const hasValue = computed(() => stringValue.value.length > 0);
+const validationError = computed(() => {
+	const value = stringValue.value.trim();
+
+	if (props.required && !value) {
+		return 'Заполните поле';
+	}
+
+	if (props.min !== undefined && stringValue.value.length < props.min) {
+		return `Минимум ${props.min} символов`;
+	}
+
+	if (props.max !== undefined && stringValue.value.length > props.max) {
+		return `Максимум ${props.max} символов`;
+	}
+
+	return '';
+});
+const errorMessage = computed(() => props.error || validationError.value);
+const visibleError = computed(() =>
+	isTouched.value && errorMessage.value ? errorMessage.value : '',
 );
 const hasClearButton = computed(
 	() =>
@@ -67,7 +111,7 @@ const hasClearButton = computed(
 );
 const hasTrailingAction = computed(() => hasTrailing.value || hasClearButton.value);
 const isLabelMoved = computed(() => isFocused.value || hasValue.value);
-const hasMessage = computed(() => Boolean(props.error || props.hint));
+const hasMessage = computed(() => Boolean(visibleError.value || props.hint));
 
 const inputAttrs = computed(() => {
 	const { class: _class, ...rest } = attrs;
@@ -81,18 +125,18 @@ const labelTopClass = 'top-4';
 const leadingLabelClass = 'left-9';
 const leadingPaddingClass = 'pl-10';
 const trailingPaddingClass = 'pr-10';
-const iconPositionClass = 'top-1/2 -translate-y-1/2';
+const iconPositionClass = 'top-7 -translate-y-1/2';
 
-const rootClass = computed(() => cn('relative w-full space-y-1', attrs.class));
+const rootClass = computed(() => cn('relative w-full min-h-20 space-y-1', attrs.class));
 
 const inputClass = computed(() =>
 	cn(
 		'w-full border border-border bg-background text-foreground placeholder:text-muted-foreground/70 hover:border-foreground/20 focus:outline-none focus:border-primary',
 		inputBaseClass,
-		props.label ? 'pt-2' : '',
+		visibleLabel.value ? 'pt-2' : '',
 		hasLeading.value ? leadingPaddingClass : '',
 		hasTrailingAction.value ? trailingPaddingClass : '',
-		props.error
+		visibleError.value
 			? 'border-destructive text-destructive hover:border-destructive focus:border-destructive!'
 			: '',
 		props.disabled
@@ -108,24 +152,46 @@ const labelClass = computed(() =>
 		labelTopClass,
 		hasLeading.value ? leadingLabelClass : labelBaseClass,
 		isLabelMoved.value ? '-translate-y-2.5 text-[11px] font-medium' : '',
-		props.error ? 'text-destructive!' : isFocused.value ? 'text-primary' : '',
+		visibleError.value ? 'text-destructive!' : isFocused.value ? 'text-primary' : '',
 		props.disabled ? 'text-muted-foreground/60' : '',
 	),
 );
 
 const leadingSlotClass = computed(() =>
-	cn(
-		'absolute left-3 z-10 text-muted-foreground',
-		iconPositionClass,
-	),
+	cn('absolute left-3 z-10 text-muted-foreground', iconPositionClass),
 );
 
 const trailingSlotClass = computed(() =>
-	cn(
-		'absolute right-3 z-10 text-muted-foreground',
-		iconPositionClass,
-	),
+	cn('absolute right-3 z-10 text-muted-foreground', iconPositionClass),
 );
+
+const applyMask = (value: string): string => {
+	if (!props.mask) {
+		return value;
+	}
+
+	const rawDigits = value.replace(/\D/g, '');
+	const digits =
+		props.mask.startsWith('+7') && rawDigits.startsWith('7')
+			? rawDigits.slice(1)
+			: rawDigits;
+	let digitIndex = 0;
+
+	return props.mask
+		.split('')
+		.map((symbol) => {
+			if (symbol !== '#') {
+				return symbol;
+			}
+
+			const digit = digits[digitIndex];
+			digitIndex += 1;
+
+			return digit ?? '';
+		})
+		.join('')
+		.replace(/[\s()-]+$/g, '');
+};
 
 const handleFocus = (event: FocusEvent): void => {
 	isFocused.value = true;
@@ -134,26 +200,51 @@ const handleFocus = (event: FocusEvent): void => {
 
 const handleBlur = (event: FocusEvent): void => {
 	isFocused.value = false;
+	isTouched.value = true;
 	emit('blur', event);
 };
 
 const handleInput = (event: Event): void => {
+	const target = event.target as HTMLInputElement;
+
+	if (props.mask) {
+		model.value = applyMask(target.value);
+	}
+
 	emit('input', event);
 };
 
-const clearValue = (): void => {
+const clearValue = async (): Promise<void> => {
 	if (props.disabled || props.readonly) {
 		return;
 	}
 
 	model.value = '';
+	isTouched.value = true;
+	await nextTick();
+	inputRef.value?.focus();
 };
+
+watch(
+	() => props.mask,
+	() => {
+		if (props.mask && hasValue.value) {
+			model.value = applyMask(stringValue.value);
+		}
+	},
+);
+
+onMounted(() => {
+	if (props.autofocus) {
+		inputRef.value?.focus();
+	}
+});
 </script>
 
 <template>
 	<div :class="rootClass">
-		<label v-if="label" :for="inputId" :class="labelClass">
-			{{ label }}
+		<label v-if="visibleLabel" :for="inputId" :class="labelClass">
+			{{ visibleLabel }}
 		</label>
 
 		<span v-if="$slots.leading" :class="leadingSlotClass" aria-hidden="true">
@@ -162,14 +253,15 @@ const clearValue = (): void => {
 
 		<input
 			:id="inputId"
+			ref="inputRef"
 			v-bind="inputAttrs"
 			v-model="model"
 			:type="type"
-			:placeholder="placeholder"
+			:placeholder="visiblePlaceholder"
 			:autocomplete="autocomplete"
 			:disabled="disabled"
 			:readonly="readonly"
-			:aria-invalid="error ? true : undefined"
+			:aria-invalid="visibleError ? true : undefined"
 			:aria-describedby="hasMessage ? messageId : undefined"
 			:class="inputClass"
 			@focus="handleFocus"
@@ -199,11 +291,11 @@ const clearValue = (): void => {
 			:class="
 				cn(
 					'px-3 text-sm font-medium',
-					error ? 'text-destructive' : 'text-muted-foreground',
+					visibleError ? 'text-destructive' : 'text-muted-foreground',
 				)
 			"
 		>
-			{{ error || hint }}
+			{{ visibleError || hint }}
 		</p>
 	</div>
 </template>

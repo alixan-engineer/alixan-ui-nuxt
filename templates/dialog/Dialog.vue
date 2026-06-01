@@ -105,7 +105,7 @@ onBeforeUnmount(() => {
 						:style="dialogStyle"
 						:class="
 							cn(
-								'size-full overflow-hidden rounded-3xl border bg-background shadow-2xl',
+								'size-full flex flex-col overflow-hidden rounded-3xl border bg-background shadow-2xl',
 								$attrs.class,
 							)
 						"
@@ -117,7 +117,9 @@ onBeforeUnmount(() => {
 							:close="closeDialog"
 							class="border-b"
 						/>
-						<slot />
+						<div class="flex-1 overflow-auto">
+							<slot />
+						</div>
 					</div>
 				</Transition>
 			</div>

@@ -2,18 +2,25 @@ export type Theme = 'light' | 'dark';
 export type AccentTheme = 'default' | 'blue' | 'green' | 'yellow' | 'orange' | 'red';
 
 const theme = ref<Theme>('light');
-const accentTheme = ref<AccentTheme>('blue');
+const accentTheme = ref<AccentTheme>('default');
 
 const accentColors: Record<
 	AccentTheme,
-	{ primary: string; primaryForeground: string }
+	{
+		primary: string;
+		primaryForeground: string;
+		darkPrimary?: string;
+		darkPrimaryForeground?: string;
+	}
 > = {
 	default: {
-		primary: 'oklch(0.488 0.243 264.376)',
-		primaryForeground: 'oklch(0.97 0.014 254.604)',
+		primary: 'oklch(0.141 0.005 285.823)',
+		primaryForeground: 'oklch(0.985 0 0)',
+		darkPrimary: 'oklch(0.985 0 0)',
+		darkPrimaryForeground: 'oklch(0.141 0.005 285.823)',
 	},
 	blue: {
-		primary: 'oklch(0.623 0.214 259.815)',
+		primary: 'oklch(0.488 0.243 264.376)',
 		primaryForeground: 'oklch(0.97 0.014 254.604)',
 	},
 	green: {
@@ -41,6 +48,7 @@ const applyTheme = (value: Theme): void => {
 
 	document.documentElement.classList.toggle('dark', value === 'dark');
 	localStorage.setItem('alixan-ui-theme', value);
+	applyAccentTheme(accentTheme.value);
 };
 
 const applyAccentTheme = (value: AccentTheme): void => {
@@ -49,16 +57,23 @@ const applyAccentTheme = (value: AccentTheme): void => {
 	}
 
 	const color = accentColors[value];
+	const isDarkTheme = document.documentElement.classList.contains('dark');
+	const primary =
+		isDarkTheme && color.darkPrimary ? color.darkPrimary : color.primary;
+	const primaryForeground =
+		isDarkTheme && color.darkPrimaryForeground
+			? color.darkPrimaryForeground
+			: color.primaryForeground;
 
-	document.documentElement.style.setProperty('--primary', color.primary);
+	document.documentElement.style.setProperty('--primary', primary);
 	document.documentElement.style.setProperty(
 		'--primary-foreground',
-		color.primaryForeground,
+		primaryForeground,
 	);
-	document.documentElement.style.setProperty('--sidebar-primary', color.primary);
+	document.documentElement.style.setProperty('--sidebar-primary', primary);
 	document.documentElement.style.setProperty(
 		'--sidebar-primary-foreground',
-		color.primaryForeground,
+		primaryForeground,
 	);
 	localStorage.setItem('alixan-ui-accent-theme', value);
 };

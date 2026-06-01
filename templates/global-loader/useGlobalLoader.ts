@@ -9,14 +9,14 @@ interface GlobalLoaderOptions {
 
 const globalLoaderState = ref<GlobalLoaderState>({
 	open: false,
-	label: 'Loading...',
+	label: '',
 });
 
 export const useGlobalLoader = () => {
 	const show = (options: GlobalLoaderOptions = {}): void => {
 		globalLoaderState.value = {
 			open: true,
-			label: options.label ?? 'Loading...',
+			label: options.label ?? '',
 		};
 	};
 

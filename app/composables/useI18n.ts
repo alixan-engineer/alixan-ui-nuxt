@@ -11,7 +11,9 @@ export type MessageKey =
 	| 'sidebar.introduction'
 	| 'sidebar.installation'
 	| 'sidebar.guides'
+	| 'guide.i18n'
 	| 'sidebar.components'
+	| 'sidebar.forms'
 	| 'sidebar.overlays'
 	| 'component.button'
 	| 'component.iconButton'
@@ -20,11 +22,14 @@ export type MessageKey =
 	| 'component.otp'
 	| 'component.chip'
 	| 'component.search'
+	| 'component.autocomplete'
+	| 'component.calendar'
 	| 'component.tabs'
 	| 'component.switch'
 	| 'component.status'
 	| 'component.dialog'
 	| 'component.alertDialog'
+	| 'component.confirmDialog'
 	| 'component.drawer'
 	| 'component.globalLoader'
 	| 'component.toast'
@@ -38,12 +43,14 @@ const messages: Record<Locale, Record<MessageKey, string>> = {
 		'app.settings': 'Open settings',
 		'settings.language': 'Language',
 		'settings.theme': 'Theme',
-		'settings.accent': 'Theme',
+		'settings.accent': 'Color',
 		'sidebar.sections': 'Sections',
 		'sidebar.introduction': 'Introduction',
 		'sidebar.installation': 'Installation',
 		'sidebar.guides': 'Guides',
+		'guide.i18n': 'i18n',
 		'sidebar.components': 'Components',
+		'sidebar.forms': 'Forms',
 		'sidebar.overlays': 'Overlays',
 		'component.button': 'Button',
 		'component.iconButton': 'Icon Button',
@@ -52,11 +59,14 @@ const messages: Record<Locale, Record<MessageKey, string>> = {
 		'component.otp': 'OTP Input',
 		'component.chip': 'Chip',
 		'component.search': 'Search',
+		'component.autocomplete': 'Autocomplete',
+		'component.calendar': 'Calendar',
 		'component.tabs': 'Tabs',
 		'component.switch': 'Switch',
 		'component.status': 'Status',
 		'component.dialog': 'Dialog',
 		'component.alertDialog': 'Alert Dialog',
+		'component.confirmDialog': 'Confirm Dialog',
 		'component.drawer': 'Drawer',
 		'component.globalLoader': 'Global Loader',
 		'component.toast': 'Toast',
@@ -69,12 +79,14 @@ const messages: Record<Locale, Record<MessageKey, string>> = {
 		'app.settings': 'Открыть настройки',
 		'settings.language': 'Язык',
 		'settings.theme': 'Тема',
-		'settings.accent': 'Theme',
+		'settings.accent': 'Цвет',
 		'sidebar.sections': 'Разделы',
 		'sidebar.introduction': 'Введение',
 		'sidebar.installation': 'Установка',
 		'sidebar.guides': 'Гайды',
+		'guide.i18n': 'i18n',
 		'sidebar.components': 'Компоненты',
+		'sidebar.forms': 'Формы',
 		'sidebar.overlays': 'Оверлеи',
 		'component.button': 'Кнопка',
 		'component.iconButton': 'Иконка-кнопка',
@@ -83,14 +95,17 @@ const messages: Record<Locale, Record<MessageKey, string>> = {
 		'component.otp': 'OTP Input',
 		'component.chip': 'Чип',
 		'component.search': 'Поиск',
+		'component.autocomplete': 'Автозаполнение',
+		'component.calendar': 'Календарь',
 		'component.tabs': 'Табы',
 		'component.switch': 'Переключатель',
 		'component.status': 'Статус',
 		'component.dialog': 'Диалог',
-		'component.alertDialog': 'Alert Dialog',
+		'component.alertDialog': 'Окно сообщения',
+		'component.confirmDialog': 'Окно подтверждения',
 		'component.drawer': 'Панель',
 		'component.globalLoader': 'Глобальный лоадер',
-		'component.toast': 'Toast',
+		'component.toast': 'Уведомление',
 		'component.select': 'Селект',
 		'component.dropdownMenu': 'Выпадающее меню',
 	},
@@ -100,25 +115,30 @@ const messages: Record<Locale, Record<MessageKey, string>> = {
 		'app.settings': 'Баптауларды ашу',
 		'settings.language': 'Тіл',
 		'settings.theme': 'Тақырып',
-		'settings.accent': 'Theme',
+		'settings.accent': 'Түс',
 		'sidebar.sections': 'Бөлімдер',
 		'sidebar.introduction': 'Кіріспе',
 		'sidebar.installation': 'Орнату',
 		'sidebar.guides': 'Гайдтар',
+		'guide.i18n': 'i18n',
 		'sidebar.components': 'Компоненттер',
+		'sidebar.forms': 'Формалар',
 		'sidebar.overlays': 'Оверлейлер',
-		'component.button': 'Button',
+		'component.button': 'Батырма',
 		'component.iconButton': 'Icon Button',
-		'component.icons': 'Icons',
+		'component.icons': 'Иконкалар',
 		'component.input': 'Input',
 		'component.otp': 'OTP Input',
 		'component.chip': 'Chip',
-		'component.search': 'Search',
+		'component.search': 'Іздеу',
+		'component.autocomplete': 'Autocomplete',
+		'component.calendar': 'Calendar',
 		'component.tabs': 'Tabs',
-		'component.switch': 'Switch',
+		'component.switch': 'Ауыстырғыш',
 		'component.status': 'Status',
-		'component.dialog': 'Dialog',
+		'component.dialog': 'Диалог',
 		'component.alertDialog': 'Alert Dialog',
+		'component.confirmDialog': 'Confirm Dialog',
 		'component.drawer': 'Drawer',
 		'component.globalLoader': 'Global Loader',
 		'component.toast': 'Toast',

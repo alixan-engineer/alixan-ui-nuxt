@@ -14,17 +14,3 @@ The CLI copies component source files into your project:
 components/ui/Button.vue
 utils/cn.ts
 ```
-
-## Local Development
-
-```bash
-npm install
-npm run dev
-```
-
-## Publish
-
-```bash
-npm version patch
-npm publish --access public --otp=123456
-```

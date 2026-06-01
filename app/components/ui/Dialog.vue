@@ -117,7 +117,7 @@ onBeforeUnmount(() => {
 							:close="closeDialog"
 							class="border-b"
 						/>
-						<div class="flex-1">
+						<div class="flex-1 overflow-auto">
 							<slot />
 						</div>
 					</div>

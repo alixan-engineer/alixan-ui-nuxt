@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { ArrowRight, Terminal } from '@lucide/vue';
+import tailwindCss from '~/assets/css/tailwind.css?raw';
+import { createThemeCss } from '~/utils/theme-css';
 
 useSeoMeta({
 	title: 'Installation - Alixan UI',
@@ -12,7 +14,6 @@ const tocLinks = [
 	{ label: 'Add Tailwind CSS', href: '#add-tailwind-css' },
 	{ label: 'Install Component', href: '#install-component' },
 	{ label: 'Use Component', href: '#use-component' },
-	{ label: 'CLI Commands', href: '#cli-commands' },
 ] as const;
 
 const { setToc, clearToc } = usePageToc();
@@ -27,19 +28,21 @@ onBeforeUnmount(() => {
 
 const commands = {
 	createProject: 'npx nuxi@latest init my-app',
-	installDeps: 'npm install',
 	addTailwind: 'npm install tailwindcss @tailwindcss/vite -D',
-	list: 'npx alixan-ui-nuxt list',
-	force: 'npx alixan-ui-nuxt add button --force',
 };
 
-const createProjectCommands = computed(
-	() => `${commands.createProject}\n${commands.installDeps}`,
+const { accentColors, accentTheme } = useTheme();
+
+const currentTailwindCss = computed(() =>
+	createThemeCss(tailwindCss, accentColors[accentTheme.value]),
 );
 
-const cliCommands = computed(() => `${commands.list}\n${commands.force}`);
-
-const tailwindCss = `@import "tailwindcss";`;
+const rootIdConfig = `export default defineNuxtConfig({
+  compatibilityDate: '2025-07-15',
+  app: {
+    rootId: 'root',
+  },
+})`;
 
 const nuxtConfig = `import tailwindcss from '@tailwindcss/vite'
 
@@ -80,10 +83,18 @@ const usageCode = `<template>
 				<Terminal class="size-5 text-muted-foreground" />
 				<span class="font-medium">Terminal</span>
 				<div class="flex-1" />
-				<CopyButton :text="createProjectCommands" label="Copy commands" />
+				<CopyButton :text="commands.createProject" label="Copy command" />
 			</div>
 			<pre class="p-4 text-md"><code>{{ commands.createProject }}</code></pre>
-			<pre class="border-t p-4 text-md"><code>{{ commands.installDeps }}</code></pre>
+		</div>
+
+		<div class="island">
+			<div class="px-4 py-3 flex items-center gap-3 border-b text-m">
+				<span class="font-medium">nuxt.config.ts</span>
+				<div class="flex-1" />
+				<CopyButton :text="rootIdConfig" label="Copy code" />
+			</div>
+			<pre class="p-4 text-sm leading-7"><code>{{ rootIdConfig }}</code></pre>
 		</div>
 	</section>
 
@@ -110,9 +121,9 @@ const usageCode = `<template>
 			<div class="px-4 py-3 flex items-center gap-3 border-b text-m">
 				<span class="font-medium">app/assets/css/tailwind.css</span>
 				<div class="flex-1" />
-				<CopyButton :text="tailwindCss" label="Copy code" />
+				<CopyButton :text="currentTailwindCss" label="Copy code" />
 			</div>
-			<pre class="p-4 text-sm leading-7"><code>{{ tailwindCss }}</code></pre>
+			<pre class="p-4 text-sm leading-7"><code>{{ currentTailwindCss }}</code></pre>
 		</div>
 
 		<div class="island">
@@ -172,24 +183,4 @@ const usageCode = `<template>
 		</div>
 	</section>
 
-	<section id="cli-commands" class="space-y-5">
-		<div class="space-y-2">
-			<h2 class="text-2xl font-semibold">CLI Commands</h2>
-			<p class="text-muted-foreground leading-7">
-				Use these commands to discover available components or overwrite an
-				existing local file intentionally.
-			</p>
-		</div>
-
-		<div class="island">
-			<div class="px-4 py-3 flex items-center gap-3 border-b text-m">
-				<Terminal class="size-5 text-muted-foreground" />
-				<span class="font-medium">Commands</span>
-				<div class="flex-1" />
-				<CopyButton :text="cliCommands" label="Copy commands" />
-			</div>
-			<pre class="p-4 text-md"><code>{{ commands.list }}</code></pre>
-			<pre class="border-t p-4 text-md"><code>{{ commands.force }}</code></pre>
-		</div>
-	</section>
 </template>
