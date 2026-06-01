@@ -43,7 +43,7 @@ let shouldSkipNextSearch = false;
 
 const rootClass = computed(() =>
 	cn(
-		'relative h-11 w-full overflow-hidden rounded-xl border border-border bg-secondary/30 transition-colors hover:border-foreground/20 focus-within:border-primary',
+		'relative h-11 w-full overflow-hidden rounded-xl border border-border bg-secondary/30 hover:border-foreground/20 focus-within:border-primary',
 		props.readonly ? 'bg-secondary/60' : '',
 		attrs.class,
 	),
@@ -58,29 +58,29 @@ const inputAttrs = computed(() => {
 const hasValue = computed(() => model.value.trim().length > 0);
 const debounceDelay = computed(() => Math.max(0, props.debounce));
 
-function clearDebounce(): void {
+const clearDebounce = (): void => {
 	if (!debounceTimer) {
 		return;
 	}
 
 	clearTimeout(debounceTimer);
 	debounceTimer = undefined;
-}
+};
 
-function emitSearch(value: string): void {
+const emitSearch = (value: string): void => {
 	emit('search', value.trim());
-}
+};
 
-function scheduleSearch(value: string): void {
+const scheduleSearch = (value: string): void => {
 	clearDebounce();
 
 	debounceTimer = setTimeout(() => {
 		emitSearch(value);
 		debounceTimer = undefined;
 	}, debounceDelay.value);
-}
+};
 
-async function clearSearch(): Promise<void> {
+const clearSearch = async (): Promise<void> => {
 	shouldSkipNextSearch = true;
 	model.value = '';
 	clearDebounce();
@@ -88,7 +88,7 @@ async function clearSearch(): Promise<void> {
 	emit('clear');
 	await nextTick();
 	inputRef.value?.focus();
-}
+};
 
 watch(model, value => {
 	if (shouldSkipNextSearch) {
@@ -125,7 +125,7 @@ onBeforeUnmount(() => {
 		<button
 			v-if="hasValue"
 			type="button"
-			class="absolute right-0.5 top-1/2 inline-flex size-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground focus-visible:bg-secondary focus-visible:text-foreground focus-visible:outline-none"
+			class="absolute right-0.5 top-1/2 inline-flex size-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-lg text-muted-foreground hover:bg-secondary hover:text-foreground focus-visible:bg-secondary focus-visible:text-foreground focus-visible:outline-none"
 			aria-label="Clear search"
 			@click="clearSearch"
 		>

@@ -12,6 +12,11 @@
 			"description": "Text input with floating label and icon slots."
 		},
 		{
+			"name": "chip",
+			"title": "Chip",
+			"description": "Compact interactive chip for filters, selections and removable tokens."
+		},
+		{
 			"name": "search",
 			"title": "Search",
 			"description": "Search field with built-in debounce, search icon and clear button."
@@ -25,6 +30,11 @@
 			"name": "switch",
 			"title": "Switch",
 			"description": "Compact boolean switch control."
+		},
+		{
+			"name": "status",
+			"title": "Status",
+			"description": "Soft Cupertino-inspired status pill with semantic tones."
 		},
 		{
 			"name": "dialog",

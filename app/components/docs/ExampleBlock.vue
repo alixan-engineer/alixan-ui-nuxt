@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { Copy } from '@lucide/vue';
-
 defineProps<{ code: string }>();
 </script>
 
@@ -11,7 +9,11 @@ defineProps<{ code: string }>();
 		</div>
 
 		<div class="relative">
-			<Copy class="absolute right-4 top-4 size-5 text-muted-foreground" />
+			<CopyButton
+				:text="code"
+				class="absolute right-3 top-3"
+				label="Copy code"
+			/>
 			<pre class="p-6 pr-12 text-sm leading-7"><code>{{ code }}</code></pre>
 		</div>
 	</div>

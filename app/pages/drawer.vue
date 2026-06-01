@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { Copy } from '@lucide/vue';
-
 useSeoMeta({
 	title: 'Drawer - Alixan UI',
 	ogTitle: 'Drawer - Alixan UI',
@@ -44,14 +42,7 @@ const drawerProps = [
 
 	<section id="installation" class="space-y-5">
 		<h2 class="text-2xl font-semibold">Installation</h2>
-		<div class="island">
-			<div class="px-4 py-3 flex items-center gap-4 border-b text-m">
-				<span class="font-medium">npm</span>
-				<div class="flex-1" />
-				<Copy class="size-5 text-muted-foreground" />
-			</div>
-			<p class="p-4 text-md">npx alixan-ui-nuxt add drawer</p>
-		</div>
+		<InstallCommandBlock component="drawer" />
 	</section>
 
 	<section id="usage" class="space-y-5">

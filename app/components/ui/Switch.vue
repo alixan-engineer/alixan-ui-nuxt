@@ -25,7 +25,7 @@ const switchId = computed(() => generatedId);
 
 const switchClass = computed(() =>
 	cn(
-		'peer inline-flex h-6 w-10 shrink-0 cursor-pointer items-center rounded-full border border-transparent bg-input px-0.5 transition-colors',
+		'peer inline-flex h-6 w-10 shrink-0 cursor-pointer items-center rounded-full border border-transparent bg-input px-0.5',
 		'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background',
 		model.value ? 'bg-primary' : 'bg-input',
 		props.disabled ? 'cursor-not-allowed opacity-50' : '',
@@ -35,20 +35,20 @@ const switchClass = computed(() =>
 
 const labelClass = computed(() =>
 	cn(
-		'text-base',
+		'text-base select-none',
 		props.disabled
 			? 'cursor-not-allowed text-muted-foreground'
 			: 'cursor-pointer text-foreground',
 	),
 );
 
-function toggleSwitch(): void {
+const toggleSwitch = (): void => {
 	if (props.disabled) {
 		return;
 	}
 
 	model.value = !model.value;
-}
+};
 </script>
 
 <template>

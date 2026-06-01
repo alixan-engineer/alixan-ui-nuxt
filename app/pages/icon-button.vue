@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowUpRight, Copy } from '@lucide/vue';
+import { ArrowUpRight } from '@lucide/vue';
 import { buttonColors, buttonVariants } from '~/shared/button-options';
 
 useSeoMeta({
@@ -36,13 +36,14 @@ const iconButtonProps = [
 	{
 		name: 'variant',
 		type: "'filled' | 'outlined' | 'ghost'",
-		default: "'filled'",
-		description: 'Visual style of the icon button.',
+		default: "'ghost'",
+		description:
+			'Visual style of the icon button. Ghost is used by default.',
 	},
 	{
 		name: 'color',
 		type: "'default' | 'primary' | 'secondary' | 'destructive'",
-		default: "'primary'",
+		default: "'default'",
 		description: 'Color intent.',
 	},
 	{
@@ -159,7 +160,6 @@ import { IconButton } from '@/components/ui/icon-button'
       href="https://github.com"
       target="_blank"
       variant="outlined"
-      color="default"
     >
       <ArrowUpRight />
     </IconButton>
@@ -178,17 +178,7 @@ import { IconButton } from '@/components/ui/icon-button'
 
 		<section id="installation" class="space-y-5">
 			<h2 class="text-2xl font-semibold">Installation</h2>
-			<div class="island">
-				<div class="px-4 py-3 flex items-center gap-4 border-b text-m">
-					<span class="font-medium">npm</span>
-					<span class="text-muted-foreground">pnpm</span>
-					<span class="text-muted-foreground">yarn</span>
-					<span class="text-muted-foreground">bun</span>
-					<div class="flex-1" />
-					<Copy class="size-5 text-muted-foreground" />
-				</div>
-				<p class="p-4 text-md">npx alixan-ui-nuxt add icon-button</p>
-			</div>
+			<InstallCommandBlock component="icon-button" />
 		</section>
 
 		<section id="usage" class="space-y-5">
@@ -258,7 +248,6 @@ import { IconButton } from '@/components/ui/icon-button'
 						href="https://github.com"
 						target="_blank"
 						variant="outlined"
-						color="default"
 					>
 						<ArrowUpRight />
 					</IconButton>

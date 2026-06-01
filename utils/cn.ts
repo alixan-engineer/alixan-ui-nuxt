@@ -9,7 +9,7 @@ type ClassValue =
 
 type ClassDictionary = Record<string, boolean | null | undefined>;
 
-function normalizeClass(value: ClassValue): string[] {
+const normalizeClass = (value: ClassValue): string[] => {
 	if (!value) {
 		return [];
 	}
@@ -29,8 +29,8 @@ function normalizeClass(value: ClassValue): string[] {
 	}
 
 	return [];
-}
+};
 
-export function cn(...inputs: ClassValue[]): string {
+export const cn = (...inputs: ClassValue[]): string => {
 	return normalizeClass(inputs).join(' ');
-}
+};

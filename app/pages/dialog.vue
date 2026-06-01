@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Copy } from '@lucide/vue';
+import DialogPreviewContent from '~/components/examples/DialogPreviewContent.vue';
 
 useSeoMeta({
 	title: 'Dialog - Alixan UI',
@@ -23,34 +23,112 @@ onBeforeUnmount(() => {
 	clearToc();
 });
 
-const open = ref(false);
+const dialog = useDialog();
 
-const dialogProps = [
-	{ name: 'modelValue', type: 'boolean', default: 'false', description: 'Controls dialog visibility with v-model.' },
-	{ name: 'title', type: 'string', default: '-', description: 'Dialog title.' },
-	{ name: 'description', type: 'string', default: '-', description: 'Optional text under the title.' },
-	{ name: 'size', type: "'sm' | 'md' | 'lg'", default: "'md'", description: 'Controls dialog max width.' },
-	{ name: 'closeOnOverlay', type: 'boolean', default: 'true', description: 'Closes dialog when the click-catcher overlay is pressed.' },
+const dialogServiceApi = [
+	{
+		name: 'component',
+		type: 'Component',
+		default: '-',
+		description: 'Vue component rendered inside DialogHost.',
+	},
+	{
+		name: 'title',
+		type: 'string',
+		default: '-',
+		description: 'Passed to DialogHeader.',
+	},
+	{
+		name: 'width',
+		type: 'string',
+		default: "'500px'",
+		description: 'Passed to Dialog as max-width.',
+	},
+	{
+		name: 'height',
+		type: 'string',
+		default: "'auto'",
+		description: 'Passed to Dialog as max-height.',
+	},
+	{
+		name: 'data',
+		type: 'Record<string, unknown>',
+		default: '{}',
+		description: 'Data passed to the dynamic component.',
+	},
 ];
 
-const code = `<script setup lang="ts">
-const open = ref(false)
+const code = `// App.vue. Add DialogHost once near the root of your app.
+<template>
+  <NuxtPage />
+  <DialogHost />
+</template>
+
+// Example.vue. Open any Vue component as a dialog and pass options/data.
+<script setup lang="ts">
+import ProjectDialog from '~/components/ProjectDialog.vue'
+
+const dialog = useDialog()
+
+const openDialog = () => {
+  dialog.open(ProjectDialog, {
+    width: '520px', // maxWidth
+    height: '400px', // maxHeight
+    title: 'Create project',
+    data: {
+      projectId: 1,
+    },
+  })
+}
 <\/script>
 
 <template>
-  <Button @click="open = true">Open dialog</Button>
+  <Button @click="openDialog">Open dialog</Button>
+</template>
 
-  <Dialog v-model="open" title="Create project">
-    <p>Create a new project in your workspace.</p>
+// ProjectDialog.vue:
+// This component is rendered inside DialogHost.
+// It receives data and close from dialog.open().
+<script setup lang="ts">
+interface ProjectDialogData {
+  projectId: number
+}
 
-    <template #footer>
-      <Button variant="outlined" color="default" @click="open = false">
-        Cancel
-      </Button>
-      <Button @click="open = false">Create</Button>
-    </template>
-  </Dialog>
+const props = defineProps<{
+  data: ProjectDialogData
+  close: () => void
+}>()
+
+const projectId = ref<number | null>(null)
+
+onMounted(() => {
+  projectId.value = props.data.projectId
+})
+<\/script>
+
+<template>
+  <div class="size-full flex flex-col divide-y">
+    <div class="flex-1 p-4">
+      <Input v-model="projectId" label="Project ID" />
+    </div>
+
+    <div class="flex items-center justify-end gap-2 p-4">
+      <Button variant="outlined" label="Cancel" @click="close" />
+      <Button label="Create" @click="close" />
+    </div>
+  </div>
 </template>`;
+
+const openDialog = (): void => {
+	dialog.open(DialogPreviewContent, {
+		width: '520px',
+		height: '400px',
+		title: 'Create project',
+		data: {
+			projectId: 1,
+		},
+	});
+};
 </script>
 
 <template>
@@ -63,27 +141,13 @@ const open = ref(false)
 
 	<section id="installation" class="space-y-5">
 		<h2 class="text-2xl font-semibold">Installation</h2>
-		<div class="island">
-			<div class="px-4 py-3 flex items-center gap-4 border-b text-m">
-				<span class="font-medium">npm</span>
-				<div class="flex-1" />
-				<Copy class="size-5 text-muted-foreground" />
-			</div>
-			<p class="p-4 text-md">npx alixan-ui-nuxt add dialog</p>
-		</div>
+		<InstallCommandBlock component="dialog" />
 	</section>
 
 	<section id="usage" class="space-y-5">
 		<h2 class="text-2xl font-semibold">Usage</h2>
 		<ExampleBlock :code="code">
-			<Button @click="open = true">Open dialog</Button>
-			<Dialog v-model="open" title="Create project" description="Create a new project in your workspace.">
-				<p class="text-muted-foreground">Dialogs use Teleport and close on overlay or Escape.</p>
-				<template #footer>
-					<Button variant="outlined" color="default" @click="open = false">Cancel</Button>
-					<Button @click="open = false">Create</Button>
-				</template>
-			</Dialog>
+			<Button @click="openDialog">Open dialog</Button>
 		</ExampleBlock>
 	</section>
 
@@ -93,18 +157,20 @@ const open = ref(false)
 			<table class="w-full text-left text-sm">
 				<thead class="border-b bg-secondary text-muted-foreground">
 					<tr>
-						<th class="px-4 py-3 font-medium">Prop</th>
+						<th class="px-4 py-3 font-medium">Option</th>
 						<th class="px-4 py-3 font-medium">Type</th>
 						<th class="px-4 py-3 font-medium">Default</th>
 						<th class="px-4 py-3 font-medium">Description</th>
 					</tr>
 				</thead>
 				<tbody class="divide-y">
-					<tr v-for="item in dialogProps" :key="item.name">
+					<tr v-for="item in dialogServiceApi" :key="item.name">
 						<td class="px-4 py-3 font-medium">{{ item.name }}</td>
 						<td class="px-4 py-3 text-muted-foreground">{{ item.type }}</td>
 						<td class="px-4 py-3 text-muted-foreground">{{ item.default }}</td>
-						<td class="px-4 py-3 text-muted-foreground">{{ item.description }}</td>
+						<td class="px-4 py-3 text-muted-foreground">
+							{{ item.description }}
+						</td>
 					</tr>
 				</tbody>
 			</table>

@@ -15,9 +15,9 @@ const activeHash = ref(route.hash || props.links[0]?.href || '');
 
 const activeHref = computed(() => activeHash.value || props.links[0]?.href || '');
 
-function syncActiveHash(): void {
+const syncActiveHash = (): void => {
 	activeHash.value = window.location.hash || props.links[0]?.href || '';
-}
+};
 
 watch(
 	() => [props.links, route.hash],
@@ -36,9 +36,9 @@ onBeforeUnmount(() => {
 	window.removeEventListener('hashchange', syncActiveHash);
 });
 
-function setActiveLink(href: string): void {
+const setActiveLink = (href: string): void => {
 	activeHash.value = href;
-}
+};
 </script>
 
 <template>
@@ -55,7 +55,7 @@ function setActiveLink(href: string): void {
 					@click="setActiveLink(link.href)"
 					:class="
 						cn(
-							'block transition-colors hover:text-foreground text-sm',
+							'block hover:text-foreground text-sm',
 							activeHref === link.href
 								? 'font-bold text-foreground'
 								: 'font-normal text-muted-foreground/80',

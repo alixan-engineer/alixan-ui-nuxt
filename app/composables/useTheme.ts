@@ -2,24 +2,24 @@ type Theme = 'light' | 'dark';
 
 const theme = ref<Theme>('light');
 
-function applyTheme(value: Theme): void {
+const applyTheme = (value: Theme): void => {
 	if (!import.meta.client) {
 		return;
 	}
 
 	document.documentElement.classList.toggle('dark', value === 'dark');
 	localStorage.setItem('alixan-ui-theme', value);
-}
+};
 
-export function useTheme() {
-	function setTheme(value: Theme): void {
+export const useTheme = () => {
+	const setTheme = (value: Theme): void => {
 		theme.value = value;
 		applyTheme(value);
-	}
+	};
 
-	function toggleTheme(): void {
+	const toggleTheme = (): void => {
 		setTheme(theme.value === 'dark' ? 'light' : 'dark');
-	}
+	};
 
 	if (import.meta.client) {
 		const storedTheme = localStorage.getItem('alixan-ui-theme');
@@ -40,4 +40,4 @@ export function useTheme() {
 		setTheme,
 		toggleTheme,
 	};
-}
+};

@@ -61,22 +61,22 @@ const transitionClasses = computed(() => {
 	};
 });
 
-function closeDrawer(): void {
+const closeDrawer = (): void => {
 	open.value = false;
 	emit('close');
-}
+};
 
-function handleOverlayMouseDown(): void {
+const handleOverlayMouseDown = (): void => {
 	if (props.closeOnOverlay) {
 		closeDrawer();
 	}
-}
+};
 
-function handleKeydown(event: KeyboardEvent): void {
+const handleKeydown = (event: KeyboardEvent): void => {
 	if (event.key === 'Escape' && open.value) {
 		closeDrawer();
 	}
-}
+};
 
 watch(open, value => {
 	if (!import.meta.client) {

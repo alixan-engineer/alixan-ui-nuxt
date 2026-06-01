@@ -1,0 +1,17 @@
+{
+	"$schema": "https://nuxt.ui.alixan.kz/schema/registry-item.json",
+	"name": "chip",
+	"type": "component",
+	"title": "Chip",
+	"description": "Compact interactive chip for filters, selections and removable tokens.",
+	"files": [
+		{
+			"source": "templates/chip/Chip.vue",
+			"target": "components/ui/Chip.vue"
+		},
+		{
+			"source": "templates/utils/cn.ts",
+			"target": "utils/cn.ts"
+		}
+	]
+}

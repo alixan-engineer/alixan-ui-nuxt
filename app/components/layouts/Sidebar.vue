@@ -17,7 +17,10 @@ interface MenuSection {
 const menuSections = [
 	{
 		labelKey: 'sidebar.sections',
-		items: [{ labelKey: 'sidebar.installation', to: '/' }],
+		items: [
+			{ labelKey: 'sidebar.introduction', to: '/' },
+			{ labelKey: 'sidebar.installation', to: '/installation' },
+		],
 	},
 	{
 		labelKey: 'sidebar.components',
@@ -25,12 +28,19 @@ const menuSections = [
 			{ labelKey: 'component.button', to: '/button' },
 			{ labelKey: 'component.iconButton', to: '/icon-button' },
 			{ labelKey: 'component.input', to: '/input' },
+			{ labelKey: 'component.chip', to: '/chip' },
 			{ labelKey: 'component.search', to: '/search' },
+			{ labelKey: 'component.select', to: '/select' },
 			{ labelKey: 'component.tabs', to: '/tabs' },
 			{ labelKey: 'component.switch', to: '/switch' },
+			{ labelKey: 'component.status', to: '/status' },
+		],
+	},
+	{
+		labelKey: 'sidebar.overlays',
+		items: [
 			{ labelKey: 'component.dialog', to: '/dialog' },
 			{ labelKey: 'component.drawer', to: '/drawer' },
-			{ labelKey: 'component.select', to: '/select' },
 			{ labelKey: 'component.dropdownMenu', to: '/dropdown-menu' },
 		],
 	},
@@ -59,7 +69,7 @@ const isActive = (to: string) => route.path === to;
 							class="justify-start"
 							size="sm"
 							:variant="isActive(item.to) ? 'filled' : 'ghost'"
-							:color="isActive(item.to) ? 'secondary' : 'default'"
+							:color="isActive(item.to) ? 'primary' : 'default'"
 							@click="navigateTo(item.to)"
 						>
 							{{ t(item.labelKey) }}

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { X } from '@lucide/vue';
 import { computed, ref, useAttrs, useId, useSlots } from 'vue';
 
 import { cn } from '~~/utils/cn';
@@ -20,6 +21,7 @@ interface InputProps {
 	error?: string;
 	disabled?: boolean;
 	readonly?: boolean;
+	hasClearButton?: boolean;
 }
 
 const props = withDefaults(defineProps<InputProps>(), {
@@ -32,6 +34,7 @@ const props = withDefaults(defineProps<InputProps>(), {
 	error: undefined,
 	disabled: false,
 	readonly: false,
+	hasClearButton: true,
 });
 
 const emit = defineEmits<{
@@ -54,6 +57,15 @@ const hasTrailing = computed(() => Boolean(slots.trailing));
 const hasValue = computed(
 	() => model.value !== null && model.value !== undefined && model.value !== '',
 );
+const hasClearButton = computed(
+	() =>
+		props.hasClearButton &&
+		!hasTrailing.value &&
+		hasValue.value &&
+		!props.disabled &&
+		!props.readonly,
+);
+const hasTrailingAction = computed(() => hasTrailing.value || hasClearButton.value);
 const isLabelMoved = computed(() => isFocused.value || hasValue.value);
 const hasMessage = computed(() => Boolean(props.error || props.hint));
 
@@ -75,11 +87,11 @@ const rootClass = computed(() => cn('relative w-full space-y-1', attrs.class));
 
 const inputClass = computed(() =>
 	cn(
-		'w-full border border-border bg-background text-foreground transition-colors placeholder:text-muted-foreground/70 hover:border-foreground/20 focus:outline-none focus:border-primary',
+		'w-full border border-border bg-background text-foreground placeholder:text-muted-foreground/70 hover:border-foreground/20 focus:outline-none focus:border-primary',
 		inputBaseClass,
 		props.label ? 'pt-2' : '',
 		hasLeading.value ? leadingPaddingClass : '',
-		hasTrailing.value ? trailingPaddingClass : '',
+		hasTrailingAction.value ? trailingPaddingClass : '',
 		props.error
 			? 'border-destructive text-destructive hover:border-destructive focus:border-destructive!'
 			: '',
@@ -115,19 +127,27 @@ const trailingSlotClass = computed(() =>
 	),
 );
 
-function handleFocus(event: FocusEvent): void {
+const handleFocus = (event: FocusEvent): void => {
 	isFocused.value = true;
 	emit('focus', event);
-}
+};
 
-function handleBlur(event: FocusEvent): void {
+const handleBlur = (event: FocusEvent): void => {
 	isFocused.value = false;
 	emit('blur', event);
-}
+};
 
-function handleInput(event: Event): void {
+const handleInput = (event: Event): void => {
 	emit('input', event);
-}
+};
+
+const clearValue = (): void => {
+	if (props.disabled || props.readonly) {
+		return;
+	}
+
+	model.value = '';
+};
 </script>
 
 <template>
@@ -160,6 +180,18 @@ function handleInput(event: Event): void {
 		<span v-if="$slots.trailing" :class="trailingSlotClass">
 			<slot name="trailing" />
 		</span>
+
+		<button
+			v-else-if="hasClearButton"
+			type="button"
+			:class="trailingSlotClass"
+			class="rounded-lg p-1 hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none"
+			aria-label="Clear input"
+			@mousedown.prevent
+			@click="clearValue"
+		>
+			<X class="size-5" />
+		</button>
 
 		<p
 			v-if="hasMessage"

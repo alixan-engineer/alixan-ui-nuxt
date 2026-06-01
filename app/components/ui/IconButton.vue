@@ -25,8 +25,8 @@ interface IconButtonProps {
 
 const props = withDefaults(defineProps<IconButtonProps>(), {
 	type: 'button',
-	variant: 'filled',
-	color: 'primary',
+	variant: 'ghost',
+	color: 'default',
 	size: 'md',
 	to: undefined,
 	href: undefined,
@@ -38,8 +38,8 @@ const NuxtLink = resolveComponent('NuxtLink');
 
 const sizeClasses: Record<IconButtonSize, string> = {
 	sm: 'size-9 rounded-lg [&_svg]:size-4',
-	md: 'size-11 rounded-xl [&_svg]:size-5',
-	lg: 'size-12 rounded-2xl [&_svg]:size-6',
+	md: 'size-11 rounded-xl [&_svg]:size-6',
+	lg: 'size-12 rounded-2xl [&_svg]:size-7',
 };
 
 const toneClasses: Record<
@@ -80,7 +80,7 @@ const toneClasses: Record<
 
 const iconButtonClass = computed(() =>
 	cn(
-		'inline-flex shrink-0 items-center justify-center border font-medium transition-colors cursor-pointer focus-visible:outline-none',
+		'inline-flex shrink-0 items-center justify-center border font-medium cursor-pointer focus-visible:outline-none',
 		sizeClasses[props.size],
 		toneClasses[props.variant][props.color],
 		attrs.class,

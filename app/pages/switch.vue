@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { Copy } from '@lucide/vue';
-
 useSeoMeta({
 	title: 'Switch - Alixan UI',
 	ogTitle: 'Switch - Alixan UI',
@@ -69,17 +67,7 @@ const checked = ref(false)
 
 	<section id="installation" class="space-y-5">
 		<h2 class="text-2xl font-semibold">Installation</h2>
-		<div class="island">
-			<div class="px-4 py-3 flex items-center gap-4 border-b text-m">
-				<span class="font-medium">npm</span>
-				<span class="text-muted-foreground">pnpm</span>
-				<span class="text-muted-foreground">yarn</span>
-				<span class="text-muted-foreground">bun</span>
-				<div class="flex-1" />
-				<Copy class="size-5 text-muted-foreground" />
-			</div>
-			<p class="p-4 text-md">npx alixan-ui-nuxt add switch</p>
-		</div>
+		<InstallCommandBlock component="switch" />
 	</section>
 
 	<section id="usage" class="space-y-5">

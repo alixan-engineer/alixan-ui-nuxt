@@ -18,7 +18,10 @@ const { theme, toggleTheme } = useTheme();
 			>
 				<ArrowLeft />
 			</IconButton>
-			<Logo />
+			<div class="flex items-center gap-2">
+				<Logo />
+				<Status label="Beta" size="sm" type="warning" />
+			</div>
 			<div class="flex-1" />
 			<IconButton
 				variant="ghost"

@@ -10,6 +10,18 @@
 			"target": "components/ui/Dialog.vue"
 		},
 		{
+			"source": "templates/dialog/DialogHeader.vue",
+			"target": "components/ui/DialogHeader.vue"
+		},
+		{
+			"source": "templates/dialog/DialogHost.vue",
+			"target": "components/ui/DialogHost.vue"
+		},
+		{
+			"source": "templates/dialog/useDialog.ts",
+			"target": "composables/useDialog.ts"
+		},
+		{
 			"source": "templates/utils/cn.ts",
 			"target": "utils/cn.ts"
 		}

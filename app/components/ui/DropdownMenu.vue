@@ -49,7 +49,7 @@ const placementClass = computed(() => {
 	return 'right';
 });
 
-function updateMenuPosition(): void {
+const updateMenuPosition = (): void => {
 	const trigger = triggerRef.value;
 
 	if (!trigger || !import.meta.client) {
@@ -76,39 +76,39 @@ function updateMenuPosition(): void {
 		left: `${left}px`,
 		minWidth: `${width}px`,
 	};
-}
+};
 
-async function openMenu(): Promise<void> {
+const openMenu = async (): Promise<void> => {
 	open.value = true;
 	await nextTick();
 	updateMenuPosition();
 	window.addEventListener('resize', closeMenu);
 	window.addEventListener('scroll', closeMenu, true);
-}
+};
 
-function closeMenu(): void {
+const closeMenu = (): void => {
 	open.value = false;
 	window.removeEventListener('resize', closeMenu);
 	window.removeEventListener('scroll', closeMenu, true);
-}
+};
 
-function toggleMenu(): void {
+const toggleMenu = (): void => {
 	if (open.value) {
 		closeMenu();
 		return;
 	}
 
 	openMenu();
-}
+};
 
-function selectItem(item: DropdownMenuItem): void {
+const selectItem = (item: DropdownMenuItem): void => {
 	if (item.disabled) {
 		return;
 	}
 
 	emit('select', item);
 	closeMenu();
-}
+};
 
 onBeforeUnmount(closeMenu);
 </script>
@@ -149,7 +149,7 @@ onBeforeUnmount(closeMenu);
 					:disabled="item.disabled"
 					:class="
 						cn(
-							'flex min-h-9 w-full cursor-pointer items-center rounded-md px-3 text-left text-md transition-colors hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50',
+							'flex min-h-9 w-full cursor-pointer items-center rounded-md px-3 text-left text-md hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50',
 							item.destructive ? 'text-destructive hover:bg-destructive/10 focus-visible:bg-destructive/10' : '',
 						)
 					"

@@ -27,7 +27,7 @@ interface ButtonProps {
 const props = withDefaults(defineProps<ButtonProps>(), {
 	type: 'button',
 	variant: 'filled',
-	color: 'primary',
+	color: 'default',
 	size: 'md',
 	label: undefined,
 	to: undefined,
@@ -82,7 +82,7 @@ const hasDefaultSlot = computed(() => Boolean(slots.default));
 
 const buttonClass = computed(() =>
 	cn(
-		'inline-flex items-center justify-center gap-2 border font-medium whitespace-nowrap transition-colors cursor-pointer focus-visible:outline-none',
+		'inline-flex items-center justify-center gap-2 border font-medium whitespace-nowrap cursor-pointer focus-visible:outline-none select-none',
 		sizeClasses[props.size],
 		toneClasses[props.variant][props.color],
 		attrs.class,

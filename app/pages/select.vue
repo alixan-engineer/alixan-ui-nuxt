@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { Copy } from '@lucide/vue';
-
 useSeoMeta({
 	title: 'Select - Alixan UI',
 	ogTitle: 'Select - Alixan UI',
@@ -49,14 +47,7 @@ const selectProps = [
 
 	<section id="installation" class="space-y-5">
 		<h2 class="text-2xl font-semibold">Installation</h2>
-		<div class="island">
-			<div class="px-4 py-3 flex items-center gap-4 border-b text-m">
-				<span class="font-medium">npm</span>
-				<div class="flex-1" />
-				<Copy class="size-5 text-muted-foreground" />
-			</div>
-			<p class="p-4 text-md">npx alixan-ui-nuxt add select</p>
-		</div>
+		<InstallCommandBlock component="select" />
 	</section>
 
 	<section id="usage" class="space-y-5">

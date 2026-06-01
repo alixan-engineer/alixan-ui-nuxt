@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowRight, Copy, GitBranch } from '@lucide/vue';
+import { ArrowRight, GitBranch } from '@lucide/vue';
 import { buttonColors, buttonVariants } from '~/shared/button-options';
 
 useSeoMeta({
@@ -38,12 +38,13 @@ const buttonProps = [
 		name: 'variant',
 		type: "'filled' | 'outlined' | 'ghost'",
 		default: "'filled'",
-		description: 'Surface style. Combine it with color for intent.',
+		description:
+			'Surface style. Filled is used by default. Combine it with color for intent.',
 	},
 	{
 		name: 'color',
 		type: "'default' | 'primary' | 'secondary' | 'destructive'",
-		default: "'primary'",
+		default: "'default'",
 		description: 'Semantic intent. Works with every variant.',
 	},
 	{
@@ -104,7 +105,6 @@ import { Button } from '@/components/ui/button'
       href="https://github.com"
       target="_blank"
       variant="outlined"
-      color="default"
     >
       External link
     </Button>
@@ -124,7 +124,7 @@ import { Button } from '@/components/ui/button'
 <\/script>
 
 <template>
-  <Button variant="outlined" color="default">
+  <Button variant="outlined">
     Outline
   </Button>
 </template>`,
@@ -134,9 +134,9 @@ import { Button } from '@/components/ui/button'
 
 <template>
   <div class="flex items-center gap-2">
-    <Button variant="filled" color="default">Filled</Button>
-    <Button variant="outlined" color="default">Outlined</Button>
-    <Button variant="ghost" color="default">Ghost</Button>
+    <Button variant="filled">Filled</Button>
+    <Button variant="outlined">Outlined</Button>
+    <Button variant="ghost">Ghost</Button>
   </div>
 </template>`,
 	color: `<script setup lang="ts">
@@ -214,17 +214,7 @@ import { Button } from '@/components/ui/button'
 
 		<section id="installation" class="space-y-5">
 			<h2 class="text-2xl font-semibold">Installation</h2>
-			<div class="island">
-				<div class="px-4 py-3 flex items-center gap-4 border-b text-m">
-					<span class="font-medium">npm</span>
-					<span class="text-muted-foreground">pnpm</span>
-					<span class="text-muted-foreground">yarn</span>
-					<span class="text-muted-foreground">bun</span>
-					<div class="flex-1" />
-					<Copy class="size-5 text-muted-foreground" />
-				</div>
-				<p class="p-4 text-md">npx alixan-ui-nuxt add button</p>
-			</div>
+			<InstallCommandBlock component="button" />
 		</section>
 
 		<section id="usage" class="space-y-5">
@@ -283,7 +273,6 @@ import { Button } from '@/components/ui/button'
 						href="https://github.com"
 						target="_blank"
 						variant="outlined"
-						color="default"
 					>
 						External link
 					</Button>
@@ -295,14 +284,14 @@ import { Button } from '@/components/ui/button'
 			<h2 class="text-2xl font-semibold tracking-normal">With Icon</h2>
 			<ExampleBlock :code="examples.withIcon">
 				<div class="flex flex-wrap items-center gap-2">
-					<Button variant="outlined" color="default">
+					<Button variant="outlined">
 						<template #leading>
 							<GitBranch class="size-5" />
 						</template>
 						New Branch
 					</Button>
 
-					<Button variant="outlined" color="default">
+					<Button variant="outlined">
 						Continue
 						<template #trailing>
 							<ArrowRight class="size-5" />

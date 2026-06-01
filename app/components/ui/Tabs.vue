@@ -54,9 +54,9 @@ const materialIndicatorStyle = computed(() => {
 	};
 });
 
-function selectTab(index: number): void {
+const selectTab = (index: number): void => {
 	selected.value = index;
-}
+};
 </script>
 
 <template>
@@ -78,7 +78,7 @@ function selectTab(index: number): void {
 					:aria-selected="safeSelected === index"
 					:class="
 						cn(
-							'h-full px-4 text-center text-base transition-colors focus-visible:bg-secondary focus-visible:outline-none',
+							'h-full px-4 text-center text-base focus-visible:bg-secondary focus-visible:outline-none',
 							tabButtonClass,
 							safeSelected === index
 								? 'font-medium text-primary'

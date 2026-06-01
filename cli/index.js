@@ -10,7 +10,7 @@ const packageRoot = path.resolve(__dirname, '..');
 const [, , command, componentName, ...flags] = process.argv;
 const shouldForce = flags.includes('--force');
 
-function resolveProjectRoot() {
+const resolveProjectRoot = () => {
 	const candidates = [
 		process.env.INIT_CWD,
 		process.env.npm_config_local_prefix,
@@ -26,19 +26,19 @@ function resolveProjectRoot() {
 	}
 
 	return process.cwd();
-}
+};
 
 const projectRoot = resolveProjectRoot();
 
-function readJson(filePath) {
+const readJson = filePath => {
 	return JSON.parse(fs.readFileSync(filePath, 'utf8'));
-}
+};
 
-function ensureDir(filePath) {
+const ensureDir = filePath => {
 	fs.mkdirSync(path.dirname(filePath), { recursive: true });
-}
+};
 
-function copyFile(source, target) {
+const copyFile = (source, target) => {
 	const sourcePath = path.resolve(packageRoot, source);
 	const targetPath = path.resolve(projectRoot, target);
 
@@ -54,9 +54,9 @@ function copyFile(source, target) {
 	ensureDir(targetPath);
 	fs.copyFileSync(sourcePath, targetPath);
 	console.log(`Created: ${target}`);
-}
+};
 
-function validateRegistryEntry(entry) {
+const validateRegistryEntry = entry => {
 	if (!entry || !Array.isArray(entry.files) || entry.files.length === 0) {
 		throw new Error('Registry entry is invalid: "files" must be a non-empty array.');
 	}
@@ -66,9 +66,9 @@ function validateRegistryEntry(entry) {
 			throw new Error('Registry entry is invalid: each file needs "source" and "target".');
 		}
 	}
-}
+};
 
-function getRegistryEntry(name) {
+const getRegistryEntry = name => {
 	const registryPath = path.resolve(packageRoot, 'registry', `${name}.json`);
 
 	if (!fs.existsSync(registryPath)) {
@@ -76,9 +76,9 @@ function getRegistryEntry(name) {
 	}
 
 	return readJson(registryPath);
-}
+};
 
-function listComponents() {
+const listComponents = () => {
 	const registryIndexPath = path.resolve(packageRoot, 'registry', 'index.json');
 
 	if (!fs.existsSync(registryIndexPath)) {
@@ -93,9 +93,9 @@ function listComponents() {
 	for (const component of registryIndex.components) {
 		console.log(`- ${component.name}: ${component.description}`);
 	}
-}
+};
 
-function addComponent(name) {
+const addComponent = name => {
 	const entry = getRegistryEntry(name);
 
 	if (!entry) {
@@ -110,16 +110,16 @@ function addComponent(name) {
 	}
 
 	console.log(`\nDone. Added ${entry.title}.`);
-}
+};
 
-function printHelp() {
+const printHelp = () => {
 	console.log('Alixan UI\n');
 	console.log('Usage:');
 	console.log('  npx alixan-ui-nuxt add button');
 	console.log('  npx alixan-ui-nuxt list');
 	console.log('  npx alixan-ui-nuxt add button --force');
 	console.log(`\nProject root: ${projectRoot}`);
-}
+};
 
 switch (command) {
 	case 'add':
