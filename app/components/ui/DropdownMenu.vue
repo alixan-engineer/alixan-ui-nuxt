@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, nextTick, ref, useAttrs, watch } from 'vue';
 
-import { cn } from '~~/utils/cn';
+import { cn } from '~/utils/cn';
 
 defineOptions({
 	inheritAttrs: false,

@@ -38,22 +38,35 @@ const ensureDir = filePath => {
 	fs.mkdirSync(path.dirname(filePath), { recursive: true });
 };
 
+const resolveTarget = target => {
+	if (
+		target.startsWith('components/') ||
+		target.startsWith('composables/') ||
+		target.startsWith('utils/')
+	) {
+		return path.join('app', target);
+	}
+
+	return target;
+};
+
 const copyFile = (source, target) => {
 	const sourcePath = path.resolve(packageRoot, source);
-	const targetPath = path.resolve(projectRoot, target);
+	const resolvedTarget = resolveTarget(target);
+	const targetPath = path.resolve(projectRoot, resolvedTarget);
 
 	if (!fs.existsSync(sourcePath)) {
 		throw new Error(`Template file is missing: ${source}`);
 	}
 
 	if (fs.existsSync(targetPath) && !shouldForce) {
-		console.log(`Skipped: ${target} already exists. Use --force to overwrite.`);
+		console.log(`Skipped: ${resolvedTarget} already exists. Use --force to overwrite.`);
 		return;
 	}
 
 	ensureDir(targetPath);
 	fs.copyFileSync(sourcePath, targetPath);
-	console.log(`Created: ${target}`);
+	console.log(`Created: ${resolvedTarget}`);
 };
 
 const validateRegistryEntry = entry => {

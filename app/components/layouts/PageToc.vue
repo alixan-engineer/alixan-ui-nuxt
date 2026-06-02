@@ -2,7 +2,7 @@
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 
 import type { PageTocLink } from '~/composables/usePageToc';
-import { cn } from '~~/utils/cn';
+import { cn } from '~/utils/cn';
 
 interface PageTocProps {
 	links: readonly PageTocLink[];
@@ -44,7 +44,7 @@ const setActiveLink = (href: string): void => {
 <template>
 	<aside class="hidden lg:block">
 		<div
-			class="sticky top-14 h-[calc(100vh-3.5rem)] overflow-y-auto px-4 py-6 space-y-3"
+			class="sticky top-14 h-[calc(100svh-3.5rem)] overflow-y-auto px-4 py-6 space-y-3"
 		>
 			<p class="text-sm font-medium text-muted-foreground">On This Page</p>
 			<nav class="space-y-2 text-sm">

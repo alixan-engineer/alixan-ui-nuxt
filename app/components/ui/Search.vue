@@ -2,7 +2,7 @@
 import { Search as SearchIcon, X as XIcon } from '@lucide/vue';
 import { computed, nextTick, onBeforeUnmount, ref, useAttrs, watch } from 'vue';
 
-import { cn } from '~~/utils/cn';
+import { cn } from '~/utils/cn';
 
 defineOptions({
 	inheritAttrs: false,

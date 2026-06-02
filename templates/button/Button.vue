@@ -2,7 +2,7 @@
 import { computed, resolveComponent, useAttrs, useSlots } from 'vue';
 import type { RouteLocationRaw } from 'vue-router';
 
-import { cn } from '~~/utils/cn';
+import { cn } from '~/utils/cn';
 
 defineOptions({
 	inheritAttrs: false,

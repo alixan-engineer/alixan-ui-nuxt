@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ChevronDown } from '@lucide/vue';
 
-import { cn } from '~~/utils/cn';
+import { cn } from '~/utils/cn';
 
 type AccordionValue = string | number;
 
@@ -120,31 +120,26 @@ const toggleItem = (item: AccordionItem): void => {
 
 <style scoped>
 .accordion-content {
-	display: grid;
-	overflow: hidden;
-}
-
-.accordion-content > div {
-	min-height: 0;
+	max-height: 24rem;
 	overflow: hidden;
 }
 
 .accordion-enter-active,
 .accordion-leave-active {
 	transition:
-		grid-template-rows 220ms ease,
-		opacity 180ms ease;
+		max-height 180ms ease,
+		opacity 140ms ease;
 }
 
 .accordion-enter-from,
 .accordion-leave-to {
-	grid-template-rows: 0fr;
+	max-height: 0;
 	opacity: 0;
 }
 
 .accordion-enter-to,
 .accordion-leave-from {
-	grid-template-rows: 1fr;
+	max-height: 24rem;
 	opacity: 1;
 }
 </style>

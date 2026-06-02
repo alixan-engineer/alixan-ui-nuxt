@@ -38,7 +38,7 @@ onBeforeUnmount(() => {
 				</h1>
 				<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
 					This site is the documentation home for Alixan UI: a clean,
-					minimal and shadcn-inspired component system built for Nuxt apps.
+					minimal and production-ready component system built for Nuxt apps.
 				</p>
 			</div>
 

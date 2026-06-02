@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, resolveComponent, useAttrs } from 'vue';
 import type { RouteLocationRaw } from 'vue-router';
-import { cn } from '~~/utils/cn';
+import { cn } from '~/utils/cn';
 
 defineOptions({
 	inheritAttrs: false,

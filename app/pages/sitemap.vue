@@ -25,7 +25,9 @@ const installCode = `npx nuxt module add @nuxtjs/sitemap`;
 
 const configCode = `export default defineNuxtConfig({
   site: {
+    // Replace with your production domain.
     url: 'https://ui.alixan.kz',
+    // Replace with your project name.
     name: 'Alixan UI',
   },
   sitemap: {

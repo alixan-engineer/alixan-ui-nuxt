@@ -11,7 +11,7 @@
 		"accent": "Цвет"
 	},
 	"sidebar": {
-		"sections": "Welcome",
+		"sections": "Добро пожаловать",
 		"introduction": "Введение",
 		"installation": "Установка",
 		"guides": "Гайды",
@@ -22,14 +22,14 @@
 	"guide": {
 		"fonts": "Шрифты",
 		"i18n": "i18n",
-		"sitemap": "Sitemap"
+		"sitemap": "Карта сайта"
 	},
 	"component": {
 		"button": "Кнопка",
 		"iconButton": "Иконка-кнопка",
 		"icons": "Иконки",
 		"input": "Поле ввода",
-		"otp": "OTP Input",
+		"otp": "OTP поле",
 		"chip": "Чип",
 		"search": "Поиск",
 		"autocomplete": "Автозаполнение",
@@ -44,7 +44,7 @@
 		"drawer": "Панель",
 		"globalLoader": "Глобальный лоадер",
 		"toast": "Уведомление",
-		"select": "Селект",
+		"select": "Выбор",
 		"dropdownMenu": "Выпадающее меню"
 	}
 }

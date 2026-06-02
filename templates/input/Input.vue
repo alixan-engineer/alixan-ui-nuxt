@@ -11,7 +11,7 @@ import {
 	watch,
 } from 'vue';
 
-import { cn } from '~~/utils/cn';
+import { cn } from '~/utils/cn';
 
 defineOptions({
 	inheritAttrs: false,

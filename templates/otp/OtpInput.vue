@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, nextTick, ref, watch } from 'vue';
 
-import { cn } from '~~/utils/cn';
+import { cn } from '~/utils/cn';
 
 type OtpLength = 4 | 5 | 6 | 7 | 8;
 

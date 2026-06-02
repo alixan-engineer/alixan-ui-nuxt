@@ -3,7 +3,7 @@ import { CircleCheck, CircleX, Info, TriangleAlert, X } from '@lucide/vue';
 import type { Component } from 'vue';
 
 import type { ToastMessage, ToastType } from '~/composables/useToast';
-import { cn } from '~~/utils/cn';
+import { cn } from '~/utils/cn';
 
 interface ToastProps {
 	toast: ToastMessage;

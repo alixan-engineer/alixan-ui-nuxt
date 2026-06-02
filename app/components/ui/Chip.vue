@@ -2,7 +2,7 @@
 import { ChevronDown, X } from '@lucide/vue';
 import { computed, useAttrs, useSlots } from 'vue';
 
-import { cn } from '~~/utils/cn';
+import { cn } from '~/utils/cn';
 
 defineOptions({
 	inheritAttrs: false,

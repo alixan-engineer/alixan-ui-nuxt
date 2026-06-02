@@ -376,8 +376,8 @@ const username = ref('')
 			</p>
 		</div>
 
-		<div class="grid gap-5">
-			<div id="variant-email" class="scroll-mt-24 space-y-3">
+		<div class="grid min-w-0 gap-5">
+			<div id="variant-email" class="min-w-0 scroll-mt-24 space-y-3">
 				<div class="space-y-3">
 					<h3 class="text-lg font-semibold">Email Input</h3>
 					<InstallCommandBlock component="email-input" />
@@ -389,7 +389,7 @@ const username = ref('')
 				</ExampleBlock>
 			</div>
 
-			<div id="variant-password" class="scroll-mt-24 space-y-3">
+			<div id="variant-password" class="min-w-0 scroll-mt-24 space-y-3">
 				<div class="space-y-3">
 					<h3 class="text-lg font-semibold">Password Input</h3>
 					<InstallCommandBlock component="password-input" />
@@ -406,7 +406,7 @@ const username = ref('')
 				</ExampleBlock>
 			</div>
 
-			<div id="variant-phone" class="scroll-mt-24 space-y-3">
+			<div id="variant-phone" class="min-w-0 scroll-mt-24 space-y-3">
 				<div class="space-y-2">
 					<h3 class="text-lg font-semibold">Phone Input</h3>
 					<InstallCommandBlock component="phone-input" />
@@ -426,7 +426,7 @@ const username = ref('')
 				</ExampleBlock>
 			</div>
 
-			<div id="variant-username" class="scroll-mt-24 space-y-3">
+			<div id="variant-username" class="min-w-0 scroll-mt-24 space-y-3">
 				<div class="space-y-3">
 					<h3 class="text-lg font-semibold">Username Input</h3>
 					<InstallCommandBlock component="username-input" />
@@ -442,8 +442,8 @@ const username = ref('')
 
 	<section id="api-reference" class="space-y-4">
 		<h2 class="text-2xl font-semibold">API Reference</h2>
-		<div class="overflow-hidden rounded-xl border">
-			<table class="w-full text-left text-sm">
+		<div class="overflow-x-auto rounded-xl border">
+			<table class="w-full min-w-180 text-left text-sm">
 				<thead class="border-b bg-secondary text-muted-foreground">
 					<tr>
 						<th class="px-4 py-3 font-medium">Prop</th>

@@ -2,7 +2,7 @@
 import { Check, ChevronDown, X } from '@lucide/vue';
 import { computed, nextTick, ref, watch } from 'vue';
 
-import { cn } from '~~/utils/cn';
+import { cn } from '~/utils/cn';
 
 type AutocompleteValue = string | number;
 

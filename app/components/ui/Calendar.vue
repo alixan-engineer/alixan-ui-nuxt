@@ -2,7 +2,7 @@
 import { CalendarDays, ChevronLeft, ChevronRight } from '@lucide/vue';
 import { computed, nextTick, ref } from 'vue';
 
-import { cn } from '~~/utils/cn';
+import { cn } from '~/utils/cn';
 
 type CalendarMode = 'day' | 'range';
 

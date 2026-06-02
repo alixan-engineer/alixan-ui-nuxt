@@ -11,7 +11,7 @@
 		"accent": "Түс"
 	},
 	"sidebar": {
-		"sections": "Welcome",
+		"sections": "Қош келдіңіз",
 		"introduction": "Кіріспе",
 		"installation": "Орнату",
 		"guides": "Гайдтар",
@@ -22,29 +22,29 @@
 	"guide": {
 		"fonts": "Қаріптер",
 		"i18n": "i18n",
-		"sitemap": "Sitemap"
+		"sitemap": "Сайт картасы"
 	},
 	"component": {
 		"button": "Батырма",
-		"iconButton": "Icon Button",
+		"iconButton": "Иконка батырмасы",
 		"icons": "Иконкалар",
-		"input": "Input",
-		"otp": "OTP Input",
-		"chip": "Chip",
+		"input": "Енгізу өрісі",
+		"otp": "OTP өрісі",
+		"chip": "Чип",
 		"search": "Іздеу",
-		"autocomplete": "Autocomplete",
-		"calendar": "Calendar",
-		"accordion": "Accordion",
-		"tabs": "Tabs",
+		"autocomplete": "Автотолтыру",
+		"calendar": "Күнтізбе",
+		"accordion": "Аккордеон",
+		"tabs": "Табтар",
 		"switch": "Ауыстырғыш",
-		"status": "Status",
+		"status": "Статус",
 		"dialog": "Диалог",
-		"alertDialog": "Alert Dialog",
-		"confirmDialog": "Confirm Dialog",
-		"drawer": "Drawer",
-		"globalLoader": "Global Loader",
-		"toast": "Toast",
-		"select": "Select",
-		"dropdownMenu": "Dropdown Menu"
+		"alertDialog": "Хабарлама диалогы",
+		"confirmDialog": "Растау диалогы",
+		"drawer": "Панель",
+		"globalLoader": "Глобалды жүктеу",
+		"toast": "Хабарлама",
+		"select": "Таңдау",
+		"dropdownMenu": "Ашылмалы мәзір"
 	}
 }

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { cn } from '~~/utils/cn';
+import { cn } from '~/utils/cn';
 
 const route = useRoute();
 const { t } = useI18n();
@@ -108,8 +108,8 @@ const goTo = async (to: string): Promise<void> => {
 				cn(
 					'overflow-y-auto px-2 py-6',
 					props.mobile
-						? 'h-[calc(100vh-3.5rem)]'
-						: 'sticky top-14 h-[calc(100vh-3.5rem)]',
+						? 'h-[calc(100svh-3.5rem)]'
+						: 'sticky top-14 h-[calc(100svh-3.5rem)]',
 				)
 			"
 		>

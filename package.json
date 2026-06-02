@@ -9,20 +9,19 @@
 		"generate": "nuxt generate",
 		"preview": "nuxt preview"
 	},
-	"dependencies": {
+	"dependencies": {},
+	"devDependencies": {
 		"@lucide/vue": "^1.17.0",
 		"@nuxtjs/google-fonts": "^3.2.0",
 		"@nuxtjs/i18n": "^10.4.0",
 		"@nuxtjs/sitemap": "^8.0.15",
-		"nuxt": "^4.4.4",
-		"vue": "^3.5.33",
-		"vue-router": "^5.0.6"
-	},
-	"devDependencies": {
 		"@tailwindcss/vite": "^4.3.0",
+		"nuxt": "^4.4.4",
 		"sass": "^1.99.0",
 		"tailwindcss": "^4.3.0",
-		"typescript": "^6.0.3"
+		"typescript": "^6.0.3",
+		"vue": "^3.5.33",
+		"vue-router": "^5.0.6"
 	},
 	"bin": {
 		"alixan-ui-nuxt": "./cli/index.js"
