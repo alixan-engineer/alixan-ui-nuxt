@@ -28,9 +28,11 @@ import { Bell, Search } from '@lucide/vue'
 
 <template>
   <Button>
-    <Search class="size-4" />
-    Search
-  </Button>
+		<template #leading>
+			<Search class="size-5" />
+		</template>
+		Search
+	</Button>
 
   <IconButton label="Notifications">
     <Bell />
@@ -70,7 +72,9 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons'
 		<ExampleBlock :code="lucideCode">
 			<div class="flex flex-wrap items-center justify-center gap-2">
 				<Button>
-					<Search class="size-4" />
+					<template #leading>
+						<Search class="size-5" />
+					</template>
 					Search
 				</Button>
 				<IconButton label="Notifications">

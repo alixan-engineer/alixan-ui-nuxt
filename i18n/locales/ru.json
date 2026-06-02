@@ -1,0 +1,50 @@
+{
+	"app": {
+		"back": "Назад в Alixan",
+		"github": "Открыть GitHub",
+		"menu": "Открыть меню",
+		"settings": "Открыть настройки"
+	},
+	"settings": {
+		"language": "Язык",
+		"theme": "Тема",
+		"accent": "Цвет"
+	},
+	"sidebar": {
+		"sections": "Welcome",
+		"introduction": "Введение",
+		"installation": "Установка",
+		"guides": "Гайды",
+		"components": "Компоненты",
+		"forms": "Формы",
+		"overlays": "Оверлеи"
+	},
+	"guide": {
+		"fonts": "Шрифты",
+		"i18n": "i18n",
+		"sitemap": "Sitemap"
+	},
+	"component": {
+		"button": "Кнопка",
+		"iconButton": "Иконка-кнопка",
+		"icons": "Иконки",
+		"input": "Поле ввода",
+		"otp": "OTP Input",
+		"chip": "Чип",
+		"search": "Поиск",
+		"autocomplete": "Автозаполнение",
+		"calendar": "Календарь",
+		"accordion": "Аккордеон",
+		"tabs": "Табы",
+		"switch": "Переключатель",
+		"status": "Статус",
+		"dialog": "Диалог",
+		"alertDialog": "Окно сообщения",
+		"confirmDialog": "Окно подтверждения",
+		"drawer": "Панель",
+		"globalLoader": "Глобальный лоадер",
+		"toast": "Уведомление",
+		"select": "Селект",
+		"dropdownMenu": "Выпадающее меню"
+	}
+}

@@ -8,6 +8,7 @@ useSeoMeta({
 const tocLinks = [
 	{ label: 'Installation', href: '#installation' },
 	{ label: 'Usage', href: '#usage' },
+	{ label: 'Validation', href: '#validation' },
 	{ label: 'With Chips', href: '#with-chips' },
 ] as const;
 
@@ -22,7 +23,13 @@ onBeforeUnmount(() => {
 });
 
 const city = ref<string | number | null>(null);
+const requiredCity = ref<string | number | null>(null);
 const cities = ref<Array<string | number>>([]);
+const isSubmitted = ref(false);
+
+const requiredCityError = computed(() =>
+	isSubmitted.value && !requiredCity.value ? 'City is required' : '',
+);
 
 const options = [
 	{ label: 'Almaty', value: 'almaty' },
@@ -43,6 +50,22 @@ const options = [
 
 <template>
   <Autocomplete v-model="city" label="City" :options="options" />
+</template>`,
+	validation: `<script setup lang="ts">
+const city = ref(null)
+const submitted = ref(false)
+const error = computed(() => submitted.value && !city.value ? 'City is required' : '')
+<\/script>
+
+<template>
+  <Autocomplete
+    v-model="city"
+    label="City"
+    :options="options"
+    :error="error"
+  />
+
+  <Button @click="submitted = true">Submit</Button>
 </template>`,
 	chips: `<script setup lang="ts">
 const cities = ref([])
@@ -77,6 +100,21 @@ const options = [
 		<ExampleBlock :code="examples.usage">
 			<div class="w-full max-w-sm">
 				<Autocomplete v-model="city" label="City" :options="options" />
+			</div>
+		</ExampleBlock>
+	</section>
+
+	<section id="validation" class="space-y-5">
+		<h2 class="text-2xl font-semibold">Validation</h2>
+		<ExampleBlock :code="examples.validation">
+			<div class="w-full max-w-sm space-y-4">
+				<Autocomplete
+					v-model="requiredCity"
+					label="City"
+					:options="options"
+					:error="requiredCityError"
+				/>
+				<Button @click="isSubmitted = true">Submit</Button>
 			</div>
 		</ExampleBlock>
 	</section>

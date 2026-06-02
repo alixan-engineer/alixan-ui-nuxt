@@ -3,6 +3,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
+	/* Установите свой шрифт. */
 	--font-sans: 'Geist', ui-sans-serif, system-ui, sans-serif;
 
 	--text-md: 15px;
@@ -216,4 +217,8 @@
 
 @utility island {
 	@apply flex flex-col rounded-2xl border overflow-hidden dark:bg-card dark:text-card-foreground min-h-fit;
+}
+
+@utility backdrop {
+	@apply fixed inset-0 bg-black/30 dark:bg-black/80;
 }

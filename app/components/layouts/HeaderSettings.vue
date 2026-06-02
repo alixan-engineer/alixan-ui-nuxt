@@ -2,9 +2,10 @@
 import { Settings } from '@lucide/vue';
 import tailwindCss from '~/assets/css/tailwind.css?raw';
 import ThemeCodeDialog from '~/components/examples/ThemeCodeDialog.vue';
-import type { Locale } from '~/composables/useI18n';
 import type { AccentTheme, Theme } from '~/composables/useTheme';
 import { createThemeCss } from '~/utils/theme-css';
+
+type Locale = 'en' | 'ru' | 'kk';
 
 const { locale, setLocale, t } = useI18n();
 const { accentColors, accentTheme, setAccentTheme, setTheme, theme } =
@@ -47,6 +48,15 @@ const themeCode = computed(() => {
 	return createThemeCss(tailwindCss, accentColors[accentTheme.value]);
 });
 
+const changeLocale = async (value: Locale): Promise<void> => {
+	await setLocale(value);
+
+	if (import.meta.client) {
+		localStorage.setItem('alixan-ui-locale', value);
+		document.documentElement.lang = value;
+	}
+};
+
 const openThemeCode = (): void => {
 	isOpen.value = false;
 	dialog.open(ThemeCodeDialog, {
@@ -85,7 +95,7 @@ const openThemeCode = (): void => {
 				<Select
 					:model-value="locale"
 					:options="languageOptions"
-					@change="setLocale($event.value as Locale)"
+					@change="changeLocale($event.value as Locale)"
 				/>
 			</div>
 

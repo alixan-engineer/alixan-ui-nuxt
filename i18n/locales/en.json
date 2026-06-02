@@ -1,0 +1,50 @@
+{
+	"app": {
+		"back": "Back to Alixan",
+		"github": "Open GitHub",
+		"menu": "Open menu",
+		"settings": "Open settings"
+	},
+	"settings": {
+		"language": "Language",
+		"theme": "Theme",
+		"accent": "Color"
+	},
+	"sidebar": {
+		"sections": "Welcome",
+		"introduction": "Introduction",
+		"installation": "Installation",
+		"guides": "Guides",
+		"components": "Components",
+		"forms": "Forms",
+		"overlays": "Overlays"
+	},
+	"guide": {
+		"fonts": "Fonts",
+		"i18n": "i18n",
+		"sitemap": "Sitemap"
+	},
+	"component": {
+		"button": "Button",
+		"iconButton": "Icon Button",
+		"icons": "Icons",
+		"input": "Input",
+		"otp": "OTP Input",
+		"chip": "Chip",
+		"search": "Search",
+		"autocomplete": "Autocomplete",
+		"calendar": "Calendar",
+		"accordion": "Accordion",
+		"tabs": "Tabs",
+		"switch": "Switch",
+		"status": "Status",
+		"dialog": "Dialog",
+		"alertDialog": "Alert Dialog",
+		"confirmDialog": "Confirm Dialog",
+		"drawer": "Drawer",
+		"globalLoader": "Global Loader",
+		"toast": "Toast",
+		"select": "Select",
+		"dropdownMenu": "Dropdown Menu"
+	}
+}

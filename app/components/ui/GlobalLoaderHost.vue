@@ -7,7 +7,7 @@ const loader = useGlobalLoader();
 		<Transition name="global-loader">
 			<div
 				v-if="loader.state.value.open"
-				class="fixed inset-0 z-[70] flex items-center justify-center bg-black/45 p-4 backdrop-blur-sm"
+				class="backdrop z-[70] flex items-center justify-center p-4"
 			>
 				<GlobalLoader :label="loader.state.value.label" />
 			</div>

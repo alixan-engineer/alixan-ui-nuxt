@@ -120,7 +120,7 @@ onBeforeUnmount(() => {
 		>
 			<div
 				v-if="open"
-				class="fixed inset-0 z-9998 bg-black/30"
+				class="backdrop z-9998"
 				@mousedown.stop="handleOverlayMouseDown"
 				@click.stop
 			>

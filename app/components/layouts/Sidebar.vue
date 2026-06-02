@@ -1,16 +1,28 @@
 <script setup lang="ts">
-import type { MessageKey } from '~/composables/useI18n';
+import { cn } from '~~/utils/cn';
 
 const route = useRoute();
 const { t } = useI18n();
+const emit = defineEmits<{
+	close: [];
+}>();
+
+const props = withDefaults(
+	defineProps<{
+		mobile?: boolean;
+	}>(),
+	{
+		mobile: false,
+	},
+);
 
 interface MenuItem {
-	labelKey: MessageKey;
+	labelKey: string;
 	to: string;
 }
 
 interface MenuSection {
-	labelKey: MessageKey;
+	labelKey: string;
 	items: MenuItem[];
 }
 
@@ -26,7 +38,9 @@ const menuSections = [
 		labelKey: 'sidebar.guides',
 		items: [
 			{ labelKey: 'component.icons', to: '/icons' },
+			{ labelKey: 'guide.fonts', to: '/fonts' },
 			{ labelKey: 'guide.i18n', to: '/i18n' },
+			{ labelKey: 'guide.sitemap', to: '/sitemap' },
 		],
 	},
 	{
@@ -35,6 +49,7 @@ const menuSections = [
 			{ labelKey: 'component.button', to: '/button' },
 			{ labelKey: 'component.iconButton', to: '/icon-button' },
 			{ labelKey: 'component.chip', to: '/chip' },
+			{ labelKey: 'component.accordion', to: '/accordion' },
 			{ labelKey: 'component.tabs', to: '/tabs' },
 			{ labelKey: 'component.switch', to: '/switch' },
 			{ labelKey: 'component.status', to: '/status' },
@@ -66,11 +81,38 @@ const menuSections = [
 ] satisfies MenuSection[];
 
 const isActive = (to: string) => route.path === to;
+
+const goTo = async (to: string): Promise<void> => {
+	await navigateTo(to);
+	emit('close');
+};
 </script>
 
 <template>
-	<aside class="w-full max-w-70 border-r">
-		<div class="sticky top-14 h-[calc(100vh-3.5rem)] overflow-y-auto px-2 py-6">
+	<aside
+		:class="
+			cn(
+				'w-full max-w-70 border-r bg-background',
+				props.mobile ? 'max-w-none border-r-0' : '',
+			)
+		"
+	>
+		<div
+			v-if="props.mobile"
+			class="h-14 px-4 flex items-center border-b"
+		>
+			<Logo />
+		</div>
+		<div
+			:class="
+				cn(
+					'overflow-y-auto px-2 py-6',
+					props.mobile
+						? 'h-[calc(100vh-3.5rem)]'
+						: 'sticky top-14 h-[calc(100vh-3.5rem)]',
+				)
+			"
+		>
 			<nav class="space-y-8">
 				<div
 					v-for="section in menuSections"
@@ -84,12 +126,11 @@ const isActive = (to: string) => route.path === to;
 						<Button
 							v-for="item in section.items"
 							:key="item.labelKey"
-							type="button"
 							class="justify-start"
 							size="sm"
 							:variant="isActive(item.to) ? 'filled' : 'ghost'"
 							:color="isActive(item.to) ? 'primary' : 'default'"
-							@click="navigateTo(item.to)"
+							@click="goTo(item.to)"
 						>
 							{{ t(item.labelKey) }}
 						</Button>

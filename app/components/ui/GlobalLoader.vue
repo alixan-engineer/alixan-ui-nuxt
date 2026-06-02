@@ -10,7 +10,7 @@ withDefaults(defineProps<GlobalLoaderProps>(), {
 
 <template>
 	<div
-		class="min-w-28 rounded-3xl border bg-background/95 p-6 shadow-2xl shadow-black/20 backdrop-blur-xl dark:bg-background/90"
+		class="min-w-28 rounded-3xl border bg-background p-6 shadow-2xl shadow-black/20"
 	>
 		<div class="flex flex-col items-center gap-4">
 			<div

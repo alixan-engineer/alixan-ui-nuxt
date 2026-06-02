@@ -1,0 +1,50 @@
+{
+	"app": {
+		"back": "Alixan-ға оралу",
+		"github": "GitHub ашу",
+		"menu": "Мәзірді ашу",
+		"settings": "Баптауларды ашу"
+	},
+	"settings": {
+		"language": "Тіл",
+		"theme": "Тақырып",
+		"accent": "Түс"
+	},
+	"sidebar": {
+		"sections": "Welcome",
+		"introduction": "Кіріспе",
+		"installation": "Орнату",
+		"guides": "Гайдтар",
+		"components": "Компоненттер",
+		"forms": "Формалар",
+		"overlays": "Оверлейлер"
+	},
+	"guide": {
+		"fonts": "Қаріптер",
+		"i18n": "i18n",
+		"sitemap": "Sitemap"
+	},
+	"component": {
+		"button": "Батырма",
+		"iconButton": "Icon Button",
+		"icons": "Иконкалар",
+		"input": "Input",
+		"otp": "OTP Input",
+		"chip": "Chip",
+		"search": "Іздеу",
+		"autocomplete": "Autocomplete",
+		"calendar": "Calendar",
+		"accordion": "Accordion",
+		"tabs": "Tabs",
+		"switch": "Ауыстырғыш",
+		"status": "Status",
+		"dialog": "Диалог",
+		"alertDialog": "Alert Dialog",
+		"confirmDialog": "Confirm Dialog",
+		"drawer": "Drawer",
+		"globalLoader": "Global Loader",
+		"toast": "Toast",
+		"select": "Select",
+		"dropdownMenu": "Dropdown Menu"
+	}
+}

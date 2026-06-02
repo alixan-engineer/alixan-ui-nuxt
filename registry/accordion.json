@@ -1,0 +1,17 @@
+{
+	"$schema": "https://nuxt.ui.alixan.kz/schema/registry-item.json",
+	"name": "accordion",
+	"type": "component",
+	"title": "Accordion",
+	"description": "Vertically stacked sections with single and multiple open modes.",
+	"files": [
+		{
+			"source": "templates/accordion/Accordion.vue",
+			"target": "components/ui/Accordion.vue"
+		},
+		{
+			"source": "templates/utils/cn.ts",
+			"target": "utils/cn.ts"
+		}
+	]
+}

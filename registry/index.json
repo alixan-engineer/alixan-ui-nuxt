@@ -57,6 +57,11 @@
 			"description": "Readonly input-style date picker with day and range modes."
 		},
 		{
+			"name": "accordion",
+			"title": "Accordion",
+			"description": "Vertically stacked sections with single and multiple open modes."
+		},
+		{
 			"name": "tabs",
 			"title": "Tabs",
 			"description": "Tabs component with Material and Cupertino designs."

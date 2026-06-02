@@ -82,7 +82,7 @@ const hasDefaultSlot = computed(() => Boolean(slots.default));
 
 const buttonClass = computed(() =>
 	cn(
-		'inline-flex items-center justify-center gap-2 border font-medium whitespace-nowrap cursor-pointer focus-visible:outline-none select-none',
+		'flex items-center justify-center gap-2 border font-medium whitespace-nowrap cursor-pointer focus-visible:outline-none select-none',
 		sizeClasses[props.size],
 		toneClasses[props.variant][props.color],
 		attrs.class,

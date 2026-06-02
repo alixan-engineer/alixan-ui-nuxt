@@ -32,15 +32,15 @@ const commands = {
 };
 
 const { accentColors, accentTheme } = useTheme();
+const showTailwindCode = ref(false);
 
 const currentTailwindCss = computed(() =>
 	createThemeCss(tailwindCss, accentColors[accentTheme.value]),
 );
 
 const rootIdConfig = `export default defineNuxtConfig({
-  compatibilityDate: '2025-07-15',
   app: {
-    rootId: 'root',
+    rootId: 'root', // Change appId to root.
   },
 })`;
 
@@ -123,7 +123,26 @@ const usageCode = `<template>
 				<div class="flex-1" />
 				<CopyButton :text="currentTailwindCss" label="Copy code" />
 			</div>
-			<pre class="p-4 text-sm leading-7"><code>{{ currentTailwindCss }}</code></pre>
+			<pre
+				class="overflow-hidden p-4 text-sm leading-7"
+				:class="showTailwindCode ? '' : 'max-h-[200px]'"
+			><code>{{ currentTailwindCss }}</code></pre>
+			<div class="border-t p-3 flex justify-center">
+				<Button
+					variant="ghost"
+					size="sm"
+					@click="showTailwindCode = !showTailwindCode"
+				>
+					{{ showTailwindCode ? 'Hide code' : 'View code' }}
+				</Button>
+			</div>
+		</div>
+
+		<div class="rounded-2xl border bg-secondary/50 p-4 text-sm leading-7 text-muted-foreground">
+			Keep the <span class="font-medium text-foreground">backdrop</span>
+			utility in your Tailwind CSS. Dialog, Drawer, Global Loader and mobile
+			overlays use it for a consistent overlay color:
+			<span class="font-medium text-foreground">fixed inset-0 bg-black/30 dark:bg-black/80</span>.
 		</div>
 
 		<div class="island">

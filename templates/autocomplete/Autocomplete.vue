@@ -16,12 +16,14 @@ interface AutocompleteProps {
 	label?: string;
 	options?: AutocompleteOption[];
 	autofocus?: boolean;
+	error?: string;
 }
 
 const props = withDefaults(defineProps<AutocompleteProps>(), {
 	label: 'Search',
 	options: () => [],
 	autofocus: false,
+	error: '',
 });
 
 const emit = defineEmits<{
@@ -61,7 +63,7 @@ const updateMenuPosition = (): void => {
 	const rect = trigger.getBoundingClientRect();
 
 	menuStyle.value = {
-		top: `${rect.bottom + 4}px`,
+		top: `${rect.bottom + 2}px`,
 		left: `${rect.left}px`,
 		minWidth: `${rect.width}px`,
 		maxWidth: `${Math.min(rect.width, window.innerWidth - 16)}px`,
@@ -116,7 +118,9 @@ onBeforeUnmount(closeMenu);
 			:key="inputKey"
 			v-model="query"
 			:label="label"
+			:error="error"
 			:autofocus="autofocus || shouldFocusInput"
+			autocomplete="off"
 			@focus="openMenu"
 			@input="openMenu"
 		>

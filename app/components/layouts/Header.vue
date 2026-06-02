@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { ArrowLeft } from '@lucide/vue';
+import { ArrowLeft, Menu } from '@lucide/vue';
 import githubIcon from '~/assets/icons/github.svg';
 
 const { t } = useI18n();
+const sidebar = useMobileSidebar();
 </script>
 
 <template>
@@ -13,8 +14,18 @@ const { t } = useI18n();
 				color="default"
 				href="https://ui.alixan.kz/"
 				:label="t('app.back')"
+				class="max-lg:hidden!"
 			>
 				<ArrowLeft />
+			</IconButton>
+			<IconButton
+				variant="ghost"
+				color="default"
+				:label="t('app.menu')"
+				class="lg:hidden"
+				@click="sidebar.open"
+			>
+				<Menu />
 			</IconButton>
 			<div class="ml-4 flex items-center gap-2">
 				<Logo />

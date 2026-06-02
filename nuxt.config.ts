@@ -2,6 +2,10 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineNuxtConfig({
 	compatibilityDate: '2025-07-15',
+	site: {
+		url: 'https://ui.alixan.kz',
+		name: 'Alixan UI',
+	},
 	app: {
 		rootId: 'root',
 		head: {
@@ -47,7 +51,31 @@ export default defineNuxtConfig({
 		},
 	},
 	css: ['~/assets/css/tailwind.css'],
-	modules: [['@nuxtjs/google-fonts', { families: { Geist: true } }]],
+	modules: [
+		[
+			'@nuxtjs/i18n',
+			{
+				defaultLocale: 'en',
+				strategy: 'no_prefix',
+				locales: [
+					{ code: 'en', name: 'English' },
+					{ code: 'ru', name: 'Русский' },
+					{ code: 'kk', name: 'Қазақша' },
+				],
+				detectBrowserLanguage: {
+					useCookie: true,
+					cookieKey: 'alixan-ui-locale',
+					redirectOn: 'root',
+				},
+				vueI18n: 'i18n.config.ts',
+			},
+		],
+		'@nuxtjs/sitemap',
+		['@nuxtjs/google-fonts', { families: { Geist: true } }],
+	],
+	sitemap: {
+		autoLastmod: true,
+	},
 	vite: {
 		plugins: [tailwindcss()],
 	},
