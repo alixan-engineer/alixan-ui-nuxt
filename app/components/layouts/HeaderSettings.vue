@@ -32,6 +32,10 @@ const accentOptions: Array<{ label: string; value: AccentTheme }> = [
 	{ label: 'Yellow', value: 'yellow' },
 	{ label: 'Orange', value: 'orange' },
 	{ label: 'Red', value: 'red' },
+	{ label: 'Purple', value: 'purple' },
+	{ label: 'Pink', value: 'pink' },
+	{ label: 'Brown', value: 'brown' },
+	{ label: 'Aqua', value: 'aqua' },
 ];
 
 const getAccentPreviewColor = (value: AccentTheme): string => {
@@ -74,7 +78,7 @@ const openThemeCode = (): void => {
 	<DropdownMenu
 		v-model:open="isOpen"
 		width="320px"
-		height="450px"
+		height="540px"
 		position="bottomRight"
 	>
 		<template #trigger>

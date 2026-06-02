@@ -101,6 +101,7 @@ const errorMessage = computed(() => props.error || validationError.value);
 const visibleError = computed(() =>
 	isTouched.value && errorMessage.value ? errorMessage.value : '',
 );
+const messageText = computed(() => visibleError.value || props.hint || '');
 const hasClearButton = computed(
 	() =>
 		props.hasClearButton &&
@@ -111,7 +112,7 @@ const hasClearButton = computed(
 );
 const hasTrailingAction = computed(() => hasTrailing.value || hasClearButton.value);
 const isLabelMoved = computed(() => isFocused.value || hasValue.value);
-const hasMessage = computed(() => Boolean(visibleError.value || props.hint));
+const hasMessage = computed(() => Boolean(messageText.value));
 
 const inputAttrs = computed(() => {
 	const { class: _class, ...rest } = attrs;
@@ -285,17 +286,44 @@ onMounted(() => {
 			<X class="size-5" />
 		</button>
 
-		<p
-			v-if="hasMessage"
-			:id="messageId"
-			:class="
-				cn(
-					'px-3 text-sm font-medium',
-					visibleError ? 'text-destructive' : 'text-muted-foreground',
-				)
-			"
-		>
-			{{ visibleError || hint }}
-		</p>
+		<Transition name="input-message" mode="out-in">
+			<p
+				v-if="hasMessage"
+				:id="messageId"
+				:key="messageText"
+				:class="
+					cn(
+						'px-3 text-sm font-medium',
+						visibleError ? 'text-destructive' : 'text-muted-foreground',
+					)
+				"
+			>
+				{{ messageText }}
+			</p>
+		</Transition>
 	</div>
 </template>
+
+<style scoped>
+.input-message-enter-active,
+.input-message-leave-active {
+	transition:
+		opacity 160ms ease,
+		transform 160ms ease,
+		max-height 180ms ease;
+}
+
+.input-message-enter-from,
+.input-message-leave-to {
+	max-height: 0;
+	opacity: 0;
+	transform: translateY(-4px);
+}
+
+.input-message-enter-to,
+.input-message-leave-from {
+	max-height: 32px;
+	opacity: 1;
+	transform: translateY(0);
+}
+</style>

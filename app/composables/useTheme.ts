@@ -1,5 +1,15 @@
 export type Theme = 'light' | 'dark';
-export type AccentTheme = 'default' | 'blue' | 'green' | 'yellow' | 'orange' | 'red';
+export type AccentTheme =
+	| 'default'
+	| 'blue'
+	| 'green'
+	| 'yellow'
+	| 'orange'
+	| 'red'
+	| 'purple'
+	| 'pink'
+	| 'brown'
+	| 'aqua';
 
 const theme = ref<Theme>('light');
 const accentTheme = ref<AccentTheme>('default');
@@ -38,6 +48,22 @@ const accentColors: Record<
 	red: {
 		primary: 'oklch(0.637 0.237 25.331)',
 		primaryForeground: 'oklch(0.971 0.013 17.38)',
+	},
+	purple: {
+		primary: 'oklch(0.558 0.288 302.321)',
+		primaryForeground: 'oklch(0.977 0.014 308.299)',
+	},
+	pink: {
+		primary: 'oklch(0.656 0.241 354.308)',
+		primaryForeground: 'oklch(0.971 0.014 343.198)',
+	},
+	brown: {
+		primary: 'oklch(0.47 0.118 66.05)',
+		primaryForeground: 'oklch(0.98 0.016 73.684)',
+	},
+	aqua: {
+		primary: 'oklch(0.695 0.149 182.503)',
+		primaryForeground: 'oklch(0.985 0 0)',
 	},
 };
 
@@ -114,7 +140,11 @@ export const useTheme = () => {
 			storedAccentTheme === 'green' ||
 			storedAccentTheme === 'yellow' ||
 			storedAccentTheme === 'orange' ||
-			storedAccentTheme === 'red'
+			storedAccentTheme === 'red' ||
+			storedAccentTheme === 'purple' ||
+			storedAccentTheme === 'pink' ||
+			storedAccentTheme === 'brown' ||
+			storedAccentTheme === 'aqua'
 		) {
 			accentTheme.value = storedAccentTheme;
 		}

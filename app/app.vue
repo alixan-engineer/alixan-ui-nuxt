@@ -35,7 +35,7 @@ watch(
 
 	<Teleport to="body">
 		<div
-			class="fixed inset-0 z-[60] lg:hidden"
+			class="fixed inset-0 z-60 lg:hidden"
 			:class="sidebar.isOpen.value ? 'pointer-events-auto' : 'pointer-events-none'"
 		>
 			<div
@@ -58,7 +58,7 @@ watch(
 	<ToastHost />
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .mobile-sidebar-backdrop {
 	transition: opacity 180ms ease;
 }
