@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Terminal } from '@lucide/vue';
 import tailwindCss from '~/assets/css/tailwind.css?raw';
-import type { AccentTheme } from '~/shared/theme/theme';
+import type { AccentThemeType } from '~/interfaces/theme/theme.interface';
 import { accentColors } from '~/shared/theme/theme';
 import { createThemeCss } from '~/utils/theme-css';
 
@@ -31,7 +31,7 @@ const commands = {
 	addTailwind: 'npm install tailwindcss @tailwindcss/vite -D',
 };
 
-const accentTheme = useCookie<AccentTheme>('alixan-ui-accent-theme', {
+const accentTheme = useCookie<AccentThemeType>('alixan-ui-accent-theme', {
 	default: () => 'default',
 });
 const showTailwindCode = ref(false);
@@ -130,7 +130,7 @@ const usageCode = `<template>
 			</div>
 			<pre
 				class="overflow-hidden p-4 text-sm leading-7"
-				:class="showTailwindCode ? '' : 'max-h-[200px]'"
+				:class="showTailwindCode ? '' : 'max-h-50'"
 			><code>{{ currentTailwindCss }}</code></pre>
 			<div class="border-t p-3 flex justify-center">
 				<Button

@@ -1,17 +1,7 @@
-export type AccentTheme =
-	| 'default'
-	| 'blue'
-	| 'green'
-	| 'yellow'
-	| 'orange'
-	| 'red'
-	| 'purple'
-	| 'pink'
-	| 'brown'
-	| 'aqua';
+import type { AccentThemeType } from '~/interfaces/theme/theme.interface';
 
 export const accentColors: Record<
-	AccentTheme,
+	AccentThemeType,
 	{
 		primary: string;
 		primaryForeground: string;

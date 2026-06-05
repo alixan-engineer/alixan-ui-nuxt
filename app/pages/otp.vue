@@ -1,13 +1,16 @@
 <script setup lang="ts">
+const { t } = useI18n();
+
 usePageMeta({
-	title: 'OTP Input - Alixan UI',
+	title: t('componentDocs.otp.metaTitle'),
+	description: t('componentDocs.otp.description'),
 });
 
 const tocLinks = [
-	{ label: 'Installation', href: '#installation' },
-	{ label: 'Usage', href: '#usage' },
-	{ label: 'Length', href: '#length' },
-	{ label: 'API Reference', href: '#api-reference' },
+	{ label: t('docsSections.installation'), href: '#installation' },
+	{ label: t('docsSections.usage'), href: '#usage' },
+	{ label: t('docsSections.length'), href: '#length' },
+	{ label: t('docsSections.apiReference'), href: '#api-reference' },
 ] as const;
 
 const { setToc, clearToc } = usePageToc();
@@ -79,20 +82,19 @@ const handleSubmit = (value: string): void => {
 
 <template>
 	<header class="space-y-3">
-		<h1 class="text-4xl font-semibold">OTP Input</h1>
+		<h1 class="text-4xl font-semibold">{{ $t('component.otp') }}</h1>
 		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
-			A small one-time password input inspired by shadcn-vue, simplified for
-			Nuxt auto-import and direct output events.
+			{{ $t('componentDocs.otp.description') }}
 		</p>
 	</header>
 
 	<section id="installation" class="space-y-5">
-		<h2 class="text-2xl font-semibold">Installation</h2>
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.installation') }}</h2>
 		<InstallCommandBlock component="otp" />
 	</section>
 
 	<section id="usage" class="space-y-5">
-		<h2 class="text-2xl font-semibold">Usage</h2>
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.usage') }}</h2>
 		<ExampleBlock :code="examples.usage">
 			<div class="space-y-3">
 				<OtpInput v-model="otpValue" :length="6" @submit="handleSubmit" />
@@ -104,7 +106,7 @@ const handleSubmit = (value: string): void => {
 	</section>
 
 	<section id="length" class="space-y-5">
-		<h2 class="text-2xl font-semibold">Length</h2>
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.length') }}</h2>
 		<ExampleBlock :code="examples.length">
 			<div class="grid gap-4">
 				<OtpInput v-model="lengthValue" :length="4" />
@@ -114,15 +116,15 @@ const handleSubmit = (value: string): void => {
 	</section>
 
 	<section id="api-reference" class="space-y-4">
-		<h2 class="text-2xl font-semibold">API Reference</h2>
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.apiReference') }}</h2>
 		<div class="overflow-hidden rounded-xl border">
 			<table class="w-full text-left text-sm">
 				<thead class="border-b bg-secondary text-muted-foreground">
 					<tr>
-						<th class="px-4 py-3 font-medium">Prop</th>
-						<th class="px-4 py-3 font-medium">Type</th>
-						<th class="px-4 py-3 font-medium">Default</th>
-						<th class="px-4 py-3 font-medium">Description</th>
+						<th class="px-4 py-3 font-medium">{{ $t('docsTable.prop') }}</th>
+						<th class="px-4 py-3 font-medium">{{ $t('docsTable.type') }}</th>
+						<th class="px-4 py-3 font-medium">{{ $t('docsTable.default') }}</th>
+						<th class="px-4 py-3 font-medium">{{ $t('docsTable.description') }}</th>
 					</tr>
 				</thead>
 				<tbody class="divide-y">
@@ -144,9 +146,9 @@ const handleSubmit = (value: string): void => {
 			<table class="w-full text-left text-sm">
 				<thead class="border-b bg-secondary text-muted-foreground">
 					<tr>
-						<th class="px-4 py-3 font-medium">Event</th>
-						<th class="px-4 py-3 font-medium">Type</th>
-						<th class="px-4 py-3 font-medium">Description</th>
+						<th class="px-4 py-3 font-medium">{{ $t('docsTable.event') }}</th>
+						<th class="px-4 py-3 font-medium">{{ $t('docsTable.type') }}</th>
+						<th class="px-4 py-3 font-medium">{{ $t('docsTable.description') }}</th>
 					</tr>
 				</thead>
 				<tbody class="divide-y">

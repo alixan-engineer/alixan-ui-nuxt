@@ -1,13 +1,16 @@
 <script setup lang="ts">
+const { t } = useI18n();
+
 usePageMeta({
-	title: 'Autocomplete - Alixan UI',
+	title: t('componentDocs.autocomplete.metaTitle'),
+	description: t('componentDocs.autocomplete.description'),
 });
 
 const tocLinks = [
-	{ label: 'Installation', href: '#installation' },
-	{ label: 'Usage', href: '#usage' },
-	{ label: 'Validation', href: '#validation' },
-	{ label: 'With Chips', href: '#with-chips' },
+	{ label: t('docsSections.installation'), href: '#installation' },
+	{ label: t('docsSections.usage'), href: '#usage' },
+	{ label: t('docsSections.validation'), href: '#validation' },
+	{ label: t('docsSections.withChips'), href: '#with-chips' },
 ] as const;
 
 const { setToc, clearToc } = usePageToc();
@@ -81,20 +84,19 @@ const options = [
 
 <template>
 	<header class="space-y-3">
-		<h1 class="text-4xl font-semibold">Autocomplete</h1>
+		<h1 class="text-4xl font-semibold">{{ $t('component.autocomplete') }}</h1>
 		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
-			A searchable select input with a teleported list and safe outside click
-			catcher.
+			{{ $t('componentDocs.autocomplete.description') }}
 		</p>
 	</header>
 
 	<section id="installation" class="space-y-5">
-		<h2 class="text-2xl font-semibold">Installation</h2>
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.installation') }}</h2>
 		<InstallCommandBlock component="autocomplete" />
 	</section>
 
 	<section id="usage" class="space-y-5">
-		<h2 class="text-2xl font-semibold">Usage</h2>
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.usage') }}</h2>
 		<ExampleBlock :code="examples.usage">
 			<div class="w-full max-w-sm">
 				<Autocomplete v-model="city" label="City" :options="options" />
@@ -103,7 +105,7 @@ const options = [
 	</section>
 
 	<section id="validation" class="space-y-5">
-		<h2 class="text-2xl font-semibold">Validation</h2>
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.validation') }}</h2>
 		<ExampleBlock :code="examples.validation">
 			<div class="w-full max-w-sm space-y-4">
 				<Autocomplete
@@ -118,7 +120,7 @@ const options = [
 	</section>
 
 	<section id="with-chips" class="space-y-5">
-		<h2 class="text-2xl font-semibold">With Chips</h2>
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.withChips') }}</h2>
 		<ExampleBlock :code="examples.chips">
 			<div class="w-full max-w-sm">
 				<AutocompleteChips v-model="cities" label="Cities" :options="options" />

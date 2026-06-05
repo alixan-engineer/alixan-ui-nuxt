@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import ConfirmDialog from '~/components/ui/confirm-dialog/ConfirmDialog.vue';
+const { t } = useI18n();
+
 
 usePageMeta({
-	title: 'Confirm Dialog - Alixan UI',
+	title: t('componentDocs.confirmDialog.metaTitle'),
+	description: t('componentDocs.confirmDialog.description'),
 });
 
 const tocLinks = [
-	{ label: 'Installation', href: '#installation' },
-	{ label: 'Usage', href: '#usage' },
+	{ label: t('docsSections.installation'), href: '#installation' },
+	{ label: t('docsSections.usage'), href: '#usage' },
 ] as const;
 
 const { setToc, clearToc } = usePageToc();
@@ -66,19 +69,19 @@ const openConfirm = (): void => {
 
 <template>
 	<header class="space-y-3">
-		<h1 class="text-4xl font-semibold">Confirm Dialog</h1>
+		<h1 class="text-4xl font-semibold">{{ $t('component.confirmDialog') }}</h1>
 		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
-			A focused confirmation dialog with cancel and submit actions.
+			{{ $t('componentDocs.confirmDialog.description') }}
 		</p>
 	</header>
 
 	<section id="installation" class="space-y-5">
-		<h2 class="text-2xl font-semibold">Installation</h2>
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.installation') }}</h2>
 		<InstallCommandBlock component="confirm-dialog" />
 	</section>
 
 	<section id="usage" class="space-y-5">
-		<h2 class="text-2xl font-semibold">Usage</h2>
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.usage') }}</h2>
 		<ExampleBlock :code="code">
 			<Button color="destructive" @click="openConfirm">Delete</Button>
 		</ExampleBlock>

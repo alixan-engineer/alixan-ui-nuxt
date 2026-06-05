@@ -3,11 +3,15 @@
 	"name": "calendar",
 	"type": "component",
 	"title": "Calendar",
-	"description": "Readonly input-style calendar with day and range modes.",
+	"description": "Readonly input-style calendar with month and year selects, arrows and range presets.",
 	"files": [
 		{
 			"source": "templates/calendar/Calendar.vue",
 			"target": "components/ui/calendar/Calendar.vue"
+		},
+		{
+			"source": "templates/checkbox/Checkbox.vue",
+			"target": "components/ui/checkbox/Checkbox.vue"
 		},
 		{
 			"source": "templates/input/Input.vue",

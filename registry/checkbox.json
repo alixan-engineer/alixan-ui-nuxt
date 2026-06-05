@@ -1,0 +1,17 @@
+{
+	"$schema": "https://nuxt.ui.alixan.kz/schema/registry-item.json",
+	"name": "checkbox",
+	"type": "component",
+	"title": "Checkbox",
+	"description": "Circular iOS-style checkbox with single and multiple selection modes.",
+	"files": [
+		{
+			"source": "templates/checkbox/Checkbox.vue",
+			"target": "components/ui/checkbox/Checkbox.vue"
+		},
+		{
+			"source": "templates/utils/cn.ts",
+			"target": "utils/cn.ts"
+		}
+	]
+}

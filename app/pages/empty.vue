@@ -1,13 +1,16 @@
 <script setup lang="ts">
+const { t } = useI18n();
+
 usePageMeta({
-	title: 'Empty - Alixan UI',
+	title: t('componentDocs.empty.metaTitle'),
+	description: t('componentDocs.empty.description'),
 });
 
 const tocLinks = [
-	{ label: 'Installation', href: '#installation' },
-	{ label: 'Usage', href: '#usage' },
-	{ label: 'With Media', href: '#with-media' },
-	{ label: 'API Reference', href: '#api-reference' },
+	{ label: t('docsSections.installation'), href: '#installation' },
+	{ label: t('docsSections.usage'), href: '#usage' },
+	{ label: t('docsSections.withMedia'), href: '#with-media' },
+	{ label: t('docsSections.apiReference'), href: '#api-reference' },
 ] as const;
 
 const { setToc, clearToc } = usePageToc();
@@ -72,20 +75,19 @@ const examples = {
 
 <template>
 	<header class="space-y-3">
-		<h1 class="text-4xl font-semibold">Empty</h1>
+		<h1 class="text-4xl font-semibold">{{ $t('component.empty') }}</h1>
 		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
-			A centered empty state for missing data, empty search results and error
-			pages.
+			{{ $t('componentDocs.empty.description') }}
 		</p>
 	</header>
 
 	<section id="installation" class="space-y-5">
-		<h2 class="text-2xl font-semibold">Installation</h2>
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.installation') }}</h2>
 		<InstallCommandBlock component="empty" />
 	</section>
 
 	<section id="usage" class="space-y-5">
-		<h2 class="text-2xl font-semibold">Usage</h2>
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.usage') }}</h2>
 		<ExampleBlock :code="examples.usage">
 			<Empty
 				title="No results"
@@ -96,7 +98,7 @@ const examples = {
 	</section>
 
 	<section id="with-media" class="space-y-5">
-		<h2 class="text-2xl font-semibold">With Media</h2>
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.withMedia') }}</h2>
 		<ExampleBlock :code="examples.withMedia">
 			<Empty
 				title="Page not found"
@@ -109,15 +111,15 @@ const examples = {
 	</section>
 
 	<section id="api-reference" class="space-y-4">
-		<h2 class="text-2xl font-semibold">API Reference</h2>
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.apiReference') }}</h2>
 		<div class="overflow-hidden rounded-xl border">
 			<table class="w-full text-left text-sm">
 				<thead class="border-b bg-secondary text-muted-foreground">
 					<tr>
-						<th class="px-4 py-3 font-medium">Prop</th>
-						<th class="px-4 py-3 font-medium">Type</th>
-						<th class="px-4 py-3 font-medium">Default</th>
-						<th class="px-4 py-3 font-medium">Description</th>
+						<th class="px-4 py-3 font-medium">{{ $t('docsTable.prop') }}</th>
+						<th class="px-4 py-3 font-medium">{{ $t('docsTable.type') }}</th>
+						<th class="px-4 py-3 font-medium">{{ $t('docsTable.default') }}</th>
+						<th class="px-4 py-3 font-medium">{{ $t('docsTable.description') }}</th>
 					</tr>
 				</thead>
 				<tbody class="divide-y">
@@ -140,8 +142,8 @@ const examples = {
 			<table class="w-full text-left text-sm">
 				<thead class="border-b bg-secondary text-muted-foreground">
 					<tr>
-						<th class="px-4 py-3 font-medium">Slot</th>
-						<th class="px-4 py-3 font-medium">Description</th>
+						<th class="px-4 py-3 font-medium">{{ $t('docsTable.slot') }}</th>
+						<th class="px-4 py-3 font-medium">{{ $t('docsTable.description') }}</th>
 					</tr>
 				</thead>
 				<tbody class="divide-y">

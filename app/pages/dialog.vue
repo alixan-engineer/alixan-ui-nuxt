@@ -1,14 +1,17 @@
 <script setup lang="ts">
 import DialogPreviewContent from '~/components/examples/DialogPreviewContent.vue';
+const { t } = useI18n();
+
 
 usePageMeta({
-	title: 'Dialog - Alixan UI',
+	title: t('componentDocs.dialog.metaTitle'),
+	description: t('componentDocs.dialog.description'),
 });
 
 const tocLinks = [
-	{ label: 'Installation', href: '#installation' },
-	{ label: 'Usage', href: '#usage' },
-	{ label: 'API Reference', href: '#api-reference' },
+	{ label: t('docsSections.installation'), href: '#installation' },
+	{ label: t('docsSections.usage'), href: '#usage' },
+	{ label: t('docsSections.apiReference'), href: '#api-reference' },
 ] as const;
 
 const { setToc, clearToc } = usePageToc();
@@ -144,19 +147,19 @@ const openDialog = (): void => {
 
 <template>
 	<header class="space-y-3">
-		<h1 class="text-4xl font-semibold">Dialog</h1>
+		<h1 class="text-4xl font-semibold">{{ $t('component.dialog') }}</h1>
 		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
-			A teleported modal surface for focused decisions and forms.
+			{{ $t('componentDocs.dialog.description') }}
 		</p>
 	</header>
 
 	<section id="installation" class="space-y-5">
-		<h2 class="text-2xl font-semibold">Installation</h2>
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.installation') }}</h2>
 		<InstallCommandBlock component="dialog" />
 	</section>
 
 	<section id="usage" class="space-y-5">
-		<h2 class="text-2xl font-semibold">Usage</h2>
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.usage') }}</h2>
 		<ExampleBlock :code="code">
 			<div class="flex flex-wrap items-center justify-center gap-3">
 				<Button @click="openDialog">Open dialog</Button>
@@ -169,15 +172,15 @@ const openDialog = (): void => {
 	</section>
 
 	<section id="api-reference" class="space-y-4">
-		<h2 class="text-2xl font-semibold">API Reference</h2>
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.apiReference') }}</h2>
 		<div class="overflow-hidden rounded-xl border">
 			<table class="w-full text-left text-sm">
 				<thead class="border-b bg-secondary text-muted-foreground">
 					<tr>
-						<th class="px-4 py-3 font-medium">Option</th>
-						<th class="px-4 py-3 font-medium">Type</th>
-						<th class="px-4 py-3 font-medium">Default</th>
-						<th class="px-4 py-3 font-medium">Description</th>
+						<th class="px-4 py-3 font-medium">{{ $t('docsTable.option') }}</th>
+						<th class="px-4 py-3 font-medium">{{ $t('docsTable.type') }}</th>
+						<th class="px-4 py-3 font-medium">{{ $t('docsTable.default') }}</th>
+						<th class="px-4 py-3 font-medium">{{ $t('docsTable.description') }}</th>
 					</tr>
 				</thead>
 				<tbody class="divide-y">

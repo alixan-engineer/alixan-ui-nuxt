@@ -6,13 +6,16 @@ const { links } = usePageToc();
 const sidebar = useMobileSidebar();
 const { locale } = useI18n();
 
+// Init default meta SEO tags
 usePageMeta();
 
+// Init lang and favicon for html
 useHead({
 	htmlAttrs: { lang: locale.value },
 	link: favicon,
 });
 
+// Scroll to top when change page
 const nuxtApp = useNuxtApp();
 nuxtApp.hook('page:finish', () => {
 	document.getElementById('root')?.scrollTo(0, 0);

@@ -40,6 +40,7 @@ export const menuSections: IMenuSection[] = [
 		items: [
 			{ labelKey: 'component.input', to: '/input' },
 			{ labelKey: 'component.otp', to: '/otp' },
+			{ labelKey: 'component.checkbox', to: '/checkbox' },
 			{ labelKey: 'component.select', to: '/select' },
 			{ labelKey: 'component.search', to: '/search' },
 			{ labelKey: 'component.autocomplete', to: '/autocomplete' },

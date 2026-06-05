@@ -1,13 +1,16 @@
 <script setup lang="ts">
+const { t } = useI18n();
+
 usePageMeta({
-	title: 'Tabs - Alixan UI',
+	title: t('componentDocs.tabs.metaTitle'),
+	description: t('componentDocs.tabs.description'),
 });
 
 const tocLinks = [
-	{ label: 'Installation', href: '#installation' },
-	{ label: 'Usage', href: '#usage' },
-	{ label: 'Full Width', href: '#full-width' },
-	{ label: 'API Reference', href: '#api-reference' },
+	{ label: t('docsSections.installation'), href: '#installation' },
+	{ label: t('docsSections.usage'), href: '#usage' },
+	{ label: t('docsSections.fullWidth'), href: '#full-width' },
+	{ label: t('docsSections.apiReference'), href: '#api-reference' },
 ] as const;
 
 const { setToc, clearToc } = usePageToc();
@@ -20,7 +23,10 @@ onBeforeUnmount(() => {
 	clearToc();
 });
 
-const tabs = ['Account', 'Password'];
+const tabs = [
+	t('componentDocs.tabs.demo.account'),
+	t('componentDocs.tabs.demo.password'),
+];
 const selected = ref(0);
 const materialSelected = ref(0);
 const fullSelected = ref(0);
@@ -73,19 +79,21 @@ const selected = ref(0)
 
 <template>
 	<header class="space-y-3">
-		<h1 class="text-4xl font-semibold">Tabs</h1>
+		<h1 class="text-4xl font-semibold">{{ $t('component.tabs') }}</h1>
 		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
-			A compact segmented navigation component for switching between views.
+			{{ $t('componentDocs.tabs.description') }}
 		</p>
 	</header>
 
 	<section id="installation" class="space-y-5">
-		<h2 class="text-2xl font-semibold">Installation</h2>
+		<h2 class="text-2xl font-semibold">
+			{{ $t('docsSections.installation') }}
+		</h2>
 		<InstallCommandBlock component="tabs" />
 	</section>
 
 	<section id="usage" class="space-y-5">
-		<h2 class="text-2xl font-semibold">Usage</h2>
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.usage') }}</h2>
 		<ExampleBlock :code="examples.usage">
 			<div class="grid gap-4">
 				<Tabs v-model="selected" :tabs="tabs" design="cupertino" />
@@ -95,7 +103,7 @@ const selected = ref(0)
 	</section>
 
 	<section id="full-width" class="space-y-5">
-		<h2 class="text-2xl font-semibold">Full Width</h2>
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.fullWidth') }}</h2>
 		<ExampleBlock :code="examples.full">
 			<div class="w-full">
 				<Tabs v-model="fullSelected" :tabs="tabs" full />
@@ -104,15 +112,17 @@ const selected = ref(0)
 	</section>
 
 	<section id="api-reference" class="space-y-4">
-		<h2 class="text-2xl font-semibold">API Reference</h2>
+		<h2 class="text-2xl font-semibold">
+			{{ $t('docsSections.apiReference') }}
+		</h2>
 		<div class="overflow-hidden rounded-xl border">
 			<table class="w-full text-left text-sm">
 				<thead class="border-b bg-secondary text-muted-foreground">
 					<tr>
-						<th class="px-4 py-3 font-medium">Prop</th>
-						<th class="px-4 py-3 font-medium">Type</th>
-						<th class="px-4 py-3 font-medium">Default</th>
-						<th class="px-4 py-3 font-medium">Description</th>
+						<th class="px-4 py-3 font-medium">{{ $t('docsTable.prop') }}</th>
+						<th class="px-4 py-3 font-medium">{{ $t('docsTable.type') }}</th>
+						<th class="px-4 py-3 font-medium">{{ $t('docsTable.default') }}</th>
+						<th class="px-4 py-3 font-medium">{{ $t('docsTable.description') }}</th>
 					</tr>
 				</thead>
 				<tbody class="divide-y">

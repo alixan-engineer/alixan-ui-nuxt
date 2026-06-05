@@ -1,23 +1,26 @@
 <script setup lang="ts">
 import { Eye, EyeOff, Lock, Mail } from '@lucide/vue';
+const { t } = useI18n();
+
 
 usePageMeta({
-	title: 'Input - Alixan UI',
+	title: t('componentDocs.input.metaTitle'),
+	description: t('componentDocs.input.description'),
 });
 
 const tocLinks = [
-	{ label: 'Installation', href: '#installation' },
-	{ label: 'Usage', href: '#usage' },
-	{ label: 'State', href: '#state' },
-	{ label: 'Validation', href: '#validation' },
-	{ label: 'Length', href: '#length' },
-	{ label: 'With Icon', href: '#with-icon' },
-	{ label: 'Variants', href: '#variants' },
+	{ label: t('docsSections.installation'), href: '#installation' },
+	{ label: t('docsSections.usage'), href: '#usage' },
+	{ label: t('docsSections.state'), href: '#state' },
+	{ label: t('docsSections.validation'), href: '#validation' },
+	{ label: t('docsSections.length'), href: '#length' },
+	{ label: t('docsSections.withIcon'), href: '#with-icon' },
+	{ label: t('docsSections.variants'), href: '#variants' },
 	{ label: 'Email', href: '#variant-email', child: true },
 	{ label: 'Password', href: '#variant-password', child: true },
 	{ label: 'Phone', href: '#variant-phone', child: true },
 	{ label: 'Username', href: '#variant-username', child: true },
-	{ label: 'API Reference', href: '#api-reference' },
+	{ label: t('docsSections.apiReference'), href: '#api-reference' },
 ] as const;
 
 const { setToc, clearToc } = usePageToc();
@@ -258,15 +261,14 @@ const username = ref('')
 
 <template>
 	<header class="space-y-3">
-		<h1 class="text-4xl font-semibold">Input</h1>
+		<h1 class="text-4xl font-semibold">{{ $t('component.input') }}</h1>
 		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
-			Displays a form input with a floating label, clean states and slots for
-			leading or trailing icons.
+			{{ $t('componentDocs.input.description') }}
 		</p>
 	</header>
 
 	<section id="installation" class="space-y-5">
-		<h2 class="text-2xl font-semibold">Installation</h2>
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.installation') }}</h2>
 		<InstallCommandBlock component="input" />
 		<p class="text-sm leading-7 text-muted-foreground">
 			This command installs only the base <code>Input</code> component with
@@ -276,7 +278,7 @@ const username = ref('')
 
 	<section id="usage" class="space-y-5">
 		<div class="space-y-2">
-			<h2 class="text-2xl font-semibold">Usage</h2>
+			<h2 class="text-2xl font-semibold">{{ $t('docsSections.usage') }}</h2>
 			<p class="text-muted-foreground leading-7">
 				The label moves when the input is focused or has a value. Use
 				<code>v-model</code> for two-way binding.
@@ -290,7 +292,7 @@ const username = ref('')
 	</section>
 
 	<section id="state" class="space-y-4">
-		<h2 class="text-2xl font-semibold">State</h2>
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.state') }}</h2>
 		<ExampleBlock :code="examples.state">
 			<div class="grid w-full max-w-sm gap-3">
 				<Input v-model="stateValue" label="Readonly" readonly />
@@ -301,7 +303,7 @@ const username = ref('')
 	</section>
 
 	<section id="validation" class="space-y-4">
-		<h2 class="text-2xl font-semibold">Validation</h2>
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.validation') }}</h2>
 		<ExampleBlock :code="examples.requiredExample">
 			<div class="w-full max-w-sm">
 				<Input
@@ -316,7 +318,7 @@ const username = ref('')
 	</section>
 
 	<section id="length" class="space-y-4">
-		<h2 class="text-2xl font-semibold">Length</h2>
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.length') }}</h2>
 		<ExampleBlock :code="examples.lengthExample">
 			<div class="w-full max-w-sm">
 				<Input
@@ -331,7 +333,7 @@ const username = ref('')
 	</section>
 
 	<section id="with-icon" class="space-y-4">
-		<h2 class="text-2xl font-semibold">With Icon</h2>
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.withIcon') }}</h2>
 		<ExampleBlock :code="examples.withIcon">
 			<div class="grid w-full max-w-sm gap-3">
 				<Input v-model="iconValue" label="Email" type="email">
@@ -367,7 +369,7 @@ const username = ref('')
 
 	<section id="variants" class="space-y-5">
 		<div class="space-y-2">
-			<h2 class="text-2xl font-semibold">Variants</h2>
+			<h2 class="text-2xl font-semibold">{{ $t('docsSections.variants') }}</h2>
 			<p class="text-muted-foreground leading-7">
 				Install focused wrappers when you want a dedicated component for a
 				specific input pattern.
@@ -439,15 +441,15 @@ const username = ref('')
 	</section>
 
 	<section id="api-reference" class="space-y-4">
-		<h2 class="text-2xl font-semibold">API Reference</h2>
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.apiReference') }}</h2>
 		<div class="overflow-x-auto rounded-xl border">
 			<table class="w-full min-w-180 text-left text-sm">
 				<thead class="border-b bg-secondary text-muted-foreground">
 					<tr>
-						<th class="px-4 py-3 font-medium">Prop</th>
-						<th class="px-4 py-3 font-medium">Type</th>
-						<th class="px-4 py-3 font-medium">Default</th>
-						<th class="px-4 py-3 font-medium">Description</th>
+						<th class="px-4 py-3 font-medium">{{ $t('docsTable.prop') }}</th>
+						<th class="px-4 py-3 font-medium">{{ $t('docsTable.type') }}</th>
+						<th class="px-4 py-3 font-medium">{{ $t('docsTable.default') }}</th>
+						<th class="px-4 py-3 font-medium">{{ $t('docsTable.description') }}</th>
 					</tr>
 				</thead>
 				<tbody class="divide-y">

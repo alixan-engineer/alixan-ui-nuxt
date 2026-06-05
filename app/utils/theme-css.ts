@@ -5,6 +5,8 @@ interface ThemeCssColors {
 	darkPrimaryForeground?: string;
 }
 
+type CssVariableReplacement = [selector: string, variable: string, value: string];
+
 const escapeRegExp = (value: string): string =>
 	value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
@@ -29,7 +31,7 @@ export const createThemeCss = (
 	const darkPrimaryForeground =
 		colors.darkPrimaryForeground ?? colors.primaryForeground;
 
-	return [
+	const replacements: CssVariableReplacement[] = [
 		[':root', '--primary', colors.primary],
 		[':root', '--primary-foreground', colors.primaryForeground],
 		[':root', '--sidebar-primary', colors.primary],
@@ -38,7 +40,9 @@ export const createThemeCss = (
 		['.dark', '--primary-foreground', darkPrimaryForeground],
 		['.dark', '--sidebar-primary', darkPrimary],
 		['.dark', '--sidebar-primary-foreground', darkPrimaryForeground],
-	].reduce(
+	];
+
+	return replacements.reduce(
 		(currentCss, [selector, variable, value]) =>
 			replaceCssVariable(currentCss, selector, variable, value),
 		css,

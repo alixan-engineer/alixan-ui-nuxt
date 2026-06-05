@@ -1,13 +1,16 @@
 <script setup lang="ts">
+const { t } = useI18n();
+
 usePageMeta({
-	title: 'Search - Alixan UI',
+	title: t('componentDocs.search.metaTitle'),
+	description: t('componentDocs.search.description'),
 });
 
 const tocLinks = [
-	{ label: 'Installation', href: '#installation' },
-	{ label: 'Usage', href: '#usage' },
-	{ label: 'Debounce', href: '#debounce' },
-	{ label: 'API Reference', href: '#api-reference' },
+	{ label: t('docsSections.installation'), href: '#installation' },
+	{ label: t('docsSections.usage'), href: '#usage' },
+	{ label: t('docsSections.debounce'), href: '#debounce' },
+	{ label: t('docsSections.apiReference'), href: '#api-reference' },
 ] as const;
 
 const { setToc, clearToc } = usePageToc();
@@ -102,21 +105,20 @@ const debouncedValue = ref('')
 
 <template>
 	<header class="space-y-3">
-		<h1 class="text-4xl font-semibold">Search</h1>
+		<h1 class="text-4xl font-semibold">{{ $t('component.search') }}</h1>
 		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
-			A focused search field with built-in debounce, search icon and clear
-			button.
+			{{ $t('componentDocs.search.description') }}
 		</p>
 	</header>
 
 	<section id="installation" class="space-y-5">
-		<h2 class="text-2xl font-semibold">Installation</h2>
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.installation') }}</h2>
 		<InstallCommandBlock component="search" />
 	</section>
 
 	<section id="usage" class="space-y-5">
 		<div class="space-y-2">
-			<h2 class="text-2xl font-semibold">Usage</h2>
+			<h2 class="text-2xl font-semibold">{{ $t('docsSections.usage') }}</h2>
 			<p class="text-muted-foreground leading-7">
 				Use <code>v-model</code> for the raw value and listen to
 				<code>@search</code> for the debounced value.
@@ -141,7 +143,7 @@ const debouncedValue = ref('')
 
 	<section id="debounce" class="space-y-5">
 		<div class="space-y-2">
-			<h2 class="text-2xl font-semibold">Debounce</h2>
+			<h2 class="text-2xl font-semibold">{{ $t('docsSections.debounce') }}</h2>
 			<p class="text-muted-foreground leading-7">
 				Change the delay with the <code>debounce</code> prop. The default is
 				<code>300</code> milliseconds.
@@ -167,17 +169,17 @@ const debouncedValue = ref('')
 
 	<section id="api-reference" class="space-y-6">
 		<div class="space-y-2">
-			<h2 class="text-2xl font-semibold">API Reference</h2>
+			<h2 class="text-2xl font-semibold">{{ $t('docsSections.apiReference') }}</h2>
 			<h3 class="text-xl font-semibold">Props</h3>
 		</div>
 		<div class="overflow-hidden rounded-xl border">
 			<table class="w-full text-left text-sm">
 				<thead class="border-b bg-secondary text-muted-foreground">
 					<tr>
-						<th class="px-4 py-3 font-medium">Prop</th>
-						<th class="px-4 py-3 font-medium">Type</th>
-						<th class="px-4 py-3 font-medium">Default</th>
-						<th class="px-4 py-3 font-medium">Description</th>
+						<th class="px-4 py-3 font-medium">{{ $t('docsTable.prop') }}</th>
+						<th class="px-4 py-3 font-medium">{{ $t('docsTable.type') }}</th>
+						<th class="px-4 py-3 font-medium">{{ $t('docsTable.default') }}</th>
+						<th class="px-4 py-3 font-medium">{{ $t('docsTable.description') }}</th>
 					</tr>
 				</thead>
 				<tbody class="divide-y">
@@ -201,9 +203,9 @@ const debouncedValue = ref('')
 				<table class="w-full text-left text-sm">
 					<thead class="border-b bg-secondary text-muted-foreground">
 						<tr>
-							<th class="px-4 py-3 font-medium">Event</th>
-							<th class="px-4 py-3 font-medium">Payload</th>
-							<th class="px-4 py-3 font-medium">Description</th>
+							<th class="px-4 py-3 font-medium">{{ $t('docsTable.event') }}</th>
+							<th class="px-4 py-3 font-medium">{{ $t('docsTable.payload') }}</th>
+							<th class="px-4 py-3 font-medium">{{ $t('docsTable.description') }}</th>
 						</tr>
 					</thead>
 					<tbody class="divide-y">

@@ -43,7 +43,7 @@ const handleAction = (): void => {
 			</p>
 		</div>
 
-		<Button class="mt-5 w-full" color="primary" @click="handleAction">
+		<Button class="mt-5 w-full" color="primary" size="sm" @click="handleAction">
 			{{ data?.buttonLabel ?? 'OK' }}
 		</Button>
 	</div>

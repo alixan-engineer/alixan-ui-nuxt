@@ -1,13 +1,16 @@
 <script setup lang="ts">
+const { t } = useI18n();
+
 usePageMeta({
-	title: 'Accordion - Alixan UI',
+	title: t('componentDocs.accordion.metaTitle'),
+	description: t('componentDocs.accordion.description'),
 });
 
 const tocLinks = [
-	{ label: 'Installation', href: '#installation' },
-	{ label: 'Usage', href: '#usage' },
-	{ label: 'Multiple', href: '#multiple' },
-	{ label: 'API Reference', href: '#api-reference' },
+	{ label: t('docsSections.installation'), href: '#installation' },
+	{ label: t('docsSections.usage'), href: '#usage' },
+	{ label: t('docsSections.multiple'), href: '#multiple' },
+	{ label: t('docsSections.apiReference'), href: '#api-reference' },
 ] as const;
 
 const { setToc, clearToc } = usePageToc();
@@ -26,21 +29,18 @@ const activeItems = ref<Array<string | number>>(['item-1']);
 const items = [
 	{
 		value: 'item-1',
-		title: 'Is it accessible?',
-		content:
-			'Yes. The trigger uses a native button and exposes aria-expanded for screen readers.',
+		title: t('componentDocs.accordion.demo.accessibleTitle'),
+		content: t('componentDocs.accordion.demo.accessibleContent'),
 	},
 	{
 		value: 'item-2',
-		title: 'Is it styled?',
-		content:
-			'Yes. It follows the same clean spacing, rounded corners and muted typography as Alixan UI.',
+		title: t('componentDocs.accordion.demo.styledTitle'),
+		content: t('componentDocs.accordion.demo.styledContent'),
 	},
 	{
 		value: 'item-3',
-		title: 'Can I use slots?',
-		content:
-			'Yes. Use title and content slots when you need custom markup for each item.',
+		title: t('componentDocs.accordion.demo.slotsTitle'),
+		content: t('componentDocs.accordion.demo.slotsContent'),
 	},
 ] as const;
 
@@ -107,20 +107,21 @@ const apiRows = [
 
 <template>
 	<header class="space-y-3">
-		<h1 class="text-4xl font-semibold">Accordion</h1>
+		<h1 class="text-4xl font-semibold">{{ $t('component.accordion') }}</h1>
 		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
-			A vertical disclosure component for grouped content, inspired by
-			shadcn-vue and adapted for Nuxt auto-import.
+			{{ $t('componentDocs.accordion.description') }}
 		</p>
 	</header>
 
 	<section id="installation" class="space-y-5">
-		<h2 class="text-2xl font-semibold">Installation</h2>
+		<h2 class="text-2xl font-semibold">
+			{{ $t('docsSections.installation') }}
+		</h2>
 		<InstallCommandBlock component="accordion" />
 	</section>
 
 	<section id="usage" class="space-y-5">
-		<h2 class="text-2xl font-semibold">Usage</h2>
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.usage') }}</h2>
 		<ExampleBlock :code="usageCode">
 			<div class="w-full max-w-xl">
 				<Accordion v-model="activeItem" :items="items" />
@@ -129,7 +130,7 @@ const apiRows = [
 	</section>
 
 	<section id="multiple" class="space-y-5">
-		<h2 class="text-2xl font-semibold">Multiple</h2>
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.multiple') }}</h2>
 		<ExampleBlock :code="multipleCode">
 			<div class="w-full max-w-xl">
 				<Accordion
@@ -142,15 +143,17 @@ const apiRows = [
 	</section>
 
 	<section id="api-reference" class="space-y-5">
-		<h2 class="text-2xl font-semibold">API Reference</h2>
+		<h2 class="text-2xl font-semibold">
+			{{ $t('docsSections.apiReference') }}
+		</h2>
 		<div class="overflow-hidden rounded-2xl border">
 			<table class="w-full text-left text-sm">
 				<thead class="bg-secondary text-muted-foreground">
 					<tr>
-						<th class="px-4 py-3 font-medium">Prop</th>
-						<th class="px-4 py-3 font-medium">Type</th>
-						<th class="px-4 py-3 font-medium">Default</th>
-						<th class="px-4 py-3 font-medium">Description</th>
+						<th class="px-4 py-3 font-medium">{{ $t('docsTable.prop') }}</th>
+						<th class="px-4 py-3 font-medium">{{ $t('docsTable.type') }}</th>
+						<th class="px-4 py-3 font-medium">{{ $t('docsTable.default') }}</th>
+						<th class="px-4 py-3 font-medium">{{ $t('docsTable.description') }}</th>
 					</tr>
 				</thead>
 				<tbody class="divide-y">

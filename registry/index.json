@@ -54,7 +54,12 @@
 		{
 			"name": "calendar",
 			"title": "Calendar",
-			"description": "Readonly input-style date picker with day and range modes."
+			"description": "Readonly input-style date picker with month and year selects, arrows and range presets."
+		},
+		{
+			"name": "checkbox",
+			"title": "Checkbox",
+			"description": "Circular iOS-style checkbox with single and multiple selection modes."
 		},
 		{
 			"name": "accordion",
