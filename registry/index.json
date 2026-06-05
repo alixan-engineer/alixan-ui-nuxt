@@ -77,6 +77,16 @@
 			"description": "Soft Cupertino-inspired status pill with semantic tones."
 		},
 		{
+			"name": "info",
+			"title": "Info",
+			"description": "Simple hint block for contextual documentation notes and helpful links."
+		},
+		{
+			"name": "text-link",
+			"title": "Text Link",
+			"description": "Inline content link with consistent typography and external-link rel handling."
+		},
+		{
 			"name": "dialog",
 			"title": "Dialog",
 			"description": "Modal dialog with overlay, teleport, slots and smooth transitions."

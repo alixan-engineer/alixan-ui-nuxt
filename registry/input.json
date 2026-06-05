@@ -7,7 +7,7 @@
 	"files": [
 		{
 			"source": "templates/input/Input.vue",
-			"target": "components/ui/Input.vue"
+			"target": "components/ui/input/Input.vue"
 		},
 		{
 			"source": "templates/utils/cn.ts",

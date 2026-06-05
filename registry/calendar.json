@@ -7,11 +7,11 @@
 	"files": [
 		{
 			"source": "templates/calendar/Calendar.vue",
-			"target": "components/ui/Calendar.vue"
+			"target": "components/ui/calendar/Calendar.vue"
 		},
 		{
 			"source": "templates/input/Input.vue",
-			"target": "components/ui/Input.vue"
+			"target": "components/ui/input/Input.vue"
 		},
 		{
 			"source": "templates/utils/cn.ts",

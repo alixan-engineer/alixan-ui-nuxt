@@ -7,15 +7,15 @@
 	"files": [
 		{
 			"source": "templates/autocomplete/Autocomplete.vue",
-			"target": "components/ui/Autocomplete.vue"
+			"target": "components/ui/autocomplete/Autocomplete.vue"
 		},
 		{
 			"source": "templates/autocomplete/AutocompleteChips.vue",
-			"target": "components/ui/AutocompleteChips.vue"
+			"target": "components/ui/autocomplete-chips/AutocompleteChips.vue"
 		},
 		{
 			"source": "templates/input/Input.vue",
-			"target": "components/ui/Input.vue"
+			"target": "components/ui/input/Input.vue"
 		},
 		{
 			"source": "templates/utils/cn.ts",

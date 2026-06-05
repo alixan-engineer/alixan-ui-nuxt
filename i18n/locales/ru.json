@@ -22,7 +22,7 @@
 	"guide": {
 		"fonts": "Шрифты",
 		"i18n": "i18n",
-		"sitemap": "Карта сайта"
+		"seo": "SEO"
 	},
 	"component": {
 		"button": "Кнопка",
@@ -38,6 +38,7 @@
 		"tabs": "Табы",
 		"switch": "Переключатель",
 		"status": "Статус",
+		"textLink": "Текстовая ссылка",
 		"dialog": "Диалог",
 		"alertDialog": "Окно сообщения",
 		"confirmDialog": "Окно подтверждения",

@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { ArrowRight, GitBranch } from '@lucide/vue';
-import AlertDialog from '~/components/ui/AlertDialog.vue';
-import { buttonColors, buttonVariants } from '~/shared/button-options';
+import AlertDialog from '~/components/ui/alert-dialog/AlertDialog.vue';
+import {
+	buttonColors,
+	buttonVariants,
+} from '~/shared/button-options/button-options';
 
-useSeoMeta({
+usePageMeta({
 	title: 'Button - Alixan UI',
-	ogTitle: 'Button - Alixan UI',
-	twitterTitle: 'Button - Alixan UI',
 });
 
 const tocLinks = [
@@ -101,7 +102,7 @@ const buttonProps = [
 
 const examples = {
 	size: `<script setup lang="ts">
-import { Button } from '@/components/ui/button'
+import Button from '@/components/ui/button/Button.vue'
 <\/script>
 
 <template>
@@ -118,7 +119,7 @@ import { Button } from '@/components/ui/button'
   </div>
 </template>`,
 	navigation: `<script setup lang="ts">
-import { Button } from '@/components/ui/button'
+import Button from '@/components/ui/button/Button.vue'
 <\/script>
 
 <template>
@@ -137,7 +138,7 @@ import { Button } from '@/components/ui/button'
   </div>
 </template>`,
 	default: `<script setup lang="ts">
-import { Button } from '@/components/ui/button'
+import Button from '@/components/ui/button/Button.vue'
 <\/script>
 
 <template>
@@ -146,7 +147,7 @@ import { Button } from '@/components/ui/button'
   </Button>
 </template>`,
 	outline: `<script setup lang="ts">
-import { Button } from '@/components/ui/button'
+import Button from '@/components/ui/button/Button.vue'
 <\/script>
 
 <template>
@@ -155,7 +156,7 @@ import { Button } from '@/components/ui/button'
   </Button>
 </template>`,
 	variant: `<script setup lang="ts">
-import { Button } from '@/components/ui/button'
+import Button from '@/components/ui/button/Button.vue'
 <\/script>
 
 <template>
@@ -166,7 +167,7 @@ import { Button } from '@/components/ui/button'
   </div>
 </template>`,
 	color: `<script setup lang="ts">
-import { Button } from '@/components/ui/button'
+import Button from '@/components/ui/button/Button.vue'
 <\/script>
 
 <template>
@@ -178,7 +179,7 @@ import { Button } from '@/components/ui/button'
   </div>
 </template>`,
 	combinations: `<script setup lang="ts">
-import { Button } from '@/components/ui/button'
+import Button from '@/components/ui/button/Button.vue'
 <\/script>
 
 <template>
@@ -207,7 +208,7 @@ import { Button } from '@/components/ui/button'
 </template>`,
 	withIcon: `<script setup lang="ts">
 import { ArrowRight, GitBranch } from '@lucide/vue'
-import { Button } from '@/components/ui/button'
+import Button from '@/components/ui/button/Button.vue'
 <\/script>
 
 <template>
@@ -268,159 +269,155 @@ const openAlert = () => {
 
 <template>
 	<header class="space-y-3">
-			<h1 class="text-4xl font-semibold">Button</h1>
-			<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
-				Displays a button for actions in forms, toolbars and navigation.
+		<h1 class="text-4xl font-semibold">Button</h1>
+		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
+			Displays a button for actions in forms, toolbars and navigation.
+		</p>
+	</header>
+
+	<section id="installation" class="space-y-5">
+		<h2 class="text-2xl font-semibold">Installation</h2>
+		<InstallCommandBlock component="button" />
+	</section>
+
+	<section id="usage" class="space-y-5">
+		<div class="space-y-2">
+			<h2 class="text-2xl font-semibold">Usage</h2>
+			<p class="text-muted-foreground leading-7">
+				Button styling is built from two independent props: variant chooses the
+				visual weight, and color chooses the action intent. Combine them to get
+				the right emphasis without changing the meaning of the action.
 			</p>
-		</header>
-
-		<section id="installation" class="space-y-5">
-			<h2 class="text-2xl font-semibold">Installation</h2>
-			<InstallCommandBlock component="button" />
-		</section>
-
-		<section id="usage" class="space-y-5">
-			<div class="space-y-2">
-				<h2 class="text-2xl font-semibold">Usage</h2>
-				<p class="text-muted-foreground leading-7">
-					Button styling is built from two independent props: variant chooses
-					the visual weight, and color chooses the action intent. Combine them
-					to get the right emphasis without changing the meaning of the action.
-				</p>
-			</div>
-			<div class="space-y-4">
-				<ExampleBlock :code="examples.combinations">
-					<div class="space-y-4">
-						<div
-							v-for="variant in buttonVariants"
-							:key="`matrix-${variant}`"
-							class="space-y-2"
-						>
-							<p class="text-sm text-muted-foreground">
-								{{ variant }}
-							</p>
-							<div class="flex flex-wrap items-center gap-2">
-								<Button
-									v-for="color in buttonColors"
-									:key="`${variant}-${color}`"
-									:variant="variant"
-									:color="color"
-								>
-									{{ color }}
-								</Button>
-							</div>
+		</div>
+		<div class="space-y-4">
+			<ExampleBlock :code="examples.combinations">
+				<div class="space-y-4">
+					<div
+						v-for="variant in buttonVariants"
+						:key="`matrix-${variant}`"
+						class="space-y-2"
+					>
+						<p class="text-sm text-muted-foreground">
+							{{ variant }}
+						</p>
+						<div class="flex flex-wrap items-center gap-2">
+							<Button
+								v-for="color in buttonColors"
+								:key="`${variant}-${color}`"
+								:variant="variant"
+								:color="color"
+							>
+								{{ color }}
+							</Button>
 						</div>
 					</div>
-				</ExampleBlock>
-			</div>
-		</section>
-
-		<section id="size" class="space-y-4">
-			<h2 class="text-2xl font-semibold tracking-normal">Size</h2>
-			<ExampleBlock :code="examples.size">
-				<div class="flex items-center gap-2">
-					<Button size="sm">Small</Button>
-					<Button>Default</Button>
-					<Button size="lg">Large</Button>
 				</div>
 			</ExampleBlock>
-		</section>
+		</div>
+	</section>
 
-		<section id="navigation" class="space-y-4">
-			<h2 class="text-2xl font-semibold tracking-normal">Navigation</h2>
-			<ExampleBlock :code="examples.navigation">
-				<div class="flex flex-wrap items-center gap-2">
-					<Button to="/icon-button">NuxtLink</Button>
-					<Button
-						href="https://github.com"
-						target="_blank"
-						variant="outlined"
-					>
-						External link
-					</Button>
-				</div>
-			</ExampleBlock>
-		</section>
-
-		<section id="with-icon" class="space-y-4">
-			<h2 class="text-2xl font-semibold tracking-normal">With Icon</h2>
-			<ExampleBlock :code="examples.withIcon">
-				<div class="flex flex-wrap items-center gap-2">
-					<Button variant="outlined">
-						<template #leading>
-							<GitBranch class="size-5" />
-						</template>
-						New Branch
-					</Button>
-
-					<Button variant="outlined">
-						Continue
-						<template #trailing>
-							<ArrowRight class="size-5" />
-						</template>
-					</Button>
-				</div>
-			</ExampleBlock>
-		</section>
-
-		<section id="loading" class="space-y-4">
-			<div class="space-y-2">
-				<h2 class="text-2xl font-semibold tracking-normal">Loading</h2>
-				<p class="text-muted-foreground leading-7">
-					Button does not include a built-in spinner state. If the button keeps
-					spinning inline, the user can still navigate away and lose the action
-					context. A global loader blocks the surface, communicates one active
-					operation, and keeps the experience easier to understand.
-				</p>
+	<section id="size" class="space-y-4">
+		<h2 class="text-2xl font-semibold tracking-normal">Size</h2>
+		<ExampleBlock :code="examples.size">
+			<div class="flex items-center gap-2">
+				<Button size="sm">Small</Button>
+				<Button>Default</Button>
+				<Button size="lg">Large</Button>
 			</div>
-			<ExampleBlock :code="examples.loading">
-				<Button @click="showGlobalLoader">Save changes</Button>
-			</ExampleBlock>
-		</section>
+		</ExampleBlock>
+	</section>
 
-		<section id="disable" class="space-y-4">
-			<div class="space-y-2">
-				<h2 class="text-2xl font-semibold tracking-normal">Disable</h2>
-				<p class="text-muted-foreground leading-7">
-					Prefer not to disable buttons. Keep the action visible and active,
-					then explain why it cannot run with a warning message. This gives the
-					user feedback instead of a dead control.
-				</p>
-			</div>
-			<ExampleBlock :code="examples.disable">
-				<Button variant="outlined" @click="openDisableAlert">
-					Export report
+	<section id="navigation" class="space-y-4">
+		<h2 class="text-2xl font-semibold tracking-normal">Navigation</h2>
+		<ExampleBlock :code="examples.navigation">
+			<div class="flex flex-wrap items-center gap-2">
+				<Button to="/icon-button">NuxtLink</Button>
+				<Button href="https://github.com" target="_blank" variant="outlined">
+					External link
 				</Button>
-			</ExampleBlock>
-		</section>
-
-		<section id="api-reference" class="space-y-4">
-			<h2 class="text-2xl font-semibold">API Reference</h2>
-			<div class="overflow-hidden rounded-xl border">
-				<table class="w-full text-left text-sm">
-					<thead class="border-b bg-secondary text-muted-foreground">
-						<tr>
-							<th class="px-4 py-3 font-medium">Prop</th>
-							<th class="px-4 py-3 font-medium">Type</th>
-							<th class="px-4 py-3 font-medium">Default</th>
-							<th class="px-4 py-3 font-medium">Description</th>
-						</tr>
-					</thead>
-					<tbody class="divide-y">
-						<tr v-for="item in buttonProps" :key="item.name">
-							<td class="px-4 py-3 font-medium">{{ item.name }}</td>
-							<td class="px-4 py-3 text-muted-foreground">
-								{{ item.type }}
-							</td>
-							<td class="px-4 py-3 text-muted-foreground">
-								{{ item.default }}
-							</td>
-							<td class="px-4 py-3 text-muted-foreground">
-								{{ item.description }}
-							</td>
-						</tr>
-					</tbody>
-				</table>
 			</div>
-		</section>
+		</ExampleBlock>
+	</section>
+
+	<section id="with-icon" class="space-y-4">
+		<h2 class="text-2xl font-semibold tracking-normal">With Icon</h2>
+		<ExampleBlock :code="examples.withIcon">
+			<div class="flex flex-wrap items-center gap-2">
+				<Button variant="outlined">
+					<template #leading>
+						<GitBranch class="size-5" />
+					</template>
+					New Branch
+				</Button>
+
+				<Button variant="outlined">
+					Continue
+					<template #trailing>
+						<ArrowRight class="size-5" />
+					</template>
+				</Button>
+			</div>
+		</ExampleBlock>
+	</section>
+
+	<section id="loading" class="space-y-4">
+		<div class="space-y-2">
+			<h2 class="text-2xl font-semibold tracking-normal">Loading</h2>
+			<p class="text-muted-foreground leading-7">
+				Button does not include a built-in spinner state. If the button keeps
+				spinning inline, the user can still navigate away and lose the action
+				context. A global loader blocks the surface, communicates one active
+				operation, and keeps the experience easier to understand.
+			</p>
+		</div>
+		<ExampleBlock :code="examples.loading">
+			<Button @click="showGlobalLoader">Save changes</Button>
+		</ExampleBlock>
+	</section>
+
+	<section id="disable" class="space-y-4">
+		<div class="space-y-2">
+			<h2 class="text-2xl font-semibold tracking-normal">Disable</h2>
+			<p class="text-muted-foreground leading-7">
+				Prefer not to disable buttons. Keep the action visible and active, then
+				explain why it cannot run with a warning message. This gives the user
+				feedback instead of a dead control.
+			</p>
+		</div>
+		<ExampleBlock :code="examples.disable">
+			<Button variant="outlined" @click="openDisableAlert">
+				Export report
+			</Button>
+		</ExampleBlock>
+	</section>
+
+	<section id="api-reference" class="space-y-4">
+		<h2 class="text-2xl font-semibold">API Reference</h2>
+		<div class="overflow-hidden rounded-xl border">
+			<table class="w-full text-left text-sm">
+				<thead class="border-b bg-secondary text-muted-foreground">
+					<tr>
+						<th class="px-4 py-3 font-medium">Prop</th>
+						<th class="px-4 py-3 font-medium">Type</th>
+						<th class="px-4 py-3 font-medium">Default</th>
+						<th class="px-4 py-3 font-medium">Description</th>
+					</tr>
+				</thead>
+				<tbody class="divide-y">
+					<tr v-for="item in buttonProps" :key="item.name">
+						<td class="px-4 py-3 font-medium">{{ item.name }}</td>
+						<td class="px-4 py-3 text-muted-foreground">
+							{{ item.type }}
+						</td>
+						<td class="px-4 py-3 text-muted-foreground">
+							{{ item.default }}
+						</td>
+						<td class="px-4 py-3 text-muted-foreground">
+							{{ item.description }}
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
 </template>

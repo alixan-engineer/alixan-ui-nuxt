@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import type { ToastType } from '~/composables/useToast';
 
-useSeoMeta({
+usePageMeta({
 	title: 'Toast - Alixan UI',
-	ogTitle: 'Toast - Alixan UI',
-	twitterTitle: 'Toast - Alixan UI',
 });
 
 const tocLinks = [

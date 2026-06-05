@@ -7,15 +7,15 @@
 	"files": [
 		{
 			"source": "templates/dialog/Dialog.vue",
-			"target": "components/ui/Dialog.vue"
+			"target": "components/ui/dialog/Dialog.vue"
 		},
 		{
 			"source": "templates/dialog/DialogHeader.vue",
-			"target": "components/ui/DialogHeader.vue"
+			"target": "components/ui/dialog-header/DialogHeader.vue"
 		},
 		{
 			"source": "templates/dialog/DialogHost.vue",
-			"target": "components/ui/DialogHost.vue"
+			"target": "components/ui/dialog-host/DialogHost.vue"
 		},
 		{
 			"source": "templates/dialog/useDialog.ts",

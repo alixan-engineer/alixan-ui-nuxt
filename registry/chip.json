@@ -7,7 +7,7 @@
 	"files": [
 		{
 			"source": "templates/chip/Chip.vue",
-			"target": "components/ui/Chip.vue"
+			"target": "components/ui/chip/Chip.vue"
 		},
 		{
 			"source": "templates/utils/cn.ts",

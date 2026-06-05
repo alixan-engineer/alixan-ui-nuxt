@@ -7,11 +7,11 @@
 	"files": [
 		{
 			"source": "templates/global-loader/GlobalLoader.vue",
-			"target": "components/ui/GlobalLoader.vue"
+			"target": "components/ui/global-loader/GlobalLoader.vue"
 		},
 		{
 			"source": "templates/global-loader/GlobalLoaderHost.vue",
-			"target": "components/ui/GlobalLoaderHost.vue"
+			"target": "components/ui/global-loader-host/GlobalLoaderHost.vue"
 		},
 		{
 			"source": "templates/global-loader/useGlobalLoader.ts",

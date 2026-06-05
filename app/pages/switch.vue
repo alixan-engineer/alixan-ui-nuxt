@@ -1,8 +1,6 @@
 <script setup lang="ts">
-useSeoMeta({
+usePageMeta({
 	title: 'Switch - Alixan UI',
-	ogTitle: 'Switch - Alixan UI',
-	twitterTitle: 'Switch - Alixan UI',
 });
 
 const tocLinks = [

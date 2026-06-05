@@ -1,8 +1,6 @@
 <script setup lang="ts">
-useSeoMeta({
+usePageMeta({
 	title: 'Calendar - Alixan UI',
-	ogTitle: 'Calendar - Alixan UI',
-	twitterTitle: 'Calendar - Alixan UI',
 });
 
 const tocLinks = [

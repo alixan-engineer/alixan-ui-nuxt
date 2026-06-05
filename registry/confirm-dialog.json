@@ -7,15 +7,15 @@
 	"files": [
 		{
 			"source": "templates/confirm-dialog/ConfirmDialog.vue",
-			"target": "components/ui/ConfirmDialog.vue"
+			"target": "components/ui/confirm-dialog/ConfirmDialog.vue"
 		},
 		{
 			"source": "templates/dialog/Dialog.vue",
-			"target": "components/ui/Dialog.vue"
+			"target": "components/ui/dialog/Dialog.vue"
 		},
 		{
 			"source": "templates/dialog/DialogHost.vue",
-			"target": "components/ui/DialogHost.vue"
+			"target": "components/ui/dialog-host/DialogHost.vue"
 		},
 		{
 			"source": "templates/dialog/useDialog.ts",
@@ -23,7 +23,7 @@
 		},
 		{
 			"source": "templates/button/Button.vue",
-			"target": "components/ui/Button.vue"
+			"target": "components/ui/button/Button.vue"
 		},
 		{
 			"source": "templates/utils/cn.ts",

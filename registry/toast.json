@@ -7,11 +7,11 @@
 	"files": [
 		{
 			"source": "templates/toast/Toast.vue",
-			"target": "components/ui/Toast.vue"
+			"target": "components/ui/toast/Toast.vue"
 		},
 		{
 			"source": "templates/toast/ToastHost.vue",
-			"target": "components/ui/ToastHost.vue"
+			"target": "components/ui/toast-host/ToastHost.vue"
 		},
 		{
 			"source": "templates/toast/useToast.ts",

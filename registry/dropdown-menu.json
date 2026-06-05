@@ -7,7 +7,7 @@
 	"files": [
 		{
 			"source": "templates/dropdown-menu/DropdownMenu.vue",
-			"target": "components/ui/DropdownMenu.vue"
+			"target": "components/ui/dropdown-menu/DropdownMenu.vue"
 		},
 		{
 			"source": "templates/utils/cn.ts",

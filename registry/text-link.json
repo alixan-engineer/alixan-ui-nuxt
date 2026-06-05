@@ -1,0 +1,13 @@
+{
+	"$schema": "https://nuxt.ui.alixan.kz/schema/registry-item.json",
+	"name": "text-link",
+	"type": "component",
+	"title": "Text Link",
+	"description": "Inline content link with consistent typography and external-link rel handling.",
+	"files": [
+		{
+			"source": "templates/text-link/TextLink.vue",
+			"target": "components/ui/text-link/TextLink.vue"
+		}
+	]
+}

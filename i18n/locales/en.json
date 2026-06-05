@@ -22,7 +22,7 @@
 	"guide": {
 		"fonts": "Fonts",
 		"i18n": "i18n",
-		"sitemap": "Sitemap"
+		"seo": "SEO"
 	},
 	"component": {
 		"button": "Button",
@@ -38,6 +38,7 @@
 		"tabs": "Tabs",
 		"switch": "Switch",
 		"status": "Status",
+		"textLink": "Text Link",
 		"dialog": "Dialog",
 		"alertDialog": "Alert Dialog",
 		"confirmDialog": "Confirm Dialog",

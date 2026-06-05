@@ -1,8 +1,6 @@
 <script setup lang="ts">
-useSeoMeta({
+usePageMeta({
 	title: 'i18n - Alixan UI',
-	ogTitle: 'i18n - Alixan UI',
-	twitterTitle: 'i18n - Alixan UI',
 });
 
 const tocLinks = [
@@ -24,25 +22,24 @@ onBeforeUnmount(() => {
 const installCode = `npm install @nuxtjs/i18n`;
 
 const setupCode = `export default defineNuxtConfig({
-  modules: ['@nuxtjs/i18n'],
-  i18n: {
-    defaultLocale: 'en',
-    strategy: 'no_prefix',
-    locales: [
-      { code: 'en', name: 'English' },
-      { code: 'ru', name: 'Русский' },
-      { code: 'kk', name: 'Қазақша' },
+  modules: [
+    [
+      '@nuxtjs/i18n',
+      {
+        defaultLocale: 'en',
+        strategy: 'prefix_except_default',
+        detectBrowserLanguage: false,
+        locales: [
+          { code: 'en', name: 'English', file: 'en.json' },
+          { code: 'ru', name: 'Русский', file: 'ru.json' },
+          { code: 'kk', name: 'Қазақша', file: 'kk.json' },
+        ],
+      },
     ],
-    detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: 'alixan-ui-locale',
-      redirectOn: 'root',
-    },
-    vueI18n: 'i18n.config.ts',
-  },
+  ],
 })`;
 
-const messagesCode = `// i18n/locales/en.json
+const messagesCode = `// root/i18n/locales/en.json
 {
   "app": {
     "settings": "Open settings"
@@ -55,7 +52,7 @@ const messagesCode = `// i18n/locales/en.json
   }
 }
 
-// i18n/locales/ru.json
+// root/i18n/locales/ru.json
 {
   "app": {
     "settings": "Открыть настройки"
@@ -68,31 +65,63 @@ const messagesCode = `// i18n/locales/en.json
   }
 }
 
-// i18n/i18n.config.ts
-import en from './locales/en.json'
-import ru from './locales/ru.json'
-import kk from './locales/kk.json'
-
-export default defineI18nConfig(() => ({
-  legacy: false,
-  locale: 'en',
-  fallbackLocale: 'en',
-  messages: {
-    en,
-    ru,
-    kk,
+// root/i18n/locales/kk.json
+{
+  "app": {
+    "settings": "Баптауларды ашу"
   },
-}))`;
+  "settings": {
+    "language": "Тіл"
+  },
+  "component": {
+    "button": "Батырма"
+  }
+}`;
 
 const usageCode = `<script setup lang="ts">
-const { locale, setLocale, t } = useI18n()
+type Locale = 'en' | 'ru' | 'kk'
+
+const { locale, setLocale } = useI18n()
+
+const languageOptions: Array<{ label: string; value: Locale }> = [
+  { label: 'English', value: 'en' },
+  { label: 'Русский', value: 'ru' },
+  { label: 'Қазақша', value: 'kk' },
+]
+
+const changeLocale = async (value: Locale): Promise<void> => {
+  useHead({
+    htmlAttrs: { lang: value },
+  })
+  await setLocale(value)
+}
 <\/script>
 
 <template>
-  <Button @click="setLocale(locale === 'en' ? 'ru' : 'en')">
-    {{ t('settings.language') }}
-  </Button>
+  <Select
+    :label="$t('settings.language')"
+    :model-value="locale"
+    :options="languageOptions"
+    @change="changeLocale($event.value as Locale)"
+  />
 </template>`;
+
+type Locale = 'en' | 'ru' | 'kk';
+
+const { locale, setLocale } = useI18n();
+
+const languageOptions: Array<{ label: string; value: Locale }> = [
+	{ label: 'English', value: 'en' },
+	{ label: 'Русский', value: 'ru' },
+	{ label: 'Қазақша', value: 'kk' },
+];
+
+const changeLocale = async (value: Locale): Promise<void> => {
+	useHead({
+		htmlAttrs: { lang: value },
+	});
+	await setLocale(value);
+};
 </script>
 
 <template>
@@ -103,6 +132,15 @@ const { locale, setLocale, t } = useI18n()
 			keys typed, while locale switching and persistence are handled by the
 			module.
 		</p>
+		<Info>
+			For more detailed information, visit the
+			<TextLink
+				href="https://i18n.nuxtjs.org/"
+				target="_blank"
+			>
+				Nuxt i18n documentation.
+			</TextLink>
+		</Info>
 	</header>
 
 	<section id="installation" class="space-y-5">
@@ -115,8 +153,8 @@ const { locale, setLocale, t } = useI18n()
 		</ExampleBlock>
 		<ExampleBlock :code="setupCode">
 			<div class="max-w-md text-center text-muted-foreground leading-7">
-				Use <code>strategy: 'no_prefix'</code> when the documentation should
-				keep the same routes for every language.
+				Use <code>strategy: 'prefix_except_default'</code> to keep the default
+				language without a prefix and prefix all other locales.
 			</div>
 		</ExampleBlock>
 	</section>
@@ -125,8 +163,8 @@ const { locale, setLocale, t } = useI18n()
 		<h2 class="text-2xl font-semibold">Messages</h2>
 		<ExampleBlock :code="messagesCode">
 			<div class="max-w-md text-center text-muted-foreground leading-7">
-				Keep messages in dedicated JSON files. This keeps localization easy to
-				edit and works naturally with Nuxt i18n.
+				Keep locale JSON files in <code>root/i18n/locales</code>. The
+				<code>file</code> option maps each locale to its message file.
 			</div>
 		</ExampleBlock>
 	</section>
@@ -135,7 +173,12 @@ const { locale, setLocale, t } = useI18n()
 		<h2 class="text-2xl font-semibold">Usage</h2>
 		<ExampleBlock :code="usageCode">
 			<div class="max-w-sm">
-				<Button>Language</Button>
+				<Select
+					:label="$t('settings.language')"
+					:model-value="locale"
+					:options="languageOptions"
+					@change="changeLocale($event.value as Locale)"
+				/>
 			</div>
 		</ExampleBlock>
 	</section>

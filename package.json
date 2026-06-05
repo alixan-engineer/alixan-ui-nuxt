@@ -3,13 +3,19 @@
 	"version": "0.1.4",
 	"type": "module",
 	"private": false,
+	"bin": {
+		"alixan-ui-nuxt": "./cli/index.js"
+	},
 	"scripts": {
 		"build": "nuxt build",
 		"dev": "nuxt dev",
 		"generate": "nuxt generate",
 		"preview": "nuxt preview"
 	},
-	"dependencies": {},
+	"dependencies": {
+		"clsx": "^2.1.1",
+		"tailwind-merge": "^3.6.0"
+	},
 	"devDependencies": {
 		"@lucide/vue": "^1.17.0",
 		"@nuxtjs/google-fonts": "^3.2.0",
@@ -23,13 +29,16 @@
 		"vue": "^3.5.33",
 		"vue-router": "^5.0.6"
 	},
-	"bin": {
-		"alixan-ui-nuxt": "./cli/index.js"
-	},
 	"files": [
 		"cli",
 		"registry",
 		"templates",
 		"README.md"
-	]
+	],
+	"allowScripts": {
+		"esbuild@0.25.12": true,
+		"esbuild@0.28.0": true,
+		"esbuild@0.27.7": true,
+		"@parcel/watcher@2.5.6": true
+	}
 }

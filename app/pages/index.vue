@@ -1,15 +1,9 @@
 <script setup lang="ts">
 import { ArrowRight, Boxes, Sparkles } from '@lucide/vue';
 
-useSeoMeta({
+usePageMeta({
 	title: 'Alixan UI - Nuxt Components',
-	ogTitle: 'Alixan UI - Nuxt Components',
-	twitterTitle: 'Alixan UI - Nuxt Components',
 	description:
-		'A modern UI component system for Nuxt 4, Vue 3 and TypeScript.',
-	ogDescription:
-		'A modern UI component system for Nuxt 4, Vue 3 and TypeScript.',
-	twitterDescription:
 		'A modern UI component system for Nuxt 4, Vue 3 and TypeScript.',
 });
 

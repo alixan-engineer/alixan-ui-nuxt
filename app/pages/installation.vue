@@ -3,10 +3,8 @@ import { Terminal } from '@lucide/vue';
 import tailwindCss from '~/assets/css/tailwind.css?raw';
 import { createThemeCss } from '~/utils/theme-css';
 
-useSeoMeta({
+usePageMeta({
 	title: 'Installation - Alixan UI',
-	ogTitle: 'Installation - Alixan UI',
-	twitterTitle: 'Installation - Alixan UI',
 });
 
 const tocLinks = [
@@ -174,7 +172,7 @@ const usageCode = `<template>
 			class="rounded-2xl border bg-secondary/50 p-4 text-sm leading-7 text-muted-foreground"
 		>
 			This creates
-			<span class="font-medium text-foreground">components/ui/Button.vue</span>
+			<span class="font-medium text-foreground">components/ui/button/Button.vue</span>
 			and <span class="font-medium text-foreground">utils/cn.ts</span>. Nuxt
 			auto-import handles the component after it is copied.
 		</div>

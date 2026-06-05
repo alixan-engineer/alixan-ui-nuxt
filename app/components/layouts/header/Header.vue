@@ -2,7 +2,6 @@
 import { ArrowLeft, Menu } from '@lucide/vue';
 import githubIcon from '~/assets/icons/github.svg';
 
-const { t } = useI18n();
 const sidebar = useMobileSidebar();
 </script>
 
@@ -10,19 +9,19 @@ const sidebar = useMobileSidebar();
 	<header class="sticky top-0 z-30 bg-background">
 		<div class="w-full max-w-container min-h-14 mx-auto px-4 flex items-center">
 			<IconButton
+				class="max-lg:hidden!"
 				variant="ghost"
 				color="default"
 				href="https://ui.alixan.kz/"
-				:label="t('app.back')"
-				class="max-lg:hidden!"
+				:label="$t('app.back')"
 			>
 				<ArrowLeft />
 			</IconButton>
 			<IconButton
+				class="lg:hidden"
 				variant="ghost"
 				color="default"
-				:label="t('app.menu')"
-				class="lg:hidden"
+				:label="$t('app.menu')"
 				@click="sidebar.open"
 			>
 				<Menu />
@@ -37,7 +36,7 @@ const sidebar = useMobileSidebar();
 				color="default"
 				href="https://github.com/alixan-engineer/alixan-ui-nuxt"
 				target="_blank"
-				:label="t('app.github')"
+				:label="$t('app.github')"
 			>
 				<img :src="githubIcon" alt="" class="size-6 dark:invert" />
 			</IconButton>

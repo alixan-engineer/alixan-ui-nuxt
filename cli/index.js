@@ -38,16 +38,37 @@ const ensureDir = filePath => {
 	fs.mkdirSync(path.dirname(filePath), { recursive: true });
 };
 
-const resolveTarget = target => {
-	if (
-		target.startsWith('components/') ||
-		target.startsWith('composables/') ||
-		target.startsWith('utils/')
-	) {
-		return path.join('app', target);
+const toKebabCase = value => {
+	return value
+		.replace(/([A-Z]+)([A-Z][a-z])/g, '$1-$2')
+		.replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+		.toLowerCase();
+};
+
+const normalizeUiComponentTarget = target => {
+	const match = target.match(/^components\/ui\/([^/]+)\.vue$/);
+
+	if (!match) {
+		return target;
 	}
 
-	return target;
+	const componentName = match[1];
+
+	return `components/ui/${toKebabCase(componentName)}/${componentName}.vue`;
+};
+
+const resolveTarget = target => {
+	const normalizedTarget = normalizeUiComponentTarget(target);
+
+	if (
+		normalizedTarget.startsWith('components/') ||
+		normalizedTarget.startsWith('composables/') ||
+		normalizedTarget.startsWith('utils/')
+	) {
+		return path.join('app', normalizedTarget);
+	}
+
+	return normalizedTarget;
 };
 
 const copyFile = (source, target) => {

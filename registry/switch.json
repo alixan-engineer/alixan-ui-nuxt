@@ -7,7 +7,7 @@
 	"files": [
 		{
 			"source": "templates/switch/Switch.vue",
-			"target": "components/ui/Switch.vue"
+			"target": "components/ui/switch/Switch.vue"
 		},
 		{
 			"source": "templates/utils/cn.ts",

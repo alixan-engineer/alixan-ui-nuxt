@@ -1,8 +1,6 @@
 <script setup lang="ts">
-useSeoMeta({
+usePageMeta({
 	title: 'OTP Input - Alixan UI',
-	ogTitle: 'OTP Input - Alixan UI',
-	twitterTitle: 'OTP Input - Alixan UI',
 });
 
 const tocLinks = [

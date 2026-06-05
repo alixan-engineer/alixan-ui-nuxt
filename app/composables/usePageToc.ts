@@ -1,4 +1,4 @@
-import type { IPageTocLink } from '~/interfaces/page-toc.interface';
+import type { IPageTocLink } from '~/interfaces/page-toc/page-toc.interface';
 
 export const usePageToc = () => {
 	const links = useState<readonly IPageTocLink[]>('page-toc-links', () => []);

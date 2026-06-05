@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import ConfirmDialog from '~/components/ui/ConfirmDialog.vue';
+import ConfirmDialog from '~/components/ui/confirm-dialog/ConfirmDialog.vue';
 
-useSeoMeta({
+usePageMeta({
 	title: 'Confirm Dialog - Alixan UI',
-	ogTitle: 'Confirm Dialog - Alixan UI',
-	twitterTitle: 'Confirm Dialog - Alixan UI',
 });
 
 const tocLinks = [
@@ -26,7 +24,7 @@ const dialog = useDialog();
 const toast = useToast();
 
 const code = `<script setup lang="ts">
-import ConfirmDialog from '~/components/ui/ConfirmDialog.vue'
+import ConfirmDialog from '~/components/ui/confirm-dialog/ConfirmDialog.vue'
 
 const dialog = useDialog()
 

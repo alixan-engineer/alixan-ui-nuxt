@@ -1,0 +1,13 @@
+{
+	"$schema": "https://nuxt.ui.alixan.kz/schema/registry-item.json",
+	"name": "info",
+	"type": "component",
+	"title": "Info",
+	"description": "Simple hint block for contextual documentation notes and helpful links.",
+	"files": [
+		{
+			"source": "templates/info/Info.vue",
+			"target": "components/ui/info/Info.vue"
+		}
+	]
+}

@@ -7,15 +7,15 @@
 	"files": [
 		{
 			"source": "templates/drawer/Drawer.vue",
-			"target": "components/ui/Drawer.vue"
+			"target": "components/ui/drawer/Drawer.vue"
 		},
 		{
 			"source": "templates/drawer/DrawerHeader.vue",
-			"target": "components/ui/DrawerHeader.vue"
+			"target": "components/ui/drawer-header/DrawerHeader.vue"
 		},
 		{
 			"source": "templates/drawer/DrawerHost.vue",
-			"target": "components/ui/DrawerHost.vue"
+			"target": "components/ui/drawer-host/DrawerHost.vue"
 		},
 		{
 			"source": "templates/drawer/useDrawer.ts",

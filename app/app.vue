@@ -1,19 +1,22 @@
 <script setup lang="ts">
+import { favicon } from './config/site/favicon';
+
 const route = useRoute();
 const { links } = usePageToc();
 const sidebar = useMobileSidebar();
+const { locale } = useI18n();
 
-const scrollPageToTop = () => {
-	document.getElementById('root')?.scrollTo({ top: 0 });
-};
+usePageMeta();
 
-watch(
-	() => route.path,
-	async () => {
-		await nextTick();
-		requestAnimationFrame(scrollPageToTop);
-	},
-);
+useHead({
+	htmlAttrs: { lang: locale.value },
+	link: favicon,
+});
+
+const nuxtApp = useNuxtApp();
+nuxtApp.hook('page:finish', () => {
+	document.getElementById('root')?.scrollTo(0, 0);
+});
 </script>
 
 <template>
@@ -36,7 +39,9 @@ watch(
 	<Teleport to="body">
 		<div
 			class="fixed inset-0 z-60 lg:hidden"
-			:class="sidebar.isOpen.value ? 'pointer-events-auto' : 'pointer-events-none'"
+			:class="
+				sidebar.isOpen.value ? 'pointer-events-auto' : 'pointer-events-none'
+			"
 		>
 			<div
 				class="mobile-sidebar-backdrop backdrop"

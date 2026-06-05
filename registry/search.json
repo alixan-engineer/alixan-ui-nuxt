@@ -7,7 +7,7 @@
 	"files": [
 		{
 			"source": "templates/search/Search.vue",
-			"target": "components/ui/Search.vue"
+			"target": "components/ui/search/Search.vue"
 		},
 		{
 			"source": "templates/utils/cn.ts",

@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import DrawerPreviewContent from '~/components/examples/DrawerPreviewContent.vue';
 
-useSeoMeta({
+usePageMeta({
 	title: 'Drawer - Alixan UI',
-	ogTitle: 'Drawer - Alixan UI',
-	twitterTitle: 'Drawer - Alixan UI',
 });
 
 const tocLinks = [

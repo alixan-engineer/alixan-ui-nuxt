@@ -22,7 +22,7 @@
 	"guide": {
 		"fonts": "Қаріптер",
 		"i18n": "i18n",
-		"sitemap": "Сайт картасы"
+		"seo": "SEO"
 	},
 	"component": {
 		"button": "Батырма",
@@ -38,6 +38,7 @@
 		"tabs": "Табтар",
 		"switch": "Ауыстырғыш",
 		"status": "Статус",
+		"textLink": "Мәтін сілтемесі",
 		"dialog": "Диалог",
 		"alertDialog": "Хабарлама диалогы",
 		"confirmDialog": "Растау диалогы",

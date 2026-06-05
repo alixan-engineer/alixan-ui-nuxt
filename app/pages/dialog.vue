@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import DialogPreviewContent from '~/components/examples/DialogPreviewContent.vue';
 
-useSeoMeta({
+usePageMeta({
 	title: 'Dialog - Alixan UI',
-	ogTitle: 'Dialog - Alixan UI',
-	twitterTitle: 'Dialog - Alixan UI',
 });
 
 const tocLinks = [

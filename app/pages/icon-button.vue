@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { ArrowUpRight } from '@lucide/vue';
-import AlertDialog from '~/components/ui/AlertDialog.vue';
-import { buttonColors, buttonVariants } from '~/shared/button-options';
+import AlertDialog from '~/components/ui/alert-dialog/AlertDialog.vue';
+import {
+	buttonColors,
+	buttonVariants,
+} from '~/shared/button-options/button-options';
 
-useSeoMeta({
+usePageMeta({
 	title: 'Icon Button - Alixan UI',
-	ogTitle: 'Icon Button - Alixan UI',
-	twitterTitle: 'Icon Button - Alixan UI',
 });
 
 const tocLinks = [
@@ -63,8 +64,7 @@ const iconButtonProps = [
 		name: 'variant',
 		type: "'filled' | 'outlined' | 'ghost'",
 		default: "'ghost'",
-		description:
-			'Visual style of the icon button. Ghost is used by default.',
+		description: 'Visual style of the icon button. Ghost is used by default.',
 	},
 	{
 		name: 'color',
@@ -101,7 +101,7 @@ const iconButtonProps = [
 const examples = {
 	combinations: `<script setup lang="ts">
 import { ArrowUpRight } from '@lucide/vue'
-import { IconButton } from '@/components/ui/icon-button'
+import IconButton from '@/components/ui/icon-button/IconButton.vue'
 <\/script>
 
 <template>
@@ -154,7 +154,7 @@ import { IconButton } from '@/components/ui/icon-button'
 </template>`,
 	size: `<script setup lang="ts">
 import { ArrowUpRight } from '@lucide/vue'
-import { IconButton } from '@/components/ui/icon-button'
+import IconButton from '@/components/ui/icon-button/IconButton.vue'
 <\/script>
 
 <template>
@@ -172,7 +172,7 @@ import { IconButton } from '@/components/ui/icon-button'
 </template>`,
 	navigation: `<script setup lang="ts">
 import { ArrowUpRight } from '@lucide/vue'
-import { IconButton } from '@/components/ui/icon-button'
+import IconButton from '@/components/ui/icon-button/IconButton.vue'
 <\/script>
 
 <template>
@@ -238,152 +238,151 @@ const openAlert = () => {
 
 <template>
 	<header class="space-y-3">
-			<h1 class="text-4xl font-semibold">Icon Button</h1>
-			<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
-				Displays an icon-only button with a required accessible label.
+		<h1 class="text-4xl font-semibold">Icon Button</h1>
+		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
+			Displays an icon-only button with a required accessible label.
+		</p>
+	</header>
+
+	<section id="installation" class="space-y-5">
+		<h2 class="text-2xl font-semibold">Installation</h2>
+		<InstallCommandBlock component="icon-button" />
+	</section>
+
+	<section id="usage" class="space-y-5">
+		<div class="space-y-2">
+			<h2 class="text-2xl font-semibold">Usage</h2>
+			<p class="text-muted-foreground leading-7">
+				IconButton uses the same variant and color system as Button, but keeps
+				the control square for icon-only actions. Always provide a label so the
+				action remains clear for assistive technologies.
 			</p>
-		</header>
-
-		<section id="installation" class="space-y-5">
-			<h2 class="text-2xl font-semibold">Installation</h2>
-			<InstallCommandBlock component="icon-button" />
-		</section>
-
-		<section id="usage" class="space-y-5">
-			<div class="space-y-2">
-				<h2 class="text-2xl font-semibold">Usage</h2>
-				<p class="text-muted-foreground leading-7">
-					IconButton uses the same variant and color system as Button, but keeps
-					the control square for icon-only actions. Always provide a label so
-					the action remains clear for assistive technologies.
-				</p>
-			</div>
-			<div class="space-y-4">
-				<ExampleBlock :code="examples.combinations">
-					<div class="space-y-4">
-						<div
-							v-for="variant in buttonVariants"
-							:key="`matrix-${variant}`"
-							class="space-y-2"
-						>
-							<p class="text-sm text-muted-foreground">
-								{{ variant }}
-							</p>
-							<div class="flex flex-wrap items-center gap-2">
-								<IconButton
-									v-for="color in buttonColors"
-									:key="`${variant}-${color}`"
-									:variant="variant"
-									:color="color"
-									:label="`${variant} ${color}`"
-								>
-									<ArrowUpRight />
-								</IconButton>
-							</div>
+		</div>
+		<div class="space-y-4">
+			<ExampleBlock :code="examples.combinations">
+				<div class="space-y-4">
+					<div
+						v-for="variant in buttonVariants"
+						:key="`matrix-${variant}`"
+						class="space-y-2"
+					>
+						<p class="text-sm text-muted-foreground">
+							{{ variant }}
+						</p>
+						<div class="flex flex-wrap items-center gap-2">
+							<IconButton
+								v-for="color in buttonColors"
+								:key="`${variant}-${color}`"
+								:variant="variant"
+								:color="color"
+								:label="`${variant} ${color}`"
+							>
+								<ArrowUpRight />
+							</IconButton>
 						</div>
 					</div>
-				</ExampleBlock>
-			</div>
-		</section>
-
-		<section id="size" class="space-y-4">
-			<h2 class="text-2xl font-semibold">Size</h2>
-			<ExampleBlock :code="examples.size">
-				<div class="flex items-center gap-2">
-					<IconButton label="Small action" size="sm">
-						<ArrowUpRight />
-					</IconButton>
-					<IconButton label="Default action">
-						<ArrowUpRight />
-					</IconButton>
-					<IconButton label="Large action" size="lg">
-						<ArrowUpRight />
-					</IconButton>
 				</div>
 			</ExampleBlock>
-		</section>
+		</div>
+	</section>
 
-		<section id="navigation" class="space-y-4">
-			<h2 class="text-2xl font-semibold">Navigation</h2>
-			<ExampleBlock :code="examples.navigation">
-				<div class="flex items-center gap-2">
-					<IconButton label="Open icon button docs" to="/icon-button">
-						<ArrowUpRight />
-					</IconButton>
-
-					<IconButton
-						label="Open GitHub"
-						href="https://github.com"
-						target="_blank"
-						variant="outlined"
-					>
-						<ArrowUpRight />
-					</IconButton>
-				</div>
-			</ExampleBlock>
-		</section>
-
-		<section id="loading" class="space-y-4">
-			<div class="space-y-2">
-				<h2 class="text-2xl font-semibold">Loading</h2>
-				<p class="text-muted-foreground leading-7">
-					IconButton does not include an inline spinner. Inline loading can
-					leave the user free to navigate away and lose the action context. Use
-					a global loader when the operation should be treated as one blocking
-					action.
-				</p>
-			</div>
-			<ExampleBlock :code="examples.loading">
-				<IconButton label="Save action" @click="showGlobalLoader">
+	<section id="size" class="space-y-4">
+		<h2 class="text-2xl font-semibold">Size</h2>
+		<ExampleBlock :code="examples.size">
+			<div class="flex items-center gap-2">
+				<IconButton label="Small action" size="sm">
 					<ArrowUpRight />
 				</IconButton>
-			</ExampleBlock>
-		</section>
-
-		<section id="disable" class="space-y-4">
-			<div class="space-y-2">
-				<h2 class="text-2xl font-semibold">Disable</h2>
-				<p class="text-muted-foreground leading-7">
-					Do not make the icon action silent and unavailable. Keep it active,
-					then show a warning dialog that explains what the user needs to do.
-				</p>
+				<IconButton label="Default action">
+					<ArrowUpRight />
+				</IconButton>
+				<IconButton label="Large action" size="lg">
+					<ArrowUpRight />
+				</IconButton>
 			</div>
-			<ExampleBlock :code="examples.disable">
+		</ExampleBlock>
+	</section>
+
+	<section id="navigation" class="space-y-4">
+		<h2 class="text-2xl font-semibold">Navigation</h2>
+		<ExampleBlock :code="examples.navigation">
+			<div class="flex items-center gap-2">
+				<IconButton label="Open icon button docs" to="/icon-button">
+					<ArrowUpRight />
+				</IconButton>
+
 				<IconButton
-					label="Export report"
+					label="Open GitHub"
+					href="https://github.com"
+					target="_blank"
 					variant="outlined"
-					@click="openDisableAlert"
 				>
 					<ArrowUpRight />
 				</IconButton>
-			</ExampleBlock>
-		</section>
-
-		<section id="api-reference" class="space-y-4">
-			<h2 class="text-2xl font-semibold">API Reference</h2>
-			<div class="overflow-hidden rounded-xl border">
-				<table class="w-full text-left text-sm">
-					<thead class="border-b bg-secondary text-muted-foreground">
-						<tr>
-							<th class="px-4 py-3 font-medium">Prop</th>
-							<th class="px-4 py-3 font-medium">Type</th>
-							<th class="px-4 py-3 font-medium">Default</th>
-							<th class="px-4 py-3 font-medium">Description</th>
-						</tr>
-					</thead>
-					<tbody class="divide-y">
-						<tr v-for="item in iconButtonProps" :key="item.name">
-							<td class="px-4 py-3 font-medium">{{ item.name }}</td>
-							<td class="px-4 py-3 text-muted-foreground">{{ item.type }}</td>
-							<td class="px-4 py-3 text-muted-foreground">
-								{{ item.default }}
-							</td>
-							<td class="px-4 py-3 text-muted-foreground">
-								{{ item.description }}
-							</td>
-						</tr>
-					</tbody>
-				</table>
 			</div>
-		</section>
+		</ExampleBlock>
+	</section>
+
+	<section id="loading" class="space-y-4">
+		<div class="space-y-2">
+			<h2 class="text-2xl font-semibold">Loading</h2>
+			<p class="text-muted-foreground leading-7">
+				IconButton does not include an inline spinner. Inline loading can leave
+				the user free to navigate away and lose the action context. Use a global
+				loader when the operation should be treated as one blocking action.
+			</p>
+		</div>
+		<ExampleBlock :code="examples.loading">
+			<IconButton label="Save action" @click="showGlobalLoader">
+				<ArrowUpRight />
+			</IconButton>
+		</ExampleBlock>
+	</section>
+
+	<section id="disable" class="space-y-4">
+		<div class="space-y-2">
+			<h2 class="text-2xl font-semibold">Disable</h2>
+			<p class="text-muted-foreground leading-7">
+				Do not make the icon action silent and unavailable. Keep it active, then
+				show a warning dialog that explains what the user needs to do.
+			</p>
+		</div>
+		<ExampleBlock :code="examples.disable">
+			<IconButton
+				label="Export report"
+				variant="outlined"
+				@click="openDisableAlert"
+			>
+				<ArrowUpRight />
+			</IconButton>
+		</ExampleBlock>
+	</section>
+
+	<section id="api-reference" class="space-y-4">
+		<h2 class="text-2xl font-semibold">API Reference</h2>
+		<div class="overflow-hidden rounded-xl border">
+			<table class="w-full text-left text-sm">
+				<thead class="border-b bg-secondary text-muted-foreground">
+					<tr>
+						<th class="px-4 py-3 font-medium">Prop</th>
+						<th class="px-4 py-3 font-medium">Type</th>
+						<th class="px-4 py-3 font-medium">Default</th>
+						<th class="px-4 py-3 font-medium">Description</th>
+					</tr>
+				</thead>
+				<tbody class="divide-y">
+					<tr v-for="item in iconButtonProps" :key="item.name">
+						<td class="px-4 py-3 font-medium">{{ item.name }}</td>
+						<td class="px-4 py-3 text-muted-foreground">{{ item.type }}</td>
+						<td class="px-4 py-3 text-muted-foreground">
+							{{ item.default }}
+						</td>
+						<td class="px-4 py-3 text-muted-foreground">
+							{{ item.description }}
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
 </template>

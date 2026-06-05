@@ -7,7 +7,7 @@
 	"files": [
 		{
 			"source": "templates/tabs/Tabs.vue",
-			"target": "components/ui/Tabs.vue"
+			"target": "components/ui/tabs/Tabs.vue"
 		},
 		{
 			"source": "templates/utils/cn.ts",

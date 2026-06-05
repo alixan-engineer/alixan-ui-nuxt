@@ -7,7 +7,7 @@ import { createThemeCss } from '~/utils/theme-css';
 
 type Locale = 'en' | 'ru' | 'kk';
 
-const { locale, setLocale, t } = useI18n();
+const { locale, setLocale } = useI18n();
 const { accentColors, accentTheme, setAccentTheme, setTheme, theme } =
 	useTheme();
 const dialog = useDialog();
@@ -52,13 +52,11 @@ const themeCode = computed(() => {
 	return createThemeCss(tailwindCss, accentColors[accentTheme.value]);
 });
 
-const changeLocale = async (value: Locale): Promise<void> => {
+const changeLocale = async (value: Locale) => {
+	useHead({
+		htmlAttrs: { lang: value },
+	});
 	await setLocale(value);
-
-	if (import.meta.client) {
-		localStorage.setItem('alixan-ui-locale', value);
-		document.documentElement.lang = value;
-	}
 };
 
 const openThemeCode = (): void => {
@@ -82,11 +80,7 @@ const openThemeCode = (): void => {
 		position="bottomRight"
 	>
 		<template #trigger>
-			<IconButton
-				variant="ghost"
-				color="default"
-				:label="t('app.settings')"
-			>
+			<IconButton variant="ghost" color="default" :label="$t('app.settings')">
 				<Settings />
 			</IconButton>
 		</template>
@@ -94,7 +88,7 @@ const openThemeCode = (): void => {
 		<div class="space-y-5 p-3">
 			<div class="space-y-2">
 				<p class="px-1 text-sm font-medium text-muted-foreground">
-					{{ t('settings.language') }}
+					{{ $t('settings.language') }}
 				</p>
 				<Select
 					:model-value="locale"
@@ -105,7 +99,7 @@ const openThemeCode = (): void => {
 
 			<div class="space-y-2">
 				<p class="px-1 text-sm font-medium text-muted-foreground">
-					{{ t('settings.theme') }}
+					{{ $t('settings.theme') }}
 				</p>
 				<Select
 					:model-value="theme"
@@ -116,7 +110,7 @@ const openThemeCode = (): void => {
 
 			<div class="space-y-2">
 				<p class="px-1 text-sm font-medium text-muted-foreground">
-					{{ t('settings.accent') }}
+					{{ $t('settings.accent') }}
 				</p>
 				<div class="grid grid-cols-2 gap-2">
 					<Button
@@ -138,12 +132,7 @@ const openThemeCode = (): void => {
 				</div>
 			</div>
 
-			<Button
-				class="w-full"
-				size="sm"
-				color="primary"
-				@click="openThemeCode"
-			>
+			<Button class="w-full" size="sm" color="primary" @click="openThemeCode">
 				Copy style
 			</Button>
 		</div>

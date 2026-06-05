@@ -7,7 +7,7 @@
 	"files": [
 		{
 			"source": "templates/button/Button.vue",
-			"target": "components/ui/Button.vue"
+			"target": "components/ui/button/Button.vue"
 		},
 		{
 			"source": "templates/utils/cn.ts",

@@ -22,7 +22,9 @@ const handleAction = (): void => {
 
 <template>
 	<div class="size-full p-5 text-center">
-		<div class="mx-auto mb-4 flex size-20 items-center justify-center overflow-hidden rounded-[24px] bg-secondary text-primary">
+		<div
+			class="mx-auto mb-4 flex size-20 items-center justify-center overflow-hidden rounded-3xl bg-secondary text-primary"
+		>
 			<slot name="illustration">
 				<img
 					v-if="data?.imageSrc"
@@ -35,10 +37,8 @@ const handleAction = (): void => {
 		</div>
 
 		<div class="space-y-2">
-			<h2 class="text-xl font-semibold">
-				{{ data?.title }}
-			</h2>
-			<p class="text-sm leading-6 text-muted-foreground">
+			<h2 class="text-xl font-semibold">{{ data?.title }}</h2>
+			<p class="text-md leading-6 text-muted-foreground">
 				{{ data?.description }}
 			</p>
 		</div>

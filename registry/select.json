@@ -7,7 +7,7 @@
 	"files": [
 		{
 			"source": "templates/select/Select.vue",
-			"target": "components/ui/Select.vue"
+			"target": "components/ui/select/Select.vue"
 		},
 		{
 			"source": "templates/utils/cn.ts",

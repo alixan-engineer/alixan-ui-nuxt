@@ -7,7 +7,7 @@
 	"files": [
 		{
 			"source": "templates/otp/OtpInput.vue",
-			"target": "components/ui/OtpInput.vue"
+			"target": "components/ui/otp-input/OtpInput.vue"
 		},
 		{
 			"source": "templates/utils/cn.ts",

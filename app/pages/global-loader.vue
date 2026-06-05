@@ -1,8 +1,6 @@
 <script setup lang="ts">
-useSeoMeta({
+usePageMeta({
 	title: 'Global Loader - Alixan UI',
-	ogTitle: 'Global Loader - Alixan UI',
-	twitterTitle: 'Global Loader - Alixan UI',
 });
 
 const tocLinks = [

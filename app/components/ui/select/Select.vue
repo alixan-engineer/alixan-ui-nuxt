@@ -131,7 +131,7 @@ onBeforeUnmount(closeSelect);
 			:disabled="disabled"
 			:class="
 				cn(
-					'flex w-full items-center justify-between gap-2 border bg-background px-4 text-left hover:bg-secondary/40 focus-visible:bg-secondary/40 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50',
+					'flex w-full items-center justify-between gap-2 border px-4 text-left hover:bg-secondary/40 focus-visible:bg-secondary/40 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50',
 					label ? 'h-14 rounded-2xl pt-2' : 'h-11 rounded-xl',
 					open ? 'border-primary' : 'border-border',
 				)
@@ -179,7 +179,7 @@ onBeforeUnmount(closeSelect);
 					:disabled="option.disabled"
 					:class="
 						cn(
-							'flex min-h-9 w-full cursor-pointer items-center gap-3 rounded-md px-3 text-left text-md hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50',
+							'min-h-9 w-full flex items-center gap-3 rounded-md px-3 text-left text-md hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 cursor-pointer',
 							model === option.value ? 'bg-secondary' : '',
 						)
 					"

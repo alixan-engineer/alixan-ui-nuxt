@@ -1,19 +1,21 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
-
-import type { PageTocLink } from '~/composables/usePageToc';
+import type { IPageTocLink } from '~/interfaces/page-toc/page-toc.interface';
 import { cn } from '~/utils/cn';
 
 interface PageTocProps {
-	links: readonly PageTocLink[];
+	links: readonly IPageTocLink[];
 }
 
 const props = defineProps<PageTocProps>();
+
 const route = useRoute();
 
 const activeHash = ref(route.hash || props.links[0]?.href || '');
 
-const activeHref = computed(() => activeHash.value || props.links[0]?.href || '');
+const activeHref = computed(
+	() => activeHash.value || props.links[0]?.href || '',
+);
 
 const syncActiveHash = (): void => {
 	activeHash.value = window.location.hash || props.links[0]?.href || '';

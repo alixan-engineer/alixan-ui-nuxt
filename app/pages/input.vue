@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { Eye, EyeOff, Lock, Mail } from '@lucide/vue';
 
-useSeoMeta({
+usePageMeta({
 	title: 'Input - Alixan UI',
-	ogTitle: 'Input - Alixan UI',
-	twitterTitle: 'Input - Alixan UI',
 });
 
 const tocLinks = [

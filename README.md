@@ -11,6 +11,6 @@ npx alixan-ui-nuxt add button
 The CLI copies component source files into your project:
 
 ```txt
-components/ui/Button.vue
+components/ui/button/Button.vue
 utils/cn.ts
 ```

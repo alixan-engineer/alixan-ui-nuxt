@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import AlertDialog from '~/components/ui/AlertDialog.vue';
+import AlertDialog from '~/components/ui/alert-dialog/AlertDialog.vue';
 
-useSeoMeta({
+usePageMeta({
 	title: 'Alert Dialog - Alixan UI',
-	ogTitle: 'Alert Dialog - Alixan UI',
-	twitterTitle: 'Alert Dialog - Alixan UI',
 });
 
 const tocLinks = [
@@ -59,7 +57,7 @@ const alertDialogProps = [
 ];
 
 const code = `<script setup lang="ts">
-import AlertDialog from '~/components/ui/AlertDialog.vue'
+import AlertDialog from '~/components/ui/alert-dialog/AlertDialog.vue'
 
 const dialog = useDialog()
 

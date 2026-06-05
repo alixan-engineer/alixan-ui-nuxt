@@ -7,7 +7,7 @@
 	"files": [
 		{
 			"source": "templates/status/Status.vue",
-			"target": "components/ui/Status.vue"
+			"target": "components/ui/status/Status.vue"
 		},
 		{
 			"source": "templates/utils/cn.ts",

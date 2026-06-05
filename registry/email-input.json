@@ -7,11 +7,11 @@
 	"files": [
 		{
 			"source": "templates/input/EmailInput.vue",
-			"target": "components/ui/EmailInput.vue"
+			"target": "components/ui/email-input/EmailInput.vue"
 		},
 		{
 			"source": "templates/input/Input.vue",
-			"target": "components/ui/Input.vue"
+			"target": "components/ui/input/Input.vue"
 		},
 		{
 			"source": "templates/utils/cn.ts",

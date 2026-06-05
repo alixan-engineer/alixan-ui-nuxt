@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { Bell, ExternalLink, Search } from '@lucide/vue';
 
-useSeoMeta({
+usePageMeta({
 	title: 'Icons - Alixan UI',
-	ogTitle: 'Icons - Alixan UI',
-	twitterTitle: 'Icons - Alixan UI',
 });
 
 const tocLinks = [

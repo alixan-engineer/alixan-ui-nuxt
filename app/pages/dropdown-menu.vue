@@ -1,8 +1,6 @@
 <script setup lang="ts">
-useSeoMeta({
+usePageMeta({
 	title: 'Dropdown Menu - Alixan UI',
-	ogTitle: 'Dropdown Menu - Alixan UI',
-	twitterTitle: 'Dropdown Menu - Alixan UI',
 });
 
 const tocLinks = [

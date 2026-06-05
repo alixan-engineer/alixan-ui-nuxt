@@ -1,8 +1,6 @@
 <script setup lang="ts">
-useSeoMeta({
+usePageMeta({
 	title: 'Fonts - Alixan UI',
-	ogTitle: 'Fonts - Alixan UI',
-	twitterTitle: 'Fonts - Alixan UI',
 });
 
 const tocLinks = [
