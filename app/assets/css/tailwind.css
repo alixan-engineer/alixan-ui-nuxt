@@ -216,7 +216,9 @@
 }
 
 @utility island {
-	@apply flex flex-col rounded-2xl border overflow-hidden dark:bg-card dark:text-card-foreground min-h-fit;
+	@apply flex flex-col border overflow-hidden;
+
+	border-radius: clamp(var(--radius-md), 20%, var(--radius-2xl));
 }
 
 @utility backdrop {

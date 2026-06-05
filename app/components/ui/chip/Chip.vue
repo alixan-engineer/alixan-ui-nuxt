@@ -47,7 +47,7 @@ const chipClass = computed(() =>
 		sizeClasses[props.size],
 		props.selected
 			? 'border-primary bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:bg-primary/90'
-			: 'border-border bg-background text-foreground hover:bg-secondary/40 focus-visible:bg-secondary/40',
+			: 'border-border text-foreground hover:bg-secondary/40 focus-visible:bg-secondary/40',
 		props.disabled ? 'pointer-events-none opacity-50' : 'cursor-pointer',
 		attrs.class,
 	),

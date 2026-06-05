@@ -22,7 +22,83 @@
 	"guide": {
 		"fonts": "Шрифты",
 		"i18n": "i18n",
-		"seo": "SEO"
+		"lottie": "Lottie",
+		"seo": "SEO",
+		"theme": "Тема",
+		"styles": "Стили"
+	},
+	"stylesPage": {
+		"metaTitle": "Стили - Alixan UI",
+		"metaDescription": "Общие Tailwind-токены и утилиты, которые используются в документации Alixan UI.",
+		"title": "Стили",
+		"description": "Общие Tailwind-токены и утилиты, которые используются в примерах и overlay-компонентах.",
+		"tailwind": {
+			"title": "Tailwind CSS",
+			"description": "Скопируйте общий CSS-файл из установки, если хотите держать токены темы, базовые стили и утилиты в одном месте.",
+			"copyCode": "Скопировать код",
+			"copiedCode": "Скопировано",
+			"viewCode": "Показать код",
+			"hideCode": "Скрыть код"
+		},
+		"textSize": {
+			"title": "Размер текста",
+			"descriptionMiddle": "соответствует",
+			"descriptionSuffix": "и используется для компактных label, пунктов меню и плотных form controls."
+		},
+		"island": {
+			"title": "Island",
+			"descriptionPrefix": "Используйте",
+			"descriptionSuffix": "для bordered-блоков документации и компактных панелей. Радиус рассчитывается от размера блока и ограничивается шкалой радиусов темы."
+		},
+		"backdrop": {
+			"title": "Backdrop",
+			"description": "стандартизирует затемнение overlay для Dialog, Drawer, Global Loader и мобильного sidebar."
+		}
+	},
+	"seoPage": {
+		"metaTitle": "SEO - Alixan UI",
+		"metaDescription": "Гайд по настройке SEO для документации Alixan UI.",
+		"title": "SEO",
+		"description": "Настройте общие метаданные сайта, SEO-теги страниц, favicon, robots.txt и генерацию sitemap для Nuxt проекта.",
+		"installation": {
+			"title": "Установка",
+			"descriptionStart": "Эта команда копирует",
+			"sitemapDescription": "Установите Nuxt Sitemap до добавления sitemap-настроек в nuxt.config.ts.",
+			"seoCommandDescription": "После копирования замените значения из примера в site.ts на свой домен, название проекта, заголовок по умолчанию, описание и OG-изображение."
+		},
+		"siteConfig": {
+			"title": "Конфиг сайта",
+			"description": "Храните домен, название сайта, заголовок по умолчанию, описание и OG-изображение в одном конфиге, чтобы Nuxt config и runtime composables использовали одинаковые значения.",
+			"nuxtConfigPrefix": "Используйте",
+			"nuxtConfigMiddle": "в",
+			"nuxtConfigSuffix": "для SEO-модулей Nuxt, например sitemap."
+		},
+		"pageMeta": {
+			"title": "Мета страницы",
+			"description": "централизует title, description, Open Graph и Twitter теги. Страницы передают только значения, которые отличаются от дефолтов.",
+			"usagePrefix": "Вызывайте",
+			"usageMiddle": "на каждой странице. Если поле не передано, используется дефолт из",
+			"usageSuffix": "."
+		},
+		"initialHead": {
+			"title": "Начальный head",
+			"faviconPrefix": "Храните favicon-ссылки в отдельном конфиге. PNG-иконки лежат в",
+			"faviconMiddle": "а",
+			"faviconSuffix": "могут оставаться в корне public.",
+			"appInit": "Инициализируйте дефолтные meta, язык документа и favicon-ссылки один раз рядом с корнем приложения."
+		},
+		"robots": {
+			"title": "Robots",
+			"descriptionPrefix": "Добавьте",
+			"descriptionSuffix": "чтобы поисковые роботы могли найти sitemap. Замените домен из примера на ваш production-домен."
+		},
+		"sitemap": {
+			"title": "Sitemap",
+			"description": "Sitemap помогает поисковым роботам найти доступные маршруты и понять, какие страницы нужно обходить.",
+			"verify": "После деплоя проверьте, что sitemap доступен по URL, который указан в robots.txt.",
+			"infoPrefix": "Для более подробной информации перейдите в",
+			"infoLink": "документацию Nuxt Sitemap."
+		}
 	},
 	"component": {
 		"button": "Кнопка",
@@ -38,6 +114,8 @@
 		"tabs": "Табы",
 		"switch": "Переключатель",
 		"status": "Статус",
+		"empty": "Пустое состояние",
+		"divider": "Разделитель",
 		"textLink": "Текстовая ссылка",
 		"dialog": "Диалог",
 		"alertDialog": "Окно сообщения",

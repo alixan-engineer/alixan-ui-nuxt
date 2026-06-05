@@ -2,27 +2,25 @@
 import { cn } from '~/utils/cn';
 import { menuSections } from './menu';
 
-const props = withDefaults(
-	defineProps<{
-		mobile?: boolean;
-	}>(),
-	{
-		mobile: false,
-	},
-);
+interface Props {
+	mobile?: boolean;
+}
+const props = withDefaults(defineProps<Props>(), {
+	mobile: false,
+});
 
 const emit = defineEmits<{
 	close: [];
 }>();
 
 const route = useRoute();
+const localePath = useLocalePath();
 
-const isActive = (to: string) => route.path === to;
+const normalizePath = (path: string): string =>
+	path.length > 1 ? path.replace(/\/$/, '') : path;
 
-const goTo = async (to: string): Promise<void> => {
-	await navigateTo(to);
-	emit('close');
-};
+const isActive = (to: string): boolean =>
+	normalizePath(route.path) === normalizePath(localePath(to));
 </script>
 
 <template>
@@ -62,9 +60,10 @@ const goTo = async (to: string): Promise<void> => {
 							:key="item.labelKey"
 							class="justify-start"
 							size="sm"
+							:to="localePath(item.to)"
 							:variant="isActive(item.to) ? 'filled' : 'ghost'"
 							:color="isActive(item.to) ? 'primary' : 'default'"
-							@click="goTo(item.to)"
+							@click="emit('close')"
 						>
 							{{ $t(item.labelKey) }}
 						</Button>

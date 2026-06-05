@@ -1,87 +1,6 @@
-export type Theme = 'light' | 'dark';
-export type AccentTheme =
-	| 'default'
-	| 'blue'
-	| 'green'
-	| 'yellow'
-	| 'orange'
-	| 'red'
-	| 'purple'
-	| 'pink'
-	| 'brown'
-	| 'aqua';
-
-const theme = ref<Theme>('light');
-const accentTheme = ref<AccentTheme>('default');
-
-const accentColors: Record<
-	AccentTheme,
-	{
-		primary: string;
-		primaryForeground: string;
-		darkPrimary?: string;
-		darkPrimaryForeground?: string;
-	}
-> = {
-	default: {
-		primary: 'oklch(0.141 0.005 285.823)',
-		primaryForeground: 'oklch(0.985 0 0)',
-		darkPrimary: 'oklch(0.985 0 0)',
-		darkPrimaryForeground: 'oklch(0.141 0.005 285.823)',
-	},
-	blue: {
-		primary: 'oklch(0.488 0.243 264.376)',
-		primaryForeground: 'oklch(0.97 0.014 254.604)',
-	},
-	green: {
-		primary: 'oklch(0.723 0.219 142.18)',
-		primaryForeground: 'oklch(0.982 0.018 155.826)',
-	},
-	yellow: {
-		primary: 'oklch(0.879 0.169 91.605)',
-		primaryForeground: 'oklch(0.21 0.006 285.885)',
-	},
-	orange: {
-		primary: 'oklch(0.705 0.213 47.604)',
-		primaryForeground: 'oklch(0.21 0.006 285.885)',
-	},
-	red: {
-		primary: 'oklch(0.637 0.237 25.331)',
-		primaryForeground: 'oklch(0.971 0.013 17.38)',
-	},
-	purple: {
-		primary: 'oklch(0.558 0.288 302.321)',
-		primaryForeground: 'oklch(0.977 0.014 308.299)',
-	},
-	pink: {
-		primary: 'oklch(0.656 0.241 354.308)',
-		primaryForeground: 'oklch(0.971 0.014 343.198)',
-	},
-	brown: {
-		primary: 'oklch(0.47 0.118 66.05)',
-		primaryForeground: 'oklch(0.98 0.016 73.684)',
-	},
-	aqua: {
-		primary: 'oklch(0.695 0.149 182.503)',
-		primaryForeground: 'oklch(0.985 0 0)',
-	},
-};
-
-const applyTheme = (value: Theme): void => {
-	if (!import.meta.client) {
-		return;
-	}
-
-	document.documentElement.classList.toggle('dark', value === 'dark');
-	localStorage.setItem('alixan-ui-theme', value);
-	applyAccentTheme(accentTheme.value);
-};
+import { accentColors, type AccentTheme } from '~/shared/theme/theme';
 
 const applyAccentTheme = (value: AccentTheme): void => {
-	if (!import.meta.client) {
-		return;
-	}
-
 	const color = accentColors[value];
 	const isDarkTheme = document.documentElement.classList.contains('dark');
 	const primary =
@@ -101,63 +20,31 @@ const applyAccentTheme = (value: AccentTheme): void => {
 		'--sidebar-primary-foreground',
 		primaryForeground,
 	);
-	localStorage.setItem('alixan-ui-accent-theme', value);
 };
 
 export const useTheme = () => {
-	const setTheme = (value: Theme): void => {
-		theme.value = value;
-		applyTheme(value);
-	};
+	const colorMode = useColorMode();
+	const accentTheme = useCookie<AccentTheme>('alixan-ui-accent-theme', {
+		default: () => 'default',
+		path: '/',
+		sameSite: 'lax',
+	});
 
 	const setAccentTheme = (value: AccentTheme): void => {
 		accentTheme.value = value;
 		applyAccentTheme(value);
 	};
 
-	const toggleTheme = (): void => {
-		setTheme(theme.value === 'dark' ? 'light' : 'dark');
-	};
+	onMounted(() => applyAccentTheme(accentTheme.value));
 
-	if (import.meta.client) {
-		const storedTheme = localStorage.getItem('alixan-ui-theme');
-		const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-		theme.value =
-			storedTheme === 'dark' || storedTheme === 'light'
-				? storedTheme
-				: prefersDark
-					? 'dark'
-					: 'light';
-
-		applyTheme(theme.value);
-
-		const storedAccentTheme = localStorage.getItem('alixan-ui-accent-theme');
-
-		if (
-			storedAccentTheme === 'default' ||
-			storedAccentTheme === 'blue' ||
-			storedAccentTheme === 'green' ||
-			storedAccentTheme === 'yellow' ||
-			storedAccentTheme === 'orange' ||
-			storedAccentTheme === 'red' ||
-			storedAccentTheme === 'purple' ||
-			storedAccentTheme === 'pink' ||
-			storedAccentTheme === 'brown' ||
-			storedAccentTheme === 'aqua'
-		) {
-			accentTheme.value = storedAccentTheme;
-		}
-
-		applyAccentTheme(accentTheme.value);
-	}
+	watch(
+		() => colorMode.value,
+		() => applyAccentTheme(accentTheme.value),
+	);
 
 	return {
 		accentColors,
 		accentTheme: readonly(accentTheme),
-		theme: readonly(theme),
 		setAccentTheme,
-		setTheme,
-		toggleTheme,
 	};
 };

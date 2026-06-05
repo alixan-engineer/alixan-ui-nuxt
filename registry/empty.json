@@ -1,0 +1,21 @@
+{
+	"$schema": "https://nuxt.ui.alixan.kz/schema/registry-item.json",
+	"name": "empty",
+	"type": "component",
+	"title": "Empty",
+	"description": "Centered empty state with optional media slot, description and action button.",
+	"files": [
+		{
+			"source": "templates/empty/Empty.vue",
+			"target": "components/ui/empty/Empty.vue"
+		},
+		{
+			"source": "templates/button/Button.vue",
+			"target": "components/ui/button/Button.vue"
+		},
+		{
+			"source": "templates/utils/cn.ts",
+			"target": "utils/cn.ts"
+		}
+	]
+}

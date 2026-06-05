@@ -7,6 +7,7 @@ const tocLinks = [
 	{ label: 'Installation', href: '#installation' },
 	{ label: 'Messages', href: '#messages' },
 	{ label: 'Usage', href: '#usage' },
+	{ label: 'Page Meta', href: '#page-meta' },
 ] as const;
 
 const { setToc, clearToc } = usePageToc();
@@ -19,7 +20,7 @@ onBeforeUnmount(() => {
 	clearToc();
 });
 
-const installCode = `npm install @nuxtjs/i18n`;
+const installCode = `npx nuxt module add i18n`;
 
 const setupCode = `export default defineNuxtConfig({
   modules: [
@@ -98,13 +99,26 @@ const changeLocale = async (value: Locale): Promise<void> => {
 <\/script>
 
 <template>
-  <Select
-    :label="$t('settings.language')"
-    :model-value="locale"
-    :options="languageOptions"
-    @change="changeLocale($event.value as Locale)"
-  />
+  <div class="space-y-2">
+    <p class="px-1 text-sm font-medium text-muted-foreground">
+      {{ $t('settings.language') }}
+    </p>
+    <Select
+      :model-value="locale"
+      :options="languageOptions"
+      @change="changeLocale($event.value as Locale)"
+    />
+  </div>
 </template>`;
+
+const pageMetaCode = `<script setup lang="ts">
+const { t } = useI18n()
+
+usePageMeta({
+  title: t('seo.metaTitle'),
+  description: t('seo.metaDescription'),
+})
+<\/script>`;
 
 type Locale = 'en' | 'ru' | 'kk';
 
@@ -173,12 +187,26 @@ const changeLocale = async (value: Locale): Promise<void> => {
 		<h2 class="text-2xl font-semibold">Usage</h2>
 		<ExampleBlock :code="usageCode">
 			<div class="max-w-sm">
-				<Select
-					:label="$t('settings.language')"
-					:model-value="locale"
-					:options="languageOptions"
-					@change="changeLocale($event.value as Locale)"
-				/>
+				<div class="space-y-2">
+					<p class="px-1 text-sm font-medium text-muted-foreground">
+						{{ $t('settings.language') }}
+					</p>
+					<Select
+						:model-value="locale"
+						:options="languageOptions"
+						@change="changeLocale($event.value as Locale)"
+					/>
+				</div>
+			</div>
+		</ExampleBlock>
+	</section>
+
+	<section id="page-meta" class="space-y-5">
+		<h2 class="text-2xl font-semibold">Page Meta</h2>
+		<ExampleBlock :code="pageMetaCode">
+			<div class="max-w-md text-center text-muted-foreground leading-7">
+				Translate page-level SEO copy with <code>t(...)</code>, then pass the
+				resolved strings to <code>usePageMeta</code>.
 			</div>
 		</ExampleBlock>
 	</section>

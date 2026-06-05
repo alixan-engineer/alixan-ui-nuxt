@@ -40,7 +40,7 @@ const hasSeparatorAfter = (index: number): boolean => {
 };
 
 const syncFromModel = (): void => {
-	values.value = indexes.value.map((index) => model.value[index] ?? '');
+	values.value = indexes.value.map(index => model.value[index] ?? '');
 };
 
 const focusInput = async (index: number): Promise<void> => {
@@ -103,16 +103,14 @@ const handlePaste = (event: ClipboardEvent): void => {
 		return;
 	}
 
-	values.value = indexes.value.map((index) => pastedValue[index] ?? '');
+	values.value = indexes.value.map(index => pastedValue[index] ?? '');
 	updateModel();
 	focusInput(Math.min(pastedValue.length, safeLength.value - 1));
 };
 
-watch(
-	() => [model.value, safeLength.value],
-	syncFromModel,
-	{ immediate: true },
-);
+watch(() => [model.value, safeLength.value], syncFromModel, {
+	immediate: true,
+});
 </script>
 
 <template>
@@ -120,7 +118,7 @@ watch(
 		<div class="flex items-center gap-2">
 			<template v-for="index in indexes" :key="index">
 				<input
-					:ref="(element) => setInputRef(element as Element | null, index)"
+					:ref="element => setInputRef(element as Element | null, index)"
 					:value="values[index]"
 					type="text"
 					inputmode="numeric"
@@ -129,7 +127,7 @@ watch(
 					aria-label="OTP digit"
 					:class="
 						cn(
-							'size-12 rounded-2xl border bg-background text-center text-lg font-semibold text-foreground hover:border-foreground/20 focus:border-primary focus:outline-none',
+							'size-12 rounded-2xl border text-center text-lg font-semibold text-foreground hover:border-foreground/20 focus:border-primary focus:outline-none',
 							values[index] ? 'border-primary/50' : 'border-border',
 						)
 					"

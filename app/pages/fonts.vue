@@ -23,12 +23,13 @@ const installCode = `npm install @nuxtjs/google-fonts`;
 
 const configCode = `export default defineNuxtConfig({
   modules: [
+  	// Change to your font
     ['@nuxtjs/google-fonts', { families: { Geist: true } }],
   ],
 })`;
 
 const tailwindCode = `@theme {
-  /* Установите свой шрифт. */
+  /* Change to your font */
   --font-sans: 'Geist', ui-sans-serif, system-ui, sans-serif;
 }`;
 </script>

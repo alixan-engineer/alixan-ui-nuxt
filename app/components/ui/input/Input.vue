@@ -110,7 +110,9 @@ const hasClearButton = computed(
 		!props.disabled &&
 		!props.readonly,
 );
-const hasTrailingAction = computed(() => hasTrailing.value || hasClearButton.value);
+const hasTrailingAction = computed(
+	() => hasTrailing.value || hasClearButton.value,
+);
 const isLabelMoved = computed(() => isFocused.value || hasValue.value);
 const hasMessage = computed(() => Boolean(messageText.value));
 
@@ -128,11 +130,13 @@ const leadingPaddingClass = 'pl-10';
 const trailingPaddingClass = 'pr-10';
 const iconPositionClass = 'top-7 -translate-y-1/2';
 
-const rootClass = computed(() => cn('relative w-full min-h-20 space-y-1', attrs.class));
+const rootClass = computed(() =>
+	cn('relative w-full min-h-20 space-y-1', attrs.class),
+);
 
 const inputClass = computed(() =>
 	cn(
-		'w-full border border-border bg-background text-foreground placeholder:text-muted-foreground/70 hover:border-foreground/20 focus:outline-none focus:border-primary',
+		'w-full border border-border placeholder:text-muted-foreground/70 hover:border-foreground/20 focus:outline-none focus:border-primary',
 		inputBaseClass,
 		visibleLabel.value ? 'pt-2' : '',
 		hasLeading.value ? leadingPaddingClass : '',
@@ -143,7 +147,7 @@ const inputClass = computed(() =>
 		props.disabled
 			? 'cursor-not-allowed bg-secondary text-muted-foreground opacity-70'
 			: '',
-		props.readonly ? 'cursor-default bg-secondary/60' : '',
+		props.readonly ? 'cursor-default' : '',
 	),
 );
 
@@ -153,7 +157,11 @@ const labelClass = computed(() =>
 		labelTopClass,
 		hasLeading.value ? leadingLabelClass : labelBaseClass,
 		isLabelMoved.value ? '-translate-y-2.5 text-[11px] font-medium' : '',
-		visibleError.value ? 'text-destructive!' : isFocused.value ? 'text-primary' : '',
+		visibleError.value
+			? 'text-destructive!'
+			: isFocused.value
+				? 'text-primary'
+				: '',
 		props.disabled ? 'text-muted-foreground/60' : '',
 	),
 );
@@ -180,7 +188,7 @@ const applyMask = (value: string): string => {
 
 	return props.mask
 		.split('')
-		.map((symbol) => {
+		.map(symbol => {
 			if (symbol !== '#') {
 				return symbol;
 			}

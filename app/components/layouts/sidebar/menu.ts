@@ -13,6 +13,9 @@ export const menuSections: IMenuSection[] = [
 		items: [
 			{ labelKey: 'component.icons', to: '/icons' },
 			{ labelKey: 'guide.fonts', to: '/fonts' },
+			{ labelKey: 'guide.lottie', to: '/lottie' },
+			{ labelKey: 'guide.styles', to: '/styles' },
+			{ labelKey: 'guide.theme', to: '/theme' },
 			{ labelKey: 'guide.i18n', to: '/i18n' },
 			{ labelKey: 'guide.seo', to: '/seo' },
 		],
@@ -28,6 +31,8 @@ export const menuSections: IMenuSection[] = [
 			{ labelKey: 'component.tabs', to: '/tabs' },
 			{ labelKey: 'component.switch', to: '/switch' },
 			{ labelKey: 'component.status', to: '/status' },
+			{ labelKey: 'component.empty', to: '/empty' },
+			{ labelKey: 'component.divider', to: '/divider' },
 		],
 	},
 	{

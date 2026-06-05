@@ -77,6 +77,16 @@
 			"description": "Soft Cupertino-inspired status pill with semantic tones."
 		},
 		{
+			"name": "empty",
+			"title": "Empty",
+			"description": "Centered empty state with optional media slot, description and action button."
+		},
+		{
+			"name": "divider",
+			"title": "Divider",
+			"description": "Simple horizontal divider for separating content sections."
+		},
+		{
 			"name": "info",
 			"title": "Info",
 			"description": "Simple hint block for contextual documentation notes and helpful links."
@@ -85,6 +95,11 @@
 			"name": "text-link",
 			"title": "Text Link",
 			"description": "Inline content link with consistent typography and external-link rel handling."
+		},
+		{
+			"name": "seo",
+			"title": "SEO",
+			"description": "Site config, favicon links and usePageMeta composable for page SEO metadata."
 		},
 		{
 			"name": "dialog",

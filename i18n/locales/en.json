@@ -22,7 +22,83 @@
 	"guide": {
 		"fonts": "Fonts",
 		"i18n": "i18n",
-		"seo": "SEO"
+		"lottie": "Lottie",
+		"seo": "SEO",
+		"theme": "Theme",
+		"styles": "Styles"
+	},
+	"stylesPage": {
+		"metaTitle": "Styles - Alixan UI",
+		"metaDescription": "Shared Tailwind tokens and utilities used across Alixan UI documentation.",
+		"title": "Styles",
+		"description": "Shared Tailwind tokens and utilities used across examples and overlay components.",
+		"tailwind": {
+			"title": "Tailwind CSS",
+			"description": "Copy the shared CSS file from installation when you want the full theme tokens, base styles and utilities in one place.",
+			"copyCode": "Copy code",
+			"copiedCode": "Copied",
+			"viewCode": "View code",
+			"hideCode": "Hide code"
+		},
+		"textSize": {
+			"title": "Text Size",
+			"descriptionMiddle": "is mapped to",
+			"descriptionSuffix": "for compact labels, menu items and dense form controls."
+		},
+		"island": {
+			"title": "Island",
+			"descriptionPrefix": "Use",
+			"descriptionSuffix": "for bordered documentation blocks and compact panels. The radius is calculated from the block size and clamped to the theme radius scale."
+		},
+		"backdrop": {
+			"title": "Backdrop",
+			"description": "standardizes overlay dimming for Dialog, Drawer, Global Loader and the mobile sidebar."
+		}
+	},
+	"seoPage": {
+		"metaTitle": "SEO - Alixan UI",
+		"metaDescription": "SEO setup guide for Alixan UI documentation.",
+		"title": "SEO",
+		"description": "Configure shared site metadata, page-level SEO tags, favicon links, robots.txt and sitemap generation for a Nuxt project.",
+		"installation": {
+			"title": "Installation",
+			"descriptionStart": "This command copies",
+			"sitemapDescription": "Install Nuxt Sitemap before adding sitemap options to nuxt.config.ts.",
+			"seoCommandDescription": "After copying, replace the example values in site.ts with your own domain, project name, default title, description and OG image."
+		},
+		"siteConfig": {
+			"title": "Site Config",
+			"description": "Keep domain, site name, default title, description and OG image in one config file so Nuxt config and runtime composables use the same values.",
+			"nuxtConfigPrefix": "Use",
+			"nuxtConfigMiddle": "in",
+			"nuxtConfigSuffix": "for Nuxt SEO modules such as sitemap."
+		},
+		"pageMeta": {
+			"title": "Page Meta",
+			"description": "centralizes title, description, Open Graph and Twitter tags. Pages only pass values that differ from defaults.",
+			"usagePrefix": "Call",
+			"usageMiddle": "in each page. If a field is omitted, the default from",
+			"usageSuffix": "is used."
+		},
+		"initialHead": {
+			"title": "Initial Head",
+			"faviconPrefix": "Keep favicon links in a dedicated config file. PNG icons live in",
+			"faviconMiddle": "while",
+			"faviconSuffix": "can stay at the public root.",
+			"appInit": "Initialize default page meta, document language and favicon links once near the app root."
+		},
+		"robots": {
+			"title": "Robots",
+			"descriptionPrefix": "Add",
+			"descriptionSuffix": "so crawlers can discover your sitemap. Replace the example domain with your production domain."
+		},
+		"sitemap": {
+			"title": "Sitemap",
+			"description": "Sitemap helps search robots find available routes and understand which pages should be crawled.",
+			"verify": "After deployment, check that your sitemap is available from the URL used in robots.txt.",
+			"infoPrefix": "For more detailed information, visit the",
+			"infoLink": "Nuxt Sitemap documentation."
+		}
 	},
 	"component": {
 		"button": "Button",
@@ -38,6 +114,8 @@
 		"tabs": "Tabs",
 		"switch": "Switch",
 		"status": "Status",
+		"empty": "Empty",
+		"divider": "Divider",
 		"textLink": "Text Link",
 		"dialog": "Dialog",
 		"alertDialog": "Alert Dialog",

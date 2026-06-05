@@ -2,14 +2,15 @@
 import { Settings } from '@lucide/vue';
 import tailwindCss from '~/assets/css/tailwind.css?raw';
 import ThemeCodeDialog from '~/components/examples/ThemeCodeDialog.vue';
-import type { AccentTheme, Theme } from '~/composables/useTheme';
+import type { AccentTheme } from '~/shared/theme/theme';
 import { createThemeCss } from '~/utils/theme-css';
 
 type Locale = 'en' | 'ru' | 'kk';
+type ColorModePreference = 'system' | 'light' | 'dark';
 
 const { locale, setLocale } = useI18n();
-const { accentColors, accentTheme, setAccentTheme, setTheme, theme } =
-	useTheme();
+const colorMode = useColorMode();
+const { accentColors, accentTheme, setAccentTheme } = useTheme();
 const dialog = useDialog();
 
 const isOpen = ref(false);
@@ -20,7 +21,8 @@ const languageOptions: Array<{ label: string; value: Locale }> = [
 	{ label: 'Қазақша', value: 'kk' },
 ];
 
-const themeOptions: Array<{ label: string; value: Theme }> = [
+const themeOptions: Array<{ label: string; value: ColorModePreference }> = [
+	{ label: 'System', value: 'system' },
 	{ label: 'Light', value: 'light' },
 	{ label: 'Dark', value: 'dark' },
 ];
@@ -41,7 +43,7 @@ const accentOptions: Array<{ label: string; value: AccentTheme }> = [
 const getAccentPreviewColor = (value: AccentTheme): string => {
 	const color = accentColors[value];
 
-	if (value === 'default' && theme.value === 'dark' && color.darkPrimary) {
+	if (value === 'default' && colorMode.value === 'dark' && color.darkPrimary) {
 		return color.darkPrimary;
 	}
 
@@ -57,6 +59,10 @@ const changeLocale = async (value: Locale) => {
 		htmlAttrs: { lang: value },
 	});
 	await setLocale(value);
+};
+
+const setTheme = (value: ColorModePreference): void => {
+	colorMode.preference = value;
 };
 
 const openThemeCode = (): void => {
@@ -76,7 +82,7 @@ const openThemeCode = (): void => {
 	<DropdownMenu
 		v-model:open="isOpen"
 		width="320px"
-		height="540px"
+		height="580px"
 		position="bottomRight"
 	>
 		<template #trigger>
@@ -85,7 +91,7 @@ const openThemeCode = (): void => {
 			</IconButton>
 		</template>
 
-		<div class="space-y-5 p-3">
+		<div class="space-y-5 px-3 py-5">
 			<div class="space-y-2">
 				<p class="px-1 text-sm font-medium text-muted-foreground">
 					{{ $t('settings.language') }}
@@ -102,9 +108,9 @@ const openThemeCode = (): void => {
 					{{ $t('settings.theme') }}
 				</p>
 				<Select
-					:model-value="theme"
+					:model-value="colorMode.preference"
 					:options="themeOptions"
-					@change="setTheme($event.value as Theme)"
+					@change="setTheme($event.value as ColorModePreference)"
 				/>
 			</div>
 

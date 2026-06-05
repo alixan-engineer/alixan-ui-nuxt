@@ -22,7 +22,83 @@
 	"guide": {
 		"fonts": "Қаріптер",
 		"i18n": "i18n",
-		"seo": "SEO"
+		"lottie": "Lottie",
+		"seo": "SEO",
+		"theme": "Тақырып",
+		"styles": "Стильдер"
+	},
+	"stylesPage": {
+		"metaTitle": "Стильдер - Alixan UI",
+		"metaDescription": "Alixan UI құжаттамасында қолданылатын ортақ Tailwind токендері мен утилиталары.",
+		"title": "Стильдер",
+		"description": "Мысалдарда және overlay компоненттерінде қолданылатын ортақ Tailwind токендері мен утилиталары.",
+		"tailwind": {
+			"title": "Tailwind CSS",
+			"description": "Тақырып токендерін, базалық стильдерді және утилиталарды бір жерде сақтау үшін installation ішіндегі ортақ CSS файлын көшіріңіз.",
+			"copyCode": "Кодты көшіру",
+			"copiedCode": "Көшірілді",
+			"viewCode": "Кодты көрсету",
+			"hideCode": "Кодты жасыру"
+		},
+		"textSize": {
+			"title": "Мәтін өлшемі",
+			"descriptionMiddle": "мәніне тең",
+			"descriptionSuffix": "және ықшам label, мәзір элементтері мен тығыз form controls үшін қолданылады."
+		},
+		"island": {
+			"title": "Island",
+			"descriptionPrefix": "Қолданыңыз",
+			"descriptionSuffix": "bordered құжаттама блоктары мен ықшам панельдер үшін. Радиус блок өлшемінен есептеледі және тақырыптың radius шкаласымен шектеледі."
+		},
+		"backdrop": {
+			"title": "Backdrop",
+			"description": "Dialog, Drawer, Global Loader және mobile sidebar үшін overlay күңгірттеуін біріздендіреді."
+		}
+	},
+	"seoPage": {
+		"metaTitle": "SEO - Alixan UI",
+		"metaDescription": "Alixan UI құжаттамасына арналған SEO баптау нұсқаулығы.",
+		"title": "SEO",
+		"description": "Nuxt жобасы үшін ортақ сайт метадеректерін, бет SEO тегтерін, favicon сілтемелерін, robots.txt және sitemap генерациясын баптаңыз.",
+		"installation": {
+			"title": "Орнату",
+			"descriptionStart": "Бұл команда көшіреді",
+			"sitemapDescription": "nuxt.config.ts ішіне sitemap баптауларын қоспас бұрын Nuxt Sitemap орнатыңыз.",
+			"seoCommandDescription": "Көшіргеннен кейін site.ts ішіндегі мысал мәндерін өз доменіңізге, жоба атауына, әдепкі тақырыпқа, сипаттамаға және OG суретіне ауыстырыңыз."
+		},
+		"siteConfig": {
+			"title": "Сайт конфигі",
+			"description": "Доменді, сайт атауын, әдепкі тақырыпты, сипаттаманы және OG суретін бір конфигте сақтаңыз, сонда Nuxt config пен runtime composables бірдей мәндерді қолданады.",
+			"nuxtConfigPrefix": "Қолданыңыз",
+			"nuxtConfigMiddle": "ішінде",
+			"nuxtConfigSuffix": "Nuxt SEO модульдері үшін, мысалы sitemap."
+		},
+		"pageMeta": {
+			"title": "Бет метасы",
+			"description": "title, description, Open Graph және Twitter тегтерін бір жерге жинайды. Беттер тек әдепкіден өзгеше мәндерді береді.",
+			"usagePrefix": "Әр бетте",
+			"usageMiddle": "шақырыңыз. Егер өріс берілмесе, әдепкі мән",
+			"usageSuffix": "ішінен алынады."
+		},
+		"initialHead": {
+			"title": "Бастапқы head",
+			"faviconPrefix": "Favicon сілтемелерін бөлек конфигте сақтаңыз. PNG иконкалар",
+			"faviconMiddle": "ішінде, ал",
+			"faviconSuffix": "public түбірінде қала алады.",
+			"appInit": "Әдепкі page meta, құжат тілін және favicon сілтемелерін app түбіріне жақын жерде бір рет инициализациялаңыз."
+		},
+		"robots": {
+			"title": "Robots",
+			"descriptionPrefix": "Қосыңыз",
+			"descriptionSuffix": "сонда іздеу роботтары sitemap таба алады. Мысалдағы доменді production доменіңізге ауыстырыңыз."
+		},
+		"sitemap": {
+			"title": "Sitemap",
+			"description": "Sitemap іздеу роботтарына қолжетімді маршруттарды табуға және қай беттерді қарау керегін түсінуге көмектеседі.",
+			"verify": "Деплойдан кейін sitemap robots.txt ішінде көрсетілген URL арқылы ашылатынын тексеріңіз.",
+			"infoPrefix": "Толығырақ ақпарат үшін өтіңіз:",
+			"infoLink": "Nuxt Sitemap құжаттамасы."
+		}
 	},
 	"component": {
 		"button": "Батырма",
@@ -38,6 +114,8 @@
 		"tabs": "Табтар",
 		"switch": "Ауыстырғыш",
 		"status": "Статус",
+		"empty": "Бос күй",
+		"divider": "Бөлгіш",
 		"textLink": "Мәтін сілтемесі",
 		"dialog": "Диалог",
 		"alertDialog": "Хабарлама диалогы",

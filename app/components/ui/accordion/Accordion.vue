@@ -62,7 +62,7 @@ const toggleItem = (item: AccordionItem): void => {
 </script>
 
 <template>
-	<div class="w-full divide-y rounded-2xl border bg-background">
+	<div class="w-full divide-y rounded-2xl border">
 		<div v-for="item in items" :key="item.value">
 			<button
 				type="button"

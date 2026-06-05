@@ -51,14 +51,13 @@ const examples: Array<{ label: string; type: ToastType; message: string }> = [
 	{ label: 'Info', type: 'info', message: 'New update is available' },
 ];
 
-const code = `// app.vue
-// Add ToastHost once near the root of your app.
+const appCode = `// app.vue
 <template>
   <NuxtPage />
-  <ToastHost />
-</template>
+  <ToastHost /> <!-- Add ToastHost once near the root of your app. -->
+</template>`;
 
-// example.vue
+const exampleCode = `// example.vue
 <script setup lang="ts">
 const toast = useToast()
 
@@ -88,7 +87,12 @@ const showToast = () => {
 
 	<section id="usage" class="space-y-5">
 		<h2 class="text-2xl font-semibold">Usage</h2>
-		<ExampleBlock :code="code">
+		<ExampleBlock :code="appCode">
+			<div class="max-w-md text-center text-muted-foreground leading-7">
+				Add <code>ToastHost</code> once near the root of your app.
+			</div>
+		</ExampleBlock>
+		<ExampleBlock :code="exampleCode">
 			<div class="flex flex-wrap items-center justify-center gap-2">
 				<Button
 					v-for="item in examples"

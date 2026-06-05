@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { Terminal } from '@lucide/vue';
 import tailwindCss from '~/assets/css/tailwind.css?raw';
+import type { AccentTheme } from '~/shared/theme/theme';
+import { accentColors } from '~/shared/theme/theme';
 import { createThemeCss } from '~/utils/theme-css';
 
 usePageMeta({
@@ -29,7 +31,9 @@ const commands = {
 	addTailwind: 'npm install tailwindcss @tailwindcss/vite -D',
 };
 
-const { accentColors, accentTheme } = useTheme();
+const accentTheme = useCookie<AccentTheme>('alixan-ui-accent-theme', {
+	default: () => 'default',
+});
 const showTailwindCode = ref(false);
 
 const currentTailwindCss = computed(() =>
@@ -46,6 +50,9 @@ const nuxtConfig = `import tailwindcss from '@tailwindcss/vite'
 
 export default defineNuxtConfig({
   css: ['~/assets/css/tailwind.css'],
+  features: {
+    inlineStyles: true,
+  },
   vite: {
     plugins: [tailwindcss()],
   },
@@ -172,7 +179,9 @@ const usageCode = `<template>
 			class="rounded-2xl border bg-secondary/50 p-4 text-sm leading-7 text-muted-foreground"
 		>
 			This creates
-			<span class="font-medium text-foreground">components/ui/button/Button.vue</span>
+			<span class="font-medium text-foreground"
+				>components/ui/button/Button.vue</span
+			>
 			and <span class="font-medium text-foreground">utils/cn.ts</span>. Nuxt
 			auto-import handles the component after it is copied.
 		</div>
