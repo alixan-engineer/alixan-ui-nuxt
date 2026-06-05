@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import tailwindCss from '~/assets/css/tailwind.css?raw';
-import type { AccentTheme } from '~/shared/theme/theme';
+import type { AccentThemeType } from '~/interfaces/theme/theme.interface';
 import { accentColors } from '~/shared/theme/theme';
 import { createThemeCss } from '~/utils/theme-css';
 
@@ -28,7 +28,7 @@ onBeforeUnmount(() => {
 	clearToc();
 });
 
-const accentTheme = useCookie<AccentTheme>('alixan-ui-accent-theme', {
+const accentTheme = useCookie<AccentThemeType>('alixan-ui-accent-theme', {
 	default: () => 'default',
 });
 const showTailwindCode = ref(false);

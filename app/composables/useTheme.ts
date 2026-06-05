@@ -1,6 +1,7 @@
-import { accentColors, type AccentTheme } from '~/shared/theme/theme';
+import type { AccentThemeType } from '~/interfaces/theme/theme.interface';
+import { accentColors } from '~/shared/theme/theme';
 
-const applyAccentTheme = (value: AccentTheme): void => {
+const applyAccentTheme = (value: AccentThemeType): void => {
 	const color = accentColors[value];
 	const isDarkTheme = document.documentElement.classList.contains('dark');
 	const primary =
@@ -24,13 +25,13 @@ const applyAccentTheme = (value: AccentTheme): void => {
 
 export const useTheme = () => {
 	const colorMode = useColorMode();
-	const accentTheme = useCookie<AccentTheme>('alixan-ui-accent-theme', {
+	const accentTheme = useCookie<AccentThemeType>('alixan-ui-accent-theme', {
 		default: () => 'default',
 		path: '/',
 		sameSite: 'lax',
 	});
 
-	const setAccentTheme = (value: AccentTheme): void => {
+	const setAccentTheme = (value: AccentThemeType): void => {
 		accentTheme.value = value;
 		applyAccentTheme(value);
 	};

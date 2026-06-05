@@ -2,7 +2,7 @@
 import { Settings } from '@lucide/vue';
 import tailwindCss from '~/assets/css/tailwind.css?raw';
 import ThemeCodeDialog from '~/components/examples/ThemeCodeDialog.vue';
-import type { AccentTheme } from '~/shared/theme/theme';
+import type { AccentThemeType } from '~/interfaces/theme/theme.interface';
 import { createThemeCss } from '~/utils/theme-css';
 
 type Locale = 'en' | 'ru' | 'kk';
@@ -27,7 +27,7 @@ const themeOptions: Array<{ label: string; value: ColorModePreference }> = [
 	{ label: 'Dark', value: 'dark' },
 ];
 
-const accentOptions: Array<{ label: string; value: AccentTheme }> = [
+const accentOptions: Array<{ label: string; value: AccentThemeType }> = [
 	{ label: 'Default', value: 'default' },
 	{ label: 'Blue', value: 'blue' },
 	{ label: 'Green', value: 'green' },
@@ -40,7 +40,7 @@ const accentOptions: Array<{ label: string; value: AccentTheme }> = [
 	{ label: 'Aqua', value: 'aqua' },
 ];
 
-const getAccentPreviewColor = (value: AccentTheme): string => {
+const getAccentPreviewColor = (value: AccentThemeType): string => {
 	const color = accentColors[value];
 
 	if (value === 'default' && colorMode.value === 'dark' && color.darkPrimary) {
