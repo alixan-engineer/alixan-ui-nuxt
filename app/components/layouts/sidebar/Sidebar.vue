@@ -23,7 +23,9 @@ const isActive = (to: string) => route.path === localePath(to);
 		:class="
 			cn(
 				'backdrop transition-opacity duration-200 ease-in-out lg:hidden',
-				sidebarToggle ? 'opacity-100' : 'opacity-0',
+				sidebarToggle
+					? 'opacity-100 pointer-events-auto'
+					: 'opacity-0 pointer-events-none',
 			)
 		"
 		@click="emit('close')"
