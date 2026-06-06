@@ -1,9 +1,12 @@
 <script setup lang="ts">
+type DialogButtonColor = 'default' | 'primary' | 'secondary' | 'destructive';
+
 interface ConfirmDialogData {
 	title?: string;
 	description?: string;
 	cancelLabel?: string;
 	submitLabel?: string;
+	submitColor?: DialogButtonColor;
 	onCancel?: () => void;
 	onSubmit?: () => void;
 }
@@ -26,11 +29,11 @@ const submit = (): void => {
 
 <template>
 	<div class="size-full flex flex-col p-5">
-		<div class="flex-1 space-y-2 text-center">
+		<div class="flex-1 space-y-3 text-center">
 			<h2 class="text-xl font-semibold">
 				{{ data?.title }}
 			</h2>
-			<p class="text-sm leading-6 text-muted-foreground">
+			<p class="text-base leading-6 text-muted-foreground">
 				{{ data?.description }}
 			</p>
 		</div>
@@ -39,7 +42,7 @@ const submit = (): void => {
 			<Button variant="outlined" @click="cancel">
 				{{ data?.cancelLabel ?? 'Cancel' }}
 			</Button>
-			<Button color="primary" @click="submit">
+			<Button :color="data?.submitColor ?? 'primary'" @click="submit">
 				{{ data?.submitLabel ?? 'Confirm' }}
 			</Button>
 		</div>

@@ -1,0 +1,13 @@
+{
+	"$schema": "https://nuxt.ui.alixan.kz/schema/registry-item.json",
+	"name": "table",
+	"type": "component",
+	"title": "Table",
+	"description": "Reusable data table with configurable columns and row value mapping.",
+	"files": [
+		{
+			"source": "templates/table/Table.vue",
+			"target": "components/ui/table/Table.vue"
+		}
+	]
+}

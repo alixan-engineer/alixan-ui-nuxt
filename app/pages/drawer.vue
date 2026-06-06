@@ -65,14 +65,14 @@ const drawerServiceApi = [
 	},
 ];
 
-const code = `// app.vue
+const appCode = `// app.vue
 // Add DrawerHost once near the root of your app.
 <template>
   <NuxtPage />
   <DrawerHost />
-</template>
+</template>`;
 
-// example.vue
+const usageCode = `// example.vue
 // Open any Vue component as a drawer and pass options/data.
 <script setup lang="ts">
 import WorkspaceDrawer from '~/components/WorkspaceDrawer.vue'
@@ -94,9 +94,9 @@ const openDrawer = () => {
 
 <template>
   <Button @click="openDrawer">Open drawer</Button>
-</template>
+</template>`;
 
-// WorkspaceDrawer.vue
+const contentCode = `// WorkspaceDrawer.vue
 // This component is rendered inside DrawerHost.
 // It receives data and close from drawer.open().
 <script setup lang="ts">
@@ -152,36 +152,26 @@ const openDrawer = (): void => {
 
 	<section id="usage" class="space-y-5">
 		<h2 class="text-2xl font-semibold">{{ $t('docsSections.usage') }}</h2>
-		<ExampleBlock :code="code">
+
+		<ExampleBlock :code="appCode" :preview="false" />
+
+		<ExampleBlock :code="usageCode">
 			<Button @click="openDrawer">Open drawer</Button>
 		</ExampleBlock>
+
+		<ExampleBlock :code="contentCode" :preview="false" />
 	</section>
 
 	<section id="api-reference" class="space-y-4">
 		<h2 class="text-2xl font-semibold">{{ $t('docsSections.apiReference') }}</h2>
-		<div class="overflow-hidden rounded-xl border">
-			<table class="w-full text-left text-sm">
-				<thead class="border-b bg-secondary text-muted-foreground">
-					<tr>
-						<th class="px-4 py-3 font-medium">{{ $t('docsTable.option') }}</th>
-						<th class="px-4 py-3 font-medium">{{ $t('docsTable.type') }}</th>
-						<th class="px-4 py-3 font-medium">{{ $t('docsTable.default') }}</th>
-						<th class="px-4 py-3 font-medium">{{ $t('docsTable.description') }}</th>
-					</tr>
-				</thead>
-				<tbody class="divide-y">
-					<tr v-for="item in drawerServiceApi" :key="item.name">
-						<td class="px-4 py-3 font-medium">{{ item.name }}</td>
-						<td class="px-4 py-3 text-muted-foreground">{{ item.type }}</td>
-						<td class="px-4 py-3 text-muted-foreground">
-							{{ item.default }}
-						</td>
-						<td class="px-4 py-3 text-muted-foreground">
-							{{ item.description }}
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+		<Table
+			:columns="[
+				{ key: 'name', label: $t('docsTable.option') },
+				{ key: 'type', label: $t('docsTable.type') },
+				{ key: 'default', label: $t('docsTable.default') },
+				{ key: 'description', label: $t('docsTable.description') },
+			]"
+			:rows="drawerServiceApi"
+		/>
 	</section>
 </template>

@@ -1,10 +1,18 @@
 <script setup lang="ts">
-defineProps<{ code: string }>();
+withDefaults(
+	defineProps<{
+		code: string;
+		preview?: boolean;
+	}>(),
+	{
+		preview: true,
+	},
+);
 </script>
 
 <template>
 	<div class="island min-w-0 divide-y overflow-hidden">
-		<div class="min-h-65 p-8 flex items-center justify-center">
+		<div v-if="preview" class="min-h-65 p-8 flex items-center justify-center">
 			<slot />
 		</div>
 

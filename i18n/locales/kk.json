@@ -10,6 +10,75 @@
 		"theme": "Тақырып",
 		"accent": "Түс"
 	},
+	"pageNavigation": {
+		"back": "Артқа",
+		"next": "Келесі"
+	},
+	"errorPage": {
+		"notFoundTitle": "Бет табылмады",
+		"notFoundDescription": "Сіз іздеген бет жоқ немесе басқа жерге ауыстырылған.",
+		"defaultTitle": "Бірдеңе дұрыс болмады",
+		"defaultDescription": "Бұл бетті жүктеу кезінде күтпеген қате орын алды.",
+		"goHome": "Басты бетке"
+	},
+	"installationPage": {
+		"metaTitle": "Орнату - Alixan UI",
+		"title": "Орнату",
+		"description": "Alixan UI-ды Nuxt жобасына орнатыңыз. Компоненттер тікелей қолданбаңызға көшіріледі, сондықтан бастапқы код сізде болады және оны еркін баптай аласыз.",
+		"copyCommand": "Команданы көшіру",
+		"copyCode": "Кодты көшіру",
+		"viewCode": "Кодты көрсету",
+		"hideCode": "Кодты жасыру",
+		"createProject": {
+			"title": "Жоба құру",
+			"description": "Nuxt 4 жобасынан бастаңыз. Егер жобаңыз дайын болса, бұл қадамды өткізіп жіберуге болады."
+		},
+		"addTailwind": {
+			"title": "Tailwind CSS қосу",
+			"description": "Alixan UI компоненттері тақырып үшін Tailwind CSS класстарын және CSS айнымалыларын қолданады.",
+			"commandTitle": "Tailwind орнату"
+		},
+		"backdrop": {
+			"prefix": "Tailwind CSS ішінде",
+			"middle": "utility қалдырыңыз. Dialog, Drawer, Global Loader және мобильді overlay оны бірдей күңгірттеу түсі үшін қолданады:"
+		},
+		"installComponent": {
+			"title": "Компонент орнату",
+			"description": "CLI-ды жоба түбірінен іске қосыңыз. Компонент және қажетті утилиталар жобаңызға көшіріледі.",
+			"createdPrefix": "Жасалатын файлдар:",
+			"createdSuffix": ". Nuxt auto-import компонентті көшірілгеннен кейін өзі қосады."
+		},
+		"useComponent": {
+			"title": "Компонентті қолдану",
+			"description": "Компонентті Vue шаблондарында тікелей қолданыңыз. Компоненттің өзі үшін пакеттен import қажет емес.",
+			"previewButton": "Өзгерістерді сақтау"
+		}
+	},
+	"homePage": {
+		"metaTitle": "Alixan UI - Nuxt компоненттері",
+		"metaDescription": "Nuxt 4, Vue 3 және TypeScript үшін заманауи UI компоненттер жүйесі.",
+		"badge": "Nuxt 4, Vue 3, TypeScript",
+		"title": "Nuxt үшін Alixan UI компоненттері.",
+		"description": "Бұл сайт — Alixan UI құжаттамасы: Nuxt қолданбаларына арналған таза, минимал және production-ready компоненттер жүйесі.",
+		"actions": {
+			"getStarted": "Бастау",
+			"browseComponents": "Компоненттерді қарау"
+		},
+		"features": {
+			"copied": {
+				"title": "Қолданбаға көшіріледі",
+				"description": "CLI компоненттердің бастапқы файлдарын тікелей Nuxt жобаңызға орнатады."
+			},
+			"production": {
+				"title": "Production үшін дайын",
+				"description": "Компоненттер типтелген, қолжетімді және бірізді визуалды тілге негізделген."
+			},
+			"customize": {
+				"title": "Баптау оңай",
+				"description": "Ауыр абстракциялар жоқ. Tailwind класстары мен CSS айнымалылары компонентке жақын қалады."
+			}
+		}
+	},
 	"sidebar": {
 		"sections": "Қош келдіңіз",
 		"introduction": "Кіріспе",
@@ -59,7 +128,10 @@
 		"debounce": "Debounce",
 		"withChips": "Чиптермен",
 		"day": "Күн",
-		"range": "Диапазон"
+		"range": "Диапазон",
+		"host": "Host",
+		"openDialog": "Диалог ашу",
+		"dialogContent": "Диалог контенті"
 	},
 	"componentDocs": {
 		"button": { "metaTitle": "Батырма - Alixan UI", "description": "Формалардағы, тулбарлардағы және навигациядағы әрекеттерге арналған батырманы көрсетеді." },

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CalendarDays, ChevronDown, ChevronLeft, ChevronRight } from '@lucide/vue';
+import { CalendarDays, ChevronLeft, ChevronRight } from '@lucide/vue';
 import { computed, nextTick, ref, watch } from 'vue';
 
 import { cn } from '~/utils/cn';
@@ -185,7 +185,7 @@ const updateMenuPosition = (): void => {
 	const top =
 		spaceBelow < menuHeight && spaceAbove > spaceBelow
 			? Math.max(viewportPadding, rect.top - menuHeight - 4)
-			: Math.min(rect.bottom + 4, window.innerHeight - viewportPadding);
+			: Math.min(rect.bottom - 16, window.innerHeight - viewportPadding);
 	const left = Math.min(
 		Math.max(viewportPadding, rect.left),
 		window.innerWidth - menuWidth - viewportPadding,
@@ -319,6 +319,7 @@ onBeforeUnmount(closeCalendar);
 		<Input
 			:model-value="displayValue"
 			:label="label"
+			class="cursor-pointer"
 			readonly
 			@click="openCalendar"
 			@focus="openCalendar"
@@ -351,24 +352,11 @@ onBeforeUnmount(closeCalendar);
 						<ChevronLeft />
 					</button>
 
-					<label class="relative">
-						<select
-							v-model="selectedMonth"
-							class="h-11 w-full appearance-none rounded-xl border bg-background px-4 pr-9 text-center text-base focus-visible:border-primary focus-visible:outline-none"
-							aria-label="Month"
-						>
-							<option
-								v-for="month in monthOptions"
-								:key="month.value"
-								:value="month.value"
-							>
-								{{ month.label }}
-							</option>
-						</select>
-						<ChevronDown
-							class="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
-						/>
-					</label>
+					<Select
+						v-model="selectedMonth"
+						:options="monthOptions"
+						aria-label="Month"
+					/>
 
 					<button
 						type="button"
@@ -379,20 +367,11 @@ onBeforeUnmount(closeCalendar);
 						<ChevronRight />
 					</button>
 
-					<label class="relative">
-						<select
-							v-model="selectedYear"
-							class="h-11 w-full appearance-none rounded-xl border bg-background px-4 pr-9 text-center text-base focus-visible:border-primary focus-visible:outline-none"
-							aria-label="Year"
-						>
-							<option v-for="year in yearOptions" :key="year" :value="year">
-								{{ year }}
-							</option>
-						</select>
-						<ChevronDown
-							class="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
-						/>
-					</label>
+					<Select
+						v-model="selectedYear"
+						:options="yearOptions.map(year => ({ label: String(year), value: year }))"
+						aria-label="Year"
+					/>
 				</div>
 
 				<div

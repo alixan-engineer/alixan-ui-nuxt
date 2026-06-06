@@ -26,10 +26,9 @@ onBeforeUnmount(() => {
 const city = ref<string | number | null>(null);
 const requiredCity = ref<string | number | null>(null);
 const cities = ref<Array<string | number>>([]);
-const isSubmitted = ref(false);
 
 const requiredCityError = computed(() =>
-	isSubmitted.value && !requiredCity.value ? 'City is required' : '',
+	!requiredCity.value ? 'City is required' : '',
 );
 
 const options = [
@@ -54,8 +53,7 @@ const options = [
 </template>`,
 	validation: `<script setup lang="ts">
 const city = ref(null)
-const submitted = ref(false)
-const error = computed(() => submitted.value && !city.value ? 'City is required' : '')
+const error = computed(() => !city.value ? 'City is required' : '')
 <\/script>
 
 <template>
@@ -65,8 +63,6 @@ const error = computed(() => submitted.value && !city.value ? 'City is required'
     :options="options"
     :error="error"
   />
-
-  <Button @click="submitted = true">Submit</Button>
 </template>`,
 	chips: `<script setup lang="ts">
 const cities = ref([])
@@ -114,7 +110,6 @@ const options = [
 					:options="options"
 					:error="requiredCityError"
 				/>
-				<Button @click="isSubmitted = true">Submit</Button>
 			</div>
 		</ExampleBlock>
 	</section>

@@ -2,7 +2,6 @@
 import DialogPreviewContent from '~/components/examples/DialogPreviewContent.vue';
 const { t } = useI18n();
 
-
 usePageMeta({
 	title: t('componentDocs.dialog.metaTitle'),
 	description: t('componentDocs.dialog.description'),
@@ -11,6 +10,9 @@ usePageMeta({
 const tocLinks = [
 	{ label: t('docsSections.installation'), href: '#installation' },
 	{ label: t('docsSections.usage'), href: '#usage' },
+	{ label: t('docsSections.host'), href: '#host', child: true },
+	{ label: t('docsSections.openDialog'), href: '#open-dialog', child: true },
+	{ label: t('docsSections.dialogContent'), href: '#dialog-content', child: true },
 	{ label: t('docsSections.apiReference'), href: '#api-reference' },
 ] as const;
 
@@ -60,17 +62,19 @@ const dialogServiceApi = [
 	},
 ];
 
-const code = `// App.vue. Add DialogHost once near the root of your app.
+const hostCode = `// app.vue
+// Add DialogHost once near the root of your app.
 <template>
   <NuxtPage />
   <DialogHost />
-</template>
+</template>`;
 
-// Example.vue. Open any Vue component as a dialog and pass options/data.
+const openCode = `// example.vue
 <script setup lang="ts">
 import ProjectDialog from '~/components/ProjectDialog.vue'
 
 const dialog = useDialog()
+const projectName = ref('Alixan UI')
 
 const openDialog = () => {
   dialog.open(ProjectDialog, {
@@ -89,11 +93,9 @@ const openDialog = () => {
 
 <template>
   <Button @click="openDialog">Open dialog</Button>
-</template>
+</template>`;
 
-// ProjectDialog.vue:
-// This component is rendered inside DialogHost.
-// It receives data and close from dialog.open().
+const contentCode = `// ProjectDialog.vue
 <script setup lang="ts">
 interface ProjectDialogData {
   projectName: string
@@ -160,40 +162,52 @@ const openDialog = (): void => {
 
 	<section id="usage" class="space-y-5">
 		<h2 class="text-2xl font-semibold">{{ $t('docsSections.usage') }}</h2>
-		<ExampleBlock :code="code">
-			<div class="flex flex-wrap items-center justify-center gap-3">
-				<Button @click="openDialog">Open dialog</Button>
-				<p class="text-sm text-muted-foreground">
-					Project name:
-					<span class="font-medium text-foreground">{{ projectName }}</span>
-				</p>
-			</div>
-		</ExampleBlock>
+
+		<div id="host" class="scroll-mt-24 space-y-3">
+			<h3 class="text-xl font-semibold">{{ $t('docsSections.host') }}</h3>
+			<ExampleBlock :code="hostCode">
+				<div class="text-sm leading-7 text-muted-foreground">
+					Add <code>DialogHost</code> once near the root of your app.
+				</div>
+			</ExampleBlock>
+		</div>
+
+		<div id="open-dialog" class="scroll-mt-24 space-y-3">
+			<h3 class="text-xl font-semibold">{{ $t('docsSections.openDialog') }}</h3>
+			<ExampleBlock :code="openCode">
+				<div class="flex flex-wrap items-center justify-center gap-3">
+					<Button @click="openDialog">Open dialog</Button>
+					<p class="text-sm text-muted-foreground">
+						Project name:
+						<span class="font-medium text-foreground">{{ projectName }}</span>
+					</p>
+				</div>
+			</ExampleBlock>
+		</div>
+
+		<div id="dialog-content" class="scroll-mt-24 space-y-3">
+			<h3 class="text-xl font-semibold">
+				{{ $t('docsSections.dialogContent') }}
+			</h3>
+			<ExampleBlock :code="contentCode">
+				<div class="text-sm leading-7 text-muted-foreground">
+					The content component receives <code>data</code> and
+					<code>close</code> from <code>dialog.open()</code>.
+				</div>
+			</ExampleBlock>
+		</div>
 	</section>
 
 	<section id="api-reference" class="space-y-4">
 		<h2 class="text-2xl font-semibold">{{ $t('docsSections.apiReference') }}</h2>
-		<div class="overflow-hidden rounded-xl border">
-			<table class="w-full text-left text-sm">
-				<thead class="border-b bg-secondary text-muted-foreground">
-					<tr>
-						<th class="px-4 py-3 font-medium">{{ $t('docsTable.option') }}</th>
-						<th class="px-4 py-3 font-medium">{{ $t('docsTable.type') }}</th>
-						<th class="px-4 py-3 font-medium">{{ $t('docsTable.default') }}</th>
-						<th class="px-4 py-3 font-medium">{{ $t('docsTable.description') }}</th>
-					</tr>
-				</thead>
-				<tbody class="divide-y">
-					<tr v-for="item in dialogServiceApi" :key="item.name">
-						<td class="px-4 py-3 font-medium">{{ item.name }}</td>
-						<td class="px-4 py-3 text-muted-foreground">{{ item.type }}</td>
-						<td class="px-4 py-3 text-muted-foreground">{{ item.default }}</td>
-						<td class="px-4 py-3 text-muted-foreground">
-							{{ item.description }}
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+		<Table
+			:columns="[
+				{ key: 'name', label: $t('docsTable.option') },
+				{ key: 'type', label: $t('docsTable.type') },
+				{ key: 'default', label: $t('docsTable.default') },
+				{ key: 'description', label: $t('docsTable.description') },
+			]"
+			:rows="dialogServiceApi"
+		/>
 	</section>
 </template>

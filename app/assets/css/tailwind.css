@@ -3,7 +3,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-	/* Установите свой шрифт. */
+	/* Set your own font. */
 	--font-sans: 'Geist', ui-sans-serif, system-ui, sans-serif;
 
 	--text-md: 15px;

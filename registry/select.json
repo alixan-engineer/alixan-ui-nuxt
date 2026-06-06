@@ -3,7 +3,7 @@
 	"name": "select",
 	"type": "component",
 	"title": "Select",
-	"description": "Floating label select with teleported menu and outside click catcher.",
+	"description": "Floating label select with optional teleported menu and outside click catcher.",
 	"files": [
 		{
 			"source": "templates/select/Select.vue",

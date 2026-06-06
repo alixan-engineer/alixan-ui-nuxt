@@ -1,9 +1,12 @@
 <script setup lang="ts">
+type DialogButtonColor = 'default' | 'primary' | 'secondary' | 'destructive';
+
 interface ConfirmDialogData {
 	title?: string;
 	description?: string;
 	cancelLabel?: string;
 	submitLabel?: string;
+	submitColor?: DialogButtonColor;
 	onCancel?: () => void;
 	onSubmit?: () => void;
 }
@@ -39,7 +42,7 @@ const submit = (): void => {
 			<Button variant="outlined" @click="cancel">
 				{{ data?.cancelLabel ?? 'Cancel' }}
 			</Button>
-			<Button color="primary" @click="submit">
+			<Button :color="data?.submitColor ?? 'primary'" @click="submit">
 				{{ data?.submitLabel ?? 'Confirm' }}
 			</Button>
 		</div>

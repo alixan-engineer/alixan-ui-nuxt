@@ -87,6 +87,11 @@
 			"description": "Centered empty state with optional media slot, description and action button."
 		},
 		{
+			"name": "table",
+			"title": "Table",
+			"description": "Reusable data table with configurable columns and row value mapping."
+		},
+		{
 			"name": "divider",
 			"title": "Divider",
 			"description": "Simple horizontal divider for separating content sections."
@@ -129,7 +134,7 @@
 		{
 			"name": "select",
 			"title": "Select",
-			"description": "Floating label select with teleported menu and outside click catcher."
+			"description": "Floating label select with optional teleported menu and outside click catcher."
 		},
 		{
 			"name": "dropdown-menu",

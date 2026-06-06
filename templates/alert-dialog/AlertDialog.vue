@@ -1,11 +1,18 @@
 <script setup lang="ts">
 import { Info } from '@lucide/vue';
+import type { Component } from 'vue';
+
+type DialogButtonColor = 'default' | 'primary' | 'secondary' | 'destructive';
+type DialogMediaComponent = Component | string;
+type DialogMediaProps = Record<string, unknown>;
 
 interface AlertDialogData {
 	title?: string;
 	description?: string;
 	buttonLabel?: string;
-	imageSrc?: string;
+	buttonColor?: DialogButtonColor;
+	mediaComponent?: DialogMediaComponent;
+	mediaProps?: DialogMediaProps;
 	onAction?: () => void;
 }
 
@@ -24,11 +31,10 @@ const handleAction = (): void => {
 	<div class="size-full p-5 text-center">
 		<div class="mx-auto mb-4 flex size-20 items-center justify-center overflow-hidden rounded-[24px] bg-secondary text-primary">
 			<slot name="illustration">
-				<img
-					v-if="data?.imageSrc"
-					:src="data.imageSrc"
-					alt=""
-					class="size-full object-cover"
+				<component
+					:is="data?.mediaComponent"
+					v-if="data?.mediaComponent"
+					v-bind="data?.mediaProps"
 				/>
 				<Info v-else class="size-9" />
 			</slot>
@@ -43,7 +49,11 @@ const handleAction = (): void => {
 			</p>
 		</div>
 
-		<Button class="mt-5 w-full" color="primary" @click="handleAction">
+		<Button
+			class="mt-5 w-full"
+			:color="data?.buttonColor ?? 'primary'"
+			@click="handleAction"
+		>
 			{{ data?.buttonLabel ?? 'OK' }}
 		</Button>
 	</div>

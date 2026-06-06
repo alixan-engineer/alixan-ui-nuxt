@@ -11,6 +11,7 @@ usePageMeta({
 const tocLinks = [
 	{ label: t('docsSections.installation'), href: '#installation' },
 	{ label: t('docsSections.usage'), href: '#usage' },
+	{ label: t('docsSections.apiReference'), href: '#api-reference' },
 ] as const;
 
 const { setToc, clearToc } = usePageToc();
@@ -26,6 +27,51 @@ onBeforeUnmount(() => {
 const dialog = useDialog();
 const toast = useToast();
 
+const confirmDialogProps = [
+	{
+		name: 'data.title',
+		type: 'string',
+		default: '-',
+		description: 'Dialog title.',
+	},
+	{
+		name: 'data.description',
+		type: 'string',
+		default: '-',
+		description: 'Short explanation shown under the title.',
+	},
+	{
+		name: 'data.cancelLabel',
+		type: 'string',
+		default: "'Cancel'",
+		description: 'Cancel action label.',
+	},
+	{
+		name: 'data.submitLabel',
+		type: 'string',
+		default: "'Confirm'",
+		description: 'Submit action label.',
+	},
+	{
+		name: 'data.submitColor',
+		type: "'default' | 'primary' | 'secondary' | 'destructive'",
+		default: "'primary'",
+		description: 'Submit action button color.',
+	},
+	{
+		name: 'data.onCancel',
+		type: '() => void',
+		default: '-',
+		description: 'Callback called before closing from cancel.',
+	},
+	{
+		name: 'data.onSubmit',
+		type: '() => void',
+		default: '-',
+		description: 'Callback called before closing from submit.',
+	},
+];
+
 const code = `<script setup lang="ts">
 import ConfirmDialog from '~/components/ui/confirm-dialog/ConfirmDialog.vue'
 
@@ -40,6 +86,7 @@ const openConfirm = () => {
       description: 'This action cannot be undone.',
       cancelLabel: 'Cancel',
       submitLabel: 'Delete',
+      submitColor: 'destructive',
       onSubmit: () => console.log('confirmed'),
     },
   })
@@ -61,6 +108,7 @@ const openConfirm = (): void => {
 			description: 'This action cannot be undone.',
 			cancelLabel: 'Cancel',
 			submitLabel: 'Delete',
+			submitColor: 'destructive',
 			onSubmit: () => toast.open('Deleted', 'success'),
 		},
 	});
@@ -85,5 +133,18 @@ const openConfirm = (): void => {
 		<ExampleBlock :code="code">
 			<Button color="destructive" @click="openConfirm">Delete</Button>
 		</ExampleBlock>
+	</section>
+
+	<section id="api-reference" class="space-y-4">
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.apiReference') }}</h2>
+		<Table
+			:columns="[
+				{ key: 'name', label: $t('docsTable.prop') },
+				{ key: 'type', label: $t('docsTable.type') },
+				{ key: 'default', label: $t('docsTable.default') },
+				{ key: 'description', label: $t('docsTable.description') },
+			]"
+			:rows="confirmDialogProps"
+		/>
 	</section>
 </template>

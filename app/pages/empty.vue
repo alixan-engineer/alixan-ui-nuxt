@@ -42,6 +42,12 @@ const emptyProps = [
 		default: '-',
 		description: 'Optional action button label.',
 	},
+	{
+		name: 'buttonColor',
+		type: "'default' | 'primary' | 'secondary' | 'destructive'",
+		default: "'primary'",
+		description: 'Optional action button color.',
+	},
 ];
 
 const emptySlots = [
@@ -57,6 +63,7 @@ const examples = {
     title="No results"
     description="Try changing filters or search query."
     button="Reset filters"
+    button-color="secondary"
     @action="resetFilters"
   />
 </template>`,
@@ -65,9 +72,12 @@ const examples = {
     title="Page not found"
     description="The page you are looking for does not exist or has been moved."
     button="Go home"
+    button-color="primary"
     @action="navigateTo('/')"
   >
-    <Lottie name="error" width="160px" height="140px" />
+    <div class="flex size-24 items-center justify-center rounded-4xl bg-secondary text-primary">
+      <Lottie name="error" :loop="false" width="80px" height="80px" />
+    </div>
   </Empty>
 </template>`,
 };
@@ -93,6 +103,7 @@ const examples = {
 				title="No results"
 				description="Try changing filters or search query."
 				button="Reset filters"
+				button-color="secondary"
 			/>
 		</ExampleBlock>
 	</section>
@@ -104,57 +115,36 @@ const examples = {
 				title="Page not found"
 				description="The page you are looking for does not exist or has been moved."
 				button="Go home"
+				button-color="primary"
 			>
-				<Lottie name="error" width="160px" height="140px" />
+				<div
+					class="flex size-24 items-center justify-center rounded-4xl bg-secondary text-primary"
+				>
+					<Lottie name="error" :loop="false" width="80px" height="80px" />
+				</div>
 			</Empty>
 		</ExampleBlock>
 	</section>
 
 	<section id="api-reference" class="space-y-4">
 		<h2 class="text-2xl font-semibold">{{ $t('docsSections.apiReference') }}</h2>
-		<div class="overflow-hidden rounded-xl border">
-			<table class="w-full text-left text-sm">
-				<thead class="border-b bg-secondary text-muted-foreground">
-					<tr>
-						<th class="px-4 py-3 font-medium">{{ $t('docsTable.prop') }}</th>
-						<th class="px-4 py-3 font-medium">{{ $t('docsTable.type') }}</th>
-						<th class="px-4 py-3 font-medium">{{ $t('docsTable.default') }}</th>
-						<th class="px-4 py-3 font-medium">{{ $t('docsTable.description') }}</th>
-					</tr>
-				</thead>
-				<tbody class="divide-y">
-					<tr v-for="item in emptyProps" :key="item.name">
-						<td class="px-4 py-3 font-medium">{{ item.name }}</td>
-						<td class="px-4 py-3 text-muted-foreground">{{ item.type }}</td>
-						<td class="px-4 py-3 text-muted-foreground">
-							{{ item.default }}
-						</td>
-						<td class="px-4 py-3 text-muted-foreground">
-							{{ item.description }}
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+		<Table
+			:columns="[
+				{ key: 'name', label: $t('docsTable.prop') },
+				{ key: 'type', label: $t('docsTable.type') },
+				{ key: 'default', label: $t('docsTable.default') },
+				{ key: 'description', label: $t('docsTable.description') },
+			]"
+			:rows="emptyProps"
+		/>
 
 		<h3 class="pt-4 text-xl font-semibold">Slots</h3>
-		<div class="overflow-hidden rounded-xl border">
-			<table class="w-full text-left text-sm">
-				<thead class="border-b bg-secondary text-muted-foreground">
-					<tr>
-						<th class="px-4 py-3 font-medium">{{ $t('docsTable.slot') }}</th>
-						<th class="px-4 py-3 font-medium">{{ $t('docsTable.description') }}</th>
-					</tr>
-				</thead>
-				<tbody class="divide-y">
-					<tr v-for="item in emptySlots" :key="item.name">
-						<td class="px-4 py-3 font-medium">{{ item.name }}</td>
-						<td class="px-4 py-3 text-muted-foreground">
-							{{ item.description }}
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+		<Table
+			:columns="[
+				{ key: 'name', label: $t('docsTable.slot') },
+				{ key: 'description', label: $t('docsTable.description') },
+			]"
+			:rows="emptySlots"
+		/>
 	</section>
 </template>

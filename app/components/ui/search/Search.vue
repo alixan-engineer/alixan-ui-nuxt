@@ -36,7 +36,7 @@ let shouldSkipNextSearch = false;
 
 const rootClass = computed(() =>
 	cn(
-		'relative h-11 w-full overflow-hidden rounded-xl border border-border bg-secondary/30 hover:border-foreground/20',
+		'relative h-11 w-full overflow-hidden rounded-xl border bg-input/30 hover:border-foreground/20',
 		props.readonly ? 'bg-secondary/60' : '',
 		attrs.class,
 	),
@@ -44,7 +44,6 @@ const rootClass = computed(() =>
 
 const inputAttrs = computed(() => {
 	const { class: _class, ...rest } = attrs;
-
 	return rest;
 });
 
@@ -52,10 +51,7 @@ const hasValue = computed(() => model.value.trim().length > 0);
 const debounceDelay = computed(() => Math.max(0, props.debounce));
 
 const clearDebounce = (): void => {
-	if (!debounceTimer) {
-		return;
-	}
-
+	if (!debounceTimer) return;
 	clearTimeout(debounceTimer);
 	debounceTimer = undefined;
 };
@@ -66,7 +62,6 @@ const emitSearch = (value: string): void => {
 
 const scheduleSearch = (value: string): void => {
 	clearDebounce();
-
 	debounceTimer = setTimeout(() => {
 		emitSearch(value);
 		debounceTimer = undefined;
@@ -88,13 +83,10 @@ watch(model, value => {
 		shouldSkipNextSearch = false;
 		return;
 	}
-
 	scheduleSearch(value);
 });
 
-onBeforeUnmount(() => {
-	clearDebounce();
-});
+onBeforeUnmount(() => clearDebounce());
 </script>
 
 <template>

@@ -10,6 +10,75 @@
 		"theme": "Theme",
 		"accent": "Color"
 	},
+	"pageNavigation": {
+		"back": "Back",
+		"next": "Next"
+	},
+	"errorPage": {
+		"notFoundTitle": "Page not found",
+		"notFoundDescription": "The page you are looking for does not exist or has been moved.",
+		"defaultTitle": "Something went wrong",
+		"defaultDescription": "An unexpected error occurred while loading this page.",
+		"goHome": "Go home"
+	},
+	"installationPage": {
+		"metaTitle": "Installation - Alixan UI",
+		"title": "Installation",
+		"description": "Install Alixan UI in a Nuxt project. Components are copied directly into your app, so you own the source code and can customize it freely.",
+		"copyCommand": "Copy command",
+		"copyCode": "Copy code",
+		"viewCode": "View code",
+		"hideCode": "Hide code",
+		"createProject": {
+			"title": "Create Project",
+			"description": "Start with a Nuxt 4 project. If you already have one, you can skip this step."
+		},
+		"addTailwind": {
+			"title": "Add Tailwind CSS",
+			"description": "Alixan UI components use Tailwind CSS classes and CSS variables for the theme.",
+			"commandTitle": "Install Tailwind"
+		},
+		"backdrop": {
+			"prefix": "Keep the",
+			"middle": "utility in your Tailwind CSS. Dialog, Drawer, Global Loader and mobile overlays use it for a consistent overlay color:"
+		},
+		"installComponent": {
+			"title": "Install Component",
+			"description": "Run the CLI from your project root. The component and required utilities will be copied into your project.",
+			"createdPrefix": "Created files:",
+			"createdSuffix": ". Nuxt auto-import handles the component after it is copied."
+		},
+		"useComponent": {
+			"title": "Use Component",
+			"description": "Use the component directly in your Vue templates. No package import is required for the component itself.",
+			"previewButton": "Save changes"
+		}
+	},
+	"homePage": {
+		"metaTitle": "Alixan UI - Nuxt Components",
+		"metaDescription": "A modern UI component system for Nuxt 4, Vue 3 and TypeScript.",
+		"badge": "Nuxt 4, Vue 3, TypeScript",
+		"title": "Alixan UI components for Nuxt.",
+		"description": "This site is the documentation home for Alixan UI: a clean, minimal and production-ready component system built for Nuxt apps.",
+		"actions": {
+			"getStarted": "Get started",
+			"browseComponents": "Browse components"
+		},
+		"features": {
+			"copied": {
+				"title": "Copied to your app",
+				"description": "The CLI installs component source files directly into your Nuxt project."
+			},
+			"production": {
+				"title": "Production-ready",
+				"description": "Components are typed, accessible and designed around a consistent visual language."
+			},
+			"customize": {
+				"title": "Easy to customize",
+				"description": "No heavy abstractions. Tailwind classes and CSS variables stay close to the component."
+			}
+		}
+	},
 	"sidebar": {
 		"sections": "Welcome",
 		"introduction": "Introduction",
@@ -59,7 +128,10 @@
 		"debounce": "Debounce",
 		"withChips": "With Chips",
 		"day": "Day",
-		"range": "Range"
+		"range": "Range",
+		"host": "Host",
+		"openDialog": "Open Dialog",
+		"dialogContent": "Dialog Content"
 	},
 	"componentDocs": {
 		"button": { "metaTitle": "Button - Alixan UI", "description": "Displays a button for actions in forms, toolbars and navigation." },

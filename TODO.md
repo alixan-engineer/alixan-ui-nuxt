@@ -1,7 +1,5 @@
 # TODO
 
-- [ ] alert-dialog добавить Lottie убрать img
-- [ ] заменить select с native на мой компонент в календаре
-- [ ] добавить кнопки в конец страницу back, next который меняет страницы
-- [ ] исправить page toc, при scroll не меняется активный пункт. Надо заменить его на якори и t сразу использовать $t чтобы не писать в script тэге t("...")
-- [ ] /dialog надо разделить на 3 блока usage
+- [ ] в http://localhost:9002/installation -> USe Component можешь для Button добавить color=primary
+- [ ] добавь Table component в документацию как ее использовать
+- [ ] в http://localhost:9002/lottie для With Empty добавь div с bg-secondary в чтобы Lottie не прыгал

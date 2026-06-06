@@ -146,27 +146,15 @@ const apiRows = [
 		<h2 class="text-2xl font-semibold">
 			{{ $t('docsSections.apiReference') }}
 		</h2>
-		<div class="overflow-hidden rounded-2xl border">
-			<table class="w-full text-left text-sm">
-				<thead class="bg-secondary text-muted-foreground">
-					<tr>
-						<th class="px-4 py-3 font-medium">{{ $t('docsTable.prop') }}</th>
-						<th class="px-4 py-3 font-medium">{{ $t('docsTable.type') }}</th>
-						<th class="px-4 py-3 font-medium">{{ $t('docsTable.default') }}</th>
-						<th class="px-4 py-3 font-medium">{{ $t('docsTable.description') }}</th>
-					</tr>
-				</thead>
-				<tbody class="divide-y">
-					<tr v-for="row in apiRows" :key="row.prop">
-						<td class="px-4 py-3 font-medium">{{ row.prop }}</td>
-						<td class="px-4 py-3 text-muted-foreground">{{ row.type }}</td>
-						<td class="px-4 py-3 text-muted-foreground">{{ row.default }}</td>
-						<td class="px-4 py-3 text-muted-foreground">
-							{{ row.description }}
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+		<Table
+			:columns="[
+				{ key: 'prop', label: $t('docsTable.prop') },
+				{ key: 'type', label: $t('docsTable.type') },
+				{ key: 'default', label: $t('docsTable.default') },
+				{ key: 'description', label: $t('docsTable.description') },
+			]"
+			:rows="apiRows"
+			:row-key="row => String(row.prop)"
+		/>
 	</section>
 </template>

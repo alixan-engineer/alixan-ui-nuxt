@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CalendarDays, ChevronDown, ChevronLeft, ChevronRight } from '@lucide/vue';
+import { CalendarDays, ChevronLeft, ChevronRight } from '@lucide/vue';
 import { computed, nextTick, ref, watch } from 'vue';
 
 import { cn } from '~/utils/cn';
@@ -78,14 +78,22 @@ const yearOptions = computed(() => {
 const selectedMonth = computed({
 	get: () => currentDate.value.getMonth(),
 	set: value => {
-		currentDate.value = new Date(currentDate.value.getFullYear(), Number(value), 1);
+		currentDate.value = new Date(
+			currentDate.value.getFullYear(),
+			Number(value),
+			1,
+		);
 	},
 });
 
 const selectedYear = computed({
 	get: () => currentDate.value.getFullYear(),
 	set: value => {
-		currentDate.value = new Date(Number(value), currentDate.value.getMonth(), 1);
+		currentDate.value = new Date(
+			Number(value),
+			currentDate.value.getMonth(),
+			1,
+		);
 	},
 });
 
@@ -185,7 +193,7 @@ const updateMenuPosition = (): void => {
 	const top =
 		spaceBelow < menuHeight && spaceAbove > spaceBelow
 			? Math.max(viewportPadding, rect.top - menuHeight - 4)
-			: Math.min(rect.bottom + 4, window.innerHeight - viewportPadding);
+			: Math.min(rect.bottom - 16, window.innerHeight - viewportPadding);
 	const left = Math.min(
 		Math.max(viewportPadding, rect.left),
 		window.innerWidth - menuWidth - viewportPadding,
@@ -301,9 +309,9 @@ const isInRange = (day: CalendarDay): boolean => {
 
 	return Boolean(
 		model.value.from &&
-			model.value.to &&
-			day.date > model.value.from &&
-			day.date < model.value.to,
+		model.value.to &&
+		day.date > model.value.from &&
+		day.date < model.value.to,
 	);
 };
 
@@ -319,6 +327,7 @@ onBeforeUnmount(closeCalendar);
 		<Input
 			:model-value="displayValue"
 			:label="label"
+			class="cursor-pointer"
 			readonly
 			@click="openCalendar"
 			@focus="openCalendar"
@@ -351,24 +360,11 @@ onBeforeUnmount(closeCalendar);
 						<ChevronLeft />
 					</button>
 
-					<label class="relative">
-						<select
-							v-model="selectedMonth"
-							class="h-11 w-full appearance-none rounded-xl border bg-background px-4 pr-9 text-center text-base focus-visible:border-primary focus-visible:outline-none"
-							aria-label="Month"
-						>
-							<option
-								v-for="month in monthOptions"
-								:key="month.value"
-								:value="month.value"
-							>
-								{{ month.label }}
-							</option>
-						</select>
-						<ChevronDown
-							class="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
-						/>
-					</label>
+					<Select
+						v-model="selectedMonth"
+						:options="monthOptions"
+						aria-label="Month"
+					/>
 
 					<button
 						type="button"
@@ -379,26 +375,16 @@ onBeforeUnmount(closeCalendar);
 						<ChevronRight />
 					</button>
 
-					<label class="relative">
-						<select
-							v-model="selectedYear"
-							class="h-11 w-full appearance-none rounded-xl border bg-background px-4 pr-9 text-center text-base focus-visible:border-primary focus-visible:outline-none"
-							aria-label="Year"
-						>
-							<option v-for="year in yearOptions" :key="year" :value="year">
-								{{ year }}
-							</option>
-						</select>
-						<ChevronDown
-							class="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
-						/>
-					</label>
+					<Select
+						v-model="selectedYear"
+						:options="
+							yearOptions.map(year => ({ label: String(year), value: year }))
+						"
+						aria-label="Year"
+					/>
 				</div>
 
-				<div
-					v-if="mode === 'range'"
-					class="mb-4 grid grid-cols-4 gap-2"
-				>
+				<div v-if="mode === 'range'" class="mb-4 grid grid-cols-4 gap-2">
 					<Checkbox
 						v-for="preset in rangePresets"
 						:key="preset.value"
@@ -422,7 +408,9 @@ onBeforeUnmount(closeCalendar);
 						:class="
 							cn(
 								'flex h-10 items-center justify-center rounded-xl text-base hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none',
-								!day.isCurrentMonth ? 'text-muted-foreground/60' : 'text-foreground',
+								!day.isCurrentMonth
+									? 'text-muted-foreground/60'
+									: 'text-foreground',
 								isInRange(day) ? 'bg-primary/10 text-primary' : '',
 								isSelected(day)
 									? 'border border-primary bg-primary/5 text-primary hover:bg-primary/10'

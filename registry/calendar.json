@@ -18,6 +18,10 @@
 			"target": "components/ui/input/Input.vue"
 		},
 		{
+			"source": "templates/select/Select.vue",
+			"target": "components/ui/select/Select.vue"
+		},
+		{
 			"source": "templates/utils/cn.ts",
 			"target": "utils/cn.ts"
 		}

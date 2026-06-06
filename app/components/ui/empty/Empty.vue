@@ -1,8 +1,11 @@
 <script setup lang="ts">
+type ButtonColor = 'default' | 'primary' | 'secondary' | 'destructive';
+
 interface EmptyProps {
 	title: string;
 	description?: string;
 	button?: string;
+	buttonColor?: ButtonColor;
 }
 
 defineProps<EmptyProps>();
@@ -21,7 +24,11 @@ const emit = defineEmits<{
 		<p v-if="description" class="text-xl text-muted-foreground">
 			{{ description }}
 		</p>
-		<Button v-if="button" color="primary" @click="emit('action')">
+		<Button
+			v-if="button"
+			:color="buttonColor ?? 'primary'"
+			@click="emit('action')"
+		>
 			{{ button }}
 		</Button>
 	</div>

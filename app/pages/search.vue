@@ -172,55 +172,29 @@ const debouncedValue = ref('')
 			<h2 class="text-2xl font-semibold">{{ $t('docsSections.apiReference') }}</h2>
 			<h3 class="text-xl font-semibold">Props</h3>
 		</div>
-		<div class="overflow-hidden rounded-xl border">
-			<table class="w-full text-left text-sm">
-				<thead class="border-b bg-secondary text-muted-foreground">
-					<tr>
-						<th class="px-4 py-3 font-medium">{{ $t('docsTable.prop') }}</th>
-						<th class="px-4 py-3 font-medium">{{ $t('docsTable.type') }}</th>
-						<th class="px-4 py-3 font-medium">{{ $t('docsTable.default') }}</th>
-						<th class="px-4 py-3 font-medium">{{ $t('docsTable.description') }}</th>
-					</tr>
-				</thead>
-				<tbody class="divide-y">
-					<tr v-for="item in searchProps" :key="item.name">
-						<td class="px-4 py-3 font-medium">{{ item.name }}</td>
-						<td class="px-4 py-3 text-muted-foreground">{{ item.type }}</td>
-						<td class="px-4 py-3 text-muted-foreground">
-							{{ item.default }}
-						</td>
-						<td class="px-4 py-3 text-muted-foreground">
-							{{ item.description }}
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+		<Table
+			:columns="[
+				{ key: 'name', label: $t('docsTable.prop') },
+				{ key: 'type', label: $t('docsTable.type') },
+				{ key: 'default', label: $t('docsTable.default') },
+				{ key: 'description', label: $t('docsTable.description') },
+			]"
+			:rows="searchProps"
+		/>
 
 		<div class="space-y-2">
 			<h3 class="text-xl font-semibold">Events</h3>
-			<div class="overflow-hidden rounded-xl border">
-				<table class="w-full text-left text-sm">
-					<thead class="border-b bg-secondary text-muted-foreground">
-						<tr>
-							<th class="px-4 py-3 font-medium">{{ $t('docsTable.event') }}</th>
-							<th class="px-4 py-3 font-medium">{{ $t('docsTable.payload') }}</th>
-							<th class="px-4 py-3 font-medium">{{ $t('docsTable.description') }}</th>
-						</tr>
-					</thead>
-					<tbody class="divide-y">
-						<tr v-for="item in searchEvents" :key="item.name">
-							<td class="px-4 py-3 font-medium">@{{ item.name }}</td>
-							<td class="px-4 py-3 text-muted-foreground">
-								{{ item.payload }}
-							</td>
-							<td class="px-4 py-3 text-muted-foreground">
-								{{ item.description }}
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+			<Table
+				:columns="[
+					{ key: 'name', label: $t('docsTable.event') },
+					{ key: 'payload', label: $t('docsTable.payload') },
+					{ key: 'description', label: $t('docsTable.description') },
+				]"
+				:rows="searchEvents"
+				:get-value="
+					(row, column) => (column.key === 'name' ? `@${row.name}` : row[column.key])
+				"
+			/>
 		</div>
 	</section>
 </template>

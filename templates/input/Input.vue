@@ -128,7 +128,9 @@ const leadingPaddingClass = 'pl-10';
 const trailingPaddingClass = 'pr-10';
 const iconPositionClass = 'top-7 -translate-y-1/2';
 
-const rootClass = computed(() => cn('relative w-full min-h-20 space-y-1', attrs.class));
+const rootClass = computed(() =>
+	cn('relative w-full min-h-20 space-y-1', attrs.class),
+);
 
 const inputClass = computed(() =>
 	cn(
@@ -144,6 +146,7 @@ const inputClass = computed(() =>
 			? 'cursor-not-allowed bg-secondary text-muted-foreground opacity-70'
 			: '',
 		props.readonly ? 'cursor-default bg-secondary/60' : '',
+		attrs.class,
 	),
 );
 
@@ -152,7 +155,7 @@ const labelClass = computed(() =>
 		'pointer-events-none absolute z-10 px-1 text-base font-normal text-muted-foreground transition-all duration-200',
 		labelTopClass,
 		hasLeading.value ? leadingLabelClass : labelBaseClass,
-		isLabelMoved.value ? '-translate-y-2.5 text-[11px] font-medium' : '',
+		isLabelMoved.value ? '-translate-y-2 text-sm font-medium' : '',
 		visibleError.value ? 'text-destructive!' : isFocused.value ? 'text-primary' : '',
 		props.disabled ? 'text-muted-foreground/60' : '',
 	),
@@ -305,6 +308,15 @@ onMounted(() => {
 </template>
 
 <style scoped>
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+	box-shadow: 0 0 0 1000px var(--background) inset;
+	caret-color: var(--foreground);
+	-webkit-text-fill-color: var(--foreground);
+	transition: background-color 999999s ease-in-out 0s;
+}
+
 .input-message-enter-active,
 .input-message-leave-active {
 	transition:

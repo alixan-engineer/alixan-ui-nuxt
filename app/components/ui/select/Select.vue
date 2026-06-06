@@ -21,6 +21,7 @@ interface SelectProps {
 	placeholder?: string;
 	options?: SelectOption[];
 	disabled?: boolean;
+	teleport?: boolean;
 }
 
 const props = withDefaults(defineProps<SelectProps>(), {
@@ -28,6 +29,7 @@ const props = withDefaults(defineProps<SelectProps>(), {
 	placeholder: 'Select option',
 	options: () => [],
 	disabled: false,
+	teleport: true,
 });
 
 const emit = defineEmits<{
@@ -37,6 +39,7 @@ const emit = defineEmits<{
 const model = defineModel<SelectValue | null>({ default: null });
 
 const triggerRef = ref<HTMLElement | null>(null);
+const menuRef = ref<HTMLElement | null>(null);
 const open = ref(false);
 const menuStyle = ref<Record<string, string>>({});
 
@@ -62,6 +65,16 @@ const updateMenuPosition = (): void => {
 	const width = rect.width;
 	const offset = 4;
 
+	if (!props.teleport) {
+		menuStyle.value = {
+			top: `calc(100% + ${offset}px)`,
+			left: '0',
+			minWidth: '100%',
+			maxWidth: '100%',
+		};
+		return;
+	}
+
 	menuStyle.value = {
 		top: `${rect.bottom + offset}px`,
 		left: `${rect.left}px`,
@@ -80,12 +93,28 @@ const openSelect = async (): Promise<void> => {
 	updateMenuPosition();
 	window.addEventListener('resize', closeSelect);
 	window.addEventListener('scroll', closeSelect, true);
+	document.addEventListener('mousedown', closeSelectOnOutside, true);
 };
 
 const closeSelect = (): void => {
 	open.value = false;
 	window.removeEventListener('resize', closeSelect);
 	window.removeEventListener('scroll', closeSelect, true);
+	document.removeEventListener('mousedown', closeSelectOnOutside, true);
+};
+
+const closeSelectOnOutside = (event: MouseEvent): void => {
+	const target = event.target;
+
+	if (!(target instanceof Node)) {
+		return;
+	}
+
+	if (triggerRef.value?.contains(target) || menuRef.value?.contains(target)) {
+		return;
+	}
+
+	closeSelect();
 };
 
 const toggleSelect = (): void => {
@@ -159,16 +188,22 @@ onBeforeUnmount(closeSelect);
 			/>
 		</button>
 
-		<Teleport to="body">
+		<Teleport to="body" :disabled="!teleport">
 			<div
-				v-if="open"
-				class="fixed inset-0 z-9998"
+				v-if="open && teleport"
+				class="fixed inset-0 z-[10000]"
 				@mousedown.stop="closeSelect"
 				@click.stop
 			/>
 			<div
 				v-if="open"
-				class="fixed z-9999 max-h-72 overflow-auto rounded-lg border bg-popover p-1 shadow-md"
+				ref="menuRef"
+				:class="
+					cn(
+						'max-h-72 overflow-auto rounded-lg border bg-popover p-1 shadow-md',
+						teleport ? 'fixed z-[10001]' : 'absolute z-[9999]',
+					)
+				"
 				:style="menuStyle"
 				@mousedown.stop
 			>

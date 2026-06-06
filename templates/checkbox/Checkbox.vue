@@ -70,10 +70,23 @@ const toggleCheckbox = (): void => {
 
 	model.value = !checked.value;
 };
+
+const toggleFromControl = (event: MouseEvent): void => {
+	event.stopPropagation();
+	toggleCheckbox();
+};
 </script>
 
 <template>
-	<div class="inline-flex w-fit items-center gap-2">
+	<div
+		:class="
+			cn(
+				'inline-flex w-fit items-center gap-2',
+				disabled ? 'cursor-not-allowed' : 'cursor-pointer',
+			)
+		"
+		@click="toggleCheckbox"
+	>
 		<button
 			:id="checkboxId"
 			v-bind="{ ...attrs, class: undefined }"
@@ -90,14 +103,13 @@ const toggleCheckbox = (): void => {
 					attrs.class,
 				)
 			"
-			@click="toggleCheckbox"
+			@click="toggleFromControl"
 		>
 			<Check v-if="checked" class="size-3.5 stroke-3" />
 		</button>
 
-		<label
+		<span
 			v-if="label"
-			:for="checkboxId"
 			:class="
 				cn(
 					'text-base leading-none',
@@ -106,9 +118,8 @@ const toggleCheckbox = (): void => {
 						: 'cursor-pointer text-foreground',
 				)
 			"
-			@click.prevent="toggleCheckbox"
 		>
 			{{ label }}
-		</label>
+		</span>
 	</div>
 </template>

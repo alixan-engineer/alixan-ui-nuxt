@@ -37,7 +37,7 @@ const folderCode = `app/
       error.json`;
 
 const usageCode = `<template>
-  <Lottie name="error" width="160px" height="140px" />
+  <Lottie name="error" :loop="false" width="160px" height="140px" />
 </template>`;
 
 const emptyCode = `<template>
@@ -47,7 +47,7 @@ const emptyCode = `<template>
     button="Go home"
     @action="navigateTo('/')"
   >
-    <Lottie name="error" width="160px" height="140px" />
+    <Lottie name="error" :loop="false" width="160px" height="140px" />
   </Empty>
 </template>`;
 </script>
@@ -59,6 +59,12 @@ const emptyCode = `<template>
 			Use Lottie animations as lightweight media inside empty states, errors and
 			other feedback surfaces.
 		</p>
+		<Info>
+			For more detailed information, visit the
+			<TextLink href="https://nuxt.com/modules/lottie" target="_blank">
+				Nuxt Lottie documentation.
+			</TextLink>
+		</Info>
 	</header>
 
 	<section id="installation" class="space-y-5">
@@ -90,7 +96,7 @@ const emptyCode = `<template>
 	<section id="usage" class="space-y-5">
 		<h2 class="text-2xl font-semibold">Usage</h2>
 		<ExampleBlock :code="usageCode">
-			<Lottie name="error" width="160px" height="140px" />
+			<Lottie name="error" :loop="false" width="160px" height="140px" />
 		</ExampleBlock>
 	</section>
 
@@ -102,7 +108,7 @@ const emptyCode = `<template>
 				description="The page you are looking for does not exist or has been moved."
 				button="Go home"
 			>
-				<Lottie name="error" width="160px" height="140px" />
+				<Lottie name="error" :loop="false" width="160px" height="140px" />
 			</Empty>
 		</ExampleBlock>
 	</section>

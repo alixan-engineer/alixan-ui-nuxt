@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { CheckCircle } from '@lucide/vue';
+
+import successIcon from '~/assets/icons/success.svg';
 import AlertDialog from '~/components/ui/alert-dialog/AlertDialog.vue';
 
 const { t } = useI18n();
@@ -46,10 +49,22 @@ const alertDialogProps = [
 		description: 'Primary action label.',
 	},
 	{
-		name: 'data.imageSrc',
-		type: 'string',
+		name: 'data.buttonColor',
+		type: "'default' | 'primary' | 'secondary' | 'destructive'",
+		default: "'primary'",
+		description: 'Primary action button color.',
+	},
+	{
+		name: 'data.mediaComponent',
+		type: 'Component | string',
 		default: '-',
-		description: 'Optional image shown in the illustration area.',
+		description: 'Optional media component, for example Lottie, img, or an icon component.',
+	},
+	{
+		name: 'data.mediaProps',
+		type: 'Record<string, unknown>',
+		default: '-',
+		description: 'Props passed to the media component.',
 	},
 	{
 		name: 'data.onAction',
@@ -59,7 +74,7 @@ const alertDialogProps = [
 	},
 ];
 
-const code = `<script setup lang="ts">
+const errorCode = `<script setup lang="ts">
 import AlertDialog from '~/components/ui/alert-dialog/AlertDialog.vue'
 
 const dialog = useDialog()
@@ -72,6 +87,14 @@ const openAlert = () => {
       title: 'Action unavailable',
       description: 'This feature is not available yet. Try again later.',
       buttonLabel: 'Got it',
+      buttonColor: 'destructive',
+      mediaComponent: 'Lottie',
+      mediaProps: {
+        name: 'error',
+        loop: false,
+        width: '80px',
+        height: '80px',
+      },
     },
   })
 }
@@ -79,6 +102,95 @@ const openAlert = () => {
 
 <template>
   <Button @click="openAlert">Open alert</Button>
+</template>`;
+
+const successCode = `<script setup lang="ts">
+import AlertDialog from '~/components/ui/alert-dialog/AlertDialog.vue'
+
+const dialog = useDialog()
+
+const openSuccessAlert = () => {
+  dialog.open(AlertDialog, {
+    width: '360px',
+    height: '280px',
+    data: {
+      title: 'Project saved',
+      description: 'Your changes were saved successfully.',
+      buttonLabel: 'Done',
+      buttonColor: 'primary',
+      mediaComponent: 'Lottie',
+      mediaProps: {
+        name: 'success',
+        loop: false,
+        width: '80px',
+        height: '80px',
+      },
+    },
+  })
+}
+<\/script>
+
+<template>
+  <Button color="primary" @click="openSuccessAlert">Open success</Button>
+</template>`;
+
+const imageCode = `<script setup lang="ts">
+import successIcon from '~/assets/icons/success.svg'
+
+import AlertDialog from '~/components/ui/alert-dialog/AlertDialog.vue'
+
+const dialog = useDialog()
+
+const openImageAlert = () => {
+  dialog.open(AlertDialog, {
+    width: '360px',
+    height: '280px',
+    data: {
+      title: 'Image media',
+      description: 'Use the native img tag when the dialog needs a static image.',
+      buttonLabel: 'Close',
+      mediaComponent: 'img',
+      mediaProps: {
+        src: successIcon,
+        alt: '',
+        class: 'size-12',
+      },
+    },
+  })
+}
+<\/script>
+
+<template>
+  <Button @click="openImageAlert">Open image</Button>
+</template>`;
+
+const iconCode = `<script setup lang="ts">
+import { CheckCircle } from '@lucide/vue'
+
+import AlertDialog from '~/components/ui/alert-dialog/AlertDialog.vue'
+
+const dialog = useDialog()
+
+const openIconAlert = () => {
+  dialog.open(AlertDialog, {
+    width: '360px',
+    height: '280px',
+    data: {
+      title: 'Icon media',
+      description: 'Pass an imported Vue component when you need an icon.',
+      buttonLabel: 'Done',
+      buttonColor: 'primary',
+      mediaComponent: CheckCircle,
+      mediaProps: {
+        class: 'size-10',
+      },
+    },
+  })
+}
+<\/script>
+
+<template>
+  <Button color="primary" @click="openIconAlert">Open icon</Button>
 </template>`;
 
 const openAlert = (): void => {
@@ -89,6 +201,69 @@ const openAlert = (): void => {
 			title: 'Action unavailable',
 			description: 'This feature is not available yet. Try again later.',
 			buttonLabel: 'Got it',
+			buttonColor: 'destructive',
+			mediaComponent: 'Lottie',
+			mediaProps: {
+				name: 'error',
+				loop: false,
+				width: '80px',
+				height: '80px',
+			},
+		},
+	});
+};
+
+const openSuccessAlert = (): void => {
+	dialog.open(AlertDialog, {
+		width: '360px',
+		height: '280px',
+		data: {
+			title: 'Project saved',
+			description: 'Your changes were saved successfully.',
+			buttonLabel: 'Done',
+			buttonColor: 'primary',
+			mediaComponent: 'Lottie',
+			mediaProps: {
+				name: 'success',
+				loop: false,
+				width: '80px',
+				height: '80px',
+			},
+		},
+	});
+};
+
+const openImageAlert = (): void => {
+	dialog.open(AlertDialog, {
+		width: '360px',
+		height: '280px',
+		data: {
+			title: 'Image media',
+			description: 'Use the native img tag when the dialog needs a static image.',
+			buttonLabel: 'Close',
+			mediaComponent: 'img',
+			mediaProps: {
+				src: successIcon,
+				alt: '',
+				class: 'size-12',
+			},
+		},
+	});
+};
+
+const openIconAlert = (): void => {
+	dialog.open(AlertDialog, {
+		width: '360px',
+		height: '280px',
+		data: {
+			title: 'Icon media',
+			description: 'Pass an imported Vue component when you need an icon.',
+			buttonLabel: 'Done',
+			buttonColor: 'primary',
+			mediaComponent: CheckCircle,
+			mediaProps: {
+				class: 'size-10',
+			},
 		},
 	});
 };
@@ -109,36 +284,34 @@ const openAlert = (): void => {
 
 	<section id="usage" class="space-y-5">
 		<h2 class="text-2xl font-semibold">{{ $t('docsSections.usage') }}</h2>
-		<ExampleBlock :code="code">
-			<Button @click="openAlert">Open alert</Button>
+
+		<ExampleBlock :code="errorCode">
+			<Button color="destructive" @click="openAlert">Open error</Button>
+		</ExampleBlock>
+
+		<ExampleBlock :code="successCode">
+			<Button color="primary" @click="openSuccessAlert">Open success</Button>
+		</ExampleBlock>
+
+		<ExampleBlock :code="imageCode">
+			<Button @click="openImageAlert">Open image</Button>
+		</ExampleBlock>
+
+		<ExampleBlock :code="iconCode">
+			<Button color="primary" @click="openIconAlert">Open icon</Button>
 		</ExampleBlock>
 	</section>
 
 	<section id="api-reference" class="space-y-4">
 		<h2 class="text-2xl font-semibold">{{ $t('docsSections.apiReference') }}</h2>
-		<div class="overflow-hidden rounded-xl border">
-			<table class="w-full text-left text-sm">
-				<thead class="border-b bg-secondary text-muted-foreground">
-					<tr>
-						<th class="px-4 py-3 font-medium">{{ $t('docsTable.prop') }}</th>
-						<th class="px-4 py-3 font-medium">{{ $t('docsTable.type') }}</th>
-						<th class="px-4 py-3 font-medium">{{ $t('docsTable.default') }}</th>
-						<th class="px-4 py-3 font-medium">{{ $t('docsTable.description') }}</th>
-					</tr>
-				</thead>
-				<tbody class="divide-y">
-					<tr v-for="item in alertDialogProps" :key="item.name">
-						<td class="px-4 py-3 font-medium">{{ item.name }}</td>
-						<td class="px-4 py-3 text-muted-foreground">{{ item.type }}</td>
-						<td class="px-4 py-3 text-muted-foreground">
-							{{ item.default }}
-						</td>
-						<td class="px-4 py-3 text-muted-foreground">
-							{{ item.description }}
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+		<Table
+			:columns="[
+				{ key: 'name', label: $t('docsTable.prop') },
+				{ key: 'type', label: $t('docsTable.type') },
+				{ key: 'default', label: $t('docsTable.default') },
+				{ key: 'description', label: $t('docsTable.description') },
+			]"
+			:rows="alertDialogProps"
+		/>
 	</section>
 </template>

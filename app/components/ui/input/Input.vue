@@ -148,6 +148,7 @@ const inputClass = computed(() =>
 			? 'cursor-not-allowed bg-secondary text-muted-foreground opacity-70'
 			: '',
 		props.readonly ? 'cursor-default' : '',
+		attrs.class,
 	),
 );
 
@@ -156,7 +157,7 @@ const labelClass = computed(() =>
 		'pointer-events-none absolute z-10 px-1 text-base font-normal text-muted-foreground transition-all duration-200',
 		labelTopClass,
 		hasLeading.value ? leadingLabelClass : labelBaseClass,
-		isLabelMoved.value ? '-translate-y-2.5 text-[11px] font-medium' : '',
+		isLabelMoved.value ? '-translate-y-2 text-xs font-medium' : '',
 		visibleError.value
 			? 'text-destructive!'
 			: isFocused.value
@@ -312,7 +313,16 @@ onMounted(() => {
 	</div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+	box-shadow: 0 0 0 1000px var(--background) inset;
+	caret-color: var(--foreground);
+	-webkit-text-fill-color: var(--foreground);
+	transition: background-color 999999s ease-in-out 0s;
+}
+
 .input-message-enter-active,
 .input-message-leave-active {
 	transition:

@@ -10,15 +10,23 @@ const handleError = () => clearError({ redirect: '/' });
 
 <template>
 	<Empty
-		:title="error.status === 404 ? 'Page not found' : 'Something went wrong'"
+		:title="
+			error.status === 404
+				? $t('errorPage.notFoundTitle')
+				: $t('errorPage.defaultTitle')
+		"
 		:description="
 			error.status === 404
-				? 'The page you are looking for does not exist or has been moved.'
-				: 'An unexpected error occurred while loading this page.'
+				? $t('errorPage.notFoundDescription')
+				: $t('errorPage.defaultDescription')
 		"
-		button="Go home"
+		:button="$t('errorPage.goHome')"
 		@action="handleError"
 	>
-		<Lottie name="error" :loop="false" width="140px" height="140px" />
+		<div
+			class="flex size-37 items-center justify-center rounded-4xl bg-secondary text-primary"
+		>
+			<Lottie name="error" :loop="false" width="140px" height="140px" />
+		</div>
 	</Empty>
 </template>
