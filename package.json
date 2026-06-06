@@ -10,9 +10,7 @@
 		"build": "nuxt build",
 		"dev": "nuxt dev",
 		"generate": "nuxt generate",
-		"preview": "nuxt preview",
-		"clear": "npx nuxt cleanup",
-		"publish": "npm version patch && npm publish --access public"
+		"preview": "nuxt preview"
 	},
 	"devDependencies": {
 		"@lucide/vue": "^1.17.0",
