@@ -191,7 +191,7 @@ onBeforeUnmount(closeSelect);
 		<Teleport to="body" :disabled="!teleport">
 			<div
 				v-if="open && teleport"
-				class="fixed inset-0 z-[10000]"
+				class="fixed inset-0 z-10000"
 				@mousedown.stop="closeSelect"
 				@click.stop
 			/>
@@ -201,7 +201,7 @@ onBeforeUnmount(closeSelect);
 				:class="
 					cn(
 						'max-h-72 overflow-auto rounded-lg border bg-popover p-1 shadow-md',
-						teleport ? 'fixed z-[10001]' : 'absolute z-[9999]',
+						teleport ? 'fixed z-10001' : 'absolute z-9999',
 					)
 				"
 				:style="menuStyle"

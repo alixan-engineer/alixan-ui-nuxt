@@ -3,11 +3,10 @@ import { cn } from '~/utils/cn';
 import { menuSections } from './menu';
 
 interface Props {
-	mobile?: boolean;
+	sidebarToggle: boolean;
 }
-const props = withDefaults(defineProps<Props>(), {
-	mobile: false,
-});
+
+defineProps<Props>();
 
 const emit = defineEmits<{
 	close: [];
@@ -16,34 +15,30 @@ const emit = defineEmits<{
 const route = useRoute();
 const localePath = useLocalePath();
 
-const normalizePath = (path: string): string =>
-	path.length > 1 ? path.replace(/\/$/, '') : path;
-
-const isActive = (to: string): boolean =>
-	normalizePath(route.path) === normalizePath(localePath(to));
+const isActive = (to: string) => route.path === localePath(to);
 </script>
 
 <template>
+	<div
+		:class="
+			cn(
+				'backdrop transition-opacity duration-200 ease-in-out lg:hidden',
+				sidebarToggle ? 'opacity-100' : 'opacity-0',
+			)
+		"
+		@click="emit('close')"
+	/>
 	<aside
 		:class="
 			cn(
-				'w-full max-w-70 border-r bg-background',
-				props.mobile ? 'max-w-none border-r-0' : '',
+				'w-full max-w-70 border-r bg-background max-lg:absolute max-lg:top-0 max-lg:z-30 max-lg:transition-[left] max-lg:duration-300 max-lg:ease-in-out',
+				sidebarToggle ? 'max-lg:left-0' : 'max-lg:-left-70',
 			)
 		"
 	>
-		<div v-if="props.mobile" class="h-14 px-4 flex items-center border-b">
-			<Logo />
-		</div>
+		<Logo class="h-14 px-4 flex items-center border-b lg:hidden" />
 		<div
-			:class="
-				cn(
-					'overflow-y-auto px-2 py-6',
-					props.mobile
-						? 'h-[calc(100svh-3.5rem)]'
-						: 'sticky top-14 h-[calc(100svh-3.5rem)]',
-				)
-			"
+			class="overflow-y-auto px-2 py-6 max-lg:h-[calc(100svh-3.5rem)] lg:sticky lg:top-14 lg:h-[calc(100svh-3.5rem)]"
 		>
 			<nav class="space-y-8">
 				<div

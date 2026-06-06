@@ -7,7 +7,7 @@ const toast = useToast();
 		<TransitionGroup
 			name="toast-list"
 			tag="div"
-			class="fixed left-1/2 top-5 z-[80] flex w-[calc(100%-2rem)] max-w-[440px] -translate-x-1/2 flex-col gap-3"
+			class="fixed left-1/2 top-5 z-9999 flex w-full max-w-110 -translate-x-1/2 flex-col gap-3"
 		>
 			<Toast
 				v-for="message in toast.messages.value"
@@ -19,7 +19,7 @@ const toast = useToast();
 	</Teleport>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .toast-list-enter-active,
 .toast-list-leave-active,
 .toast-list-move {

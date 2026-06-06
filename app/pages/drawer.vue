@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import DrawerPreviewContent from '~/components/examples/DrawerPreviewContent.vue';
+import DrawerPreviewContent from '~/components/docs/drawer-preview-content/DrawerPreviewContent.vue';
 const { t } = useI18n();
-
 
 usePageMeta({
 	title: t('componentDocs.drawer.metaTitle'),
@@ -146,7 +145,9 @@ const openDrawer = (): void => {
 	</header>
 
 	<section id="installation" class="space-y-5">
-		<h2 class="text-2xl font-semibold">{{ $t('docsSections.installation') }}</h2>
+		<h2 class="text-2xl font-semibold">
+			{{ $t('docsSections.installation') }}
+		</h2>
 		<InstallCommandBlock component="drawer" />
 	</section>
 
@@ -163,7 +164,9 @@ const openDrawer = (): void => {
 	</section>
 
 	<section id="api-reference" class="space-y-4">
-		<h2 class="text-2xl font-semibold">{{ $t('docsSections.apiReference') }}</h2>
+		<h2 class="text-2xl font-semibold">
+			{{ $t('docsSections.apiReference') }}
+		</h2>
 		<Table
 			:columns="[
 				{ key: 'name', label: $t('docsTable.option') },

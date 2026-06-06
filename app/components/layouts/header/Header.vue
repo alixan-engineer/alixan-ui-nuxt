@@ -2,7 +2,9 @@
 import { ArrowLeft, Menu } from '@lucide/vue';
 import githubIcon from '~/assets/icons/github.svg';
 
-const sidebar = useMobileSidebar();
+const emit = defineEmits<{
+	sidebarToggleChange: [];
+}>();
 </script>
 
 <template>
@@ -22,14 +24,11 @@ const sidebar = useMobileSidebar();
 				variant="ghost"
 				color="default"
 				:label="$t('app.menu')"
-				@click="sidebar.open"
+				@click="emit('sidebarToggleChange')"
 			>
 				<Menu />
 			</IconButton>
-			<div class="ml-4 flex items-center gap-2">
-				<Logo />
-				<Status label="Beta" size="sm" type="warning" />
-			</div>
+			<Logo class="ml-4" />
 			<div class="flex-1" />
 			<IconButton
 				variant="ghost"

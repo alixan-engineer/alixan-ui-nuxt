@@ -1,16 +1,15 @@
 <script setup lang="ts">
 import { Settings } from '@lucide/vue';
-import tailwindCss from '~/assets/css/tailwind.css?raw';
-import ThemeCodeDialog from '~/components/examples/ThemeCodeDialog.vue';
+import ThemeCodeDialog from '~/components/docs/theme-code-dialog/ThemeCodeDialog.vue';
 import type { AccentThemeType } from '~/interfaces/theme/theme.interface';
-import { createThemeCss } from '~/utils/theme-css';
 
 type Locale = 'en' | 'ru' | 'kk';
 type ColorModePreference = 'system' | 'light' | 'dark';
 
 const { locale, setLocale } = useI18n();
 const colorMode = useColorMode();
-const { accentColors, accentTheme, setAccentTheme } = useTheme();
+const { accentColors, accentTheme, setAccentTheme, createThemeCss } =
+	useTheme();
 const dialog = useDialog();
 
 const isOpen = ref(false);
@@ -42,16 +41,14 @@ const accentOptions: Array<{ label: string; value: AccentThemeType }> = [
 
 const getAccentPreviewColor = (value: AccentThemeType): string => {
 	const color = accentColors[value];
-
 	if (value === 'default' && colorMode.value === 'dark' && color.darkPrimary) {
 		return color.darkPrimary;
 	}
-
 	return color.primary;
 };
 
 const themeCode = computed(() => {
-	return createThemeCss(tailwindCss, accentColors[accentTheme.value]);
+	return createThemeCss(accentColors[accentTheme.value]);
 });
 
 const changeLocale = async (value: Locale) => {

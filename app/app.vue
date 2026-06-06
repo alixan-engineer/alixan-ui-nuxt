@@ -2,9 +2,13 @@
 import { favicon } from './config/site/favicon';
 
 const { locale } = useI18n();
+const { applyAccentTheme } = useTheme();
 
 // Init default meta SEO tags
 usePageMeta();
+
+// Apply accent theme
+onMounted(() => applyAccentTheme());
 
 // Init lang and favicon for html
 useHead({

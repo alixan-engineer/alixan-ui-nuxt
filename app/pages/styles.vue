@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import tailwindCss from '~/assets/css/tailwind.css?raw';
 import type { AccentThemeType } from '~/interfaces/theme/theme.interface';
-import { accentColors } from '~/shared/theme/theme';
-import { createThemeCss } from '~/utils/theme-css';
+import { accentColors } from '~/shared/theme/colors';
 
 const { t } = useI18n();
+const { setToc, clearToc } = usePageToc();
+const { createThemeCss } = useTheme();
 
 usePageMeta({
 	title: t('stylesPage.metaTitle'),
@@ -18,23 +18,18 @@ const tocLinks = [
 	{ label: t('stylesPage.backdrop.title'), href: '#backdrop' },
 ] as const;
 
-const { setToc, clearToc } = usePageToc();
+onMounted(() => setToc(tocLinks));
 
-onMounted(() => {
-	setToc(tocLinks);
-});
-
-onBeforeUnmount(() => {
-	clearToc();
-});
+onBeforeUnmount(() => clearToc());
 
 const accentTheme = useCookie<AccentThemeType>('alixan-ui-accent-theme', {
 	default: () => 'default',
 });
+
 const showTailwindCode = ref(false);
 
 const currentTailwindCss = computed(() =>
-	createThemeCss(tailwindCss, accentColors[accentTheme.value]),
+	createThemeCss(accentColors[accentTheme.value]),
 );
 
 const textSizeCode = `@theme {
@@ -82,7 +77,7 @@ const backdropCode = `@utility backdrop {
 			</div>
 			<pre
 				class="overflow-hidden p-4 text-sm leading-7"
-				:class="showTailwindCode ? '' : 'max-h-[200px]'"
+				:class="showTailwindCode ? '' : 'max-h-50'"
 			><code>{{ currentTailwindCss }}</code></pre>
 			<div class="border-t p-3 flex justify-center">
 				<Button

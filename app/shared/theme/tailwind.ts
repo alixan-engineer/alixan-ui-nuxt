@@ -1,3 +1,4 @@
+export const tailwindCss = `
 @import 'tailwindcss';
 
 @custom-variant dark (&:is(.dark *));
@@ -227,3 +228,4 @@
 @utility backdrop {
 	@apply fixed inset-0 bg-black/30 dark:bg-black/80;
 }
+`;

@@ -47,7 +47,11 @@ const emptyCode = `<template>
     button="Go home"
     @action="navigateTo('/')"
   >
-    <Lottie name="error" :loop="false" width="160px" height="140px" />
+    <div
+      class="flex size-28 items-center justify-center rounded-4xl bg-secondary text-primary"
+    >
+      <Lottie name="error" :loop="false" width="140px" height="140px" />
+    </div>
   </Empty>
 </template>`;
 </script>
@@ -108,7 +112,11 @@ const emptyCode = `<template>
 				description="The page you are looking for does not exist or has been moved."
 				button="Go home"
 			>
-				<Lottie name="error" :loop="false" width="160px" height="140px" />
+				<div
+					class="flex size-28 items-center justify-center rounded-4xl bg-secondary text-primary"
+				>
+					<Lottie name="error" :loop="false" width="140px" height="140px" />
+				</div>
 			</Empty>
 		</ExampleBlock>
 	</section>

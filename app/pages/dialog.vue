@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import DialogPreviewContent from '~/components/examples/DialogPreviewContent.vue';
+import DialogPreviewContent from '~/components/docs/dialog-preview-content/DialogPreviewContent.vue';
 const { t } = useI18n();
 
 usePageMeta({
@@ -12,7 +12,11 @@ const tocLinks = [
 	{ label: t('docsSections.usage'), href: '#usage' },
 	{ label: t('docsSections.host'), href: '#host', child: true },
 	{ label: t('docsSections.openDialog'), href: '#open-dialog', child: true },
-	{ label: t('docsSections.dialogContent'), href: '#dialog-content', child: true },
+	{
+		label: t('docsSections.dialogContent'),
+		href: '#dialog-content',
+		child: true,
+	},
 	{ label: t('docsSections.apiReference'), href: '#api-reference' },
 ] as const;
 
@@ -156,7 +160,9 @@ const openDialog = (): void => {
 	</header>
 
 	<section id="installation" class="space-y-5">
-		<h2 class="text-2xl font-semibold">{{ $t('docsSections.installation') }}</h2>
+		<h2 class="text-2xl font-semibold">
+			{{ $t('docsSections.installation') }}
+		</h2>
 		<InstallCommandBlock component="dialog" />
 	</section>
 
@@ -199,7 +205,9 @@ const openDialog = (): void => {
 	</section>
 
 	<section id="api-reference" class="space-y-4">
-		<h2 class="text-2xl font-semibold">{{ $t('docsSections.apiReference') }}</h2>
+		<h2 class="text-2xl font-semibold">
+			{{ $t('docsSections.apiReference') }}
+		</h2>
 		<Table
 			:columns="[
 				{ key: 'name', label: $t('docsTable.option') },

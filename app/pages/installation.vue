@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { Terminal } from '@lucide/vue';
-import tailwindCss from '~/assets/css/tailwind.css?raw';
 import type { AccentThemeType } from '~/interfaces/theme/theme.interface';
-import { accentColors } from '~/shared/theme/theme';
-import { createThemeCss } from '~/utils/theme-css';
+import { accentColors } from '~/shared/theme/colors';
 
 const { t } = useI18n();
+const { setToc, clearToc } = usePageToc();
+const { createThemeCss } = useTheme();
 
 usePageMeta({
 	title: t('installationPage.metaTitle'),
@@ -15,11 +15,12 @@ usePageMeta({
 const tocLinks = [
 	{ label: t('installationPage.createProject.title'), href: '#create-project' },
 	{ label: t('installationPage.addTailwind.title'), href: '#add-tailwind-css' },
-	{ label: t('installationPage.installComponent.title'), href: '#install-component' },
+	{
+		label: t('installationPage.installComponent.title'),
+		href: '#install-component',
+	},
 	{ label: t('installationPage.useComponent.title'), href: '#use-component' },
 ] as const;
-
-const { setToc, clearToc } = usePageToc();
 
 onMounted(() => {
 	setToc(tocLinks);
@@ -40,7 +41,7 @@ const accentTheme = useCookie<AccentThemeType>('alixan-ui-accent-theme', {
 const showTailwindCode = ref(false);
 
 const currentTailwindCss = computed(() =>
-	createThemeCss(tailwindCss, accentColors[accentTheme.value]),
+	createThemeCss(accentColors[accentTheme.value]),
 );
 
 const rootIdConfig = `export default defineNuxtConfig({
@@ -62,7 +63,7 @@ export default defineNuxtConfig({
 })`;
 
 const usageCode = `<template>
-  <Button>
+  <Button color="primary">
     Save changes
   </Button>
 </template>`;
@@ -171,9 +172,9 @@ const usageCode = `<template>
 			{{ $t('installationPage.backdrop.prefix') }}
 			<span class="font-medium text-foreground">backdrop</span>
 			{{ $t('installationPage.backdrop.middle') }}
-			<span class="font-medium text-foreground"
-				>fixed inset-0 bg-black/30 dark:bg-black/80</span
-			>.
+			<span class="font-medium text-foreground">
+				fixed inset-0 bg-black/30 dark:bg-black/80.
+			</span>
 		</div>
 
 		<div class="island">
@@ -205,9 +206,9 @@ const usageCode = `<template>
 			class="rounded-2xl border bg-secondary/50 p-4 text-sm leading-7 text-muted-foreground"
 		>
 			{{ $t('installationPage.installComponent.createdPrefix') }}
-			<span class="font-medium text-foreground"
-				>components/ui/button/Button.vue</span
-			>
+			<span class="font-medium text-foreground">
+				components/ui/button/Button.vue
+			</span>
 			,
 			<span class="font-medium text-foreground">utils/cn.ts</span>
 			{{ $t('installationPage.installComponent.createdSuffix') }}
@@ -226,7 +227,9 @@ const usageCode = `<template>
 
 		<div class="island">
 			<div class="min-h-40 p-8 flex items-center justify-center">
-				<Button>{{ $t('installationPage.useComponent.previewButton') }}</Button>
+				<Button color="primary">
+					{{ $t('installationPage.useComponent.previewButton') }}
+				</Button>
 			</div>
 			<div class="relative border-t">
 				<CopyButton
