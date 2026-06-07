@@ -276,5 +276,9 @@
 		"toast": "Уведомление",
 		"select": "Выбор",
 		"dropdownMenu": "Выпадающее меню"
+	},
+	"validation": {
+		"required": "Заполните поле",
+		"usernamePattern": "Только буквы и цифры"
 	}
 }

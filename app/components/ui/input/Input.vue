@@ -35,6 +35,8 @@ interface InputProps {
 	required?: boolean;
 	min?: number;
 	max?: number;
+	pattern?: string;
+	patternMessage?: string;
 	mask?: string;
 }
 
@@ -53,6 +55,8 @@ const props = withDefaults(defineProps<InputProps>(), {
 	required: false,
 	min: undefined,
 	max: undefined,
+	pattern: undefined,
+	patternMessage: 'Некорректный формат',
 	mask: undefined,
 });
 
@@ -62,6 +66,7 @@ const emit = defineEmits<{
 	input: [event: Event];
 }>();
 
+const { t } = useI18n();
 const model = defineModel<string | number | null>({ default: '' });
 
 const attrs = useAttrs();
@@ -80,11 +85,18 @@ const visibleLabel = computed(() => (hasMask.value ? undefined : props.label));
 const visiblePlaceholder = computed(() => props.placeholder);
 const stringValue = computed(() => String(model.value ?? ''));
 const hasValue = computed(() => stringValue.value.length > 0);
+const matchesPattern = (value: string, pattern: string): boolean => {
+	try {
+		return new RegExp(`^(?:${pattern})$`).test(value);
+	} catch {
+		return true;
+	}
+};
 const validationError = computed(() => {
 	const value = stringValue.value.trim();
 
 	if (props.required && !value) {
-		return 'Заполните поле';
+		return t('validation.required');
 	}
 
 	if (props.min !== undefined && stringValue.value.length < props.min) {
@@ -93,6 +105,12 @@ const validationError = computed(() => {
 
 	if (props.max !== undefined && stringValue.value.length > props.max) {
 		return `Максимум ${props.max} символов`;
+	}
+
+	if (props.pattern && value) {
+		if (!matchesPattern(value, props.pattern)) {
+			return props.patternMessage;
+		}
 	}
 
 	return '';
@@ -270,6 +288,7 @@ onMounted(() => {
 			:type="type"
 			:placeholder="visiblePlaceholder"
 			:autocomplete="autocomplete"
+			:pattern="pattern"
 			:disabled="disabled"
 			:readonly="readonly"
 			:aria-invalid="visibleError ? true : undefined"

@@ -71,7 +71,8 @@ const inputProps = [
 		name: 'required',
 		type: 'boolean',
 		default: 'false',
-		description: 'Shows "Заполните поле" after blur when the value is empty.',
+		description:
+			'Shows a localized required message after blur when the value is empty.',
 	},
 	{
 		name: 'min',
@@ -84,6 +85,19 @@ const inputProps = [
 		type: 'number',
 		default: '-',
 		description: 'Maximum text length validation shown after blur.',
+	},
+	{
+		name: 'pattern',
+		type: 'string',
+		default: '-',
+		description:
+			'Native pattern string. The value must match the whole pattern after blur.',
+	},
+	{
+		name: 'patternMessage',
+		type: 'string',
+		default: "'Некорректный формат'",
+		description: 'Validation message shown when pattern does not match.',
 	},
 	{
 		name: 'mask',

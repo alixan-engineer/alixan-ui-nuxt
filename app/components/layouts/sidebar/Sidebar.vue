@@ -16,6 +16,8 @@ const route = useRoute();
 const localePath = useLocalePath();
 
 const isActive = (to: string) => route.path === localePath(to);
+
+const scrollToTop = () => document.getElementById('root')?.scrollTo(0, 0);
 </script>
 
 <template>
@@ -60,7 +62,10 @@ const isActive = (to: string) => route.path === localePath(to);
 							:to="localePath(item.to)"
 							:variant="isActive(item.to) ? 'filled' : 'ghost'"
 							:color="isActive(item.to) ? 'primary' : 'default'"
-							@click="emit('close')"
+							@click="
+								emit('close');
+								scrollToTop();
+							"
 						>
 							{{ $t(item.labelKey) }}
 						</Button>

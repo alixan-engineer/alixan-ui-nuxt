@@ -276,5 +276,9 @@
 		"toast": "Хабарлама",
 		"select": "Таңдау",
 		"dropdownMenu": "Ашылмалы мәзір"
+	},
+	"validation": {
+		"required": "Өрісті толтырыңыз",
+		"usernamePattern": "Тек әріптер мен сандар"
 	}
 }

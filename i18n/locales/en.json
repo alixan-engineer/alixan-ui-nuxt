@@ -276,5 +276,9 @@
 		"toast": "Toast",
 		"select": "Select",
 		"dropdownMenu": "Dropdown Menu"
+	},
+	"validation": {
+		"required": "This field is required",
+		"usernamePattern": "Only letters and numbers"
 	}
 }

@@ -15,6 +15,7 @@ withDefaults(defineProps<UsernameInputProps>(), {
 	required: true,
 });
 
+const { t } = useI18n();
 const model = defineModel<string | number | null>({ default: '' });
 </script>
 
@@ -25,6 +26,8 @@ const model = defineModel<string | number | null>({ default: '' });
 		:autofocus="autofocus"
 		:min="min"
 		:max="max"
+		pattern="[A-Za-z0-9]+"
+		:pattern-message="t('validation.usernamePattern')"
 		:required="required"
 	/>
 </template>

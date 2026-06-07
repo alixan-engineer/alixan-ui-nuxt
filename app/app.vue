@@ -15,12 +15,6 @@ useHead({
 	htmlAttrs: { lang: locale.value },
 	link: favicon,
 });
-
-// Scroll to top when change page
-const nuxtApp = useNuxtApp();
-nuxtApp.hook('page:finish', () => {
-	document.getElementById('root')?.scrollTo(0, 0);
-});
 </script>
 
 <template>
