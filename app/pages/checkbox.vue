@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { checkboxPageToc } from '~/shared/page-docs/checkbox/page-toc';
+import { checkboxProps } from '~/shared/page-docs/checkbox/api-reference';
+import { examples } from '~/shared/page-docs/checkbox/usage-examples';
+import { propsTableColumns } from '~/shared/page-docs/table-columns';
 const { t } = useI18n();
 
 usePageMeta({
@@ -8,64 +11,13 @@ usePageMeta({
 });
 
 const tocLinks = checkboxPageToc(t);
+const apiColumns = propsTableColumns(t);
 
 usePageTocLinks(tocLinks);
 
 const accepted = ref(false);
 const selectedPeriod = ref<string | null>('7d');
 const selectedOptions = ref<string[]>(['email']);
-
-const checkboxProps = [
-	{
-		name: 'modelValue',
-		type: 'boolean | string | number | Array<string | number> | null',
-		default: 'false',
-		description: 'Selected state used by v-model.',
-	},
-	{
-		name: 'mode',
-		type: "'single' | 'multiple'",
-		default: "'single'",
-		description:
-			'Single stores a boolean or one value. Multiple stores an array.',
-	},
-	{
-		name: 'value',
-		type: 'string | number',
-		default: '-',
-		description: 'Value used for single value mode or multiple array mode.',
-	},
-	{
-		name: 'label',
-		type: 'string',
-		default: '-',
-		description: 'Optional label rendered next to the circular control.',
-	},
-	{
-		name: 'disabled',
-		type: 'boolean',
-		default: 'false',
-		description: 'Disables checkbox interaction.',
-	},
-];
-
-const examples = {
-	usage: `<script setup lang="ts">
-const accepted = ref(false)
-const selectedPeriod = ref('7d')
-const selectedOptions = ref(['email'])
-<\/script>
-
-<template>
-  <Checkbox v-model="accepted" label="Accept terms" />
-
-  <Checkbox v-model="selectedPeriod" value="7d" label="7 d" />
-  <Checkbox v-model="selectedPeriod" value="30d" label="30 d" />
-
-  <Checkbox v-model="selectedOptions" mode="multiple" value="email" label="Email" />
-  <Checkbox v-model="selectedOptions" mode="multiple" value="sms" label="SMS" />
-</template>`,
-};
 </script>
 
 <template>
@@ -117,12 +69,7 @@ const selectedOptions = ref(['email'])
 			{{ $t('docsSections.apiReference') }}
 		</h2>
 		<Table
-			:columns="[
-				{ label: $t('docsTable.prop'), value: row => row.name },
-				{ label: $t('docsTable.type'), value: row => row.type },
-				{ label: $t('docsTable.default'), value: row => row.default },
-				{ label: $t('docsTable.description'), value: row => row.description },
-			]"
+			:columns="apiColumns"
 			:rows="checkboxProps"
 		/>
 	</section>

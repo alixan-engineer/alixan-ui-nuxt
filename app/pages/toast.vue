@@ -1,39 +1,19 @@
 <script setup lang="ts">
-import { toastPageToc } from '~/shared/page-docs/toast/page-toc';
 import type { ToastType } from '~/composables/useToast';
-const { t } = useI18n();
+import { argumentTableColumns } from '~/shared/page-docs/table-columns';
+import { toastApi } from '~/shared/page-docs/toast/api-reference';
+import { toastPageToc } from '~/shared/page-docs/toast/page-toc';
+import { appCode, exampleCode } from '~/shared/page-docs/toast/usage-examples';
 
 usePageMeta({
-	title: t('componentDocs.toast.metaTitle'),
-	description: t('componentDocs.toast.description'),
+	title: 'componentDocs.toast.metaTitle',
+	description: 'componentDocs.toast.description',
 });
 
-const tocLinks = toastPageToc(t);
-
-usePageTocLinks(tocLinks);
-
+const { setToc } = usePageToc();
 const toast = useToast();
 
-const toastApi = [
-	{
-		name: 'message',
-		type: 'string',
-		default: '-',
-		description: 'Toast text.',
-	},
-	{
-		name: 'type',
-		type: "'success' | 'warning' | 'error' | 'info'",
-		default: "'info'",
-		description: 'Semantic toast tone.',
-	},
-	{
-		name: 'duration',
-		type: 'number',
-		default: '4000',
-		description: 'Auto-close timeout in milliseconds.',
-	},
-];
+onMounted(() => setToc(toastPageToc));
 
 const examples: Array<{ label: string; type: ToastType; message: string }> = [
 	{ label: 'Success', type: 'success', message: 'Project saved successfully' },
@@ -41,25 +21,6 @@ const examples: Array<{ label: string; type: ToastType; message: string }> = [
 	{ label: 'Error', type: 'error', message: 'Something went wrong' },
 	{ label: 'Info', type: 'info', message: 'New update is available' },
 ];
-
-const appCode = `// app.vue
-<template>
-  <NuxtPage />
-  <ToastHost /> <!-- Add ToastHost once near the root of your app. -->
-</template>`;
-
-const exampleCode = `// example.vue
-<script setup lang="ts">
-const toast = useToast()
-
-const showToast = () => {
-  toast.open('Project saved successfully', 'success')
-}
-<\/script>
-
-<template>
-  <Button @click="showToast">Show toast</Button>
-</template>`;
 </script>
 
 <template>
@@ -102,14 +63,6 @@ const showToast = () => {
 		<h2 class="text-2xl font-semibold">
 			{{ $t('docsSections.apiReference') }}
 		</h2>
-		<Table
-			:columns="[
-				{ label: $t('docsTable.argument'), value: row => row.name },
-				{ label: $t('docsTable.type'), value: row => row.type },
-				{ label: $t('docsTable.default'), value: row => row.default },
-				{ label: $t('docsTable.description'), value: row => row.description },
-			]"
-			:rows="toastApi"
-		/>
+		<Table :columns="argumentTableColumns" :rows="toastApi" />
 	</section>
 </template>

@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { iconsPageToc } from '~/shared/page-docs/icons/page-toc';
 import { Bell, Search } from '@lucide/vue';
+import { installCode, lucideCode, mdiCode } from '~/shared/page-docs/icons/usage-examples';
+
+const { t } = useI18n();
 
 usePageMeta({
 	title: 'Icons - Alixan UI',
@@ -9,27 +12,6 @@ usePageMeta({
 const tocLinks = iconsPageToc(t);
 
 usePageTocLinks(tocLinks);
-
-const installCode = `npm install @lucide/vue`;
-
-const lucideCode = `<script setup lang="ts">
-import { Bell, Search } from '@lucide/vue'
-<\/script>
-
-<template>
-  <Button>
-		<template #leading>
-			<Search class="size-5" />
-		</template>
-		Search
-	</Button>
-
-  <IconButton label="Notifications">
-    <Bell />
-  </IconButton>
-</template>`;
-
-const mdiCode = `npx nuxi module add nuxt-mdi`;
 </script>
 
 <template>

@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { chipPageToc } from '~/shared/page-docs/chip/page-toc';
+import { chipProps } from '~/shared/page-docs/chip/api-reference';
+import { examples } from '~/shared/page-docs/chip/usage-examples';
+import { propsTableColumns } from '~/shared/page-docs/table-columns';
 const { t } = useI18n();
 
 usePageMeta({
@@ -8,59 +11,9 @@ usePageMeta({
 });
 
 const tocLinks = chipPageToc(t);
+const apiColumns = propsTableColumns(t);
 
 usePageTocLinks(tocLinks);
-
-const chipProps = [
-	{
-		name: 'label',
-		type: 'string',
-		default: '-',
-		description: 'Fallback text when the default slot is not used.',
-	},
-	{
-		name: 'type',
-		type: "'default' | 'select' | 'remove'",
-		default: "'default'",
-		description: 'Adds the select chevron or remove icon.',
-	},
-	{
-		name: 'size',
-		type: "'sm' | 'md' | 'lg'",
-		default: "'md'",
-		description: 'Controls height, radius, padding and icon size.',
-	},
-	{
-		name: 'selected',
-		type: 'boolean',
-		default: 'false',
-		description: 'Switches the chip into the active primary state.',
-	},
-	{
-		name: 'disabled',
-		type: 'boolean',
-		default: 'false',
-		description: 'Disables interaction and reduces opacity.',
-	},
-];
-
-const examples = {
-	usage: `<template>
-  <div class="flex flex-wrap items-center gap-2">
-    <Chip label="Default" />
-    <Chip label="Selected" selected />
-    <Chip label="Design" type="select" />
-    <Chip label="Nuxt" type="remove" />
-  </div>
-</template>`,
-	size: `<template>
-  <div class="flex flex-wrap items-center gap-2">
-    <Chip label="Small" size="sm" />
-    <Chip label="Medium" />
-    <Chip label="Large" size="lg" />
-  </div>
-</template>`,
-};
 </script>
 
 <template>
@@ -106,12 +59,7 @@ const examples = {
 			{{ $t('docsSections.apiReference') }}
 		</h2>
 		<Table
-			:columns="[
-				{ label: $t('docsTable.prop'), value: row => row.name },
-				{ label: $t('docsTable.type'), value: row => row.type },
-				{ label: $t('docsTable.default'), value: row => row.default },
-				{ label: $t('docsTable.description'), value: row => row.description },
-			]"
+			:columns="apiColumns"
 			:rows="chipProps"
 		/>
 	</section>

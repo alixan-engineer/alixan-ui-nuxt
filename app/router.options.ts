@@ -5,6 +5,10 @@ const normalizeLocalePath = (path: string) =>
 	path.replace(/^\/(ru|kk)(?=\/|$)/, '') || '/';
 
 const scrollRootToHash = async (hash: string) => {
+	if (import.meta.server) {
+		return;
+	}
+
 	await nextTick();
 
 	requestAnimationFrame(() => {

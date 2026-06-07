@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { globalLoaderPageToc } from '~/shared/page-docs/global-loader/page-toc';
+import { loaderApi } from '~/shared/page-docs/global-loader/api-reference';
+import { appCode, usageCode } from '~/shared/page-docs/global-loader/usage-examples';
+import { propsTableColumns } from '~/shared/page-docs/table-columns';
 const { t } = useI18n();
 
 usePageMeta({
@@ -8,55 +11,11 @@ usePageMeta({
 });
 
 const tocLinks = globalLoaderPageToc(t);
+const apiColumns = propsTableColumns(t);
 
 usePageTocLinks(tocLinks);
 
 const loader = useGlobalLoader();
-
-const loaderApi = [
-	{
-		name: 'show',
-		type: '(options?: { label?: string }) => void',
-		default: '-',
-		description: 'Opens the full-screen loader.',
-	},
-	{
-		name: 'hide',
-		type: '() => void',
-		default: '-',
-		description: 'Closes the loader.',
-	},
-	{
-		name: 'label',
-		type: 'string',
-		default: "''",
-		description: 'Optional label displayed below the spinner.',
-	},
-];
-
-const appCode = `// app.vue
-// Add GlobalLoaderHost once near the root of your app.
-<template>
-  <NuxtPage />
-  <GlobalLoaderHost />
-</template>`;
-
-const usageCode = `// example.vue
-<script setup lang="ts">
-const loader = useGlobalLoader()
-
-const load = () => {
-  loader.show()
-
-  window.setTimeout(() => {
-    loader.hide()
-  }, 3000)
-}
-<\/script>
-
-<template>
-  <Button @click="load">Show loader</Button>
-</template>`;
 
 const showLoader = (): void => {
 	loader.show();
@@ -97,12 +56,7 @@ const showLoader = (): void => {
 			{{ $t('docsSections.apiReference') }}
 		</h2>
 		<Table
-			:columns="[
-				{ label: $t('docsTable.methodOption'), value: row => row.name },
-				{ label: $t('docsTable.type'), value: row => row.type },
-				{ label: $t('docsTable.default'), value: row => row.default },
-				{ label: $t('docsTable.description'), value: row => row.description },
-			]"
+			:columns="apiColumns"
 			:rows="loaderApi"
 		/>
 	</section>

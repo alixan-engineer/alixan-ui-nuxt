@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import { fontsPageToc } from '~/shared/page-docs/fonts/page-toc';
+import { installCode, configCode, tailwindCode } from '~/shared/page-docs/fonts/usage-examples';
+
+const { t } = useI18n();
+
 usePageMeta({
 	title: 'Fonts - Alixan UI',
 });
@@ -7,20 +11,6 @@ usePageMeta({
 const tocLinks = fontsPageToc(t);
 
 usePageTocLinks(tocLinks);
-
-const installCode = `npm install @nuxtjs/google-fonts`;
-
-const configCode = `export default defineNuxtConfig({
-  modules: [
-  	// Change to your font
-    ['@nuxtjs/google-fonts', { families: { Geist: true } }],
-  ],
-})`;
-
-const tailwindCode = `@theme {
-  /* Change to your font */
-  --font-sans: 'Geist', ui-sans-serif, system-ui, sans-serif;
-}`;
 </script>
 
 <template>

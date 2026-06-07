@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { emptyPageToc } from '~/shared/page-docs/empty/page-toc';
+import { emptyProps, emptySlots } from '~/shared/page-docs/empty/api-reference';
+import { examples } from '~/shared/page-docs/empty/usage-examples';
+import { propsTableColumns, slotTableColumns } from '~/shared/page-docs/table-columns';
 const { t } = useI18n();
 
 usePageMeta({
@@ -8,67 +11,10 @@ usePageMeta({
 });
 
 const tocLinks = emptyPageToc(t);
+const apiColumns = propsTableColumns(t);
+const slotColumns = slotTableColumns(t);
 
 usePageTocLinks(tocLinks);
-
-const emptyProps = [
-	{
-		name: 'title',
-		type: 'string',
-		default: '-',
-		description: 'Main empty state heading.',
-	},
-	{
-		name: 'description',
-		type: 'string',
-		default: '-',
-		description: 'Optional supporting text.',
-	},
-	{
-		name: 'button',
-		type: 'string',
-		default: '-',
-		description: 'Optional action button label.',
-	},
-	{
-		name: 'buttonColor',
-		type: "'default' | 'primary' | 'secondary' | 'destructive'",
-		default: "'primary'",
-		description: 'Optional action button color.',
-	},
-];
-
-const emptySlots = [
-	{
-		name: 'default',
-		description: 'Optional media rendered above the title.',
-	},
-];
-
-const examples = {
-	usage: `<template>
-  <Empty
-    title="No results"
-    description="Try changing filters or search query."
-    button="Reset filters"
-    button-color="secondary"
-    @action="resetFilters"
-  />
-</template>`,
-	withMedia: `<template>
-  <Empty
-    title="Page not found"
-    description="The page you are looking for does not exist or has been moved."
-    button="Go home"
-    button-color="primary"
-    @action="navigateTo('/')"
-  >
-    <div class="flex size-24 items-center justify-center rounded-4xl bg-secondary text-primary">
-      <Lottie name="error" :loop="false" width="80px" height="80px" />
-    </div>
-  </Empty>
-</template>`,
-};
 </script>
 
 <template>
@@ -121,21 +67,13 @@ const examples = {
 			{{ $t('docsSections.apiReference') }}
 		</h2>
 		<Table
-			:columns="[
-				{ label: $t('docsTable.prop'), value: row => row.name },
-				{ label: $t('docsTable.type'), value: row => row.type },
-				{ label: $t('docsTable.default'), value: row => row.default },
-				{ label: $t('docsTable.description'), value: row => row.description },
-			]"
+			:columns="apiColumns"
 			:rows="emptyProps"
 		/>
 
 		<h3 class="pt-4 text-xl font-semibold">Slots</h3>
 		<Table
-			:columns="[
-				{ label: $t('docsTable.slot'), value: row => row.name },
-				{ label: $t('docsTable.description'), value: row => row.description },
-			]"
+			:columns="slotColumns"
 			:rows="emptySlots"
 		/>
 	</section>

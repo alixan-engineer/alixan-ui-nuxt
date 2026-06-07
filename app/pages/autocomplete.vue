@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { autocompletePageToc } from '~/shared/page-docs/autocomplete/page-toc';
+import { examples } from '~/shared/page-docs/autocomplete/usage-examples';
 const { t } = useI18n();
 
 usePageMeta({
@@ -26,44 +27,6 @@ const options = [
 	{ label: 'Aktau', value: 'aktau' },
 	{ label: 'Atyrau', value: 'atyrau' },
 ];
-
-const examples = {
-	usage: `<script setup lang="ts">
-const city = ref(null)
-const options = [
-  { label: 'Almaty', value: 'almaty' },
-  { label: 'Astana', value: 'astana' },
-]
-<\/script>
-
-<template>
-  <Autocomplete v-model="city" label="City" :options="options" />
-</template>`,
-	validation: `<script setup lang="ts">
-const city = ref(null)
-const error = computed(() => !city.value ? 'City is required' : '')
-<\/script>
-
-<template>
-  <Autocomplete
-    v-model="city"
-    label="City"
-    :options="options"
-    :error="error"
-  />
-</template>`,
-	chips: `<script setup lang="ts">
-const cities = ref([])
-const options = [
-  { label: 'Almaty', value: 'almaty' },
-  { label: 'Astana', value: 'astana' },
-]
-<\/script>
-
-<template>
-  <AutocompleteChips v-model="cities" label="Cities" :options="options" />
-</template>`,
-};
 </script>
 
 <template>

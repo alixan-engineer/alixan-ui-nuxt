@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { textLinkPageToc } from '~/shared/page-docs/text-link/page-toc';
+import { textLinkProps } from '~/shared/page-docs/text-link/api-reference';
+import { examples } from '~/shared/page-docs/text-link/usage-examples';
+import { propsTableColumns } from '~/shared/page-docs/table-columns';
 const { t } = useI18n();
 
 usePageMeta({
@@ -8,44 +11,9 @@ usePageMeta({
 });
 
 const tocLinks = textLinkPageToc(t);
+const apiColumns = propsTableColumns(t);
 
 usePageTocLinks(tocLinks);
-
-const textLinkProps = [
-	{
-		name: 'href',
-		type: 'string',
-		default: '-',
-		description: 'Destination URL for the link.',
-	},
-	{
-		name: 'target',
-		type: "'_blank' | '_self' | '_parent' | '_top'",
-		default: '-',
-		description:
-			'Anchor target. When set to _blank, rel is set to noopener noreferrer.',
-	},
-];
-
-const examples = {
-	usage: `<template>
-  <p class="text-muted-foreground">
-    Read the
-    <TextLink href="/installation">
-      installation guide
-    </TextLink>
-    before copying components.
-  </p>
-</template>`,
-	externalLink: `<template>
-  <Info>
-    For more detailed information, visit the
-    <TextLink href="https://i18n.nuxtjs.org/" target="_blank">
-      Nuxt i18n documentation.
-    </TextLink>
-  </Info>
-</template>`,
-};
 </script>
 
 <template>
@@ -93,12 +61,7 @@ const examples = {
 			{{ $t('docsSections.apiReference') }}
 		</h2>
 		<Table
-			:columns="[
-				{ label: $t('docsTable.prop'), value: row => row.name },
-				{ label: $t('docsTable.type'), value: row => row.type },
-				{ label: $t('docsTable.default'), value: row => row.default },
-				{ label: $t('docsTable.description'), value: row => row.description },
-			]"
+			:columns="apiColumns"
 			:rows="textLinkProps"
 		/>
 	</section>

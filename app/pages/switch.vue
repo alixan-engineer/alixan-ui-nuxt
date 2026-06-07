@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { switchPageToc } from '~/shared/page-docs/switch/page-toc';
+import { switchProps } from '~/shared/page-docs/switch/api-reference';
+import { examples } from '~/shared/page-docs/switch/usage-examples';
+import { propsTableColumns } from '~/shared/page-docs/table-columns';
 const { t } = useI18n();
 
 usePageMeta({
@@ -8,43 +11,12 @@ usePageMeta({
 });
 
 const tocLinks = switchPageToc(t);
+const apiColumns = propsTableColumns(t);
 
 usePageTocLinks(tocLinks);
 
 const checked = ref(false);
 const disabledChecked = ref(true);
-
-const switchProps = [
-	{
-		name: 'modelValue',
-		type: 'boolean',
-		default: 'false',
-		description: 'Selected state used by v-model.',
-	},
-	{
-		name: 'label',
-		type: 'string',
-		default: '-',
-		description: 'Optional label rendered next to the switch.',
-	},
-	{
-		name: 'disabled',
-		type: 'boolean',
-		default: 'false',
-		description: 'Disables switch interaction.',
-	},
-];
-
-const examples = {
-	usage: `<script setup lang="ts">
-const checked = ref(false)
-<\/script>
-
-<template>
-  <Switch v-model="checked" label="Airplane Mode" />
-  <Switch v-model="disabledChecked" label="Disabled" disabled />
-</template>`,
-};
 </script>
 
 <template>
@@ -82,12 +54,7 @@ const checked = ref(false)
 			{{ $t('docsSections.apiReference') }}
 		</h2>
 		<Table
-			:columns="[
-				{ label: $t('docsTable.prop'), value: row => row.name },
-				{ label: $t('docsTable.type'), value: row => row.type },
-				{ label: $t('docsTable.default'), value: row => row.default },
-				{ label: $t('docsTable.description'), value: row => row.description },
-			]"
+			:columns="apiColumns"
 			:rows="switchProps"
 		/>
 	</section>

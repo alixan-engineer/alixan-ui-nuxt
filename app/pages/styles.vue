@@ -2,6 +2,11 @@
 import { stylesPageToc } from '~/shared/page-docs/styles/page-toc';
 import type { AccentThemeType } from '~/interfaces/theme/theme.interface';
 import { accentColors } from '~/shared/theme/colors';
+import {
+	textSizeCode,
+	islandCode,
+	backdropCode,
+} from '~/shared/page-docs/styles/usage-examples';
 
 const { t } = useI18n();
 const { createThemeCss } = useTheme();
@@ -18,26 +23,11 @@ usePageTocLinks(tocLinks);
 const accentTheme = useCookie<AccentThemeType>('alixan-ui-accent-theme', {
 	default: () => 'default',
 });
-
 const showTailwindCode = ref(false);
 
 const currentTailwindCss = computed(() =>
 	createThemeCss(accentColors[accentTheme.value]),
 );
-
-const textSizeCode = `@theme {
-  --text-md: 15px;
-}`;
-
-const islandCode = `@utility island {
-  @apply flex flex-col border overflow-hidden dark:bg-card dark:text-card-foreground min-h-fit;
-
-  border-radius: clamp(var(--radius-md), 4%, var(--radius-xl));
-}`;
-
-const backdropCode = `@utility backdrop {
-  @apply fixed inset-0 bg-black/30 dark:bg-black/80;
-}`;
 </script>
 
 <template>

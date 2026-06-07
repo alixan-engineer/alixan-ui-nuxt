@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { statusPageToc } from '~/shared/page-docs/status/page-toc';
+import { statusProps } from '~/shared/page-docs/status/api-reference';
+import { examples } from '~/shared/page-docs/status/usage-examples';
+import { propsTableColumns } from '~/shared/page-docs/table-columns';
 const { t } = useI18n();
 
 usePageMeta({
@@ -8,47 +11,9 @@ usePageMeta({
 });
 
 const tocLinks = statusPageToc(t);
+const apiColumns = propsTableColumns(t);
 
 usePageTocLinks(tocLinks);
-
-const statusProps = [
-	{
-		name: 'label',
-		type: 'string',
-		default: '-',
-		description: 'Fallback text when the default slot is not used.',
-	},
-	{
-		name: 'type',
-		type: "'success' | 'warning' | 'info' | 'error'",
-		default: "'info'",
-		description: 'Semantic status tone.',
-	},
-	{
-		name: 'size',
-		type: "'sm' | 'md' | 'lg'",
-		default: "'md'",
-		description: 'Controls height, padding and gap.',
-	},
-];
-
-const examples = {
-	usage: `<template>
-  <div class="flex flex-wrap items-center gap-2">
-    <Status label="Success" type="success" />
-    <Status label="Warning" type="warning" />
-    <Status label="Info" type="info" />
-    <Status label="Error" type="error" />
-  </div>
-</template>`,
-	size: `<template>
-  <div class="flex flex-wrap items-center gap-2">
-    <Status label="Small" size="sm" type="success" />
-    <Status label="Medium" type="success" />
-    <Status label="Large" size="lg" type="success" />
-  </div>
-</template>`,
-};
 </script>
 
 <template>
@@ -94,12 +59,7 @@ const examples = {
 			{{ $t('docsSections.apiReference') }}
 		</h2>
 		<Table
-			:columns="[
-				{ label: $t('docsTable.prop'), value: row => row.name },
-				{ label: $t('docsTable.type'), value: row => row.type },
-				{ label: $t('docsTable.default'), value: row => row.default },
-				{ label: $t('docsTable.description'), value: row => row.description },
-			]"
+			:columns="apiColumns"
 			:rows="statusProps"
 		/>
 	</section>

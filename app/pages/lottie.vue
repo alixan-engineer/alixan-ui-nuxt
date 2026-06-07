@@ -1,47 +1,20 @@
 <script setup lang="ts">
 import { lottiePageToc } from '~/shared/page-docs/lottie/page-toc';
+import {
+	configCode,
+	emptyCode,
+	folderCode,
+	installCode,
+	usageCode,
+} from '~/shared/page-docs/lottie/usage-examples';
+
 usePageMeta({
 	title: 'Lottie - Alixan UI',
 });
 
-const tocLinks = lottiePageToc(t);
+const { setToc } = usePageToc();
 
-usePageTocLinks(tocLinks);
-
-const installCode = `npx nuxi module add lottie`;
-
-const configCode = `export default defineNuxtConfig({
-  modules: ['nuxt-lottie'],
-  lottie: {
-    componentName: 'Lottie',
-    lottieFolder: '/assets/lottie',
-    autoFolderCreation: true,
-  },
-})`;
-
-const folderCode = `app/
-  assets/
-    lottie/
-      error.json`;
-
-const usageCode = `<template>
-  <Lottie name="error" :loop="false" width="160px" height="140px" />
-</template>`;
-
-const emptyCode = `<template>
-  <Empty
-    title="Page not found"
-    description="The page you are looking for does not exist or has been moved."
-    button="Go home"
-    @action="navigateTo('/')"
-  >
-    <div
-      class="flex size-28 items-center justify-center rounded-4xl bg-secondary text-primary"
-    >
-      <Lottie name="error" :loop="false" width="140px" height="140px" />
-    </div>
-  </Empty>
-</template>`;
+onMounted(() => setToc(lottiePageToc));
 </script>
 
 <template>

@@ -6,6 +6,9 @@ import {
 	buttonColors,
 	buttonVariants,
 } from '~/shared/button-options/button-options';
+import { iconButtonApiRows } from '~/shared/page-docs/icon-button/api-reference';
+import { iconButtonExamples } from '~/shared/page-docs/icon-button/usage-examples';
+import { propsTableColumns } from '~/shared/page-docs/table-columns';
 
 const { t } = useI18n();
 
@@ -15,6 +18,7 @@ usePageMeta({
 });
 
 const tocLinks = iconButtonPageToc(t);
+const apiColumns = propsTableColumns(t);
 
 usePageTocLinks(tocLinks);
 
@@ -39,188 +43,6 @@ const openDisableAlert = (): void => {
 			buttonLabel: 'Got it',
 		},
 	});
-};
-
-const iconButtonProps = [
-	{
-		name: 'label',
-		type: 'string',
-		default: '-',
-		description: 'Required accessible label for screen readers.',
-	},
-	{
-		name: 'variant',
-		type: "'filled' | 'outlined' | 'ghost'",
-		default: "'ghost'",
-		description: 'Visual style of the icon button. Ghost is used by default.',
-	},
-	{
-		name: 'color',
-		type: "'default' | 'primary' | 'secondary' | 'destructive'",
-		default: "'default'",
-		description: 'Color intent.',
-	},
-	{
-		name: 'size',
-		type: "'sm' | 'md' | 'lg'",
-		default: "'md'",
-		description: 'Controls square size and icon size.',
-	},
-	{
-		name: 'to',
-		type: 'RouteLocationRaw',
-		default: '-',
-		description: 'Renders the icon button as a NuxtLink when provided.',
-	},
-	{
-		name: 'href',
-		type: 'string',
-		default: '-',
-		description: 'Renders the icon button as a native anchor when provided.',
-	},
-	{
-		name: 'target',
-		type: "'_blank' | '_self' | '_parent' | '_top'",
-		default: '-',
-		description: 'Anchor target. Works with href links.',
-	},
-];
-
-const examples = {
-	combinations: `<script setup lang="ts">
-import { ArrowUpRight } from '@lucide/vue'
-import IconButton from '@/components/ui/icon-button/IconButton.vue'
-<\/script>
-
-<template>
-  <div class="space-y-4">
-    <div class="flex flex-wrap items-center gap-2">
-      <IconButton label="Default" variant="filled" color="default">
-        <ArrowUpRight />
-      </IconButton>
-      <IconButton label="Primary" variant="filled" color="primary">
-        <ArrowUpRight />
-      </IconButton>
-      <IconButton label="Secondary" variant="filled" color="secondary">
-        <ArrowUpRight />
-      </IconButton>
-      <IconButton label="Destructive" variant="filled" color="destructive">
-        <ArrowUpRight />
-      </IconButton>
-    </div>
-
-    <div class="flex flex-wrap items-center gap-2">
-      <IconButton label="Default outline" variant="outlined" color="default">
-        <ArrowUpRight />
-      </IconButton>
-      <IconButton label="Primary outline" variant="outlined" color="primary">
-        <ArrowUpRight />
-      </IconButton>
-      <IconButton label="Secondary outline" variant="outlined" color="secondary">
-        <ArrowUpRight />
-      </IconButton>
-      <IconButton label="Destructive outline" variant="outlined" color="destructive">
-        <ArrowUpRight />
-      </IconButton>
-    </div>
-
-    <div class="flex flex-wrap items-center gap-2">
-      <IconButton label="Default ghost" variant="ghost" color="default">
-        <ArrowUpRight />
-      </IconButton>
-      <IconButton label="Primary ghost" variant="ghost" color="primary">
-        <ArrowUpRight />
-      </IconButton>
-      <IconButton label="Secondary ghost" variant="ghost" color="secondary">
-        <ArrowUpRight />
-      </IconButton>
-      <IconButton label="Destructive ghost" variant="ghost" color="destructive">
-        <ArrowUpRight />
-      </IconButton>
-    </div>
-  </div>
-</template>`,
-	size: `<script setup lang="ts">
-import { ArrowUpRight } from '@lucide/vue'
-import IconButton from '@/components/ui/icon-button/IconButton.vue'
-<\/script>
-
-<template>
-  <div class="flex items-center gap-2">
-    <IconButton label="Small action" size="sm">
-      <ArrowUpRight />
-    </IconButton>
-    <IconButton label="Default action">
-      <ArrowUpRight />
-    </IconButton>
-    <IconButton label="Large action" size="lg">
-      <ArrowUpRight />
-    </IconButton>
-  </div>
-</template>`,
-	navigation: `<script setup lang="ts">
-import { ArrowUpRight } from '@lucide/vue'
-import IconButton from '@/components/ui/icon-button/IconButton.vue'
-<\/script>
-
-<template>
-  <div class="flex items-center gap-2">
-    <IconButton label="Open icon button docs" to="/icon-button">
-      <ArrowUpRight />
-    </IconButton>
-
-    <IconButton
-      label="Open GitHub"
-      href="https://github.com"
-      target="_blank"
-      variant="outlined"
-    >
-      <ArrowUpRight />
-    </IconButton>
-  </div>
-</template>`,
-	loading: `<script setup lang="ts">
-import { ArrowUpRight } from '@lucide/vue'
-
-const loader = useGlobalLoader()
-
-const save = () => {
-  loader.show({ label: 'Saving action...' })
-
-  window.setTimeout(() => {
-    loader.hide()
-  }, 3000)
-}
-<\/script>
-
-<template>
-  <IconButton label="Save action" @click="save">
-    <ArrowUpRight />
-  </IconButton>
-</template>`,
-	disable: `<script setup lang="ts">
-import { ArrowUpRight } from '@lucide/vue'
-
-const dialog = useDialog()
-
-const openAlert = () => {
-  dialog.open(AlertDialog, {
-    width: '360px',
-    height: '280px',
-    data: {
-      title: 'Action unavailable',
-      description: 'Export will be available after the report is generated.',
-      buttonLabel: 'Got it',
-    },
-  })
-}
-<\/script>
-
-<template>
-  <IconButton label="Export report" variant="outlined" @click="openAlert">
-    <ArrowUpRight />
-  </IconButton>
-</template>`,
 };
 </script>
 
@@ -249,7 +71,7 @@ const openAlert = () => {
 			</p>
 		</div>
 		<div class="space-y-4">
-			<ExampleBlock :code="examples.combinations">
+			<ExampleBlock :code="iconButtonExamples.combinations">
 				<div class="space-y-4">
 					<div
 						v-for="variant in buttonVariants"
@@ -278,7 +100,7 @@ const openAlert = () => {
 
 	<section id="size" class="space-y-4">
 		<h2 class="text-2xl font-semibold">{{ $t('docsSections.size') }}</h2>
-		<ExampleBlock :code="examples.size">
+		<ExampleBlock :code="iconButtonExamples.size">
 			<div class="flex items-center gap-2">
 				<IconButton label="Small action" size="sm">
 					<ArrowUpRight />
@@ -295,7 +117,7 @@ const openAlert = () => {
 
 	<section id="navigation" class="space-y-4">
 		<h2 class="text-2xl font-semibold">{{ $t('docsSections.navigation') }}</h2>
-		<ExampleBlock :code="examples.navigation">
+		<ExampleBlock :code="iconButtonExamples.navigation">
 			<div class="flex items-center gap-2">
 				<IconButton label="Open icon button docs" to="/icon-button">
 					<ArrowUpRight />
@@ -322,7 +144,7 @@ const openAlert = () => {
 				loader when the operation should be treated as one blocking action.
 			</p>
 		</div>
-		<ExampleBlock :code="examples.loading">
+		<ExampleBlock :code="iconButtonExamples.loading">
 			<IconButton label="Save action" @click="showGlobalLoader">
 				<ArrowUpRight />
 			</IconButton>
@@ -337,7 +159,7 @@ const openAlert = () => {
 				show a warning dialog that explains what the user needs to do.
 			</p>
 		</div>
-		<ExampleBlock :code="examples.disable">
+		<ExampleBlock :code="iconButtonExamples.disable">
 			<IconButton
 				label="Export report"
 				variant="outlined"
@@ -353,13 +175,8 @@ const openAlert = () => {
 			{{ $t('docsSections.apiReference') }}
 		</h2>
 		<Table
-			:columns="[
-				{ label: $t('docsTable.prop'), value: row => row.name },
-				{ label: $t('docsTable.type'), value: row => row.type },
-				{ label: $t('docsTable.default'), value: row => row.default },
-				{ label: $t('docsTable.description'), value: row => row.description },
-			]"
-			:rows="iconButtonProps"
+			:columns="apiColumns"
+			:rows="iconButtonApiRows"
 		/>
 	</section>
 </template>

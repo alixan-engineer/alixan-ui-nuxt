@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { searchPageToc } from '~/shared/page-docs/search/page-toc';
+import { searchProps, searchEvents } from '~/shared/page-docs/search/api-reference';
+import { examples } from '~/shared/page-docs/search/usage-examples';
+import { propsTableColumns, eventPayloadTableColumns } from '~/shared/page-docs/table-columns';
 const { t } = useI18n();
 
 usePageMeta({
@@ -8,6 +11,8 @@ usePageMeta({
 });
 
 const tocLinks = searchPageToc(t);
+const apiColumns = propsTableColumns(t);
+const eventPayloadColumns = eventPayloadTableColumns(t);
 
 usePageTocLinks(tocLinks);
 
@@ -15,80 +20,6 @@ const searchValue = ref('');
 const debouncedValue = ref('');
 const fastValue = ref('');
 const fastDebouncedValue = ref('');
-
-const searchProps = [
-	{
-		name: 'modelValue',
-		type: 'string',
-		default: "''",
-		description: 'Search input value used by v-model.',
-	},
-	{
-		name: 'placeholder',
-		type: 'string',
-		default: "'Search'",
-		description: 'Placeholder text inside the search field.',
-	},
-	{
-		name: 'debounce',
-		type: 'number',
-		default: '300',
-		description: 'Delay in milliseconds before emitting the search event.',
-	},
-	{
-		name: 'autofocus',
-		type: 'boolean',
-		default: 'false',
-		description: 'Focuses the input when it is mounted.',
-	},
-	{
-		name: 'readonly',
-		type: 'boolean',
-		default: 'false',
-		description: 'Makes the field readable but not editable.',
-	},
-];
-
-const searchEvents = [
-	{
-		name: 'search',
-		payload: 'string',
-		description: 'Emitted with a trimmed value after debounce.',
-	},
-	{
-		name: 'clear',
-		payload: '-',
-		description: 'Emitted when the clear button is clicked.',
-	},
-];
-
-const examples = {
-	usage: `<script setup lang="ts">
-const value = ref('')
-const debouncedValue = ref('')
-<\/script>
-
-<template>
-  <Search
-    v-model="value"
-    placeholder="Search services"
-    @search="debouncedValue = $event"
-  />
-</template>`,
-	debounce: `<script setup lang="ts">
-const value = ref('')
-const debouncedValue = ref('')
-<\/script>
-
-<template>
-  <Search
-    v-model="value"
-    :debounce="150"
-    placeholder="Fast search"
-    @search="debouncedValue = $event"
-  />
-</template>`,
-};
 </script>
 
 <template>
@@ -165,26 +96,14 @@ const debouncedValue = ref('')
 			<h3 class="text-xl font-semibold">Props</h3>
 		</div>
 		<Table
-			:columns="[
-				{ label: $t('docsTable.prop'), value: row => row.name },
-				{ label: $t('docsTable.type'), value: row => row.type },
-				{ label: $t('docsTable.default'), value: row => row.default },
-				{ label: $t('docsTable.description'), value: row => row.description },
-			]"
+			:columns="apiColumns"
 			:rows="searchProps"
 		/>
 
 		<div class="space-y-2">
 			<h3 class="text-xl font-semibold">Events</h3>
 			<Table
-				:columns="[
-					{
-						label: $t('docsTable.event'),
-						value: row => `@${row.name}`,
-					},
-					{ label: $t('docsTable.payload'), value: row => row.payload },
-					{ label: $t('docsTable.description'), value: row => row.description },
-				]"
+				:columns="eventPayloadColumns"
 				:rows="searchEvents"
 			/>
 		</div>

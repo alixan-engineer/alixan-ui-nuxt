@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { drawerPageToc } from '~/shared/page-docs/drawer/page-toc';
 import DrawerPreviewContent from '~/components/docs/drawer-preview-content/DrawerPreviewContent.vue';
+import { drawerServiceApi } from '~/shared/page-docs/drawer/api-reference';
+import { appCode, usageCode, contentCode } from '~/shared/page-docs/drawer/usage-examples';
+import { propsTableColumns } from '~/shared/page-docs/table-columns';
 const { t } = useI18n();
 
 usePageMeta({
@@ -9,108 +12,11 @@ usePageMeta({
 });
 
 const tocLinks = drawerPageToc(t);
+const apiColumns = propsTableColumns(t);
 
 usePageTocLinks(tocLinks);
 
 const drawer = useDrawer();
-
-const drawerServiceApi = [
-	{
-		name: 'component',
-		type: 'Component',
-		default: '-',
-		description: 'Vue component rendered inside DrawerHost.',
-	},
-	{
-		name: 'title',
-		type: 'string',
-		default: '-',
-		description: 'Passed to DrawerHeader.',
-	},
-	{
-		name: 'width',
-		type: 'string',
-		default: "'420px'",
-		description: 'Drawer max-width.',
-	},
-	{
-		name: 'height',
-		type: 'string',
-		default: "'420px'",
-		description: 'Drawer max-height for top and bottom positions.',
-	},
-	{
-		name: 'position',
-		type: "'top' | 'right' | 'bottom' | 'left'",
-		default: "'bottom'",
-		description: 'Drawer placement.',
-	},
-	{
-		name: 'data',
-		type: 'Record<string, unknown>',
-		default: '{}',
-		description: 'Data passed to the dynamic component.',
-	},
-];
-
-const appCode = `// app.vue
-// Add DrawerHost once near the root of your app.
-<template>
-  <NuxtPage />
-  <DrawerHost />
-</template>`;
-
-const usageCode = `// example.vue
-// Open any Vue component as a drawer and pass options/data.
-<script setup lang="ts">
-import WorkspaceDrawer from '~/components/WorkspaceDrawer.vue'
-
-const drawer = useDrawer()
-
-const openDrawer = () => {
-  drawer.open(WorkspaceDrawer, {
-    width: '420px',
-    height: '360px',
-    position: 'bottom',
-    title: 'Workspace settings',
-    data: {
-      workspaceName: 'Alixan UI',
-    },
-  })
-}
-<\/script>
-
-<template>
-  <Button @click="openDrawer">Open drawer</Button>
-</template>`;
-
-const contentCode = `// WorkspaceDrawer.vue
-// This component is rendered inside DrawerHost.
-// It receives data and close from drawer.open().
-<script setup lang="ts">
-interface WorkspaceDrawerData {
-  workspaceName: string
-}
-
-defineProps<{
-  data: WorkspaceDrawerData
-  close: () => void
-}>()
-<\/script>
-
-<template>
-  <div class="size-full flex flex-col divide-y">
-    <div class="flex-1 space-y-3 p-4">
-      <Input :model-value="data.workspaceName" label="Workspace name" />
-      <Switch label="Enable notifications" />
-    </div>
-
-    <div class="flex items-center justify-end gap-2 p-4">
-      <Button variant="outlined" label="Cancel" @click="close" />
-      <Button label="Save" @click="close" />
-    </div>
-  </div>
-</template>`;
 
 const openDrawer = (): void => {
 	drawer.open(DrawerPreviewContent, {
@@ -157,12 +63,7 @@ const openDrawer = (): void => {
 			{{ $t('docsSections.apiReference') }}
 		</h2>
 		<Table
-			:columns="[
-				{ label: $t('docsTable.option'), value: row => row.name },
-				{ label: $t('docsTable.type'), value: row => row.type },
-				{ label: $t('docsTable.default'), value: row => row.default },
-				{ label: $t('docsTable.description'), value: row => row.description },
-			]"
+			:columns="apiColumns"
 			:rows="drawerServiceApi"
 		/>
 	</section>

@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { tabsPageToc } from '~/shared/page-docs/tabs/page-toc';
+import { tabsProps } from '~/shared/page-docs/tabs/api-reference';
+import { examples } from '~/shared/page-docs/tabs/usage-examples';
+import { propsTableColumns } from '~/shared/page-docs/table-columns';
 const { t } = useI18n();
 
 usePageMeta({
@@ -8,6 +11,7 @@ usePageMeta({
 });
 
 const tocLinks = tabsPageToc(t);
+const apiColumns = propsTableColumns(t);
 
 usePageTocLinks(tocLinks);
 
@@ -18,51 +22,6 @@ const tabs = [
 const selected = ref(0);
 const materialSelected = ref(0);
 const fullSelected = ref(0);
-
-const tabsProps = [
-	{
-		name: 'modelValue',
-		type: 'number',
-		default: '0',
-		description: 'Selected tab index used by v-model.',
-	},
-	{
-		name: 'tabs',
-		type: 'string[]',
-		default: '[]',
-		description: 'List of tab labels.',
-	},
-	{
-		name: 'design',
-		type: "'material' | 'cupertino'",
-		default: "'cupertino'",
-		description: 'Visual style of the tabs.',
-	},
-	{
-		name: 'full',
-		type: 'boolean',
-		default: 'false',
-		description:
-			'Makes the tabs container and every tab use full available width.',
-	},
-];
-
-const examples = {
-	usage: `<script setup lang="ts">
-const tabs = ['Account', 'Password']
-const selected = ref(0)
-<\/script>
-
-<template>
-  <div class="grid gap-4">
-    <Tabs v-model="selected" :tabs="tabs" design="cupertino" />
-    <Tabs v-model="selected" :tabs="tabs" design="material" />
-  </div>
-</template>`,
-	full: `<template>
-  <Tabs v-model="selected" :tabs="tabs" full />
-</template>`,
-};
 </script>
 
 <template>
@@ -104,12 +63,7 @@ const selected = ref(0)
 			{{ $t('docsSections.apiReference') }}
 		</h2>
 		<Table
-			:columns="[
-				{ label: $t('docsTable.prop'), value: row => row.name },
-				{ label: $t('docsTable.type'), value: row => row.type },
-				{ label: $t('docsTable.default'), value: row => row.default },
-				{ label: $t('docsTable.description'), value: row => row.description },
-			]"
+			:columns="apiColumns"
 			:rows="tabsProps"
 		/>
 	</section>

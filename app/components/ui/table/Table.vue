@@ -1,17 +1,15 @@
 <script setup lang="ts">
-interface Props {
-	columns: TableColumn[];
-	rows: TableRow[];
+interface Props<T> {
+	columns: TableColumnT[];
+	rows: T[];
 }
 
-interface TableColumn {
+interface TableColumnT {
 	label: string;
-	value: (row: TableRow, rowIndex: number) => unknown;
+	value: (row: T, rowIndex: number) => unknown;
 }
 
-type TableRow = Record<string, unknown>;
-
-defineProps<Props>();
+defineProps<Props<T>>();
 </script>
 
 <template>

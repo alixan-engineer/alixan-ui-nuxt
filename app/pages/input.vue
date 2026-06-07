@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { inputPageToc } from '~/shared/page-docs/input/page-toc';
 import { Eye, EyeOff, Lock, Mail } from '@lucide/vue';
+import { inputProps } from '~/shared/page-docs/input/api-reference';
+import { examples } from '~/shared/page-docs/input/usage-examples';
+import { propsTableColumns } from '~/shared/page-docs/table-columns';
 const { t } = useI18n();
 
 usePageMeta({
@@ -9,6 +12,7 @@ usePageMeta({
 });
 
 const tocLinks = inputPageToc(t);
+const apiColumns = propsTableColumns(t);
 
 usePageTocLinks(tocLinks);
 
@@ -23,233 +27,6 @@ const passwordExampleValue = ref('');
 const lengthExampleValue = ref('');
 const phoneValue = ref('');
 const usernameValue = ref('');
-
-const inputProps = [
-	{
-		name: 'modelValue',
-		type: 'string | number | null',
-		default: "''",
-		description: 'Input value used by v-model.',
-	},
-	{
-		name: 'id',
-		type: 'string',
-		default: '-',
-		description: 'Custom id. Generated automatically when omitted.',
-	},
-	{
-		name: 'label',
-		type: 'string',
-		default: '-',
-		description: 'Floating label text.',
-	},
-	{
-		name: 'type',
-		type: "'text' | 'email' | 'password' | 'tel' | 'url' | 'number'",
-		default: "'text'",
-		description: 'Native input type.',
-	},
-	{
-		name: 'placeholder',
-		type: 'string',
-		default: '-',
-		description: 'Native placeholder text.',
-	},
-	{
-		name: 'autocomplete',
-		type: "'on' | 'off'",
-		default: '-',
-		description: 'Controls the native browser autocomplete behavior.',
-	},
-	{
-		name: 'autofocus',
-		type: 'boolean',
-		default: 'false',
-		description: 'Focuses the input on mount.',
-	},
-	{
-		name: 'required',
-		type: 'boolean',
-		default: 'false',
-		description:
-			'Shows a localized required message after blur when the value is empty.',
-	},
-	{
-		name: 'min',
-		type: 'number',
-		default: '-',
-		description: 'Minimum text length validation shown after blur.',
-	},
-	{
-		name: 'max',
-		type: 'number',
-		default: '-',
-		description: 'Maximum text length validation shown after blur.',
-	},
-	{
-		name: 'pattern',
-		type: 'string',
-		default: '-',
-		description:
-			'Native pattern string. The value must match the whole pattern after blur.',
-	},
-	{
-		name: 'patternMessage',
-		type: 'string',
-		default: "'Некорректный формат'",
-		description: 'Validation message shown when pattern does not match.',
-	},
-	{
-		name: 'mask',
-		type: 'string',
-		default: '-',
-		description:
-			'Digit mask where # is a digit. When mask is set, the floating label is hidden.',
-	},
-	{
-		name: 'hint',
-		type: 'string',
-		default: '-',
-		description: 'Helper text shown below the input.',
-	},
-	{
-		name: 'error',
-		type: 'string',
-		default: '-',
-		description:
-			'Error message. Also switches the input into destructive state.',
-	},
-	{
-		name: 'disabled',
-		type: 'boolean',
-		default: 'false',
-		description: 'Disables input interaction.',
-	},
-	{
-		name: 'readonly',
-		type: 'boolean',
-		default: 'false',
-		description: 'Makes the input readable but not editable.',
-	},
-	{
-		name: 'hasClearButton',
-		type: 'boolean',
-		default: 'true',
-		description:
-			'Shows a clear button when the input has a value and no trailing slot.',
-	},
-];
-
-const examples = {
-	usage: `<script setup lang="ts">
-const value = ref('')
-<\/script>
-
-<template>
-  <EmailInput v-model="value" />
-</template>`,
-	state: `<script setup lang="ts">
-const value = ref('readonly@example.com')
-<\/script>
-
-<template>
-  <div class="grid w-full gap-3">
-    <Input v-model="value" label="Readonly" readonly />
-    <Input label="Disabled" disabled />
-    <Input label="Required" error="Required field" />
- </div>
-</template>`,
-	withIcon: `<script setup lang="ts">
-import { Eye, EyeOff, Lock, Mail } from '@lucide/vue'
-
-const email = ref('')
-const password = ref('')
-const isPasswordVisible = ref(false)
-<\/script>
-
-<template>
-  <div class="grid w-full gap-3">
-    <EmailInput v-model="email">
-      <template #leading>
-        <Mail class="size-5" />
-      </template>
-    </EmailInput>
-
-    <Input
-      v-model="password"
-      label="Password"
-      :type="isPasswordVisible ? 'text' : 'password'"
-    >
-      <template #leading>
-        <Lock class="size-5" />
-      </template>
-      <template #trailing>
-        <IconButton
-          variant="ghost"
-          color="default"
-          size="sm"
-          :label="isPasswordVisible ? 'Hide password' : 'Show password'"
-          @click="isPasswordVisible = !isPasswordVisible"
-        >
-          <EyeOff v-if="isPasswordVisible" />
-          <Eye v-else />
-        </IconButton>
-      </template>
-    </Input>
-  </div>
-</template>`,
-	requiredExample: `<script setup lang="ts">
-const value = ref('')
-<\/script>
-
-<template>
-  <Input v-model="value" label="Username" required :min="3" :max="20" />
-</template>`,
-	emailExample: `<script setup lang="ts">
-const email = ref('')
-<\/script>
-
-<template>
-  <EmailInput v-model="email" required />
-</template>`,
-	passwordExample: `<script setup lang="ts">
-const password = ref('')
-<\/script>
-
-<template>
-  <PasswordInput
-    v-model="password"
-    required
-    :min="8"
-    :max="32"
-  />
-</template>`,
-	lengthExample: `<script setup lang="ts">
-const value = ref('')
-<\/script>
-
-<template>
-  <Input v-model="value" label="Code" :min="6" :max="12" hint="6-12 characters" />
-</template>`,
-	phoneExample: `<script setup lang="ts">
-const phone = ref('')
-<\/script>
-
-<template>
-  <PhoneInput
-    v-model="phone"
-    country-code="+7"
-    placeholder="777 777 77 77"
-  />
-</template>`,
-	usernameExample: `<script setup lang="ts">
-const username = ref('')
-<\/script>
-
-<template>
-  <UsernameInput v-model="username" />
-</template>`,
-};
 </script>
 
 <template>
@@ -440,12 +217,7 @@ const username = ref('')
 			{{ $t('docsSections.apiReference') }}
 		</h2>
 		<Table
-			:columns="[
-				{ label: $t('docsTable.prop'), value: row => row.name },
-				{ label: $t('docsTable.type'), value: row => row.type },
-				{ label: $t('docsTable.default'), value: row => row.default },
-				{ label: $t('docsTable.description'), value: row => row.description },
-			]"
+			:columns="apiColumns"
 			:rows="inputProps"
 		/>
 	</section>

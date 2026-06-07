@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { otpPageToc } from '~/shared/page-docs/otp/page-toc';
+import { otpProps, otpEvents } from '~/shared/page-docs/otp/api-reference';
+import { examples } from '~/shared/page-docs/otp/usage-examples';
+import { propsTableColumns, eventTableColumns } from '~/shared/page-docs/table-columns';
 const { t } = useI18n();
 
 usePageMeta({
@@ -8,60 +11,14 @@ usePageMeta({
 });
 
 const tocLinks = otpPageToc(t);
+const apiColumns = propsTableColumns(t);
+const eventColumns = eventTableColumns(t);
 
 usePageTocLinks(tocLinks);
 
 const toast = useToast();
 const otpValue = ref('');
 const lengthValue = ref('');
-
-const otpProps = [
-	{
-		name: 'modelValue',
-		type: 'string',
-		default: "''",
-		description: 'OTP value used by v-model.',
-	},
-	{
-		name: 'length',
-		type: '4 | 5 | 6 | 7 | 8',
-		default: '6',
-		description: 'Number of OTP digits. Values are clamped between 4 and 8.',
-	},
-];
-
-const otpEvents = [
-	{
-		name: 'change',
-		type: '(value: string) => void',
-		description: 'Emitted on every OTP value change.',
-	},
-	{
-		name: 'submit',
-		type: '(value: string) => void',
-		description: 'Emitted when the OTP value reaches the selected length.',
-	},
-];
-
-const examples = {
-	usage: `<script setup lang="ts">
-const code = ref('')
-
-const verify = (value: string) => {
-  console.log('submit', value)
-}
-<\/script>
-
-<template>
-  <OtpInput v-model="code" :length="6" @submit="verify" />
-</template>`,
-	length: `<template>
-  <div class="grid gap-4">
-    <OtpInput :length="4" />
-    <OtpInput :length="8" />
-  </div>
-</template>`,
-};
 
 const handleSubmit = (value: string): void => {
 	toast.open(`OTP submitted: ${value}`, 'success');
@@ -110,21 +67,12 @@ const handleSubmit = (value: string): void => {
 			{{ $t('docsSections.apiReference') }}
 		</h2>
 		<Table
-			:columns="[
-				{ label: $t('docsTable.prop'), value: row => row.name },
-				{ label: $t('docsTable.type'), value: row => row.type },
-				{ label: $t('docsTable.default'), value: row => row.default },
-				{ label: $t('docsTable.description'), value: row => row.description },
-			]"
+			:columns="apiColumns"
 			:rows="otpProps"
 		/>
 
 		<Table
-			:columns="[
-				{ label: $t('docsTable.event'), value: row => `@${row.name}` },
-				{ label: $t('docsTable.type'), value: row => row.type },
-				{ label: $t('docsTable.description'), value: row => row.description },
-			]"
+			:columns="eventColumns"
 			:rows="otpEvents"
 		/>
 	</section>

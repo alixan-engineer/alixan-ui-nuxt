@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { selectPageToc } from '~/shared/page-docs/select/page-toc';
+import { selectProps } from '~/shared/page-docs/select/api-reference';
+import { propsTableColumns } from '~/shared/page-docs/table-columns';
 const { t } = useI18n();
 
 usePageMeta({
@@ -8,6 +10,7 @@ usePageMeta({
 });
 
 const tocLinks = selectPageToc(t);
+const apiColumns = propsTableColumns(t);
 
 usePageTocLinks(tocLinks);
 
@@ -16,46 +19,6 @@ const options = [
 	{ label: 'Cupertino', value: 'cupertino' },
 	{ label: 'Material', value: 'material' },
 	{ label: 'Fluent', value: 'fluent', disabled: true },
-];
-
-const selectProps = [
-	{
-		name: 'modelValue',
-		type: 'string | number | null',
-		default: 'null',
-		description: 'Selected option value used by v-model.',
-	},
-	{
-		name: 'label',
-		type: 'string',
-		default: '-',
-		description: 'Floating label text.',
-	},
-	{
-		name: 'placeholder',
-		type: 'string',
-		default: "'Select option'",
-		description: 'Text shown when no option is selected.',
-	},
-	{
-		name: 'options',
-		type: 'SelectOption[]',
-		default: '[]',
-		description: 'Options list with label, value and optional disabled.',
-	},
-	{
-		name: 'disabled',
-		type: 'boolean',
-		default: 'false',
-		description: 'Disables select interaction.',
-	},
-	{
-		name: 'teleport',
-		type: 'boolean',
-		default: 'true',
-		description:
-			'Teleports menu to body. Keep true for nested popovers; set false only when the menu must stay inside the local layout.',
-	},
 ];
 </script>
 
@@ -88,12 +51,7 @@ const selectProps = [
 			{{ $t('docsSections.apiReference') }}
 		</h2>
 		<Table
-			:columns="[
-				{ label: $t('docsTable.prop'), value: row => row.name },
-				{ label: $t('docsTable.type'), value: row => row.type },
-				{ label: $t('docsTable.default'), value: row => row.default },
-				{ label: $t('docsTable.description'), value: row => row.description },
-			]"
+			:columns="apiColumns"
 			:rows="selectProps"
 		/>
 	</section>

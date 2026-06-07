@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { dividerPageToc } from '~/shared/page-docs/divider/page-toc';
+import { usageCode } from '~/shared/page-docs/divider/usage-examples';
 const { t } = useI18n();
 
 usePageMeta({
@@ -10,14 +11,6 @@ usePageMeta({
 const tocLinks = dividerPageToc(t);
 
 usePageTocLinks(tocLinks);
-
-const usageCode = `<template>
-  <div class="space-y-4">
-    <p>Account</p>
-    <Divider />
-    <p>Billing</p>
-  </div>
-</template>`;
 </script>
 
 <template>

@@ -3,6 +3,12 @@ import { installationPageToc } from '~/shared/page-docs/installation/page-toc';
 import { Terminal } from '@lucide/vue';
 import type { AccentThemeType } from '~/interfaces/theme/theme.interface';
 import { accentColors } from '~/shared/theme/colors';
+import {
+	commands,
+	rootIdConfig,
+	nuxtConfig,
+	usageCode,
+} from '~/shared/page-docs/installation/usage-examples';
 
 const { t } = useI18n();
 const { createThemeCss } = useTheme();
@@ -16,11 +22,6 @@ const tocLinks = installationPageToc(t);
 
 usePageTocLinks(tocLinks);
 
-const commands = {
-	createProject: 'npx nuxi@latest init my-app',
-	addTailwind: 'npm install tailwindcss @tailwindcss/vite -D',
-};
-
 const accentTheme = useCookie<AccentThemeType>('alixan-ui-accent-theme', {
 	default: () => 'default',
 });
@@ -29,30 +30,6 @@ const showTailwindCode = ref(false);
 const currentTailwindCss = computed(() =>
 	createThemeCss(accentColors[accentTheme.value]),
 );
-
-const rootIdConfig = `export default defineNuxtConfig({
-  app: {
-    rootId: 'root', // Change appId to root.
-  },
-})`;
-
-const nuxtConfig = `import tailwindcss from '@tailwindcss/vite'
-
-export default defineNuxtConfig({
-  css: ['~/assets/css/tailwind.css'],
-  features: {
-    inlineStyles: true,
-  },
-  vite: {
-    plugins: [tailwindcss()],
-  },
-})`;
-
-const usageCode = `<template>
-  <Button color="primary">
-    Save changes
-  </Button>
-</template>`;
 </script>
 
 <template>

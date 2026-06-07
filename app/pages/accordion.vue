@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { accordionPageToc } from '~/shared/page-docs/accordion/page-toc';
+import { apiRows } from '~/shared/page-docs/accordion/api-reference';
+import { usageCode, multipleCode } from '~/shared/page-docs/accordion/usage-examples';
+import { propsTableColumns } from '~/shared/page-docs/table-columns';
 const { t } = useI18n();
 
 usePageMeta({
@@ -8,6 +11,7 @@ usePageMeta({
 });
 
 const tocLinks = accordionPageToc(t);
+const apiColumns = propsTableColumns(t);
 
 usePageTocLinks(tocLinks);
 
@@ -31,66 +35,6 @@ const items = [
 		content: t('componentDocs.accordion.demo.slotsContent'),
 	},
 ] as const;
-
-const usageCode = `<script setup lang="ts">
-const activeItem = ref('item-1')
-
-const items = [
-  {
-    value: 'item-1',
-    title: 'Is it accessible?',
-    content: 'Yes. The trigger uses a native button.',
-  },
-  {
-    value: 'item-2',
-    title: 'Is it styled?',
-    content: 'Yes. It follows Alixan UI visual language.',
-  },
-]
-<\/script>
-
-<template>
-  <Accordion v-model="activeItem" :items="items" />
-</template>`;
-
-const multipleCode = `<script setup lang="ts">
-const activeItems = ref(['item-1'])
-<\/script>
-
-<template>
-  <Accordion
-    v-model="activeItems"
-    :items="items"
-    multiple
-  />
-</template>`;
-
-const apiRows = [
-	{
-		prop: 'items',
-		type: 'AccordionItem[]',
-		default: '[]',
-		description: 'Accordion sections rendered by the component.',
-	},
-	{
-		prop: 'modelValue',
-		type: 'string | number | Array<string | number> | null',
-		default: 'null',
-		description: 'Controlled open item value. Use an array with multiple mode.',
-	},
-	{
-		prop: 'multiple',
-		type: 'boolean',
-		default: 'false',
-		description: 'Allows more than one item to stay open.',
-	},
-	{
-		prop: 'collapsible',
-		type: 'boolean',
-		default: 'true',
-		description: 'Allows the active single item to be closed.',
-	},
-];
 </script>
 
 <template>
@@ -131,12 +75,7 @@ const apiRows = [
 			{{ $t('docsSections.apiReference') }}
 		</h2>
 		<Table
-			:columns="[
-				{ label: $t('docsTable.prop'), value: row => row.prop },
-				{ label: $t('docsTable.type'), value: row => row.type },
-				{ label: $t('docsTable.default'), value: row => row.default },
-				{ label: $t('docsTable.description'), value: row => row.description },
-			]"
+			:columns="apiColumns"
 			:rows="apiRows"
 		/>
 	</section>

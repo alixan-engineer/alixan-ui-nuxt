@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { calendarPageToc } from '~/shared/page-docs/calendar/page-toc';
+import { examples } from '~/shared/page-docs/calendar/usage-examples';
 const { locale, t } = useI18n();
 
 usePageMeta({
@@ -13,25 +14,6 @@ usePageTocLinks(tocLinks);
 
 const date = ref<string | null>(null);
 const range = ref<{ from: string; to: string } | null>(null);
-
-const examples = {
-	day: `<script setup lang="ts">
-const date = ref(null)
-const { locale } = useI18n()
-<\/script>
-
-<template>
-  <Calendar v-model="date" label="Date" :locale="locale" />
-</template>`,
-	range: `<script setup lang="ts">
-const range = ref(null)
-const { locale } = useI18n()
-<\/script>
-
-<template>
-  <Calendar v-model="range" label="Period" mode="range" :locale="locale" />
-</template>`,
-};
 </script>
 
 <template>
