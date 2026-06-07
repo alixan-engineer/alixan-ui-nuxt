@@ -138,6 +138,7 @@ const inputClass = computed(() =>
 	cn(
 		'w-full border border-border placeholder:text-muted-foreground/70 hover:border-foreground/20 focus:outline-none focus:border-primary',
 		inputBaseClass,
+		props.type === 'password' ? 'text-sm tracking-wider' : '',
 		visibleLabel.value ? 'pt-2' : '',
 		hasLeading.value ? leadingPaddingClass : '',
 		hasTrailingAction.value ? trailingPaddingClass : '',

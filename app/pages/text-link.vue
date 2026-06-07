@@ -69,7 +69,9 @@ const examples = {
 	</header>
 
 	<section id="installation" class="space-y-5">
-		<h2 class="text-2xl font-semibold">{{ $t('docsSections.installation') }}</h2>
+		<h2 class="text-2xl font-semibold">
+			{{ $t('docsSections.installation') }}
+		</h2>
 		<InstallCommandBlock component="text-link" />
 	</section>
 
@@ -85,7 +87,9 @@ const examples = {
 	</section>
 
 	<section id="external-link" class="space-y-5">
-		<h2 class="text-2xl font-semibold">{{ $t('docsSections.externalLink') }}</h2>
+		<h2 class="text-2xl font-semibold">
+			{{ $t('docsSections.externalLink') }}
+		</h2>
 		<ExampleBlock :code="examples.externalLink">
 			<Info>
 				For more detailed information, visit the
@@ -97,13 +101,18 @@ const examples = {
 	</section>
 
 	<section id="api-reference" class="space-y-4">
-		<h2 class="text-2xl font-semibold">{{ $t('docsSections.apiReference') }}</h2>
+		<h2 class="text-2xl font-semibold">
+			{{ $t('docsSections.apiReference') }}
+		</h2>
 		<Table
 			:columns="[
-				{ key: 'name', label: $t('docsTable.prop') },
-				{ key: 'type', label: $t('docsTable.type') },
-				{ key: 'default', label: $t('docsTable.default') },
-				{ key: 'description', label: $t('docsTable.description') },
+				{ label: $t('docsTable.prop'), getValue: row => row.name },
+				{ label: $t('docsTable.type'), getValue: row => row.type },
+				{ label: $t('docsTable.default'), getValue: row => row.default },
+				{
+					label: $t('docsTable.description'),
+					getValue: row => row.description,
+				},
 			]"
 			:rows="textLinkProps"
 		/>

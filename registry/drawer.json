@@ -11,11 +11,11 @@
 		},
 		{
 			"source": "templates/drawer/DrawerHeader.vue",
-			"target": "components/ui/drawer-header/DrawerHeader.vue"
+			"target": "components/ui/drawer/DrawerHeader.vue"
 		},
 		{
 			"source": "templates/drawer/DrawerHost.vue",
-			"target": "components/ui/drawer-host/DrawerHost.vue"
+			"target": "components/ui/drawer/DrawerHost.vue"
 		},
 		{
 			"source": "templates/drawer/useDrawer.ts",

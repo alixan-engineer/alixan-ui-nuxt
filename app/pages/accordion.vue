@@ -102,7 +102,7 @@ const apiRows = [
 		default: 'true',
 		description: 'Allows the active single item to be closed.',
 	},
-] as const;
+];
 </script>
 
 <template>
@@ -133,11 +133,7 @@ const apiRows = [
 		<h2 class="text-2xl font-semibold">{{ $t('docsSections.multiple') }}</h2>
 		<ExampleBlock :code="multipleCode">
 			<div class="w-full max-w-xl">
-				<Accordion
-					v-model="activeItems"
-					:items="items"
-					multiple
-				/>
+				<Accordion v-model="activeItems" :items="items" multiple />
 			</div>
 		</ExampleBlock>
 	</section>
@@ -148,13 +144,15 @@ const apiRows = [
 		</h2>
 		<Table
 			:columns="[
-				{ key: 'prop', label: $t('docsTable.prop') },
-				{ key: 'type', label: $t('docsTable.type') },
-				{ key: 'default', label: $t('docsTable.default') },
-				{ key: 'description', label: $t('docsTable.description') },
+				{ label: $t('docsTable.prop'), getValue: row => row.prop },
+				{ label: $t('docsTable.type'), getValue: row => row.type },
+				{ label: $t('docsTable.default'), getValue: row => row.default },
+				{
+					label: $t('docsTable.description'),
+					getValue: row => row.description,
+				},
 			]"
 			:rows="apiRows"
-			:row-key="row => String(row.prop)"
 		/>
 	</section>
 </template>

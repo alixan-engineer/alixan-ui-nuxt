@@ -1,25 +1,6 @@
 {
-	"$schema": "https://nuxt.ui.alixan.kz/schema/registry-item.json",
 	"name": "toast",
-	"type": "component",
-	"title": "Toast",
-	"description": "Notification stack with success, warning, error and info states.",
-	"files": [
-		{
-			"source": "templates/toast/Toast.vue",
-			"target": "components/ui/toast/Toast.vue"
-		},
-		{
-			"source": "templates/toast/ToastHost.vue",
-			"target": "components/ui/toast-host/ToastHost.vue"
-		},
-		{
-			"source": "templates/toast/useToast.ts",
-			"target": "composables/useToast.ts"
-		},
-		{
-			"source": "templates/utils/cn.ts",
-			"target": "utils/cn.ts"
-		}
-	]
+	"components": ["Toast/Toast.vue", "Toast/ToastHost.vue"],
+	"composables": ["useToast.ts"],
+	"utils": ["cn.ts"]
 }

@@ -2,7 +2,6 @@
 import ConfirmDialog from '~/components/ui/confirm-dialog/ConfirmDialog.vue';
 const { t } = useI18n();
 
-
 usePageMeta({
 	title: t('componentDocs.confirmDialog.metaTitle'),
 	description: t('componentDocs.confirmDialog.description'),
@@ -124,7 +123,9 @@ const openConfirm = (): void => {
 	</header>
 
 	<section id="installation" class="space-y-5">
-		<h2 class="text-2xl font-semibold">{{ $t('docsSections.installation') }}</h2>
+		<h2 class="text-2xl font-semibold">
+			{{ $t('docsSections.installation') }}
+		</h2>
 		<InstallCommandBlock component="confirm-dialog" />
 	</section>
 
@@ -136,13 +137,18 @@ const openConfirm = (): void => {
 	</section>
 
 	<section id="api-reference" class="space-y-4">
-		<h2 class="text-2xl font-semibold">{{ $t('docsSections.apiReference') }}</h2>
+		<h2 class="text-2xl font-semibold">
+			{{ $t('docsSections.apiReference') }}
+		</h2>
 		<Table
 			:columns="[
-				{ key: 'name', label: $t('docsTable.prop') },
-				{ key: 'type', label: $t('docsTable.type') },
-				{ key: 'default', label: $t('docsTable.default') },
-				{ key: 'description', label: $t('docsTable.description') },
+				{ label: $t('docsTable.prop'), getValue: row => row.name },
+				{ label: $t('docsTable.type'), getValue: row => row.type },
+				{ label: $t('docsTable.default'), getValue: row => row.default },
+				{
+					label: $t('docsTable.description'),
+					getValue: row => row.description,
+				},
 			]"
 			:rows="confirmDialogProps"
 		/>

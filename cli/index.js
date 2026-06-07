@@ -10,158 +10,161 @@ const packageRoot = path.resolve(__dirname, '..');
 const [, , command, componentName, ...flags] = process.argv;
 const shouldForce = flags.includes('--force');
 
+/**
+ * Resolve project root (where Nuxt app lives)
+ */
 const resolveProjectRoot = () => {
 	const candidates = [
 		process.env.INIT_CWD,
 		process.env.npm_config_local_prefix,
 		process.cwd(),
 	].filter(Boolean);
-
 	for (const candidate of candidates) {
-		const resolvedCandidate = path.resolve(candidate);
-
-		if (fs.existsSync(resolvedCandidate)) {
-			return resolvedCandidate;
-		}
+		const resolved = path.resolve(candidate);
+		if (fs.existsSync(resolved)) return resolved;
 	}
-
 	return process.cwd();
 };
 
 const projectRoot = resolveProjectRoot();
 
-const readJson = filePath => {
-	return JSON.parse(fs.readFileSync(filePath, 'utf8'));
-};
+/**
+ * Utils
+ */
+const readJson = filePath => JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
-const ensureDir = filePath => {
+const ensureDir = filePath =>
 	fs.mkdirSync(path.dirname(filePath), { recursive: true });
-};
 
-const toKebabCase = value => {
-	return value
-		.replace(/([A-Z]+)([A-Z][a-z])/g, '$1-$2')
-		.replace(/([a-z0-9])([A-Z])/g, '$1-$2')
-		.toLowerCase();
-};
+const fileExists = filePath => fs.existsSync(filePath);
 
-const normalizeUiComponentTarget = target => {
-	const match = target.match(/^components\/ui\/([^/]+)\.vue$/);
-
-	if (!match) {
-		return target;
-	}
-
-	const componentName = match[1];
-
-	return `components/ui/${toKebabCase(componentName)}/${componentName}.vue`;
-};
-
-const resolveTarget = target => {
-	const normalizedTarget = normalizeUiComponentTarget(target);
-
-	if (
-		normalizedTarget.startsWith('components/') ||
-		normalizedTarget.startsWith('composables/') ||
-		normalizedTarget.startsWith('utils/')
-	) {
-		return path.join('app', normalizedTarget);
-	}
-
-	return normalizedTarget;
-};
-
-const copyFile = (source, target) => {
-	const sourcePath = path.resolve(packageRoot, source);
-	const resolvedTarget = resolveTarget(target);
-	const targetPath = path.resolve(projectRoot, resolvedTarget);
-
-	if (!fs.existsSync(sourcePath)) {
-		throw new Error(`Template file is missing: ${source}`);
-	}
-
-	if (fs.existsSync(targetPath) && !shouldForce) {
-		console.log(`Skipped: ${resolvedTarget} already exists. Use --force to overwrite.`);
-		return;
-	}
-
-	ensureDir(targetPath);
-	fs.copyFileSync(sourcePath, targetPath);
-	console.log(`Created: ${resolvedTarget}`);
-};
-
-const validateRegistryEntry = entry => {
-	if (!entry || !Array.isArray(entry.files) || entry.files.length === 0) {
-		throw new Error('Registry entry is invalid: "files" must be a non-empty array.');
-	}
-
-	for (const file of entry.files) {
-		if (!file.source || !file.target) {
-			throw new Error('Registry entry is invalid: each file needs "source" and "target".');
-		}
-	}
-};
-
+/**
+ * Registry
+ */
 const getRegistryEntry = name => {
 	const registryPath = path.resolve(packageRoot, 'registry', `${name}.json`);
-
-	if (!fs.existsSync(registryPath)) {
-		return null;
-	}
-
-	return readJson(registryPath);
+	return fileExists(registryPath) ? readJson(registryPath) : null;
 };
 
+/**
+ * Source path resolver
+ */
+const resolveSource = (name, type, file) => `registry/${name}/${type}/${file}`;
+
+/**
+ * Target path resolver (Nuxt-specific)
+ */
+const resolveTarget = (type, file) => {
+	// components/ui/toast/Toast.vue
+	if (type === 'components') {
+		const componentName = file.replace('.vue', '');
+		return `app/components/ui/${componentName}/${file}`;
+	}
+	// composables/useToast.ts
+	if (type === 'composables') return `app/composables/${file}`;
+	// utils/cn.ts
+	if (type === 'utils') return `app/utils/${file}`;
+	return `app/${file}`;
+};
+
+/**
+ * Copy file
+ */
+const copyFile = (source, target) => {
+	const sourcePath = path.resolve(packageRoot, source);
+	const targetPath = path.resolve(projectRoot, target);
+	if (!fileExists(sourcePath)) {
+		throw new Error(`Missing registry file: ${source}`);
+	}
+	if (fileExists(targetPath) && !shouldForce) {
+		console.log(`Skipped: ${target} already exists (use --force)`);
+		return;
+	}
+	ensureDir(targetPath);
+	fs.copyFileSync(sourcePath, targetPath);
+	console.log(`Created: ${target}`);
+};
+
+/**
+ * Install component
+ */
+const addComponent = name => {
+	const entry = getRegistryEntry(name);
+
+	if (!entry) {
+		console.error(`Component "${name}" not found in registry.`);
+		process.exit(1);
+	}
+
+	// components
+	if (Array.isArray(entry.components)) {
+		for (const file of entry.components) {
+			const source = resolveSource(name, 'components', file);
+			const target = resolveTarget('components', file);
+			copyFile(source, target);
+		}
+	}
+
+	// composables
+	if (Array.isArray(entry.composables)) {
+		for (const file of entry.composables) {
+			const source = resolveSource(name, 'composables', file);
+			const target = resolveTarget('composables', file);
+			copyFile(source, target);
+		}
+	}
+
+	// utils (optional)
+	if (Array.isArray(entry.utils)) {
+		for (const file of entry.utils) {
+			const source = resolveSource(name, 'utils', file);
+			const target = resolveTarget('utils', file);
+			copyFile(source, target);
+		}
+	}
+
+	console.log(`\nDone. Added ${entry.name}`);
+};
+
+/**
+ * List registry
+ */
 const listComponents = () => {
 	const registryIndexPath = path.resolve(packageRoot, 'registry', 'index.json');
-
-	if (!fs.existsSync(registryIndexPath)) {
+	if (!fileExists(registryIndexPath)) {
 		console.log('No registry index found.');
 		return;
 	}
-
 	const registryIndex = readJson(registryIndexPath);
-
 	console.log('Available components:\n');
-
 	for (const component of registryIndex.components) {
 		console.log(`- ${component.name}: ${component.description}`);
 	}
 };
 
-const addComponent = name => {
-	const entry = getRegistryEntry(name);
-
-	if (!entry) {
-		console.error(`Component "${name}" was not found in the registry.`);
-		process.exit(1);
-	}
-
-	validateRegistryEntry(entry);
-
-	for (const file of entry.files) {
-		copyFile(file.source, file.target);
-	}
-
-	console.log(`\nDone. Added ${entry.title}.`);
-};
-
+/**
+ * Help
+ */
 const printHelp = () => {
-	console.log('Alixan UI\n');
-	console.log('Usage:');
-	console.log('  npx alixan-ui-nuxt add button');
-	console.log('  npx alixan-ui-nuxt list');
-	console.log('  npx alixan-ui-nuxt add button --force');
+	console.log('Alixan UI CLI\n');
+	console.log('Commands:');
+	console.log('  add <component>      Install component');
+	console.log('  list                 List components');
+	console.log('  add <component> --force  Force overwrite');
+	console.log('\nExample:');
+	console.log('  npx alixan-ui-nuxt add toast');
 	console.log(`\nProject root: ${projectRoot}`);
 };
 
+/**
+ * Router
+ */
 switch (command) {
 	case 'add':
 		if (!componentName) {
 			console.error('Please provide a component name.');
 			process.exit(1);
 		}
-
 		addComponent(componentName);
 		break;
 	case 'list':

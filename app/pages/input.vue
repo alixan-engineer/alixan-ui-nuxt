@@ -2,7 +2,6 @@
 import { Eye, EyeOff, Lock, Mail } from '@lucide/vue';
 const { t } = useI18n();
 
-
 usePageMeta({
 	title: t('componentDocs.input.metaTitle'),
 	description: t('componentDocs.input.description'),
@@ -153,7 +152,7 @@ const value = ref('')
 <\/script>
 
 <template>
-  <Input v-model="value" label="Email" type="email" />
+  <EmailInput v-model="value" />
 </template>`,
 	state: `<script setup lang="ts">
 const value = ref('readonly@example.com')
@@ -163,7 +162,7 @@ const value = ref('readonly@example.com')
   <div class="grid w-full gap-3">
     <Input v-model="value" label="Readonly" readonly />
     <Input label="Disabled" disabled />
-    <Input label="Email" error="Enter a valid email address" />
+    <Input label="Required" error="Required field" />
  </div>
 </template>`,
 	withIcon: `<script setup lang="ts">
@@ -176,11 +175,11 @@ const isPasswordVisible = ref(false)
 
 <template>
   <div class="grid w-full gap-3">
-    <Input v-model="email" label="Email" type="email">
+    <EmailInput v-model="email">
       <template #leading>
         <Mail class="size-5" />
       </template>
-    </Input>
+    </EmailInput>
 
     <Input
       v-model="password"
@@ -268,7 +267,9 @@ const username = ref('')
 	</header>
 
 	<section id="installation" class="space-y-5">
-		<h2 class="text-2xl font-semibold">{{ $t('docsSections.installation') }}</h2>
+		<h2 class="text-2xl font-semibold">
+			{{ $t('docsSections.installation') }}
+		</h2>
 		<InstallCommandBlock component="input" />
 		<p class="text-sm leading-7 text-muted-foreground">
 			This command installs only the base <code>Input</code> component with
@@ -286,7 +287,7 @@ const username = ref('')
 		</div>
 		<ExampleBlock :code="examples.usage">
 			<div class="w-full max-w-sm">
-				<Input v-model="usageValue" label="Email" type="email" />
+				<EmailInput v-model="usageValue" />
 			</div>
 		</ExampleBlock>
 	</section>
@@ -297,7 +298,7 @@ const username = ref('')
 			<div class="grid w-full max-w-sm gap-3">
 				<Input v-model="stateValue" label="Readonly" readonly />
 				<Input label="Disabled" disabled />
-				<Input label="Email" error="Enter a valid email address" />
+				<Input label="Required" error="Required field" />
 			</div>
 		</ExampleBlock>
 	</section>
@@ -336,11 +337,11 @@ const username = ref('')
 		<h2 class="text-2xl font-semibold">{{ $t('docsSections.withIcon') }}</h2>
 		<ExampleBlock :code="examples.withIcon">
 			<div class="grid w-full max-w-sm gap-3">
-				<Input v-model="iconValue" label="Email" type="email">
+				<EmailInput v-model="iconValue">
 					<template #leading>
 						<Mail class="size-5" />
 					</template>
-				</Input>
+				</EmailInput>
 
 				<Input
 					v-model="passwordValue"
@@ -441,16 +442,20 @@ const username = ref('')
 	</section>
 
 	<section id="api-reference" class="space-y-4">
-		<h2 class="text-2xl font-semibold">{{ $t('docsSections.apiReference') }}</h2>
+		<h2 class="text-2xl font-semibold">
+			{{ $t('docsSections.apiReference') }}
+		</h2>
 		<Table
 			:columns="[
-				{ key: 'name', label: $t('docsTable.prop') },
-				{ key: 'type', label: $t('docsTable.type') },
-				{ key: 'default', label: $t('docsTable.default') },
-				{ key: 'description', label: $t('docsTable.description') },
+				{ label: $t('docsTable.prop'), getValue: row => row.name },
+				{ label: $t('docsTable.type'), getValue: row => row.type },
+				{ label: $t('docsTable.default'), getValue: row => row.default },
+				{
+					label: $t('docsTable.description'),
+					getValue: row => row.description,
+				},
 			]"
 			:rows="inputProps"
-			min-width="min-w-180"
 		/>
 	</section>
 </template>

@@ -58,7 +58,8 @@ const alertDialogProps = [
 		name: 'data.mediaComponent',
 		type: 'Component | string',
 		default: '-',
-		description: 'Optional media component, for example Lottie, img, or an icon component.',
+		description:
+			'Optional media component, for example Lottie, img, or an icon component.',
 	},
 	{
 		name: 'data.mediaProps',
@@ -239,7 +240,8 @@ const openImageAlert = (): void => {
 		height: '280px',
 		data: {
 			title: 'Image media',
-			description: 'Use the native img tag when the dialog needs a static image.',
+			description:
+				'Use the native img tag when the dialog needs a static image.',
 			buttonLabel: 'Close',
 			mediaComponent: 'img',
 			mediaProps: {
@@ -278,7 +280,9 @@ const openIconAlert = (): void => {
 	</header>
 
 	<section id="installation" class="space-y-5">
-		<h2 class="text-2xl font-semibold">{{ $t('docsSections.installation') }}</h2>
+		<h2 class="text-2xl font-semibold">
+			{{ $t('docsSections.installation') }}
+		</h2>
 		<InstallCommandBlock component="alert-dialog" />
 	</section>
 
@@ -303,13 +307,18 @@ const openIconAlert = (): void => {
 	</section>
 
 	<section id="api-reference" class="space-y-4">
-		<h2 class="text-2xl font-semibold">{{ $t('docsSections.apiReference') }}</h2>
+		<h2 class="text-2xl font-semibold">
+			{{ $t('docsSections.apiReference') }}
+		</h2>
 		<Table
 			:columns="[
-				{ key: 'name', label: $t('docsTable.prop') },
-				{ key: 'type', label: $t('docsTable.type') },
-				{ key: 'default', label: $t('docsTable.default') },
-				{ key: 'description', label: $t('docsTable.description') },
+				{ label: $t('docsTable.prop'), getValue: row => row.name },
+				{ label: $t('docsTable.type'), getValue: row => row.type },
+				{ label: $t('docsTable.default'), getValue: row => row.default },
+				{
+					label: $t('docsTable.description'),
+					getValue: row => row.description,
+				},
 			]"
 			:rows="alertDialogProps"
 		/>

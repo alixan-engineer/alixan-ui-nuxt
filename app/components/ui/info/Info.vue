@@ -1,5 +1,7 @@
 <template>
-	<div class="island flex-row gap-2 p-4 text-md text-muted-foreground">
-		<slot />
+	<div class="island p-4">
+		<p class="text-md leading-7 text-muted-foreground">
+			<slot />
+		</p>
 	</div>
 </template>

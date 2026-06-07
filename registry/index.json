@@ -89,7 +89,7 @@
 		{
 			"name": "table",
 			"title": "Table",
-			"description": "Reusable data table with configurable columns and row value mapping."
+			"description": "Reusable data table with configurable columns and explicit row value mapping."
 		},
 		{
 			"name": "divider",

@@ -15,7 +15,7 @@
 		},
 		{
 			"source": "templates/dialog/DialogHost.vue",
-			"target": "components/ui/dialog-host/DialogHost.vue"
+			"target": "components/ui/dialog/DialogHost.vue"
 		},
 		{
 			"source": "templates/dialog/useDialog.ts",

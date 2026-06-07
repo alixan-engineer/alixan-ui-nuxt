@@ -31,5 +31,12 @@ const emailError = computed(() => {
 		:autofocus="props.autofocus"
 		:required="props.required"
 		:error="emailError"
-	/>
+	>
+		<template v-if="$slots.leading" #leading>
+			<slot name="leading" />
+		</template>
+		<template v-if="$slots.trailing" #trailing>
+			<slot name="trailing" />
+		</template>
+	</Input>
 </template>

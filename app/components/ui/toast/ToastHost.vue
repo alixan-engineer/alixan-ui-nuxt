@@ -7,7 +7,7 @@ const toast = useToast();
 		<TransitionGroup
 			name="toast-list"
 			tag="div"
-			class="fixed left-1/2 top-5 z-9999 flex w-full max-w-110 -translate-x-1/2 flex-col gap-3"
+			class="fixed left-1/2 top-5 z-9999 px-4 flex w-full max-w-110 -translate-x-1/2 flex-col gap-3"
 		>
 			<Toast
 				v-for="message in toast.messages.value"

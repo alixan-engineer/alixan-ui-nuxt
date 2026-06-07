@@ -112,7 +112,9 @@ const debouncedValue = ref('')
 	</header>
 
 	<section id="installation" class="space-y-5">
-		<h2 class="text-2xl font-semibold">{{ $t('docsSections.installation') }}</h2>
+		<h2 class="text-2xl font-semibold">
+			{{ $t('docsSections.installation') }}
+		</h2>
 		<InstallCommandBlock component="search" />
 	</section>
 
@@ -169,15 +171,20 @@ const debouncedValue = ref('')
 
 	<section id="api-reference" class="space-y-6">
 		<div class="space-y-2">
-			<h2 class="text-2xl font-semibold">{{ $t('docsSections.apiReference') }}</h2>
+			<h2 class="text-2xl font-semibold">
+				{{ $t('docsSections.apiReference') }}
+			</h2>
 			<h3 class="text-xl font-semibold">Props</h3>
 		</div>
 		<Table
 			:columns="[
-				{ key: 'name', label: $t('docsTable.prop') },
-				{ key: 'type', label: $t('docsTable.type') },
-				{ key: 'default', label: $t('docsTable.default') },
-				{ key: 'description', label: $t('docsTable.description') },
+				{ label: $t('docsTable.prop'), getValue: row => row.name },
+				{ label: $t('docsTable.type'), getValue: row => row.type },
+				{ label: $t('docsTable.default'), getValue: row => row.default },
+				{
+					label: $t('docsTable.description'),
+					getValue: row => row.description,
+				},
 			]"
 			:rows="searchProps"
 		/>
@@ -186,14 +193,17 @@ const debouncedValue = ref('')
 			<h3 class="text-xl font-semibold">Events</h3>
 			<Table
 				:columns="[
-					{ key: 'name', label: $t('docsTable.event') },
-					{ key: 'payload', label: $t('docsTable.payload') },
-					{ key: 'description', label: $t('docsTable.description') },
+					{
+						label: $t('docsTable.event'),
+						getValue: row => `@${row.name}`,
+					},
+					{ label: $t('docsTable.payload'), getValue: row => row.payload },
+					{
+						label: $t('docsTable.description'),
+						getValue: row => row.description,
+					},
 				]"
 				:rows="searchEvents"
-				:get-value="
-					(row, column) => (column.key === 'name' ? `@${row.name}` : row[column.key])
-				"
 			/>
 		</div>
 	</section>

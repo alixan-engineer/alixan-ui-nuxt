@@ -279,7 +279,9 @@ const openAlert = () => {
 	</header>
 
 	<section id="installation" class="space-y-5">
-		<h2 class="text-2xl font-semibold">{{ $t('docsSections.installation') }}</h2>
+		<h2 class="text-2xl font-semibold">
+			{{ $t('docsSections.installation') }}
+		</h2>
 		<InstallCommandBlock component="button" />
 	</section>
 
@@ -320,7 +322,9 @@ const openAlert = () => {
 	</section>
 
 	<section id="size" class="space-y-4">
-		<h2 class="text-2xl font-semibold tracking-normal">{{ $t('docsSections.size') }}</h2>
+		<h2 class="text-2xl font-semibold tracking-normal">
+			{{ $t('docsSections.size') }}
+		</h2>
 		<ExampleBlock :code="examples.size">
 			<div class="flex items-center gap-2">
 				<Button size="sm">Small</Button>
@@ -331,7 +335,9 @@ const openAlert = () => {
 	</section>
 
 	<section id="navigation" class="space-y-4">
-		<h2 class="text-2xl font-semibold tracking-normal">{{ $t('docsSections.navigation') }}</h2>
+		<h2 class="text-2xl font-semibold tracking-normal">
+			{{ $t('docsSections.navigation') }}
+		</h2>
 		<ExampleBlock :code="examples.navigation">
 			<div class="flex flex-wrap items-center gap-2">
 				<Button to="/icon-button">NuxtLink</Button>
@@ -343,7 +349,9 @@ const openAlert = () => {
 	</section>
 
 	<section id="with-icon" class="space-y-4">
-		<h2 class="text-2xl font-semibold tracking-normal">{{ $t('docsSections.withIcon') }}</h2>
+		<h2 class="text-2xl font-semibold tracking-normal">
+			{{ $t('docsSections.withIcon') }}
+		</h2>
 		<ExampleBlock :code="examples.withIcon">
 			<div class="flex flex-wrap items-center gap-2">
 				<Button variant="outlined">
@@ -365,7 +373,9 @@ const openAlert = () => {
 
 	<section id="loading" class="space-y-4">
 		<div class="space-y-2">
-			<h2 class="text-2xl font-semibold tracking-normal">{{ $t('docsSections.loading') }}</h2>
+			<h2 class="text-2xl font-semibold tracking-normal">
+				{{ $t('docsSections.loading') }}
+			</h2>
 			<p class="text-muted-foreground leading-7">
 				Button does not include a built-in spinner state. If the button keeps
 				spinning inline, the user can still navigate away and lose the action
@@ -380,7 +390,9 @@ const openAlert = () => {
 
 	<section id="disable" class="space-y-4">
 		<div class="space-y-2">
-			<h2 class="text-2xl font-semibold tracking-normal">{{ $t('docsSections.disabled') }}</h2>
+			<h2 class="text-2xl font-semibold tracking-normal">
+				{{ $t('docsSections.disabled') }}
+			</h2>
 			<p class="text-muted-foreground leading-7">
 				Prefer not to disable buttons. Keep the action visible and active, then
 				explain why it cannot run with a warning message. This gives the user
@@ -395,13 +407,18 @@ const openAlert = () => {
 	</section>
 
 	<section id="api-reference" class="space-y-4">
-		<h2 class="text-2xl font-semibold">{{ $t('docsSections.apiReference') }}</h2>
+		<h2 class="text-2xl font-semibold">
+			{{ $t('docsSections.apiReference') }}
+		</h2>
 		<Table
 			:columns="[
-				{ key: 'name', label: $t('docsTable.prop') },
-				{ key: 'type', label: $t('docsTable.type') },
-				{ key: 'default', label: $t('docsTable.default') },
-				{ key: 'description', label: $t('docsTable.description') },
+				{ label: $t('docsTable.prop'), getValue: row => row.name },
+				{ label: $t('docsTable.type'), getValue: row => row.type },
+				{ label: $t('docsTable.default'), getValue: row => row.default },
+				{
+					label: $t('docsTable.description'),
+					getValue: row => row.description,
+				},
 			]"
 			:rows="buttonProps"
 		/>

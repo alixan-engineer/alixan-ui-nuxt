@@ -33,6 +33,7 @@ export const menuSections: IMenuSection[] = [
 			{ labelKey: 'component.status', to: '/status' },
 			{ labelKey: 'component.empty', to: '/empty' },
 			{ labelKey: 'component.divider', to: '/divider' },
+			{ labelKey: 'component.table', to: '/table' },
 		],
 	},
 	{

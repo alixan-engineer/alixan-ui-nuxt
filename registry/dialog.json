@@ -11,11 +11,11 @@
 		},
 		{
 			"source": "templates/dialog/DialogHeader.vue",
-			"target": "components/ui/dialog-header/DialogHeader.vue"
+			"target": "components/ui/dialog/DialogHeader.vue"
 		},
 		{
 			"source": "templates/dialog/DialogHost.vue",
-			"target": "components/ui/dialog-host/DialogHost.vue"
+			"target": "components/ui/dialog/DialogHost.vue"
 		},
 		{
 			"source": "templates/dialog/useDialog.ts",
