@@ -5,11 +5,13 @@ import {
 	messagesCode,
 	pageMetaCode,
 	setupCode,
+	tnPluginCode,
+	tnTypesCode,
 	usageCode,
 } from '~/shared/examples/i18n/usage-examples';
 
 usePageMeta({
-	title: 'i18n - Alixan UI',
+	title: 'i18nPage.metaTitle',
 });
 
 const { locale, setLocale } = useI18n();
@@ -35,53 +37,76 @@ const changeLocale = async (value: Locale): Promise<void> => {
 
 <template>
 	<header class="space-y-3">
-		<h1 class="text-4xl font-semibold">i18n</h1>
+		<h1 class="text-4xl font-semibold">{{ $tn('i18nPage.title') }}</h1>
 		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
-			Alixan UI uses the official Nuxt i18n module. The project keeps message
-			keys typed, while locale switching and persistence are handled by the
-			module.
+			{{ $tn('i18nPage.description') }}
 		</p>
 		<Info>
-			For more detailed information, visit the
+			{{ $tn('i18nPage.infoPrefix') }}
 			<TextLink href="https://i18n.nuxtjs.org/" target="_blank">
-				Nuxt i18n documentation.
+				{{ $tn('i18nPage.infoLink') }}
 			</TextLink>
 		</Info>
 	</header>
 
 	<section id="installation" class="space-y-5">
-		<h2 class="text-2xl font-semibold">Installation</h2>
+		<h2 class="text-2xl font-semibold">
+			{{ $tn('i18nPage.installationTitle') }}
+		</h2>
 		<ExampleBlock :code="installCode">
 			<div class="max-w-md text-center text-muted-foreground leading-7">
-				Install the Nuxt i18n module, then register it in
+				{{ $tn('i18nPage.installationDescription') }}
 				<code>nuxt.config.ts</code>.
 			</div>
 		</ExampleBlock>
 		<ExampleBlock :code="setupCode">
 			<div class="max-w-md text-center text-muted-foreground leading-7">
-				Use <code>strategy: 'prefix_except_default'</code> to keep the default
-				language without a prefix and prefix all other locales.
+				{{ $tn('i18nPage.setupDescriptionStart') }}
+				<code>strategy: 'prefix_except_default'</code>
+				{{ $tn('i18nPage.setupDescriptionEnd') }}
 			</div>
 		</ExampleBlock>
 	</section>
 
 	<section id="messages" class="space-y-5">
-		<h2 class="text-2xl font-semibold">Messages</h2>
+		<h2 class="text-2xl font-semibold">
+			{{ $tn('i18nPage.messagesTitle') }}
+		</h2>
 		<ExampleBlock :code="messagesCode">
 			<div class="max-w-md text-center text-muted-foreground leading-7">
-				Keep locale JSON files in <code>root/i18n/locales</code>. The
-				<code>file</code> option maps each locale to its message file.
+				{{ $tn('i18nPage.messagesDescriptionStart') }}
+				<code>root/i18n/locales</code>.
+				{{ $tn('i18nPage.messagesDescriptionEnd') }}
+			</div>
+		</ExampleBlock>
+	</section>
+
+	<section id="translation-helper" class="space-y-5">
+		<h2 class="text-2xl font-semibold">
+			{{ $tn('i18nPage.translationHelperTitle') }}
+		</h2>
+		<ExampleBlock :code="tnPluginCode">
+			<div class="max-w-md text-center text-muted-foreground leading-7">
+				{{ $tn('i18nPage.translationHelperDescriptionStart') }}
+				<code>$tn</code>
+				{{ $tn('i18nPage.translationHelperDescriptionEnd') }}
+				{{ $tn('i18nPage.seoConnection') }}
+			</div>
+		</ExampleBlock>
+		<ExampleBlock :code="tnTypesCode">
+			<div class="max-w-md text-center text-muted-foreground leading-7">
+				{{ $tn('i18nPage.translationTypesDescription') }}
 			</div>
 		</ExampleBlock>
 	</section>
 
 	<section id="usage" class="space-y-5">
-		<h2 class="text-2xl font-semibold">Usage</h2>
+		<h2 class="text-2xl font-semibold">{{ $tn('i18nPage.usageTitle') }}</h2>
 		<ExampleBlock :code="usageCode">
 			<div class="max-w-sm">
 				<div class="space-y-2">
 					<p class="px-1 text-sm font-medium text-muted-foreground">
-						{{ $t('settings.language') }}
+						{{ $tn('settings.language') }}
 					</p>
 					<Select
 						:model-value="locale"
@@ -94,11 +119,14 @@ const changeLocale = async (value: Locale): Promise<void> => {
 	</section>
 
 	<section id="page-meta" class="space-y-5">
-		<h2 class="text-2xl font-semibold">Page Meta</h2>
+		<h2 class="text-2xl font-semibold">{{ $tn('i18nPage.pageMetaTitle') }}</h2>
 		<ExampleBlock :code="pageMetaCode">
 			<div class="max-w-md text-center text-muted-foreground leading-7">
-				Translate page-level SEO copy with <code>t(...)</code>, then pass the
-				resolved strings to <code>usePageMeta</code>.
+				{{ $tn('i18nPage.pageMetaDescriptionStart') }}
+				<code>usePageMeta</code>
+				{{ $tn('i18nPage.pageMetaDescriptionMiddle') }}
+				<code>t(...)</code>
+				{{ $tn('i18nPage.pageMetaDescriptionEnd') }}
 			</div>
 		</ExampleBlock>
 	</section>

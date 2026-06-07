@@ -38,24 +38,24 @@ const openDialog = (): void => {
 
 <template>
 	<header class="space-y-3">
-		<h1 class="text-4xl font-semibold">{{ $t('component.dialog') }}</h1>
+		<h1 class="text-4xl font-semibold">{{ $tn('component.dialog') }}</h1>
 		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
-			{{ $t('componentDocs.dialog.description') }}
+			{{ $tn('componentDocs.dialog.description') }}
 		</p>
 	</header>
 
 	<section id="installation" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
-			{{ $t('docsSections.installation') }}
+			{{ $tn('docsSections.installation') }}
 		</h2>
 		<InstallCommandBlock component="dialog" />
 	</section>
 
 	<section id="usage" class="space-y-5">
-		<h2 class="text-2xl font-semibold">{{ $t('docsSections.usage') }}</h2>
+		<h2 class="text-2xl font-semibold">{{ $tn('docsSections.usage') }}</h2>
 
 		<div id="host" class="scroll-mt-24 space-y-3">
-			<h3 class="text-xl font-semibold">{{ $t('docsSections.host') }}</h3>
+			<h3 class="text-xl font-semibold">{{ $tn('docsSections.host') }}</h3>
 			<ExampleBlock :code="hostCode">
 				<div class="text-sm leading-7 text-muted-foreground">
 					Add <code>DialogHost</code> once near the root of your app.
@@ -64,7 +64,7 @@ const openDialog = (): void => {
 		</div>
 
 		<div id="open-dialog" class="scroll-mt-24 space-y-3">
-			<h3 class="text-xl font-semibold">{{ $t('docsSections.openDialog') }}</h3>
+			<h3 class="text-xl font-semibold">{{ $tn('docsSections.openDialog') }}</h3>
 			<ExampleBlock :code="openCode">
 				<div class="flex flex-wrap items-center justify-center gap-3">
 					<Button @click="openDialog">Open dialog</Button>
@@ -78,7 +78,7 @@ const openDialog = (): void => {
 
 		<div id="dialog-content" class="scroll-mt-24 space-y-3">
 			<h3 class="text-xl font-semibold">
-				{{ $t('docsSections.dialogContent') }}
+				{{ $tn('docsSections.dialogContent') }}
 			</h3>
 			<ExampleBlock :code="contentCode">
 				<div class="text-sm leading-7 text-muted-foreground">
@@ -91,7 +91,7 @@ const openDialog = (): void => {
 
 	<section id="api-reference" class="space-y-4">
 		<h2 class="text-2xl font-semibold">
-			{{ $t('docsSections.apiReference') }}
+			{{ $tn('docsSections.apiReference') }}
 		</h2>
 		<Table :columns="propsTableColumns" :rows="dialogServiceApi" />
 	</section>

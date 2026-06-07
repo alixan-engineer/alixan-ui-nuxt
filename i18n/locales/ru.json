@@ -52,6 +52,15 @@
 			"title": "Используйте компонент",
 			"description": "Используйте компонент напрямую в Vue-шаблонах. Для самого компонента не нужен импорт из пакета.",
 			"previewButton": "Сохранить изменения"
+		},
+		"addI18n": {
+			"title": "Добавьте i18n (рекомендуется)",
+			"description": "Alixan UI лучше всего работает с Nuxt i18n, потому что labels документации, заголовки таблиц и page meta используют ключи переводов. Этот шаг можно пропустить, если приложению пока не нужна локализация.",
+			"commandTitle": "Установить Nuxt i18n"
+		},
+		"translationHelper": {
+			"title": "Добавьте helper переводов",
+			"description": "Добавьте глобальный helper $tn после Nuxt i18n. Он проверяет, существует ли строка как ключ перевода, и иначе показывает исходное значение, поэтому labels вроде npm или обычные значения таблицы не создают missing-key warnings."
 		}
 	},
 	"homePage": {
@@ -131,13 +140,29 @@
 		"range": "Диапазон",
 		"host": "Host",
 		"openDialog": "Открытие диалога",
-		"dialogContent": "Контент диалога"
+		"dialogContent": "Контент диалога",
+		"email": "Email",
+		"password": "Пароль",
+		"phone": "Телефон",
+		"username": "Username"
 	},
 	"componentDocs": {
-		"button": { "metaTitle": "Кнопка - Alixan UI", "description": "Отображает кнопку для действий в формах, тулбарах и навигации." },
-		"iconButton": { "metaTitle": "Иконка-кнопка - Alixan UI", "description": "Отображает кнопку только с иконкой и обязательным доступным label." },
-		"textLink": { "metaTitle": "Текстовая ссылка - Alixan UI", "description": "Инлайн-ссылка для текста документации, подсказок и внешних переходов без padding и background styles кнопки." },
-		"chip": { "metaTitle": "Чип - Alixan UI", "description": "Компактный интерактивный token для фильтров, выборов и удаляемых метаданных." },
+		"button": {
+			"metaTitle": "Кнопка - Alixan UI",
+			"description": "Отображает кнопку для действий в формах, тулбарах и навигации."
+		},
+		"iconButton": {
+			"metaTitle": "Иконка-кнопка - Alixan UI",
+			"description": "Отображает кнопку только с иконкой и обязательным доступным label."
+		},
+		"textLink": {
+			"metaTitle": "Текстовая ссылка - Alixan UI",
+			"description": "Инлайн-ссылка для текста документации, подсказок и внешних переходов без padding и background styles кнопки."
+		},
+		"chip": {
+			"metaTitle": "Чип - Alixan UI",
+			"description": "Компактный интерактивный token для фильтров, выборов и удаляемых метаданных."
+		},
 		"accordion": {
 			"metaTitle": "Аккордеон - Alixan UI",
 			"description": "Вертикальный disclosure-компонент для сгруппированного контента, вдохновленный shadcn-vue и адаптированный под Nuxt auto-import.",
@@ -153,29 +178,88 @@
 		"tabs": {
 			"metaTitle": "Табы - Alixan UI",
 			"description": "Компактная segmented-навигация для переключения между представлениями.",
-			"demo": { "account": "Аккаунт", "password": "Пароль" }
+			"demo": {
+				"account": "Аккаунт",
+				"password": "Пароль"
+			}
 		},
-		"switch": { "metaTitle": "Переключатель - Alixan UI", "description": "Компактный toggle control для boolean-настроек." },
-		"status": { "metaTitle": "Статус - Alixan UI", "description": "Мягкий Cupertino-inspired status pill для success, warning, info и error состояний." },
-		"empty": { "metaTitle": "Пустое состояние - Alixan UI", "description": "Центрированный empty state для отсутствующих данных, пустых результатов поиска и error pages." },
-		"divider": { "metaTitle": "Разделитель - Alixan UI", "description": "Простой горизонтальный разделитель для групп контента." },
-		"table": { "metaTitle": "Таблица - Alixan UI", "description": "Переиспользуемая таблица данных с настраиваемыми колонками и явным маппингом значений строк." },
-		"input": { "metaTitle": "Поле ввода - Alixan UI", "description": "Отображает form input с floating label, аккуратными состояниями и slots для leading или trailing иконок." },
-		"otp": { "metaTitle": "OTP поле - Alixan UI", "description": "Небольшое one-time password поле, вдохновленное shadcn-vue и упрощенное для Nuxt auto-import и прямых output events." },
-		"checkbox": { "metaTitle": "Чекбокс - Alixan UI", "description": "Круглый чекбокс в стиле iOS для boolean, одиночного значения и множественного выбора." },
-		"select": { "metaTitle": "Выбор - Alixan UI", "description": "Select с floating label, teleported menu и click-catcher overlay." },
-		"search": { "metaTitle": "Поиск - Alixan UI", "description": "Фокусированное поле поиска со встроенным debounce, search icon и clear button." },
-		"autocomplete": { "metaTitle": "Автозаполнение - Alixan UI", "description": "Searchable select input с teleported list и безопасным outside click catcher." },
-		"calendar": { "metaTitle": "Календарь - Alixan UI", "description": "Readonly input-style календарь с выбором месяца и года, стрелками и быстрыми range-периодами." },
-		"dialog": { "metaTitle": "Диалог - Alixan UI", "description": "Teleported modal surface для сфокусированных решений и форм." },
-		"alertDialog": { "metaTitle": "Окно сообщения - Alixan UI", "description": "Компактный Cupertino-style message dialog для понятного blocking feedback." },
-		"confirmDialog": { "metaTitle": "Окно подтверждения - Alixan UI", "description": "Сфокусированный confirmation dialog с cancel и submit actions." },
-		"drawer": { "metaTitle": "Панель - Alixan UI", "description": "Teleported panel для вторичных сценариев и mobile-friendly деталей." },
-		"dropdownMenu": { "metaTitle": "Выпадающее меню - Alixan UI", "description": "Teleported popover surface со slot trigger и полностью custom content." },
-		"globalLoader": { "metaTitle": "Глобальный лоадер - Alixan UI", "description": "Full-screen loading overlay для блокирующих async flows." },
-		"toast": { "metaTitle": "Уведомление - Alixan UI", "description": "Легкий notification stack для success, warning, error и info сообщений." }
-	}
-,
+		"switch": {
+			"metaTitle": "Переключатель - Alixan UI",
+			"description": "Компактный toggle control для boolean-настроек."
+		},
+		"status": {
+			"metaTitle": "Статус - Alixan UI",
+			"description": "Мягкий Cupertino-inspired status pill для success, warning, info и error состояний."
+		},
+		"empty": {
+			"metaTitle": "Пустое состояние - Alixan UI",
+			"description": "Центрированный empty state для отсутствующих данных, пустых результатов поиска и error pages."
+		},
+		"divider": {
+			"metaTitle": "Разделитель - Alixan UI",
+			"description": "Простой горизонтальный разделитель для групп контента."
+		},
+		"table": {
+			"metaTitle": "Таблица - Alixan UI",
+			"description": "Переиспользуемая таблица данных с настраиваемыми колонками и явным маппингом значений строк."
+		},
+		"input": {
+			"metaTitle": "Поле ввода - Alixan UI",
+			"description": "Отображает form input с floating label, аккуратными состояниями и slots для leading или trailing иконок."
+		},
+		"otp": {
+			"metaTitle": "OTP поле - Alixan UI",
+			"description": "Небольшое one-time password поле, вдохновленное shadcn-vue и упрощенное для Nuxt auto-import и прямых output events."
+		},
+		"checkbox": {
+			"metaTitle": "Чекбокс - Alixan UI",
+			"description": "Круглый чекбокс в стиле iOS для boolean, одиночного значения и множественного выбора."
+		},
+		"select": {
+			"metaTitle": "Выбор - Alixan UI",
+			"description": "Select с floating label, teleported menu и click-catcher overlay."
+		},
+		"search": {
+			"metaTitle": "Поиск - Alixan UI",
+			"description": "Фокусированное поле поиска со встроенным debounce, search icon и clear button."
+		},
+		"autocomplete": {
+			"metaTitle": "Автозаполнение - Alixan UI",
+			"description": "Searchable select input с teleported list и безопасным outside click catcher."
+		},
+		"calendar": {
+			"metaTitle": "Календарь - Alixan UI",
+			"description": "Readonly input-style календарь с выбором месяца и года, стрелками и быстрыми range-периодами."
+		},
+		"dialog": {
+			"metaTitle": "Диалог - Alixan UI",
+			"description": "Teleported modal surface для сфокусированных решений и форм."
+		},
+		"alertDialog": {
+			"metaTitle": "Окно сообщения - Alixan UI",
+			"description": "Компактный Cupertino-style message dialog для понятного blocking feedback."
+		},
+		"confirmDialog": {
+			"metaTitle": "Окно подтверждения - Alixan UI",
+			"description": "Сфокусированный confirmation dialog с cancel и submit actions."
+		},
+		"drawer": {
+			"metaTitle": "Панель - Alixan UI",
+			"description": "Teleported panel для вторичных сценариев и mobile-friendly деталей."
+		},
+		"dropdownMenu": {
+			"metaTitle": "Выпадающее меню - Alixan UI",
+			"description": "Teleported popover surface со slot trigger и полностью custom content."
+		},
+		"globalLoader": {
+			"metaTitle": "Глобальный лоадер - Alixan UI",
+			"description": "Full-screen loading overlay для блокирующих async flows."
+		},
+		"toast": {
+			"metaTitle": "Уведомление - Alixan UI",
+			"description": "Легкий notification stack для success, warning, error и info сообщений."
+		}
+	},
 	"stylesPage": {
 		"metaTitle": "Стили - Alixan UI",
 		"metaDescription": "Общие Tailwind-токены и утилиты, которые используются в документации Alixan UI.",
@@ -213,7 +297,8 @@
 			"title": "Установка",
 			"descriptionStart": "Эта команда копирует",
 			"sitemapDescription": "Установите Nuxt Sitemap до добавления sitemap-настроек в nuxt.config.ts.",
-			"seoCommandDescription": "После копирования замените значения из примера в site.ts на свой домен, название проекта, заголовок по умолчанию, описание и OG-изображение."
+			"seoCommandDescription": "После копирования замените значения из примера в site.ts на свой домен, название проекта, заголовок по умолчанию, описание и OG-изображение.",
+			"tnPluginDescription": "Registry item seo также копирует app/plugins/tn.ts и app/types/tn.d.ts, потому что usePageMeta разрешает title и description через $tn."
 		},
 		"siteConfig": {
 			"title": "Конфиг сайта",
@@ -227,7 +312,8 @@
 			"description": "централизует title, description, Open Graph и Twitter теги. Страницы передают только значения, которые отличаются от дефолтов.",
 			"usagePrefix": "Вызывайте",
 			"usageMiddle": "на каждой странице. Если поле не передано, используется дефолт из",
-			"usageSuffix": "."
+			"usageSuffix": ".",
+			"translationHelper": "Он использует $tn внутри, поэтому значения страницы могут быть ключами переводов, а дефолты siteConfig могут оставаться обычными строками."
 		},
 		"initialHead": {
 			"title": "Начальный head",
@@ -280,5 +366,213 @@
 	"validation": {
 		"required": "Заполните поле",
 		"usernamePattern": "Только буквы и цифры"
-	}
+	},
+	"pageToc": {
+		"title": "На этой странице"
+	},
+	"lottiePage": {
+		"metaTitle": "Lottie - Alixan UI",
+		"title": "Lottie",
+		"description": "Используйте Lottie-анимации как легкие media внутри empty states, ошибок и других feedback surfaces.",
+		"infoPrefix": "Для более подробной информации перейдите в",
+		"infoLink": "документацию Nuxt Lottie.",
+		"installationTitle": "Установка",
+		"installationDescription": "Установите модуль Nuxt Lottie. Команда добавит модуль в проект и установит нужный пакет.",
+		"configurationTitle": "Конфигурация",
+		"configDescription": "Настройте имя компонента и храните анимации в",
+		"folderDescriptionStart": "Передавайте prop name без расширения",
+		"folderDescriptionEnd": ".",
+		"usageTitle": "Использование",
+		"withEmptyTitle": "С Empty",
+		"emptyTitle": "Страница не найдена",
+		"emptyDescription": "Страница, которую вы ищете, не существует или была перемещена.",
+		"emptyButton": "На главную"
+	},
+	"fontsPage": {
+		"metaTitle": "Шрифты - Alixan UI",
+		"title": "Шрифты",
+		"description": "Alixan UI использует Geist для документации, но компоненты не требуют конкретный шрифт. Вы можете установить любой шрифт и сопоставить его с Tailwind tokens.",
+		"installationTitle": "Установка",
+		"installationDescription": "Установите модуль Nuxt Google Fonts, если хотите загружать шрифты через Nuxt.",
+		"configurationTitle": "Конфигурация",
+		"configurationDescriptionStart": "Добавьте модуль в",
+		"configurationDescriptionEnd": "и выберите семейство, которое хотите использовать в UI.",
+		"tailwindTitle": "Tailwind",
+		"tailwindDescriptionStart": "Сопоставьте выбранный шрифт с",
+		"tailwindDescriptionEnd": "затем используйте Tailwind token font-sans во всей системе."
+	},
+	"iconsPage": {
+		"metaTitle": "Иконки - Alixan UI",
+		"title": "Иконки",
+		"description": "Примеры Alixan UI используют Lucide Icons, но компоненты принимают обычные slots, поэтому вы можете использовать любую библиотеку иконок.",
+		"installationTitle": "Установка",
+		"installationDescription": "Установите Lucide Vue, если хотите использовать тот же пакет иконок, что и в примерах документации.",
+		"lucideTitle": "Lucide Icons",
+		"searchButton": "Поиск",
+		"notificationsLabel": "Уведомления",
+		"otherLibrariesTitle": "Другие библиотеки",
+		"otherLibrariesDescription": "Используйте Nuxt MDI, custom SVG components или любой другой источник иконок. Если он рендерится внутри slot, он работает.",
+		"mdiDescriptionPrefix": "Nuxt MDI предоставляет Material Design Icons как Nuxt-компоненты. Смотрите",
+		"mdiInfoLink": "документацию Nuxt MDI module."
+	},
+	"themePage": {
+		"metaTitle": "Тема - Alixan UI",
+		"title": "Тема",
+		"description": "Настройте dark mode через Nuxt Color Mode и CSS-переменные, которые используют компоненты Alixan UI.",
+		"infoPrefix": "Для более подробной информации перейдите в",
+		"infoLink": "документацию Nuxt Color Mode.",
+		"colorModeTitle": "Color Mode",
+		"colorModeDescription": "Установите Nuxt Color Mode, если хотите, чтобы system, light и dark theme preferences обрабатывались модулем.",
+		"colorModeConfigStart": "Используйте",
+		"colorModeConfigEnd": "чтобы dark mode переключал класс dark, который ожидают Tailwind utilities.",
+		"tailwindVariantTitle": "Tailwind Variant",
+		"tailwindDescriptionStart": "Сопоставьте light и dark значения с CSS-переменными, затем отдайте их через Tailwind tokens, например",
+		"tailwindDescriptionEnd": "и text-foreground.",
+		"usageTitle": "Использование",
+		"system": "Системная",
+		"light": "Светлая",
+		"dark": "Темная"
+	},
+	"i18nPage": {
+		"metaTitle": "i18n - Alixan UI",
+		"title": "i18n",
+		"description": "Alixan UI использует официальный модуль Nuxt i18n. Проект хранит message keys типизированными, а переключение языка и persistence выполняет модуль.",
+		"infoPrefix": "Для более подробной информации перейдите в",
+		"infoLink": "документацию Nuxt i18n.",
+		"installationTitle": "Установка",
+		"installationDescription": "Установите модуль Nuxt i18n, затем зарегистрируйте его в",
+		"setupDescriptionStart": "Используйте",
+		"setupDescriptionEnd": "чтобы язык по умолчанию оставался без prefix, а остальные locales получали prefix.",
+		"messagesTitle": "Messages",
+		"messagesDescriptionStart": "Храните locale JSON файлы в",
+		"messagesDescriptionEnd": "Опция file связывает каждую locale с ее message file.",
+		"usageTitle": "Использование",
+		"pageMetaTitle": "Page Meta",
+		"pageMetaDescriptionStart": "Передавайте ключи переводов для page-level SEO в",
+		"pageMetaDescriptionMiddle": ". Composable сам разрешает их через",
+		"pageMetaDescriptionEnd": "внутри.",
+		"translationHelperTitle": "Helper переводов",
+		"translationHelperDescriptionStart": "Используйте глобальный helper",
+		"translationHelperDescriptionEnd": "в templates, когда значение может быть ключом перевода или обычным текстом.",
+		"seoConnection": "usePageMeta использует $tn внутри для SEO title и description, поэтому i18n и SEO лучше устанавливать вместе, если вы используете локализованные метаданные.",
+		"translationTypesDescription": "Добавьте declaration file, чтобы TypeScript и Vue templates знали глобальный helper $tn."
+	},
+	"apiReferenceDescriptions": {
+		"accordionItems": "Разделы аккордеона, которые отображает компонент.",
+		"accordionModelValue": "Управляемое значение открытого элемента. В multiple-режиме используйте массив.",
+		"accordionMultiple": "Позволяет держать открытыми несколько элементов.",
+		"accordionCollapsible": "Позволяет закрыть активный одиночный элемент.",
+		"dialogTitle": "Заголовок диалога.",
+		"dialogDescription": "Короткое пояснение под заголовком.",
+		"primaryActionLabel": "Текст основной кнопки действия.",
+		"primaryActionColor": "Цвет основной кнопки действия.",
+		"optionalMediaComponent": "Опциональный media-компонент, например Lottie, img или компонент иконки.",
+		"mediaProps": "Props, передаваемые media-компоненту.",
+		"closeCallback": "Callback, вызываемый перед закрытием диалога.",
+		"fallbackSlotText": "Запасной текст, если default slot не используется.",
+		"buttonSurfaceStyle": "Стиль поверхности. Filled используется по умолчанию. Сочетайте его с color для intent.",
+		"semanticIntent": "Семантический intent. Работает с каждым variant.",
+		"heightPaddingText": "Управляет высотой, padding и размером текста.",
+		"buttonNuxtLink": "Отображает кнопку как NuxtLink, если значение передано.",
+		"buttonNativeAnchor": "Отображает кнопку как нативную ссылку, если значение передано.",
+		"anchorTarget": "Target ссылки. Работает с href-ссылками.",
+		"selectedStateModel": "Выбранное состояние, используемое через v-model.",
+		"checkboxMode": "Single хранит boolean или одно значение. Multiple хранит массив.",
+		"checkboxValue": "Значение для single value режима или multiple array режима.",
+		"checkboxLabel": "Опциональный label рядом с круглым контролом.",
+		"checkboxDisabled": "Отключает взаимодействие с checkbox.",
+		"chipType": "Добавляет select chevron или remove icon.",
+		"chipSize": "Управляет высотой, радиусом, padding и размером иконки.",
+		"chipSelected": "Переключает chip в активное primary-состояние.",
+		"disabledOpacity": "Отключает взаимодействие и уменьшает opacity.",
+		"cancelActionLabel": "Текст кнопки отмены.",
+		"submitActionLabel": "Текст кнопки подтверждения.",
+		"submitActionColor": "Цвет кнопки подтверждения.",
+		"cancelCallback": "Callback, вызываемый перед закрытием через cancel.",
+		"submitCallback": "Callback, вызываемый перед закрытием через submit.",
+		"dialogHostComponent": "Vue-компонент, отображаемый внутри DialogHost.",
+		"dialogHeaderTitle": "Передается в DialogHeader.",
+		"dialogMaxWidth": "Передается в Dialog как max-width.",
+		"dialogMaxHeight": "Передается в Dialog как max-height.",
+		"dynamicComponentData": "Данные, передаваемые динамическому компоненту.",
+		"drawerHostComponent": "Vue-компонент, отображаемый внутри DrawerHost.",
+		"drawerHeaderTitle": "Передается в DrawerHeader.",
+		"drawerMaxWidth": "Max-width панели.",
+		"drawerMaxHeight": "Max-height панели для позиций сверху и снизу.",
+		"drawerPlacement": "Расположение панели.",
+		"dropdownOpen": "Управляемое открытое состояние через v-model:open.",
+		"popoverWidth": "Ширина popover.",
+		"popoverMaxHeight": "Max-height popover.",
+		"popoverPlacement": "Предпочтительное расположение popover. Автоматически меняется, если места недостаточно.",
+		"emptyTitle": "Основной заголовок empty state.",
+		"optionalSupportingText": "Опциональный вспомогательный текст.",
+		"optionalActionLabel": "Опциональный текст кнопки действия.",
+		"optionalActionColor": "Опциональный цвет кнопки действия.",
+		"emptyMediaSlot": "Опциональное media над заголовком.",
+		"loaderShow": "Открывает full-screen loader.",
+		"loaderHide": "Закрывает loader.",
+		"loaderLabel": "Опциональный label под spinner.",
+		"accessibleLabel": "Обязательный accessible label для screen readers.",
+		"iconButtonVariant": "Визуальный стиль icon button. Ghost используется по умолчанию.",
+		"colorIntent": "Цветовой intent.",
+		"iconButtonSize": "Управляет квадратным размером и размером иконки.",
+		"iconButtonNuxtLink": "Отображает icon button как NuxtLink, если значение передано.",
+		"iconButtonNativeAnchor": "Отображает icon button как нативную ссылку, если значение передано.",
+		"inputModelValue": "Значение поля, используемое через v-model.",
+		"inputId": "Пользовательский id. Генерируется автоматически, если не передан.",
+		"floatingLabel": "Текст floating label.",
+		"inputType": "Нативный type поля.",
+		"inputPlaceholder": "Нативный placeholder поля.",
+		"inputAutocomplete": "Управляет нативным browser autocomplete.",
+		"inputAutofocus": "Фокусирует поле при mount.",
+		"inputRequired": "Показывает локализованное сообщение required после blur, если значение пустое.",
+		"inputMin": "Валидация минимальной длины текста после blur.",
+		"inputMax": "Валидация максимальной длины текста после blur.",
+		"inputPattern": "Нативная строка pattern. Значение должно полностью совпасть с pattern после blur.",
+		"patternMessage": "Сообщение валидации, когда pattern не совпадает.",
+		"inputMask": "Маска цифр, где # — цифра. Если mask задана, floating label скрывается.",
+		"inputHint": "Вспомогательный текст под полем.",
+		"inputError": "Сообщение ошибки. Также переключает поле в destructive state.",
+		"inputDisabled": "Отключает взаимодействие с полем.",
+		"inputReadonly": "Делает поле читаемым, но недоступным для редактирования.",
+		"inputClearButton": "Показывает кнопку очистки, когда у поля есть значение и нет trailing slot.",
+		"otpModelValue": "OTP значение, используемое через v-model.",
+		"otpLength": "Количество OTP цифр. Значение ограничивается диапазоном от 4 до 8.",
+		"otpChange": "Вызывается при каждом изменении OTP значения.",
+		"otpSubmit": "Вызывается, когда OTP значение достигает выбранной длины.",
+		"searchModelValue": "Значение поиска, используемое через v-model.",
+		"searchPlaceholder": "Placeholder внутри поля поиска.",
+		"searchDebounce": "Задержка в миллисекундах перед search-событием.",
+		"searchAutofocus": "Фокусирует поле при mount.",
+		"searchReadonly": "Делает поле читаемым, но недоступным для редактирования.",
+		"searchEvent": "Вызывается с trimmed значением после debounce.",
+		"clearEvent": "Вызывается при клике на кнопку очистки.",
+		"selectModelValue": "Выбранное значение option, используемое через v-model.",
+		"selectPlaceholder": "Текст, отображаемый когда option не выбран.",
+		"selectOptions": "Список options с label, value и optional disabled.",
+		"selectDisabled": "Отключает взаимодействие с select.",
+		"selectTeleport": "Телепортирует menu в body. Оставляйте true для nested popovers; ставьте false только если menu должна остаться внутри local layout.",
+		"statusTone": "Семантический тон статуса.",
+		"statusSize": "Управляет высотой, padding и gap.",
+		"switchLabel": "Опциональный label рядом со switch.",
+		"switchDisabled": "Отключает взаимодействие со switch.",
+		"tableColumns": "Описания колонок с labels и явными value mappers.",
+		"tableRows": "Строки данных, отображаемые таблицей.",
+		"tableColumnValue": "Arrow function, которая возвращает значение ячейки из объекта строки.",
+		"tableMinWidth": "Опциональный Tailwind class для управления горизонтальным overflow.",
+		"tabsModelValue": "Индекс выбранного tab, используемый через v-model.",
+		"tabsList": "Список labels вкладок.",
+		"tabsDesign": "Визуальный стиль tabs.",
+		"tabsFull": "Заставляет контейнер tabs и каждый tab использовать всю доступную ширину.",
+		"linkHref": "URL назначения для ссылки.",
+		"linkTarget": "Target ссылки. Если установлен _blank, rel становится noopener noreferrer.",
+		"toastMessage": "Текст toast.",
+		"toastTone": "Семантический тон toast.",
+		"toastDuration": "Таймаут auto-close в миллисекундах."
+	},
+	"toast": {
+		"close": "Закрыть уведомление"
+	},
+	"Alixan UI - Nuxt UI Components": "Alixan UI - Nuxt UI компоненты",
+	"Modern, minimal and production-ready UI components for Nuxt 4, Vue 3 and TypeScript.": "Современные, минималистичные и production-ready UI-компоненты для Nuxt 4, Vue 3 и TypeScript."
 }

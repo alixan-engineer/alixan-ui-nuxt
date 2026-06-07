@@ -67,7 +67,7 @@ const openThemeCode = (): void => {
 		position="bottomRight"
 	>
 		<template #trigger>
-			<IconButton variant="ghost" color="default" :label="$t('app.settings')">
+			<IconButton variant="ghost" color="default" :label="$tn('app.settings')">
 				<Settings />
 			</IconButton>
 		</template>
@@ -75,7 +75,7 @@ const openThemeCode = (): void => {
 		<div class="space-y-5 px-3 py-5">
 			<div class="space-y-2">
 				<p class="px-1 text-sm font-medium text-muted-foreground">
-					{{ $t('settings.language') }}
+					{{ $tn('settings.language') }}
 				</p>
 				<Select
 					:model-value="locale"
@@ -86,7 +86,7 @@ const openThemeCode = (): void => {
 
 			<div class="space-y-2">
 				<p class="px-1 text-sm font-medium text-muted-foreground">
-					{{ $t('settings.theme') }}
+					{{ $tn('settings.theme') }}
 				</p>
 				<Select
 					:model-value="colorMode.preference"
@@ -97,7 +97,7 @@ const openThemeCode = (): void => {
 
 			<div class="space-y-2">
 				<p class="px-1 text-sm font-medium text-muted-foreground">
-					{{ $t('settings.accent') }}
+					{{ $tn('settings.accent') }}
 				</p>
 				<div class="grid grid-cols-2 gap-2">
 					<Button

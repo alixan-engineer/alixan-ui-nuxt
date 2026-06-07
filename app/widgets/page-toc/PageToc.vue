@@ -71,7 +71,9 @@ const scrollToLink = (href: string): void => {
 		<div
 			class="sticky top-14 h-[calc(100svh-3.5rem)] overflow-y-auto px-4 py-6 space-y-3"
 		>
-			<p class="text-sm font-medium text-muted-foreground">On This Page</p>
+			<p class="text-sm font-medium text-muted-foreground">
+				{{ $tn('pageToc.title') }}
+			</p>
 			<nav class="space-y-2 text-sm">
 				<a
 					v-for="link in links"
@@ -88,7 +90,7 @@ const scrollToLink = (href: string): void => {
 						)
 					"
 				>
-					{{ $t(link.label) }}
+					{{ $tn(link.label) }}
 				</a>
 			</nav>
 		</div>

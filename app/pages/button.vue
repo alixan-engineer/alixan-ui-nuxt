@@ -43,22 +43,22 @@ const openDisableAlert = (): void => {
 
 <template>
 	<header class="space-y-3">
-		<h1 class="text-4xl font-semibold">{{ $t('component.button') }}</h1>
+		<h1 class="text-4xl font-semibold">{{ $tn('component.button') }}</h1>
 		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
-			{{ $t('componentDocs.button.description') }}
+			{{ $tn('componentDocs.button.description') }}
 		</p>
 	</header>
 
 	<section id="installation" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
-			{{ $t('docsSections.installation') }}
+			{{ $tn('docsSections.installation') }}
 		</h2>
 		<InstallCommandBlock component="button" />
 	</section>
 
 	<section id="usage" class="space-y-5">
 		<div class="space-y-2">
-			<h2 class="text-2xl font-semibold">{{ $t('docsSections.usage') }}</h2>
+			<h2 class="text-2xl font-semibold">{{ $tn('docsSections.usage') }}</h2>
 			<p class="text-muted-foreground leading-7">
 				Button styling is built from two independent props: variant chooses the
 				visual weight, and color chooses the action intent. Combine them to get
@@ -94,7 +94,7 @@ const openDisableAlert = (): void => {
 
 	<section id="size" class="space-y-4">
 		<h2 class="text-2xl font-semibold tracking-normal">
-			{{ $t('docsSections.size') }}
+			{{ $tn('docsSections.size') }}
 		</h2>
 		<ExampleBlock :code="buttonExamples.size">
 			<div class="flex items-center gap-2">
@@ -107,7 +107,7 @@ const openDisableAlert = (): void => {
 
 	<section id="navigation" class="space-y-4">
 		<h2 class="text-2xl font-semibold tracking-normal">
-			{{ $t('docsSections.navigation') }}
+			{{ $tn('docsSections.navigation') }}
 		</h2>
 		<ExampleBlock :code="buttonExamples.navigation">
 			<div class="flex flex-wrap items-center gap-2">
@@ -121,7 +121,7 @@ const openDisableAlert = (): void => {
 
 	<section id="with-icon" class="space-y-4">
 		<h2 class="text-2xl font-semibold tracking-normal">
-			{{ $t('docsSections.withIcon') }}
+			{{ $tn('docsSections.withIcon') }}
 		</h2>
 		<ExampleBlock :code="buttonExamples.withIcon">
 			<div class="flex flex-wrap items-center gap-2">
@@ -145,7 +145,7 @@ const openDisableAlert = (): void => {
 	<section id="loading" class="space-y-4">
 		<div class="space-y-2">
 			<h2 class="text-2xl font-semibold tracking-normal">
-				{{ $t('docsSections.loading') }}
+				{{ $tn('docsSections.loading') }}
 			</h2>
 			<p class="text-muted-foreground leading-7">
 				Button does not include a built-in spinner state. If the button keeps
@@ -162,7 +162,7 @@ const openDisableAlert = (): void => {
 	<section id="disable" class="space-y-4">
 		<div class="space-y-2">
 			<h2 class="text-2xl font-semibold tracking-normal">
-				{{ $t('docsSections.disabled') }}
+				{{ $tn('docsSections.disabled') }}
 			</h2>
 			<p class="text-muted-foreground leading-7">
 				Prefer not to disable buttons. Keep the action visible and active, then
@@ -179,7 +179,7 @@ const openDisableAlert = (): void => {
 
 	<section id="api-reference" class="space-y-4">
 		<h2 class="text-2xl font-semibold">
-			{{ $t('docsSections.apiReference') }}
+			{{ $tn('docsSections.apiReference') }}
 		</h2>
 		<Table :columns="propsTableColumns" :rows="buttonApiRows" />
 	</section>

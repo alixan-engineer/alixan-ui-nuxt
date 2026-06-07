@@ -78,7 +78,7 @@ const toggleItem = (item: AccordionItem): void => {
 			>
 				<span class="flex-1">
 					<slot name="title" :item="item" :open="isOpen(item.value)">
-						{{ $t(item.title) }}
+						{{ $tn(item.title) }}
 					</slot>
 				</span>
 				<ChevronDown
@@ -94,7 +94,7 @@ const toggleItem = (item: AccordionItem): void => {
 			<div v-if="isOpen(item.value)">
 				<div class="px-4 pb-4 text-sm leading-7 text-muted-foreground">
 					<slot name="content" :item="item">
-						{{ item.content ? $t(item.content) : '' }}
+						{{ item.content ? $tn(item.content) : '' }}
 					</slot>
 				</div>
 			</div>

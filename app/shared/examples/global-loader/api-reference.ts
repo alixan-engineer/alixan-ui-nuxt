@@ -3,18 +3,18 @@ export const loaderApi = [
 		name: 'show',
 		type: '(options?: { label?: string }) => void',
 		default: '-',
-		description: 'Opens the full-screen loader.',
+		description: 'apiReferenceDescriptions.loaderShow',
 	},
 	{
 		name: 'hide',
 		type: '() => void',
 		default: '-',
-		description: 'Closes the loader.',
+		description: 'apiReferenceDescriptions.loaderHide',
 	},
 	{
 		name: 'label',
 		type: 'string',
 		default: "''",
-		description: 'Optional label displayed below the spinner.',
+		description: 'apiReferenceDescriptions.loaderLabel',
 	},
 ];

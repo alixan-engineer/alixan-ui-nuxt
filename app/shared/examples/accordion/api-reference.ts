@@ -3,24 +3,24 @@ export const apiRows = [
 		prop: 'items',
 		type: 'AccordionItem[]',
 		default: '[]',
-		description: 'Accordion sections rendered by the component.',
+		description: 'apiReferenceDescriptions.accordionItems',
 	},
 	{
 		prop: 'modelValue',
 		type: 'string | number | Array<string | number> | null',
 		default: 'null',
-		description: 'Controlled open item value. Use an array with multiple mode.',
+		description: 'apiReferenceDescriptions.accordionModelValue',
 	},
 	{
 		prop: 'multiple',
 		type: 'boolean',
 		default: 'false',
-		description: 'Allows more than one item to stay open.',
+		description: 'apiReferenceDescriptions.accordionMultiple',
 	},
 	{
 		prop: 'collapsible',
 		type: 'boolean',
 		default: 'true',
-		description: 'Allows the active single item to be closed.',
+		description: 'apiReferenceDescriptions.accordionCollapsible',
 	},
 ];

@@ -54,6 +54,51 @@ export const messagesCode = `// root/i18n/locales/en.json
     "button": "Батырма"
   }
 }`;
+export const tnPluginCode = `// app/plugins/tn.ts
+type TnValue = string | number | boolean | null | undefined
+
+interface I18nTranslator {
+  t: (key: string) => string
+  te: (key: string) => boolean
+}
+
+export default defineNuxtPlugin({
+  name: 'tn',
+  enforce: 'post',
+  setup(nuxtApp) {
+    const { t, te } = nuxtApp.$i18n as I18nTranslator
+
+    const tn = (value: TnValue): string => {
+      if (typeof value !== 'string') return String(value ?? '')
+      return te(value) ? t(value) : value
+    }
+
+    nuxtApp.vueApp.config.globalProperties.$tn = tn
+
+    return {
+      provide: {
+        tn,
+      },
+    }
+  },
+})`;
+export const tnTypesCode = `// app/types/tn.d.ts
+type TnValue = string | number | boolean | null | undefined
+type Tn = (value: TnValue) => string
+
+declare module '#app' {
+  interface NuxtApp {
+    $tn: Tn
+  }
+}
+
+declare module 'vue' {
+  interface ComponentCustomProperties {
+    $tn: Tn
+  }
+}
+
+export {}`;
 export const usageCode = `<script setup lang="ts">
 type Locale = 'en' | 'ru' | 'kk'
 
@@ -76,7 +121,7 @@ const changeLocale = async (value: Locale): Promise<void> => {
 <template>
   <div class="space-y-2">
     <p class="px-1 text-sm font-medium text-muted-foreground">
-      {{ $t('settings.language') }}
+      {{ $tn('settings.language') }}
     </p>
     <Select
       :model-value="locale"
@@ -86,10 +131,8 @@ const changeLocale = async (value: Locale): Promise<void> => {
   </div>
 </template>`;
 export const pageMetaCode = `<script setup lang="ts">
-const { t } = useI18n()
-
 usePageMeta({
-  title: t('seo.metaTitle'),
-  description: t('seo.metaDescription'),
+  title: 'seo.metaTitle',
+  description: 'seo.metaDescription',
 })
 <\/script>`;

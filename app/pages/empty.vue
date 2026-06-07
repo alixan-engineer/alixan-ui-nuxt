@@ -19,21 +19,21 @@ onMounted(() => setToc(emptyPageToc));
 
 <template>
 	<header class="space-y-3">
-		<h1 class="text-4xl font-semibold">{{ $t('component.empty') }}</h1>
+		<h1 class="text-4xl font-semibold">{{ $tn('component.empty') }}</h1>
 		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
-			{{ $t('componentDocs.empty.description') }}
+			{{ $tn('componentDocs.empty.description') }}
 		</p>
 	</header>
 
 	<section id="installation" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
-			{{ $t('docsSections.installation') }}
+			{{ $tn('docsSections.installation') }}
 		</h2>
 		<InstallCommandBlock component="empty" />
 	</section>
 
 	<section id="usage" class="space-y-5">
-		<h2 class="text-2xl font-semibold">{{ $t('docsSections.usage') }}</h2>
+		<h2 class="text-2xl font-semibold">{{ $tn('docsSections.usage') }}</h2>
 		<ExampleBlock :code="examples.usage">
 			<Empty
 				title="No results"
@@ -45,7 +45,7 @@ onMounted(() => setToc(emptyPageToc));
 	</section>
 
 	<section id="with-media" class="space-y-5">
-		<h2 class="text-2xl font-semibold">{{ $t('docsSections.withMedia') }}</h2>
+		<h2 class="text-2xl font-semibold">{{ $tn('docsSections.withMedia') }}</h2>
 		<ExampleBlock :code="examples.withMedia">
 			<Empty
 				title="Page not found"
@@ -64,7 +64,7 @@ onMounted(() => setToc(emptyPageToc));
 
 	<section id="api-reference" class="space-y-4">
 		<h2 class="text-2xl font-semibold">
-			{{ $t('docsSections.apiReference') }}
+			{{ $tn('docsSections.apiReference') }}
 		</h2>
 		<Table :columns="propsTableColumns" :rows="emptyProps" />
 

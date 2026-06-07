@@ -114,7 +114,7 @@ The package exposes one CLI command:
 npx alixan-ui-nuxt add <component>
 ```
 
-The CLI reads the registry, copies template files into your project, and keeps component paths folder-based:
+The CLI reads the registry, copies source files into your project, and keeps component paths folder-based:
 
 ```txt
 components/ui/button/Button.vue
@@ -156,6 +156,8 @@ Install Nuxt i18n with:
 npx nuxt module add i18n
 ```
 
+Components and docs use the global `$tn` helper from `app/plugins/tn.ts`. It translates existing i18n keys and falls back to the original string for plain values.
+
 ## 🔎 SEO
 
 The `seo` registry item includes:
@@ -163,8 +165,11 @@ The `seo` registry item includes:
 - `app/config/site/site.ts`
 - `app/config/site/favicon.ts`
 - `app/composables/usePageMeta.ts`
+- `app/plugins/tn.ts`
+- `app/types/tn.d.ts`
 
 It gives you a shared place for site URL, title, description, Open Graph image and page-level SEO metadata.
+`usePageMeta` resolves page title and description through `$tn`, so values can be translation keys or plain strings.
 
 For sitemap support:
 
@@ -212,14 +217,13 @@ app/
   components/ui/
   composables/
   config/site/
+  plugins/
+  types/
   pages/
 cli/
   index.js
 registry/
-  index.json
   *.json
-templates/
-  */
 ```
 
 ## 📄 License

@@ -3,31 +3,30 @@ export const checkboxProps = [
 		name: 'modelValue',
 		type: 'boolean | string | number | Array<string | number> | null',
 		default: 'false',
-		description: 'Selected state used by v-model.',
+		description: 'apiReferenceDescriptions.selectedStateModel',
 	},
 	{
 		name: 'mode',
 		type: "'single' | 'multiple'",
 		default: "'single'",
-		description:
-			'Single stores a boolean or one value. Multiple stores an array.',
+		description: 'apiReferenceDescriptions.checkboxMode',
 	},
 	{
 		name: 'value',
 		type: 'string | number',
 		default: '-',
-		description: 'Value used for single value mode or multiple array mode.',
+		description: 'apiReferenceDescriptions.checkboxValue',
 	},
 	{
 		name: 'label',
 		type: 'string',
 		default: '-',
-		description: 'Optional label rendered next to the circular control.',
+		description: 'apiReferenceDescriptions.checkboxLabel',
 	},
 	{
 		name: 'disabled',
 		type: 'boolean',
 		default: 'false',
-		description: 'Disables checkbox interaction.',
+		description: 'apiReferenceDescriptions.checkboxDisabled',
 	},
 ];

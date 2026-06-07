@@ -9,7 +9,7 @@ import {
 } from '~/shared/examples/lottie/usage-examples';
 
 usePageMeta({
-	title: 'Lottie - Alixan UI',
+	title: 'lottiePage.metaTitle',
 });
 
 const { setToc } = usePageToc();
@@ -19,59 +19,64 @@ onMounted(() => setToc(lottiePageToc));
 
 <template>
 	<header class="space-y-3">
-		<h1 class="text-4xl font-semibold">Lottie</h1>
+		<h1 class="text-4xl font-semibold">{{ $tn('lottiePage.title') }}</h1>
 		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
-			Use Lottie animations as lightweight media inside empty states, errors and
-			other feedback surfaces.
+			{{ $tn('lottiePage.description') }}
 		</p>
 		<Info>
-			For more detailed information, visit the
+			{{ $tn('lottiePage.infoPrefix') }}
 			<TextLink href="https://nuxt.com/modules/lottie" target="_blank">
-				Nuxt Lottie documentation.
+				{{ $tn('lottiePage.infoLink') }}
 			</TextLink>
 		</Info>
 	</header>
 
 	<section id="installation" class="space-y-5">
-		<h2 class="text-2xl font-semibold">Installation</h2>
+		<h2 class="text-2xl font-semibold">
+			{{ $tn('lottiePage.installationTitle') }}
+		</h2>
 		<ExampleBlock :code="installCode">
 			<div class="max-w-md text-center text-muted-foreground leading-7">
-				Install the Nuxt Lottie module. The command adds the module to your
-				project and installs the required package.
+				{{ $tn('lottiePage.installationDescription') }}
 			</div>
 		</ExampleBlock>
 	</section>
 
 	<section id="configuration" class="space-y-5">
-		<h2 class="text-2xl font-semibold">Configuration</h2>
+		<h2 class="text-2xl font-semibold">
+			{{ $tn('lottiePage.configurationTitle') }}
+		</h2>
 		<ExampleBlock :code="configCode">
 			<div class="max-w-md text-center text-muted-foreground leading-7">
-				Configure the component name and keep animations in
+				{{ $tn('lottiePage.configDescription') }}
 				<code>app/assets/lottie</code>.
 			</div>
 		</ExampleBlock>
 		<ExampleBlock :code="folderCode">
 			<div class="max-w-md text-center text-muted-foreground leading-7">
-				Use the file name without <code>.json</code> when passing the
-				<code>name</code> prop.
+				{{ $tn('lottiePage.folderDescriptionStart') }}
+				<code>.json</code>
+				{{ $tn('lottiePage.folderDescriptionEnd') }}
 			</div>
 		</ExampleBlock>
 	</section>
 
 	<section id="usage" class="space-y-5">
-		<h2 class="text-2xl font-semibold">Usage</h2>
+		<h2 class="text-2xl font-semibold">{{ $tn('lottiePage.usageTitle') }}</h2>
 		<ExampleBlock :code="usageCode">
 			<Lottie name="error" :loop="false" width="160px" height="140px" />
 		</ExampleBlock>
 	</section>
 
 	<section id="with-empty" class="space-y-5">
-		<h2 class="text-2xl font-semibold">With Empty</h2>
+		<h2 class="text-2xl font-semibold">
+			{{ $tn('lottiePage.withEmptyTitle') }}
+		</h2>
 		<ExampleBlock :code="emptyCode">
 			<Empty
-				title="Page not found"
-				description="The page you are looking for does not exist or has been moved."
-				button="Go home"
+				:title="$tn('lottiePage.emptyTitle')"
+				:description="$tn('lottiePage.emptyDescription')"
+				:button="$tn('lottiePage.emptyButton')"
 			>
 				<div
 					class="flex size-28 items-center justify-center rounded-4xl bg-secondary text-primary"

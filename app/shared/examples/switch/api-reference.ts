@@ -3,18 +3,18 @@ export const switchProps = [
 		name: 'modelValue',
 		type: 'boolean',
 		default: 'false',
-		description: 'Selected state used by v-model.',
+		description: 'apiReferenceDescriptions.selectedStateModel',
 	},
 	{
 		name: 'label',
 		type: 'string',
 		default: '-',
-		description: 'Optional label rendered next to the switch.',
+		description: 'apiReferenceDescriptions.switchLabel',
 	},
 	{
 		name: 'disabled',
 		type: 'boolean',
 		default: 'false',
-		description: 'Disables switch interaction.',
+		description: 'apiReferenceDescriptions.switchDisabled',
 	},
 ];

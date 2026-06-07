@@ -51,7 +51,7 @@ const scrollToTop = () => document.getElementById('root')?.scrollTo(0, 0);
 					class="space-y-2"
 				>
 					<p class="px-3 text-sm font-medium text-muted-foreground">
-						{{ $t(section.labelKey) }}
+						{{ $tn(section.labelKey) }}
 					</p>
 					<div class="flex flex-col">
 						<Button
@@ -67,7 +67,7 @@ const scrollToTop = () => document.getElementById('root')?.scrollTo(0, 0);
 								scrollToTop();
 							"
 						>
-							{{ $t(item.labelKey) }}
+							{{ $tn(item.labelKey) }}
 						</Button>
 					</div>
 				</div>

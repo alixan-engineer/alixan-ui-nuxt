@@ -3,18 +3,18 @@ export const toastApi = [
 		name: 'message',
 		type: 'string',
 		default: '-',
-		description: 'Toast text.',
+		description: 'apiReferenceDescriptions.toastMessage',
 	},
 	{
 		name: 'type',
 		type: "'success' | 'warning' | 'error' | 'info'",
 		default: "'info'",
-		description: 'Semantic toast tone.',
+		description: 'apiReferenceDescriptions.toastTone',
 	},
 	{
 		name: 'duration',
 		type: 'number',
 		default: '4000',
-		description: 'Auto-close timeout in milliseconds.',
+		description: 'apiReferenceDescriptions.toastDuration',
 	},
 ];

@@ -3,25 +3,24 @@ export const dropdownProps = [
 		name: 'open',
 		type: 'boolean',
 		default: 'false',
-		description: 'Controlled open state via v-model:open.',
+		description: 'apiReferenceDescriptions.dropdownOpen',
 	},
 	{
 		name: 'width',
 		type: 'string',
 		default: "'320px'",
-		description: 'Popover width.',
+		description: 'apiReferenceDescriptions.popoverWidth',
 	},
 	{
 		name: 'height',
 		type: 'string',
 		default: "'auto'",
-		description: 'Popover max-height.',
+		description: 'apiReferenceDescriptions.popoverMaxHeight',
 	},
 	{
 		name: 'position',
 		type: "'topRight' | 'bottomRight' | 'bottomLeft' | 'topLeft'",
 		default: "'bottomLeft'",
-		description:
-			'Preferred popover placement. It flips automatically when there is not enough space.',
+		description: 'apiReferenceDescriptions.popoverPlacement',
 	},
 ];

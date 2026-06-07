@@ -33,27 +33,27 @@ const features = [
 				class="inline-flex items-center gap-2 rounded-full border bg-secondary/60 px-3 py-1 text-sm text-muted-foreground"
 			>
 				<Sparkles class="size-4 text-primary" />
-				<span>{{ $t('homePage.badge') }}</span>
+				<span>{{ $tn('homePage.badge') }}</span>
 			</div>
 
 			<div class="space-y-4">
 				<h1 class="text-5xl font-semibold tracking-tight sm:text-6xl">
-					{{ $t('homePage.title') }}
+					{{ $tn('homePage.title') }}
 				</h1>
 				<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
-					{{ $t('homePage.description') }}
+					{{ $tn('homePage.description') }}
 				</p>
 			</div>
 
 			<div class="flex flex-wrap gap-3">
 				<Button to="/installation" color="primary">
-					{{ $t('homePage.actions.getStarted') }}
+					{{ $tn('homePage.actions.getStarted') }}
 					<template #trailing>
 						<ArrowRight class="size-5" />
 					</template>
 				</Button>
 				<Button to="/button" variant="outlined" color="default">
-					{{ $t('homePage.actions.browseComponents') }}
+					{{ $tn('homePage.actions.browseComponents') }}
 				</Button>
 			</div>
 
@@ -64,9 +64,9 @@ const features = [
 					class="rounded-2xl border bg-background p-4"
 				>
 					<Boxes class="mb-3 size-5 text-primary" />
-					<h2 class="font-medium">{{ $t(feature.title) }}</h2>
+					<h2 class="font-medium">{{ $tn(feature.title) }}</h2>
 					<p class="mt-2 text-sm leading-6 text-muted-foreground">
-						{{ $t(feature.description) }}
+						{{ $tn(feature.description) }}
 					</p>
 				</div>
 			</div>

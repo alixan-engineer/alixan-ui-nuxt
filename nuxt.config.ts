@@ -39,6 +39,9 @@ export default defineNuxtConfig({
 		[
 			'@nuxtjs/i18n',
 			{
+				debug: false,
+				missingWarn: true,
+				fallbackWarn: false,
 				defaultLocale: 'en',
 				strategy: 'prefix_except_default',
 				detectBrowserLanguage: false,

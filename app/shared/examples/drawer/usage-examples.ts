@@ -1,9 +1,9 @@
 export const appCode = `// app.vue
-// Add DrawerHost once near the root of your app.
 <template>
   <NuxtPage />
-  <DrawerHost />
+  <DrawerHost /> <!-- Add DrawerHost once near the root of your app. -->
 </template>`;
+
 export const usageCode = `// example.vue
 // Open any Vue component as a drawer and pass options/data.
 <script setup lang="ts">

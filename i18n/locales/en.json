@@ -52,6 +52,15 @@
 			"title": "Use Component",
 			"description": "Use the component directly in your Vue templates. No package import is required for the component itself.",
 			"previewButton": "Save changes"
+		},
+		"addI18n": {
+			"title": "Add i18n (Recommended)",
+			"description": "Alixan UI works best with Nuxt i18n because documentation labels, table headings and page meta use translation keys. You can skip this step if your app does not need localization yet.",
+			"commandTitle": "Install Nuxt i18n"
+		},
+		"translationHelper": {
+			"title": "Add Translation Helper",
+			"description": "Add a global $tn helper after Nuxt i18n. It checks whether a string exists as a translation key and falls back to the original value, so labels like npm or regular table values do not create missing-key warnings."
 		}
 	},
 	"homePage": {
@@ -131,13 +140,29 @@
 		"range": "Range",
 		"host": "Host",
 		"openDialog": "Open Dialog",
-		"dialogContent": "Dialog Content"
+		"dialogContent": "Dialog Content",
+		"email": "Email",
+		"password": "Password",
+		"phone": "Phone",
+		"username": "Username"
 	},
 	"componentDocs": {
-		"button": { "metaTitle": "Button - Alixan UI", "description": "Displays a button for actions in forms, toolbars and navigation." },
-		"iconButton": { "metaTitle": "Icon Button - Alixan UI", "description": "Displays an icon-only button with a required accessible label." },
-		"textLink": { "metaTitle": "Text Link - Alixan UI", "description": "An inline content link for documentation copy, hints and external references without button padding or background styles." },
-		"chip": { "metaTitle": "Chip - Alixan UI", "description": "A compact interactive token for filters, selections and removable metadata." },
+		"button": {
+			"metaTitle": "Button - Alixan UI",
+			"description": "Displays a button for actions in forms, toolbars and navigation."
+		},
+		"iconButton": {
+			"metaTitle": "Icon Button - Alixan UI",
+			"description": "Displays an icon-only button with a required accessible label."
+		},
+		"textLink": {
+			"metaTitle": "Text Link - Alixan UI",
+			"description": "An inline content link for documentation copy, hints and external references without button padding or background styles."
+		},
+		"chip": {
+			"metaTitle": "Chip - Alixan UI",
+			"description": "A compact interactive token for filters, selections and removable metadata."
+		},
 		"accordion": {
 			"metaTitle": "Accordion - Alixan UI",
 			"description": "A vertical disclosure component for grouped content, inspired by shadcn-vue and adapted for Nuxt auto-import.",
@@ -153,29 +178,88 @@
 		"tabs": {
 			"metaTitle": "Tabs - Alixan UI",
 			"description": "A compact segmented navigation component for switching between views.",
-			"demo": { "account": "Account", "password": "Password" }
+			"demo": {
+				"account": "Account",
+				"password": "Password"
+			}
 		},
-		"switch": { "metaTitle": "Switch - Alixan UI", "description": "A compact toggle control for boolean settings." },
-		"status": { "metaTitle": "Status - Alixan UI", "description": "A soft Cupertino-inspired status pill for success, warning, info and error states." },
-		"empty": { "metaTitle": "Empty - Alixan UI", "description": "A centered empty state for missing data, empty search results and error pages." },
-		"divider": { "metaTitle": "Divider - Alixan UI", "description": "A simple horizontal rule for separating groups of content." },
-		"table": { "metaTitle": "Table - Alixan UI", "description": "A reusable data table with configurable columns and explicit row value mapping." },
-		"input": { "metaTitle": "Input - Alixan UI", "description": "Displays a form input with a floating label, clean states and slots for leading or trailing icons." },
-		"otp": { "metaTitle": "OTP Input - Alixan UI", "description": "A small one-time password input inspired by shadcn-vue, simplified for Nuxt auto-import and direct output events." },
-		"checkbox": { "metaTitle": "Checkbox - Alixan UI", "description": "A circular iOS-style checkbox for boolean, single-value and multiple-value selection." },
-		"select": { "metaTitle": "Select - Alixan UI", "description": "A floating label select with a teleported menu and click-catcher overlay." },
-		"search": { "metaTitle": "Search - Alixan UI", "description": "A focused search field with built-in debounce, search icon and clear button." },
-		"autocomplete": { "metaTitle": "Autocomplete - Alixan UI", "description": "A searchable select input with a teleported list and safe outside click catcher." },
-		"calendar": { "metaTitle": "Calendar - Alixan UI", "description": "A readonly input-style calendar with month and year selects, arrows and quick range presets." },
-		"dialog": { "metaTitle": "Dialog - Alixan UI", "description": "A teleported modal surface for focused decisions and forms." },
-		"alertDialog": { "metaTitle": "Alert Dialog - Alixan UI", "description": "A compact Cupertino-style message dialog for clear blocking feedback." },
-		"confirmDialog": { "metaTitle": "Confirm Dialog - Alixan UI", "description": "A focused confirmation dialog with cancel and submit actions." },
-		"drawer": { "metaTitle": "Drawer - Alixan UI", "description": "A teleported panel for secondary flows and mobile-friendly details." },
-		"dropdownMenu": { "metaTitle": "Dropdown Menu - Alixan UI", "description": "A teleported popover surface with a slot trigger and fully custom content." },
-		"globalLoader": { "metaTitle": "Global Loader - Alixan UI", "description": "A full-screen loading overlay for blocking async flows." },
-		"toast": { "metaTitle": "Toast - Alixan UI", "description": "A lightweight notification stack for success, warning, error and info messages." }
-	}
-,
+		"switch": {
+			"metaTitle": "Switch - Alixan UI",
+			"description": "A compact toggle control for boolean settings."
+		},
+		"status": {
+			"metaTitle": "Status - Alixan UI",
+			"description": "A soft Cupertino-inspired status pill for success, warning, info and error states."
+		},
+		"empty": {
+			"metaTitle": "Empty - Alixan UI",
+			"description": "A centered empty state for missing data, empty search results and error pages."
+		},
+		"divider": {
+			"metaTitle": "Divider - Alixan UI",
+			"description": "A simple horizontal rule for separating groups of content."
+		},
+		"table": {
+			"metaTitle": "Table - Alixan UI",
+			"description": "A reusable data table with configurable columns and explicit row value mapping."
+		},
+		"input": {
+			"metaTitle": "Input - Alixan UI",
+			"description": "Displays a form input with a floating label, clean states and slots for leading or trailing icons."
+		},
+		"otp": {
+			"metaTitle": "OTP Input - Alixan UI",
+			"description": "A small one-time password input inspired by shadcn-vue, simplified for Nuxt auto-import and direct output events."
+		},
+		"checkbox": {
+			"metaTitle": "Checkbox - Alixan UI",
+			"description": "A circular iOS-style checkbox for boolean, single-value and multiple-value selection."
+		},
+		"select": {
+			"metaTitle": "Select - Alixan UI",
+			"description": "A floating label select with a teleported menu and click-catcher overlay."
+		},
+		"search": {
+			"metaTitle": "Search - Alixan UI",
+			"description": "A focused search field with built-in debounce, search icon and clear button."
+		},
+		"autocomplete": {
+			"metaTitle": "Autocomplete - Alixan UI",
+			"description": "A searchable select input with a teleported list and safe outside click catcher."
+		},
+		"calendar": {
+			"metaTitle": "Calendar - Alixan UI",
+			"description": "A readonly input-style calendar with month and year selects, arrows and quick range presets."
+		},
+		"dialog": {
+			"metaTitle": "Dialog - Alixan UI",
+			"description": "A teleported modal surface for focused decisions and forms."
+		},
+		"alertDialog": {
+			"metaTitle": "Alert Dialog - Alixan UI",
+			"description": "A compact Cupertino-style message dialog for clear blocking feedback."
+		},
+		"confirmDialog": {
+			"metaTitle": "Confirm Dialog - Alixan UI",
+			"description": "A focused confirmation dialog with cancel and submit actions."
+		},
+		"drawer": {
+			"metaTitle": "Drawer - Alixan UI",
+			"description": "A teleported panel for secondary flows and mobile-friendly details."
+		},
+		"dropdownMenu": {
+			"metaTitle": "Dropdown Menu - Alixan UI",
+			"description": "A teleported popover surface with a slot trigger and fully custom content."
+		},
+		"globalLoader": {
+			"metaTitle": "Global Loader - Alixan UI",
+			"description": "A full-screen loading overlay for blocking async flows."
+		},
+		"toast": {
+			"metaTitle": "Toast - Alixan UI",
+			"description": "A lightweight notification stack for success, warning, error and info messages."
+		}
+	},
 	"stylesPage": {
 		"metaTitle": "Styles - Alixan UI",
 		"metaDescription": "Shared Tailwind tokens and utilities used across Alixan UI documentation.",
@@ -213,7 +297,8 @@
 			"title": "Installation",
 			"descriptionStart": "This command copies",
 			"sitemapDescription": "Install Nuxt Sitemap before adding sitemap options to nuxt.config.ts.",
-			"seoCommandDescription": "After copying, replace the example values in site.ts with your own domain, project name, default title, description and OG image."
+			"seoCommandDescription": "After copying, replace the example values in site.ts with your own domain, project name, default title, description and OG image.",
+			"tnPluginDescription": "The seo registry item also copies app/plugins/tn.ts and app/types/tn.d.ts because usePageMeta resolves title and description through $tn."
 		},
 		"siteConfig": {
 			"title": "Site Config",
@@ -227,7 +312,8 @@
 			"description": "centralizes title, description, Open Graph and Twitter tags. Pages only pass values that differ from defaults.",
 			"usagePrefix": "Call",
 			"usageMiddle": "in each page. If a field is omitted, the default from",
-			"usageSuffix": "is used."
+			"usageSuffix": "is used.",
+			"translationHelper": "It uses $tn internally, so page values can be translation keys while siteConfig defaults can stay plain strings."
 		},
 		"initialHead": {
 			"title": "Initial Head",
@@ -280,5 +366,213 @@
 	"validation": {
 		"required": "This field is required",
 		"usernamePattern": "Only letters and numbers"
-	}
+	},
+	"pageToc": {
+		"title": "On This Page"
+	},
+	"lottiePage": {
+		"metaTitle": "Lottie - Alixan UI",
+		"title": "Lottie",
+		"description": "Use Lottie animations as lightweight media inside empty states, errors and other feedback surfaces.",
+		"infoPrefix": "For more detailed information, visit the",
+		"infoLink": "Nuxt Lottie documentation.",
+		"installationTitle": "Installation",
+		"installationDescription": "Install the Nuxt Lottie module. The command adds the module to your project and installs the required package.",
+		"configurationTitle": "Configuration",
+		"configDescription": "Configure the component name and keep animations in",
+		"folderDescriptionStart": "Use the file name without",
+		"folderDescriptionEnd": "when passing the name prop.",
+		"usageTitle": "Usage",
+		"withEmptyTitle": "With Empty",
+		"emptyTitle": "Page not found",
+		"emptyDescription": "The page you are looking for does not exist or has been moved.",
+		"emptyButton": "Go home"
+	},
+	"fontsPage": {
+		"metaTitle": "Fonts - Alixan UI",
+		"title": "Fonts",
+		"description": "Alixan UI uses Geist for documentation, but components do not require a specific font. You can install any font and map it to Tailwind tokens.",
+		"installationTitle": "Installation",
+		"installationDescription": "Install the Nuxt Google Fonts module when you want fonts to be loaded through Nuxt.",
+		"configurationTitle": "Configuration",
+		"configurationDescriptionStart": "Add the module to",
+		"configurationDescriptionEnd": "and choose the family you want to use in your UI.",
+		"tailwindTitle": "Tailwind",
+		"tailwindDescriptionStart": "Map the selected font to",
+		"tailwindDescriptionEnd": "then use Tailwind's font-sans token across the system."
+	},
+	"iconsPage": {
+		"metaTitle": "Icons - Alixan UI",
+		"title": "Icons",
+		"description": "Alixan UI examples use Lucide Icons, but the components accept regular slots, so you can use any icon library you like.",
+		"installationTitle": "Installation",
+		"installationDescription": "Install Lucide Vue when you want to use the same icon package as the documentation examples.",
+		"lucideTitle": "Lucide Icons",
+		"searchButton": "Search",
+		"notificationsLabel": "Notifications",
+		"otherLibrariesTitle": "Other Libraries",
+		"otherLibrariesDescription": "Use Nuxt MDI, custom SVG components, or any other icon source. If it renders inside a slot, it works.",
+		"mdiDescriptionPrefix": "Nuxt MDI provides Material Design Icons as Nuxt components. See the",
+		"mdiInfoLink": "Nuxt MDI module documentation."
+	},
+	"themePage": {
+		"metaTitle": "Theme - Alixan UI",
+		"title": "Theme",
+		"description": "Configure dark mode with Nuxt Color Mode and CSS variables used by Alixan UI components.",
+		"infoPrefix": "For more detailed information, visit the",
+		"infoLink": "Nuxt Color Mode documentation.",
+		"colorModeTitle": "Color Mode",
+		"colorModeDescription": "Install Nuxt Color Mode when you want system, light and dark theme preferences to be handled by a module.",
+		"colorModeConfigStart": "Use",
+		"colorModeConfigEnd": "so dark mode toggles the dark class expected by Tailwind utilities.",
+		"tailwindVariantTitle": "Tailwind Variant",
+		"tailwindDescriptionStart": "Map light and dark values to CSS variables, then expose them through Tailwind tokens such as",
+		"tailwindDescriptionEnd": "and text-foreground.",
+		"usageTitle": "Usage",
+		"system": "System",
+		"light": "Light",
+		"dark": "Dark"
+	},
+	"i18nPage": {
+		"metaTitle": "i18n - Alixan UI",
+		"title": "i18n",
+		"description": "Alixan UI uses the official Nuxt i18n module. The project keeps message keys typed, while locale switching and persistence are handled by the module.",
+		"infoPrefix": "For more detailed information, visit the",
+		"infoLink": "Nuxt i18n documentation.",
+		"installationTitle": "Installation",
+		"installationDescription": "Install the Nuxt i18n module, then register it in",
+		"setupDescriptionStart": "Use",
+		"setupDescriptionEnd": "to keep the default language without a prefix and prefix all other locales.",
+		"messagesTitle": "Messages",
+		"messagesDescriptionStart": "Keep locale JSON files in",
+		"messagesDescriptionEnd": "The file option maps each locale to its message file.",
+		"usageTitle": "Usage",
+		"pageMetaTitle": "Page Meta",
+		"pageMetaDescriptionStart": "Pass page-level SEO translation keys to",
+		"pageMetaDescriptionMiddle": ". The composable resolves them with",
+		"pageMetaDescriptionEnd": "internally.",
+		"translationHelperTitle": "Translation Helper",
+		"translationHelperDescriptionStart": "Use the global",
+		"translationHelperDescriptionEnd": "helper in templates when a value can be either a translation key or plain text.",
+		"seoConnection": "usePageMeta uses $tn internally for SEO title and description, so i18n and SEO should be installed together when you use localized metadata.",
+		"translationTypesDescription": "Add the declaration file so TypeScript and Vue templates know the global $tn helper."
+	},
+	"apiReferenceDescriptions": {
+		"accordionItems": "Accordion sections rendered by the component.",
+		"accordionModelValue": "Controlled open item value. Use an array with multiple mode.",
+		"accordionMultiple": "Allows more than one item to stay open.",
+		"accordionCollapsible": "Allows the active single item to be closed.",
+		"dialogTitle": "Dialog title.",
+		"dialogDescription": "Short explanation shown under the title.",
+		"primaryActionLabel": "Primary action label.",
+		"primaryActionColor": "Primary action button color.",
+		"optionalMediaComponent": "Optional media component, for example Lottie, img, or an icon component.",
+		"mediaProps": "Props passed to the media component.",
+		"closeCallback": "Callback called before closing the dialog.",
+		"fallbackSlotText": "Fallback text when the default slot is not used.",
+		"buttonSurfaceStyle": "Surface style. Filled is used by default. Combine it with color for intent.",
+		"semanticIntent": "Semantic intent. Works with every variant.",
+		"heightPaddingText": "Controls height, padding and text size.",
+		"buttonNuxtLink": "Renders the button as a NuxtLink when provided.",
+		"buttonNativeAnchor": "Renders the button as a native anchor when provided.",
+		"anchorTarget": "Anchor target. Works with href links.",
+		"selectedStateModel": "Selected state used by v-model.",
+		"checkboxMode": "Single stores a boolean or one value. Multiple stores an array.",
+		"checkboxValue": "Value used for single value mode or multiple array mode.",
+		"checkboxLabel": "Optional label rendered next to the circular control.",
+		"checkboxDisabled": "Disables checkbox interaction.",
+		"chipType": "Adds the select chevron or remove icon.",
+		"chipSize": "Controls height, radius, padding and icon size.",
+		"chipSelected": "Switches the chip into the active primary state.",
+		"disabledOpacity": "Disables interaction and reduces opacity.",
+		"cancelActionLabel": "Cancel action label.",
+		"submitActionLabel": "Submit action label.",
+		"submitActionColor": "Submit action button color.",
+		"cancelCallback": "Callback called before closing from cancel.",
+		"submitCallback": "Callback called before closing from submit.",
+		"dialogHostComponent": "Vue component rendered inside DialogHost.",
+		"dialogHeaderTitle": "Passed to DialogHeader.",
+		"dialogMaxWidth": "Passed to Dialog as max-width.",
+		"dialogMaxHeight": "Passed to Dialog as max-height.",
+		"dynamicComponentData": "Data passed to the dynamic component.",
+		"drawerHostComponent": "Vue component rendered inside DrawerHost.",
+		"drawerHeaderTitle": "Passed to DrawerHeader.",
+		"drawerMaxWidth": "Drawer max-width.",
+		"drawerMaxHeight": "Drawer max-height for top and bottom positions.",
+		"drawerPlacement": "Drawer placement.",
+		"dropdownOpen": "Controlled open state via v-model:open.",
+		"popoverWidth": "Popover width.",
+		"popoverMaxHeight": "Popover max-height.",
+		"popoverPlacement": "Preferred popover placement. It flips automatically when there is not enough space.",
+		"emptyTitle": "Main empty state heading.",
+		"optionalSupportingText": "Optional supporting text.",
+		"optionalActionLabel": "Optional action button label.",
+		"optionalActionColor": "Optional action button color.",
+		"emptyMediaSlot": "Optional media rendered above the title.",
+		"loaderShow": "Opens the full-screen loader.",
+		"loaderHide": "Closes the loader.",
+		"loaderLabel": "Optional label displayed below the spinner.",
+		"accessibleLabel": "Required accessible label for screen readers.",
+		"iconButtonVariant": "Visual style of the icon button. Ghost is used by default.",
+		"colorIntent": "Color intent.",
+		"iconButtonSize": "Controls square size and icon size.",
+		"iconButtonNuxtLink": "Renders the icon button as a NuxtLink when provided.",
+		"iconButtonNativeAnchor": "Renders the icon button as a native anchor when provided.",
+		"inputModelValue": "Input value used by v-model.",
+		"inputId": "Custom id. Generated automatically when omitted.",
+		"floatingLabel": "Floating label text.",
+		"inputType": "Native input type.",
+		"inputPlaceholder": "Native placeholder text.",
+		"inputAutocomplete": "Controls the native browser autocomplete behavior.",
+		"inputAutofocus": "Focuses the input on mount.",
+		"inputRequired": "Shows a localized required message after blur when the value is empty.",
+		"inputMin": "Minimum text length validation shown after blur.",
+		"inputMax": "Maximum text length validation shown after blur.",
+		"inputPattern": "Native pattern string. The value must match the whole pattern after blur.",
+		"patternMessage": "Validation message shown when pattern does not match.",
+		"inputMask": "Digit mask where # is a digit. When mask is set, the floating label is hidden.",
+		"inputHint": "Helper text shown below the input.",
+		"inputError": "Error message. Also switches the input into destructive state.",
+		"inputDisabled": "Disables input interaction.",
+		"inputReadonly": "Makes the input readable but not editable.",
+		"inputClearButton": "Shows a clear button when the input has a value and no trailing slot.",
+		"otpModelValue": "OTP value used by v-model.",
+		"otpLength": "Number of OTP digits. Values are clamped between 4 and 8.",
+		"otpChange": "Emitted on every OTP value change.",
+		"otpSubmit": "Emitted when the OTP value reaches the selected length.",
+		"searchModelValue": "Search input value used by v-model.",
+		"searchPlaceholder": "Placeholder text inside the search field.",
+		"searchDebounce": "Delay in milliseconds before emitting the search event.",
+		"searchAutofocus": "Focuses the input when it is mounted.",
+		"searchReadonly": "Makes the field readable but not editable.",
+		"searchEvent": "Emitted with a trimmed value after debounce.",
+		"clearEvent": "Emitted when the clear button is clicked.",
+		"selectModelValue": "Selected option value used by v-model.",
+		"selectPlaceholder": "Text shown when no option is selected.",
+		"selectOptions": "Options list with label, value and optional disabled.",
+		"selectDisabled": "Disables select interaction.",
+		"selectTeleport": "Teleports menu to body. Keep true for nested popovers; set false only when the menu must stay inside the local layout.",
+		"statusTone": "Semantic status tone.",
+		"statusSize": "Controls height, padding and gap.",
+		"switchLabel": "Optional label rendered next to the switch.",
+		"switchDisabled": "Disables switch interaction.",
+		"tableColumns": "Column definitions with labels and explicit value mappers.",
+		"tableRows": "Data rows rendered by the table.",
+		"tableColumnValue": "Arrow function that returns the cell value from a row object.",
+		"tableMinWidth": "Optional Tailwind class for horizontal overflow control.",
+		"tabsModelValue": "Selected tab index used by v-model.",
+		"tabsList": "List of tab labels.",
+		"tabsDesign": "Visual style of the tabs.",
+		"tabsFull": "Makes the tabs container and every tab use full available width.",
+		"linkHref": "Destination URL for the link.",
+		"linkTarget": "Anchor target. When set to _blank, rel is set to noopener noreferrer.",
+		"toastMessage": "Toast text.",
+		"toastTone": "Semantic toast tone.",
+		"toastDuration": "Auto-close timeout in milliseconds."
+	},
+	"toast": {
+		"close": "Close toast"
+	},
+	"Alixan UI - Nuxt UI Components": "Alixan UI - Nuxt UI Components",
+	"Modern, minimal and production-ready UI components for Nuxt 4, Vue 3 and TypeScript.": "Modern, minimal and production-ready UI components for Nuxt 4, Vue 3 and TypeScript."
 }

@@ -3,30 +3,30 @@ export const emptyProps = [
 		name: 'title',
 		type: 'string',
 		default: '-',
-		description: 'Main empty state heading.',
+		description: 'apiReferenceDescriptions.emptyTitle',
 	},
 	{
 		name: 'description',
 		type: 'string',
 		default: '-',
-		description: 'Optional supporting text.',
+		description: 'apiReferenceDescriptions.optionalSupportingText',
 	},
 	{
 		name: 'button',
 		type: 'string',
 		default: '-',
-		description: 'Optional action button label.',
+		description: 'apiReferenceDescriptions.optionalActionLabel',
 	},
 	{
 		name: 'buttonColor',
 		type: "'default' | 'primary' | 'secondary' | 'destructive'",
 		default: "'primary'",
-		description: 'Optional action button color.',
+		description: 'apiReferenceDescriptions.optionalActionColor',
 	},
 ];
 export const emptySlots = [
 	{
 		name: 'default',
-		description: 'Optional media rendered above the title.',
+		description: 'apiReferenceDescriptions.emptyMediaSlot',
 	},
 ];

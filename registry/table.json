@@ -1,4 +1,6 @@
 {
 	"name": "table",
-	"components": ["Table.vue"]
+	"components": ["Table.vue"],
+	"plugins": ["tn.ts"],
+	"types": ["tn.d.ts"]
 }

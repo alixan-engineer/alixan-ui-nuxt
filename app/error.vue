@@ -12,15 +12,15 @@ const handleError = () => clearError({ redirect: '/' });
 	<Empty
 		:title="
 			error.status === 404
-				? $t('errorPage.notFoundTitle')
-				: $t('errorPage.defaultTitle')
+				? $tn('errorPage.notFoundTitle')
+				: $tn('errorPage.defaultTitle')
 		"
 		:description="
 			error.status === 404
-				? $t('errorPage.notFoundDescription')
-				: $t('errorPage.defaultDescription')
+				? $tn('errorPage.notFoundDescription')
+				: $tn('errorPage.defaultDescription')
 		"
-		:button="$t('errorPage.goHome')"
+		:button="$tn('errorPage.goHome')"
 		@action="handleError"
 	>
 		<div

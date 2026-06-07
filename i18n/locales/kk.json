@@ -52,6 +52,15 @@
 			"title": "Компонентті қолдану",
 			"description": "Компонентті Vue шаблондарында тікелей қолданыңыз. Компоненттің өзі үшін пакеттен import қажет емес.",
 			"previewButton": "Өзгерістерді сақтау"
+		},
+		"addI18n": {
+			"title": "i18n қосу (ұсынылады)",
+			"description": "Alixan UI Nuxt i18n-мен жақсы жұмыс істейді, себебі құжаттама labels, кесте тақырыптары және page meta translation keys қолданады. Қолданбаңызға локализация әлі керек болмаса, бұл қадамды өткізіп жіберуге болады.",
+			"commandTitle": "Nuxt i18n орнату"
+		},
+		"translationHelper": {
+			"title": "Аударма helper қосу",
+			"description": "Nuxt i18n кейін глобалды $tn helper қосыңыз. Ол жол translation key ретінде бар-жоғын тексереді және болмаса бастапқы мәнді көрсетеді, сондықтан npm сияқты labels немесе кестедегі жай мәндер missing-key warnings жасамайды."
 		}
 	},
 	"homePage": {
@@ -131,13 +140,29 @@
 		"range": "Диапазон",
 		"host": "Host",
 		"openDialog": "Диалог ашу",
-		"dialogContent": "Диалог контенті"
+		"dialogContent": "Диалог контенті",
+		"email": "Email",
+		"password": "Құпия сөз",
+		"phone": "Телефон",
+		"username": "Username"
 	},
 	"componentDocs": {
-		"button": { "metaTitle": "Батырма - Alixan UI", "description": "Формалардағы, тулбарлардағы және навигациядағы әрекеттерге арналған батырманы көрсетеді." },
-		"iconButton": { "metaTitle": "Иконка батырмасы - Alixan UI", "description": "Міндетті accessible label бар тек иконкадан тұратын батырманы көрсетеді." },
-		"textLink": { "metaTitle": "Мәтін сілтемесі - Alixan UI", "description": "Құжаттама мәтініне, подсказкаларға және сыртқы сілтемелерге арналған inline link, button padding және background styles жоқ." },
-		"chip": { "metaTitle": "Чип - Alixan UI", "description": "Фильтрлерге, таңдауларға және өшірілетін metadata үшін ықшам interactive token." },
+		"button": {
+			"metaTitle": "Батырма - Alixan UI",
+			"description": "Формалардағы, тулбарлардағы және навигациядағы әрекеттерге арналған батырманы көрсетеді."
+		},
+		"iconButton": {
+			"metaTitle": "Иконка батырмасы - Alixan UI",
+			"description": "Міндетті accessible label бар тек иконкадан тұратын батырманы көрсетеді."
+		},
+		"textLink": {
+			"metaTitle": "Мәтін сілтемесі - Alixan UI",
+			"description": "Құжаттама мәтініне, подсказкаларға және сыртқы сілтемелерге арналған inline link, button padding және background styles жоқ."
+		},
+		"chip": {
+			"metaTitle": "Чип - Alixan UI",
+			"description": "Фильтрлерге, таңдауларға және өшірілетін metadata үшін ықшам interactive token."
+		},
 		"accordion": {
 			"metaTitle": "Аккордеон - Alixan UI",
 			"description": "Топталған контентке арналған вертикалды disclosure компоненті, shadcn-vue шабытында жасалған және Nuxt auto-import үшін бейімделген.",
@@ -153,29 +178,88 @@
 		"tabs": {
 			"metaTitle": "Табтар - Alixan UI",
 			"description": "Көріністер арасында ауысуға арналған ықшам segmented навигация компоненті.",
-			"demo": { "account": "Аккаунт", "password": "Құпия сөз" }
+			"demo": {
+				"account": "Аккаунт",
+				"password": "Құпия сөз"
+			}
 		},
-		"switch": { "metaTitle": "Ауыстырғыш - Alixan UI", "description": "Boolean баптауларға арналған ықшам toggle control." },
-		"status": { "metaTitle": "Статус - Alixan UI", "description": "Success, warning, info және error күйлеріне арналған жұмсақ Cupertino-inspired status pill." },
-		"empty": { "metaTitle": "Бос күй - Alixan UI", "description": "Дерек жоқ кезде, іздеу нәтижелері бос болғанда және error pages үшін центрленген empty state." },
-		"divider": { "metaTitle": "Бөлгіш - Alixan UI", "description": "Контент топтарын бөлуге арналған қарапайым horizontal rule." },
-		"table": { "metaTitle": "Кесте - Alixan UI", "description": "Бапталатын бағандары және жол мәндерін анық маппингтеу мүмкіндігі бар қайта қолданылатын деректер кестесі." },
-		"input": { "metaTitle": "Енгізу өрісі - Alixan UI", "description": "Floating label, таза күйлер және leading немесе trailing иконкаларға арналған slots бар form input көрсетеді." },
-		"otp": { "metaTitle": "OTP өрісі - Alixan UI", "description": "shadcn-vue шабытындағы, Nuxt auto-import және direct output events үшін жеңілдетілген шағын one-time password input." },
-		"checkbox": { "metaTitle": "Чекбокс - Alixan UI", "description": "Boolean, бір мән және бірнеше мән таңдауға арналған iOS стиліндегі дөңгелек чекбокс." },
-		"select": { "metaTitle": "Таңдау - Alixan UI", "description": "Floating label, teleported menu және click-catcher overlay бар select." },
-		"search": { "metaTitle": "Іздеу - Alixan UI", "description": "Built-in debounce, search icon және clear button бар фокусталған іздеу өрісі." },
-		"autocomplete": { "metaTitle": "Автотолтыру - Alixan UI", "description": "Teleported list және қауіпсіз outside click catcher бар searchable select input." },
-		"calendar": { "metaTitle": "Күнтізбе - Alixan UI", "description": "Ай мен жыл таңдауы, стрелкалар және жылдам range кезеңдері бар readonly input-style calendar." },
-		"dialog": { "metaTitle": "Диалог - Alixan UI", "description": "Фокусталған шешімдер мен формаларға арналған teleported modal surface." },
-		"alertDialog": { "metaTitle": "Хабарлама диалогы - Alixan UI", "description": "Анық blocking feedback үшін ықшам Cupertino-style message dialog." },
-		"confirmDialog": { "metaTitle": "Растау диалогы - Alixan UI", "description": "Cancel және submit actions бар фокусталған confirmation dialog." },
-		"drawer": { "metaTitle": "Панель - Alixan UI", "description": "Екінші сценарийлер мен mobile-friendly details үшін teleported panel." },
-		"dropdownMenu": { "metaTitle": "Ашылмалы мәзір - Alixan UI", "description": "Slot trigger және толық custom content бар teleported popover surface." },
-		"globalLoader": { "metaTitle": "Глобалды жүктеу - Alixan UI", "description": "Blocking async flows үшін full-screen loading overlay." },
-		"toast": { "metaTitle": "Хабарлама - Alixan UI", "description": "Success, warning, error және info хабарламаларына арналған жеңіл notification stack." }
-	}
-,
+		"switch": {
+			"metaTitle": "Ауыстырғыш - Alixan UI",
+			"description": "Boolean баптауларға арналған ықшам toggle control."
+		},
+		"status": {
+			"metaTitle": "Статус - Alixan UI",
+			"description": "Success, warning, info және error күйлеріне арналған жұмсақ Cupertino-inspired status pill."
+		},
+		"empty": {
+			"metaTitle": "Бос күй - Alixan UI",
+			"description": "Дерек жоқ кезде, іздеу нәтижелері бос болғанда және error pages үшін центрленген empty state."
+		},
+		"divider": {
+			"metaTitle": "Бөлгіш - Alixan UI",
+			"description": "Контент топтарын бөлуге арналған қарапайым horizontal rule."
+		},
+		"table": {
+			"metaTitle": "Кесте - Alixan UI",
+			"description": "Бапталатын бағандары және жол мәндерін анық маппингтеу мүмкіндігі бар қайта қолданылатын деректер кестесі."
+		},
+		"input": {
+			"metaTitle": "Енгізу өрісі - Alixan UI",
+			"description": "Floating label, таза күйлер және leading немесе trailing иконкаларға арналған slots бар form input көрсетеді."
+		},
+		"otp": {
+			"metaTitle": "OTP өрісі - Alixan UI",
+			"description": "shadcn-vue шабытындағы, Nuxt auto-import және direct output events үшін жеңілдетілген шағын one-time password input."
+		},
+		"checkbox": {
+			"metaTitle": "Чекбокс - Alixan UI",
+			"description": "Boolean, бір мән және бірнеше мән таңдауға арналған iOS стиліндегі дөңгелек чекбокс."
+		},
+		"select": {
+			"metaTitle": "Таңдау - Alixan UI",
+			"description": "Floating label, teleported menu және click-catcher overlay бар select."
+		},
+		"search": {
+			"metaTitle": "Іздеу - Alixan UI",
+			"description": "Built-in debounce, search icon және clear button бар фокусталған іздеу өрісі."
+		},
+		"autocomplete": {
+			"metaTitle": "Автотолтыру - Alixan UI",
+			"description": "Teleported list және қауіпсіз outside click catcher бар searchable select input."
+		},
+		"calendar": {
+			"metaTitle": "Күнтізбе - Alixan UI",
+			"description": "Ай мен жыл таңдауы, стрелкалар және жылдам range кезеңдері бар readonly input-style calendar."
+		},
+		"dialog": {
+			"metaTitle": "Диалог - Alixan UI",
+			"description": "Фокусталған шешімдер мен формаларға арналған teleported modal surface."
+		},
+		"alertDialog": {
+			"metaTitle": "Хабарлама диалогы - Alixan UI",
+			"description": "Анық blocking feedback үшін ықшам Cupertino-style message dialog."
+		},
+		"confirmDialog": {
+			"metaTitle": "Растау диалогы - Alixan UI",
+			"description": "Cancel және submit actions бар фокусталған confirmation dialog."
+		},
+		"drawer": {
+			"metaTitle": "Панель - Alixan UI",
+			"description": "Екінші сценарийлер мен mobile-friendly details үшін teleported panel."
+		},
+		"dropdownMenu": {
+			"metaTitle": "Ашылмалы мәзір - Alixan UI",
+			"description": "Slot trigger және толық custom content бар teleported popover surface."
+		},
+		"globalLoader": {
+			"metaTitle": "Глобалды жүктеу - Alixan UI",
+			"description": "Blocking async flows үшін full-screen loading overlay."
+		},
+		"toast": {
+			"metaTitle": "Хабарлама - Alixan UI",
+			"description": "Success, warning, error және info хабарламаларына арналған жеңіл notification stack."
+		}
+	},
 	"stylesPage": {
 		"metaTitle": "Стильдер - Alixan UI",
 		"metaDescription": "Alixan UI құжаттамасында қолданылатын ортақ Tailwind токендері мен утилиталары.",
@@ -213,7 +297,8 @@
 			"title": "Орнату",
 			"descriptionStart": "Бұл команда көшіреді",
 			"sitemapDescription": "nuxt.config.ts ішіне sitemap баптауларын қоспас бұрын Nuxt Sitemap орнатыңыз.",
-			"seoCommandDescription": "Көшіргеннен кейін site.ts ішіндегі мысал мәндерін өз доменіңізге, жоба атауына, әдепкі тақырыпқа, сипаттамаға және OG суретіне ауыстырыңыз."
+			"seoCommandDescription": "Көшіргеннен кейін site.ts ішіндегі мысал мәндерін өз доменіңізге, жоба атауына, әдепкі тақырыпқа, сипаттамаға және OG суретіне ауыстырыңыз.",
+			"tnPluginDescription": "seo registry item app/plugins/tn.ts және app/types/tn.d.ts файлдарын да көшіреді, себебі usePageMeta title және description мәндерін $tn арқылы шешеді."
 		},
 		"siteConfig": {
 			"title": "Сайт конфигі",
@@ -227,7 +312,8 @@
 			"description": "title, description, Open Graph және Twitter тегтерін бір жерге жинайды. Беттер тек әдепкіден өзгеше мәндерді береді.",
 			"usagePrefix": "Әр бетте",
 			"usageMiddle": "шақырыңыз. Егер өріс берілмесе, әдепкі мән",
-			"usageSuffix": "ішінен алынады."
+			"usageSuffix": "ішінен алынады.",
+			"translationHelper": "Ол ішкі түрде $tn қолданады, сондықтан бет мәндері translation keys бола алады, ал siteConfig defaults жай мәтін болып қала алады."
 		},
 		"initialHead": {
 			"title": "Бастапқы head",
@@ -280,5 +366,213 @@
 	"validation": {
 		"required": "Өрісті толтырыңыз",
 		"usernamePattern": "Тек әріптер мен сандар"
-	}
+	},
+	"pageToc": {
+		"title": "Бұл бетте"
+	},
+	"lottiePage": {
+		"metaTitle": "Lottie - Alixan UI",
+		"title": "Lottie",
+		"description": "Lottie анимацияларын empty states, қателер және басқа feedback surfaces ішінде жеңіл media ретінде қолданыңыз.",
+		"infoPrefix": "Толығырақ ақпарат үшін өтіңіз:",
+		"infoLink": "Nuxt Lottie құжаттамасы.",
+		"installationTitle": "Орнату",
+		"installationDescription": "Nuxt Lottie модулін орнатыңыз. Команда модульді жобаға қосады және қажетті пакетті орнатады.",
+		"configurationTitle": "Конфигурация",
+		"configDescription": "Компонент атауын баптаңыз және анимацияларды сақтаңыз:",
+		"folderDescriptionStart": "name prop бергенде файл атауын",
+		"folderDescriptionEnd": "кеңейтімінсіз қолданыңыз.",
+		"usageTitle": "Қолдану",
+		"withEmptyTitle": "Empty арқылы",
+		"emptyTitle": "Бет табылмады",
+		"emptyDescription": "Сіз іздеген бет жоқ немесе басқа жерге ауыстырылған.",
+		"emptyButton": "Басты бетке"
+	},
+	"fontsPage": {
+		"metaTitle": "Қаріптер - Alixan UI",
+		"title": "Қаріптер",
+		"description": "Alixan UI құжаттама үшін Geist қолданады, бірақ компоненттер нақты қаріпті талап етпейді. Кез келген қаріпті орнатып, оны Tailwind tokens-пен байланыстыра аласыз.",
+		"installationTitle": "Орнату",
+		"installationDescription": "Қаріптерді Nuxt арқылы жүктегіңіз келсе, Nuxt Google Fonts модулін орнатыңыз.",
+		"configurationTitle": "Конфигурация",
+		"configurationDescriptionStart": "Модульді",
+		"configurationDescriptionEnd": "ішіне қосып, UI ішінде қолданатын family таңдаңыз.",
+		"tailwindTitle": "Tailwind",
+		"tailwindDescriptionStart": "Таңдалған қаріпті",
+		"tailwindDescriptionEnd": "мәніне байланыстырып, жүйе бойынша Tailwind font-sans token қолданыңыз."
+	},
+	"iconsPage": {
+		"metaTitle": "Иконкалар - Alixan UI",
+		"title": "Иконкалар",
+		"description": "Alixan UI мысалдары Lucide Icons қолданады, бірақ компоненттер қарапайым slots қабылдайды, сондықтан кез келген иконка кітапханасын қолдана аласыз.",
+		"installationTitle": "Орнату",
+		"installationDescription": "Құжаттама мысалдарындағыдай иконка пакетін қолданғыңыз келсе, Lucide Vue орнатыңыз.",
+		"lucideTitle": "Lucide Icons",
+		"searchButton": "Іздеу",
+		"notificationsLabel": "Хабарламалар",
+		"otherLibrariesTitle": "Басқа кітапханалар",
+		"otherLibrariesDescription": "Nuxt MDI, custom SVG components немесе кез келген басқа иконка көзін қолданыңыз. Егер ол slot ішінде render болса, жұмыс істейді.",
+		"mdiDescriptionPrefix": "Nuxt MDI Material Design Icons-ты Nuxt компоненттері ретінде береді. Қараңыз:",
+		"mdiInfoLink": "Nuxt MDI module құжаттамасы."
+	},
+	"themePage": {
+		"metaTitle": "Тақырып - Alixan UI",
+		"title": "Тақырып",
+		"description": "Nuxt Color Mode және Alixan UI компоненттері қолданатын CSS айнымалылары арқылы dark mode баптаңыз.",
+		"infoPrefix": "Толығырақ ақпарат үшін өтіңіз:",
+		"infoLink": "Nuxt Color Mode құжаттамасы.",
+		"colorModeTitle": "Color Mode",
+		"colorModeDescription": "System, light және dark theme preferences модуль арқылы басқарылсын десеңіз, Nuxt Color Mode орнатыңыз.",
+		"colorModeConfigStart": "Қолданыңыз",
+		"colorModeConfigEnd": "сонда dark mode Tailwind utilities күтетін dark класын ауыстырады.",
+		"tailwindVariantTitle": "Tailwind Variant",
+		"tailwindDescriptionStart": "Light және dark мәндерін CSS айнымалыларына байланыстырып, оларды Tailwind tokens арқылы шығарыңыз, мысалы",
+		"tailwindDescriptionEnd": "және text-foreground.",
+		"usageTitle": "Қолдану",
+		"system": "Жүйелік",
+		"light": "Жарық",
+		"dark": "Қараңғы"
+	},
+	"i18nPage": {
+		"metaTitle": "i18n - Alixan UI",
+		"title": "i18n",
+		"description": "Alixan UI ресми Nuxt i18n модулін қолданады. Жоба message keys типтелген күйде сақтайды, ал тілді ауыстыру мен persistence модуль арқылы орындалады.",
+		"infoPrefix": "Толығырақ ақпарат үшін өтіңіз:",
+		"infoLink": "Nuxt i18n құжаттамасы.",
+		"installationTitle": "Орнату",
+		"installationDescription": "Nuxt i18n модулін орнатып, оны тіркеңіз:",
+		"setupDescriptionStart": "Қолданыңыз",
+		"setupDescriptionEnd": "сонда әдепкі тіл prefix-сіз қалады, ал басқа locales prefix алады.",
+		"messagesTitle": "Messages",
+		"messagesDescriptionStart": "Locale JSON файлдарын сақтаңыз:",
+		"messagesDescriptionEnd": "file option әр locale-ды өз message file-ымен байланыстырады.",
+		"usageTitle": "Қолдану",
+		"pageMetaTitle": "Page Meta",
+		"pageMetaDescriptionStart": "Page-level SEO translation keys мәндерін",
+		"pageMetaDescriptionMiddle": " ішіне беріңіз. Composable оларды ішкі түрде",
+		"pageMetaDescriptionEnd": "арқылы шешеді.",
+		"translationHelperTitle": "Аударма helper",
+		"translationHelperDescriptionStart": "Template ішінде мән translation key немесе жай мәтін болуы мүмкін кезде глобалды",
+		"translationHelperDescriptionEnd": "helper қолданыңыз.",
+		"seoConnection": "usePageMeta SEO title және description үшін ішкі түрде $tn қолданады, сондықтан локализацияланған metadata қолданғанда i18n және SEO бірге орнатылғаны дұрыс.",
+		"translationTypesDescription": "TypeScript және Vue templates глобалды $tn helper білсін десеңіз, declaration file қосыңыз."
+	},
+	"apiReferenceDescriptions": {
+		"accordionItems": "Компонент көрсететін аккордеон бөлімдері.",
+		"accordionModelValue": "Ашық элементтің басқарылатын мәні. Multiple режимінде массив қолданыңыз.",
+		"accordionMultiple": "Бірнеше элементті ашық ұстауға мүмкіндік береді.",
+		"accordionCollapsible": "Белсенді жалғыз элементті жабуға мүмкіндік береді.",
+		"dialogTitle": "Диалог тақырыбы.",
+		"dialogDescription": "Тақырып астындағы қысқа түсіндірме.",
+		"primaryActionLabel": "Негізгі action батырмасының мәтіні.",
+		"primaryActionColor": "Негізгі action батырмасының түсі.",
+		"optionalMediaComponent": "Қосымша media компоненті, мысалы Lottie, img немесе иконка компоненті.",
+		"mediaProps": "Media компонентіне берілетін props.",
+		"closeCallback": "Диалог жабылар алдында шақырылатын callback.",
+		"fallbackSlotText": "Default slot қолданылмаса көрсетілетін қосалқы мәтін.",
+		"buttonSurfaceStyle": "Беткі стиль. Filled әдепкі бойынша қолданылады. Intent үшін color-мен бірге қолданыңыз.",
+		"semanticIntent": "Семантикалық intent. Әр variant-пен жұмыс істейді.",
+		"heightPaddingText": "Биіктікті, padding және мәтін өлшемін басқарады.",
+		"buttonNuxtLink": "Мән берілсе, батырманы NuxtLink ретінде көрсетеді.",
+		"buttonNativeAnchor": "Мән берілсе, батырманы нативті сілтеме ретінде көрсетеді.",
+		"anchorTarget": "Сілтеме target. href сілтемелерімен жұмыс істейді.",
+		"selectedStateModel": "v-model арқылы қолданылатын таңдалған күй.",
+		"checkboxMode": "Single boolean немесе бір мән сақтайды. Multiple массив сақтайды.",
+		"checkboxValue": "Single value режимі немесе multiple array режимі үшін мән.",
+		"checkboxLabel": "Дөңгелек control жанындағы қосымша label.",
+		"checkboxDisabled": "Checkbox-пен әрекеттесуді өшіреді.",
+		"chipType": "Select chevron немесе remove icon қосады.",
+		"chipSize": "Биіктікті, радиусты, padding және иконка өлшемін басқарады.",
+		"chipSelected": "Chip-ті белсенді primary күйіне ауыстырады.",
+		"disabledOpacity": "Әрекеттесуді өшіреді және opacity азайтады.",
+		"cancelActionLabel": "Бас тарту батырмасының мәтіні.",
+		"submitActionLabel": "Растау батырмасының мәтіні.",
+		"submitActionColor": "Растау батырмасының түсі.",
+		"cancelCallback": "Cancel арқылы жабылар алдында шақырылатын callback.",
+		"submitCallback": "Submit арқылы жабылар алдында шақырылатын callback.",
+		"dialogHostComponent": "DialogHost ішінде көрсетілетін Vue компоненті.",
+		"dialogHeaderTitle": "DialogHeader ішіне беріледі.",
+		"dialogMaxWidth": "Dialog ішіне max-width ретінде беріледі.",
+		"dialogMaxHeight": "Dialog ішіне max-height ретінде беріледі.",
+		"dynamicComponentData": "Динамикалық компонентке берілетін деректер.",
+		"drawerHostComponent": "DrawerHost ішінде көрсетілетін Vue компоненті.",
+		"drawerHeaderTitle": "DrawerHeader ішіне беріледі.",
+		"drawerMaxWidth": "Панельдің max-width мәні.",
+		"drawerMaxHeight": "Жоғары және төмен позициялар үшін панельдің max-height мәні.",
+		"drawerPlacement": "Панельдің орналасуы.",
+		"dropdownOpen": "v-model:open арқылы басқарылатын ашық күй.",
+		"popoverWidth": "Popover ені.",
+		"popoverMaxHeight": "Popover max-height мәні.",
+		"popoverPlacement": "Popover үшін қалаулы орналасу. Орын жетпесе, автоматты түрде ауысады.",
+		"emptyTitle": "Empty state негізгі тақырыбы.",
+		"optionalSupportingText": "Қосымша көмекші мәтін.",
+		"optionalActionLabel": "Қосымша action батырмасының мәтіні.",
+		"optionalActionColor": "Қосымша action батырмасының түсі.",
+		"emptyMediaSlot": "Тақырып үстінде көрсетілетін қосымша media.",
+		"loaderShow": "Full-screen loader ашады.",
+		"loaderHide": "Loader жабады.",
+		"loaderLabel": "Spinner астындағы қосымша label.",
+		"accessibleLabel": "Screen readers үшін міндетті accessible label.",
+		"iconButtonVariant": "Icon button визуалды стилі. Ghost әдепкі бойынша қолданылады.",
+		"colorIntent": "Түс intent.",
+		"iconButtonSize": "Квадрат өлшемін және иконка өлшемін басқарады.",
+		"iconButtonNuxtLink": "Мән берілсе, icon button-ды NuxtLink ретінде көрсетеді.",
+		"iconButtonNativeAnchor": "Мән берілсе, icon button-ды нативті сілтеме ретінде көрсетеді.",
+		"inputModelValue": "v-model арқылы қолданылатын input мәні.",
+		"inputId": "Custom id. Берілмесе автоматты түрде жасалады.",
+		"floatingLabel": "Floating label мәтіні.",
+		"inputType": "Нативті input type.",
+		"inputPlaceholder": "Нативті input placeholder.",
+		"inputAutocomplete": "Нативті browser autocomplete әрекетін басқарады.",
+		"inputAutofocus": "Mount кезінде input-қа focus береді.",
+		"inputRequired": "Мән бос болса, blur кейін локализацияланған required хабарламасын көрсетеді.",
+		"inputMin": "Blur кейін минималды мәтін ұзындығын тексеру.",
+		"inputMax": "Blur кейін максималды мәтін ұзындығын тексеру.",
+		"inputPattern": "Нативті pattern жолы. Blur кейін мән толық pattern-ге сәйкес болуы керек.",
+		"patternMessage": "Pattern сәйкес келмегенде көрсетілетін validation хабарламасы.",
+		"inputMask": "# цифрды білдіретін digit mask. Mask берілсе, floating label жасырылады.",
+		"inputHint": "Input астындағы көмекші мәтін.",
+		"inputError": "Қате хабарламасы. Сонымен қатар input-ты destructive state-ке ауыстырады.",
+		"inputDisabled": "Input-пен әрекеттесуді өшіреді.",
+		"inputReadonly": "Input-ты оқылатын, бірақ өзгертілмейтін етеді.",
+		"inputClearButton": "Input-та мән бар және trailing slot жоқ кезде тазарту батырмасын көрсетеді.",
+		"otpModelValue": "v-model арқылы қолданылатын OTP мәні.",
+		"otpLength": "OTP цифрларының саны. Мән 4 пен 8 аралығында шектеледі.",
+		"otpChange": "OTP мәні әр өзгерген сайын шығарылады.",
+		"otpSubmit": "OTP мәні таңдалған ұзындыққа жеткенде шығарылады.",
+		"searchModelValue": "v-model арқылы қолданылатын іздеу мәні.",
+		"searchPlaceholder": "Іздеу өрісінің ішіндегі placeholder.",
+		"searchDebounce": "Search event шығарылар алдындағы миллисекундтағы кідіріс.",
+		"searchAutofocus": "Mount кезінде input-қа focus береді.",
+		"searchReadonly": "Өрісті оқылатын, бірақ өзгертілмейтін етеді.",
+		"searchEvent": "Debounce кейін trimmed мәнмен шығарылады.",
+		"clearEvent": "Тазарту батырмасы басылғанда шығарылады.",
+		"selectModelValue": "v-model арқылы қолданылатын таңдалған option мәні.",
+		"selectPlaceholder": "Option таңдалмаған кезде көрсетілетін мәтін.",
+		"selectOptions": "Label, value және optional disabled бар options тізімі.",
+		"selectDisabled": "Select-пен әрекеттесуді өшіреді.",
+		"selectTeleport": "Menu-ды body ішіне teleport етеді. Nested popovers үшін true қалдырыңыз; menu local layout ішінде қалуы керек болса ғана false қойыңыз.",
+		"statusTone": "Статустың семантикалық тоны.",
+		"statusSize": "Биіктікті, padding және gap басқарады.",
+		"switchLabel": "Switch жанындағы қосымша label.",
+		"switchDisabled": "Switch-пен әрекеттесуді өшіреді.",
+		"tableColumns": "Labels және айқын value mappers бар баған сипаттамалары.",
+		"tableRows": "Кесте көрсететін деректер жолдары.",
+		"tableColumnValue": "Жол объектісінен ұяшық мәнін қайтаратын arrow function.",
+		"tableMinWidth": "Горизонталды overflow басқаруға арналған қосымша Tailwind class.",
+		"tabsModelValue": "v-model арқылы қолданылатын таңдалған tab индексі.",
+		"tabsList": "Tab labels тізімі.",
+		"tabsDesign": "Tabs визуалды стилі.",
+		"tabsFull": "Tabs контейнерін және әр tab-ты толық қолжетімді енді қолдануға мәжбүрлейді.",
+		"linkHref": "Сілтеменің destination URL-ы.",
+		"linkTarget": "Сілтеме target. _blank болса, rel noopener noreferrer болады.",
+		"toastMessage": "Toast мәтіні.",
+		"toastTone": "Toast семантикалық тоны.",
+		"toastDuration": "Миллисекундтағы auto-close timeout."
+	},
+	"toast": {
+		"close": "Хабарламаны жабу"
+	},
+	"Alixan UI - Nuxt UI Components": "Alixan UI - Nuxt UI компоненттері",
+	"Modern, minimal and production-ready UI components for Nuxt 4, Vue 3 and TypeScript.": "Nuxt 4, Vue 3 және TypeScript үшін заманауи, минимал және production-ready UI компоненттері."
 }

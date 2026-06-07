@@ -29,19 +29,19 @@ const currentTailwindCss = computed(() =>
 
 <template>
 	<header class="space-y-3">
-		<h1 class="text-4xl font-semibold">{{ $t('stylesPage.title') }}</h1>
+		<h1 class="text-4xl font-semibold">{{ $tn('stylesPage.title') }}</h1>
 		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
-			{{ $t('stylesPage.description') }}
+			{{ $tn('stylesPage.description') }}
 		</p>
 	</header>
 
 	<section id="tailwind-css" class="space-y-5">
 		<div class="space-y-2">
 			<h2 class="text-2xl font-semibold">
-				{{ $t('stylesPage.tailwind.title') }}
+				{{ $tn('stylesPage.tailwind.title') }}
 			</h2>
 			<p class="text-muted-foreground leading-7">
-				{{ $t('stylesPage.tailwind.description') }}
+				{{ $tn('stylesPage.tailwind.description') }}
 			</p>
 		</div>
 
@@ -51,8 +51,8 @@ const currentTailwindCss = computed(() =>
 				<div class="flex-1" />
 				<CopyButton
 					:text="currentTailwindCss"
-					:label="$t('stylesPage.tailwind.copyCode')"
-					:copied-label="$t('stylesPage.tailwind.copiedCode')"
+					:label="$tn('stylesPage.tailwind.copyCode')"
+					:copied-label="$tn('stylesPage.tailwind.copiedCode')"
 				/>
 			</div>
 			<pre
@@ -67,8 +67,8 @@ const currentTailwindCss = computed(() =>
 				>
 					{{
 						showTailwindCode
-							? $t('stylesPage.tailwind.hideCode')
-							: $t('stylesPage.tailwind.viewCode')
+							? $tn('stylesPage.tailwind.hideCode')
+							: $tn('stylesPage.tailwind.viewCode')
 					}}
 				</Button>
 			</div>
@@ -77,39 +77,39 @@ const currentTailwindCss = computed(() =>
 
 	<section id="text-size" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
-			{{ $t('stylesPage.textSize.title') }}
+			{{ $tn('stylesPage.textSize.title') }}
 		</h2>
 		<ExampleBlock :code="textSizeCode">
 			<div class="max-w-md text-center text-muted-foreground leading-7">
 				<code>text-md</code>
-				{{ $t('stylesPage.textSize.descriptionMiddle') }}
+				{{ $tn('stylesPage.textSize.descriptionMiddle') }}
 				<code>15px</code>
-				{{ $t('stylesPage.textSize.descriptionSuffix') }}
+				{{ $tn('stylesPage.textSize.descriptionSuffix') }}
 			</div>
 		</ExampleBlock>
 	</section>
 
 	<section id="island" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
-			{{ $t('stylesPage.island.title') }}
+			{{ $tn('stylesPage.island.title') }}
 		</h2>
 		<ExampleBlock :code="islandCode">
 			<div class="island w-full max-w-sm p-4 text-muted-foreground">
-				{{ $t('stylesPage.island.descriptionPrefix') }}
+				{{ $tn('stylesPage.island.descriptionPrefix') }}
 				<code>island</code>
-				{{ $t('stylesPage.island.descriptionSuffix') }}
+				{{ $tn('stylesPage.island.descriptionSuffix') }}
 			</div>
 		</ExampleBlock>
 	</section>
 
 	<section id="backdrop" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
-			{{ $t('stylesPage.backdrop.title') }}
+			{{ $tn('stylesPage.backdrop.title') }}
 		</h2>
 		<ExampleBlock :code="backdropCode">
 			<div class="max-w-md text-center text-muted-foreground leading-7">
 				<code>backdrop</code>
-				{{ $t('stylesPage.backdrop.description') }}
+				{{ $tn('stylesPage.backdrop.description') }}
 			</div>
 		</ExampleBlock>
 	</section>

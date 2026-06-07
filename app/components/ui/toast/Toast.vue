@@ -61,12 +61,12 @@ const iconClasses: Record<ToastType, string> = {
 		</div>
 
 		<p class="flex-1 text-base font-medium leading-6">
-			{{ toast.message }}
+			{{ $tn(toast.message) }}
 		</p>
 
 		<button
 			type="button"
-			aria-label="Close toast"
+			:aria-label="$tn('toast.close')"
 			class="flex size-9 shrink-0 items-center justify-center rounded-lg text-current hover:bg-black/10 focus-visible:bg-black/10 focus-visible:outline-none dark:hover:bg-white/15 dark:focus-visible:bg-white/15 [&_svg]:size-4"
 			@click="emit('close')"
 		>

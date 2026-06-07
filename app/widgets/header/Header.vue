@@ -15,7 +15,7 @@ const emit = defineEmits<{
 				variant="ghost"
 				color="default"
 				href="https://ui.alixan.kz/"
-				:label="$t('app.back')"
+				:label="$tn('app.back')"
 			>
 				<ArrowLeft />
 			</IconButton>
@@ -23,7 +23,7 @@ const emit = defineEmits<{
 				class="lg:hidden"
 				variant="ghost"
 				color="default"
-				:label="$t('app.menu')"
+				:label="$tn('app.menu')"
 				@click="emit('sidebarToggleChange')"
 			>
 				<Menu />
@@ -35,7 +35,7 @@ const emit = defineEmits<{
 				color="default"
 				href="https://github.com/alixan-engineer/alixan-ui-nuxt"
 				target="_blank"
-				:label="$t('app.github')"
+				:label="$tn('app.github')"
 			>
 				<img :src="githubIcon" alt="" class="size-6 dark:invert" />
 			</IconButton>

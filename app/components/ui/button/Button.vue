@@ -106,7 +106,7 @@ const buttonClass = computed(() =>
 
 		<span v-if="hasDefaultSlot || label" class="truncate">
 			<slot>
-				{{ label }}
+				{{ $tn(label) }}
 			</slot>
 		</span>
 

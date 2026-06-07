@@ -19,22 +19,22 @@ const disabledChecked = ref<boolean>(true);
 
 <template>
 	<header class="space-y-3">
-		<h1 class="text-4xl font-semibold">{{ $t('component.switch') }}</h1>
+		<h1 class="text-4xl font-semibold">{{ $tn('component.switch') }}</h1>
 		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
-			{{ $t('componentDocs.switch.description') }}
+			{{ $tn('componentDocs.switch.description') }}
 		</p>
 	</header>
 
 	<section id="installation" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
-			{{ $t('docsSections.installation') }}
+			{{ $tn('docsSections.installation') }}
 		</h2>
 		<InstallCommandBlock component="switch" />
 	</section>
 
 	<section id="usage" class="space-y-5">
 		<div class="space-y-2">
-			<h2 class="text-2xl font-semibold">{{ $t('docsSections.usage') }}</h2>
+			<h2 class="text-2xl font-semibold">{{ $tn('docsSections.usage') }}</h2>
 			<p class="text-muted-foreground leading-7">
 				Use <code>v-model</code> to bind the boolean state.
 			</p>
@@ -49,7 +49,7 @@ const disabledChecked = ref<boolean>(true);
 
 	<section id="api-reference" class="space-y-4">
 		<h2 class="text-2xl font-semibold">
-			{{ $t('docsSections.apiReference') }}
+			{{ $tn('docsSections.apiReference') }}
 		</h2>
 		<Table :columns="propsTableColumns" :rows="switchProps" />
 	</section>

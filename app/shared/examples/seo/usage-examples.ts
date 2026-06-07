@@ -35,9 +35,10 @@ interface PageMetaOptions {
 }
 
 export const usePageMeta = (payload?: PageMetaOptions): void => {
+  const { $tn } = useNuxtApp()
   const route = useRoute()
-  const metaTitle = payload?.title || siteConfig.title
-  const metaDescription = payload?.description || siteConfig.description
+  const metaTitle = $tn(payload?.title || siteConfig.title)
+  const metaDescription = $tn(payload?.description || siteConfig.description)
   const metaImage = payload?.img || siteConfig.ogImage
 
   useSeoMeta({
@@ -58,8 +59,8 @@ export const usePageMeta = (payload?: PageMetaOptions): void => {
 export const pageUsageCode = `// pages/button.vue
 <script setup lang="ts">
 usePageMeta({
-  title: 'Button - Alixan UI',
-  description: 'Button component documentation for Nuxt.',
+  title: 'componentDocs.button.metaTitle',
+  description: 'componentDocs.button.description',
 })
 <\/script>`;
 export const faviconCode = `// app/config/site/favicon.ts

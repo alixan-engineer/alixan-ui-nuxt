@@ -3,6 +3,7 @@ export const appCode = `// app.vue
   <NuxtPage />
   <ToastHost /> <!-- Add ToastHost once near the root of your app. -->
 </template>`;
+
 export const exampleCode = `// example.vue
 <script setup lang="ts">
 const toast = useToast()

@@ -29,15 +29,15 @@ const usernameValue = ref<string>('');
 
 <template>
 	<header class="space-y-3">
-		<h1 class="text-4xl font-semibold">{{ $t('component.input') }}</h1>
+		<h1 class="text-4xl font-semibold">{{ $tn('component.input') }}</h1>
 		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
-			{{ $t('componentDocs.input.description') }}
+			{{ $tn('componentDocs.input.description') }}
 		</p>
 	</header>
 
 	<section id="installation" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
-			{{ $t('docsSections.installation') }}
+			{{ $tn('docsSections.installation') }}
 		</h2>
 		<InstallCommandBlock component="input" />
 		<p class="text-sm leading-7 text-muted-foreground">
@@ -48,7 +48,7 @@ const usernameValue = ref<string>('');
 
 	<section id="usage" class="space-y-5">
 		<div class="space-y-2">
-			<h2 class="text-2xl font-semibold">{{ $t('docsSections.usage') }}</h2>
+			<h2 class="text-2xl font-semibold">{{ $tn('docsSections.usage') }}</h2>
 			<p class="text-muted-foreground leading-7">
 				The label moves when the input is focused or has a value. Use
 				<code>v-model</code> for two-way binding.
@@ -62,7 +62,7 @@ const usernameValue = ref<string>('');
 	</section>
 
 	<section id="state" class="space-y-4">
-		<h2 class="text-2xl font-semibold">{{ $t('docsSections.state') }}</h2>
+		<h2 class="text-2xl font-semibold">{{ $tn('docsSections.state') }}</h2>
 		<ExampleBlock :code="examples.state">
 			<div class="grid w-full max-w-sm gap-3">
 				<Input v-model="stateValue" label="Readonly" readonly />
@@ -73,7 +73,7 @@ const usernameValue = ref<string>('');
 	</section>
 
 	<section id="validation" class="space-y-4">
-		<h2 class="text-2xl font-semibold">{{ $t('docsSections.validation') }}</h2>
+		<h2 class="text-2xl font-semibold">{{ $tn('docsSections.validation') }}</h2>
 		<ExampleBlock :code="examples.requiredExample">
 			<div class="w-full max-w-sm">
 				<Input
@@ -88,7 +88,7 @@ const usernameValue = ref<string>('');
 	</section>
 
 	<section id="length" class="space-y-4">
-		<h2 class="text-2xl font-semibold">{{ $t('docsSections.length') }}</h2>
+		<h2 class="text-2xl font-semibold">{{ $tn('docsSections.length') }}</h2>
 		<ExampleBlock :code="examples.lengthExample">
 			<div class="w-full max-w-sm">
 				<Input
@@ -103,7 +103,7 @@ const usernameValue = ref<string>('');
 	</section>
 
 	<section id="with-icon" class="space-y-4">
-		<h2 class="text-2xl font-semibold">{{ $t('docsSections.withIcon') }}</h2>
+		<h2 class="text-2xl font-semibold">{{ $tn('docsSections.withIcon') }}</h2>
 		<ExampleBlock :code="examples.withIcon">
 			<div class="grid w-full max-w-sm gap-3">
 				<EmailInput v-model="iconValue">
@@ -139,7 +139,7 @@ const usernameValue = ref<string>('');
 
 	<section id="variants" class="space-y-5">
 		<div class="space-y-2">
-			<h2 class="text-2xl font-semibold">{{ $t('docsSections.variants') }}</h2>
+			<h2 class="text-2xl font-semibold">{{ $tn('docsSections.variants') }}</h2>
 			<p class="text-muted-foreground leading-7">
 				Install focused wrappers when you want a dedicated component for a
 				specific input pattern.
@@ -212,7 +212,7 @@ const usernameValue = ref<string>('');
 
 	<section id="api-reference" class="space-y-4">
 		<h2 class="text-2xl font-semibold">
-			{{ $t('docsSections.apiReference') }}
+			{{ $tn('docsSections.apiReference') }}
 		</h2>
 		<Table :columns="propsTableColumns" :rows="inputProps" />
 	</section>

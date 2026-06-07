@@ -78,6 +78,10 @@ const resolveRegistryFile = (type, file, name) => {
 			return `app/composables/${file}`;
 		case 'config':
 			return `app/config/${file}`;
+		case 'plugins':
+			return `app/plugins/${file}`;
+		case 'types':
+			return `app/types/${file}`;
 		case 'utils':
 			return `app/utils/${file}`;
 		default:
@@ -113,7 +117,14 @@ const addComponent = name => {
 		return;
 	}
 
-	for (const key of ['components', 'composables', 'config', 'utils']) {
+	for (const key of [
+		'components',
+		'composables',
+		'config',
+		'plugins',
+		'types',
+		'utils',
+	]) {
 		for (const file of entry[key] ?? []) {
 			const target = resolveRegistryFile(key, file, name);
 			copyFile(target);

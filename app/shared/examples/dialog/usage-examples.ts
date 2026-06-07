@@ -1,9 +1,9 @@
 export const hostCode = `// app.vue
-// Add DialogHost once near the root of your app.
 <template>
   <NuxtPage />
-  <DialogHost />
+  <DialogHost /> <!-- Add DialogHost once near the root of your app. -->
 </template>`;
+
 export const openCode = `// example.vue
 <script setup lang="ts">
 import ProjectDialog from '~/components/ProjectDialog.vue'

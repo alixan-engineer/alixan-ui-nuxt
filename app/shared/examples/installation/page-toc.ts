@@ -3,6 +3,11 @@ import type { IPageToc } from '~/interfaces/page-toc/page-toc.interface';
 export const installationPageToc: IPageToc[] = [
 	{ label: 'installationPage.createProject.title', href: '#create-project' },
 	{ label: 'installationPage.addTailwind.title', href: '#add-tailwind-css' },
+	{ label: 'installationPage.addI18n.title', href: '#add-i18n' },
+	{
+		label: 'installationPage.translationHelper.title',
+		href: '#translation-helper',
+	},
 	{
 		label: 'installationPage.installComponent.title',
 		href: '#install-component',

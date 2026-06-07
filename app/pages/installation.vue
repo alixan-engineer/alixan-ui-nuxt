@@ -6,6 +6,8 @@ import {
 	commands,
 	nuxtConfig,
 	rootIdConfig,
+	tnPluginCode,
+	tnTypesCode,
 	usageCode,
 } from '~/shared/examples/installation/usage-examples';
 import { accentColors } from '~/shared/theme/colors';
@@ -31,19 +33,19 @@ const currentTailwindCss = computed(() =>
 
 <template>
 	<header class="space-y-3">
-		<h1 class="text-4xl font-semibold">{{ $t('installationPage.title') }}</h1>
+		<h1 class="text-4xl font-semibold">{{ $tn('installationPage.title') }}</h1>
 		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
-			{{ $t('installationPage.description') }}
+			{{ $tn('installationPage.description') }}
 		</p>
 	</header>
 
 	<section id="create-project" class="space-y-5">
 		<div class="space-y-2">
 			<h2 class="text-2xl font-semibold">
-				{{ $t('installationPage.createProject.title') }}
+				{{ $tn('installationPage.createProject.title') }}
 			</h2>
 			<p class="text-muted-foreground leading-7">
-				{{ $t('installationPage.createProject.description') }}
+				{{ $tn('installationPage.createProject.description') }}
 			</p>
 		</div>
 
@@ -54,7 +56,7 @@ const currentTailwindCss = computed(() =>
 				<div class="flex-1" />
 				<CopyButton
 					:text="commands.createProject"
-					:label="$t('installationPage.copyCommand')"
+					:label="$tn('installationPage.copyCommand')"
 				/>
 			</div>
 			<pre class="p-4 text-md"><code>{{ commands.createProject }}</code></pre>
@@ -66,7 +68,7 @@ const currentTailwindCss = computed(() =>
 				<div class="flex-1" />
 				<CopyButton
 					:text="rootIdConfig"
-					:label="$t('installationPage.copyCode')"
+					:label="$tn('installationPage.copyCode')"
 				/>
 			</div>
 			<pre class="p-4 text-sm leading-7"><code>{{ rootIdConfig }}</code></pre>
@@ -76,10 +78,10 @@ const currentTailwindCss = computed(() =>
 	<section id="add-tailwind-css" class="space-y-5">
 		<div class="space-y-2">
 			<h2 class="text-2xl font-semibold">
-				{{ $t('installationPage.addTailwind.title') }}
+				{{ $tn('installationPage.addTailwind.title') }}
 			</h2>
 			<p class="text-muted-foreground leading-7">
-				{{ $t('installationPage.addTailwind.description') }}
+				{{ $tn('installationPage.addTailwind.description') }}
 			</p>
 		</div>
 
@@ -87,12 +89,12 @@ const currentTailwindCss = computed(() =>
 			<div class="px-4 py-3 flex items-center gap-3 border-b text-m">
 				<Terminal class="size-5 text-muted-foreground" />
 				<span class="font-medium">{{
-					$t('installationPage.addTailwind.commandTitle')
+					$tn('installationPage.addTailwind.commandTitle')
 				}}</span>
 				<div class="flex-1" />
 				<CopyButton
 					:text="commands.addTailwind"
-					:label="$t('installationPage.copyCommand')"
+					:label="$tn('installationPage.copyCommand')"
 				/>
 			</div>
 			<pre class="p-4 text-md"><code>{{ commands.addTailwind }}</code></pre>
@@ -104,7 +106,7 @@ const currentTailwindCss = computed(() =>
 				<div class="flex-1" />
 				<CopyButton
 					:text="currentTailwindCss"
-					:label="$t('installationPage.copyCode')"
+					:label="$tn('installationPage.copyCode')"
 				/>
 			</div>
 			<pre
@@ -119,8 +121,8 @@ const currentTailwindCss = computed(() =>
 				>
 					{{
 						showTailwindCode
-							? $t('installationPage.hideCode')
-							: $t('installationPage.viewCode')
+							? $tn('installationPage.hideCode')
+							: $tn('installationPage.viewCode')
 					}}
 				</Button>
 			</div>
@@ -129,9 +131,9 @@ const currentTailwindCss = computed(() =>
 		<div
 			class="rounded-2xl border bg-secondary/50 p-4 text-sm leading-7 text-muted-foreground"
 		>
-			{{ $t('installationPage.backdrop.prefix') }}
+			{{ $tn('installationPage.backdrop.prefix') }}
 			<span class="font-medium text-foreground">backdrop</span>
-			{{ $t('installationPage.backdrop.middle') }}
+			{{ $tn('installationPage.backdrop.middle') }}
 			<span class="font-medium text-foreground">
 				fixed inset-0 bg-black/30 dark:bg-black/80.
 			</span>
@@ -143,20 +145,81 @@ const currentTailwindCss = computed(() =>
 				<div class="flex-1" />
 				<CopyButton
 					:text="nuxtConfig"
-					:label="$t('installationPage.copyCode')"
+					:label="$tn('installationPage.copyCode')"
 				/>
 			</div>
 			<pre class="p-4 text-sm leading-7"><code>{{ nuxtConfig }}</code></pre>
 		</div>
 	</section>
 
+	<section id="add-i18n" class="space-y-5">
+		<div class="space-y-2">
+			<h2 class="text-2xl font-semibold">
+				{{ $tn('installationPage.addI18n.title') }}
+			</h2>
+			<p class="text-muted-foreground leading-7">
+				{{ $tn('installationPage.addI18n.description') }}
+			</p>
+		</div>
+
+		<div class="island">
+			<div class="px-4 py-3 flex items-center gap-3 border-b text-m">
+				<Terminal class="size-5 text-muted-foreground" />
+				<span class="font-medium">{{
+					$tn('installationPage.addI18n.commandTitle')
+				}}</span>
+				<div class="flex-1" />
+				<CopyButton
+					:text="commands.addI18n"
+					:label="$tn('installationPage.copyCommand')"
+				/>
+			</div>
+			<pre class="p-4 text-md"><code>{{ commands.addI18n }}</code></pre>
+		</div>
+	</section>
+
+	<section id="translation-helper" class="space-y-5">
+		<div class="space-y-2">
+			<h2 class="text-2xl font-semibold">
+				{{ $tn('installationPage.translationHelper.title') }}
+			</h2>
+			<p class="text-muted-foreground leading-7">
+				{{ $tn('installationPage.translationHelper.description') }}
+			</p>
+		</div>
+
+		<div class="island">
+			<div class="px-4 py-3 flex items-center gap-3 border-b text-m">
+				<span class="font-medium">app/plugins/tn.ts</span>
+				<div class="flex-1" />
+				<CopyButton
+					:text="tnPluginCode"
+					:label="$tn('installationPage.copyCode')"
+				/>
+			</div>
+			<pre class="p-4 text-sm leading-7"><code>{{ tnPluginCode }}</code></pre>
+		</div>
+
+		<div class="island">
+			<div class="px-4 py-3 flex items-center gap-3 border-b text-m">
+				<span class="font-medium">app/types/tn.d.ts</span>
+				<div class="flex-1" />
+				<CopyButton
+					:text="tnTypesCode"
+					:label="$tn('installationPage.copyCode')"
+				/>
+			</div>
+			<pre class="p-4 text-sm leading-7"><code>{{ tnTypesCode }}</code></pre>
+		</div>
+	</section>
+
 	<section id="install-component" class="space-y-5">
 		<div class="space-y-2">
 			<h2 class="text-2xl font-semibold">
-				{{ $t('installationPage.installComponent.title') }}
+				{{ $tn('installationPage.installComponent.title') }}
 			</h2>
 			<p class="text-muted-foreground leading-7">
-				{{ $t('installationPage.installComponent.description') }}
+				{{ $tn('installationPage.installComponent.description') }}
 			</p>
 		</div>
 
@@ -165,37 +228,37 @@ const currentTailwindCss = computed(() =>
 		<div
 			class="rounded-2xl border bg-secondary/50 p-4 text-sm leading-7 text-muted-foreground"
 		>
-			{{ $t('installationPage.installComponent.createdPrefix') }}
+			{{ $tn('installationPage.installComponent.createdPrefix') }}
 			<span class="font-medium text-foreground">
 				components/ui/button/Button.vue
 			</span>
 			,
 			<span class="font-medium text-foreground">utils/cn.ts</span>
-			{{ $t('installationPage.installComponent.createdSuffix') }}
+			{{ $tn('installationPage.installComponent.createdSuffix') }}
 		</div>
 	</section>
 
 	<section id="use-component" class="space-y-5">
 		<div class="space-y-2">
 			<h2 class="text-2xl font-semibold">
-				{{ $t('installationPage.useComponent.title') }}
+				{{ $tn('installationPage.useComponent.title') }}
 			</h2>
 			<p class="text-muted-foreground leading-7">
-				{{ $t('installationPage.useComponent.description') }}
+				{{ $tn('installationPage.useComponent.description') }}
 			</p>
 		</div>
 
 		<div class="island">
 			<div class="min-h-40 p-8 flex items-center justify-center">
 				<Button color="primary">
-					{{ $t('installationPage.useComponent.previewButton') }}
+					{{ $tn('installationPage.useComponent.previewButton') }}
 				</Button>
 			</div>
 			<div class="relative border-t">
 				<CopyButton
 					:text="usageCode"
 					class="absolute right-3 top-3"
-					:label="$t('installationPage.copyCode')"
+					:label="$tn('installationPage.copyCode')"
 				/>
 				<pre
 					class="p-6 pr-12 text-sm leading-7"

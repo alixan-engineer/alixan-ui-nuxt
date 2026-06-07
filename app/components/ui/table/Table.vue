@@ -1,13 +1,27 @@
 <script setup lang="ts">
+type TableRow = Record<string, unknown>;
+type TableCellValue = string | number | boolean | null | undefined;
+type TableValueGetter = (row: TableRow, i: number) => TableCellValue;
+
 interface Props {
 	columns: {
 		label: string;
-		getValue: (row: any, i: number) => any;
+		getValue?: TableValueGetter;
+		value?: TableValueGetter;
 	}[];
-	rows: any[];
+	rows: TableRow[];
 }
 
 defineProps<Props>();
+
+const getCellValue = (
+	column: Props['columns'][number],
+	row: TableRow,
+	rowIndex: number,
+): TableCellValue => {
+	const getter = column.getValue ?? column.value;
+	return getter?.(row, rowIndex) ?? '';
+};
 </script>
 
 <template>
@@ -20,7 +34,7 @@ defineProps<Props>();
 						:key="columnIndex"
 						class="px-4 py-3 font-medium"
 					>
-						{{ $t(column.label) }}
+						{{ $tn(column.label) }}
 					</th>
 				</tr>
 			</thead>
@@ -31,7 +45,7 @@ defineProps<Props>();
 						:key="columnIndex"
 						class="px-4 py-3"
 					>
-						{{ $t(column.getValue(row, rowIndex)) }}
+						{{ $tn(getCellValue(column, row, rowIndex)) }}
 					</td>
 				</tr>
 			</tbody>

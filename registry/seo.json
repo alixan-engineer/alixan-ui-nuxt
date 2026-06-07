@@ -4,5 +4,7 @@
 		"site/site.ts",
 		"site/favicon.ts"
 	],
-	"composables": ["usePageMeta.ts"]
+	"composables": ["usePageMeta.ts"],
+	"plugins": ["tn.ts"],
+	"types": ["tn.d.ts"]
 }

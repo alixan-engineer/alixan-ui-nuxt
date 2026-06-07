@@ -3,42 +3,42 @@ export const searchProps = [
 		name: 'modelValue',
 		type: 'string',
 		default: "''",
-		description: 'Search input value used by v-model.',
+		description: 'apiReferenceDescriptions.searchModelValue',
 	},
 	{
 		name: 'placeholder',
 		type: 'string',
 		default: "'Search'",
-		description: 'Placeholder text inside the search field.',
+		description: 'apiReferenceDescriptions.searchPlaceholder',
 	},
 	{
 		name: 'debounce',
 		type: 'number',
 		default: '300',
-		description: 'Delay in milliseconds before emitting the search event.',
+		description: 'apiReferenceDescriptions.searchDebounce',
 	},
 	{
 		name: 'autofocus',
 		type: 'boolean',
 		default: 'false',
-		description: 'Focuses the input when it is mounted.',
+		description: 'apiReferenceDescriptions.searchAutofocus',
 	},
 	{
 		name: 'readonly',
 		type: 'boolean',
 		default: 'false',
-		description: 'Makes the field readable but not editable.',
+		description: 'apiReferenceDescriptions.searchReadonly',
 	},
 ];
 export const searchEvents = [
 	{
 		name: 'search',
 		payload: 'string',
-		description: 'Emitted with a trimmed value after debounce.',
+		description: 'apiReferenceDescriptions.searchEvent',
 	},
 	{
 		name: 'clear',
 		payload: '-',
-		description: 'Emitted when the clear button is clicked.',
+		description: 'apiReferenceDescriptions.clearEvent',
 	},
 ];

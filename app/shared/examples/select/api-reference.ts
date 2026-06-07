@@ -3,37 +3,36 @@ export const selectProps = [
 		name: 'modelValue',
 		type: 'string | number | null',
 		default: 'null',
-		description: 'Selected option value used by v-model.',
+		description: 'apiReferenceDescriptions.selectModelValue',
 	},
 	{
 		name: 'label',
 		type: 'string',
 		default: '-',
-		description: 'Floating label text.',
+		description: 'apiReferenceDescriptions.floatingLabel',
 	},
 	{
 		name: 'placeholder',
 		type: 'string',
 		default: "'Select option'",
-		description: 'Text shown when no option is selected.',
+		description: 'apiReferenceDescriptions.selectPlaceholder',
 	},
 	{
 		name: 'options',
 		type: 'SelectOption[]',
 		default: '[]',
-		description: 'Options list with label, value and optional disabled.',
+		description: 'apiReferenceDescriptions.selectOptions',
 	},
 	{
 		name: 'disabled',
 		type: 'boolean',
 		default: 'false',
-		description: 'Disables select interaction.',
+		description: 'apiReferenceDescriptions.selectDisabled',
 	},
 	{
 		name: 'teleport',
 		type: 'boolean',
 		default: 'true',
-		description:
-			'Teleports menu to body. Keep true for nested popovers; set false only when the menu must stay inside the local layout.',
+		description: 'apiReferenceDescriptions.selectTeleport',
 	},
 ];
