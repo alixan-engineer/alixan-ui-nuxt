@@ -1,23 +1,25 @@
 <script setup lang="ts">
-import { dialogPageToc } from '~/shared/page-docs/dialog/page-toc';
-import DialogPreviewContent from '~/components/docs/dialog-preview-content/DialogPreviewContent.vue';
+import DialogPreviewContent from '~/widgets/dialog-preview-content/DialogPreviewContent.vue';
 import { dialogServiceApi } from '~/shared/page-docs/dialog/api-reference';
-import { hostCode, openCode, contentCode } from '~/shared/page-docs/dialog/usage-examples';
+import { dialogPageToc } from '~/shared/page-docs/dialog/page-toc';
+import {
+	contentCode,
+	hostCode,
+	openCode,
+} from '~/shared/page-docs/dialog/usage-examples';
 import { propsTableColumns } from '~/shared/page-docs/table-columns';
-const { t } = useI18n();
 
 usePageMeta({
-	title: t('componentDocs.dialog.metaTitle'),
-	description: t('componentDocs.dialog.description'),
+	title: 'componentDocs.dialog.metaTitle',
+	description: 'componentDocs.dialog.description',
 });
 
-const tocLinks = dialogPageToc(t);
-const apiColumns = propsTableColumns(t);
-
-usePageTocLinks(tocLinks);
-
+const { setToc } = usePageToc();
 const dialog = useDialog();
-const projectName = ref('Alixan UI');
+
+onMounted(() => setToc(dialogPageToc));
+
+const projectName = ref<string>('Alixan UI');
 
 const openDialog = (): void => {
 	dialog.open(DialogPreviewContent, {
@@ -91,9 +93,6 @@ const openDialog = (): void => {
 		<h2 class="text-2xl font-semibold">
 			{{ $t('docsSections.apiReference') }}
 		</h2>
-		<Table
-			:columns="apiColumns"
-			:rows="dialogServiceApi"
-		/>
+		<Table :columns="propsTableColumns" :rows="dialogServiceApi" />
 	</section>
 </template>

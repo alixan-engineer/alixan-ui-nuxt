@@ -1,11 +1,11 @@
-type Translate = (key: string) => string;
+import type { IPageTocLink } from '~/interfaces/page-toc/page-toc.interface';
 
-export const installationPageToc = (t: Translate) => [
-	{ label: t('installationPage.createProject.title'), href: '#create-project' },
-	{ label: t('installationPage.addTailwind.title'), href: '#add-tailwind-css' },
+export const installationPageToc: IPageTocLink[] = [
+	{ label: 'installationPage.createProject.title', href: '#create-project' },
+	{ label: 'installationPage.addTailwind.title', href: '#add-tailwind-css' },
 	{
-		label: t('installationPage.installComponent.title'),
+		label: 'installationPage.installComponent.title',
 		href: '#install-component',
 	},
-	{ label: t('installationPage.useComponent.title'), href: '#use-component' },
-] as const;
+	{ label: 'installationPage.useComponent.title', href: '#use-component' },
+];

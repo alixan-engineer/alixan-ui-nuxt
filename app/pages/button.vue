@@ -10,20 +10,16 @@ import { buttonPageToc } from '~/shared/page-docs/button/page-toc';
 import { buttonExamples } from '~/shared/page-docs/button/usage-examples';
 import { propsTableColumns } from '~/shared/page-docs/table-columns';
 
-const { t } = useI18n();
-
 usePageMeta({
-	title: t('componentDocs.button.metaTitle'),
-	description: t('componentDocs.button.description'),
+	title: 'componentDocs.button.metaTitle',
+	description: 'componentDocs.button.description',
 });
 
-const tocLinks = buttonPageToc(t);
-const apiColumns = propsTableColumns(t);
-
-usePageTocLinks(tocLinks);
-
+const { setToc } = usePageToc();
 const loader = useGlobalLoader();
 const dialog = useDialog();
+
+onMounted(() => setToc(buttonPageToc));
 
 const showGlobalLoader = (): void => {
 	loader.show({ label: 'Saving changes...' });
@@ -185,9 +181,6 @@ const openDisableAlert = (): void => {
 		<h2 class="text-2xl font-semibold">
 			{{ $t('docsSections.apiReference') }}
 		</h2>
-		<Table
-			:columns="apiColumns"
-			:rows="buttonApiRows"
-		/>
+		<Table :columns="propsTableColumns" :rows="buttonApiRows" />
 	</section>
 </template>

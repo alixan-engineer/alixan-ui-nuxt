@@ -29,7 +29,10 @@ export default defineNuxtConfig({
 			include: ['@vue/devtools-core', '@vue/devtools-kit', '@lucide/vue'],
 		},
 	},
-	components: [{ path: '~/components', pathPrefix: false }],
+	components: [
+		{ path: '~/components', pathPrefix: false },
+		{ path: '~/widgets', pathPrefix: false },
+	],
 	modules: [
 		'@nuxtjs/sitemap',
 		['@nuxtjs/google-fonts', { families: { Geist: true } }],

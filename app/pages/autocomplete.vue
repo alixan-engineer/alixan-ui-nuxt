@@ -1,25 +1,22 @@
 <script setup lang="ts">
 import { autocompletePageToc } from '~/shared/page-docs/autocomplete/page-toc';
 import { examples } from '~/shared/page-docs/autocomplete/usage-examples';
-const { t } = useI18n();
 
 usePageMeta({
-	title: t('componentDocs.autocomplete.metaTitle'),
-	description: t('componentDocs.autocomplete.description'),
+	title: 'componentDocs.autocomplete.metaTitle',
+	description: 'componentDocs.autocomplete.description',
 });
 
-const tocLinks = autocompletePageToc(t);
+const { setToc } = usePageToc();
 
-usePageTocLinks(tocLinks);
+onMounted(() => setToc(autocompletePageToc));
 
 const city = ref<string | number | null>(null);
 const requiredCity = ref<string | number | null>(null);
 const cities = ref<Array<string | number>>([]);
-
 const requiredCityError = computed(() =>
 	!requiredCity.value ? 'City is required' : '',
 );
-
 const options = [
 	{ label: 'Almaty', value: 'almaty' },
 	{ label: 'Astana', value: 'astana' },
@@ -38,7 +35,9 @@ const options = [
 	</header>
 
 	<section id="installation" class="space-y-5">
-		<h2 class="text-2xl font-semibold">{{ $t('docsSections.installation') }}</h2>
+		<h2 class="text-2xl font-semibold">
+			{{ $t('docsSections.installation') }}
+		</h2>
 		<InstallCommandBlock component="autocomplete" />
 	</section>
 

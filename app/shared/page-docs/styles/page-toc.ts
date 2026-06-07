@@ -1,8 +1,8 @@
-type Translate = (key: string) => string;
+import type { IPageTocLink } from '~/interfaces/page-toc/page-toc.interface';
 
-export const stylesPageToc = (t: Translate) => [
-	{ label: t('stylesPage.tailwind.title'), href: '#tailwind-css' },
-	{ label: t('stylesPage.textSize.title'), href: '#text-size' },
-	{ label: t('stylesPage.island.title'), href: '#island' },
-	{ label: t('stylesPage.backdrop.title'), href: '#backdrop' },
-] as const;
+export const stylesPageToc: IPageTocLink[] = [
+	{ label: 'stylesPage.tailwind.title', href: '#tailwind-css' },
+	{ label: 'stylesPage.textSize.title', href: '#text-size' },
+	{ label: 'stylesPage.island.title', href: '#island' },
+	{ label: 'stylesPage.backdrop.title', href: '#backdrop' },
+];

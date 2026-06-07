@@ -1,25 +1,28 @@
 <script setup lang="ts">
+import {
+	searchEvents,
+	searchProps,
+} from '~/shared/page-docs/search/api-reference';
 import { searchPageToc } from '~/shared/page-docs/search/page-toc';
-import { searchProps, searchEvents } from '~/shared/page-docs/search/api-reference';
 import { examples } from '~/shared/page-docs/search/usage-examples';
-import { propsTableColumns, eventPayloadTableColumns } from '~/shared/page-docs/table-columns';
-const { t } = useI18n();
+import {
+	eventPayloadTableColumns,
+	propsTableColumns,
+} from '~/shared/page-docs/table-columns';
 
 usePageMeta({
-	title: t('componentDocs.search.metaTitle'),
-	description: t('componentDocs.search.description'),
+	title: 'componentDocs.search.metaTitle',
+	description: 'componentDocs.search.description',
 });
 
-const tocLinks = searchPageToc(t);
-const apiColumns = propsTableColumns(t);
-const eventPayloadColumns = eventPayloadTableColumns(t);
+const { setToc } = usePageToc();
 
-usePageTocLinks(tocLinks);
+onMounted(() => setToc(searchPageToc));
 
-const searchValue = ref('');
-const debouncedValue = ref('');
-const fastValue = ref('');
-const fastDebouncedValue = ref('');
+const searchValue = ref<string>('');
+const debouncedValue = ref<string>('');
+const fastValue = ref<string>('');
+const fastDebouncedValue = ref<string>('');
 </script>
 
 <template>
@@ -95,17 +98,11 @@ const fastDebouncedValue = ref('');
 			</h2>
 			<h3 class="text-xl font-semibold">Props</h3>
 		</div>
-		<Table
-			:columns="apiColumns"
-			:rows="searchProps"
-		/>
+		<Table :columns="propsTableColumns" :rows="searchProps" />
 
 		<div class="space-y-2">
 			<h3 class="text-xl font-semibold">Events</h3>
-			<Table
-				:columns="eventPayloadColumns"
-				:rows="searchEvents"
-			/>
+			<Table :columns="eventPayloadTableColumns" :rows="searchEvents" />
 		</div>
 	</section>
 </template>

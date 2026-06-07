@@ -1,28 +1,25 @@
 <script setup lang="ts">
-import { globalLoaderPageToc } from '~/shared/page-docs/global-loader/page-toc';
 import { loaderApi } from '~/shared/page-docs/global-loader/api-reference';
-import { appCode, usageCode } from '~/shared/page-docs/global-loader/usage-examples';
+import { globalLoaderPageToc } from '~/shared/page-docs/global-loader/page-toc';
+import {
+	appCode,
+	usageCode,
+} from '~/shared/page-docs/global-loader/usage-examples';
 import { propsTableColumns } from '~/shared/page-docs/table-columns';
-const { t } = useI18n();
 
 usePageMeta({
-	title: t('componentDocs.globalLoader.metaTitle'),
-	description: t('componentDocs.globalLoader.description'),
+	title: 'componentDocs.globalLoader.metaTitle',
+	description: 'componentDocs.globalLoader.description',
 });
 
-const tocLinks = globalLoaderPageToc(t);
-const apiColumns = propsTableColumns(t);
-
-usePageTocLinks(tocLinks);
-
 const loader = useGlobalLoader();
+const { setToc } = usePageToc();
 
-const showLoader = (): void => {
+onMounted(() => setToc(globalLoaderPageToc));
+
+const showLoader = () => {
 	loader.show();
-
-	window.setTimeout(() => {
-		loader.hide();
-	}, 3000);
+	window.setTimeout(() => loader.hide(), 3000);
 };
 </script>
 
@@ -55,9 +52,6 @@ const showLoader = (): void => {
 		<h2 class="text-2xl font-semibold">
 			{{ $t('docsSections.apiReference') }}
 		</h2>
-		<Table
-			:columns="apiColumns"
-			:rows="loaderApi"
-		/>
+		<Table :columns="propsTableColumns" :rows="loaderApi" />
 	</section>
 </template>

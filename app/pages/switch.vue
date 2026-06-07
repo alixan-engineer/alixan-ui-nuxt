@@ -1,22 +1,20 @@
 <script setup lang="ts">
-import { switchPageToc } from '~/shared/page-docs/switch/page-toc';
 import { switchProps } from '~/shared/page-docs/switch/api-reference';
+import { switchPageToc } from '~/shared/page-docs/switch/page-toc';
 import { examples } from '~/shared/page-docs/switch/usage-examples';
 import { propsTableColumns } from '~/shared/page-docs/table-columns';
-const { t } = useI18n();
 
 usePageMeta({
-	title: t('componentDocs.switch.metaTitle'),
-	description: t('componentDocs.switch.description'),
+	title: 'componentDocs.switch.metaTitle',
+	description: 'componentDocs.switch.description',
 });
 
-const tocLinks = switchPageToc(t);
-const apiColumns = propsTableColumns(t);
+const { setToc } = usePageToc();
 
-usePageTocLinks(tocLinks);
+onMounted(() => setToc(switchPageToc));
 
-const checked = ref(false);
-const disabledChecked = ref(true);
+const checked = ref<boolean>(false);
+const disabledChecked = ref<boolean>(true);
 </script>
 
 <template>
@@ -53,9 +51,6 @@ const disabledChecked = ref(true);
 		<h2 class="text-2xl font-semibold">
 			{{ $t('docsSections.apiReference') }}
 		</h2>
-		<Table
-			:columns="apiColumns"
-			:rows="switchProps"
-		/>
+		<Table :columns="propsTableColumns" :rows="switchProps" />
 	</section>
 </template>

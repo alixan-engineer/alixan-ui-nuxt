@@ -2,21 +2,20 @@
 import { i18nPageToc } from '~/shared/page-docs/i18n/page-toc';
 import {
 	installCode,
-	setupCode,
 	messagesCode,
-	usageCode,
 	pageMetaCode,
+	setupCode,
+	usageCode,
 } from '~/shared/page-docs/i18n/usage-examples';
-
-const { locale, setLocale, t } = useI18n();
 
 usePageMeta({
 	title: 'i18n - Alixan UI',
 });
 
-const tocLinks = i18nPageToc(t);
+const { locale, setLocale } = useI18n();
+const { setToc } = usePageToc();
 
-usePageTocLinks(tocLinks);
+onMounted(() => setToc(i18nPageToc));
 
 type Locale = 'en' | 'ru' | 'kk';
 
@@ -44,10 +43,7 @@ const changeLocale = async (value: Locale): Promise<void> => {
 		</p>
 		<Info>
 			For more detailed information, visit the
-			<TextLink
-				href="https://i18n.nuxtjs.org/"
-				target="_blank"
-			>
+			<TextLink href="https://i18n.nuxtjs.org/" target="_blank">
 				Nuxt i18n documentation.
 			</TextLink>
 		</Info>

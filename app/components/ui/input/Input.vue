@@ -66,7 +66,6 @@ const emit = defineEmits<{
 	input: [event: Event];
 }>();
 
-const { t } = useI18n();
 const model = defineModel<string | number | null>({ default: '' });
 
 const attrs = useAttrs();
@@ -96,7 +95,7 @@ const validationError = computed(() => {
 	const value = stringValue.value.trim();
 
 	if (props.required && !value) {
-		return t('validation.required');
+		return 'validation.required';
 	}
 
 	if (props.min !== undefined && stringValue.value.length < props.min) {

@@ -1,30 +1,27 @@
 <script setup lang="ts">
-import { stylesPageToc } from '~/shared/page-docs/styles/page-toc';
 import type { AccentThemeType } from '~/interfaces/theme/theme.interface';
-import { accentColors } from '~/shared/theme/colors';
+import { stylesPageToc } from '~/shared/page-docs/styles/page-toc';
 import {
-	textSizeCode,
-	islandCode,
 	backdropCode,
+	islandCode,
+	textSizeCode,
 } from '~/shared/page-docs/styles/usage-examples';
-
-const { t } = useI18n();
-const { createThemeCss } = useTheme();
+import { accentColors } from '~/shared/theme/colors';
 
 usePageMeta({
-	title: t('stylesPage.metaTitle'),
-	description: t('stylesPage.metaDescription'),
+	title: 'stylesPage.metaTitle',
+	description: 'stylesPage.metaDescription',
 });
 
-const tocLinks = stylesPageToc(t);
+const { createThemeCss } = useTheme();
+const { setToc } = usePageToc();
 
-usePageTocLinks(tocLinks);
+onMounted(() => setToc(stylesPageToc));
 
 const accentTheme = useCookie<AccentThemeType>('alixan-ui-accent-theme', {
 	default: () => 'default',
 });
-const showTailwindCode = ref(false);
-
+const showTailwindCode = ref<boolean>(false);
 const currentTailwindCss = computed(() =>
 	createThemeCss(accentColors[accentTheme.value]),
 );

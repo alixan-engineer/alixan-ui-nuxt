@@ -1,32 +1,30 @@
 <script setup lang="ts">
-import { inputPageToc } from '~/shared/page-docs/input/page-toc';
 import { Eye, EyeOff, Lock, Mail } from '@lucide/vue';
 import { inputProps } from '~/shared/page-docs/input/api-reference';
+import { inputPageToc } from '~/shared/page-docs/input/page-toc';
 import { examples } from '~/shared/page-docs/input/usage-examples';
 import { propsTableColumns } from '~/shared/page-docs/table-columns';
-const { t } = useI18n();
 
 usePageMeta({
-	title: t('componentDocs.input.metaTitle'),
-	description: t('componentDocs.input.description'),
+	title: 'componentDocs.input.metaTitle',
+	description: 'componentDocs.input.description',
 });
 
-const tocLinks = inputPageToc(t);
-const apiColumns = propsTableColumns(t);
+const { setToc } = usePageToc();
 
-usePageTocLinks(tocLinks);
+onMounted(() => setToc(inputPageToc));
 
-const usageValue = ref('');
-const stateValue = ref('readonly@example.com');
-const iconValue = ref('');
-const passwordValue = ref('');
-const isPasswordVisible = ref(false);
-const requiredValue = ref('');
-const emailExampleValue = ref('');
-const passwordExampleValue = ref('');
-const lengthExampleValue = ref('');
-const phoneValue = ref('');
-const usernameValue = ref('');
+const usageValue = ref<string>('');
+const stateValue = ref<string>('readonly@example.com');
+const iconValue = ref<string>('');
+const passwordValue = ref<string>('');
+const isPasswordVisible = ref<boolean>(false);
+const requiredValue = ref<string>('');
+const emailExampleValue = ref<string>('');
+const passwordExampleValue = ref<string>('');
+const lengthExampleValue = ref<string>('');
+const phoneValue = ref<string>('');
+const usernameValue = ref<string>('');
 </script>
 
 <template>
@@ -216,9 +214,6 @@ const usernameValue = ref('');
 		<h2 class="text-2xl font-semibold">
 			{{ $t('docsSections.apiReference') }}
 		</h2>
-		<Table
-			:columns="apiColumns"
-			:rows="inputProps"
-		/>
+		<Table :columns="propsTableColumns" :rows="inputProps" />
 	</section>
 </template>

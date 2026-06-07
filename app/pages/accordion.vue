@@ -1,40 +1,40 @@
 <script setup lang="ts">
-import { accordionPageToc } from '~/shared/page-docs/accordion/page-toc';
 import { apiRows } from '~/shared/page-docs/accordion/api-reference';
-import { usageCode, multipleCode } from '~/shared/page-docs/accordion/usage-examples';
+import { accordionPageToc } from '~/shared/page-docs/accordion/page-toc';
+import {
+	multipleCode,
+	usageCode,
+} from '~/shared/page-docs/accordion/usage-examples';
 import { propsTableColumns } from '~/shared/page-docs/table-columns';
-const { t } = useI18n();
 
 usePageMeta({
-	title: t('componentDocs.accordion.metaTitle'),
-	description: t('componentDocs.accordion.description'),
+	title: 'componentDocs.accordion.metaTitle',
+	description: 'componentDocs.accordion.description',
 });
 
-const tocLinks = accordionPageToc(t);
-const apiColumns = propsTableColumns(t);
+const { setToc } = usePageToc();
 
-usePageTocLinks(tocLinks);
+onMounted(() => setToc(accordionPageToc));
 
 const activeItem = ref<string | number | null>('item-1');
 const activeItems = ref<Array<string | number>>(['item-1']);
-
 const items = [
 	{
 		value: 'item-1',
-		title: t('componentDocs.accordion.demo.accessibleTitle'),
-		content: t('componentDocs.accordion.demo.accessibleContent'),
+		title: 'componentDocs.accordion.demo.accessibleTitle',
+		content: 'componentDocs.accordion.demo.accessibleContent',
 	},
 	{
 		value: 'item-2',
-		title: t('componentDocs.accordion.demo.styledTitle'),
-		content: t('componentDocs.accordion.demo.styledContent'),
+		title: 'componentDocs.accordion.demo.styledTitle',
+		content: 'componentDocs.accordion.demo.styledContent',
 	},
 	{
 		value: 'item-3',
-		title: t('componentDocs.accordion.demo.slotsTitle'),
-		content: t('componentDocs.accordion.demo.slotsContent'),
+		title: 'componentDocs.accordion.demo.slotsTitle',
+		content: 'componentDocs.accordion.demo.slotsContent',
 	},
-] as const;
+];
 </script>
 
 <template>
@@ -74,9 +74,6 @@ const items = [
 		<h2 class="text-2xl font-semibold">
 			{{ $t('docsSections.apiReference') }}
 		</h2>
-		<Table
-			:columns="apiColumns"
-			:rows="apiRows"
-		/>
+		<Table :columns="propsTableColumns" :rows="apiRows" />
 	</section>
 </template>

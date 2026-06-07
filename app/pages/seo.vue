@@ -1,25 +1,24 @@
 <script setup lang="ts">
 import { seoPageToc } from '~/shared/page-docs/seo/page-toc';
 import {
-	siteConfigCode,
-	nuxtConfigCode,
-	usePageMetaCode,
-	pageUsageCode,
-	faviconCode,
 	appInitCode,
+	faviconCode,
+	nuxtConfigCode,
+	pageUsageCode,
 	robotsCode,
+	siteConfigCode,
 	sitemapInstallCode,
+	usePageMetaCode,
 } from '~/shared/page-docs/seo/usage-examples';
-const { t } = useI18n();
 
 usePageMeta({
-	title: t('seoPage.metaTitle'),
-	description: t('seoPage.metaDescription'),
+	title: 'seoPage.metaTitle',
+	description: 'seoPage.metaDescription',
 });
 
-const tocLinks = seoPageToc(t);
+const { setToc } = usePageToc();
 
-usePageTocLinks(tocLinks);
+onMounted(() => setToc(seoPageToc));
 </script>
 
 <template>

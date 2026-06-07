@@ -1,19 +1,17 @@
 <script setup lang="ts">
-import { statusPageToc } from '~/shared/page-docs/status/page-toc';
 import { statusProps } from '~/shared/page-docs/status/api-reference';
+import { statusPageToc } from '~/shared/page-docs/status/page-toc';
 import { examples } from '~/shared/page-docs/status/usage-examples';
 import { propsTableColumns } from '~/shared/page-docs/table-columns';
-const { t } = useI18n();
 
 usePageMeta({
-	title: t('componentDocs.status.metaTitle'),
-	description: t('componentDocs.status.description'),
+	title: 'componentDocs.status.metaTitle',
+	description: 'componentDocs.status.description',
 });
 
-const tocLinks = statusPageToc(t);
-const apiColumns = propsTableColumns(t);
+const { setToc } = usePageToc();
 
-usePageTocLinks(tocLinks);
+onMounted(() => setToc(statusPageToc));
 </script>
 
 <template>
@@ -58,9 +56,6 @@ usePageTocLinks(tocLinks);
 		<h2 class="text-2xl font-semibold">
 			{{ $t('docsSections.apiReference') }}
 		</h2>
-		<Table
-			:columns="apiColumns"
-			:rows="statusProps"
-		/>
+		<Table :columns="propsTableColumns" :rows="statusProps" />
 	</section>
 </template>

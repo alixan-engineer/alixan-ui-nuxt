@@ -1,7 +1,7 @@
-type Translate = (key: string) => string;
+import type { IPageTocLink } from '~/interfaces/page-toc/page-toc.interface';
 
-export const calendarPageToc = (t: Translate) => [
-	{ label: t('docsSections.installation'), href: '#installation' },
-	{ label: t('docsSections.day'), href: '#day' },
-	{ label: t('docsSections.range'), href: '#range' },
-] as const;
+export const calendarPageToc: IPageTocLink[] = [
+	{ label: 'docsSections.installation', href: '#installation' },
+	{ label: 'docsSections.day', href: '#day' },
+	{ label: 'docsSections.range', href: '#range' },
+];

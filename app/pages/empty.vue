@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import { emptyPageToc } from '~/shared/page-docs/empty/page-toc';
 import { emptyProps, emptySlots } from '~/shared/page-docs/empty/api-reference';
+import { emptyPageToc } from '~/shared/page-docs/empty/page-toc';
 import { examples } from '~/shared/page-docs/empty/usage-examples';
-import { propsTableColumns, slotTableColumns } from '~/shared/page-docs/table-columns';
-const { t } = useI18n();
+import {
+	propsTableColumns,
+	slotTableColumns,
+} from '~/shared/page-docs/table-columns';
 
 usePageMeta({
-	title: t('componentDocs.empty.metaTitle'),
-	description: t('componentDocs.empty.description'),
+	title: 'componentDocs.empty.metaTitle',
+	description: 'componentDocs.empty.description',
 });
 
-const tocLinks = emptyPageToc(t);
-const apiColumns = propsTableColumns(t);
-const slotColumns = slotTableColumns(t);
+const { setToc } = usePageToc();
 
-usePageTocLinks(tocLinks);
+onMounted(() => setToc(emptyPageToc));
 </script>
 
 <template>
@@ -66,15 +66,9 @@ usePageTocLinks(tocLinks);
 		<h2 class="text-2xl font-semibold">
 			{{ $t('docsSections.apiReference') }}
 		</h2>
-		<Table
-			:columns="apiColumns"
-			:rows="emptyProps"
-		/>
+		<Table :columns="propsTableColumns" :rows="emptyProps" />
 
 		<h3 class="pt-4 text-xl font-semibold">Slots</h3>
-		<Table
-			:columns="slotColumns"
-			:rows="emptySlots"
-		/>
+		<Table :columns="slotTableColumns" :rows="emptySlots" />
 	</section>
 </template>

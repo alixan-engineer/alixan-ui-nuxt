@@ -1,31 +1,26 @@
 <script setup lang="ts">
-import { alertDialogPageToc } from '~/shared/page-docs/alert-dialog/page-toc';
 import { CheckCircle } from '@lucide/vue';
-
 import successIcon from '~/assets/icons/success.svg';
 import AlertDialog from '~/components/ui/alert-dialog/AlertDialog.vue';
 import { alertDialogProps } from '~/shared/page-docs/alert-dialog/api-reference';
+import { alertDialogPageToc } from '~/shared/page-docs/alert-dialog/page-toc';
 import {
 	errorCode,
-	successCode,
-	imageCode,
 	iconCode,
+	imageCode,
+	successCode,
 } from '~/shared/page-docs/alert-dialog/usage-examples';
 import { propsTableColumns } from '~/shared/page-docs/table-columns';
 
-const { t } = useI18n();
-
 usePageMeta({
-	title: t('componentDocs.alertDialog.metaTitle'),
-	description: t('componentDocs.alertDialog.description'),
+	title: 'componentDocs.alertDialog.metaTitle',
+	description: 'componentDocs.alertDialog.description',
 });
 
-const tocLinks = alertDialogPageToc(t);
-const apiColumns = propsTableColumns(t);
-
-usePageTocLinks(tocLinks);
-
 const dialog = useDialog();
+const { setToc } = usePageToc();
+
+onMounted(() => setToc(alertDialogPageToc));
 
 const openAlert = (): void => {
 	dialog.open(AlertDialog, {
@@ -143,9 +138,6 @@ const openIconAlert = (): void => {
 		<h2 class="text-2xl font-semibold">
 			{{ $t('docsSections.apiReference') }}
 		</h2>
-		<Table
-			:columns="apiColumns"
-			:rows="alertDialogProps"
-		/>
+		<Table :columns="propsTableColumns" :rows="alertDialogProps" />
 	</section>
 </template>

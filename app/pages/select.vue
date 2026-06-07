@@ -1,18 +1,16 @@
 <script setup lang="ts">
-import { selectPageToc } from '~/shared/page-docs/select/page-toc';
 import { selectProps } from '~/shared/page-docs/select/api-reference';
+import { selectPageToc } from '~/shared/page-docs/select/page-toc';
 import { propsTableColumns } from '~/shared/page-docs/table-columns';
-const { t } = useI18n();
 
 usePageMeta({
-	title: t('componentDocs.select.metaTitle'),
-	description: t('componentDocs.select.description'),
+	title: 'componentDocs.select.metaTitle',
+	description: 'componentDocs.select.description',
 });
 
-const tocLinks = selectPageToc(t);
-const apiColumns = propsTableColumns(t);
+const { setToc } = usePageToc();
 
-usePageTocLinks(tocLinks);
+onMounted(() => setToc(selectPageToc));
 
 const value = ref<string | number | null>('cupertino');
 const options = [
@@ -50,9 +48,6 @@ const options = [
 		<h2 class="text-2xl font-semibold">
 			{{ $t('docsSections.apiReference') }}
 		</h2>
-		<Table
-			:columns="apiColumns"
-			:rows="selectProps"
-		/>
+		<Table :columns="propsTableColumns" :rows="selectProps" />
 	</section>
 </template>

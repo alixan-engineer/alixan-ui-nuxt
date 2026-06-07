@@ -1,27 +1,25 @@
 <script setup lang="ts">
-import { tabsPageToc } from '~/shared/page-docs/tabs/page-toc';
-import { tabsProps } from '~/shared/page-docs/tabs/api-reference';
-import { examples } from '~/shared/page-docs/tabs/usage-examples';
 import { propsTableColumns } from '~/shared/page-docs/table-columns';
-const { t } = useI18n();
+import { tabsProps } from '~/shared/page-docs/tabs/api-reference';
+import { tabsPageToc } from '~/shared/page-docs/tabs/page-toc';
+import { examples } from '~/shared/page-docs/tabs/usage-examples';
 
 usePageMeta({
-	title: t('componentDocs.tabs.metaTitle'),
-	description: t('componentDocs.tabs.description'),
+	title: 'componentDocs.tabs.metaTitle',
+	description: 'componentDocs.tabs.description',
 });
 
-const tocLinks = tabsPageToc(t);
-const apiColumns = propsTableColumns(t);
+const { setToc } = usePageToc();
 
-usePageTocLinks(tocLinks);
+onMounted(() => setToc(tabsPageToc));
 
-const tabs = [
-	t('componentDocs.tabs.demo.account'),
-	t('componentDocs.tabs.demo.password'),
+const tabs: string[] = [
+	'componentDocs.tabs.demo.account',
+	'componentDocs.tabs.demo.password',
 ];
-const selected = ref(0);
-const materialSelected = ref(0);
-const fullSelected = ref(0);
+const selected = ref<number>(0);
+const materialSelected = ref<number>(0);
+const fullSelected = ref<number>(0);
 </script>
 
 <template>
@@ -62,9 +60,6 @@ const fullSelected = ref(0);
 		<h2 class="text-2xl font-semibold">
 			{{ $t('docsSections.apiReference') }}
 		</h2>
-		<Table
-			:columns="apiColumns"
-			:rows="tabsProps"
-		/>
+		<Table :columns="propsTableColumns" :rows="tabsProps" />
 	</section>
 </template>

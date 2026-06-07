@@ -1,28 +1,27 @@
 <script setup lang="ts">
 import { ArrowRight, Boxes, Sparkles } from '@lucide/vue';
-import { indexPageToc } from '~/shared/page-docs/index/page-toc';
-
-const { t } = useI18n();
 
 usePageMeta({
-	title: t('homePage.metaTitle'),
-	description: t('homePage.metaDescription'),
+	title: 'homePage.metaTitle',
+	description: 'homePage.metaDescription',
 });
 
-usePageTocLinks(indexPageToc());
+const { setToc } = usePageToc();
+
+onMounted(() => setToc([]));
 
 const features = [
 	{
-		title: t('homePage.features.copied.title'),
-		description: t('homePage.features.copied.description'),
+		title: 'homePage.features.copied.title',
+		description: 'homePage.features.copied.description',
 	},
 	{
-		title: t('homePage.features.production.title'),
-		description: t('homePage.features.production.description'),
+		title: 'homePage.features.production.title',
+		description: 'homePage.features.production.description',
 	},
 	{
-		title: t('homePage.features.customize.title'),
-		description: t('homePage.features.customize.description'),
+		title: 'homePage.features.customize.title',
+		description: 'homePage.features.customize.description',
 	},
 ];
 </script>
@@ -30,7 +29,9 @@ const features = [
 <template>
 	<section class="min-h-[calc(100vh-10rem)] flex items-center">
 		<div class="max-w-3xl space-y-8">
-			<div class="inline-flex items-center gap-2 rounded-full border bg-secondary/60 px-3 py-1 text-sm text-muted-foreground">
+			<div
+				class="inline-flex items-center gap-2 rounded-full border bg-secondary/60 px-3 py-1 text-sm text-muted-foreground"
+			>
 				<Sparkles class="size-4 text-primary" />
 				<span>{{ $t('homePage.badge') }}</span>
 			</div>
@@ -63,9 +64,9 @@ const features = [
 					class="rounded-2xl border bg-background p-4"
 				>
 					<Boxes class="mb-3 size-5 text-primary" />
-					<h2 class="font-medium">{{ feature.title }}</h2>
+					<h2 class="font-medium">{{ $t(feature.title) }}</h2>
 					<p class="mt-2 text-sm leading-6 text-muted-foreground">
-						{{ feature.description }}
+						{{ $t(feature.description) }}
 					</p>
 				</div>
 			</div>

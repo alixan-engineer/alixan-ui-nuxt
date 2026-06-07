@@ -1,23 +1,20 @@
 <script setup lang="ts">
-import { confirmDialogPageToc } from '~/shared/page-docs/confirm-dialog/page-toc';
 import ConfirmDialog from '~/components/ui/confirm-dialog/ConfirmDialog.vue';
 import { confirmDialogProps } from '~/shared/page-docs/confirm-dialog/api-reference';
+import { confirmDialogPageToc } from '~/shared/page-docs/confirm-dialog/page-toc';
 import { code } from '~/shared/page-docs/confirm-dialog/usage-examples';
 import { propsTableColumns } from '~/shared/page-docs/table-columns';
-const { t } = useI18n();
 
 usePageMeta({
-	title: t('componentDocs.confirmDialog.metaTitle'),
-	description: t('componentDocs.confirmDialog.description'),
+	title: 'componentDocs.confirmDialog.metaTitle',
+	description: 'componentDocs.confirmDialog.description',
 });
-
-const tocLinks = confirmDialogPageToc(t);
-const apiColumns = propsTableColumns(t);
-
-usePageTocLinks(tocLinks);
 
 const dialog = useDialog();
 const toast = useToast();
+const { setToc } = usePageToc();
+
+onMounted(() => setToc(confirmDialogPageToc));
 
 const openConfirm = (): void => {
 	dialog.open(ConfirmDialog, {
@@ -61,9 +58,6 @@ const openConfirm = (): void => {
 		<h2 class="text-2xl font-semibold">
 			{{ $t('docsSections.apiReference') }}
 		</h2>
-		<Table
-			:columns="apiColumns"
-			:rows="confirmDialogProps"
-		/>
+		<Table :columns="propsTableColumns" :rows="confirmDialogProps" />
 	</section>
 </template>

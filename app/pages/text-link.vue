@@ -1,19 +1,17 @@
 <script setup lang="ts">
-import { textLinkPageToc } from '~/shared/page-docs/text-link/page-toc';
-import { textLinkProps } from '~/shared/page-docs/text-link/api-reference';
-import { examples } from '~/shared/page-docs/text-link/usage-examples';
 import { propsTableColumns } from '~/shared/page-docs/table-columns';
-const { t } = useI18n();
+import { textLinkProps } from '~/shared/page-docs/text-link/api-reference';
+import { textLinkPageToc } from '~/shared/page-docs/text-link/page-toc';
+import { examples } from '~/shared/page-docs/text-link/usage-examples';
 
 usePageMeta({
-	title: t('componentDocs.textLink.metaTitle'),
-	description: t('componentDocs.textLink.description'),
+	title: 'componentDocs.textLink.metaTitle',
+	description: 'componentDocs.textLink.description',
 });
 
-const tocLinks = textLinkPageToc(t);
-const apiColumns = propsTableColumns(t);
+const { setToc } = usePageToc();
 
-usePageTocLinks(tocLinks);
+onMounted(() => setToc(textLinkPageToc));
 </script>
 
 <template>
@@ -60,9 +58,6 @@ usePageTocLinks(tocLinks);
 		<h2 class="text-2xl font-semibold">
 			{{ $t('docsSections.apiReference') }}
 		</h2>
-		<Table
-			:columns="apiColumns"
-			:rows="textLinkProps"
-		/>
+		<Table :columns="propsTableColumns" :rows="textLinkProps" />
 	</section>
 </template>

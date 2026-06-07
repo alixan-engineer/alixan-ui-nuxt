@@ -1,25 +1,24 @@
 <script setup lang="ts">
+import { otpEvents, otpProps } from '~/shared/page-docs/otp/api-reference';
 import { otpPageToc } from '~/shared/page-docs/otp/page-toc';
-import { otpProps, otpEvents } from '~/shared/page-docs/otp/api-reference';
 import { examples } from '~/shared/page-docs/otp/usage-examples';
-import { propsTableColumns, eventTableColumns } from '~/shared/page-docs/table-columns';
-const { t } = useI18n();
+import {
+	eventTableColumns,
+	propsTableColumns,
+} from '~/shared/page-docs/table-columns';
 
 usePageMeta({
-	title: t('componentDocs.otp.metaTitle'),
-	description: t('componentDocs.otp.description'),
+	title: 'componentDocs.otp.metaTitle',
+	description: 'componentDocs.otp.description',
 });
 
-const tocLinks = otpPageToc(t);
-const apiColumns = propsTableColumns(t);
-const eventColumns = eventTableColumns(t);
-
-usePageTocLinks(tocLinks);
-
 const toast = useToast();
-const otpValue = ref('');
-const lengthValue = ref('');
+const { setToc } = usePageToc();
 
+onMounted(() => setToc(otpPageToc));
+
+const otpValue = ref<string>('');
+const lengthValue = ref<string>('');
 const handleSubmit = (value: string): void => {
 	toast.open(`OTP submitted: ${value}`, 'success');
 };
@@ -66,14 +65,7 @@ const handleSubmit = (value: string): void => {
 		<h2 class="text-2xl font-semibold">
 			{{ $t('docsSections.apiReference') }}
 		</h2>
-		<Table
-			:columns="apiColumns"
-			:rows="otpProps"
-		/>
-
-		<Table
-			:columns="eventColumns"
-			:rows="otpEvents"
-		/>
+		<Table :columns="propsTableColumns" :rows="otpProps" />
+		<Table :columns="eventTableColumns" :rows="otpEvents" />
 	</section>
 </template>

@@ -1,8 +1,8 @@
-type Translate = (key: string) => string;
+import type { IPageTocLink } from '~/interfaces/page-toc/page-toc.interface';
 
-export const emptyPageToc = (t: Translate) => [
-	{ label: t('docsSections.installation'), href: '#installation' },
-	{ label: t('docsSections.usage'), href: '#usage' },
-	{ label: t('docsSections.withMedia'), href: '#with-media' },
-	{ label: t('docsSections.apiReference'), href: '#api-reference' },
-] as const;
+export const emptyPageToc: IPageTocLink[] = [
+	{ label: 'docsSections.installation', href: '#installation' },
+	{ label: 'docsSections.usage', href: '#usage' },
+	{ label: 'docsSections.withMedia', href: '#with-media' },
+	{ label: 'docsSections.apiReference', href: '#api-reference' },
+];

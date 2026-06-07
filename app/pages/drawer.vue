@@ -1,22 +1,23 @@
 <script setup lang="ts">
-import { drawerPageToc } from '~/shared/page-docs/drawer/page-toc';
-import DrawerPreviewContent from '~/components/docs/drawer-preview-content/DrawerPreviewContent.vue';
+import DrawerPreviewContent from '~/widgets/drawer-preview-content/DrawerPreviewContent.vue';
 import { drawerServiceApi } from '~/shared/page-docs/drawer/api-reference';
-import { appCode, usageCode, contentCode } from '~/shared/page-docs/drawer/usage-examples';
+import { drawerPageToc } from '~/shared/page-docs/drawer/page-toc';
+import {
+	appCode,
+	contentCode,
+	usageCode,
+} from '~/shared/page-docs/drawer/usage-examples';
 import { propsTableColumns } from '~/shared/page-docs/table-columns';
-const { t } = useI18n();
 
 usePageMeta({
-	title: t('componentDocs.drawer.metaTitle'),
-	description: t('componentDocs.drawer.description'),
+	title: 'componentDocs.drawer.metaTitle',
+	description: 'componentDocs.drawer.description',
 });
 
-const tocLinks = drawerPageToc(t);
-const apiColumns = propsTableColumns(t);
-
-usePageTocLinks(tocLinks);
-
 const drawer = useDrawer();
+const { setToc } = usePageToc();
+
+onMounted(() => setToc(drawerPageToc));
 
 const openDrawer = (): void => {
 	drawer.open(DrawerPreviewContent, {
@@ -62,9 +63,6 @@ const openDrawer = (): void => {
 		<h2 class="text-2xl font-semibold">
 			{{ $t('docsSections.apiReference') }}
 		</h2>
-		<Table
-			:columns="apiColumns"
-			:rows="drawerServiceApi"
-		/>
+		<Table :columns="propsTableColumns" :rows="drawerServiceApi" />
 	</section>
 </template>

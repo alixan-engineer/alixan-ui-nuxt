@@ -1,19 +1,17 @@
 <script setup lang="ts">
-import { chipPageToc } from '~/shared/page-docs/chip/page-toc';
 import { chipProps } from '~/shared/page-docs/chip/api-reference';
+import { chipPageToc } from '~/shared/page-docs/chip/page-toc';
 import { examples } from '~/shared/page-docs/chip/usage-examples';
 import { propsTableColumns } from '~/shared/page-docs/table-columns';
-const { t } = useI18n();
 
 usePageMeta({
-	title: t('componentDocs.chip.metaTitle'),
-	description: t('componentDocs.chip.description'),
+	title: 'componentDocs.chip.metaTitle',
+	description: 'componentDocs.chip.description',
 });
 
-const tocLinks = chipPageToc(t);
-const apiColumns = propsTableColumns(t);
+const { setToc } = usePageToc();
 
-usePageTocLinks(tocLinks);
+onMounted(() => setToc(chipPageToc));
 </script>
 
 <template>
@@ -58,9 +56,6 @@ usePageTocLinks(tocLinks);
 		<h2 class="text-2xl font-semibold">
 			{{ $t('docsSections.apiReference') }}
 		</h2>
-		<Table
-			:columns="apiColumns"
-			:rows="chipProps"
-		/>
+		<Table :columns="propsTableColumns" :rows="chipProps" />
 	</section>
 </template>

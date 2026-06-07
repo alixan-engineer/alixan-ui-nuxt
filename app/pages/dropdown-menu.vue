@@ -1,24 +1,19 @@
 <script setup lang="ts">
-import { dropdownMenuPageToc } from '~/shared/page-docs/dropdown-menu/page-toc';
 import { dropdownProps } from '~/shared/page-docs/dropdown-menu/api-reference';
+import { dropdownMenuPageToc } from '~/shared/page-docs/dropdown-menu/page-toc';
 import { code } from '~/shared/page-docs/dropdown-menu/usage-examples';
 import { propsTableColumns } from '~/shared/page-docs/table-columns';
-const { t } = useI18n();
 
 usePageMeta({
-	title: t('componentDocs.dropdownMenu.metaTitle'),
-	description: t('componentDocs.dropdownMenu.description'),
+	title: 'componentDocs.dropdownMenu.metaTitle',
+	description: 'componentDocs.dropdownMenu.description',
 });
 
-const tocLinks = dropdownMenuPageToc(t);
-const apiColumns = propsTableColumns(t);
+const { setToc } = usePageToc();
 
-usePageTocLinks(tocLinks);
+onMounted(() => setToc(dropdownMenuPageToc));
 
-const isOpen = ref(false);
-const menuData = {
-	workspace: 'Alixan UI',
-};
+const isOpen = ref<boolean>(false);
 </script>
 
 <template>
@@ -64,7 +59,7 @@ const menuData = {
 						<button
 							class="flex h-9 w-full items-center rounded-xl px-3 text-left text-md text-destructive hover:bg-destructive/10"
 						>
-							Delete {{ menuData.workspace }}
+							Delete Alixan UI
 						</button>
 						<Button
 							class="mt-1 w-full"
@@ -84,9 +79,6 @@ const menuData = {
 		<h2 class="text-2xl font-semibold">
 			{{ $t('docsSections.apiReference') }}
 		</h2>
-		<Table
-			:columns="apiColumns"
-			:rows="dropdownProps"
-		/>
+		<Table :columns="propsTableColumns" :rows="dropdownProps" />
 	</section>
 </template>

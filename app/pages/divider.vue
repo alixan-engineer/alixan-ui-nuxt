@@ -1,16 +1,15 @@
 <script setup lang="ts">
 import { dividerPageToc } from '~/shared/page-docs/divider/page-toc';
 import { usageCode } from '~/shared/page-docs/divider/usage-examples';
-const { t } = useI18n();
 
 usePageMeta({
-	title: t('componentDocs.divider.metaTitle'),
-	description: t('componentDocs.divider.description'),
+	title: 'componentDocs.divider.metaTitle',
+	description: 'componentDocs.divider.description',
 });
 
-const tocLinks = dividerPageToc(t);
+const { setToc } = usePageToc();
 
-usePageTocLinks(tocLinks);
+onMounted(() => setToc(dividerPageToc));
 </script>
 
 <template>
@@ -22,7 +21,9 @@ usePageTocLinks(tocLinks);
 	</header>
 
 	<section id="installation" class="space-y-5">
-		<h2 class="text-2xl font-semibold">{{ $t('docsSections.installation') }}</h2>
+		<h2 class="text-2xl font-semibold">
+			{{ $t('docsSections.installation') }}
+		</h2>
 		<InstallCommandBlock component="divider" />
 	</section>
 

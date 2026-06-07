@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { iconButtonPageToc } from '~/shared/page-docs/icon-button/page-toc';
 import { ArrowUpRight } from '@lucide/vue';
 import AlertDialog from '~/components/ui/alert-dialog/AlertDialog.vue';
 import {
@@ -7,30 +6,24 @@ import {
 	buttonVariants,
 } from '~/shared/button-options/button-options';
 import { iconButtonApiRows } from '~/shared/page-docs/icon-button/api-reference';
+import { iconButtonPageToc } from '~/shared/page-docs/icon-button/page-toc';
 import { iconButtonExamples } from '~/shared/page-docs/icon-button/usage-examples';
 import { propsTableColumns } from '~/shared/page-docs/table-columns';
 
-const { t } = useI18n();
-
 usePageMeta({
-	title: t('componentDocs.iconButton.metaTitle'),
-	description: t('componentDocs.iconButton.description'),
+	title: 'componentDocs.iconButton.metaTitle',
+	description: 'componentDocs.iconButton.description',
 });
-
-const tocLinks = iconButtonPageToc(t);
-const apiColumns = propsTableColumns(t);
-
-usePageTocLinks(tocLinks);
 
 const loader = useGlobalLoader();
 const dialog = useDialog();
+const { setToc } = usePageToc();
+
+onMounted(() => setToc(iconButtonPageToc));
 
 const showGlobalLoader = (): void => {
 	loader.show({ label: 'Saving action...' });
-
-	window.setTimeout(() => {
-		loader.hide();
-	}, 3000);
+	window.setTimeout(() => loader.hide(), 3000);
 };
 
 const openDisableAlert = (): void => {
@@ -174,9 +167,6 @@ const openDisableAlert = (): void => {
 		<h2 class="text-2xl font-semibold">
 			{{ $t('docsSections.apiReference') }}
 		</h2>
-		<Table
-			:columns="apiColumns"
-			:rows="iconButtonApiRows"
-		/>
+		<Table :columns="propsTableColumns" :rows="iconButtonApiRows" />
 	</section>
 </template>

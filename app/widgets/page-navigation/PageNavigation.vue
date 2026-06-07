@@ -1,15 +1,13 @@
 <script setup lang="ts">
 import { ArrowLeft, ArrowRight } from '@lucide/vue';
 import { computed } from 'vue';
-import { menuSections } from '~/components/layouts/sidebar/menu';
+import { menuSections } from '~/widgets/sidebar/menu';
 
 const route = useRoute();
 const localePath = useLocalePath();
-const { t } = useI18n();
 
 const normalizePath = (path: string): string => {
 	const normalizedPath = path.split('#')[0]?.replace(/\/$/, '') || '/';
-
 	return normalizedPath || '/';
 };
 
@@ -17,9 +15,8 @@ const pages = computed(() =>
 	menuSections.flatMap(section =>
 		section.items.map(item => {
 			const path = localePath(item.to);
-
 			return {
-				label: t(item.labelKey),
+				label: item.labelKey,
 				path,
 				normalizedPath: normalizePath(path),
 			};
@@ -49,10 +46,7 @@ const showNavigation = computed(
 </script>
 
 <template>
-	<nav
-		v-if="showNavigation"
-		class="pt-8 flex items-center gap-3 border-t"
-	>
+	<nav v-if="showNavigation" class="pt-8 flex items-center gap-3 border-t">
 		<Button
 			v-if="previousPage"
 			:to="previousPage.path"

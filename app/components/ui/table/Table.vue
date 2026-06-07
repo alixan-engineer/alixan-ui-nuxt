@@ -1,15 +1,13 @@
 <script setup lang="ts">
-interface Props<T> {
-	columns: TableColumnT[];
-	rows: T[];
+interface Props {
+	columns: {
+		label: string;
+		getValue: (row: any, i: number) => any;
+	}[];
+	rows: any[];
 }
 
-interface TableColumnT {
-	label: string;
-	value: (row: T, rowIndex: number) => unknown;
-}
-
-defineProps<Props<T>>();
+defineProps<Props>();
 </script>
 
 <template>
@@ -22,7 +20,7 @@ defineProps<Props<T>>();
 						:key="columnIndex"
 						class="px-4 py-3 font-medium"
 					>
-						{{ column.label }}
+						{{ $t(column.label) }}
 					</th>
 				</tr>
 			</thead>
@@ -33,7 +31,7 @@ defineProps<Props<T>>();
 						:key="columnIndex"
 						class="px-4 py-3"
 					>
-						{{ column.value(row, rowIndex) }}
+						{{ column.getValue(row, rowIndex) }}
 					</td>
 				</tr>
 			</tbody>

@@ -1,16 +1,18 @@
 <script setup lang="ts">
 import { fontsPageToc } from '~/shared/page-docs/fonts/page-toc';
-import { installCode, configCode, tailwindCode } from '~/shared/page-docs/fonts/usage-examples';
-
-const { t } = useI18n();
+import {
+	configCode,
+	installCode,
+	tailwindCode,
+} from '~/shared/page-docs/fonts/usage-examples';
 
 usePageMeta({
 	title: 'Fonts - Alixan UI',
 });
 
-const tocLinks = fontsPageToc(t);
+const { setToc } = usePageToc();
 
-usePageTocLinks(tocLinks);
+onMounted(() => setToc(fontsPageToc));
 </script>
 
 <template>

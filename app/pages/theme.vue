@@ -1,25 +1,22 @@
 <script setup lang="ts">
 import { themePageToc } from '~/shared/page-docs/theme/page-toc';
 import {
-	installCode,
 	colorModeConfigCode,
+	installCode,
 	tailwindCode,
 	usageCode,
 } from '~/shared/page-docs/theme/usage-examples';
-
-const { t } = useI18n();
 
 usePageMeta({
 	title: 'Theme - Alixan UI',
 });
 
-const tocLinks = themePageToc(t);
+const { setToc } = usePageToc();
+const colorMode = useColorMode();
 
-usePageTocLinks(tocLinks);
+onMounted(() => setToc(themePageToc));
 
 type ColorModePreference = 'system' | 'light' | 'dark';
-
-const colorMode = useColorMode();
 
 const themeOptions: Array<{ label: string; value: ColorModePreference }> = [
 	{ label: 'System', value: 'system' },
@@ -27,7 +24,7 @@ const themeOptions: Array<{ label: string; value: ColorModePreference }> = [
 	{ label: 'Dark', value: 'dark' },
 ];
 
-const setTheme = (value: ColorModePreference): void => {
+const setTheme = (value: ColorModePreference) => {
 	colorMode.preference = value;
 };
 </script>

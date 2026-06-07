@@ -1,17 +1,19 @@
 <script setup lang="ts">
-import { iconsPageToc } from '~/shared/page-docs/icons/page-toc';
 import { Bell, Search } from '@lucide/vue';
-import { installCode, lucideCode, mdiCode } from '~/shared/page-docs/icons/usage-examples';
-
-const { t } = useI18n();
+import { iconsPageToc } from '~/shared/page-docs/icons/page-toc';
+import {
+	installCode,
+	lucideCode,
+	mdiCode,
+} from '~/shared/page-docs/icons/usage-examples';
 
 usePageMeta({
 	title: 'Icons - Alixan UI',
 });
 
-const tocLinks = iconsPageToc(t);
+const { setToc } = usePageToc();
 
-usePageTocLinks(tocLinks);
+onMounted(() => setToc(iconsPageToc));
 </script>
 
 <template>

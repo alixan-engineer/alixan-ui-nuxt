@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { calendarPageToc } from '~/shared/page-docs/calendar/page-toc';
 import { examples } from '~/shared/page-docs/calendar/usage-examples';
-const { locale, t } = useI18n();
 
 usePageMeta({
-	title: t('componentDocs.calendar.metaTitle'),
-	description: t('componentDocs.calendar.description'),
+	title: 'componentDocs.calendar.metaTitle',
+	description: 'componentDocs.calendar.description',
 });
 
-const tocLinks = calendarPageToc(t);
+const { locale } = useI18n();
+const { setToc } = usePageToc();
 
-usePageTocLinks(tocLinks);
+onMounted(() => setToc(calendarPageToc));
 
 const date = ref<string | null>(null);
 const range = ref<{ from: string; to: string } | null>(null);
@@ -25,7 +25,9 @@ const range = ref<{ from: string; to: string } | null>(null);
 	</header>
 
 	<section id="installation" class="space-y-5">
-		<h2 class="text-2xl font-semibold">{{ $t('docsSections.installation') }}</h2>
+		<h2 class="text-2xl font-semibold">
+			{{ $t('docsSections.installation') }}
+		</h2>
 		<InstallCommandBlock component="calendar" />
 	</section>
 
@@ -42,7 +44,12 @@ const range = ref<{ from: string; to: string } | null>(null);
 		<h2 class="text-2xl font-semibold">{{ $t('docsSections.range') }}</h2>
 		<ExampleBlock :code="examples.range">
 			<div class="w-full max-w-sm">
-				<Calendar v-model="range" label="Period" mode="range" :locale="locale" />
+				<Calendar
+					v-model="range"
+					label="Period"
+					mode="range"
+					:locale="locale"
+				/>
 			</div>
 		</ExampleBlock>
 	</section>

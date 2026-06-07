@@ -1,21 +1,19 @@
 <script setup lang="ts">
-import { checkboxPageToc } from '~/shared/page-docs/checkbox/page-toc';
 import { checkboxProps } from '~/shared/page-docs/checkbox/api-reference';
+import { checkboxPageToc } from '~/shared/page-docs/checkbox/page-toc';
 import { examples } from '~/shared/page-docs/checkbox/usage-examples';
 import { propsTableColumns } from '~/shared/page-docs/table-columns';
-const { t } = useI18n();
 
 usePageMeta({
-	title: t('componentDocs.checkbox.metaTitle'),
-	description: t('componentDocs.checkbox.description'),
+	title: 'componentDocs.checkbox.metaTitle',
+	description: 'componentDocs.checkbox.description',
 });
 
-const tocLinks = checkboxPageToc(t);
-const apiColumns = propsTableColumns(t);
+const { setToc } = usePageToc();
 
-usePageTocLinks(tocLinks);
+onMounted(() => setToc(checkboxPageToc));
 
-const accepted = ref(false);
+const accepted = ref<boolean>(false);
 const selectedPeriod = ref<string | null>('7d');
 const selectedOptions = ref<string[]>(['email']);
 </script>
@@ -68,9 +66,6 @@ const selectedOptions = ref<string[]>(['email']);
 		<h2 class="text-2xl font-semibold">
 			{{ $t('docsSections.apiReference') }}
 		</h2>
-		<Table
-			:columns="apiColumns"
-			:rows="checkboxProps"
-		/>
+		<Table :columns="propsTableColumns" :rows="checkboxProps" />
 	</section>
 </template>

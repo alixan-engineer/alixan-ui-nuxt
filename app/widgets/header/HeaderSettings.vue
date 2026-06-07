@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Settings } from '@lucide/vue';
-import ThemeCodeDialog from '~/components/docs/theme-code-dialog/ThemeCodeDialog.vue';
+import ThemeCodeDialog from '~/widgets/theme-code-dialog/ThemeCodeDialog.vue';
 import type { AccentThemeType } from '~/interfaces/theme/theme.interface';
 
 type Locale = 'en' | 'ru' | 'kk';

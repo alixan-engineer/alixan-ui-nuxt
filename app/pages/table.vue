@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { propsTableColumns } from '~/shared/page-docs/table-columns';
 import { tableApiRows } from '~/shared/page-docs/table/api-reference';
 import { tablePageToc } from '~/shared/page-docs/table/page-toc';
 import {
@@ -6,19 +7,15 @@ import {
 	tableUsageColumns,
 	tableUsageRows,
 } from '~/shared/page-docs/table/usage-examples';
-import { propsTableColumns } from '~/shared/page-docs/table-columns';
-
-const { t } = useI18n();
 
 usePageMeta({
-	title: t('componentDocs.table.metaTitle'),
-	description: t('componentDocs.table.description'),
+	title: 'componentDocs.table.metaTitle',
+	description: 'componentDocs.table.description',
 });
 
-const tocLinks = tablePageToc(t);
-const apiColumns = propsTableColumns(t);
+const { setToc } = usePageToc();
 
-usePageTocLinks(tocLinks);
+onMounted(() => setToc(tablePageToc));
 </script>
 
 <template>
@@ -39,10 +36,7 @@ usePageTocLinks(tocLinks);
 	<section id="usage" class="space-y-5">
 		<h2 class="text-2xl font-semibold">{{ $t('docsSections.usage') }}</h2>
 		<ExampleBlock :code="tableUsageCode">
-			<Table
-				:columns="tableUsageColumns"
-				:rows="tableUsageRows"
-			/>
+			<Table :columns="tableUsageColumns" :rows="tableUsageRows" />
 		</ExampleBlock>
 	</section>
 
@@ -50,9 +44,6 @@ usePageTocLinks(tocLinks);
 		<h2 class="text-2xl font-semibold">
 			{{ $t('docsSections.apiReference') }}
 		</h2>
-		<Table
-			:columns="apiColumns"
-			:rows="tableApiRows"
-		/>
+		<Table :columns="propsTableColumns" :rows="tableApiRows" />
 	</section>
 </template>

@@ -1,32 +1,29 @@
 <script setup lang="ts">
-import { installationPageToc } from '~/shared/page-docs/installation/page-toc';
 import { Terminal } from '@lucide/vue';
 import type { AccentThemeType } from '~/interfaces/theme/theme.interface';
-import { accentColors } from '~/shared/theme/colors';
+import { installationPageToc } from '~/shared/page-docs/installation/page-toc';
 import {
 	commands,
-	rootIdConfig,
 	nuxtConfig,
+	rootIdConfig,
 	usageCode,
 } from '~/shared/page-docs/installation/usage-examples';
-
-const { t } = useI18n();
-const { createThemeCss } = useTheme();
+import { accentColors } from '~/shared/theme/colors';
 
 usePageMeta({
-	title: t('installationPage.metaTitle'),
-	description: t('installationPage.description'),
+	title: 'installationPage.metaTitle',
+	description: 'installationPage.description',
 });
 
-const tocLinks = installationPageToc(t);
+const { createThemeCss } = useTheme();
+const { setToc } = usePageToc();
 
-usePageTocLinks(tocLinks);
+onMounted(() => setToc(installationPageToc));
 
 const accentTheme = useCookie<AccentThemeType>('alixan-ui-accent-theme', {
 	default: () => 'default',
 });
-const showTailwindCode = ref(false);
-
+const showTailwindCode = ref<boolean>(false);
 const currentTailwindCss = computed(() =>
 	createThemeCss(accentColors[accentTheme.value]),
 );
