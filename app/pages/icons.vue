@@ -1,25 +1,14 @@
 <script setup lang="ts">
+import { iconsPageToc } from '~/shared/page-docs/icons/page-toc';
 import { Bell, Search } from '@lucide/vue';
 
 usePageMeta({
 	title: 'Icons - Alixan UI',
 });
 
-const tocLinks = [
-	{ label: 'Installation', href: '#installation' },
-	{ label: 'Lucide Icons', href: '#lucide-icons' },
-	{ label: 'Other Libraries', href: '#other-libraries' },
-] as const;
+const tocLinks = iconsPageToc(t);
 
-const { setToc, clearToc } = usePageToc();
-
-onMounted(() => {
-	setToc(tocLinks);
-});
-
-onBeforeUnmount(() => {
-	clearToc();
-});
+usePageTocLinks(tocLinks);
 
 const installCode = `npm install @lucide/vue`;
 

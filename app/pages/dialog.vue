@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { dialogPageToc } from '~/shared/page-docs/dialog/page-toc';
 import DialogPreviewContent from '~/components/docs/dialog-preview-content/DialogPreviewContent.vue';
 const { t } = useI18n();
 
@@ -7,28 +8,9 @@ usePageMeta({
 	description: t('componentDocs.dialog.description'),
 });
 
-const tocLinks = [
-	{ label: t('docsSections.installation'), href: '#installation' },
-	{ label: t('docsSections.usage'), href: '#usage' },
-	{ label: t('docsSections.host'), href: '#host', child: true },
-	{ label: t('docsSections.openDialog'), href: '#open-dialog', child: true },
-	{
-		label: t('docsSections.dialogContent'),
-		href: '#dialog-content',
-		child: true,
-	},
-	{ label: t('docsSections.apiReference'), href: '#api-reference' },
-] as const;
+const tocLinks = dialogPageToc(t);
 
-const { setToc, clearToc } = usePageToc();
-
-onMounted(() => {
-	setToc(tocLinks);
-});
-
-onBeforeUnmount(() => {
-	clearToc();
-});
+usePageTocLinks(tocLinks);
 
 const dialog = useDialog();
 const projectName = ref('Alixan UI');
@@ -210,13 +192,10 @@ const openDialog = (): void => {
 		</h2>
 		<Table
 			:columns="[
-				{ label: $t('docsTable.option'), getValue: row => row.name },
-				{ label: $t('docsTable.type'), getValue: row => row.type },
-				{ label: $t('docsTable.default'), getValue: row => row.default },
-				{
-					label: $t('docsTable.description'),
-					getValue: row => row.description,
-				},
+				{ label: $t('docsTable.option'), value: row => row.name },
+				{ label: $t('docsTable.type'), value: row => row.type },
+				{ label: $t('docsTable.default'), value: row => row.default },
+				{ label: $t('docsTable.description'), value: row => row.description },
 			]"
 			:rows="dialogServiceApi"
 		/>

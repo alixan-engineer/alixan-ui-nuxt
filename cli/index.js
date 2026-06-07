@@ -8,7 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const packageRoot = path.resolve(__dirname, '..');
 const [, , command, componentName, ...flags] = process.argv;
-const shouldForce = flags.includes('--force');
+const shouldForce = flags.includes('--force') || flags.includes('-f');
 
 // Resolve project root (Nuxt app)
 const resolveProjectRoot = () => {
@@ -40,16 +40,44 @@ const getRegistryEntry = name => {
 	return fileExists(filePath) ? readJson(filePath) : null;
 };
 
-// SOURCE path (registry)
-const resolveSource = file => `registry/${file}`;
+const findComponentPath = file => {
+	const componentsRoot = path.resolve(packageRoot, 'app/components/ui');
 
-// TARGET path (Nuxt app)
-const resolveTarget = (type, file, name) => {
+	if (!fileExists(componentsRoot)) {
+		return null;
+	}
+
+	const stack = [componentsRoot];
+
+	while (stack.length) {
+		const current = stack.pop();
+		const entries = fs.readdirSync(current, { withFileTypes: true });
+
+		for (const entry of entries) {
+			const entryPath = path.join(current, entry.name);
+
+			if (entry.isDirectory()) {
+				stack.push(entryPath);
+				continue;
+			}
+
+			if (entry.isFile() && entry.name === file) {
+				return path.relative(packageRoot, entryPath);
+			}
+		}
+	}
+
+	return null;
+};
+
+const resolveRegistryFile = (type, file, name) => {
 	switch (type) {
 		case 'components':
-			return `app/components/ui/${name}/${file}`;
+			return findComponentPath(file) ?? `app/components/ui/${name}/${file}`;
 		case 'composables':
 			return `app/composables/${file}`;
+		case 'config':
+			return `app/config/${file}`;
 		case 'utils':
 			return `app/utils/${file}`;
 		default:
@@ -58,12 +86,12 @@ const resolveTarget = (type, file, name) => {
 };
 
 // Copy file
-const copyFile = (source, target) => {
-	const sourcePath = path.resolve(packageRoot, source);
+const copyFile = target => {
+	const sourcePath = path.resolve(packageRoot, target);
 	const targetPath = path.resolve(projectRoot, target);
 
 	if (!fileExists(sourcePath)) {
-		throw new Error(`Missing registry file: ${source}`);
+		throw new Error(`Missing registry file: ${target}`);
 	}
 
 	if (fileExists(targetPath) && !shouldForce) {
@@ -79,30 +107,16 @@ const copyFile = (source, target) => {
 
 // Install component
 const addComponent = name => {
-	const source = resolveSource(`${name}.json`);
 	const entry = getRegistryEntry(name);
 	if (!entry) {
 		console.error(`Component "${name}" not found in registry.`);
 		return;
 	}
 
-	// components
-	for (const file of entry.components) {
-		const target = resolveTarget('components', file, name);
-		copyFile(source, target);
-	}
-
-	// composables
-	for (const file of entry.composables) {
-		const target = resolveTarget('composables', file, name);
-		copyFile(source, target);
-	}
-
-	// utils
-	if (Array.isArray(entry.utils)) {
-		for (const file of entry.utils) {
-			const target = resolveTarget('utils', file, name);
-			copyFile(source, target);
+	for (const key of ['components', 'composables', 'config', 'utils']) {
+		for (const file of entry[key] ?? []) {
+			const target = resolveRegistryFile(key, file, name);
+			copyFile(target);
 		}
 	}
 
@@ -141,10 +155,6 @@ const printHelp = () => {
 // Router
 switch (command) {
 	case 'add':
-		if (!componentName) {
-			console.error('Please provide a component name.');
-			process.exit(1);
-		}
 		addComponent(componentName);
 		break;
 	case 'list':
@@ -166,6 +176,5 @@ switch (command) {
 		break;
 	default:
 		console.error(`Unknown command: ${command}`);
-		printHelp();
 		break;
 }

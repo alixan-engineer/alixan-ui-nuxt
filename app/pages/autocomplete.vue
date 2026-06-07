@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { autocompletePageToc } from '~/shared/page-docs/autocomplete/page-toc';
 const { t } = useI18n();
 
 usePageMeta({
@@ -6,22 +7,9 @@ usePageMeta({
 	description: t('componentDocs.autocomplete.description'),
 });
 
-const tocLinks = [
-	{ label: t('docsSections.installation'), href: '#installation' },
-	{ label: t('docsSections.usage'), href: '#usage' },
-	{ label: t('docsSections.validation'), href: '#validation' },
-	{ label: t('docsSections.withChips'), href: '#with-chips' },
-] as const;
+const tocLinks = autocompletePageToc(t);
 
-const { setToc, clearToc } = usePageToc();
-
-onMounted(() => {
-	setToc(tocLinks);
-});
-
-onBeforeUnmount(() => {
-	clearToc();
-});
+usePageTocLinks(tocLinks);
 
 const city = ref<string | number | null>(null);
 const requiredCity = ref<string | number | null>(null);

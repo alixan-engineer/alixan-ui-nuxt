@@ -1,4 +1,13 @@
 <script setup lang="ts">
+import { tableApiRows } from '~/shared/page-docs/table/api-reference';
+import { tablePageToc } from '~/shared/page-docs/table/page-toc';
+import {
+	tableUsageCode,
+	tableUsageColumns,
+	tableUsageRows,
+} from '~/shared/page-docs/table/usage-examples';
+import { propsTableColumns } from '~/shared/page-docs/table-columns';
+
 const { t } = useI18n();
 
 usePageMeta({
@@ -6,47 +15,10 @@ usePageMeta({
 	description: t('componentDocs.table.description'),
 });
 
-const tocLinks = [
-	{ label: t('docsSections.installation'), href: '#installation' },
-	{ label: t('docsSections.usage'), href: '#usage' },
-	{ label: t('docsSections.apiReference'), href: '#api-reference' },
-] as const;
+const tocLinks = tablePageToc(t);
+const apiColumns = propsTableColumns(t);
 
-const { setToc, clearToc } = usePageToc();
-
-onMounted(() => {
-	setToc(tocLinks);
-});
-
-onBeforeUnmount(() => {
-	clearToc();
-});
-
-const usageCode = `<script setup lang="ts">
-const columns = [
-  getValue: row'name', label: 'Name', getValue: row => row.name },
-  getValue: row'type', label: 'Type', getValue: row => row.type },
-  {
-    key: 'status',
-    label: 'Status',
-    getValue: row => row.status.toUpperCase(),
-  },
-]
-
-const rows = [
-  { id: 1, name: 'Button', type: 'Component', status: 'Ready' },
-  { id: 2, name: 'Input', type: 'Form', status: 'Ready' },
-  { id: 3, name: 'Toast', type: 'Overlay', status: 'Beta' },
-]
-
-<\/script>
-
-<template>
-  <Table
-    :columns="columns"
-    :rows="rows"
-  />
-</template>`;
+usePageTocLinks(tocLinks);
 </script>
 
 <template>
@@ -66,27 +38,10 @@ const rows = [
 
 	<section id="usage" class="space-y-5">
 		<h2 class="text-2xl font-semibold">{{ $t('docsSections.usage') }}</h2>
-		<ExampleBlock :code="usageCode">
+		<ExampleBlock :code="tableUsageCode">
 			<Table
-				:columns="[
-					{
-						label: 'Name',
-						getValue: row => row.name,
-					},
-					{
-						label: 'Type',
-						getValue: row => row.type,
-					},
-					{
-						label: 'Status',
-						getValue: row => String(row.status).toUpperCase(),
-					},
-				]"
-				:rows="[
-					{ id: 1, name: 'Button', type: 'Component', status: 'Ready' },
-					{ id: 2, name: 'Input', type: 'Form', status: 'Ready' },
-					{ id: 3, name: 'Toast', type: 'Overlay', status: 'Beta' },
-				]"
+				:columns="tableUsageColumns"
+				:rows="tableUsageRows"
 			/>
 		</ExampleBlock>
 	</section>
@@ -96,44 +51,8 @@ const rows = [
 			{{ $t('docsSections.apiReference') }}
 		</h2>
 		<Table
-			:columns="[
-				{ label: $t('docsTable.prop'), getValue: row => row.name },
-				{ label: $t('docsTable.type'), getValue: row => row.type },
-				{ label: $t('docsTable.default'), getValue: row => row.default },
-				{
-					label: $t('docsTable.description'),
-					getValue: row => row.description,
-				},
-			]"
-			:rows="[
-				{
-					name: 'columns',
-					type: 'TableColumn[]',
-					default: '-',
-					description:
-						'Column definitions with labels and explicit value mappers.',
-				},
-				{
-					name: 'rows',
-					type: 'Record<string, unknown>[]',
-					default: '-',
-					description: 'Data rows rendered by the table.',
-				},
-				{
-					name: 'columns[].value',
-					type: '(row, rowIndex) => unknown',
-					default: 'required',
-					description:
-						'Arrow function that returns the cell value from a row object.',
-				},
-				{
-					name: 'minWidth',
-					type: 'string',
-					default: '-',
-					description:
-						'Optional Tailwind class for horizontal overflow control.',
-				},
-			]"
+			:columns="apiColumns"
+			:rows="tableApiRows"
 		/>
 	</section>
 </template>

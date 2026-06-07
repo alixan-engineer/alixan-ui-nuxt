@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { seoPageToc } from '~/shared/page-docs/seo/page-toc';
 const { t } = useI18n();
 
 usePageMeta({
@@ -6,24 +7,9 @@ usePageMeta({
 	description: t('seoPage.metaDescription'),
 });
 
-const tocLinks = [
-	{ label: 'Installation', href: '#installation' },
-	{ label: 'Sitemap', href: '#sitemap' },
-	{ label: 'Site Config', href: '#site-config' },
-	{ label: 'Page Meta', href: '#page-meta' },
-	{ label: 'Initial Head', href: '#initial-head' },
-	{ label: 'Robots', href: '#robots' },
-] as const;
+const tocLinks = seoPageToc(t);
 
-const { setToc, clearToc } = usePageToc();
-
-onMounted(() => {
-	setToc(tocLinks);
-});
-
-onBeforeUnmount(() => {
-	clearToc();
-});
+usePageTocLinks(tocLinks);
 
 const siteConfigCode = `// app/config/site/site.ts
 export const siteConfig = {

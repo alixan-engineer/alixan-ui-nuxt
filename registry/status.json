@@ -1,17 +1,5 @@
 {
-	"$schema": "https://nuxt.ui.alixan.kz/schema/registry-item.json",
 	"name": "status",
-	"type": "component",
-	"title": "Status",
-	"description": "Soft Cupertino-inspired status pill with semantic tones.",
-	"files": [
-		{
-			"source": "templates/status/Status.vue",
-			"target": "components/ui/status/Status.vue"
-		},
-		{
-			"source": "templates/utils/cn.ts",
-			"target": "utils/cn.ts"
-		}
-	]
+	"components": ["Status.vue"],
+	"utils": ["cn.ts"]
 }

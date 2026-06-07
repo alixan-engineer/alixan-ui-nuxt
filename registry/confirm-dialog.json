@@ -1,33 +1,11 @@
 {
-	"$schema": "https://nuxt.ui.alixan.kz/schema/registry-item.json",
 	"name": "confirm-dialog",
-	"type": "component",
-	"title": "Confirm Dialog",
-	"description": "Confirmation dialog with cancel and submit actions.",
-	"files": [
-		{
-			"source": "templates/confirm-dialog/ConfirmDialog.vue",
-			"target": "components/ui/confirm-dialog/ConfirmDialog.vue"
-		},
-		{
-			"source": "templates/dialog/Dialog.vue",
-			"target": "components/ui/dialog/Dialog.vue"
-		},
-		{
-			"source": "templates/dialog/DialogHost.vue",
-			"target": "components/ui/dialog/DialogHost.vue"
-		},
-		{
-			"source": "templates/dialog/useDialog.ts",
-			"target": "composables/useDialog.ts"
-		},
-		{
-			"source": "templates/button/Button.vue",
-			"target": "components/ui/button/Button.vue"
-		},
-		{
-			"source": "templates/utils/cn.ts",
-			"target": "utils/cn.ts"
-		}
-	]
+	"components": [
+		"ConfirmDialog.vue",
+		"Dialog.vue",
+		"DialogHost.vue",
+		"Button.vue"
+	],
+	"composables": ["useDialog.ts"],
+	"utils": ["cn.ts"]
 }

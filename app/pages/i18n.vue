@@ -1,24 +1,12 @@
 <script setup lang="ts">
+import { i18nPageToc } from '~/shared/page-docs/i18n/page-toc';
 usePageMeta({
 	title: 'i18n - Alixan UI',
 });
 
-const tocLinks = [
-	{ label: 'Installation', href: '#installation' },
-	{ label: 'Messages', href: '#messages' },
-	{ label: 'Usage', href: '#usage' },
-	{ label: 'Page Meta', href: '#page-meta' },
-] as const;
+const tocLinks = i18nPageToc(t);
 
-const { setToc, clearToc } = usePageToc();
-
-onMounted(() => {
-	setToc(tocLinks);
-});
-
-onBeforeUnmount(() => {
-	clearToc();
-});
+usePageTocLinks(tocLinks);
 
 const installCode = `npx nuxt module add i18n`;
 

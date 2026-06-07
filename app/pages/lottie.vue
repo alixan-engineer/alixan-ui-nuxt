@@ -1,24 +1,12 @@
 <script setup lang="ts">
+import { lottiePageToc } from '~/shared/page-docs/lottie/page-toc';
 usePageMeta({
 	title: 'Lottie - Alixan UI',
 });
 
-const tocLinks = [
-	{ label: 'Installation', href: '#installation' },
-	{ label: 'Configuration', href: '#configuration' },
-	{ label: 'Usage', href: '#usage' },
-	{ label: 'With Empty', href: '#with-empty' },
-] as const;
+const tocLinks = lottiePageToc(t);
 
-const { setToc, clearToc } = usePageToc();
-
-onMounted(() => {
-	setToc(tocLinks);
-});
-
-onBeforeUnmount(() => {
-	clearToc();
-});
+usePageTocLinks(tocLinks);
 
 const installCode = `npx nuxi module add lottie`;
 

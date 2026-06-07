@@ -1,29 +1,10 @@
 {
-	"$schema": "https://nuxt.ui.alixan.kz/schema/registry-item.json",
 	"name": "dialog",
-	"type": "component",
-	"title": "Dialog",
-	"description": "Modal dialog with overlay, teleport, slots and smooth transitions.",
-	"files": [
-		{
-			"source": "templates/dialog/Dialog.vue",
-			"target": "components/ui/dialog/Dialog.vue"
-		},
-		{
-			"source": "templates/dialog/DialogHeader.vue",
-			"target": "components/ui/dialog/DialogHeader.vue"
-		},
-		{
-			"source": "templates/dialog/DialogHost.vue",
-			"target": "components/ui/dialog/DialogHost.vue"
-		},
-		{
-			"source": "templates/dialog/useDialog.ts",
-			"target": "composables/useDialog.ts"
-		},
-		{
-			"source": "templates/utils/cn.ts",
-			"target": "utils/cn.ts"
-		}
-	]
+	"components": [
+		"Dialog.vue",
+		"DialogHeader.vue",
+		"DialogHost.vue"
+	],
+	"composables": ["useDialog.ts"],
+	"utils": ["cn.ts"]
 }

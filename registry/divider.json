@@ -1,13 +1,4 @@
 {
-	"$schema": "https://nuxt.ui.alixan.kz/schema/registry-item.json",
 	"name": "divider",
-	"type": "component",
-	"title": "Divider",
-	"description": "Simple horizontal divider for separating content sections.",
-	"files": [
-		{
-			"source": "templates/divider/Divider.vue",
-			"target": "components/ui/divider/Divider.vue"
-		}
-	]
+	"components": ["Divider.vue"]
 }

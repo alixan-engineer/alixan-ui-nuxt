@@ -11,6 +11,6 @@
 			/>
 			<span class="text-xl font-semibold">Alixan UI</span>
 		</NuxtLink>
-		<Status label="Beta" size="sm" type="warning" />
+		<Status label="v1.0.0" size="sm" type="success" />
 	</div>
 </template>

@@ -1,21 +1,8 @@
 {
-	"$schema": "https://nuxt.ui.alixan.kz/schema/registry-item.json",
 	"name": "email-input",
-	"type": "component",
-	"title": "Email Input",
-	"description": "Email input wrapper with built-in email validation.",
-	"files": [
-		{
-			"source": "templates/input/EmailInput.vue",
-			"target": "components/ui/email-input/EmailInput.vue"
-		},
-		{
-			"source": "templates/input/Input.vue",
-			"target": "components/ui/input/Input.vue"
-		},
-		{
-			"source": "templates/utils/cn.ts",
-			"target": "utils/cn.ts"
-		}
-	]
+	"components": [
+		"EmailInput.vue",
+		"Input.vue"
+	],
+	"utils": ["cn.ts"]
 }

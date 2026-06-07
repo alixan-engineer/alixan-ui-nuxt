@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { textLinkPageToc } from '~/shared/page-docs/text-link/page-toc';
 const { t } = useI18n();
 
 usePageMeta({
@@ -6,22 +7,9 @@ usePageMeta({
 	description: t('componentDocs.textLink.description'),
 });
 
-const tocLinks = [
-	{ label: t('docsSections.installation'), href: '#installation' },
-	{ label: t('docsSections.usage'), href: '#usage' },
-	{ label: t('docsSections.externalLink'), href: '#external-link' },
-	{ label: t('docsSections.apiReference'), href: '#api-reference' },
-] as const;
+const tocLinks = textLinkPageToc(t);
 
-const { setToc, clearToc } = usePageToc();
-
-onMounted(() => {
-	setToc(tocLinks);
-});
-
-onBeforeUnmount(() => {
-	clearToc();
-});
+usePageTocLinks(tocLinks);
 
 const textLinkProps = [
 	{
@@ -106,13 +94,10 @@ const examples = {
 		</h2>
 		<Table
 			:columns="[
-				{ label: $t('docsTable.prop'), getValue: row => row.name },
-				{ label: $t('docsTable.type'), getValue: row => row.type },
-				{ label: $t('docsTable.default'), getValue: row => row.default },
-				{
-					label: $t('docsTable.description'),
-					getValue: row => row.description,
-				},
+				{ label: $t('docsTable.prop'), value: row => row.name },
+				{ label: $t('docsTable.type'), value: row => row.type },
+				{ label: $t('docsTable.default'), value: row => row.default },
+				{ label: $t('docsTable.description'), value: row => row.description },
 			]"
 			:rows="textLinkProps"
 		/>

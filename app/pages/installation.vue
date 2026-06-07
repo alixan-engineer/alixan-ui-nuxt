@@ -1,10 +1,10 @@
 <script setup lang="ts">
+import { installationPageToc } from '~/shared/page-docs/installation/page-toc';
 import { Terminal } from '@lucide/vue';
 import type { AccentThemeType } from '~/interfaces/theme/theme.interface';
 import { accentColors } from '~/shared/theme/colors';
 
 const { t } = useI18n();
-const { setToc, clearToc } = usePageToc();
 const { createThemeCss } = useTheme();
 
 usePageMeta({
@@ -12,23 +12,9 @@ usePageMeta({
 	description: t('installationPage.description'),
 });
 
-const tocLinks = [
-	{ label: t('installationPage.createProject.title'), href: '#create-project' },
-	{ label: t('installationPage.addTailwind.title'), href: '#add-tailwind-css' },
-	{
-		label: t('installationPage.installComponent.title'),
-		href: '#install-component',
-	},
-	{ label: t('installationPage.useComponent.title'), href: '#use-component' },
-] as const;
+const tocLinks = installationPageToc(t);
 
-onMounted(() => {
-	setToc(tocLinks);
-});
-
-onBeforeUnmount(() => {
-	clearToc();
-});
+usePageTocLinks(tocLinks);
 
 const commands = {
 	createProject: 'npx nuxi@latest init my-app',

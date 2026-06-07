@@ -1,21 +1,8 @@
 {
-	"$schema": "https://nuxt.ui.alixan.kz/schema/registry-item.json",
 	"name": "seo",
-	"type": "block",
-	"title": "SEO",
-	"description": "Site config, favicon links and usePageMeta composable for page SEO metadata.",
-	"files": [
-		{
-			"source": "templates/config/site/site.ts",
-			"target": "app/config/site/site.ts"
-		},
-		{
-			"source": "templates/config/site/favicon.ts",
-			"target": "app/config/site/favicon.ts"
-		},
-		{
-			"source": "templates/composables/usePageMeta.ts",
-			"target": "composables/usePageMeta.ts"
-		}
-	]
+	"config": [
+		"site/site.ts",
+		"site/favicon.ts"
+	],
+	"composables": ["usePageMeta.ts"]
 }

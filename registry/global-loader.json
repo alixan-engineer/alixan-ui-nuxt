@@ -1,21 +1,8 @@
 {
-	"$schema": "https://nuxt.ui.alixan.kz/schema/registry-item.json",
 	"name": "global-loader",
-	"type": "component",
-	"title": "Global Loader",
-	"description": "Full-screen loading overlay with composable control.",
-	"files": [
-		{
-			"source": "templates/global-loader/GlobalLoader.vue",
-			"target": "components/ui/global-loader/GlobalLoader.vue"
-		},
-		{
-			"source": "templates/global-loader/GlobalLoaderHost.vue",
-			"target": "components/ui/global-loader-host/GlobalLoaderHost.vue"
-		},
-		{
-			"source": "templates/global-loader/useGlobalLoader.ts",
-			"target": "composables/useGlobalLoader.ts"
-		}
-	]
+	"components": [
+		"GlobalLoader.vue",
+		"GlobalLoaderHost.vue"
+	],
+	"composables": ["useGlobalLoader.ts"]
 }

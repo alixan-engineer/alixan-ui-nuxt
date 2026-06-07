@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { dividerPageToc } from '~/shared/page-docs/divider/page-toc';
 const { t } = useI18n();
 
 usePageMeta({
@@ -6,20 +7,9 @@ usePageMeta({
 	description: t('componentDocs.divider.description'),
 });
 
-const tocLinks = [
-	{ label: t('docsSections.installation'), href: '#installation' },
-	{ label: t('docsSections.usage'), href: '#usage' },
-] as const;
+const tocLinks = dividerPageToc(t);
 
-const { setToc, clearToc } = usePageToc();
-
-onMounted(() => {
-	setToc(tocLinks);
-});
-
-onBeforeUnmount(() => {
-	clearToc();
-});
+usePageTocLinks(tocLinks);
 
 const usageCode = `<template>
   <div class="space-y-4">

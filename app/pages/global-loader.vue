@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { globalLoaderPageToc } from '~/shared/page-docs/global-loader/page-toc';
 const { t } = useI18n();
 
 usePageMeta({
@@ -6,21 +7,9 @@ usePageMeta({
 	description: t('componentDocs.globalLoader.description'),
 });
 
-const tocLinks = [
-	{ label: t('docsSections.installation'), href: '#installation' },
-	{ label: t('docsSections.usage'), href: '#usage' },
-	{ label: t('docsSections.apiReference'), href: '#api-reference' },
-] as const;
+const tocLinks = globalLoaderPageToc(t);
 
-const { setToc, clearToc } = usePageToc();
-
-onMounted(() => {
-	setToc(tocLinks);
-});
-
-onBeforeUnmount(() => {
-	clearToc();
-});
+usePageTocLinks(tocLinks);
 
 const loader = useGlobalLoader();
 
@@ -109,13 +98,10 @@ const showLoader = (): void => {
 		</h2>
 		<Table
 			:columns="[
-				{ label: $t('docsTable.methodOption'), getValue: row => row.name },
-				{ label: $t('docsTable.type'), getValue: row => row.type },
-				{ label: $t('docsTable.default'), getValue: row => row.default },
-				{
-					label: $t('docsTable.description'),
-					getValue: row => row.description,
-				},
+				{ label: $t('docsTable.methodOption'), value: row => row.name },
+				{ label: $t('docsTable.type'), value: row => row.type },
+				{ label: $t('docsTable.default'), value: row => row.default },
+				{ label: $t('docsTable.description'), value: row => row.description },
 			]"
 			:rows="loaderApi"
 		/>

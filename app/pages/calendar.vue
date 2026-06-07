@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { calendarPageToc } from '~/shared/page-docs/calendar/page-toc';
 const { locale, t } = useI18n();
 
 usePageMeta({
@@ -6,21 +7,9 @@ usePageMeta({
 	description: t('componentDocs.calendar.description'),
 });
 
-const tocLinks = [
-	{ label: t('docsSections.installation'), href: '#installation' },
-	{ label: t('docsSections.day'), href: '#day' },
-	{ label: t('docsSections.range'), href: '#range' },
-] as const;
+const tocLinks = calendarPageToc(t);
 
-const { setToc, clearToc } = usePageToc();
-
-onMounted(() => {
-	setToc(tocLinks);
-});
-
-onBeforeUnmount(() => {
-	clearToc();
-});
+usePageTocLinks(tocLinks);
 
 const date = ref<string | null>(null);
 const range = ref<{ from: string; to: string } | null>(null);

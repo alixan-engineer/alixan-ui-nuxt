@@ -1,17 +1,5 @@
 {
-	"$schema": "https://nuxt.ui.alixan.kz/schema/registry-item.json",
 	"name": "button",
-	"type": "component",
-	"title": "Button",
-	"description": "Production-ready button component for Nuxt 4 with variants, sizes and leading/trailing slots.",
-	"files": [
-		{
-			"source": "templates/button/Button.vue",
-			"target": "components/ui/button/Button.vue"
-		},
-		{
-			"source": "templates/utils/cn.ts",
-			"target": "utils/cn.ts"
-		}
-	]
+	"components": ["Button.vue"],
+	"utils": ["cn.ts"]
 }

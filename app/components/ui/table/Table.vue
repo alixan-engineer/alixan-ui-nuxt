@@ -1,13 +1,15 @@
 <script setup lang="ts">
 interface Props {
 	columns: TableColumn[];
-	rows: any[];
+	rows: TableRow[];
 }
 
 interface TableColumn {
 	label: string;
-	getValue: (row: any, rowIndex: number) => any;
+	value: (row: TableRow, rowIndex: number) => unknown;
 }
+
+type TableRow = Record<string, unknown>;
 
 defineProps<Props>();
 </script>
@@ -17,15 +19,23 @@ defineProps<Props>();
 		<table class="w-full text-left text-md">
 			<thead class="border-b bg-secondary text-muted-foreground">
 				<tr>
-					<th v-for="(c, i) in columns" :key="i" class="px-4 py-3 font-medium">
-						{{ c.label }}
+					<th
+						v-for="(column, columnIndex) in columns"
+						:key="columnIndex"
+						class="px-4 py-3 font-medium"
+					>
+						{{ column.label }}
 					</th>
 				</tr>
 			</thead>
 			<tbody class="divide-y">
-				<tr v-for="(r, i) in rows" :key="i">
-					<td v-for="(c, ci) in columns" :key="ci" class="px-4 py-3">
-						{{ c.getValue(r, i) }}
+				<tr v-for="(row, rowIndex) in rows" :key="rowIndex">
+					<td
+						v-for="(column, columnIndex) in columns"
+						:key="columnIndex"
+						class="px-4 py-3"
+					>
+						{{ column.value(row, rowIndex) }}
 					</td>
 				</tr>
 			</tbody>

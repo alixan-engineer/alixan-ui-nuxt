@@ -1,6 +1,9 @@
 {
 	"name": "toast",
-	"components": ["Toast.vue", "ToastHost.vue"],
+	"components": [
+		"Toast.vue",
+		"ToastHost.vue"
+	],
 	"composables": ["useToast.ts"],
 	"utils": ["cn.ts"]
 }

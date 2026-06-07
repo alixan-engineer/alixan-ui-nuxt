@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { otpPageToc } from '~/shared/page-docs/otp/page-toc';
 const { t } = useI18n();
 
 usePageMeta({
@@ -6,22 +7,9 @@ usePageMeta({
 	description: t('componentDocs.otp.description'),
 });
 
-const tocLinks = [
-	{ label: t('docsSections.installation'), href: '#installation' },
-	{ label: t('docsSections.usage'), href: '#usage' },
-	{ label: t('docsSections.length'), href: '#length' },
-	{ label: t('docsSections.apiReference'), href: '#api-reference' },
-] as const;
+const tocLinks = otpPageToc(t);
 
-const { setToc, clearToc } = usePageToc();
-
-onMounted(() => {
-	setToc(tocLinks);
-});
-
-onBeforeUnmount(() => {
-	clearToc();
-});
+usePageTocLinks(tocLinks);
 
 const toast = useToast();
 const otpValue = ref('');
@@ -123,25 +111,19 @@ const handleSubmit = (value: string): void => {
 		</h2>
 		<Table
 			:columns="[
-				{ label: $t('docsTable.prop'), getValue: row => row.name },
-				{ label: $t('docsTable.type'), getValue: row => row.type },
-				{ label: $t('docsTable.default'), getValue: row => row.default },
-				{
-					label: $t('docsTable.description'),
-					getValue: row => row.description,
-				},
+				{ label: $t('docsTable.prop'), value: row => row.name },
+				{ label: $t('docsTable.type'), value: row => row.type },
+				{ label: $t('docsTable.default'), value: row => row.default },
+				{ label: $t('docsTable.description'), value: row => row.description },
 			]"
 			:rows="otpProps"
 		/>
 
 		<Table
 			:columns="[
-				{ label: $t('docsTable.event'), getValue: row => `@${row.name}` },
-				{ label: $t('docsTable.type'), getValue: row => row.type },
-				{
-					label: $t('docsTable.description'),
-					getValue: row => row.description,
-				},
+				{ label: $t('docsTable.event'), value: row => `@${row.name}` },
+				{ label: $t('docsTable.type'), value: row => row.type },
+				{ label: $t('docsTable.description'), value: row => row.description },
 			]"
 			:rows="otpEvents"
 		/>

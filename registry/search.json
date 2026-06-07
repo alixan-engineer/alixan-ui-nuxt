@@ -1,17 +1,5 @@
 {
-	"$schema": "https://nuxt.ui.alixan.kz/schema/registry-item.json",
 	"name": "search",
-	"type": "component",
-	"title": "Search",
-	"description": "Search field with built-in debounce, search icon and clear button.",
-	"files": [
-		{
-			"source": "templates/search/Search.vue",
-			"target": "components/ui/search/Search.vue"
-		},
-		{
-			"source": "templates/utils/cn.ts",
-			"target": "utils/cn.ts"
-		}
-	]
+	"components": ["Search.vue"],
+	"utils": ["cn.ts"]
 }

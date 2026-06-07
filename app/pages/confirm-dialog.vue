@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { confirmDialogPageToc } from '~/shared/page-docs/confirm-dialog/page-toc';
 import ConfirmDialog from '~/components/ui/confirm-dialog/ConfirmDialog.vue';
 const { t } = useI18n();
 
@@ -7,21 +8,9 @@ usePageMeta({
 	description: t('componentDocs.confirmDialog.description'),
 });
 
-const tocLinks = [
-	{ label: t('docsSections.installation'), href: '#installation' },
-	{ label: t('docsSections.usage'), href: '#usage' },
-	{ label: t('docsSections.apiReference'), href: '#api-reference' },
-] as const;
+const tocLinks = confirmDialogPageToc(t);
 
-const { setToc, clearToc } = usePageToc();
-
-onMounted(() => {
-	setToc(tocLinks);
-});
-
-onBeforeUnmount(() => {
-	clearToc();
-});
+usePageTocLinks(tocLinks);
 
 const dialog = useDialog();
 const toast = useToast();
@@ -142,13 +131,10 @@ const openConfirm = (): void => {
 		</h2>
 		<Table
 			:columns="[
-				{ label: $t('docsTable.prop'), getValue: row => row.name },
-				{ label: $t('docsTable.type'), getValue: row => row.type },
-				{ label: $t('docsTable.default'), getValue: row => row.default },
-				{
-					label: $t('docsTable.description'),
-					getValue: row => row.description,
-				},
+				{ label: $t('docsTable.prop'), value: row => row.name },
+				{ label: $t('docsTable.type'), value: row => row.type },
+				{ label: $t('docsTable.default'), value: row => row.default },
+				{ label: $t('docsTable.description'), value: row => row.description },
 			]"
 			:rows="confirmDialogProps"
 		/>

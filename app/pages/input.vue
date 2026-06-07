@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { inputPageToc } from '~/shared/page-docs/input/page-toc';
 import { Eye, EyeOff, Lock, Mail } from '@lucide/vue';
 const { t } = useI18n();
 
@@ -7,30 +8,9 @@ usePageMeta({
 	description: t('componentDocs.input.description'),
 });
 
-const tocLinks = [
-	{ label: t('docsSections.installation'), href: '#installation' },
-	{ label: t('docsSections.usage'), href: '#usage' },
-	{ label: t('docsSections.state'), href: '#state' },
-	{ label: t('docsSections.validation'), href: '#validation' },
-	{ label: t('docsSections.length'), href: '#length' },
-	{ label: t('docsSections.withIcon'), href: '#with-icon' },
-	{ label: t('docsSections.variants'), href: '#variants' },
-	{ label: 'Email', href: '#variant-email', child: true },
-	{ label: 'Password', href: '#variant-password', child: true },
-	{ label: 'Phone', href: '#variant-phone', child: true },
-	{ label: 'Username', href: '#variant-username', child: true },
-	{ label: t('docsSections.apiReference'), href: '#api-reference' },
-] as const;
+const tocLinks = inputPageToc(t);
 
-const { setToc, clearToc } = usePageToc();
-
-onMounted(() => {
-	setToc(tocLinks);
-});
-
-onBeforeUnmount(() => {
-	clearToc();
-});
+usePageTocLinks(tocLinks);
 
 const usageValue = ref('');
 const stateValue = ref('readonly@example.com');
@@ -447,13 +427,10 @@ const username = ref('')
 		</h2>
 		<Table
 			:columns="[
-				{ label: $t('docsTable.prop'), getValue: row => row.name },
-				{ label: $t('docsTable.type'), getValue: row => row.type },
-				{ label: $t('docsTable.default'), getValue: row => row.default },
-				{
-					label: $t('docsTable.description'),
-					getValue: row => row.description,
-				},
+				{ label: $t('docsTable.prop'), value: row => row.name },
+				{ label: $t('docsTable.type'), value: row => row.type },
+				{ label: $t('docsTable.default'), value: row => row.default },
+				{ label: $t('docsTable.description'), value: row => row.description },
 			]"
 			:rows="inputProps"
 		/>

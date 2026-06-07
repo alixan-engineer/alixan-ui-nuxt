@@ -1,17 +1,5 @@
 {
-	"$schema": "https://nuxt.ui.alixan.kz/schema/registry-item.json",
 	"name": "input",
-	"type": "component",
-	"title": "Input",
-	"description": "Production-ready input component for Nuxt 4 with floating label, variants, sizes and slots.",
-	"files": [
-		{
-			"source": "templates/input/Input.vue",
-			"target": "components/ui/input/Input.vue"
-		},
-		{
-			"source": "templates/utils/cn.ts",
-			"target": "utils/cn.ts"
-		}
-	]
+	"components": ["Input.vue"],
+	"utils": ["cn.ts"]
 }

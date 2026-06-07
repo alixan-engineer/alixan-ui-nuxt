@@ -1,29 +1,10 @@
 {
-	"$schema": "https://nuxt.ui.alixan.kz/schema/registry-item.json",
 	"name": "calendar",
-	"type": "component",
-	"title": "Calendar",
-	"description": "Readonly input-style calendar with month and year selects, arrows and range presets.",
-	"files": [
-		{
-			"source": "templates/calendar/Calendar.vue",
-			"target": "components/ui/calendar/Calendar.vue"
-		},
-		{
-			"source": "templates/checkbox/Checkbox.vue",
-			"target": "components/ui/checkbox/Checkbox.vue"
-		},
-		{
-			"source": "templates/input/Input.vue",
-			"target": "components/ui/input/Input.vue"
-		},
-		{
-			"source": "templates/select/Select.vue",
-			"target": "components/ui/select/Select.vue"
-		},
-		{
-			"source": "templates/utils/cn.ts",
-			"target": "utils/cn.ts"
-		}
-	]
+	"components": [
+		"Calendar.vue",
+		"Checkbox.vue",
+		"Input.vue",
+		"Select.vue"
+	],
+	"utils": ["cn.ts"]
 }

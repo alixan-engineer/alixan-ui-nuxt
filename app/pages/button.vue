@@ -5,6 +5,10 @@ import {
 	buttonColors,
 	buttonVariants,
 } from '~/shared/button-options/button-options';
+import { buttonApiRows } from '~/shared/page-docs/button/api-reference';
+import { buttonPageToc } from '~/shared/page-docs/button/page-toc';
+import { buttonExamples } from '~/shared/page-docs/button/usage-examples';
+import { propsTableColumns } from '~/shared/page-docs/table-columns';
 
 const { t } = useI18n();
 
@@ -13,33 +17,16 @@ usePageMeta({
 	description: t('componentDocs.button.description'),
 });
 
-const tocLinks = [
-	{ label: t('docsSections.installation'), href: '#installation' },
-	{ label: t('docsSections.usage'), href: '#usage' },
-	{ label: t('docsSections.size'), href: '#size' },
-	{ label: t('docsSections.navigation'), href: '#navigation' },
-	{ label: t('docsSections.withIcon'), href: '#with-icon' },
-	{ label: t('docsSections.loading'), href: '#loading' },
-	{ label: t('docsSections.disabled'), href: '#disable' },
-	{ label: t('docsSections.apiReference'), href: '#api-reference' },
-] as const;
+const tocLinks = buttonPageToc(t);
+const apiColumns = propsTableColumns(t);
 
-const { setToc, clearToc } = usePageToc();
-
-onMounted(() => {
-	setToc(tocLinks);
-});
-
-onBeforeUnmount(() => {
-	clearToc();
-});
+usePageTocLinks(tocLinks);
 
 const loader = useGlobalLoader();
 const dialog = useDialog();
 
 const showGlobalLoader = (): void => {
 	loader.show({ label: 'Saving changes...' });
-
 	window.setTimeout(() => {
 		loader.hide();
 	}, 3000);
@@ -55,218 +42,6 @@ const openDisableAlert = (): void => {
 			buttonLabel: 'Got it',
 		},
 	});
-};
-
-const buttonProps = [
-	{
-		name: 'label',
-		type: 'string',
-		default: '-',
-		description: 'Fallback text when the default slot is not used.',
-	},
-	{
-		name: 'variant',
-		type: "'filled' | 'outlined' | 'ghost'",
-		default: "'filled'",
-		description:
-			'Surface style. Filled is used by default. Combine it with color for intent.',
-	},
-	{
-		name: 'color',
-		type: "'default' | 'primary' | 'secondary' | 'destructive'",
-		default: "'default'",
-		description: 'Semantic intent. Works with every variant.',
-	},
-	{
-		name: 'size',
-		type: "'sm' | 'md' | 'lg'",
-		default: "'md'",
-		description: 'Controls height, padding and text size.',
-	},
-	{
-		name: 'to',
-		type: 'RouteLocationRaw',
-		default: '-',
-		description: 'Renders the button as a NuxtLink when provided.',
-	},
-	{
-		name: 'href',
-		type: 'string',
-		default: '-',
-		description: 'Renders the button as a native anchor when provided.',
-	},
-	{
-		name: 'target',
-		type: "'_blank' | '_self' | '_parent' | '_top'",
-		default: '-',
-		description: 'Anchor target. Works with href links.',
-	},
-];
-
-const examples = {
-	size: `<script setup lang="ts">
-import Button from '@/components/ui/button/Button.vue'
-<\/script>
-
-<template>
-  <div class="flex items-center gap-2">
-    <Button size="sm">
-      Small
-    </Button>
-    <Button>
-      Default
-    </Button>
-    <Button size="lg">
-      Large
-    </Button>
-  </div>
-</template>`,
-	navigation: `<script setup lang="ts">
-import Button from '@/components/ui/button/Button.vue'
-<\/script>
-
-<template>
-  <div class="flex items-center gap-2">
-    <Button to="/icon-button">
-      NuxtLink
-    </Button>
-
-    <Button
-      href="https://github.com"
-      target="_blank"
-      variant="outlined"
-    >
-      External link
-    </Button>
-  </div>
-</template>`,
-	default: `<script setup lang="ts">
-import Button from '@/components/ui/button/Button.vue'
-<\/script>
-
-<template>
-  <Button>
-    Default
-  </Button>
-</template>`,
-	outline: `<script setup lang="ts">
-import Button from '@/components/ui/button/Button.vue'
-<\/script>
-
-<template>
-  <Button variant="outlined">
-    Outline
-  </Button>
-</template>`,
-	variant: `<script setup lang="ts">
-import Button from '@/components/ui/button/Button.vue'
-<\/script>
-
-<template>
-  <div class="flex items-center gap-2">
-    <Button variant="filled">Filled</Button>
-    <Button variant="outlined">Outlined</Button>
-    <Button variant="ghost">Ghost</Button>
-  </div>
-</template>`,
-	color: `<script setup lang="ts">
-import Button from '@/components/ui/button/Button.vue'
-<\/script>
-
-<template>
-  <div class="flex items-center gap-2">
-    <Button color="default">Default</Button>
-    <Button color="primary">Primary</Button>
-    <Button color="secondary">Secondary</Button>
-    <Button color="destructive">Destructive</Button>
-  </div>
-</template>`,
-	combinations: `<script setup lang="ts">
-import Button from '@/components/ui/button/Button.vue'
-<\/script>
-
-<template>
-  <div class="space-y-4">
-    <div class="flex flex-wrap items-center gap-2">
-      <Button variant="filled" color="default">Default</Button>
-      <Button variant="filled" color="primary">Primary</Button>
-      <Button variant="filled" color="secondary">Secondary</Button>
-      <Button variant="filled" color="destructive">Destructive</Button>
-    </div>
-
-    <div class="flex flex-wrap items-center gap-2">
-      <Button variant="outlined" color="default">Default</Button>
-      <Button variant="outlined" color="primary">Primary</Button>
-      <Button variant="outlined" color="secondary">Secondary</Button>
-      <Button variant="outlined" color="destructive">Destructive</Button>
-    </div>
-
-    <div class="flex flex-wrap items-center gap-2">
-      <Button variant="ghost" color="default">Default</Button>
-      <Button variant="ghost" color="primary">Primary</Button>
-      <Button variant="ghost" color="secondary">Secondary</Button>
-      <Button variant="ghost" color="destructive">Destructive</Button>
-    </div>
-  </div>
-</template>`,
-	withIcon: `<script setup lang="ts">
-import { ArrowRight, GitBranch } from '@lucide/vue'
-import Button from '@/components/ui/button/Button.vue'
-<\/script>
-
-<template>
-  <div class="flex items-center gap-2">
-    <Button variant="outlined">
-      <template #leading>
-        <GitBranch class="size-5" />
-      </template>
-      New Branch
-    </Button>
-
-    <Button variant="outlined">
-      Continue
-      <template #trailing>
-        <ArrowRight class="size-5" />
-      </template>
-    </Button>
-  </div>
-</template>`,
-	loading: `<script setup lang="ts">
-const loader = useGlobalLoader()
-
-const save = () => {
-  loader.show({ label: 'Saving changes...' })
-
-  window.setTimeout(() => {
-    loader.hide()
-  }, 3000)
-}
-<\/script>
-
-<template>
-  <Button @click="save">Save changes</Button>
-</template>`,
-	disable: `<script setup lang="ts">
-const dialog = useDialog()
-
-const openAlert = () => {
-  dialog.open(AlertDialog, {
-    width: '360px',
-    height: '280px',
-    data: {
-      title: 'Action unavailable',
-      description: 'Export will be available after the report is generated.',
-      buttonLabel: 'Got it',
-    },
-  })
-}
-<\/script>
-
-<template>
-  <Button variant="outlined" @click="openAlert">
-    Export report
-  </Button>
-</template>`,
 };
 </script>
 
@@ -295,7 +70,7 @@ const openAlert = () => {
 			</p>
 		</div>
 		<div class="space-y-4">
-			<ExampleBlock :code="examples.combinations">
+			<ExampleBlock :code="buttonExamples.combinations">
 				<div class="space-y-4">
 					<div
 						v-for="variant in buttonVariants"
@@ -325,7 +100,7 @@ const openAlert = () => {
 		<h2 class="text-2xl font-semibold tracking-normal">
 			{{ $t('docsSections.size') }}
 		</h2>
-		<ExampleBlock :code="examples.size">
+		<ExampleBlock :code="buttonExamples.size">
 			<div class="flex items-center gap-2">
 				<Button size="sm">Small</Button>
 				<Button>Default</Button>
@@ -338,7 +113,7 @@ const openAlert = () => {
 		<h2 class="text-2xl font-semibold tracking-normal">
 			{{ $t('docsSections.navigation') }}
 		</h2>
-		<ExampleBlock :code="examples.navigation">
+		<ExampleBlock :code="buttonExamples.navigation">
 			<div class="flex flex-wrap items-center gap-2">
 				<Button to="/icon-button">NuxtLink</Button>
 				<Button href="https://github.com" target="_blank" variant="outlined">
@@ -352,7 +127,7 @@ const openAlert = () => {
 		<h2 class="text-2xl font-semibold tracking-normal">
 			{{ $t('docsSections.withIcon') }}
 		</h2>
-		<ExampleBlock :code="examples.withIcon">
+		<ExampleBlock :code="buttonExamples.withIcon">
 			<div class="flex flex-wrap items-center gap-2">
 				<Button variant="outlined">
 					<template #leading>
@@ -383,7 +158,7 @@ const openAlert = () => {
 				operation, and keeps the experience easier to understand.
 			</p>
 		</div>
-		<ExampleBlock :code="examples.loading">
+		<ExampleBlock :code="buttonExamples.loading">
 			<Button @click="showGlobalLoader">Save changes</Button>
 		</ExampleBlock>
 	</section>
@@ -399,7 +174,7 @@ const openAlert = () => {
 				feedback instead of a dead control.
 			</p>
 		</div>
-		<ExampleBlock :code="examples.disable">
+		<ExampleBlock :code="buttonExamples.disable">
 			<Button variant="outlined" @click="openDisableAlert">
 				Export report
 			</Button>
@@ -411,16 +186,8 @@ const openAlert = () => {
 			{{ $t('docsSections.apiReference') }}
 		</h2>
 		<Table
-			:columns="[
-				{ label: $t('docsTable.prop'), getValue: row => row.name },
-				{ label: $t('docsTable.type'), getValue: row => row.type },
-				{ label: $t('docsTable.default'), getValue: row => row.default },
-				{
-					label: $t('docsTable.description'),
-					getValue: row => row.description,
-				},
-			]"
-			:rows="buttonProps"
+			:columns="apiColumns"
+			:rows="buttonApiRows"
 		/>
 	</section>
 </template>

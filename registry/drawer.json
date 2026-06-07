@@ -1,29 +1,10 @@
 {
-	"$schema": "https://nuxt.ui.alixan.kz/schema/registry-item.json",
 	"name": "drawer",
-	"type": "component",
-	"title": "Drawer",
-	"description": "Side drawer with overlay, teleport and composable slots.",
-	"files": [
-		{
-			"source": "templates/drawer/Drawer.vue",
-			"target": "components/ui/drawer/Drawer.vue"
-		},
-		{
-			"source": "templates/drawer/DrawerHeader.vue",
-			"target": "components/ui/drawer/DrawerHeader.vue"
-		},
-		{
-			"source": "templates/drawer/DrawerHost.vue",
-			"target": "components/ui/drawer/DrawerHost.vue"
-		},
-		{
-			"source": "templates/drawer/useDrawer.ts",
-			"target": "composables/useDrawer.ts"
-		},
-		{
-			"source": "templates/utils/cn.ts",
-			"target": "utils/cn.ts"
-		}
-	]
+	"components": [
+		"Drawer.vue",
+		"DrawerHeader.vue",
+		"DrawerHost.vue"
+	],
+	"composables": ["useDrawer.ts"],
+	"utils": ["cn.ts"]
 }

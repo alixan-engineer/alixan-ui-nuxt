@@ -1,25 +1,10 @@
 {
-	"$schema": "https://nuxt.ui.alixan.kz/schema/registry-item.json",
 	"name": "autocomplete",
-	"type": "component",
-	"title": "Autocomplete",
-	"description": "Searchable select input with teleported option list.",
-	"files": [
-		{
-			"source": "templates/autocomplete/Autocomplete.vue",
-			"target": "components/ui/autocomplete/Autocomplete.vue"
-		},
-		{
-			"source": "templates/autocomplete/AutocompleteChips.vue",
-			"target": "components/ui/autocomplete-chips/AutocompleteChips.vue"
-		},
-		{
-			"source": "templates/input/Input.vue",
-			"target": "components/ui/input/Input.vue"
-		},
-		{
-			"source": "templates/utils/cn.ts",
-			"target": "utils/cn.ts"
-		}
-	]
+	"components": [
+		"Autocomplete.vue",
+		"AutocompleteChips.vue",
+		"Input.vue",
+		"Button.vue"
+	],
+	"utils": ["cn.ts"]
 }

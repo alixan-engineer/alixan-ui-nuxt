@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ArrowRight, Boxes, Sparkles } from '@lucide/vue';
+import { indexPageToc } from '~/shared/page-docs/index/page-toc';
 
 const { t } = useI18n();
 
@@ -8,15 +9,7 @@ usePageMeta({
 	description: t('homePage.metaDescription'),
 });
 
-const { setToc, clearToc } = usePageToc();
-
-onMounted(() => {
-	setToc([]);
-});
-
-onBeforeUnmount(() => {
-	clearToc();
-});
+usePageTocLinks(indexPageToc());
 
 const features = [
 	{

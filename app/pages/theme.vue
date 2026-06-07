@@ -1,23 +1,12 @@
 <script setup lang="ts">
+import { themePageToc } from '~/shared/page-docs/theme/page-toc';
 usePageMeta({
 	title: 'Theme - Alixan UI',
 });
 
-const tocLinks = [
-	{ label: 'Color Mode', href: '#color-mode' },
-	{ label: 'Tailwind Variant', href: '#tailwind-variant' },
-	{ label: 'Usage', href: '#usage' },
-] as const;
+const tocLinks = themePageToc(t);
 
-const { setToc, clearToc } = usePageToc();
-
-onMounted(() => {
-	setToc(tocLinks);
-});
-
-onBeforeUnmount(() => {
-	clearToc();
-});
+usePageTocLinks(tocLinks);
 
 const installCode = `npx nuxt module add color-mode`;
 

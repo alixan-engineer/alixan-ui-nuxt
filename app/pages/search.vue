@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { searchPageToc } from '~/shared/page-docs/search/page-toc';
 const { t } = useI18n();
 
 usePageMeta({
@@ -6,22 +7,9 @@ usePageMeta({
 	description: t('componentDocs.search.description'),
 });
 
-const tocLinks = [
-	{ label: t('docsSections.installation'), href: '#installation' },
-	{ label: t('docsSections.usage'), href: '#usage' },
-	{ label: t('docsSections.debounce'), href: '#debounce' },
-	{ label: t('docsSections.apiReference'), href: '#api-reference' },
-] as const;
+const tocLinks = searchPageToc(t);
 
-const { setToc, clearToc } = usePageToc();
-
-onMounted(() => {
-	setToc(tocLinks);
-});
-
-onBeforeUnmount(() => {
-	clearToc();
-});
+usePageTocLinks(tocLinks);
 
 const searchValue = ref('');
 const debouncedValue = ref('');
@@ -178,13 +166,10 @@ const debouncedValue = ref('')
 		</div>
 		<Table
 			:columns="[
-				{ label: $t('docsTable.prop'), getValue: row => row.name },
-				{ label: $t('docsTable.type'), getValue: row => row.type },
-				{ label: $t('docsTable.default'), getValue: row => row.default },
-				{
-					label: $t('docsTable.description'),
-					getValue: row => row.description,
-				},
+				{ label: $t('docsTable.prop'), value: row => row.name },
+				{ label: $t('docsTable.type'), value: row => row.type },
+				{ label: $t('docsTable.default'), value: row => row.default },
+				{ label: $t('docsTable.description'), value: row => row.description },
 			]"
 			:rows="searchProps"
 		/>
@@ -195,13 +180,10 @@ const debouncedValue = ref('')
 				:columns="[
 					{
 						label: $t('docsTable.event'),
-						getValue: row => `@${row.name}`,
+						value: row => `@${row.name}`,
 					},
-					{ label: $t('docsTable.payload'), getValue: row => row.payload },
-					{
-						label: $t('docsTable.description'),
-						getValue: row => row.description,
-					},
+					{ label: $t('docsTable.payload'), value: row => row.payload },
+					{ label: $t('docsTable.description'), value: row => row.description },
 				]"
 				:rows="searchEvents"
 			/>

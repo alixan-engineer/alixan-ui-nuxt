@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { alertDialogPageToc } from '~/shared/page-docs/alert-dialog/page-toc';
 import { CheckCircle } from '@lucide/vue';
 
 import successIcon from '~/assets/icons/success.svg';
@@ -11,21 +12,9 @@ usePageMeta({
 	description: t('componentDocs.alertDialog.description'),
 });
 
-const tocLinks = [
-	{ label: t('docsSections.installation'), href: '#installation' },
-	{ label: t('docsSections.usage'), href: '#usage' },
-	{ label: t('docsSections.apiReference'), href: '#api-reference' },
-] as const;
+const tocLinks = alertDialogPageToc(t);
 
-const { setToc, clearToc } = usePageToc();
-
-onMounted(() => {
-	setToc(tocLinks);
-});
-
-onBeforeUnmount(() => {
-	clearToc();
-});
+usePageTocLinks(tocLinks);
 
 const dialog = useDialog();
 
@@ -312,13 +301,10 @@ const openIconAlert = (): void => {
 		</h2>
 		<Table
 			:columns="[
-				{ label: $t('docsTable.prop'), getValue: row => row.name },
-				{ label: $t('docsTable.type'), getValue: row => row.type },
-				{ label: $t('docsTable.default'), getValue: row => row.default },
-				{
-					label: $t('docsTable.description'),
-					getValue: row => row.description,
-				},
+				{ label: $t('docsTable.prop'), value: row => row.name },
+				{ label: $t('docsTable.type'), value: row => row.type },
+				{ label: $t('docsTable.default'), value: row => row.default },
+				{ label: $t('docsTable.description'), value: row => row.description },
 			]"
 			:rows="alertDialogProps"
 		/>

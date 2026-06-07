@@ -1,23 +1,12 @@
 <script setup lang="ts">
+import { fontsPageToc } from '~/shared/page-docs/fonts/page-toc';
 usePageMeta({
 	title: 'Fonts - Alixan UI',
 });
 
-const tocLinks = [
-	{ label: 'Installation', href: '#installation' },
-	{ label: 'Configuration', href: '#configuration' },
-	{ label: 'Tailwind', href: '#tailwind' },
-] as const;
+const tocLinks = fontsPageToc(t);
 
-const { setToc, clearToc } = usePageToc();
-
-onMounted(() => {
-	setToc(tocLinks);
-});
-
-onBeforeUnmount(() => {
-	clearToc();
-});
+usePageTocLinks(tocLinks);
 
 const installCode = `npm install @nuxtjs/google-fonts`;
 

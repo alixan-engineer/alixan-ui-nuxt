@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import { stylesPageToc } from '~/shared/page-docs/styles/page-toc';
 import type { AccentThemeType } from '~/interfaces/theme/theme.interface';
 import { accentColors } from '~/shared/theme/colors';
 
 const { t } = useI18n();
-const { setToc, clearToc } = usePageToc();
 const { createThemeCss } = useTheme();
 
 usePageMeta({
@@ -11,16 +11,9 @@ usePageMeta({
 	description: t('stylesPage.metaDescription'),
 });
 
-const tocLinks = [
-	{ label: t('stylesPage.tailwind.title'), href: '#tailwind-css' },
-	{ label: t('stylesPage.textSize.title'), href: '#text-size' },
-	{ label: t('stylesPage.island.title'), href: '#island' },
-	{ label: t('stylesPage.backdrop.title'), href: '#backdrop' },
-] as const;
+const tocLinks = stylesPageToc(t);
 
-onMounted(() => setToc(tocLinks));
-
-onBeforeUnmount(() => clearToc());
+usePageTocLinks(tocLinks);
 
 const accentTheme = useCookie<AccentThemeType>('alixan-ui-accent-theme', {
 	default: () => 'default',
