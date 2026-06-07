@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { cn } from '~/utils/cn';
+import { scrollToTop } from '~/utils/scroll-to-top';
 import { menuSections } from './menu';
 
 interface Props {
@@ -16,8 +17,6 @@ const route = useRoute();
 const localePath = useLocalePath();
 
 const isActive = (to: string) => route.path === localePath(to);
-
-const scrollToTop = () => document.getElementById('root')?.scrollTo(0, 0);
 </script>
 
 <template>

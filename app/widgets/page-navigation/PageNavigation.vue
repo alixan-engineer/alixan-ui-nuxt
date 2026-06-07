@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ArrowLeft, ArrowRight } from '@lucide/vue';
 import { computed } from 'vue';
+import { scrollToTop } from '~/utils/scroll-to-top';
 import { menuSections } from '~/widgets/sidebar/menu';
 
 const route = useRoute();
@@ -52,6 +53,7 @@ const showNavigation = computed(
 			:to="previousPage.path"
 			variant="outlined"
 			class="flex-1"
+			@click="scrollToTop()"
 		>
 			<template #leading>
 				<ArrowLeft />
@@ -64,6 +66,7 @@ const showNavigation = computed(
 			variant="filled"
 			color="primary"
 			class="flex-1"
+			@click="scrollToTop()"
 		>
 			{{ $tn(nextPage.label) }}
 			<template #trailing>
