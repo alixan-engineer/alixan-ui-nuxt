@@ -4,11 +4,11 @@ import AlertDialog from '~/components/ui/alert-dialog/AlertDialog.vue';
 import {
 	buttonColors,
 	buttonVariants,
-} from '~/shared/button-options/button-options';
-import { iconButtonApiRows } from '~/shared/page-docs/icon-button/api-reference';
-import { iconButtonPageToc } from '~/shared/page-docs/icon-button/page-toc';
-import { iconButtonExamples } from '~/shared/page-docs/icon-button/usage-examples';
-import { propsTableColumns } from '~/shared/page-docs/table-columns';
+} from '~/shared/examples/button/button-options';
+import { iconButtonApiRows } from '~/shared/examples/icon-button/api-reference';
+import { iconButtonPageToc } from '~/shared/examples/icon-button/page-toc';
+import { iconButtonExamples } from '~/shared/examples/icon-button/usage-examples';
+import { propsTableColumns } from '~/shared/examples/table-columns';
 
 usePageMeta({
 	title: 'componentDocs.iconButton.metaTitle',

@@ -1,32 +1,55 @@
 <script setup lang="ts">
-import {
-	computed,
-	nextTick,
-	onBeforeUnmount,
-	onMounted,
-	ref,
-	watch,
-} from 'vue';
-import type { IPageTocLink } from '~/interfaces/page-toc/page-toc.interface';
+import { nextTick, onBeforeUnmount, onMounted, ref } from 'vue';
+import type { IPageToc } from '~/interfaces/page-toc/page-toc.interface';
 import { cn } from '~/utils/cn';
 
-interface PageTocProps {
-	links: readonly IPageTocLink[];
+interface Props {
+	links: IPageToc[];
 }
 
-const props = defineProps<PageTocProps>();
+const props = defineProps<Props>();
 
-const route = useRoute();
+onMounted(() => {
+	observeSections();
+});
 
-const activeHash = ref(route.hash || props.links[0]?.href || '');
+onBeforeUnmount(() => {
+	disconnectObserver();
+});
+
+const activeHref = ref(props.links[0]?.href || '');
 let observer: IntersectionObserver | null = null;
 
-const activeHref = computed(
-	() => activeHash.value || props.links[0]?.href || '',
-);
+const observeSections = async () => {
+	await nextTick();
+	const root = document.getElementById('root');
+	const sectionElements = props.links
+		.map(link => document.getElementById(link.href.slice(1)))
+		.filter((element): element is HTMLElement => Boolean(element));
+	
+		if (!sectionElements.length) return;
 
-const syncActiveHash = (): void => {
-	activeHash.value = window.location.hash || props.links[0]?.href || '';
+	observer = new IntersectionObserver(
+		entries => {
+			const visibleIds = entries
+				.filter(entry => entry.isIntersecting)
+				.map(entry => `#${entry.target.id}`);
+			
+				if (!visibleIds.length) return;
+			
+			const lastVisibleLink = props.links
+				.filter(link => visibleIds.includes(link.href))
+				.at(-1);
+
+			if (lastVisibleLink) activeHref.value = lastVisibleLink.href;
+		},
+		{
+			root,
+			rootMargin: '-96px 0px -30% 0px',
+			threshold: 0,
+		},
+	);
+	sectionElements.forEach(element => observer?.observe(element));
 };
 
 const disconnectObserver = (): void => {
@@ -34,75 +57,10 @@ const disconnectObserver = (): void => {
 	observer = null;
 };
 
-const observeSections = async (): Promise<void> => {
-	disconnectObserver();
-	await nextTick();
-
-	const root = document.getElementById('root');
-	const sectionElements = props.links
-		.map(link => document.getElementById(link.href.slice(1)))
-		.filter((element): element is HTMLElement => Boolean(element));
-
-	if (!sectionElements.length) {
-		return;
-	}
-
-	observer = new IntersectionObserver(
-		entries => {
-			const visibleEntries = entries
-				.filter(entry => entry.isIntersecting)
-				.sort(
-					(firstEntry, secondEntry) =>
-						firstEntry.boundingClientRect.top -
-						secondEntry.boundingClientRect.top,
-				);
-			const firstVisibleEntry = visibleEntries[0];
-
-			if (!firstVisibleEntry?.target.id) {
-				return;
-			}
-
-			activeHash.value = `#${firstVisibleEntry.target.id}`;
-		},
-		{
-			root,
-			rootMargin: '-96px 0px -65% 0px',
-			threshold: [0, 1],
-		},
-	);
-
-	sectionElements.forEach(element => observer?.observe(element));
-};
-
-watch(
-	() => [props.links, route.hash, route.path],
-	() => {
-		activeHash.value = route.hash || props.links[0]?.href || '';
-		observeSections();
-	},
-	{ deep: true },
-);
-
-onMounted(() => {
-	syncActiveHash();
-	observeSections();
-	window.addEventListener('hashchange', syncActiveHash);
-});
-
-onBeforeUnmount(() => {
-	disconnectObserver();
-	window.removeEventListener('hashchange', syncActiveHash);
-});
-
 const scrollToLink = (href: string): void => {
 	const section = document.getElementById(href.slice(1));
-
-	activeHash.value = href;
-
-	if (!section) {
-		return;
-	}
-
+	activeHref.value = href;
+	if (!section) return;
 	section.scrollIntoView({ behavior: 'smooth', block: 'start' });
 	window.history.replaceState(null, '', href);
 };
@@ -130,7 +88,7 @@ const scrollToLink = (href: string): void => {
 						)
 					"
 				>
-					{{ link.label }}
+					{{ $t(link.label) }}
 				</a>
 			</nav>
 		</div>

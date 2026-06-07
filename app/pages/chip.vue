@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { chipProps } from '~/shared/page-docs/chip/api-reference';
-import { chipPageToc } from '~/shared/page-docs/chip/page-toc';
-import { examples } from '~/shared/page-docs/chip/usage-examples';
-import { propsTableColumns } from '~/shared/page-docs/table-columns';
+import { chipProps } from '~/shared/examples/chip/api-reference';
+import { chipPageToc } from '~/shared/examples/chip/page-toc';
+import { examples } from '~/shared/examples/chip/usage-examples';
+import { propsTableColumns } from '~/shared/examples/table-columns';
 
 usePageMeta({
 	title: 'componentDocs.chip.metaTitle',

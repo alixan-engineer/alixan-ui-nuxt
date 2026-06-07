@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { dropdownProps } from '~/shared/page-docs/dropdown-menu/api-reference';
-import { dropdownMenuPageToc } from '~/shared/page-docs/dropdown-menu/page-toc';
-import { code } from '~/shared/page-docs/dropdown-menu/usage-examples';
-import { propsTableColumns } from '~/shared/page-docs/table-columns';
+import { dropdownProps } from '~/shared/examples/dropdown-menu/api-reference';
+import { dropdownMenuPageToc } from '~/shared/examples/dropdown-menu/page-toc';
+import { code } from '~/shared/examples/dropdown-menu/usage-examples';
+import { propsTableColumns } from '~/shared/examples/table-columns';
 
 usePageMeta({
 	title: 'componentDocs.dropdownMenu.metaTitle',

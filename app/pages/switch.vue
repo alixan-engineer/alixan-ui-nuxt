@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { switchProps } from '~/shared/page-docs/switch/api-reference';
-import { switchPageToc } from '~/shared/page-docs/switch/page-toc';
-import { examples } from '~/shared/page-docs/switch/usage-examples';
-import { propsTableColumns } from '~/shared/page-docs/table-columns';
+import { switchProps } from '~/shared/examples/switch/api-reference';
+import { switchPageToc } from '~/shared/examples/switch/page-toc';
+import { examples } from '~/shared/examples/switch/usage-examples';
+import { propsTableColumns } from '~/shared/examples/table-columns';
 
 usePageMeta({
 	title: 'componentDocs.switch.metaTitle',

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { Eye, EyeOff, Lock, Mail } from '@lucide/vue';
-import { inputProps } from '~/shared/page-docs/input/api-reference';
-import { inputPageToc } from '~/shared/page-docs/input/page-toc';
-import { examples } from '~/shared/page-docs/input/usage-examples';
-import { propsTableColumns } from '~/shared/page-docs/table-columns';
+import { inputProps } from '~/shared/examples/input/api-reference';
+import { inputPageToc } from '~/shared/examples/input/page-toc';
+import { examples } from '~/shared/examples/input/usage-examples';
+import { propsTableColumns } from '~/shared/examples/table-columns';
 
 usePageMeta({
 	title: 'componentDocs.input.metaTitle',

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { checkboxProps } from '~/shared/page-docs/checkbox/api-reference';
-import { checkboxPageToc } from '~/shared/page-docs/checkbox/page-toc';
-import { examples } from '~/shared/page-docs/checkbox/usage-examples';
-import { propsTableColumns } from '~/shared/page-docs/table-columns';
+import { checkboxProps } from '~/shared/examples/checkbox/api-reference';
+import { checkboxPageToc } from '~/shared/examples/checkbox/page-toc';
+import { examples } from '~/shared/examples/checkbox/usage-examples';
+import { propsTableColumns } from '~/shared/examples/table-columns';
 
 usePageMeta({
 	title: 'componentDocs.checkbox.metaTitle',

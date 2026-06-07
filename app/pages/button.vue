@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { ArrowRight, GitBranch } from '@lucide/vue';
 import AlertDialog from '~/components/ui/alert-dialog/AlertDialog.vue';
+import { buttonApiRows } from '~/shared/examples/button/api-reference';
 import {
 	buttonColors,
 	buttonVariants,
-} from '~/shared/button-options/button-options';
-import { buttonApiRows } from '~/shared/page-docs/button/api-reference';
-import { buttonPageToc } from '~/shared/page-docs/button/page-toc';
-import { buttonExamples } from '~/shared/page-docs/button/usage-examples';
-import { propsTableColumns } from '~/shared/page-docs/table-columns';
+} from '~/shared/examples/button/button-options';
+import { buttonPageToc } from '~/shared/examples/button/page-toc';
+import { buttonExamples } from '~/shared/examples/button/usage-examples';
+import { propsTableColumns } from '~/shared/examples/table-columns';
 
 usePageMeta({
 	title: 'componentDocs.button.metaTitle',

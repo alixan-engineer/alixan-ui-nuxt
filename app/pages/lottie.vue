@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { lottiePageToc } from '~/shared/page-docs/lottie/page-toc';
+import { lottiePageToc } from '~/shared/examples/lottie/page-toc';
 import {
 	configCode,
 	emptyCode,
 	folderCode,
 	installCode,
 	usageCode,
-} from '~/shared/page-docs/lottie/usage-examples';
+} from '~/shared/examples/lottie/usage-examples';
 
 usePageMeta({
 	title: 'Lottie - Alixan UI',

@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import type { AccentThemeType } from '~/interfaces/theme/theme.interface';
-import { stylesPageToc } from '~/shared/page-docs/styles/page-toc';
+import { stylesPageToc } from '~/shared/examples/styles/page-toc';
 import {
 	backdropCode,
 	islandCode,
 	textSizeCode,
-} from '~/shared/page-docs/styles/usage-examples';
+} from '~/shared/examples/styles/usage-examples';
 import { accentColors } from '~/shared/theme/colors';
 
 usePageMeta({

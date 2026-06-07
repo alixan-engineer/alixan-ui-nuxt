@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { emptyProps, emptySlots } from '~/shared/page-docs/empty/api-reference';
-import { emptyPageToc } from '~/shared/page-docs/empty/page-toc';
-import { examples } from '~/shared/page-docs/empty/usage-examples';
+import { emptyProps, emptySlots } from '~/shared/examples/empty/api-reference';
+import { emptyPageToc } from '~/shared/examples/empty/page-toc';
+import { examples } from '~/shared/examples/empty/usage-examples';
 import {
 	propsTableColumns,
 	slotTableColumns,
-} from '~/shared/page-docs/table-columns';
+} from '~/shared/examples/table-columns';
 
 usePageMeta({
 	title: 'componentDocs.empty.metaTitle',

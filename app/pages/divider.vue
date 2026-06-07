@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { dividerPageToc } from '~/shared/page-docs/divider/page-toc';
-import { usageCode } from '~/shared/page-docs/divider/usage-examples';
+import { dividerPageToc } from '~/shared/examples/divider/page-toc';
+import { usageCode } from '~/shared/examples/divider/usage-examples';
 
 usePageMeta({
 	title: 'componentDocs.divider.metaTitle',

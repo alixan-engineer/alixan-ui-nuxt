@@ -1,9 +1,9 @@
-import type { IPageTocLink } from '~/interfaces/page-toc/page-toc.interface';
+import type { IPageToc } from '~/interfaces/page-toc/page-toc.interface';
 
 export const usePageToc = () => {
-	const links = useState<IPageTocLink[]>('page-toc-links', () => []);
+	const links = useState<IPageToc[]>('page-toc-links', () => []);
 
-	const setToc = (value: IPageTocLink[]) => (links.value = value);
+	const setToc = (value: IPageToc[]) => (links.value = value);
 
 	const clearToc = () => (links.value = []);
 

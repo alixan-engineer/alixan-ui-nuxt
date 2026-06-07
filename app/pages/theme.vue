@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { themePageToc } from '~/shared/page-docs/theme/page-toc';
+import { themePageToc } from '~/shared/examples/theme/page-toc';
 import {
 	colorModeConfigCode,
 	installCode,
 	tailwindCode,
 	usageCode,
-} from '~/shared/page-docs/theme/usage-examples';
+} from '~/shared/examples/theme/usage-examples';
 
 usePageMeta({
 	title: 'Theme - Alixan UI',

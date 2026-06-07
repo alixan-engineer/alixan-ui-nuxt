@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { propsTableColumns } from '~/shared/page-docs/table-columns';
-import { tabsProps } from '~/shared/page-docs/tabs/api-reference';
-import { tabsPageToc } from '~/shared/page-docs/tabs/page-toc';
-import { examples } from '~/shared/page-docs/tabs/usage-examples';
+import { propsTableColumns } from '~/shared/examples/table-columns';
+import { tabsProps } from '~/shared/examples/tabs/api-reference';
+import { tabsPageToc } from '~/shared/examples/tabs/page-toc';
+import { examples } from '~/shared/examples/tabs/usage-examples';
 
 usePageMeta({
 	title: 'componentDocs.tabs.metaTitle',

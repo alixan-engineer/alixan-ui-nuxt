@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { otpEvents, otpProps } from '~/shared/page-docs/otp/api-reference';
-import { otpPageToc } from '~/shared/page-docs/otp/page-toc';
-import { examples } from '~/shared/page-docs/otp/usage-examples';
+import { otpEvents, otpProps } from '~/shared/examples/otp/api-reference';
+import { otpPageToc } from '~/shared/examples/otp/page-toc';
+import { examples } from '~/shared/examples/otp/usage-examples';
 import {
 	eventTableColumns,
 	propsTableColumns,
-} from '~/shared/page-docs/table-columns';
+} from '~/shared/examples/table-columns';
 
 usePageMeta({
 	title: 'componentDocs.otp.metaTitle',

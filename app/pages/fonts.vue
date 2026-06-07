@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { fontsPageToc } from '~/shared/page-docs/fonts/page-toc';
+import { fontsPageToc } from '~/shared/examples/fonts/page-toc';
 import {
 	configCode,
 	installCode,
 	tailwindCode,
-} from '~/shared/page-docs/fonts/usage-examples';
+} from '~/shared/examples/fonts/usage-examples';
 
 usePageMeta({
 	title: 'Fonts - Alixan UI',

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { ToastType } from '~/composables/useToast';
-import { argumentTableColumns } from '~/shared/page-docs/table-columns';
-import { toastApi } from '~/shared/page-docs/toast/api-reference';
-import { toastPageToc } from '~/shared/page-docs/toast/page-toc';
-import { appCode, exampleCode } from '~/shared/page-docs/toast/usage-examples';
+import { argumentTableColumns } from '~/shared/examples/table-columns';
+import { toastApi } from '~/shared/examples/toast/api-reference';
+import { toastPageToc } from '~/shared/examples/toast/page-toc';
+import { appCode, exampleCode } from '~/shared/examples/toast/usage-examples';
 
 usePageMeta({
 	title: 'componentDocs.toast.metaTitle',

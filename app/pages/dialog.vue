@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import DialogPreviewContent from '~/widgets/dialog-preview-content/DialogPreviewContent.vue';
-import { dialogServiceApi } from '~/shared/page-docs/dialog/api-reference';
-import { dialogPageToc } from '~/shared/page-docs/dialog/page-toc';
+import { dialogServiceApi } from '~/shared/examples/dialog/api-reference';
+import { dialogPageToc } from '~/shared/examples/dialog/page-toc';
 import {
 	contentCode,
 	hostCode,
 	openCode,
-} from '~/shared/page-docs/dialog/usage-examples';
-import { propsTableColumns } from '~/shared/page-docs/table-columns';
+} from '~/shared/examples/dialog/usage-examples';
+import { propsTableColumns } from '~/shared/examples/table-columns';
+import DialogPreviewContent from '~/widgets/dialog-preview-content/DialogPreviewContent.vue';
 
 usePageMeta({
 	title: 'componentDocs.dialog.metaTitle',

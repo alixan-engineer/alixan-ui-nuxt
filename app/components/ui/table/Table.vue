@@ -31,7 +31,7 @@ defineProps<Props>();
 						:key="columnIndex"
 						class="px-4 py-3"
 					>
-						{{ column.getValue(row, rowIndex) }}
+						{{ $t(column.getValue(row, rowIndex)) }}
 					</td>
 				</tr>
 			</tbody>

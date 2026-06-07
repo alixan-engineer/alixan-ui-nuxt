@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import ConfirmDialog from '~/components/ui/confirm-dialog/ConfirmDialog.vue';
-import { confirmDialogProps } from '~/shared/page-docs/confirm-dialog/api-reference';
-import { confirmDialogPageToc } from '~/shared/page-docs/confirm-dialog/page-toc';
-import { code } from '~/shared/page-docs/confirm-dialog/usage-examples';
-import { propsTableColumns } from '~/shared/page-docs/table-columns';
+import { confirmDialogProps } from '~/shared/examples/confirm-dialog/api-reference';
+import { confirmDialogPageToc } from '~/shared/examples/confirm-dialog/page-toc';
+import { code } from '~/shared/examples/confirm-dialog/usage-examples';
+import { propsTableColumns } from '~/shared/examples/table-columns';
 
 usePageMeta({
 	title: 'componentDocs.confirmDialog.metaTitle',

@@ -2,13 +2,13 @@
 import {
 	searchEvents,
 	searchProps,
-} from '~/shared/page-docs/search/api-reference';
-import { searchPageToc } from '~/shared/page-docs/search/page-toc';
-import { examples } from '~/shared/page-docs/search/usage-examples';
+} from '~/shared/examples/search/api-reference';
+import { searchPageToc } from '~/shared/examples/search/page-toc';
+import { examples } from '~/shared/examples/search/usage-examples';
 import {
 	eventPayloadTableColumns,
 	propsTableColumns,
-} from '~/shared/page-docs/table-columns';
+} from '~/shared/examples/table-columns';
 
 usePageMeta({
 	title: 'componentDocs.search.metaTitle',

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { autocompletePageToc } from '~/shared/page-docs/autocomplete/page-toc';
-import { examples } from '~/shared/page-docs/autocomplete/usage-examples';
+import { autocompletePageToc } from '~/shared/examples/autocomplete/page-toc';
+import { examples } from '~/shared/examples/autocomplete/usage-examples';
 
 usePageMeta({
 	title: 'componentDocs.autocomplete.metaTitle',

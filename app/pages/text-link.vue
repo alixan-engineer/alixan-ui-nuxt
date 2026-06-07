@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { propsTableColumns } from '~/shared/page-docs/table-columns';
-import { textLinkProps } from '~/shared/page-docs/text-link/api-reference';
-import { textLinkPageToc } from '~/shared/page-docs/text-link/page-toc';
-import { examples } from '~/shared/page-docs/text-link/usage-examples';
+import { propsTableColumns } from '~/shared/examples/table-columns';
+import { textLinkProps } from '~/shared/examples/text-link/api-reference';
+import { textLinkPageToc } from '~/shared/examples/text-link/page-toc';
+import { examples } from '~/shared/examples/text-link/usage-examples';
 
 usePageMeta({
 	title: 'componentDocs.textLink.metaTitle',

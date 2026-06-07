@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { Terminal } from '@lucide/vue';
 import type { AccentThemeType } from '~/interfaces/theme/theme.interface';
-import { installationPageToc } from '~/shared/page-docs/installation/page-toc';
+import { installationPageToc } from '~/shared/examples/installation/page-toc';
 import {
 	commands,
 	nuxtConfig,
 	rootIdConfig,
 	usageCode,
-} from '~/shared/page-docs/installation/usage-examples';
+} from '~/shared/examples/installation/usage-examples';
 import { accentColors } from '~/shared/theme/colors';
 
 usePageMeta({

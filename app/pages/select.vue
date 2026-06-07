@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { selectProps } from '~/shared/page-docs/select/api-reference';
-import { selectPageToc } from '~/shared/page-docs/select/page-toc';
-import { propsTableColumns } from '~/shared/page-docs/table-columns';
+import { selectProps } from '~/shared/examples/select/api-reference';
+import { selectPageToc } from '~/shared/examples/select/page-toc';
+import { propsTableColumns } from '~/shared/examples/table-columns';
 
 usePageMeta({
 	title: 'componentDocs.select.metaTitle',

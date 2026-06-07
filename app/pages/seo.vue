@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { seoPageToc } from '~/shared/page-docs/seo/page-toc';
+import { seoPageToc } from '~/shared/examples/seo/page-toc';
 import {
 	appInitCode,
 	faviconCode,
@@ -9,7 +9,7 @@ import {
 	siteConfigCode,
 	sitemapInstallCode,
 	usePageMetaCode,
-} from '~/shared/page-docs/seo/usage-examples';
+} from '~/shared/examples/seo/usage-examples';
 
 usePageMeta({
 	title: 'seoPage.metaTitle',

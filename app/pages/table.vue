@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { propsTableColumns } from '~/shared/page-docs/table-columns';
-import { tableApiRows } from '~/shared/page-docs/table/api-reference';
-import { tablePageToc } from '~/shared/page-docs/table/page-toc';
+import { propsTableColumns } from '~/shared/examples/table-columns';
+import { tableApiRows } from '~/shared/examples/table/api-reference';
+import { tablePageToc } from '~/shared/examples/table/page-toc';
 import {
 	tableUsageCode,
 	tableUsageColumns,
 	tableUsageRows,
-} from '~/shared/page-docs/table/usage-examples';
+} from '~/shared/examples/table/usage-examples';
 
 usePageMeta({
 	title: 'componentDocs.table.metaTitle',

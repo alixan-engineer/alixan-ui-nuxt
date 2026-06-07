@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { loaderApi } from '~/shared/page-docs/global-loader/api-reference';
-import { globalLoaderPageToc } from '~/shared/page-docs/global-loader/page-toc';
+import { loaderApi } from '~/shared/examples/global-loader/api-reference';
+import { globalLoaderPageToc } from '~/shared/examples/global-loader/page-toc';
 import {
 	appCode,
 	usageCode,
-} from '~/shared/page-docs/global-loader/usage-examples';
-import { propsTableColumns } from '~/shared/page-docs/table-columns';
+} from '~/shared/examples/global-loader/usage-examples';
+import { propsTableColumns } from '~/shared/examples/table-columns';
 
 usePageMeta({
 	title: 'componentDocs.globalLoader.metaTitle',

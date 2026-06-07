@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { apiRows } from '~/shared/page-docs/accordion/api-reference';
-import { accordionPageToc } from '~/shared/page-docs/accordion/page-toc';
+import { apiRows } from '~/shared/examples/accordion/api-reference';
+import { accordionPageToc } from '~/shared/examples/accordion/page-toc';
 import {
 	multipleCode,
 	usageCode,
-} from '~/shared/page-docs/accordion/usage-examples';
-import { propsTableColumns } from '~/shared/page-docs/table-columns';
+} from '~/shared/examples/accordion/usage-examples';
+import { propsTableColumns } from '~/shared/examples/table-columns';
 
 usePageMeta({
 	title: 'componentDocs.accordion.metaTitle',

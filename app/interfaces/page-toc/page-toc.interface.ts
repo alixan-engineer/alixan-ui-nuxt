@@ -1,4 +1,4 @@
-export interface IPageTocLink {
+export interface IPageToc {
 	label: string;
 	href: `#${string}`;
 	child?: boolean;

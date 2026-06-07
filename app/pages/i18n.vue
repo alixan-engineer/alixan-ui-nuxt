@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { i18nPageToc } from '~/shared/page-docs/i18n/page-toc';
+import { i18nPageToc } from '~/shared/examples/i18n/page-toc';
 import {
 	installCode,
 	messagesCode,
 	pageMetaCode,
 	setupCode,
 	usageCode,
-} from '~/shared/page-docs/i18n/usage-examples';
+} from '~/shared/examples/i18n/usage-examples';
 
 usePageMeta({
 	title: 'i18n - Alixan UI',

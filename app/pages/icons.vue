@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { Bell, Search } from '@lucide/vue';
-import { iconsPageToc } from '~/shared/page-docs/icons/page-toc';
+import { iconsPageToc } from '~/shared/examples/icons/page-toc';
 import {
 	installCode,
 	lucideCode,
 	mdiCode,
-} from '~/shared/page-docs/icons/usage-examples';
+} from '~/shared/examples/icons/usage-examples';
 
 usePageMeta({
 	title: 'Icons - Alixan UI',

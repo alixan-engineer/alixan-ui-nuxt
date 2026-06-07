@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { calendarPageToc } from '~/shared/page-docs/calendar/page-toc';
-import { examples } from '~/shared/page-docs/calendar/usage-examples';
+import { calendarPageToc } from '~/shared/examples/calendar/page-toc';
+import { examples } from '~/shared/examples/calendar/usage-examples';
 
 usePageMeta({
 	title: 'componentDocs.calendar.metaTitle',

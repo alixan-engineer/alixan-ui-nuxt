@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { statusProps } from '~/shared/page-docs/status/api-reference';
-import { statusPageToc } from '~/shared/page-docs/status/page-toc';
-import { examples } from '~/shared/page-docs/status/usage-examples';
-import { propsTableColumns } from '~/shared/page-docs/table-columns';
+import { statusProps } from '~/shared/examples/status/api-reference';
+import { statusPageToc } from '~/shared/examples/status/page-toc';
+import { examples } from '~/shared/examples/status/usage-examples';
+import { propsTableColumns } from '~/shared/examples/table-columns';
 
 usePageMeta({
 	title: 'componentDocs.status.metaTitle',

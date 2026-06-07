@@ -2,15 +2,15 @@
 import { CheckCircle } from '@lucide/vue';
 import successIcon from '~/assets/icons/success.svg';
 import AlertDialog from '~/components/ui/alert-dialog/AlertDialog.vue';
-import { alertDialogProps } from '~/shared/page-docs/alert-dialog/api-reference';
-import { alertDialogPageToc } from '~/shared/page-docs/alert-dialog/page-toc';
+import { alertDialogProps } from '~/shared/examples/alert-dialog/api-reference';
+import { alertDialogPageToc } from '~/shared/examples/alert-dialog/page-toc';
 import {
 	errorCode,
 	iconCode,
 	imageCode,
 	successCode,
-} from '~/shared/page-docs/alert-dialog/usage-examples';
-import { propsTableColumns } from '~/shared/page-docs/table-columns';
+} from '~/shared/examples/alert-dialog/usage-examples';
+import { propsTableColumns } from '~/shared/examples/table-columns';
 
 usePageMeta({
 	title: 'componentDocs.alertDialog.metaTitle',

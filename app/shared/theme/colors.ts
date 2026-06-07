@@ -52,3 +52,5 @@ export const accentColors: Record<
 		primaryForeground: 'oklch(0.985 0 0)',
 	},
 };
+
+export const accentColorsList = Object.keys(accentColors) as AccentThemeType[];

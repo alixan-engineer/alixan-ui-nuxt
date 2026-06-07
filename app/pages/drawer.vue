@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import DrawerPreviewContent from '~/widgets/drawer-preview-content/DrawerPreviewContent.vue';
-import { drawerServiceApi } from '~/shared/page-docs/drawer/api-reference';
-import { drawerPageToc } from '~/shared/page-docs/drawer/page-toc';
+import { drawerServiceApi } from '~/shared/examples/drawer/api-reference';
+import { drawerPageToc } from '~/shared/examples/drawer/page-toc';
 import {
 	appCode,
 	contentCode,
 	usageCode,
-} from '~/shared/page-docs/drawer/usage-examples';
-import { propsTableColumns } from '~/shared/page-docs/table-columns';
+} from '~/shared/examples/drawer/usage-examples';
+import { propsTableColumns } from '~/shared/examples/table-columns';
+import DrawerPreviewContent from '~/widgets/drawer-preview-content/DrawerPreviewContent.vue';
 
 usePageMeta({
 	title: 'componentDocs.drawer.metaTitle',
