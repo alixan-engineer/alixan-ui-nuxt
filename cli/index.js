@@ -41,7 +41,7 @@ const getRegistryEntry = name => {
 };
 
 // SOURCE path (registry)
-const resolveSource = (name, file) => `registry/${name}/${file}`;
+const resolveSource = file => `registry/${file}`;
 
 // TARGET path (Nuxt app)
 const resolveTarget = (type, file, name) => {
@@ -91,7 +91,7 @@ const addComponent = name => {
 	// components
 	if (Array.isArray(entry.components)) {
 		for (const file of entry.components) {
-			const source = resolveSource(name, file);
+			const source = resolveSource(file);
 			const target = resolveTarget('components', file, name);
 			copyFile(source, target);
 		}
@@ -100,7 +100,7 @@ const addComponent = name => {
 	// composables
 	if (Array.isArray(entry.composables)) {
 		for (const file of entry.composables) {
-			const source = resolveSource(name, file);
+			const source = resolveSource(file);
 			const target = resolveTarget('composables', file, name);
 			copyFile(source, target);
 		}
@@ -109,7 +109,7 @@ const addComponent = name => {
 	// utils
 	if (Array.isArray(entry.utils)) {
 		for (const file of entry.utils) {
-			const source = resolveSource(name, file);
+			const source = resolveSource(file);
 			const target = resolveTarget('utils', file, name);
 			copyFile(source, target);
 		}
@@ -159,6 +159,14 @@ switch (command) {
 	case 'list':
 		listComponents();
 		break;
+	case '--version':
+	case '--v':
+	case '-v':
+		const pkg = JSON.parse(
+			fs.readFileSync(new URL('../package.json', import.meta.url), 'utf8'),
+		);
+		console.log(`alixan-ui-nuxt v${pkg.version}`);
+		break;
 	case 'help':
 	case '--help':
 	case '-h':
@@ -168,5 +176,5 @@ switch (command) {
 	default:
 		console.error(`Unknown command: ${command}`);
 		printHelp();
-		process.exit(1);
+		break;
 }
