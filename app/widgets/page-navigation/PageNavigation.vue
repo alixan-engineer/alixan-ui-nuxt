@@ -56,7 +56,7 @@ const showNavigation = computed(
 			<template #leading>
 				<ArrowLeft />
 			</template>
-			{{ previousPage.label }}
+			{{ $tn(previousPage.label) }}
 		</Button>
 		<Button
 			v-if="nextPage"
@@ -65,7 +65,7 @@ const showNavigation = computed(
 			color="primary"
 			class="flex-1"
 		>
-			{{ nextPage.label }}
+			{{ $tn(nextPage.label) }}
 			<template #trailing>
 				<ArrowRight />
 			</template>
