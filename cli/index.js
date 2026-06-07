@@ -36,19 +36,18 @@ const ensureDir = filePath =>
 
 // Load registry item
 const getRegistryEntry = name => {
-	const filePath = path.resolve(packageRoot, 'registry', name, `${name}.json`);
+	const filePath = path.resolve(packageRoot, 'registry', `${name}.json`);
 	return fileExists(filePath) ? readJson(filePath) : null;
 };
 
 // SOURCE path (registry)
-const resolveSource = (name, type, file) => `registry/${name}/${type}/${file}`;
+const resolveSource = (name, file) => `registry/${name}/${file}`;
 
 // TARGET path (Nuxt app)
 const resolveTarget = (type, file, name) => {
 	// components → scoped folder per component
 	if (type === 'components') {
-		const base = file.replace('.vue', '');
-		return `app/components/ui/${name}/${base}.vue`;
+		return `app/components/ui/${name}/${file}`;
 	}
 
 	// composables → global
@@ -92,7 +91,7 @@ const addComponent = name => {
 	// components
 	if (Array.isArray(entry.components)) {
 		for (const file of entry.components) {
-			const source = resolveSource(name, 'components', file);
+			const source = resolveSource(name, file);
 			const target = resolveTarget('components', file, name);
 			copyFile(source, target);
 		}
@@ -101,7 +100,7 @@ const addComponent = name => {
 	// composables
 	if (Array.isArray(entry.composables)) {
 		for (const file of entry.composables) {
-			const source = resolveSource(name, 'composables', file);
+			const source = resolveSource(name, file);
 			const target = resolveTarget('composables', file, name);
 			copyFile(source, target);
 		}
@@ -110,7 +109,7 @@ const addComponent = name => {
 	// utils
 	if (Array.isArray(entry.utils)) {
 		for (const file of entry.utils) {
-			const source = resolveSource(name, 'utils', file);
+			const source = resolveSource(name, file);
 			const target = resolveTarget('utils', file, name);
 			copyFile(source, target);
 		}
