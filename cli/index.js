@@ -45,18 +45,16 @@ const resolveSource = file => `registry/${file}`;
 
 // TARGET path (Nuxt app)
 const resolveTarget = (type, file, name) => {
-	// components → scoped folder per component
-	if (type === 'components') {
-		return `app/components/ui/${name}/${file}`;
+	switch (type) {
+		case 'components':
+			return `app/components/ui/${name}/${file}`;
+		case 'composables':
+			return `app/composables/${file}`;
+		case 'utils':
+			return `app/utils/${file}`;
+		default:
+			return `app/${file}`;
 	}
-
-	// composables → global
-	if (type === 'composables') return `app/composables/${file}`;
-
-	// utils → global
-	if (type === 'utils') return `app/utils/${file}`;
-
-	return `app/${file}`;
 };
 
 // Copy file
@@ -81,35 +79,28 @@ const copyFile = (source, target) => {
 
 // Install component
 const addComponent = name => {
+	const source = resolveSource(`${name}.json`);
 	const entry = getRegistryEntry(name);
-
 	if (!entry) {
 		console.error(`Component "${name}" not found in registry.`);
-		process.exit(1);
+		return;
 	}
 
 	// components
-	if (Array.isArray(entry.components)) {
-		for (const file of entry.components) {
-			const source = resolveSource(file);
-			const target = resolveTarget('components', file, name);
-			copyFile(source, target);
-		}
+	for (const file of entry.components) {
+		const target = resolveTarget('components', file, name);
+		copyFile(source, target);
 	}
 
 	// composables
-	if (Array.isArray(entry.composables)) {
-		for (const file of entry.composables) {
-			const source = resolveSource(file);
-			const target = resolveTarget('composables', file, name);
-			copyFile(source, target);
-		}
+	for (const file of entry.composables) {
+		const target = resolveTarget('composables', file, name);
+		copyFile(source, target);
 	}
 
 	// utils
 	if (Array.isArray(entry.utils)) {
 		for (const file of entry.utils) {
-			const source = resolveSource(file);
 			const target = resolveTarget('utils', file, name);
 			copyFile(source, target);
 		}
@@ -126,9 +117,9 @@ const listComponents = () => {
 		return;
 	}
 	const items = fs.readdirSync(registryPath);
-	console.log('Available components:\n');
+	console.log('Available components:');
 	for (const item of items) {
-		const filePath = path.join(registryPath, item, `${item}.json`);
+		const filePath = path.join(registryPath, item);
 		if (!fileExists(filePath)) continue;
 		const json = readJson(filePath);
 		console.log(`- ${json.name}`);
@@ -165,7 +156,7 @@ switch (command) {
 		const pkg = JSON.parse(
 			fs.readFileSync(new URL('../package.json', import.meta.url), 'utf8'),
 		);
-		console.log(`alixan-ui-nuxt v${pkg.version}`);
+		console.log(`version: ${pkg.version}`);
 		break;
 	case 'help':
 	case '--help':
