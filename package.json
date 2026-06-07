@@ -19,7 +19,7 @@
 		"@nuxtjs/i18n": "^10.4.0",
 		"@nuxtjs/sitemap": "^8.0.15",
 		"@tailwindcss/vite": "^4.3.0",
-		"nuxt": "^4.4.4",
+		"nuxt": "^4.4.7",
 		"nuxt-lottie": "^1.0.8",
 		"sass": "^1.99.0",
 		"tailwindcss": "^4.3.0",
