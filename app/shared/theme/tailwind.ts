@@ -151,6 +151,11 @@ export const tailwindCss = `
 		@apply m-0 p-0 box-border scroll-smooth outline-none;
 	}
 
+	html {
+		/* Disables double-tap zoom on iOS while keeping pinch zoom available. */
+		touch-action: manipulation;
+	}
+
 	html,
 	body {
 		@apply size-full bg-background text-foreground overflow-hidden;

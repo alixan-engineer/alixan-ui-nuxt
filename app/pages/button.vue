@@ -18,6 +18,7 @@ usePageMeta({
 const { setToc } = usePageToc();
 const loader = useGlobalLoader();
 const dialog = useDialog();
+const localePath = useLocalePath();
 
 onMounted(() => setToc(buttonPageToc));
 
@@ -111,7 +112,7 @@ const openDisableAlert = (): void => {
 		</h2>
 		<ExampleBlock :code="buttonExamples.navigation">
 			<div class="flex flex-wrap items-center gap-2">
-				<Button to="/icon-button">NuxtLink</Button>
+				<Button :to="localePath('/icon-button')">NuxtLink</Button>
 				<Button href="https://github.com" target="_blank" variant="outlined">
 					External link
 				</Button>

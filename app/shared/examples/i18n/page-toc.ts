@@ -5,5 +5,6 @@ export const i18nPageToc: IPageToc[] = [
 	{ label: 'i18nPage.messagesTitle', href: '#messages' },
 	{ label: 'i18nPage.translationHelperTitle', href: '#translation-helper' },
 	{ label: 'i18nPage.usageTitle', href: '#usage' },
+	{ label: 'i18nPage.localizedLinksTitle', href: '#localized-links' },
 	{ label: 'i18nPage.pageMetaTitle', href: '#page-meta' },
 ];

@@ -38,6 +38,10 @@
 			"description": "Alixan UI компоненттері тақырып үшін Tailwind CSS класстарын және CSS айнымалыларын қолданады.",
 			"commandTitle": "Tailwind орнату"
 		},
+		"iosDoubleTapZoom": {
+			"prefix": "html ішінде",
+			"suffix": "қалдырыңыз. Бұл iOS-та батырмалар мен сілтемелердегі double-tap zoom әрекетін өшіреді, бірақ pinch zoom қолжетімді болып қалады."
+		},
 		"backdrop": {
 			"prefix": "Tailwind CSS ішінде",
 			"middle": "utility қалдырыңыз. Dialog, Drawer, Global Loader және мобильді overlay оны бірдей күңгірттеу түсі үшін қолданады:"
@@ -447,6 +451,9 @@
 		"messagesDescriptionStart": "Locale JSON файлдарын сақтаңыз:",
 		"messagesDescriptionEnd": "file option әр locale-ды өз message file-ымен байланыстырады.",
 		"usageTitle": "Қолдану",
+		"localizedLinksTitle": "Локализацияланған сілтемелер",
+		"localizedLinksDescriptionStart": "Ішкі Nuxt routes мәндерін Button, IconButton немесе NuxtLink ішіне бермес бұрын",
+		"localizedLinksDescriptionEnd": "арқылы ораңыз. Осылай беттер арасында өткенде ағымдағы locale prefix сақталады.",
 		"pageMetaTitle": "Page Meta",
 		"pageMetaDescriptionStart": "Page-level SEO translation keys мәндерін",
 		"pageMetaDescriptionMiddle": " ішіне беріңіз. Composable оларды ішкі түрде",

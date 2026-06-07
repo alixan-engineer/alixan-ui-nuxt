@@ -18,11 +18,13 @@ import Button from '@/components/ui/button/Button.vue'
 </template>`,
 	navigation: `<script setup lang="ts">
 import Button from '@/components/ui/button/Button.vue'
+
+const localePath = useLocalePath()
 <\/script>
 
 <template>
   <div class="flex items-center gap-2">
-    <Button to="/icon-button">
+    <Button :to="localePath('/icon-button')">
       NuxtLink
     </Button>
 

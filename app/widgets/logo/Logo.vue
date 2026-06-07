@@ -1,5 +1,9 @@
+<script setup lang="ts">
+const localePath = useLocalePath();
+</script>
+
 <template>
-	<NuxtLink to="/" class="flex items-center gap-2">
+	<NuxtLink :to="localePath('/')" class="flex items-center gap-2">
 		<img
 			src="/favicon.svg"
 			alt="Alixan UI"

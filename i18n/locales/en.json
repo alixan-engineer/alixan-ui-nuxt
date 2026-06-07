@@ -38,6 +38,10 @@
 			"description": "Alixan UI components use Tailwind CSS classes and CSS variables for the theme.",
 			"commandTitle": "Install Tailwind"
 		},
+		"iosDoubleTapZoom": {
+			"prefix": "Keep",
+			"suffix": "on html. It prevents iOS double-tap zoom on buttons and links while keeping pinch zoom available."
+		},
 		"backdrop": {
 			"prefix": "Keep the",
 			"middle": "utility in your Tailwind CSS. Dialog, Drawer, Global Loader and mobile overlays use it for a consistent overlay color:"
@@ -447,6 +451,9 @@
 		"messagesDescriptionStart": "Keep locale JSON files in",
 		"messagesDescriptionEnd": "The file option maps each locale to its message file.",
 		"usageTitle": "Usage",
+		"localizedLinksTitle": "Localized Links",
+		"localizedLinksDescriptionStart": "Wrap internal Nuxt routes with",
+		"localizedLinksDescriptionEnd": "before passing them to Button, IconButton or NuxtLink. This keeps the current locale prefix when users navigate between pages.",
 		"pageMetaTitle": "Page Meta",
 		"pageMetaDescriptionStart": "Pass page-level SEO translation keys to",
 		"pageMetaDescriptionMiddle": ". The composable resolves them with",

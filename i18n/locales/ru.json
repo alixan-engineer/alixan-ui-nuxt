@@ -38,6 +38,10 @@
 			"description": "Компоненты Alixan UI используют классы Tailwind CSS и CSS-переменные для темы.",
 			"commandTitle": "Установить Tailwind"
 		},
+		"iosDoubleTapZoom": {
+			"prefix": "Оставьте",
+			"suffix": "на html. Это отключает двойной zoom в iOS на кнопках и ссылках, но оставляет pinch zoom доступным."
+		},
 		"backdrop": {
 			"prefix": "Оставьте",
 			"middle": "utility в Tailwind CSS. Dialog, Drawer, Global Loader и мобильные overlay используют ее для единого цвета затемнения:"
@@ -447,6 +451,9 @@
 		"messagesDescriptionStart": "Храните locale JSON файлы в",
 		"messagesDescriptionEnd": "Опция file связывает каждую locale с ее message file.",
 		"usageTitle": "Использование",
+		"localizedLinksTitle": "Локализованные ссылки",
+		"localizedLinksDescriptionStart": "Оборачивайте внутренние Nuxt routes через",
+		"localizedLinksDescriptionEnd": "перед передачей в Button, IconButton или NuxtLink. Так текущий locale prefix сохранится при переходе между страницами.",
 		"pageMetaTitle": "Page Meta",
 		"pageMetaDescriptionStart": "Передавайте ключи переводов для page-level SEO в",
 		"pageMetaDescriptionMiddle": ". Composable сам разрешает их через",

@@ -18,6 +18,7 @@ usePageMeta({
 const loader = useGlobalLoader();
 const dialog = useDialog();
 const { setToc } = usePageToc();
+const localePath = useLocalePath();
 
 onMounted(() => setToc(iconButtonPageToc));
 
@@ -112,7 +113,10 @@ const openDisableAlert = (): void => {
 		<h2 class="text-2xl font-semibold">{{ $tn('docsSections.navigation') }}</h2>
 		<ExampleBlock :code="iconButtonExamples.navigation">
 			<div class="flex items-center gap-2">
-				<IconButton label="Open icon button docs" to="/icon-button">
+				<IconButton
+					label="Open icon button docs"
+					:to="localePath('/icon-button')"
+				>
 					<ArrowUpRight />
 				</IconButton>
 

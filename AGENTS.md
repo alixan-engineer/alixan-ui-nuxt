@@ -66,6 +66,17 @@ usePageMeta({
 ```
 - `usePageMeta` использует `useNuxtApp().$tn` внутри. Если меняешь SEO registry item, не удаляй `plugins: ["tn.ts"]` и `types: ["tn.d.ts"]`.
 
+- Для внутренних Nuxt-ссылок в локализованных страницах/виджетах используй `useLocalePath()`:
+
+```ts
+const localePath = useLocalePath();
+```
+
+```vue
+<Button :to="localePath('/button')">Button</Button>
+```
+
+Не оборачивай внешние `href`, `Teleport to="body"` и внутренний pass-through `:to="to"` в базовых компонентах.
 - `Table.vue` показывает `column.label` и `column.getValue(...)` через `$tn(...)`. Поэтому `app/shared/examples/*/api-reference.ts` должен хранить `description: 'apiReferenceDescriptions.someKey'`, а не английский текст.
 - `PageToc.vue` показывает `link.label` через `$tn(...)`. Все `page-toc.ts` должны хранить ключи переводов.
 - При добавлении ключей обновляй все три локали: `en`, `ru`, `kk`.

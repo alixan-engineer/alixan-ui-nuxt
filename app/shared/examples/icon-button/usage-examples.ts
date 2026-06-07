@@ -73,11 +73,16 @@ import IconButton from '@/components/ui/icon-button/IconButton.vue'
 	navigation: `<script setup lang="ts">
 import { ArrowUpRight } from '@lucide/vue'
 import IconButton from '@/components/ui/icon-button/IconButton.vue'
+
+const localePath = useLocalePath()
 <\/script>
 
 <template>
   <div class="flex items-center gap-2">
-    <IconButton label="Open icon button docs" to="/icon-button">
+    <IconButton
+      label="Open icon button docs"
+      :to="localePath('/icon-button')"
+    >
       <ArrowUpRight />
     </IconButton>
 

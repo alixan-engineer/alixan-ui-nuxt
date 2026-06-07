@@ -2,6 +2,7 @@
 import { i18nPageToc } from '~/shared/examples/i18n/page-toc';
 import {
 	installCode,
+	localePathCode,
 	messagesCode,
 	pageMetaCode,
 	setupCode,
@@ -114,6 +115,19 @@ const changeLocale = async (value: Locale): Promise<void> => {
 						@change="changeLocale($event.value as Locale)"
 					/>
 				</div>
+			</div>
+		</ExampleBlock>
+	</section>
+
+	<section id="localized-links" class="space-y-5">
+		<h2 class="text-2xl font-semibold">
+			{{ $tn('i18nPage.localizedLinksTitle') }}
+		</h2>
+		<ExampleBlock :code="localePathCode">
+			<div class="max-w-md text-center text-muted-foreground leading-7">
+				{{ $tn('i18nPage.localizedLinksDescriptionStart') }}
+				<code>useLocalePath</code>
+				{{ $tn('i18nPage.localizedLinksDescriptionEnd') }}
 			</div>
 		</ExampleBlock>
 	</section>
