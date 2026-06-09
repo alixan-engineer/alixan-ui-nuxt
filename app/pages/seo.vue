@@ -90,6 +90,27 @@ onMounted(() => setToc(seoPageToc));
 		</ExampleBlock>
 	</section>
 
+	<section id="initial-head" class="space-y-5">
+		<h2 class="text-2xl font-semibold">
+			{{ $tn('seoPage.initialHead.title') }}
+		</h2>
+		<ExampleBlock :code="faviconCode">
+			<div class="max-w-md text-center text-muted-foreground leading-7">
+				{{ $tn('seoPage.initialHead.faviconPrefix') }}
+				<code>public/icons</code>,
+				{{ $tn('seoPage.initialHead.faviconMiddle') }}
+				<code>favicon.ico</code> and
+				<code>favicon.svg</code>
+				{{ $tn('seoPage.initialHead.faviconSuffix') }}
+			</div>
+		</ExampleBlock>
+		<ExampleBlock :code="appInitCode">
+			<div class="max-w-md text-center text-muted-foreground leading-7">
+				{{ $tn('seoPage.initialHead.appInit') }}
+			</div>
+		</ExampleBlock>
+	</section>
+
 	<section id="page-meta" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
 			{{ $tn('seoPage.pageMeta.title') }}
@@ -108,27 +129,6 @@ onMounted(() => setToc(seoPageToc));
 				{{ $tn('seoPage.pageMeta.usageMiddle') }}
 				<code>siteConfig</code>
 				{{ $tn('seoPage.pageMeta.usageSuffix') }}
-			</div>
-		</ExampleBlock>
-	</section>
-
-	<section id="initial-head" class="space-y-5">
-		<h2 class="text-2xl font-semibold">
-			{{ $tn('seoPage.initialHead.title') }}
-		</h2>
-		<ExampleBlock :code="faviconCode">
-			<div class="max-w-md text-center text-muted-foreground leading-7">
-				{{ $tn('seoPage.initialHead.faviconPrefix') }}
-				<code>public/icons</code>,
-				{{ $tn('seoPage.initialHead.faviconMiddle') }}
-				<code>favicon.ico</code> and
-				<code>favicon.svg</code>
-				{{ $tn('seoPage.initialHead.faviconSuffix') }}
-			</div>
-		</ExampleBlock>
-		<ExampleBlock :code="appInitCode">
-			<div class="max-w-md text-center text-muted-foreground leading-7">
-				{{ $tn('seoPage.initialHead.appInit') }}
 			</div>
 		</ExampleBlock>
 	</section>

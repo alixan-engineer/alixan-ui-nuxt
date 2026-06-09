@@ -22,6 +22,13 @@ onMounted(() => setToc(iconsPageToc));
 		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
 			{{ $tn('iconsPage.description') }}
 		</p>
+
+		<Info>
+			{{ $tn('iconsPage.infoPrefix') }}
+			<TextLink href="https://lucide.dev/icons/?focus=" target="_blank">
+				{{ $tn('iconsPage.infoLink') }}
+			</TextLink>
+		</Info>
 	</header>
 
 	<section id="installation" class="space-y-5">

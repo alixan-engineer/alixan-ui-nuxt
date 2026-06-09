@@ -412,6 +412,8 @@
 		"metaTitle": "Icons - Alixan UI",
 		"title": "Icons",
 		"description": "Alixan UI examples use Lucide Icons, but the components accept regular slots, so you can use any icon library you like.",
+		"infoPrefix": "Browse the full icon catalog in",
+		"infoLink": "Lucide Icons.",
 		"installationTitle": "Installation",
 		"installationDescription": "Install Lucide Vue when you want to use the same icon package as the documentation examples.",
 		"lucideTitle": "Lucide Icons",

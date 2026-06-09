@@ -412,6 +412,8 @@
 		"metaTitle": "Иконки - Alixan UI",
 		"title": "Иконки",
 		"description": "Примеры Alixan UI используют Lucide Icons, но компоненты принимают обычные slots, поэтому вы можете использовать любую библиотеку иконок.",
+		"infoPrefix": "Полный каталог иконок доступен в",
+		"infoLink": "Lucide Icons.",
 		"installationTitle": "Установка",
 		"installationDescription": "Установите Lucide Vue, если хотите использовать тот же пакет иконок, что и в примерах документации.",
 		"lucideTitle": "Lucide Icons",
