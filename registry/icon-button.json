@@ -1,0 +1,5 @@
+{
+	"name": "icon-button",
+	"components": ["IconButton.vue"],
+	"utils": ["cn.ts"]
+}
