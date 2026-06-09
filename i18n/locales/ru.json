@@ -5,6 +5,9 @@
 		"menu": "Открыть меню",
 		"settings": "Открыть настройки"
 	},
+	"actions": {
+		"clear": "Очистить"
+	},
 	"settings": {
 		"language": "Язык",
 		"theme": "Тема",

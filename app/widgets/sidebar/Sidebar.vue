@@ -16,7 +16,13 @@ const emit = defineEmits<{
 const route = useRoute();
 const localePath = useLocalePath();
 
-const isActive = (to: string) => route.path === localePath(to);
+const normalizePath = (path: string): string => {
+	const normalizedPath = path.split('#')[0]?.replace(/\/$/, '') || '/';
+	return normalizedPath || '/';
+};
+
+const isActive = (to: string) =>
+	normalizePath(route.path) === normalizePath(localePath(to));
 </script>
 
 <template>

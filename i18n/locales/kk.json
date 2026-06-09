@@ -5,6 +5,9 @@
 		"menu": "Мәзірді ашу",
 		"settings": "Баптауларды ашу"
 	},
+	"actions": {
+		"clear": "Тазарту"
+	},
 	"settings": {
 		"language": "Тіл",
 		"theme": "Тақырып",

@@ -54,12 +54,10 @@ const selectedLabel = computed(
 	() => selectedOption.value?.label ?? props.placeholder,
 );
 
-const updateMenuPosition = (): void => {
+const updateMenuPosition = () => {
 	const trigger = triggerRef.value;
 
-	if (!trigger || !import.meta.client) {
-		return;
-	}
+	if (!trigger || !import.meta.client) return;
 
 	const rect = trigger.getBoundingClientRect();
 	const width = rect.width;
@@ -84,10 +82,7 @@ const updateMenuPosition = (): void => {
 };
 
 const openSelect = async (): Promise<void> => {
-	if (props.disabled) {
-		return;
-	}
-
+	if (props.disabled) return;
 	open.value = true;
 	await nextTick();
 	updateMenuPosition();
@@ -96,41 +91,25 @@ const openSelect = async (): Promise<void> => {
 	document.addEventListener('mousedown', closeSelectOnOutside, true);
 };
 
-const closeSelect = (): void => {
+const closeSelect = () => {
 	open.value = false;
 	window.removeEventListener('resize', closeSelect);
 	window.removeEventListener('scroll', closeSelect, true);
 	document.removeEventListener('mousedown', closeSelectOnOutside, true);
 };
 
-const closeSelectOnOutside = (event: MouseEvent): void => {
+const closeSelectOnOutside = (event: MouseEvent) => {
 	const target = event.target;
-
-	if (!(target instanceof Node)) {
+	if (!(target instanceof Node)) return;
+	if (triggerRef.value?.contains(target) || menuRef.value?.contains(target))
 		return;
-	}
-
-	if (triggerRef.value?.contains(target) || menuRef.value?.contains(target)) {
-		return;
-	}
-
 	closeSelect();
 };
 
-const toggleSelect = (): void => {
-	if (open.value) {
-		closeSelect();
-		return;
-	}
+const toggleSelect = () => (open.value ? closeSelect() : openSelect());
 
-	openSelect();
-};
-
-const selectOption = (option: SelectOption): void => {
-	if (option.disabled) {
-		return;
-	}
-
+const selectOption = (option: SelectOption) => {
+	if (option.disabled) return;
 	model.value = option.value;
 	emit('change', option);
 	closeSelect();
@@ -181,7 +160,7 @@ onBeforeUnmount(closeSelect);
 			<ChevronDown
 				:class="
 					cn(
-						'size-6 text-muted-foreground transition-transform',
+						'size-5 mb-1.5 text-muted-foreground transition-transform',
 						open ? 'rotate-180' : '',
 					)
 				"

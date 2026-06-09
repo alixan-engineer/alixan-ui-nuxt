@@ -428,7 +428,7 @@ onBeforeUnmount(closeCalendar);
 					class="mx-auto mt-3 block rounded-lg px-3 py-2 text-base font-medium text-destructive hover:bg-destructive/10 focus-visible:bg-destructive/10 focus-visible:outline-none"
 					@click="clearCalendar"
 				>
-					Очистить
+					{{ $tn('actions.clear') }}
 				</button>
 			</div>
 		</Teleport>

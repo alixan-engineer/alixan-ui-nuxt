@@ -5,6 +5,9 @@
 		"menu": "Open menu",
 		"settings": "Open settings"
 	},
+	"actions": {
+		"clear": "Clear"
+	},
 	"settings": {
 		"language": "Language",
 		"theme": "Theme",

@@ -326,7 +326,7 @@ onMounted(() => {
 					)
 				"
 			>
-				{{ messageText }}
+				{{ $tn(messageText) }}
 			</p>
 		</Transition>
 	</div>
