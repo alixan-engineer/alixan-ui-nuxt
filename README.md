@@ -4,6 +4,14 @@ Modern, minimal, copy-paste UI components for Nuxt 4, Vue 3, TypeScript and Tail
 
 Alixan UI Nuxt is not a runtime component package. The CLI copies component source files into your project, so you own the code, can edit it freely, and keep only the pieces you actually use.
 
+<p>
+  <a href="https://nuxt.ui.alixan.kz/">📖 DOCS</a>
+  &nbsp;&nbsp;&nbsp;
+  <a href="https://github.com/alixan-engineer/alixan-ui-nuxt">⭐ GITHUB</a>
+  &nbsp;&nbsp;&nbsp;
+  <a href="https://www.npmjs.com/package/alixan-ui-nuxt">📦 NPM</a>
+</p>
+
 ## ✨ Features
 
 - 🎯 Built for Nuxt 4 and Vue 3
@@ -35,7 +43,7 @@ Then use it in any Vue template:
 
 ```vue
 <template>
-  <Button>Save changes</Button>
+	<Button>Save changes</Button>
 </template>
 ```
 
@@ -52,14 +60,14 @@ npm install tailwindcss @tailwindcss/vite -D
 Register Tailwind in `nuxt.config.ts`:
 
 ```ts
-import tailwindcss from '@tailwindcss/vite'
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineNuxtConfig({
-  css: ['~/assets/css/tailwind.css'],
-  vite: {
-    plugins: [tailwindcss()],
-  },
-})
+	css: ['~/assets/css/tailwind.css'],
+	vite: {
+		plugins: [tailwindcss()],
+	},
+});
 ```
 
 Use the documented `app/assets/css/tailwind.css` file for theme tokens, color variables, base styles and shared utilities.
