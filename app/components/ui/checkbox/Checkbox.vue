@@ -86,7 +86,7 @@ const toggleFromControl = (event: MouseEvent): void => {
 			:disabled="disabled"
 			:class="
 				cn(
-					'flex size-5 shrink-0 items-center justify-center rounded-full border transition-colors',
+					'flex size-6 shrink-0 items-center justify-center rounded-full border p-0.5 transition-colors',
 					'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background',
 					checked
 						? 'border-primary bg-primary text-primary-foreground'

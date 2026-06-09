@@ -4,7 +4,7 @@ const value = ref('')
 <\/script>
 
 <template>
-  <EmailInput v-model="value" />
+  <Input v-model="value" label="Name" />
 </template>`,
 	state: `<script setup lang="ts">
 const value = ref('readonly@example.com')

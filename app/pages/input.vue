@@ -56,7 +56,7 @@ const usernameValue = ref<string>('');
 		</div>
 		<ExampleBlock :code="examples.usage">
 			<div class="w-full max-w-sm">
-				<EmailInput v-model="usageValue" />
+				<Input v-model="usageValue" label="Name" />
 			</div>
 		</ExampleBlock>
 	</section>
