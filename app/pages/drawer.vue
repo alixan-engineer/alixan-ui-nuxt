@@ -19,14 +19,19 @@ const { setToc } = usePageToc();
 
 onMounted(() => setToc(drawerPageToc));
 
+const projectName = ref<string>('Alixan UI');
+
 const openDrawer = (): void => {
 	drawer.open(DrawerPreviewContent, {
 		width: '420px',
 		height: '360px',
 		position: 'bottom',
-		title: 'Workspace settings',
+		title: 'drawerPreview.title',
 		data: {
-			workspaceName: 'Alixan UI',
+			projectName: projectName.value,
+			onSave: (value: string) => {
+				projectName.value = value;
+			},
 		},
 	});
 };
@@ -53,7 +58,15 @@ const openDrawer = (): void => {
 		<ExampleBlock :code="appCode" :preview="false" />
 
 		<ExampleBlock :code="usageCode">
-			<Button @click="openDrawer">Open drawer</Button>
+			<div class="flex flex-wrap items-center justify-center gap-3">
+				<Button @click="openDrawer">
+					{{ $tn('drawerPreview.openDrawer') }}
+				</Button>
+				<p class="text-sm text-muted-foreground">
+					{{ $tn('drawerPreview.projectName') }}:
+					<span class="font-medium text-foreground">{{ projectName }}</span>
+				</p>
+			</div>
 		</ExampleBlock>
 
 		<ExampleBlock :code="contentCode" :preview="false" />

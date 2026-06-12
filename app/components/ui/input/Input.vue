@@ -79,8 +79,7 @@ const inputId = computed(() => props.id ?? generatedId);
 const messageId = computed(() => `${inputId.value}-message`);
 const hasLeading = computed(() => Boolean(slots.leading));
 const hasTrailing = computed(() => Boolean(slots.trailing));
-const hasMask = computed(() => Boolean(props.mask));
-const visibleLabel = computed(() => (hasMask.value ? undefined : props.label));
+const visibleLabel = computed(() => props.label);
 const visiblePlaceholder = computed(() => props.placeholder);
 const stringValue = computed(() => String(model.value ?? ''));
 const hasValue = computed(() => stringValue.value.length > 0);
@@ -272,7 +271,7 @@ onMounted(() => {
 <template>
 	<div :class="rootClass">
 		<label v-if="visibleLabel" :for="inputId" :class="labelClass">
-			{{ visibleLabel }}
+			{{ $tn(visibleLabel) }}
 		</label>
 
 		<span v-if="$slots.leading" :class="leadingSlotClass" aria-hidden="true">

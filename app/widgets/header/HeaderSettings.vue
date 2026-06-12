@@ -10,6 +10,7 @@ type ColorModePreference = 'system' | 'light' | 'dark';
 const dialog = useDialog();
 const colorMode = useColorMode();
 const { locale, setLocale } = useI18n();
+const { $tn } = useNuxtApp();
 const { accentColors, accentTheme, setAccentTheme, createThemeCss } =
 	useTheme();
 
@@ -21,11 +22,15 @@ const languageOptions: Array<{ label: string; value: Locale }> = [
 	{ label: 'Қазақша', value: 'kk' },
 ];
 
-const themeOptions: Array<{ label: string; value: ColorModePreference }> = [
-	{ label: 'System', value: 'system' },
-	{ label: 'Light', value: 'light' },
-	{ label: 'Dark', value: 'dark' },
-];
+const themeOptions = computed<
+	Array<{ label: string; value: ColorModePreference }>
+>(() => {
+	return [
+		{ label: $tn('themePage.system'), value: 'system' },
+		{ label: $tn('themePage.light'), value: 'light' },
+		{ label: $tn('themePage.dark'), value: 'dark' },
+	];
+});
 
 const getAccentPreviewColor = (value: AccentThemeType): string => {
 	const color = accentColors[value];
@@ -49,7 +54,7 @@ const setTheme = (value: ColorModePreference): void => {
 const openThemeCode = (): void => {
 	isOpen.value = false;
 	dialog.open(ThemeCodeDialog, {
-		title: 'Theme CSS',
+		title: 'themeSettings.themeCss',
 		width: '760px',
 		height: '620px',
 		data: {
@@ -103,7 +108,7 @@ const openThemeCode = (): void => {
 					<Button
 						v-for="item in accentColorsList"
 						:key="item"
-						:label="item"
+						:label="$tn(`colors.${item}`)"
 						class="justify-start"
 						:variant="accentTheme === item ? 'filled' : 'ghost'"
 						:color="accentTheme === item ? 'secondary' : 'default'"
@@ -115,12 +120,13 @@ const openThemeCode = (): void => {
 								:style="{ backgroundColor: getAccentPreviewColor(item) }"
 							/>
 						</template>
+						{{ $tn(`colors.${item}`) }}
 					</Button>
 				</div>
 			</div>
 
 			<Button class="w-full" size="sm" color="primary" @click="openThemeCode">
-				Copy style
+				{{ $tn('themeSettings.copyStyle') }}
 			</Button>
 		</div>
 	</DropdownMenu>

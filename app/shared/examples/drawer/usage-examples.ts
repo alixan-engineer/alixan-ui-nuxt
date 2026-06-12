@@ -10,47 +10,70 @@ export const usageCode = `// example.vue
 import WorkspaceDrawer from '~/components/WorkspaceDrawer.vue'
 
 const drawer = useDrawer()
+const projectName = ref('Alixan UI')
 
 const openDrawer = () => {
   drawer.open(WorkspaceDrawer, {
     width: '420px',
     height: '360px',
     position: 'bottom',
-    title: 'Workspace settings',
+    title: 'drawerPreview.title',
     data: {
-      workspaceName: 'Alixan UI',
+      projectName: projectName.value,
+      onSave: (value: string) => {
+        projectName.value = value
+      },
     },
   })
 }
 <\/script>
 
 <template>
-  <Button @click="openDrawer">Open drawer</Button>
+  <div class="flex flex-wrap items-center gap-3">
+    <Button @click="openDrawer">
+      {{ $tn('drawerPreview.openDrawer') }}
+    </Button>
+    <p class="text-sm text-muted-foreground">
+      {{ $tn('drawerPreview.projectName') }}:
+      <span class="font-medium text-foreground">{{ projectName }}</span>
+    </p>
+  </div>
 </template>`;
 export const contentCode = `// WorkspaceDrawer.vue
 // This component is rendered inside DrawerHost.
 // It receives data and close from drawer.open().
 <script setup lang="ts">
 interface WorkspaceDrawerData {
-  workspaceName: string
+  projectName: string
+  onSave: (value: string) => void
 }
 
-defineProps<{
+const props = defineProps<{
   data: WorkspaceDrawerData
   close: () => void
 }>()
+
+const projectName = ref('')
+
+onMounted(() => {
+  projectName.value = props.data.projectName
+})
+
+const save = () => {
+  props.data.onSave(projectName.value)
+  props.close()
+}
 <\/script>
 
 <template>
   <div class="size-full flex flex-col divide-y">
     <div class="flex-1 space-y-3 p-4">
-      <Input :model-value="data.workspaceName" label="Workspace name" />
-      <Switch label="Enable notifications" />
+      <Input v-model="projectName" label="drawerPreview.projectName" />
     </div>
 
-    <div class="flex items-center justify-end gap-2 p-4">
-      <Button variant="outlined" label="Cancel" @click="close" />
-      <Button label="Save" @click="close" />
+    <div class="grid grid-cols-2 gap-2 p-4">
+      <Button variant="outlined" label="drawerPreview.cancel" @click="close" />
+      <Button label="drawerPreview.save" @click="save" />
     </div>
   </div>
 </template>`;

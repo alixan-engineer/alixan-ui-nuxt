@@ -25,7 +25,7 @@ const openDialog = (): void => {
 	dialog.open(DialogPreviewContent, {
 		width: '520px',
 		height: '400px',
-		title: 'Create project',
+		title: 'dialogPreview.title',
 		data: {
 			projectName: projectName.value,
 			onSave: (value: string) => {
@@ -67,9 +67,11 @@ const openDialog = (): void => {
 			<h3 class="text-xl font-semibold">{{ $tn('docsSections.openDialog') }}</h3>
 			<ExampleBlock :code="openCode">
 				<div class="flex flex-wrap items-center justify-center gap-3">
-					<Button @click="openDialog">Open dialog</Button>
+					<Button @click="openDialog">
+						{{ $tn('dialogPreview.openDialog') }}
+					</Button>
 					<p class="text-sm text-muted-foreground">
-						Project name:
+						{{ $tn('dialogPreview.projectName') }}:
 						<span class="font-medium text-foreground">{{ projectName }}</span>
 					</p>
 				</div>

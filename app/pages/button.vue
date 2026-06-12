@@ -75,7 +75,7 @@ const openDisableAlert = (): void => {
 						class="space-y-2"
 					>
 						<p class="text-sm text-muted-foreground">
-							{{ variant }}
+							{{ $tn(`variants.${variant}`) }}
 						</p>
 						<div class="flex flex-wrap items-center gap-2">
 							<Button
@@ -84,7 +84,7 @@ const openDisableAlert = (): void => {
 								:variant="variant"
 								:color="color"
 							>
-								{{ color }}
+								{{ $tn(`colors.${color}`) }}
 							</Button>
 						</div>
 					</div>

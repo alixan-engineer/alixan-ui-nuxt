@@ -35,7 +35,11 @@ const range = ref<{ from: string; to: string } | null>(null);
 		<h2 class="text-2xl font-semibold">{{ $tn('docsSections.day') }}</h2>
 		<ExampleBlock :code="examples.day">
 			<div class="w-full max-w-sm">
-				<Calendar v-model="date" label="Date" :locale="locale" />
+				<Calendar
+					v-model="date"
+					:label="$tn('calendarLabels.date')"
+					:locale="locale"
+				/>
 			</div>
 		</ExampleBlock>
 	</section>
@@ -46,7 +50,7 @@ const range = ref<{ from: string; to: string } | null>(null);
 			<div class="w-full max-w-sm">
 				<Calendar
 					v-model="range"
-					label="Period"
+					:label="$tn('calendarLabels.period')"
 					mode="range"
 					:locale="locale"
 				/>

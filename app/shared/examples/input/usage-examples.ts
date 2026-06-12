@@ -107,4 +107,11 @@ const username = ref('')
 <template>
   <UsernameInput v-model="username" />
 </template>`,
+	iinExample: `<script setup lang="ts">
+const iin = ref('')
+<\/script>
+
+<template>
+  <IinInput v-model="iin" required />
+</template>`,
 };

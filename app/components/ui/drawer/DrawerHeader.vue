@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { X } from '@lucide/vue';
-
 defineProps<{
 	title: string;
 	close: () => void;
@@ -8,12 +6,12 @@ defineProps<{
 </script>
 
 <template>
-	<div class="h-14 px-4 flex items-center justify-between">
-		<h2 class="text-lg font-semibold">
+	<div class="min-h-18 flex flex-col items-center gap-3 px-4 pb-4 pt-1.5">
+		<div class="w-12 h-1.5 rounded-full bg-muted-foreground/30" />
+		<h2
+			class="flex-1 flex items-center justify-center text-lg font-semibold leading-6"
+		>
 			{{ $tn(title) }}
 		</h2>
-		<IconButton variant="ghost" color="default" @click="close">
-			<X />
-		</IconButton>
 	</div>
 </template>

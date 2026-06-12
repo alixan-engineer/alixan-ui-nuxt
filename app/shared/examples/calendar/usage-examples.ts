@@ -5,7 +5,7 @@ const { locale } = useI18n()
 <\/script>
 
 <template>
-  <Calendar v-model="date" label="Date" :locale="locale" />
+  <Calendar v-model="date" :label="$tn('calendarLabels.date')" :locale="locale" />
 </template>`,
 	range: `<script setup lang="ts">
 const range = ref(null)
@@ -13,6 +13,6 @@ const { locale } = useI18n()
 <\/script>
 
 <template>
-  <Calendar v-model="range" label="Period" mode="range" :locale="locale" />
+  <Calendar v-model="range" :label="$tn('calendarLabels.period')" mode="range" :locale="locale" />
 </template>`,
 };

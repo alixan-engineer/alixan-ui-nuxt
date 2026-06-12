@@ -8,6 +8,50 @@
 	"actions": {
 		"clear": "Очистить"
 	},
+	"card": {
+		"demoTitle": "MacBook Pro 14 дюймов",
+		"demoDescription": "Мощный ноутбук с производительностью Apple Silicon, ярким дисплеем Liquid Retina и длительным временем автономной работы.",
+		"addToCart": "Добавить в корзину",
+		"addedToCard": "Товар добавлен в корзину"
+	},
+	"calendarLabels": {
+		"date": "Дата",
+		"period": "Период",
+		"previousMonth": "Предыдущий месяц",
+		"nextMonth": "Следующий месяц",
+		"month": "Месяц",
+		"year": "Год",
+		"last7Days": "7 д",
+		"last30Days": "30 д",
+		"last6Months": "6 мес",
+		"lastYear": "Год"
+	},
+	"themeSettings": {
+		"copy": "Скопировать",
+		"copyStyle": "Скопировать стиль",
+		"copiedStyle": "Theme CSS скопирован",
+		"themeCss": "Theme CSS"
+	},
+	"colors": {
+		"default": "По умолчанию",
+		"primary": "Основной",
+		"secondary": "Вторичный",
+		"destructive": "Опасный",
+		"blue": "Синий",
+		"green": "Зеленый",
+		"yellow": "Желтый",
+		"purple": "Фиолетовый",
+		"orange": "Оранжевый",
+		"red": "Красный",
+		"pink": "Розовый",
+		"brown": "Коричневый",
+		"aqua": "Аква"
+	},
+	"variants": {
+		"filled": "Заполненный",
+		"outlined": "Контурный",
+		"ghost": "Прозрачный"
+	},
 	"settings": {
 		"language": "Язык",
 		"theme": "Тема",
@@ -16,6 +60,20 @@
 	"pageNavigation": {
 		"back": "Назад",
 		"next": "Далее"
+	},
+	"drawerPreview": {
+		"title": "Настройки проекта",
+		"projectName": "Название проекта",
+		"openDrawer": "Открыть панель",
+		"cancel": "Отмена",
+		"save": "Сохранить"
+	},
+	"dialogPreview": {
+		"title": "Создать проект",
+		"projectName": "Название проекта",
+		"openDialog": "Открыть диалог",
+		"cancel": "Отмена",
+		"save": "Сохранить"
 	},
 	"errorPage": {
 		"notFoundTitle": "Страница не найдена",
@@ -108,6 +166,7 @@
 		"fonts": "Шрифты",
 		"i18n": "i18n",
 		"lottie": "Lottie",
+		"svgLoader": "SVG Loader",
 		"seo": "SEO",
 		"theme": "Тема",
 		"styles": "Стили"
@@ -197,6 +256,14 @@
 		"status": {
 			"metaTitle": "Статус - Alixan UI",
 			"description": "Мягкий Cupertino-inspired status pill для success, warning, info и error состояний."
+		},
+		"spinner": {
+			"metaTitle": "Спиннер - Alixan UI",
+			"description": "Центрированный индикатор загрузки, который по умолчанию занимает все доступное пространство."
+		},
+		"card": {
+			"metaTitle": "Карточка - Alixan UI",
+			"description": "Простая island-карточка для product preview с изображением, контентом, ценой и действием."
 		},
 		"empty": {
 			"metaTitle": "Пустое состояние - Alixan UI",
@@ -357,6 +424,8 @@
 		"tabs": "Табы",
 		"switch": "Переключатель",
 		"status": "Статус",
+		"spinner": "Спиннер",
+		"card": "Карточка",
 		"empty": "Пустое состояние",
 		"divider": "Разделитель",
 		"table": "Таблица",
@@ -372,7 +441,11 @@
 	},
 	"validation": {
 		"required": "Заполните поле",
-		"usernamePattern": "Только буквы и цифры"
+		"usernamePattern": "Только буквы и цифры",
+		"iinPattern": "ИИН должен содержать 12 цифр"
+	},
+	"inputLabels": {
+		"iin": "ИИН"
 	},
 	"pageToc": {
 		"title": "На этой странице"
@@ -394,6 +467,19 @@
 		"emptyTitle": "Страница не найдена",
 		"emptyDescription": "Страница, которую вы ищете, не существует или была перемещена.",
 		"emptyButton": "На главную"
+	},
+	"svgLoaderPage": {
+		"metaTitle": "SVG Loader - Alixan UI",
+		"title": "SVG Loader",
+		"description": "Используйте nuxt-svgo-loader, когда нужно загружать оптимизированные SVG-файлы как Nuxt-компоненты.",
+		"infoPrefix": "Для более подробной информации перейдите в",
+		"infoLink": "документацию Nuxt SVGO Loader.",
+		"installationTitle": "Установка",
+		"installationDescription": "Установите модуль nuxt-svgo-loader. Команда добавит модуль в ваш Nuxt-проект.",
+		"configurationTitle": "Конфигурация",
+		"configurationDescription": "Зарегистрируйте модуль в nuxt.config.ts. Опции svgoLoader передаются дальше в vite-svg-loader.",
+		"usageTitle": "Использование",
+		"usageDescription": "После установки отображайте SVG-файлы через сгенерированный компонент SvgoIcon и передавайте обычные SVG-атрибуты как props."
 	},
 	"fontsPage": {
 		"metaTitle": "Шрифты - Alixan UI",
@@ -536,13 +622,13 @@
 		"inputType": "Нативный type поля.",
 		"inputPlaceholder": "Нативный placeholder поля.",
 		"inputAutocomplete": "Управляет нативным browser autocomplete.",
-		"inputAutofocus": "Фокусирует поле при mount.",
+		"inputAutoFocus": "Фокусирует поле при mount.",
 		"inputRequired": "Показывает локализованное сообщение required после blur, если значение пустое.",
 		"inputMin": "Валидация минимальной длины текста после blur.",
 		"inputMax": "Валидация максимальной длины текста после blur.",
 		"inputPattern": "Нативная строка pattern. Значение должно полностью совпасть с pattern после blur.",
 		"patternMessage": "Сообщение валидации, когда pattern не совпадает.",
-		"inputMask": "Маска цифр, где # — цифра. Если mask задана, floating label скрывается.",
+		"inputMask": "Маска цифр, где # — цифра.",
 		"inputHint": "Вспомогательный текст под полем.",
 		"inputError": "Сообщение ошибки. Также переключает поле в destructive state.",
 		"inputDisabled": "Отключает взаимодействие с полем.",
@@ -580,7 +666,13 @@
 		"linkTarget": "Target ссылки. Если установлен _blank, rel становится noopener noreferrer.",
 		"toastMessage": "Текст toast.",
 		"toastTone": "Семантический тон toast.",
-		"toastDuration": "Таймаут auto-close в миллисекундах."
+		"toastDuration": "Таймаут auto-close в миллисекундах.",
+		"spinnerSize": "Управляет диаметром спиннера и толщиной border.",
+		"cardImage": "URL изображения, которое отображается вверху карточки.",
+		"cardImageAlt": "Доступный alt-текст для изображения.",
+		"cardTitle": "Основной заголовок карточки.",
+		"cardPrice": "Текст цены рядом с кнопкой действия.",
+		"cardButtonEvent": "Вызывается при клике на кнопку."
 	},
 	"toast": {
 		"close": "Закрыть уведомление"

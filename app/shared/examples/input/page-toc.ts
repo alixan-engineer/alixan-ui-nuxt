@@ -8,9 +8,10 @@ export const inputPageToc: IPageToc[] = [
 	{ label: 'docsSections.length', href: '#length' },
 	{ label: 'docsSections.withIcon', href: '#with-icon' },
 	{ label: 'docsSections.variants', href: '#variants' },
+	{ label: 'docsSections.username', href: '#variant-username', child: true },
 	{ label: 'docsSections.email', href: '#variant-email', child: true },
 	{ label: 'docsSections.password', href: '#variant-password', child: true },
 	{ label: 'docsSections.phone', href: '#variant-phone', child: true },
-	{ label: 'docsSections.username', href: '#variant-username', child: true },
+	{ label: 'inputLabels.iin', href: '#variant-iin', child: true },
 	{ label: 'docsSections.apiReference', href: '#api-reference' },
 ];

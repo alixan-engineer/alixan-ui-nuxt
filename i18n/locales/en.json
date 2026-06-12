@@ -8,6 +8,50 @@
 	"actions": {
 		"clear": "Clear"
 	},
+	"card": {
+		"demoTitle": "MacBook Pro 14-inch",
+		"demoDescription": "Powerful laptop with Apple Silicon performance, a stunning Liquid Retina display, and all-day battery life.",
+		"addToCart": "Add to cart",
+		"addedToCard": "Item added to cart"
+	},
+	"calendarLabels": {
+		"date": "Date",
+		"period": "Period",
+		"previousMonth": "Previous month",
+		"nextMonth": "Next month",
+		"month": "Month",
+		"year": "Year",
+		"last7Days": "7 d",
+		"last30Days": "30 d",
+		"last6Months": "6 mo",
+		"lastYear": "Year"
+	},
+	"themeSettings": {
+		"copy": "Copy",
+		"copyStyle": "Copy style",
+		"copiedStyle": "Theme CSS copied",
+		"themeCss": "Theme CSS"
+	},
+	"colors": {
+		"default": "Default",
+		"primary": "Primary",
+		"secondary": "Secondary",
+		"destructive": "Destructive",
+		"blue": "Blue",
+		"green": "Green",
+		"yellow": "Yellow",
+		"purple": "Purple",
+		"orange": "Orange",
+		"red": "Red",
+		"pink": "Pink",
+		"brown": "Brown",
+		"aqua": "Aqua"
+	},
+	"variants": {
+		"filled": "Filled",
+		"outlined": "Outlined",
+		"ghost": "Ghost"
+	},
 	"settings": {
 		"language": "Language",
 		"theme": "Theme",
@@ -16,6 +60,20 @@
 	"pageNavigation": {
 		"back": "Back",
 		"next": "Next"
+	},
+	"drawerPreview": {
+		"title": "Project settings",
+		"projectName": "Project name",
+		"openDrawer": "Open drawer",
+		"cancel": "Cancel",
+		"save": "Save"
+	},
+	"dialogPreview": {
+		"title": "Create project",
+		"projectName": "Project name",
+		"openDialog": "Open dialog",
+		"cancel": "Cancel",
+		"save": "Save"
 	},
 	"errorPage": {
 		"notFoundTitle": "Page not found",
@@ -108,6 +166,7 @@
 		"fonts": "Fonts",
 		"i18n": "i18n",
 		"lottie": "Lottie",
+		"svgLoader": "SVG Loader",
 		"seo": "SEO",
 		"theme": "Theme",
 		"styles": "Styles"
@@ -197,6 +256,14 @@
 		"status": {
 			"metaTitle": "Status - Alixan UI",
 			"description": "A soft Cupertino-inspired status pill for success, warning, info and error states."
+		},
+		"spinner": {
+			"metaTitle": "Spinner - Alixan UI",
+			"description": "A centered loading indicator that fills the available space by default."
+		},
+		"card": {
+			"metaTitle": "Card - Alixan UI",
+			"description": "A simple island card for product previews with image, content, price and action."
 		},
 		"empty": {
 			"metaTitle": "Empty - Alixan UI",
@@ -357,6 +424,8 @@
 		"tabs": "Tabs",
 		"switch": "Switch",
 		"status": "Status",
+		"spinner": "Spinner",
+		"card": "Card",
 		"empty": "Empty",
 		"divider": "Divider",
 		"table": "Table",
@@ -372,7 +441,11 @@
 	},
 	"validation": {
 		"required": "This field is required",
-		"usernamePattern": "Only letters and numbers"
+		"usernamePattern": "Only letters and numbers",
+		"iinPattern": "IIN must contain 12 digits"
+	},
+	"inputLabels": {
+		"iin": "IIN"
 	},
 	"pageToc": {
 		"title": "On This Page"
@@ -394,6 +467,19 @@
 		"emptyTitle": "Page not found",
 		"emptyDescription": "The page you are looking for does not exist or has been moved.",
 		"emptyButton": "Go home"
+	},
+	"svgLoaderPage": {
+		"metaTitle": "SVG Loader - Alixan UI",
+		"title": "SVG Loader",
+		"description": "Use nuxt-svgo-loader when you want to load optimized SVG files as Nuxt components.",
+		"infoPrefix": "For more detailed information, visit the",
+		"infoLink": "Nuxt SVGO Loader documentation.",
+		"installationTitle": "Installation",
+		"installationDescription": "Install the nuxt-svgo-loader module. The command adds the module to your Nuxt project.",
+		"configurationTitle": "Configuration",
+		"configurationDescription": "Register the module in nuxt.config.ts. svgoLoader options are passed through to vite-svg-loader.",
+		"usageTitle": "Usage",
+		"usageDescription": "After installation, render SVG files with the generated SvgoIcon component and pass regular SVG attributes as props."
 	},
 	"fontsPage": {
 		"metaTitle": "Fonts - Alixan UI",
@@ -536,13 +622,13 @@
 		"inputType": "Native input type.",
 		"inputPlaceholder": "Native placeholder text.",
 		"inputAutocomplete": "Controls the native browser autocomplete behavior.",
-		"inputAutofocus": "Focuses the input on mount.",
+		"inputAutoFocus": "Focuses the input on mount.",
 		"inputRequired": "Shows a localized required message after blur when the value is empty.",
 		"inputMin": "Minimum text length validation shown after blur.",
 		"inputMax": "Maximum text length validation shown after blur.",
 		"inputPattern": "Native pattern string. The value must match the whole pattern after blur.",
 		"patternMessage": "Validation message shown when pattern does not match.",
-		"inputMask": "Digit mask where # is a digit. When mask is set, the floating label is hidden.",
+		"inputMask": "Digit mask where # is a digit.",
 		"inputHint": "Helper text shown below the input.",
 		"inputError": "Error message. Also switches the input into destructive state.",
 		"inputDisabled": "Disables input interaction.",
@@ -580,7 +666,13 @@
 		"linkTarget": "Anchor target. When set to _blank, rel is set to noopener noreferrer.",
 		"toastMessage": "Toast text.",
 		"toastTone": "Semantic toast tone.",
-		"toastDuration": "Auto-close timeout in milliseconds."
+		"toastDuration": "Auto-close timeout in milliseconds.",
+		"spinnerSize": "Controls spinner diameter and border width.",
+		"cardImage": "Image URL rendered at the top of the card.",
+		"cardImageAlt": "Accessible alt text for the image.",
+		"cardTitle": "Main card title.",
+		"cardPrice": "Price text shown next to the action button.",
+		"cardButtonEvent": "Emitted when the button is clicked."
 	},
 	"toast": {
 		"close": "Close toast"

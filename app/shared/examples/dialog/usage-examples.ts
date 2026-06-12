@@ -15,9 +15,9 @@ const openDialog = () => {
   dialog.open(ProjectDialog, {
     width: '520px', // maxWidth
     height: '400px', // maxHeight
-    title: 'Create project',
+    title: 'dialogPreview.title',
     data: {
-      projectName: 'Alixan UI',
+      projectName: projectName.value,
       onSave: (value: string) => {
         projectName.value = value
       },
@@ -27,7 +27,15 @@ const openDialog = () => {
 <\/script>
 
 <template>
-  <Button @click="openDialog">Open dialog</Button>
+  <div class="flex flex-wrap items-center gap-3">
+    <Button @click="openDialog">
+      {{ $tn('dialogPreview.openDialog') }}
+    </Button>
+    <p class="text-sm text-muted-foreground">
+      {{ $tn('dialogPreview.projectName') }}:
+      <span class="font-medium text-foreground">{{ projectName }}</span>
+    </p>
+  </div>
 </template>`;
 export const contentCode = `// ProjectDialog.vue
 <script setup lang="ts">
@@ -56,12 +64,12 @@ const save = () => {
 <template>
   <div class="size-full flex flex-col divide-y">
     <div class="flex-1 p-4">
-      <Input v-model="projectName" label="Project name" />
+      <Input v-model="projectName" label="dialogPreview.projectName" />
     </div>
 
     <div class="flex items-center justify-end gap-2 p-4">
-      <Button variant="outlined" label="Cancel" @click="close" />
-      <Button label="Save" @click="save" />
+      <Button variant="outlined" label="dialogPreview.cancel" @click="close" />
+      <Button label="dialogPreview.save" @click="save" />
     </div>
   </div>
 </template>`;

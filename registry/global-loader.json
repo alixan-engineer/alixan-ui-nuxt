@@ -2,7 +2,11 @@
 	"name": "global-loader",
 	"components": [
 		"GlobalLoader.vue",
-		"GlobalLoaderHost.vue"
+		"GlobalLoaderHost.vue",
+		"Spinner.vue"
 	],
-	"composables": ["useGlobalLoader.ts"]
+	"composables": ["useGlobalLoader.ts"],
+	"plugins": ["tn.ts"],
+	"types": ["tn.d.ts"],
+	"utils": ["cn.ts"]
 }

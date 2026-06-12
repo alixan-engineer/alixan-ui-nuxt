@@ -25,6 +25,7 @@ const passwordExampleValue = ref<string>('');
 const lengthExampleValue = ref<string>('');
 const phoneValue = ref<string>('');
 const usernameValue = ref<string>('');
+const iinValue = ref<string>('');
 </script>
 
 <template>
@@ -147,6 +148,18 @@ const usernameValue = ref<string>('');
 		</div>
 
 		<div class="grid min-w-0 gap-5">
+			<div id="variant-username" class="min-w-0 scroll-mt-24 space-y-3">
+				<div class="space-y-3">
+					<h3 class="text-lg font-semibold">Username Input</h3>
+					<InstallCommandBlock component="username-input" />
+				</div>
+				<ExampleBlock :code="examples.usernameExample">
+					<div class="w-full max-w-sm mx-auto">
+						<UsernameInput v-model="usernameValue" />
+					</div>
+				</ExampleBlock>
+			</div>
+
 			<div id="variant-email" class="min-w-0 scroll-mt-24 space-y-3">
 				<div class="space-y-3">
 					<h3 class="text-lg font-semibold">Email Input</h3>
@@ -196,14 +209,14 @@ const usernameValue = ref<string>('');
 				</ExampleBlock>
 			</div>
 
-			<div id="variant-username" class="min-w-0 scroll-mt-24 space-y-3">
+			<div id="variant-iin" class="min-w-0 scroll-mt-24 space-y-3">
 				<div class="space-y-3">
-					<h3 class="text-lg font-semibold">Username Input</h3>
-					<InstallCommandBlock component="username-input" />
+					<h3 class="text-lg font-semibold">{{ $tn('inputLabels.iin') }}</h3>
+					<InstallCommandBlock component="iin-input" />
 				</div>
-				<ExampleBlock :code="examples.usernameExample">
+				<ExampleBlock :code="examples.iinExample">
 					<div class="w-full max-w-sm mx-auto">
-						<UsernameInput v-model="usernameValue" />
+						<IinInput v-model="iinValue" required />
 					</div>
 				</ExampleBlock>
 			</div>

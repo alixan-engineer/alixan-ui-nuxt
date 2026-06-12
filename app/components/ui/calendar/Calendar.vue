@@ -42,10 +42,10 @@ const rangeDraft = ref<{ from: string; to: string }>({ from: '', to: '' });
 const selectedPreset = ref<RangePresetValue | null>(null);
 
 const rangePresets: RangePreset[] = [
-	{ label: '7 д', value: '7d' },
-	{ label: '30 д', value: '30d' },
-	{ label: '6 мес', value: '6m' },
-	{ label: 'Год', value: '1y' },
+	{ label: 'calendarLabels.last7Days', value: '7d' },
+	{ label: 'calendarLabels.last30Days', value: '30d' },
+	{ label: 'calendarLabels.last6Months', value: '6m' },
+	{ label: 'calendarLabels.lastYear', value: '1y' },
 ];
 
 const weekDays = computed(() =>
@@ -354,7 +354,7 @@ onBeforeUnmount(closeCalendar);
 					<button
 						type="button"
 						class="flex size-9 items-center justify-center rounded-xl text-foreground hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none [&_svg]:size-4"
-						aria-label="Previous month"
+						:aria-label="$tn('calendarLabels.previousMonth')"
 						@click="moveMonth(-1)"
 					>
 						<ChevronLeft />
@@ -363,13 +363,13 @@ onBeforeUnmount(closeCalendar);
 					<Select
 						v-model="selectedMonth"
 						:options="monthOptions"
-						aria-label="Month"
+						:aria-label="$tn('calendarLabels.month')"
 					/>
 
 					<button
 						type="button"
 						class="flex size-9 items-center justify-center rounded-xl text-foreground hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none [&_svg]:size-4"
-						aria-label="Next month"
+						:aria-label="$tn('calendarLabels.nextMonth')"
 						@click="moveMonth(1)"
 					>
 						<ChevronRight />
@@ -380,7 +380,7 @@ onBeforeUnmount(closeCalendar);
 						:options="
 							yearOptions.map(year => ({ label: String(year), value: year }))
 						"
-						aria-label="Year"
+						:aria-label="$tn('calendarLabels.year')"
 					/>
 				</div>
 
@@ -390,7 +390,7 @@ onBeforeUnmount(closeCalendar);
 						:key="preset.value"
 						v-model="selectedPreset"
 						:value="preset.value"
-						:label="preset.label"
+						:label="$tn(preset.label)"
 					/>
 				</div>
 

@@ -39,7 +39,7 @@ export const inputProps = [
 		name: 'autofocus',
 		type: 'boolean',
 		default: 'false',
-		description: 'apiReferenceDescriptions.inputAutofocus',
+		description: 'apiReferenceDescriptions.inputAutoFocus',
 	},
 	{
 		name: 'required',

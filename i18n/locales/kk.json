@@ -8,6 +8,50 @@
 	"actions": {
 		"clear": "Тазарту"
 	},
+	"card": {
+		"demoTitle": "MacBook Pro 14 дюйм",
+		"demoDescription": "Apple Silicon өнімділігі, Liquid Retina дисплейі және ұзақ жұмыс істейтін батареясы бар қуатты ноутбук.",
+		"addToCart": "Себетке қосу",
+		"addedToCard": "Тауар себетке қосылды"
+	},
+	"calendarLabels": {
+		"date": "Күн",
+		"period": "Кезең",
+		"previousMonth": "Алдыңғы ай",
+		"nextMonth": "Келесі ай",
+		"month": "Ай",
+		"year": "Жыл",
+		"last7Days": "7 к",
+		"last30Days": "30 к",
+		"last6Months": "6 ай",
+		"lastYear": "Жыл"
+	},
+	"themeSettings": {
+		"copy": "Көшіру",
+		"copyStyle": "Стильді көшіру",
+		"copiedStyle": "Theme CSS көшірілді",
+		"themeCss": "Theme CSS"
+	},
+	"colors": {
+		"default": "Әдепкі",
+		"primary": "Негізгі",
+		"secondary": "Қосымша",
+		"destructive": "Қауіпті",
+		"blue": "Көк",
+		"green": "Жасыл",
+		"yellow": "Сары",
+		"purple": "Күлгін",
+		"orange": "Қызғылт сары",
+		"red": "Қызыл",
+		"pink": "Қызғылт",
+		"brown": "Қоңыр",
+		"aqua": "Аква"
+	},
+	"variants": {
+		"filled": "Толтырылған",
+		"outlined": "Контурлы",
+		"ghost": "Мөлдір"
+	},
 	"settings": {
 		"language": "Тіл",
 		"theme": "Тақырып",
@@ -16,6 +60,20 @@
 	"pageNavigation": {
 		"back": "Артқа",
 		"next": "Келесі"
+	},
+	"drawerPreview": {
+		"title": "Жоба баптаулары",
+		"projectName": "Жоба атауы",
+		"openDrawer": "Панельді ашу",
+		"cancel": "Бас тарту",
+		"save": "Сақтау"
+	},
+	"dialogPreview": {
+		"title": "Жоба құру",
+		"projectName": "Жоба атауы",
+		"openDialog": "Диалог ашу",
+		"cancel": "Бас тарту",
+		"save": "Сақтау"
 	},
 	"errorPage": {
 		"notFoundTitle": "Бет табылмады",
@@ -108,6 +166,7 @@
 		"fonts": "Қаріптер",
 		"i18n": "i18n",
 		"lottie": "Lottie",
+		"svgLoader": "SVG Loader",
 		"seo": "SEO",
 		"theme": "Тақырып",
 		"styles": "Стильдер"
@@ -197,6 +256,14 @@
 		"status": {
 			"metaTitle": "Статус - Alixan UI",
 			"description": "Success, warning, info және error күйлеріне арналған жұмсақ Cupertino-inspired status pill."
+		},
+		"spinner": {
+			"metaTitle": "Спиннер - Alixan UI",
+			"description": "Әдепкі бойынша барлық қолжетімді кеңістікті алатын центрленген жүктелу индикаторы."
+		},
+		"card": {
+			"metaTitle": "Карточка - Alixan UI",
+			"description": "Суреті, контенті, бағасы және әрекеті бар product preview үшін қарапайым island карточка."
 		},
 		"empty": {
 			"metaTitle": "Бос күй - Alixan UI",
@@ -357,6 +424,8 @@
 		"tabs": "Табтар",
 		"switch": "Ауыстырғыш",
 		"status": "Статус",
+		"spinner": "Спиннер",
+		"card": "Карточка",
 		"empty": "Бос күй",
 		"divider": "Бөлгіш",
 		"table": "Кесте",
@@ -372,7 +441,11 @@
 	},
 	"validation": {
 		"required": "Өрісті толтырыңыз",
-		"usernamePattern": "Тек әріптер мен сандар"
+		"usernamePattern": "Тек әріптер мен сандар",
+		"iinPattern": "ЖСН 12 цифрдан тұруы керек"
+	},
+	"inputLabels": {
+		"iin": "ЖСН"
 	},
 	"pageToc": {
 		"title": "Бұл бетте"
@@ -394,6 +467,19 @@
 		"emptyTitle": "Бет табылмады",
 		"emptyDescription": "Сіз іздеген бет жоқ немесе басқа жерге ауыстырылған.",
 		"emptyButton": "Басты бетке"
+	},
+	"svgLoaderPage": {
+		"metaTitle": "SVG Loader - Alixan UI",
+		"title": "SVG Loader",
+		"description": "Оңтайландырылған SVG файлдарын Nuxt компоненттері ретінде жүктеу үшін nuxt-svgo-loader қолданыңыз.",
+		"infoPrefix": "Толығырақ ақпарат үшін өтіңіз:",
+		"infoLink": "Nuxt SVGO Loader құжаттамасы.",
+		"installationTitle": "Орнату",
+		"installationDescription": "nuxt-svgo-loader модулін орнатыңыз. Команда модульді Nuxt жобаңызға қосады.",
+		"configurationTitle": "Конфигурация",
+		"configurationDescription": "Модульді nuxt.config.ts ішінде тіркеңіз. svgoLoader опциялары vite-svg-loader ішіне беріледі.",
+		"usageTitle": "Қолдану",
+		"usageDescription": "Орнатқаннан кейін SVG файлдарын жасалған SvgoIcon компоненті арқылы көрсетіп, әдеттегі SVG атрибуттарын props ретінде беріңіз."
 	},
 	"fontsPage": {
 		"metaTitle": "Қаріптер - Alixan UI",
@@ -536,13 +622,13 @@
 		"inputType": "Нативті input type.",
 		"inputPlaceholder": "Нативті input placeholder.",
 		"inputAutocomplete": "Нативті browser autocomplete әрекетін басқарады.",
-		"inputAutofocus": "Mount кезінде input-қа focus береді.",
+		"inputAutoFocus": "Mount кезінде input-қа focus береді.",
 		"inputRequired": "Мән бос болса, blur кейін локализацияланған required хабарламасын көрсетеді.",
 		"inputMin": "Blur кейін минималды мәтін ұзындығын тексеру.",
 		"inputMax": "Blur кейін максималды мәтін ұзындығын тексеру.",
 		"inputPattern": "Нативті pattern жолы. Blur кейін мән толық pattern-ге сәйкес болуы керек.",
 		"patternMessage": "Pattern сәйкес келмегенде көрсетілетін validation хабарламасы.",
-		"inputMask": "# цифрды білдіретін digit mask. Mask берілсе, floating label жасырылады.",
+		"inputMask": "# цифрды білдіретін digit mask.",
 		"inputHint": "Input астындағы көмекші мәтін.",
 		"inputError": "Қате хабарламасы. Сонымен қатар input-ты destructive state-ке ауыстырады.",
 		"inputDisabled": "Input-пен әрекеттесуді өшіреді.",
@@ -580,7 +666,13 @@
 		"linkTarget": "Сілтеме target. _blank болса, rel noopener noreferrer болады.",
 		"toastMessage": "Toast мәтіні.",
 		"toastTone": "Toast семантикалық тоны.",
-		"toastDuration": "Миллисекундтағы auto-close timeout."
+		"toastDuration": "Миллисекундтағы auto-close timeout.",
+		"spinnerSize": "Спиннер диаметрін және border қалыңдығын басқарады.",
+		"cardImage": "Карточканың жоғарғы жағында көрсетілетін сурет URL-ы.",
+		"cardImageAlt": "Суретке арналған қолжетімді alt мәтіні.",
+		"cardTitle": "Карточканың негізгі тақырыбы.",
+		"cardPrice": "Әрекет батырмасының жанындағы баға мәтіні.",
+		"cardButtonEvent": "Батырма басылғанда шығарылады."
 	},
 	"toast": {
 		"close": "Хабарламаны жабу"
