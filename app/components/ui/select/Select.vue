@@ -160,8 +160,9 @@ onBeforeUnmount(closeSelect);
 			<ChevronDown
 				:class="
 					cn(
-						'size-5 mb-1.5 text-muted-foreground transition-transform',
+						'size-5 text-muted-foreground transition-transform',
 						open ? 'rotate-180' : '',
+						label && 'mb-1.5',
 					)
 				"
 			/>
