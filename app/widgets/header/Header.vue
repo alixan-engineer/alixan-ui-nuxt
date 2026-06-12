@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowLeft, Menu } from '@lucide/vue';
+import { Menu } from '@lucide/vue';
 import githubIcon from '~/assets/icons/github.svg';
 
 const emit = defineEmits<{
@@ -10,15 +10,7 @@ const emit = defineEmits<{
 <template>
 	<header class="sticky top-0 z-30 bg-background">
 		<div class="w-full max-w-container min-h-14 mx-auto px-4 flex items-center">
-			<IconButton
-				class="max-lg:hidden!"
-				variant="ghost"
-				color="default"
-				href="https://ui.alixan.kz/"
-				:label="$tn('app.back')"
-			>
-				<ArrowLeft />
-			</IconButton>
+			<BackButton class="max-lg:hidden!" />
 			<IconButton
 				class="lg:hidden"
 				variant="ghost"

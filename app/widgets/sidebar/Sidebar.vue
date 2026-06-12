@@ -45,38 +45,41 @@ const isActive = (to: string) =>
 			)
 		"
 	>
-		<Logo class="h-14 px-4 flex items-center border-b lg:hidden" />
 		<div
-			class="overflow-y-auto px-2 py-6 max-lg:h-[calc(100svh-3.5rem)] lg:sticky lg:top-14 lg:h-[calc(100svh-3.5rem)]"
+			class="w-full h-14 px-4 relative flex items-center justify-center border-b lg:hidden!"
 		>
-			<nav class="space-y-8">
-				<div
-					v-for="section in menuSections"
-					:key="section.labelKey"
-					class="space-y-2"
-				>
-					<p class="px-3 text-sm font-medium text-muted-foreground">
-						{{ $tn(section.labelKey) }}
-					</p>
-					<div class="flex flex-col">
-						<Button
-							v-for="item in section.items"
-							:key="item.labelKey"
-							class="justify-start"
-							size="sm"
-							:to="localePath(item.to)"
-							:variant="isActive(item.to) ? 'filled' : 'ghost'"
-							:color="isActive(item.to) ? 'primary' : 'default'"
-							@click="
-								emit('close');
-								scrollToTop();
-							"
-						>
-							{{ $tn(item.labelKey) }}
-						</Button>
-					</div>
-				</div>
-			</nav>
+			<BackButton class="absolute left-4 top-1/2 -translate-y-1/2" />
+			<Logo />
 		</div>
+		<nav
+			class="overflow-y-auto px-2 py-6 max-lg:h-[calc(100svh-3.5rem)] lg:sticky lg:top-14 lg:h-[calc(100svh-3.5rem)] space-y-8"
+		>
+			<div
+				v-for="section in menuSections"
+				:key="section.labelKey"
+				class="space-y-2"
+			>
+				<p class="px-3 text-sm font-medium text-muted-foreground">
+					{{ $tn(section.labelKey) }}
+				</p>
+				<div class="flex flex-col">
+					<Button
+						v-for="item in section.items"
+						:key="item.labelKey"
+						class="justify-start"
+						size="sm"
+						:to="localePath(item.to)"
+						:variant="isActive(item.to) ? 'filled' : 'ghost'"
+						:color="isActive(item.to) ? 'primary' : 'default'"
+						@click="
+							emit('close');
+							scrollToTop();
+						"
+					>
+						{{ $tn(item.labelKey) }}
+					</Button>
+				</div>
+			</div>
+		</nav>
 	</aside>
 </template>
