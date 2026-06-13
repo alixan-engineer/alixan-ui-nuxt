@@ -41,9 +41,9 @@ const showLoader = () => {
 	<section id="usage" class="space-y-5">
 		<h2 class="text-2xl font-semibold">{{ $tn('docsSections.usage') }}</h2>
 
-		<ExampleBlock :code="appCode" :preview="false" />
+		<ExampleBlock path="app.vue" :code="appCode" :preview="false" />
 
-		<ExampleBlock :code="usageCode">
+		<ExampleBlock path="Example.vue" :code="usageCode">
 			<Button @click="showLoader">Show loader for 3 seconds</Button>
 		</ExampleBlock>
 	</section>

@@ -1,12 +1,9 @@
-export const appCode = `// app.vue
-<template>
+export const appCode = `<template>
   <NuxtPage />
   <DrawerHost /> <!-- Add DrawerHost once near the root of your app. -->
 </template>`;
 
-export const usageCode = `// example.vue
-// Open any Vue component as a drawer and pass options/data.
-<script setup lang="ts">
+export const usageCode = `<script setup lang="ts">
 import WorkspaceDrawer from '~/components/WorkspaceDrawer.vue'
 
 const drawer = useDrawer()
@@ -39,10 +36,8 @@ const openDrawer = () => {
     </p>
   </div>
 </template>`;
-export const contentCode = `// WorkspaceDrawer.vue
-// This component is rendered inside DrawerHost.
-// It receives data and close from drawer.open().
-<script setup lang="ts">
+
+export const contentCode = `<script setup lang="ts">
 interface WorkspaceDrawerData {
   projectName: string
   onSave: (value: string) => void

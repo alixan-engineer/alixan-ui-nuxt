@@ -1,11 +1,9 @@
-export const hostCode = `// app.vue
-<template>
+export const hostCode = `<template>
   <NuxtPage />
   <DialogHost /> <!-- Add DialogHost once near the root of your app. -->
 </template>`;
 
-export const openCode = `// example.vue
-<script setup lang="ts">
+export const openCode = `<script setup lang="ts">
 import ProjectDialog from '~/components/ProjectDialog.vue'
 
 const dialog = useDialog()
@@ -37,8 +35,7 @@ const openDialog = () => {
     </p>
   </div>
 </template>`;
-export const contentCode = `// ProjectDialog.vue
-<script setup lang="ts">
+export const contentCode = `<script setup lang="ts">
 interface ProjectDialogData {
   projectName: string
   onSave: (value: string) => void

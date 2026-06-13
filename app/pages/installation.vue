@@ -50,9 +50,9 @@ const currentTailwindCss = computed(() =>
 		</div>
 
 		<div class="island">
-			<div class="px-4 py-3 flex items-center gap-3 border-b text-m">
+			<div class="px-4 py-3 flex items-center gap-3 border-b">
 				<Terminal class="size-5 text-muted-foreground" />
-				<span class="font-medium">Terminal</span>
+				<span>Terminal</span>
 				<div class="flex-1" />
 				<CopyButton
 					:text="commands.createProject"
@@ -63,8 +63,8 @@ const currentTailwindCss = computed(() =>
 		</div>
 
 		<div class="island">
-			<div class="px-4 py-3 flex items-center gap-3 border-b text-m">
-				<span class="font-medium">nuxt.config.ts</span>
+			<div class="px-4 py-3 flex items-center gap-3 border-b">
+				<span>nuxt.config.ts</span>
 				<div class="flex-1" />
 				<CopyButton
 					:text="rootIdConfig"
@@ -86,11 +86,11 @@ const currentTailwindCss = computed(() =>
 		</div>
 
 		<div class="island">
-			<div class="px-4 py-3 flex items-center gap-3 border-b text-m">
+			<div class="px-4 py-3 flex items-center gap-3 border-b">
 				<Terminal class="size-5 text-muted-foreground" />
-				<span class="font-medium">{{
-					$tn('installationPage.addTailwind.commandTitle')
-				}}</span>
+				<span>
+					{{ $tn('installationPage.addTailwind.commandTitle') }}
+				</span>
 				<div class="flex-1" />
 				<CopyButton
 					:text="commands.addTailwind"
@@ -101,8 +101,8 @@ const currentTailwindCss = computed(() =>
 		</div>
 
 		<div class="island">
-			<div class="px-4 py-3 flex items-center gap-3 border-b text-m">
-				<span class="font-medium">app/assets/css/tailwind.css</span>
+			<div class="px-4 py-3 flex items-center gap-3 border-b">
+				<span>app/assets/css/tailwind.css</span>
 				<div class="flex-1" />
 				<CopyButton
 					:text="currentTailwindCss"
@@ -132,7 +132,7 @@ const currentTailwindCss = computed(() =>
 			class="rounded-2xl border bg-secondary/50 p-4 text-sm leading-7 text-muted-foreground"
 		>
 			{{ $tn('installationPage.iosDoubleTapZoom.prefix') }}
-			<span class="font-medium text-foreground">touch-action: manipulation</span>
+			<span class="text-foreground">touch-action: manipulation</span>
 			{{ $tn('installationPage.iosDoubleTapZoom.suffix') }}
 		</div>
 
@@ -140,16 +140,16 @@ const currentTailwindCss = computed(() =>
 			class="rounded-2xl border bg-secondary/50 p-4 text-sm leading-7 text-muted-foreground"
 		>
 			{{ $tn('installationPage.backdrop.prefix') }}
-			<span class="font-medium text-foreground">backdrop</span>
+			<span class="text-foreground">backdrop</span>
 			{{ $tn('installationPage.backdrop.middle') }}
-			<span class="font-medium text-foreground">
+			<span class="text-foreground">
 				fixed inset-0 bg-black/30 dark:bg-black/80.
 			</span>
 		</div>
 
 		<div class="island">
-			<div class="px-4 py-3 flex items-center gap-3 border-b text-m">
-				<span class="font-medium">nuxt.config.ts</span>
+			<div class="px-4 py-3 flex items-center gap-3 border-b">
+				<span>nuxt.config.ts</span>
 				<div class="flex-1" />
 				<CopyButton
 					:text="nuxtConfig"
@@ -171,11 +171,9 @@ const currentTailwindCss = computed(() =>
 		</div>
 
 		<div class="island">
-			<div class="px-4 py-3 flex items-center gap-3 border-b text-m">
+			<div class="px-4 py-3 flex items-center gap-3 border-b">
 				<Terminal class="size-5 text-muted-foreground" />
-				<span class="font-medium">{{
-					$tn('installationPage.addI18n.commandTitle')
-				}}</span>
+				<span>{{ $tn('installationPage.addI18n.commandTitle') }}</span>
 				<div class="flex-1" />
 				<CopyButton
 					:text="commands.addI18n"
@@ -197,8 +195,8 @@ const currentTailwindCss = computed(() =>
 		</div>
 
 		<div class="island">
-			<div class="px-4 py-3 flex items-center gap-3 border-b text-m">
-				<span class="font-medium">app/plugins/tn.ts</span>
+			<div class="px-4 py-3 flex items-center gap-3 border-b">
+				<span>app/plugins/tn.ts</span>
 				<div class="flex-1" />
 				<CopyButton
 					:text="tnPluginCode"
@@ -209,8 +207,8 @@ const currentTailwindCss = computed(() =>
 		</div>
 
 		<div class="island">
-			<div class="px-4 py-3 flex items-center gap-3 border-b text-m">
-				<span class="font-medium">app/types/tn.d.ts</span>
+			<div class="px-4 py-3 flex items-center gap-3 border-b">
+				<span>app/types/tn.d.ts</span>
 				<div class="flex-1" />
 				<CopyButton
 					:text="tnTypesCode"
@@ -237,11 +235,9 @@ const currentTailwindCss = computed(() =>
 			class="rounded-2xl border bg-secondary/50 p-4 text-sm leading-7 text-muted-foreground"
 		>
 			{{ $tn('installationPage.installComponent.createdPrefix') }}
-			<span class="font-medium text-foreground">
-				components/ui/button/Button.vue
-			</span>
+			<span class="text-foreground"> components/ui/button/Button.vue </span>
 			,
-			<span class="font-medium text-foreground">utils/cn.ts</span>
+			<span class="text-foreground">utils/cn.ts</span>
 			{{ $tn('installationPage.installComponent.createdSuffix') }}
 		</div>
 	</section>

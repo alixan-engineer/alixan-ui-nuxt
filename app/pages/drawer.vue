@@ -55,9 +55,9 @@ const openDrawer = (): void => {
 	<section id="usage" class="space-y-5">
 		<h2 class="text-2xl font-semibold">{{ $tn('docsSections.usage') }}</h2>
 
-		<ExampleBlock :code="appCode" :preview="false" />
+		<ExampleBlock path="app.vue" :code="appCode" :preview="false" />
 
-		<ExampleBlock :code="usageCode">
+		<ExampleBlock path="Example.vue" :code="usageCode">
 			<div class="flex flex-wrap items-center justify-center gap-3">
 				<Button @click="openDrawer">
 					{{ $tn('drawerPreview.openDrawer') }}
@@ -69,7 +69,11 @@ const openDrawer = (): void => {
 			</div>
 		</ExampleBlock>
 
-		<ExampleBlock :code="contentCode" :preview="false" />
+		<ExampleBlock
+			path="WorkspaceDrawer.vue"
+			:code="contentCode"
+			:preview="false"
+		/>
 	</section>
 
 	<section id="api-reference" class="space-y-4">

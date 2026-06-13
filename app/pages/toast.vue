@@ -40,12 +40,8 @@ const examples: Array<{ label: string; type: ToastType; message: string }> = [
 
 	<section id="usage" class="space-y-5">
 		<h2 class="text-2xl font-semibold">{{ $tn('docsSections.usage') }}</h2>
-		<ExampleBlock :code="appCode">
-			<div class="max-w-md text-center text-muted-foreground leading-7">
-				Add <code>ToastHost</code> once near the root of your app.
-			</div>
-		</ExampleBlock>
-		<ExampleBlock :code="exampleCode">
+		<ExampleBlock path="app.vue" :code="appCode" :preview="false" />
+		<ExampleBlock path="Example.vue" :code="exampleCode">
 			<div class="flex flex-wrap items-center justify-center gap-2">
 				<Button
 					v-for="item in examples"

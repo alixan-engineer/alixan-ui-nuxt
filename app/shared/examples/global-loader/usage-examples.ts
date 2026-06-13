@@ -1,11 +1,9 @@
-export const appCode = `// app.vue
-<template>
+export const appCode = `<template>
   <NuxtPage />
   <GlobalLoaderHost /> <!-- Add GlobalLoaderHost once near the root of your app. -->
 </template>`;
 
-export const usageCode = `// example.vue
-<script setup lang="ts">
+export const usageCode = `<script setup lang="ts">
 const loader = useGlobalLoader()
 
 const load = () => {

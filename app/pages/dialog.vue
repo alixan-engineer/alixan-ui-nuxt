@@ -56,16 +56,14 @@ const openDialog = (): void => {
 
 		<div id="host" class="scroll-mt-24 space-y-3">
 			<h3 class="text-xl font-semibold">{{ $tn('docsSections.host') }}</h3>
-			<ExampleBlock :code="hostCode">
-				<div class="text-sm leading-7 text-muted-foreground">
-					Add <code>DialogHost</code> once near the root of your app.
-				</div>
-			</ExampleBlock>
+			<ExampleBlock :path="'app.vue'" :code="hostCode" :preview="false" />
 		</div>
 
 		<div id="open-dialog" class="scroll-mt-24 space-y-3">
-			<h3 class="text-xl font-semibold">{{ $tn('docsSections.openDialog') }}</h3>
-			<ExampleBlock :code="openCode">
+			<h3 class="text-xl font-semibold">
+				{{ $tn('docsSections.openDialog') }}
+			</h3>
+			<ExampleBlock path="Example.vue" :code="openCode">
 				<div class="flex flex-wrap items-center justify-center gap-3">
 					<Button @click="openDialog">
 						{{ $tn('dialogPreview.openDialog') }}
@@ -82,12 +80,11 @@ const openDialog = (): void => {
 			<h3 class="text-xl font-semibold">
 				{{ $tn('docsSections.dialogContent') }}
 			</h3>
-			<ExampleBlock :code="contentCode">
-				<div class="text-sm leading-7 text-muted-foreground">
-					The content component receives <code>data</code> and
-					<code>close</code> from <code>dialog.open()</code>.
-				</div>
-			</ExampleBlock>
+			<ExampleBlock
+				:path="'ProjectDialog.vue'"
+				:code="contentCode"
+				:preview="false"
+			/>
 		</div>
 	</section>
 
