@@ -99,10 +99,6 @@
 			"description": "Alixan UI components use Tailwind CSS classes and CSS variables for the theme.",
 			"commandTitle": "Install Tailwind"
 		},
-		"iosDoubleTapZoom": {
-			"prefix": "Keep",
-			"suffix": "on html. It prevents iOS double-tap zoom on buttons and links while keeping pinch zoom available."
-		},
 		"backdrop": {
 			"prefix": "Keep the",
 			"middle": "utility in your Tailwind CSS. Dialog, Drawer, Global Loader and mobile overlays use it for a consistent overlay color:"

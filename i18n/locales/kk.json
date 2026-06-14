@@ -99,10 +99,6 @@
 			"description": "Alixan UI компоненттері тақырып үшін Tailwind CSS класстарын және CSS айнымалыларын қолданады.",
 			"commandTitle": "Tailwind орнату"
 		},
-		"iosDoubleTapZoom": {
-			"prefix": "html ішінде",
-			"suffix": "қалдырыңыз. Бұл iOS-та батырмалар мен сілтемелердегі double-tap zoom әрекетін өшіреді, бірақ pinch zoom қолжетімді болып қалады."
-		},
 		"backdrop": {
 			"prefix": "Tailwind CSS ішінде",
 			"middle": "utility қалдырыңыз. Dialog, Drawer, Global Loader және мобильді overlay оны бірдей күңгірттеу түсі үшін қолданады:"

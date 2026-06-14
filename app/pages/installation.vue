@@ -131,14 +131,6 @@ const currentTailwindCss = computed(() =>
 		<div
 			class="rounded-2xl border bg-secondary/50 p-4 text-sm leading-7 text-muted-foreground"
 		>
-			{{ $tn('installationPage.iosDoubleTapZoom.prefix') }}
-			<span class="text-foreground">touch-action: manipulation</span>
-			{{ $tn('installationPage.iosDoubleTapZoom.suffix') }}
-		</div>
-
-		<div
-			class="rounded-2xl border bg-secondary/50 p-4 text-sm leading-7 text-muted-foreground"
-		>
 			{{ $tn('installationPage.backdrop.prefix') }}
 			<span class="text-foreground">backdrop</span>
 			{{ $tn('installationPage.backdrop.middle') }}
