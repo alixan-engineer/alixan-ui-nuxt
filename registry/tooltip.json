@@ -1,0 +1,6 @@
+{
+	"name": "tooltip",
+	"components": ["Tooltip.vue"],
+	"plugins": ["tn.ts"],
+	"types": ["tn.d.ts"]
+}

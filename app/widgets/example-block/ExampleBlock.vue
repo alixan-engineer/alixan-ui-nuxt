@@ -28,7 +28,7 @@ withDefaults(
 				label="Copy code"
 			/>
 			<pre
-				class="overflow-x-auto p-6 pr-12 text-sm leading-7"
+				class="overflow-x-auto p-4 pr-12 text-sm leading-7"
 			><code>{{ code }}</code></pre>
 		</div>
 	</div>

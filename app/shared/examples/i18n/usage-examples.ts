@@ -16,8 +16,7 @@ export const setupCode = `export default defineNuxtConfig({
     ],
   ],
 })`;
-export const messagesCode = `// root/i18n/locales/en.json
-{
+export const enTranslationsCode = `{
   "app": {
     "settings": "Open settings"
   },
@@ -27,10 +26,9 @@ export const messagesCode = `// root/i18n/locales/en.json
   "component": {
     "button": "Button"
   }
-}
+}`;
 
-// root/i18n/locales/ru.json
-{
+export const ruTranslationsCode = `{
   "app": {
     "settings": "Открыть настройки"
   },
@@ -40,10 +38,9 @@ export const messagesCode = `// root/i18n/locales/en.json
   "component": {
     "button": "Кнопка"
   }
-}
+}`;
 
-// root/i18n/locales/kk.json
-{
+export const kkTranslationsCode = `{
   "app": {
     "settings": "Баптауларды ашу"
   },
@@ -54,8 +51,7 @@ export const messagesCode = `// root/i18n/locales/en.json
     "button": "Батырма"
   }
 }`;
-export const tnPluginCode = `// app/plugins/tn.ts
-type TnValue = string | number | boolean | null | undefined
+export const tnPluginCode = `type TnValue = string | number | boolean | null | undefined
 
 interface I18nTranslator {
   t: (key: string) => string
@@ -82,8 +78,7 @@ export default defineNuxtPlugin({
     }
   },
 })`;
-export const tnTypesCode = `// app/types/tn.d.ts
-type TnValue = string | number | boolean | null | undefined
+export const tnTypesCode = `type TnValue = string | number | boolean | null | undefined
 type Tn = (value: TnValue) => string
 
 declare module '#app' {

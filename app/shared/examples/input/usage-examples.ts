@@ -46,7 +46,6 @@ const isPasswordVisible = ref(false)
           variant="ghost"
           color="default"
           size="sm"
-          :label="isPasswordVisible ? 'Hide password' : 'Show password'"
           @click="isPasswordVisible = !isPasswordVisible"
         >
           <EyeOff v-if="isPasswordVisible" />

@@ -1,5 +1,4 @@
-export const siteConfigCode = `// app/config/site/site.ts
-export const siteConfig = {
+export const siteConfigCode = `export const siteConfig = {
   // Replace with your production domain.
   url: 'https://nuxt.ui.alixan.kz',
   // Replace with your project name.
@@ -12,8 +11,8 @@ export const siteConfig = {
   // Replace with your default Open Graph image.
   ogImage: 'https://nuxt.ui.alixan.kz/og-image.png',
 }`;
-export const nuxtConfigCode = `// nuxt.config.ts
-import { siteConfig } from './app/config/site/site'
+
+export const nuxtConfigCode = `import { siteConfig } from './app/config/site/site'
 
 export default defineNuxtConfig({
   site: {
@@ -25,8 +24,8 @@ export default defineNuxtConfig({
     autoLastmod: true,
   },
 })`;
-export const usePageMetaCode = `// app/composables/usePageMeta.ts
-import { siteConfig } from '~/config/site/site'
+
+export const usePageMetaCode = `import { siteConfig } from '~/config/site/site'
 
 interface PageMetaOptions {
   title?: string
@@ -56,15 +55,15 @@ export const usePageMeta = (payload?: PageMetaOptions): void => {
     twitterImage: metaImage,
   })
 }`;
-export const pageUsageCode = `// pages/button.vue
-<script setup lang="ts">
+
+export const pageUsageCode = `<script setup lang="ts">
 usePageMeta({
   title: 'componentDocs.button.metaTitle',
   description: 'componentDocs.button.description',
 })
 <\/script>`;
-export const faviconCode = `// app/config/site/favicon.ts
-export const favicon = [
+
+export const faviconCode = `export const favicon = [
   {
     rel: 'icon',
     type: 'image/x-icon',
@@ -97,8 +96,8 @@ export const favicon = [
     href: '/site.webmanifest',
   },
 ]`;
-export const appInitCode = `// app.vue
-<script setup lang="ts">
+
+export const appInitCode = `<script setup lang="ts">
 import { favicon } from './config/site/favicon'
 
 const { locale } = useI18n()
@@ -106,13 +105,15 @@ const { locale } = useI18n()
 usePageMeta() // initialize default SEO meta
 
 useHead({
-  htmlAttrs: { lang: locale.value },
-  link: favicon,
+  htmlAttrs: { lang: locale.value }, // initialize lang attr for html
+  link: favicon, // initialize favicon
 })
 <\/script>`;
+
 export const robotsCode = `User-Agent: *
 Disallow:
 
 # Replace this domain with your own.
 Sitemap: https://nuxt.ui.alixan.kz/sitemap_index.xml`;
+
 export const sitemapInstallCode = `npx nuxt module add @nuxtjs/sitemap`;

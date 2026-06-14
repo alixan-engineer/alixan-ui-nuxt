@@ -21,40 +21,37 @@ onMounted(() => setToc(fontsPageToc));
 		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
 			{{ $tn('fontsPage.description') }}
 		</p>
+		<Info>
+			{{ $tn('app.infoPrefix') }}
+			<TextLink
+				href="https://google-fonts.nuxtjs.org/getting-started/setup"
+				target="_blank"
+			>
+				{{ $tn('fontsPage.infoLink') }}
+			</TextLink>
+		</Info>
 	</header>
 
 	<section id="installation" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
 			{{ $tn('fontsPage.installationTitle') }}
 		</h2>
-		<ExampleBlock :code="installCode">
-			<div class="max-w-md text-center text-muted-foreground leading-7">
-				{{ $tn('fontsPage.installationDescription') }}
-			</div>
-		</ExampleBlock>
+		<ExampleBlock :code="installCode" :preview="false" />
 	</section>
 
 	<section id="configuration" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
 			{{ $tn('fontsPage.configurationTitle') }}
 		</h2>
-		<ExampleBlock :code="configCode">
-			<div class="max-w-md text-center text-muted-foreground leading-7">
-				{{ $tn('fontsPage.configurationDescriptionStart') }}
-				<code>nuxt.config.ts</code>
-				{{ $tn('fontsPage.configurationDescriptionEnd') }}
-			</div>
-		</ExampleBlock>
+		<ExampleBlock path="nuxt.config.ts" :code="configCode" :preview="false" />
 	</section>
 
 	<section id="tailwind" class="space-y-5">
 		<h2 class="text-2xl font-semibold">{{ $tn('fontsPage.tailwindTitle') }}</h2>
-		<ExampleBlock :code="tailwindCode">
-			<div class="max-w-md text-center text-muted-foreground leading-7">
-				{{ $tn('fontsPage.tailwindDescriptionStart') }}
-				<code>--font-sans</code>,
-				{{ $tn('fontsPage.tailwindDescriptionEnd') }}
-			</div>
-		</ExampleBlock>
+		<ExampleBlock
+			path="app/assets/css/tailwind.css"
+			:code="tailwindCode"
+			:preview="false"
+		/>
 	</section>
 </template>

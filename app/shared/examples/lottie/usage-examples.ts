@@ -10,7 +10,8 @@ export const configCode = `export default defineNuxtConfig({
 export const folderCode = `app/
   assets/
     lottie/
-      error.json`;
+      error.json
+      success.json`;
 export const usageCode = `<template>
   <Lottie name="error" :loop="false" width="160px" height="140px" />
 </template>`;

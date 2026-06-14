@@ -13,7 +13,6 @@ type IconButtonSize = 'sm' | 'md' | 'lg';
 type IconButtonTarget = '_blank' | '_self' | '_parent' | '_top';
 
 interface IconButtonProps {
-	label?: string;
 	type?: 'button' | 'submit' | 'reset';
 	variant?: IconButtonVariant;
 	color?: IconButtonColor;
@@ -21,6 +20,7 @@ interface IconButtonProps {
 	to?: RouteLocationRaw;
 	href?: string;
 	target?: IconButtonTarget;
+	tooltip?: string;
 }
 
 const props = withDefaults(defineProps<IconButtonProps>(), {
@@ -31,10 +31,12 @@ const props = withDefaults(defineProps<IconButtonProps>(), {
 	to: undefined,
 	href: undefined,
 	target: undefined,
+	tooltip: undefined,
 });
 
 const attrs = useAttrs();
 const NuxtLink = resolveComponent('NuxtLink');
+const Tooltip = resolveComponent('Tooltip');
 
 const sizeClasses: Record<IconButtonSize, string> = {
 	sm: 'size-9 rounded-lg [&_svg]:size-4',
@@ -86,19 +88,25 @@ const iconButtonClass = computed(() =>
 		attrs.class,
 	),
 );
+
+const wrapperComponent = computed(() => (props.tooltip ? Tooltip : 'span'));
+const wrapperAttrs = computed(() =>
+	props.tooltip ? { text: props.tooltip } : { class: 'contents' },
+);
 </script>
 
 <template>
-	<component
-		:is="to ? NuxtLink : href ? 'a' : 'button'"
-		v-bind="{ ...attrs, class: undefined }"
-		:to="to"
-		:href="href"
-		:target="target"
-		:type="to || href ? undefined : type"
-		:aria-label="label"
-		:class="iconButtonClass"
-	>
-		<slot />
+	<component :is="wrapperComponent" v-bind="wrapperAttrs">
+		<component
+			:is="to ? NuxtLink : href ? 'a' : 'button'"
+			v-bind="{ ...attrs, class: undefined }"
+			:to="to"
+			:href="href"
+			:target="target"
+			:type="to || href ? undefined : type"
+			:class="iconButtonClass"
+		>
+			<slot />
+		</component>
 	</component>
 </template>

@@ -6,8 +6,8 @@ import { ArrowLeft } from '@lucide/vue';
 	<IconButton
 		variant="ghost"
 		color="default"
+		tooltip="app.back""
 		href="https://ui.alixan.kz/"
-		:label="$tn('app.back')"
 	>
 		<ArrowLeft />
 	</IconButton>

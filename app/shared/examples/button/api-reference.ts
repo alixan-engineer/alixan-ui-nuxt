@@ -41,4 +41,10 @@ export const buttonApiRows = [
 		default: '-',
 		description: 'apiReferenceDescriptions.anchorTarget',
 	},
+	{
+		name: 'tooltip',
+		type: 'string',
+		default: '-',
+		description: 'apiReferenceDescriptions.tooltipText',
+	},
 ];

@@ -91,7 +91,7 @@ import Button from '@/components/ui/button/Button.vue'
 const loader = useGlobalLoader()
 
 const save = () => {
-  loader.show({ label: 'Saving changes...' })
+  loader.show({ label: 'componentDocs.button.savingChanges' })
 
   window.setTimeout(() => {
     loader.hide()
@@ -104,15 +104,16 @@ const save = () => {
 </template>`,
 	disable: `<script setup lang="ts">
 const dialog = useDialog()
+const { $tn } = useNuxtApp()
 
 const openAlert = () => {
   dialog.open(AlertDialog, {
     width: '360px',
     height: '280px',
     data: {
-      title: 'Action unavailable',
-      description: 'Export will be available after the report is generated.',
-      buttonLabel: 'Got it',
+      title: $tn('componentDocs.button.actionUnavailable'),
+      description: $tn('componentDocs.button.exportUnavailable'),
+      buttonLabel: $tn('componentDocs.button.gotIt'),
     },
   })
 }

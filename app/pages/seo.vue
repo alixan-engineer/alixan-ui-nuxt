@@ -17,6 +17,7 @@ usePageMeta({
 });
 
 const { setToc } = usePageToc();
+const localePath = useLocalePath();
 
 onMounted(() => setToc(seoPageToc));
 </script>
@@ -60,7 +61,7 @@ onMounted(() => setToc(seoPageToc));
 			{{ $tn('seoPage.sitemap.verify') }}
 		</p>
 		<Info>
-			{{ $tn('seoPage.sitemap.infoPrefix') }}
+			{{ $tn('app.infoPrefix') }}
 			<TextLink
 				href="https://nuxtseo.com/docs/sitemap/getting-started/installation"
 				target="_blank"
@@ -74,55 +75,49 @@ onMounted(() => setToc(seoPageToc));
 		<h2 class="text-2xl font-semibold">
 			{{ $tn('seoPage.siteConfig.title') }}
 		</h2>
-		<ExampleBlock :code="siteConfigCode">
-			<div class="max-w-md text-center text-muted-foreground leading-7">
-				{{ $tn('seoPage.siteConfig.description') }}
-			</div>
-		</ExampleBlock>
-		<ExampleBlock :code="nuxtConfigCode">
-			<div class="max-w-md text-center text-muted-foreground leading-7">
-				{{ $tn('seoPage.siteConfig.nuxtConfigPrefix') }}
-				<code>siteConfig</code>
-				{{ $tn('seoPage.siteConfig.nuxtConfigMiddle') }}
-				<code>nuxt.config.ts</code>
-				{{ $tn('seoPage.siteConfig.nuxtConfigSuffix') }}
-			</div>
-		</ExampleBlock>
+		<ExampleBlock
+			path="app/config/site/site.ts"
+			:code="siteConfigCode"
+			:preview="false"
+		/>
+		<ExampleBlock
+			path="nuxt.config.ts"
+			:code="nuxtConfigCode"
+			:preview="false"
+		/>
 	</section>
 
 	<section id="initial-head" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
 			{{ $tn('seoPage.initialHead.title') }}
 		</h2>
-		<ExampleBlock :code="faviconCode">
-			<div class="max-w-md text-center text-muted-foreground leading-7">
-				{{ $tn('seoPage.initialHead.faviconPrefix') }}
-				<code>public/icons</code>,
-				{{ $tn('seoPage.initialHead.faviconMiddle') }}
-				<code>favicon.ico</code> and
-				<code>favicon.svg</code>
-				{{ $tn('seoPage.initialHead.faviconSuffix') }}
-			</div>
-		</ExampleBlock>
-		<ExampleBlock :code="appInitCode">
-			<div class="max-w-md text-center text-muted-foreground leading-7">
-				{{ $tn('seoPage.initialHead.appInit') }}
-			</div>
-		</ExampleBlock>
+		<Info>
+			{{ $tn('seoPage.iconKitchenRef.prefix') }}
+			<TextLink :href="localePath('/icon-kitchen')">
+				{{ $tn('seoPage.iconKitchenRef.link') }}
+			</TextLink>
+			{{ $tn('seoPage.iconKitchenRef.suffix') }}
+		</Info>
+		<ExampleBlock
+			path="app/config/site/favicon.ts"
+			:code="faviconCode"
+			:preview="false"
+		/>
+		<ExampleBlock path="app.vue" :code="appInitCode" :preview="false" />
 	</section>
 
 	<section id="page-meta" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
 			{{ $tn('seoPage.pageMeta.title') }}
 		</h2>
-		<ExampleBlock :code="usePageMetaCode">
+		<ExampleBlock path="app/composables/usePageMeta.ts" :code="usePageMetaCode">
 			<div class="max-w-md text-center text-muted-foreground leading-7">
 				<code>usePageMeta</code>
 				{{ $tn('seoPage.pageMeta.description') }}
 				{{ $tn('seoPage.pageMeta.translationHelper') }}
 			</div>
 		</ExampleBlock>
-		<ExampleBlock :code="pageUsageCode">
+		<ExampleBlock path="pages/button.vue" :code="pageUsageCode">
 			<div class="max-w-md text-center text-muted-foreground leading-7">
 				{{ $tn('seoPage.pageMeta.usagePrefix') }}
 				<code>usePageMeta</code>
@@ -137,12 +132,15 @@ onMounted(() => setToc(seoPageToc));
 		<h2 class="text-2xl font-semibold">
 			{{ $tn('seoPage.robots.title') }}
 		</h2>
-		<ExampleBlock :code="robotsCode">
-			<div class="max-w-md text-center text-muted-foreground leading-7">
-				{{ $tn('seoPage.robots.descriptionPrefix') }}
-				<code>public/robots.txt</code>
-				{{ $tn('seoPage.robots.descriptionSuffix') }}
-			</div>
-		</ExampleBlock>
+		<p class="text-muted-foreground leading-7">
+			{{ $tn('seoPage.robots.descriptionPrefix') }}
+			<code>public/robots.txt</code>
+			{{ $tn('seoPage.robots.descriptionSuffix') }}
+		</p>
+		<ExampleBlock
+			path="public/robots.txt"
+			:code="robotsCode"
+			:preview="false"
+		/>
 	</section>
 </template>

@@ -7,7 +7,7 @@ export const tailwindCss = `
 	/* Set your own font. */
 	--font-sans: 'Geist', ui-sans-serif, system-ui, sans-serif;
 
-	/* Used for Button with "sm" size and etc... */
+	/* Used for Text, Button and etc... */
 	--text-md: 15px;
 
 	/* Default container */
@@ -219,12 +219,14 @@ export const tailwindCss = `
 	}
 }
 
+/* Used UI blocks. */
 @utility island {
 	@apply flex flex-col border overflow-hidden;
 
 	border-radius: clamp(var(--radius-md), 20%, var(--radius-2xl));
 }
 
+/* Used for dialog, drawer and overlays. */
 @utility backdrop {
 	@apply fixed inset-0 bg-black/30 dark:bg-black/80;
 }

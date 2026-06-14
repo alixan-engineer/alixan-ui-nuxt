@@ -3,10 +3,25 @@
 		"back": "Назад в Alixan UI",
 		"github": "Открыть GitHub",
 		"menu": "Открыть меню",
-		"settings": "Открыть настройки"
+		"settings": "Открыть настройки",
+		"infoPrefix": "Для более подробной информации перейдите в"
 	},
 	"actions": {
 		"clear": "Очистить"
+	},
+	"tooltip": {
+		"demo": {
+			"save": "Сохранить текущие изменения",
+			"info": "Дополнительная информация",
+			"shortDescription": "Короткое описание"
+		}
+	},
+	"docsSearch": {
+		"title": "Поиск по документации",
+		"hint": "Страницы",
+		"placeholder": "Поиск по документации",
+		"empty": "Страницы не найдены",
+		"reset": "Очистить поиск"
 	},
 	"card": {
 		"demoTitle": "MacBook Pro 14 дюймов",
@@ -164,8 +179,8 @@
 		"lottie": "Lottie",
 		"svgLoader": "SVG Loader",
 		"seo": "SEO",
-		"theme": "Тема",
-		"styles": "Стили"
+		"iconKitchen": "IconKitchen",
+		"theme": "Тема"
 	},
 	"docsTable": {
 		"prop": "Свойство",
@@ -211,15 +226,43 @@
 	"componentDocs": {
 		"button": {
 			"metaTitle": "Кнопка - Alixan UI",
-			"description": "Отображает кнопку для действий в формах, тулбарах и навигации."
+			"description": "Отображает кнопку для действий в формах, тулбарах и навигации.",
+			"usageDescription": "Стили Button строятся из двух независимых props: variant задает визуальный вес, а color задает intent действия. Комбинируйте их, чтобы получить нужный акцент без изменения смысла действия.",
+			"loadingDescription": "Button не включает встроенное состояние spinner. Если кнопка крутится inline, пользователь все еще может уйти со страницы и потерять контекст действия. Global loader блокирует поверхность, показывает одну активную операцию и делает опыт понятнее.",
+			"disabledDescription": "Лучше не отключать кнопки. Оставьте действие видимым и активным, а затем объясните предупреждением, почему оно не может выполниться. Так пользователь получает обратную связь вместо мертвого контрола.",
+			"small": "Маленькая",
+			"default": "Обычная",
+			"large": "Большая",
+			"nuxtLink": "NuxtLink",
+			"externalLink": "Внешняя ссылка",
+			"newBranch": "Новая ветка",
+			"continue": "Продолжить",
+			"saveChanges": "Сохранить изменения",
+			"savingChanges": "Сохранение изменений...",
+			"exportReport": "Экспорт отчета",
+			"actionUnavailable": "Действие недоступно",
+			"exportUnavailable": "Экспорт будет доступен после генерации отчета.",
+			"gotIt": "Понятно"
 		},
 		"iconButton": {
 			"metaTitle": "Иконка-кнопка - Alixan UI",
-			"description": "Отображает кнопку только с иконкой и обязательным доступным label."
+			"description": "Отображает кнопку только с иконкой для компактных действий.",
+			"usageDescription": "IconButton использует ту же систему variant и color, что и Button, но сохраняет квадратную форму для действий только с иконкой.",
+			"loadingDescription": "IconButton не включает inline spinner. Inline loading может оставить пользователю возможность уйти со страницы и потерять контекст действия. Используйте global loader, когда операция должна восприниматься как одно блокирующее действие.",
+			"disabledDescription": "Не делайте действие с иконкой тихо недоступным. Оставьте его активным, а затем покажите warning dialog с объяснением, что нужно сделать пользователю.",
+			"savingAction": "Сохранение действия...",
+			"actionUnavailable": "Действие недоступно",
+			"exportUnavailable": "Экспорт будет доступен после генерации отчета.",
+			"gotIt": "Понятно"
 		},
 		"textLink": {
 			"metaTitle": "Текстовая ссылка - Alixan UI",
 			"description": "Инлайн-ссылка для текста документации, подсказок и внешних переходов без padding и background styles кнопки."
+		},
+		"tooltip": {
+			"metaTitle": "Tooltip - Alixan UI",
+			"description": "Показывает небольшой адаптивный popover под trigger или сверху, если снизу не хватает места.",
+			"htmlTitle": "С HTML"
 		},
 		"chip": {
 			"metaTitle": "Чип - Alixan UI",
@@ -330,34 +373,6 @@
 			"description": "Легкий notification stack для success, warning, error и info сообщений."
 		}
 	},
-	"stylesPage": {
-		"metaTitle": "Стили - Alixan UI",
-		"metaDescription": "Общие Tailwind-токены и утилиты, которые используются в документации Alixan UI.",
-		"title": "Стили",
-		"description": "Общие Tailwind-токены и утилиты, которые используются в примерах и overlay-компонентах.",
-		"tailwind": {
-			"title": "Tailwind CSS",
-			"description": "Скопируйте общий CSS-файл из установки, если хотите держать токены темы, базовые стили и утилиты в одном месте.",
-			"copyCode": "Скопировать код",
-			"copiedCode": "Скопировано",
-			"viewCode": "Показать код",
-			"hideCode": "Скрыть код"
-		},
-		"textSize": {
-			"title": "Размер текста",
-			"descriptionMiddle": "соответствует",
-			"descriptionSuffix": "и используется для компактных label, пунктов меню и плотных form controls."
-		},
-		"island": {
-			"title": "Island",
-			"descriptionPrefix": "Используйте",
-			"descriptionSuffix": "для bordered-блоков документации и компактных панелей. Радиус рассчитывается от размера блока и ограничивается шкалой радиусов темы."
-		},
-		"backdrop": {
-			"title": "Backdrop",
-			"description": "стандартизирует затемнение overlay для Dialog, Drawer, Global Loader и мобильного sidebar."
-		}
-	},
 	"seoPage": {
 		"metaTitle": "SEO - Alixan UI",
 		"metaDescription": "Гайд по настройке SEO для документации Alixan UI.",
@@ -371,11 +386,7 @@
 			"tnPluginDescription": "Registry item seo также копирует app/plugins/tn.ts и app/types/tn.d.ts, потому что usePageMeta разрешает title и description через $tn."
 		},
 		"siteConfig": {
-			"title": "Конфиг сайта",
-			"description": "Храните домен, название сайта, заголовок по умолчанию, описание и OG-изображение в одном конфиге, чтобы Nuxt config и runtime composables использовали одинаковые значения.",
-			"nuxtConfigPrefix": "Используйте",
-			"nuxtConfigMiddle": "в",
-			"nuxtConfigSuffix": "для SEO-модулей Nuxt, например sitemap."
+			"title": "Конфиг сайта"
 		},
 		"pageMeta": {
 			"title": "Мета страницы",
@@ -386,11 +397,12 @@
 			"translationHelper": "Он использует $tn внутри, поэтому значения страницы могут быть ключами переводов, а дефолты siteConfig могут оставаться обычными строками."
 		},
 		"initialHead": {
-			"title": "Начальный head",
-			"faviconPrefix": "Храните favicon-ссылки в отдельном конфиге. PNG-иконки лежат в",
-			"faviconMiddle": "а",
-			"faviconSuffix": "могут оставаться в корне public.",
-			"appInit": "Инициализируйте дефолтные meta, язык документа и favicon-ссылки один раз рядом с корнем приложения."
+			"title": "Начальный head"
+		},
+		"iconKitchenRef": {
+			"prefix": "Для генерации favicon-файлов смотрите",
+			"link": "гайд IconKitchen",
+			"suffix": "."
 		},
 		"robots": {
 			"title": "Robots",
@@ -401,8 +413,26 @@
 			"title": "Sitemap",
 			"description": "Sitemap помогает поисковым роботам найти доступные маршруты и понять, какие страницы нужно обходить.",
 			"verify": "После деплоя проверьте, что sitemap доступен по URL, который указан в robots.txt.",
-			"infoPrefix": "Для более подробной информации перейдите в",
+
 			"infoLink": "документацию Nuxt Sitemap."
+		}
+	},
+	"iconKitchenPage": {
+		"metaTitle": "IconKitchen - Alixan UI",
+		"title": "IconKitchen",
+		"description": "Сгенерируйте favicon-файлы через IconKitchen и подключите их к Nuxt проекту.",
+		"generate": {
+			"title": "Сгенерируйте иконки",
+			"infoPrefix": "Используйте этот",
+			"infoLink": "гайд IconKitchen",
+			"infoSuffix": "как preset для favicon.",
+			"descriptionPrefix": "Сгенерируйте набор иконок в IconKitchen, скачайте",
+			"descriptionMiddle": "версию, положите ее в",
+			"descriptionSuffix": "и переименуйте скачанную папку с web на",
+			"descriptionEnd": "."
+		},
+		"manifest": {
+			"title": "Site Manifest"
 		}
 	},
 	"component": {
@@ -433,7 +463,8 @@
 		"globalLoader": "Глобальный лоадер",
 		"toast": "Уведомление",
 		"select": "Выбор",
-		"dropdownMenu": "Выпадающее меню"
+		"dropdownMenu": "Выпадающее меню",
+		"tooltip": "Tooltip"
 	},
 	"validation": {
 		"required": "Заполните поле",
@@ -450,14 +481,13 @@
 		"metaTitle": "Lottie - Alixan UI",
 		"title": "Lottie",
 		"description": "Используйте Lottie-анимации как легкие media внутри empty states, ошибок и других feedback surfaces.",
-		"infoPrefix": "Для более подробной информации перейдите в",
 		"infoLink": "документацию Nuxt Lottie.",
 		"installationTitle": "Установка",
 		"installationDescription": "Установите модуль Nuxt Lottie. Команда добавит модуль в проект и установит нужный пакет.",
 		"configurationTitle": "Конфигурация",
-		"configDescription": "Настройте имя компонента и храните анимации в",
-		"folderDescriptionStart": "Передавайте prop name без расширения",
-		"folderDescriptionEnd": ".",
+		"folderPreviewStart": "Скачайте JSON-анимацию из Lottie и положите ее в",
+		"folderExamplesPrefix": "Примеры файлов в этом проекте:",
+		"folderExamplesMiddle": "и",
 		"usageTitle": "Использование",
 		"withEmptyTitle": "С Empty",
 		"emptyTitle": "Страница не найдена",
@@ -468,14 +498,11 @@
 		"metaTitle": "SVG Loader - Alixan UI",
 		"title": "SVG Loader",
 		"description": "Используйте nuxt-svgo-loader, когда нужно загружать оптимизированные SVG-файлы как Nuxt-компоненты.",
-		"infoPrefix": "Для более подробной информации перейдите в",
 		"infoLink": "документацию Nuxt SVGO Loader.",
 		"installationTitle": "Установка",
 		"installationDescription": "Установите модуль nuxt-svgo-loader. Команда добавит модуль в ваш Nuxt-проект.",
 		"configurationTitle": "Конфигурация",
-		"configurationDescription": "Зарегистрируйте модуль в nuxt.config.ts. Опции svgoLoader передаются дальше в vite-svg-loader.",
-		"usageTitle": "Использование",
-		"usageDescription": "После установки отображайте SVG-файлы через сгенерированный компонент SvgoIcon и передавайте обычные SVG-атрибуты как props."
+		"usageTitle": "Использование"
 	},
 	"fontsPage": {
 		"metaTitle": "Шрифты - Alixan UI",
@@ -484,11 +511,8 @@
 		"installationTitle": "Установка",
 		"installationDescription": "Установите модуль Nuxt Google Fonts, если хотите загружать шрифты через Nuxt.",
 		"configurationTitle": "Конфигурация",
-		"configurationDescriptionStart": "Добавьте модуль в",
-		"configurationDescriptionEnd": "и выберите семейство, которое хотите использовать в UI.",
 		"tailwindTitle": "Tailwind",
-		"tailwindDescriptionStart": "Сопоставьте выбранный шрифт с",
-		"tailwindDescriptionEnd": "затем используйте Tailwind token font-sans во всей системе."
+		"infoLink": "в документацию Nuxt Fonts."
 	},
 	"iconsPage": {
 		"metaTitle": "Иконки - Alixan UI",
@@ -510,15 +534,10 @@
 		"metaTitle": "Тема - Alixan UI",
 		"title": "Тема",
 		"description": "Настройте dark mode через Nuxt Color Mode и CSS-переменные, которые используют компоненты Alixan UI.",
-		"infoPrefix": "Для более подробной информации перейдите в",
 		"infoLink": "документацию Nuxt Color Mode.",
-		"colorModeTitle": "Color Mode",
-		"colorModeDescription": "Установите Nuxt Color Mode, если хотите, чтобы system, light и dark theme preferences обрабатывались модулем.",
-		"colorModeConfigStart": "Используйте",
-		"colorModeConfigEnd": "чтобы dark mode переключал класс dark, который ожидают Tailwind utilities.",
+		"installationTitle": "Установка",
+		"configurationTitle": "Конфигурация",
 		"tailwindVariantTitle": "Tailwind Variant",
-		"tailwindDescriptionStart": "Сопоставьте light и dark значения с CSS-переменными, затем отдайте их через Tailwind tokens, например",
-		"tailwindDescriptionEnd": "и text-foreground.",
 		"usageTitle": "Использование",
 		"system": "Системная",
 		"light": "Светлая",
@@ -528,15 +547,14 @@
 		"metaTitle": "i18n - Alixan UI",
 		"title": "i18n",
 		"description": "Alixan UI использует официальный модуль Nuxt i18n. Проект хранит message keys типизированными, а переключение языка и persistence выполняет модуль.",
-		"infoPrefix": "Для более подробной информации перейдите в",
 		"infoLink": "документацию Nuxt i18n.",
 		"installationTitle": "Установка",
 		"installationDescription": "Установите модуль Nuxt i18n, затем зарегистрируйте его в",
 		"setupDescriptionStart": "Используйте",
 		"setupDescriptionEnd": "чтобы язык по умолчанию оставался без prefix, а остальные locales получали prefix.",
-		"messagesTitle": "Messages",
-		"messagesDescriptionStart": "Храните locale JSON файлы в",
-		"messagesDescriptionEnd": "Опция file связывает каждую locale с ее message file.",
+		"translationsTitle": "Translations",
+		"translationsDescriptionStart": "Храните JSON файлы переводов в",
+		"translationsDescriptionEnd": "Опция file связывает каждую locale с ее файлом переводов.",
 		"usageTitle": "Использование",
 		"localizedLinksTitle": "Локализованные ссылки",
 		"localizedLinksDescriptionStart": "Оборачивайте внутренние Nuxt routes через",
@@ -606,7 +624,6 @@
 		"loaderShow": "Открывает full-screen loader.",
 		"loaderHide": "Закрывает loader.",
 		"loaderLabel": "Опциональный label под spinner.",
-		"accessibleLabel": "Обязательный accessible label для screen readers.",
 		"iconButtonVariant": "Визуальный стиль icon button. Ghost используется по умолчанию.",
 		"colorIntent": "Цветовой intent.",
 		"iconButtonSize": "Управляет квадратным размером и размером иконки.",
@@ -638,6 +655,10 @@
 		"searchPlaceholder": "Placeholder внутри поля поиска.",
 		"searchDebounce": "Задержка в миллисекундах перед search-событием.",
 		"searchAutofocus": "Фокусирует поле при mount.",
+		"tooltipText": "Контент tooltip. Значения могут быть ключами переводов.",
+		"tooltipDelay": "Задержка в миллисекундах перед открытием tooltip.",
+		"tooltipTriggerSlot": "Trigger-элемент, который открывает tooltip при hover или focus.",
+		"tooltipContentSlot": "Кастомный контент tooltip вместо prop text.",
 		"searchReadonly": "Делает поле читаемым, но недоступным для редактирования.",
 		"searchEvent": "Вызывается с trimmed значением после debounce.",
 		"clearEvent": "Вызывается при клике на кнопку очистки.",

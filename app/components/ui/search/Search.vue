@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Search as SearchIcon, X as XIcon } from '@lucide/vue';
 import { computed, nextTick, onBeforeUnmount, ref, useAttrs, watch } from 'vue';
+import type { DirectiveBinding } from 'vue';
 
 import { cn } from '~/utils/cn';
 
@@ -33,6 +34,17 @@ const attrs = useAttrs();
 const inputRef = ref<HTMLInputElement | null>(null);
 let debounceTimer: ReturnType<typeof setTimeout> | undefined;
 let shouldSkipNextSearch = false;
+
+const vFocus = {
+	mounted: (el: HTMLInputElement, binding: DirectiveBinding<boolean>) => {
+		if (!binding.value) return;
+		requestAnimationFrame(() => el.focus());
+	},
+	updated: (el: HTMLInputElement, binding: DirectiveBinding<boolean>) => {
+		if (!binding.value || binding.value === binding.oldValue) return;
+		requestAnimationFrame(() => el.focus());
+	},
+};
 
 const rootClass = computed(() =>
 	cn(
@@ -98,12 +110,12 @@ onBeforeUnmount(() => clearDebounce());
 
 		<input
 			ref="inputRef"
+			v-focus="autofocus"
 			v-bind="inputAttrs"
 			v-model="model"
 			type="text"
 			:placeholder="placeholder"
 			:readonly="readonly"
-			:autofocus="autofocus"
 			class="size-full bg-transparent px-10 text-base font-normal text-foreground outline-none placeholder:text-muted-foreground"
 		/>
 

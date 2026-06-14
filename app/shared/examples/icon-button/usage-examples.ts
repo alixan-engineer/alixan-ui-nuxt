@@ -7,46 +7,46 @@ import IconButton from '@/components/ui/icon-button/IconButton.vue'
 <template>
   <div class="space-y-4">
     <div class="flex flex-wrap items-center gap-2">
-      <IconButton label="Default" variant="filled" color="default">
+      <IconButton variant="filled" color="default">
         <ArrowUpRight />
       </IconButton>
-      <IconButton label="Primary" variant="filled" color="primary">
+      <IconButton variant="filled" color="primary">
         <ArrowUpRight />
       </IconButton>
-      <IconButton label="Secondary" variant="filled" color="secondary">
+      <IconButton variant="filled" color="secondary">
         <ArrowUpRight />
       </IconButton>
-      <IconButton label="Destructive" variant="filled" color="destructive">
-        <ArrowUpRight />
-      </IconButton>
-    </div>
-
-    <div class="flex flex-wrap items-center gap-2">
-      <IconButton label="Default outline" variant="outlined" color="default">
-        <ArrowUpRight />
-      </IconButton>
-      <IconButton label="Primary outline" variant="outlined" color="primary">
-        <ArrowUpRight />
-      </IconButton>
-      <IconButton label="Secondary outline" variant="outlined" color="secondary">
-        <ArrowUpRight />
-      </IconButton>
-      <IconButton label="Destructive outline" variant="outlined" color="destructive">
+      <IconButton variant="filled" color="destructive">
         <ArrowUpRight />
       </IconButton>
     </div>
 
     <div class="flex flex-wrap items-center gap-2">
-      <IconButton label="Default ghost" variant="ghost" color="default">
+      <IconButton variant="outlined" color="default">
         <ArrowUpRight />
       </IconButton>
-      <IconButton label="Primary ghost" variant="ghost" color="primary">
+      <IconButton variant="outlined" color="primary">
         <ArrowUpRight />
       </IconButton>
-      <IconButton label="Secondary ghost" variant="ghost" color="secondary">
+      <IconButton variant="outlined" color="secondary">
         <ArrowUpRight />
       </IconButton>
-      <IconButton label="Destructive ghost" variant="ghost" color="destructive">
+      <IconButton variant="outlined" color="destructive">
+        <ArrowUpRight />
+      </IconButton>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-2">
+      <IconButton variant="ghost" color="default">
+        <ArrowUpRight />
+      </IconButton>
+      <IconButton variant="ghost" color="primary">
+        <ArrowUpRight />
+      </IconButton>
+      <IconButton variant="ghost" color="secondary">
+        <ArrowUpRight />
+      </IconButton>
+      <IconButton variant="ghost" color="destructive">
         <ArrowUpRight />
       </IconButton>
     </div>
@@ -59,13 +59,13 @@ import IconButton from '@/components/ui/icon-button/IconButton.vue'
 
 <template>
   <div class="flex items-center gap-2">
-    <IconButton label="Small action" size="sm">
+    <IconButton size="sm">
       <ArrowUpRight />
     </IconButton>
-    <IconButton label="Default action">
+    <IconButton>
       <ArrowUpRight />
     </IconButton>
-    <IconButton label="Large action" size="lg">
+    <IconButton size="lg">
       <ArrowUpRight />
     </IconButton>
   </div>
@@ -79,15 +79,11 @@ const localePath = useLocalePath()
 
 <template>
   <div class="flex items-center gap-2">
-    <IconButton
-      label="Open icon button docs"
-      :to="localePath('/icon-button')"
-    >
+    <IconButton :to="localePath('/icon-button')">
       <ArrowUpRight />
     </IconButton>
 
     <IconButton
-      label="Open GitHub"
       href="https://github.com"
       target="_blank"
       variant="outlined"
@@ -111,7 +107,7 @@ const save = () => {
 <\/script>
 
 <template>
-  <IconButton label="Save action" @click="save">
+  <IconButton @click="save">
     <ArrowUpRight />
   </IconButton>
 </template>`,
@@ -119,22 +115,23 @@ const save = () => {
 import { ArrowUpRight } from '@lucide/vue'
 
 const dialog = useDialog()
+const { $tn } = useNuxtApp()
 
 const openAlert = () => {
   dialog.open(AlertDialog, {
     width: '360px',
     height: '280px',
     data: {
-      title: 'Action unavailable',
-      description: 'Export will be available after the report is generated.',
-      buttonLabel: 'Got it',
+      title: $tn('componentDocs.iconButton.actionUnavailable'),
+      description: $tn('componentDocs.iconButton.exportUnavailable'),
+      buttonLabel: $tn('componentDocs.iconButton.gotIt'),
     },
   })
 }
 <\/script>
 
 <template>
-  <IconButton label="Export report" variant="outlined" @click="openAlert">
+  <IconButton variant="outlined" @click="openAlert">
     <ArrowUpRight />
   </IconButton>
 </template>`,

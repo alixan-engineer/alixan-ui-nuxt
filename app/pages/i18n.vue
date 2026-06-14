@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { i18nPageToc } from '~/shared/examples/i18n/page-toc';
 import {
+	enTranslationsCode,
 	installCode,
+	kkTranslationsCode,
 	localePathCode,
-	messagesCode,
 	pageMetaCode,
+	ruTranslationsCode,
 	setupCode,
 	tnPluginCode,
 	tnTypesCode,
@@ -43,7 +45,7 @@ const changeLocale = async (value: Locale): Promise<void> => {
 			{{ $tn('i18nPage.description') }}
 		</p>
 		<Info>
-			{{ $tn('i18nPage.infoPrefix') }}
+			{{ $tn('app.infoPrefix') }}
 			<TextLink href="https://i18n.nuxtjs.org/" target="_blank">
 				{{ $tn('i18nPage.infoLink') }}
 			</TextLink>
@@ -54,51 +56,74 @@ const changeLocale = async (value: Locale): Promise<void> => {
 		<h2 class="text-2xl font-semibold">
 			{{ $tn('i18nPage.installationTitle') }}
 		</h2>
-		<ExampleBlock :code="installCode">
-			<div class="max-w-md text-center text-muted-foreground leading-7">
-				{{ $tn('i18nPage.installationDescription') }}
-				<code>nuxt.config.ts</code>.
-			</div>
-		</ExampleBlock>
-		<ExampleBlock :code="setupCode">
-			<div class="max-w-md text-center text-muted-foreground leading-7">
-				{{ $tn('i18nPage.setupDescriptionStart') }}
-				<code>strategy: 'prefix_except_default'</code>
-				{{ $tn('i18nPage.setupDescriptionEnd') }}
-			</div>
-		</ExampleBlock>
+		<p class="text-muted-foreground leading-7">
+			{{ $tn('i18nPage.installationDescription') }}
+			<code>nuxt.config.ts</code>.
+		</p>
+		<ExampleBlock :code="installCode" :preview="false" />
 	</section>
 
-	<section id="messages" class="space-y-5">
+	<section id="configuration" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
-			{{ $tn('i18nPage.messagesTitle') }}
+			{{ $tn('fontsPage.configurationTitle') }}
 		</h2>
-		<ExampleBlock :code="messagesCode">
-			<div class="max-w-md text-center text-muted-foreground leading-7">
-				{{ $tn('i18nPage.messagesDescriptionStart') }}
-				<code>root/i18n/locales</code>.
-				{{ $tn('i18nPage.messagesDescriptionEnd') }}
-			</div>
-		</ExampleBlock>
+		<p class="text-muted-foreground leading-7">
+			{{ $tn('i18nPage.setupDescriptionStart') }}
+			<code>strategy: 'prefix_except_default'</code>
+			{{ $tn('i18nPage.setupDescriptionEnd') }}
+		</p>
+		<ExampleBlock path="nuxt.config.ts" :code="setupCode" :preview="false" />
+	</section>
+
+	<section id="translations" class="space-y-5">
+		<h2 class="text-2xl font-semibold">
+			{{ $tn('i18nPage.translationsTitle') }}
+		</h2>
+		<p class="text-muted-foreground leading-7">
+			{{ $tn('i18nPage.translationsDescriptionStart') }}
+			<code>i18n/locales</code>.
+			{{ $tn('i18nPage.translationsDescriptionEnd') }}
+		</p>
+		<ExampleBlock
+			path="i18n/locales/en.json"
+			:code="enTranslationsCode"
+			:preview="false"
+		/>
+		<ExampleBlock
+			path="i18n/locales/ru.json"
+			:code="ruTranslationsCode"
+			:preview="false"
+		/>
+		<ExampleBlock
+			path="i18n/locales/kk.json"
+			:code="kkTranslationsCode"
+			:preview="false"
+		/>
 	</section>
 
 	<section id="translation-helper" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
 			{{ $tn('i18nPage.translationHelperTitle') }}
 		</h2>
-		<ExampleBlock :code="tnPluginCode">
-			<div class="max-w-md text-center text-muted-foreground leading-7">
-				{{ $tn('i18nPage.translationHelperDescriptionStart') }}
-				<code>$tn</code>
-				{{ $tn('i18nPage.translationHelperDescriptionEnd') }}
-				{{ $tn('i18nPage.seoConnection') }}
-			</div>
-		</ExampleBlock>
-		<ExampleBlock :code="tnTypesCode">
-			<div class="max-w-md text-center text-muted-foreground leading-7">
-				{{ $tn('i18nPage.translationTypesDescription') }}
-			</div>
-		</ExampleBlock>
+		<p class="text-muted-foreground leading-7">
+			{{ $tn('i18nPage.translationHelperDescriptionStart') }}
+			<code>$tn</code>
+			{{ $tn('i18nPage.translationHelperDescriptionEnd') }}
+			{{ $tn('i18nPage.seoConnection') }}
+		</p>
+		<ExampleBlock
+			path="app/plugins/tn.ts"
+			:code="tnPluginCode"
+			:preview="false"
+		/>
+		<p class="text-muted-foreground leading-7">
+			{{ $tn('i18nPage.translationTypesDescription') }}
+		</p>
+		<ExampleBlock
+			path="app/types/tn.d.ts"
+			:code="tnTypesCode"
+			:preview="false"
+		/>
 	</section>
 
 	<section id="usage" class="space-y-5">
@@ -123,25 +148,27 @@ const changeLocale = async (value: Locale): Promise<void> => {
 		<h2 class="text-2xl font-semibold">
 			{{ $tn('i18nPage.localizedLinksTitle') }}
 		</h2>
-		<ExampleBlock :code="localePathCode">
-			<div class="max-w-md text-center text-muted-foreground leading-7">
-				{{ $tn('i18nPage.localizedLinksDescriptionStart') }}
-				<code>useLocalePath</code>
-				{{ $tn('i18nPage.localizedLinksDescriptionEnd') }}
-			</div>
-		</ExampleBlock>
+		<p class="text-muted-foreground leading-7">
+			{{ $tn('i18nPage.localizedLinksDescriptionStart') }}
+			<code>useLocalePath</code>
+			{{ $tn('i18nPage.localizedLinksDescriptionEnd') }}
+		</p>
+		<ExampleBlock path="Example.vue" :code="localePathCode" :preview="false" />
 	</section>
 
 	<section id="page-meta" class="space-y-5">
 		<h2 class="text-2xl font-semibold">{{ $tn('i18nPage.pageMetaTitle') }}</h2>
-		<ExampleBlock :code="pageMetaCode">
-			<div class="max-w-md text-center text-muted-foreground leading-7">
-				{{ $tn('i18nPage.pageMetaDescriptionStart') }}
-				<code>usePageMeta</code>
-				{{ $tn('i18nPage.pageMetaDescriptionMiddle') }}
-				<code>t(...)</code>
-				{{ $tn('i18nPage.pageMetaDescriptionEnd') }}
-			</div>
-		</ExampleBlock>
+		<p class="text-muted-foreground leading-7">
+			{{ $tn('i18nPage.pageMetaDescriptionStart') }}
+			<code>usePageMeta</code>
+			{{ $tn('i18nPage.pageMetaDescriptionMiddle') }}
+			<code>t(...)</code>
+			{{ $tn('i18nPage.pageMetaDescriptionEnd') }}
+		</p>
+		<ExampleBlock
+			path="pages/button.vue"
+			:code="pageMetaCode"
+			:preview="false"
+		/>
 	</section>
 </template>

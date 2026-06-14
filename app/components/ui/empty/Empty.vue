@@ -17,19 +17,19 @@ const emit = defineEmits<{
 
 <template>
 	<div
-		class="size-full flex flex-col items-center justify-center gap-6 text-center"
+		class="size-full flex flex-col items-center justify-center gap-4 text-center"
 	>
 		<slot />
-		<h1 class="text-3xl font-semibold">{{ title }}</h1>
-		<p v-if="description" class="text-xl text-muted-foreground">
-			{{ description }}
+		<h2 class="text-2xl font-semibold">{{ $tn(title) }}</h2>
+		<p v-if="description" class="text-lg text-muted-foreground">
+			{{ $tn(description) }}
 		</p>
 		<Button
 			v-if="button"
 			:color="buttonColor ?? 'primary'"
 			@click="emit('action')"
 		>
-			{{ button }}
+			{{ $tn(button) }}
 		</Button>
 	</div>
 </template>

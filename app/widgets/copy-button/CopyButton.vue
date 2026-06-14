@@ -35,7 +35,6 @@ const copyText = async (): Promise<void> => {
 		variant="ghost"
 		color="default"
 		size="sm"
-		:label="copied ? copiedLabel : label"
 		@click="copyText"
 	>
 		<Check v-if="copied" />

@@ -19,11 +19,12 @@ const { setToc } = usePageToc();
 const loader = useGlobalLoader();
 const dialog = useDialog();
 const localePath = useLocalePath();
+const { $tn } = useNuxtApp();
 
 onMounted(() => setToc(buttonPageToc));
 
 const showGlobalLoader = (): void => {
-	loader.show({ label: 'Saving changes...' });
+	loader.show({ label: 'componentDocs.button.savingChanges' });
 	window.setTimeout(() => {
 		loader.hide();
 	}, 3000);
@@ -34,9 +35,9 @@ const openDisableAlert = (): void => {
 		width: '360px',
 		height: '280px',
 		data: {
-			title: 'Action unavailable',
-			description: 'Export will be available after the report is generated.',
-			buttonLabel: 'Got it',
+			title: $tn('componentDocs.button.actionUnavailable'),
+			description: $tn('componentDocs.button.exportUnavailable'),
+			buttonLabel: $tn('componentDocs.button.gotIt'),
 		},
 	});
 };
@@ -61,9 +62,7 @@ const openDisableAlert = (): void => {
 		<div class="space-y-2">
 			<h2 class="text-2xl font-semibold">{{ $tn('docsSections.usage') }}</h2>
 			<p class="text-muted-foreground leading-7">
-				Button styling is built from two independent props: variant chooses the
-				visual weight, and color chooses the action intent. Combine them to get
-				the right emphasis without changing the meaning of the action.
+				{{ $tn('componentDocs.button.usageDescription') }}
 			</p>
 		</div>
 		<div class="space-y-4">
@@ -99,9 +98,9 @@ const openDisableAlert = (): void => {
 		</h2>
 		<ExampleBlock :code="buttonExamples.size">
 			<div class="flex items-center gap-2">
-				<Button size="sm">Small</Button>
-				<Button>Default</Button>
-				<Button size="lg">Large</Button>
+				<Button size="sm">{{ $tn('componentDocs.button.small') }}</Button>
+				<Button>{{ $tn('componentDocs.button.default') }}</Button>
+				<Button size="lg">{{ $tn('componentDocs.button.large') }}</Button>
 			</div>
 		</ExampleBlock>
 	</section>
@@ -112,9 +111,11 @@ const openDisableAlert = (): void => {
 		</h2>
 		<ExampleBlock :code="buttonExamples.navigation">
 			<div class="flex flex-wrap items-center gap-2">
-				<Button :to="localePath('/icon-button')">NuxtLink</Button>
+				<Button :to="localePath('/icon-button')">
+					{{ $tn('componentDocs.button.nuxtLink') }}
+				</Button>
 				<Button href="https://github.com" target="_blank" variant="outlined">
-					External link
+					{{ $tn('componentDocs.button.externalLink') }}
 				</Button>
 			</div>
 		</ExampleBlock>
@@ -130,11 +131,11 @@ const openDisableAlert = (): void => {
 					<template #leading>
 						<GitBranch class="size-5" />
 					</template>
-					New Branch
+					{{ $tn('componentDocs.button.newBranch') }}
 				</Button>
 
 				<Button variant="outlined">
-					Continue
+					{{ $tn('componentDocs.button.continue') }}
 					<template #trailing>
 						<ArrowRight class="size-5" />
 					</template>
@@ -149,14 +150,13 @@ const openDisableAlert = (): void => {
 				{{ $tn('docsSections.loading') }}
 			</h2>
 			<p class="text-muted-foreground leading-7">
-				Button does not include a built-in spinner state. If the button keeps
-				spinning inline, the user can still navigate away and lose the action
-				context. A global loader blocks the surface, communicates one active
-				operation, and keeps the experience easier to understand.
+				{{ $tn('componentDocs.button.loadingDescription') }}
 			</p>
 		</div>
 		<ExampleBlock :code="buttonExamples.loading">
-			<Button @click="showGlobalLoader">Save changes</Button>
+			<Button @click="showGlobalLoader">
+				{{ $tn('componentDocs.button.saveChanges') }}
+			</Button>
 		</ExampleBlock>
 	</section>
 
@@ -166,14 +166,12 @@ const openDisableAlert = (): void => {
 				{{ $tn('docsSections.disabled') }}
 			</h2>
 			<p class="text-muted-foreground leading-7">
-				Prefer not to disable buttons. Keep the action visible and active, then
-				explain why it cannot run with a warning message. This gives the user
-				feedback instead of a dead control.
+				{{ $tn('componentDocs.button.disabledDescription') }}
 			</p>
 		</div>
 		<ExampleBlock :code="buttonExamples.disable">
 			<Button variant="outlined" @click="openDisableAlert">
-				Export report
+				{{ $tn('componentDocs.button.exportReport') }}
 			</Button>
 		</ExampleBlock>
 	</section>

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import errorLottieUrl from '~/assets/lottie/error.json?url';
+import successLottieUrl from '~/assets/lottie/success.json?url';
 import { lottiePageToc } from '~/shared/examples/lottie/page-toc';
 import {
 	configCode,
@@ -24,7 +26,7 @@ onMounted(() => setToc(lottiePageToc));
 			{{ $tn('lottiePage.description') }}
 		</p>
 		<Info>
-			{{ $tn('lottiePage.infoPrefix') }}
+			{{ $tn('app.infoPrefix') }}
 			<TextLink href="https://nuxt.com/modules/lottie" target="_blank">
 				{{ $tn('lottiePage.infoLink') }}
 			</TextLink>
@@ -35,30 +37,30 @@ onMounted(() => setToc(lottiePageToc));
 		<h2 class="text-2xl font-semibold">
 			{{ $tn('lottiePage.installationTitle') }}
 		</h2>
-		<ExampleBlock :code="installCode">
-			<div class="max-w-md text-center text-muted-foreground leading-7">
-				{{ $tn('lottiePage.installationDescription') }}
-			</div>
-		</ExampleBlock>
+		<ExampleBlock :code="installCode" :preview="false" />
 	</section>
 
 	<section id="configuration" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
 			{{ $tn('lottiePage.configurationTitle') }}
 		</h2>
-		<ExampleBlock :code="configCode">
+		<ExampleBlock path="nuxt.config.ts" :code="configCode" :preview="false" />
+		<ExampleBlock :code="folderCode">
 			<div class="max-w-md text-center text-muted-foreground leading-7">
-				{{ $tn('lottiePage.configDescription') }}
+				{{ $tn('lottiePage.folderPreviewStart') }}
 				<code>app/assets/lottie</code>.
 			</div>
 		</ExampleBlock>
-		<ExampleBlock :code="folderCode">
-			<div class="max-w-md text-center text-muted-foreground leading-7">
-				{{ $tn('lottiePage.folderDescriptionStart') }}
-				<code>.json</code>
-				{{ $tn('lottiePage.folderDescriptionEnd') }}
-			</div>
-		</ExampleBlock>
+		<Info>
+			{{ $tn('lottiePage.folderExamplesPrefix') }}
+			<TextLink :href="errorLottieUrl" download="error.json">
+				<code>app/assets/lottie/error.json</code>
+			</TextLink>
+			{{ $tn('lottiePage.folderExamplesMiddle') }}
+			<TextLink :href="successLottieUrl" download="success.json">
+				<code>app/assets/lottie/success.json</code> </TextLink
+			>.
+		</Info>
 	</section>
 
 	<section id="usage" class="space-y-5">

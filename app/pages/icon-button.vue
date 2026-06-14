@@ -19,11 +19,12 @@ const loader = useGlobalLoader();
 const dialog = useDialog();
 const { setToc } = usePageToc();
 const localePath = useLocalePath();
+const { $tn } = useNuxtApp();
 
 onMounted(() => setToc(iconButtonPageToc));
 
 const showGlobalLoader = (): void => {
-	loader.show({ label: 'Saving action...' });
+	loader.show({ label: 'componentDocs.iconButton.savingAction' });
 	window.setTimeout(() => loader.hide(), 3000);
 };
 
@@ -32,9 +33,9 @@ const openDisableAlert = (): void => {
 		width: '360px',
 		height: '280px',
 		data: {
-			title: 'Action unavailable',
-			description: 'Export will be available after the report is generated.',
-			buttonLabel: 'Got it',
+			title: $tn('componentDocs.iconButton.actionUnavailable'),
+			description: $tn('componentDocs.iconButton.exportUnavailable'),
+			buttonLabel: $tn('componentDocs.iconButton.gotIt'),
 		},
 	});
 };
@@ -59,9 +60,7 @@ const openDisableAlert = (): void => {
 		<div class="space-y-2">
 			<h2 class="text-2xl font-semibold">{{ $tn('docsSections.usage') }}</h2>
 			<p class="text-muted-foreground leading-7">
-				IconButton uses the same variant and color system as Button, but keeps
-				the control square for icon-only actions. Always provide a label so the
-				action remains clear for assistive technologies.
+				{{ $tn('componentDocs.iconButton.usageDescription') }}
 			</p>
 		</div>
 		<div class="space-y-4">
@@ -81,7 +80,6 @@ const openDisableAlert = (): void => {
 								:key="`${variant}-${color}`"
 								:variant="variant"
 								:color="color"
-								:label="`${$tn(`variants.${variant}`)} ${$tn(`colors.${color}`)}`"
 							>
 								<ArrowUpRight />
 							</IconButton>
@@ -96,13 +94,13 @@ const openDisableAlert = (): void => {
 		<h2 class="text-2xl font-semibold">{{ $tn('docsSections.size') }}</h2>
 		<ExampleBlock :code="iconButtonExamples.size">
 			<div class="flex items-center gap-2">
-				<IconButton label="Small action" size="sm">
+				<IconButton size="sm">
 					<ArrowUpRight />
 				</IconButton>
-				<IconButton label="Default action">
+				<IconButton>
 					<ArrowUpRight />
 				</IconButton>
-				<IconButton label="Large action" size="lg">
+				<IconButton size="lg">
 					<ArrowUpRight />
 				</IconButton>
 			</div>
@@ -113,15 +111,11 @@ const openDisableAlert = (): void => {
 		<h2 class="text-2xl font-semibold">{{ $tn('docsSections.navigation') }}</h2>
 		<ExampleBlock :code="iconButtonExamples.navigation">
 			<div class="flex items-center gap-2">
-				<IconButton
-					label="Open icon button docs"
-					:to="localePath('/icon-button')"
-				>
+				<IconButton :to="localePath('/icon-button')">
 					<ArrowUpRight />
 				</IconButton>
 
 				<IconButton
-					label="Open GitHub"
 					href="https://github.com"
 					target="_blank"
 					variant="outlined"
@@ -136,13 +130,11 @@ const openDisableAlert = (): void => {
 		<div class="space-y-2">
 			<h2 class="text-2xl font-semibold">{{ $tn('docsSections.loading') }}</h2>
 			<p class="text-muted-foreground leading-7">
-				IconButton does not include an inline spinner. Inline loading can leave
-				the user free to navigate away and lose the action context. Use a global
-				loader when the operation should be treated as one blocking action.
+				{{ $tn('componentDocs.iconButton.loadingDescription') }}
 			</p>
 		</div>
 		<ExampleBlock :code="iconButtonExamples.loading">
-			<IconButton label="Save action" @click="showGlobalLoader">
+			<IconButton @click="showGlobalLoader">
 				<ArrowUpRight />
 			</IconButton>
 		</ExampleBlock>
@@ -152,16 +144,11 @@ const openDisableAlert = (): void => {
 		<div class="space-y-2">
 			<h2 class="text-2xl font-semibold">{{ $tn('docsSections.disabled') }}</h2>
 			<p class="text-muted-foreground leading-7">
-				Do not make the icon action silent and unavailable. Keep it active, then
-				show a warning dialog that explains what the user needs to do.
+				{{ $tn('componentDocs.iconButton.disabledDescription') }}
 			</p>
 		</div>
 		<ExampleBlock :code="iconButtonExamples.disable">
-			<IconButton
-				label="Export report"
-				variant="outlined"
-				@click="openDisableAlert"
-			>
+			<IconButton variant="outlined" @click="openDisableAlert">
 				<ArrowUpRight />
 			</IconButton>
 		</ExampleBlock>

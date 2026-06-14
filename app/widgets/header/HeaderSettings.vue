@@ -72,7 +72,7 @@ const openThemeCode = (): void => {
 		position="bottomRight"
 	>
 		<template #trigger>
-			<IconButton variant="ghost" color="default" :label="$tn('app.settings')">
+			<IconButton variant="ghost" color="default" tooltip="app.settings">
 				<Settings />
 			</IconButton>
 		</template>

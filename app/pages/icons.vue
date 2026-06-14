@@ -35,11 +35,7 @@ onMounted(() => setToc(iconsPageToc));
 		<h2 class="text-2xl font-semibold">
 			{{ $tn('iconsPage.installationTitle') }}
 		</h2>
-		<ExampleBlock :code="installCode">
-			<div class="max-w-md text-center text-muted-foreground leading-7">
-				{{ $tn('iconsPage.installationDescription') }}
-			</div>
-		</ExampleBlock>
+		<ExampleBlock :code="installCode" :preview="false" />
 	</section>
 
 	<section id="lucide-icons" class="space-y-5">
@@ -52,7 +48,7 @@ onMounted(() => setToc(iconsPageToc));
 					</template>
 					{{ $tn('iconsPage.searchButton') }}
 				</Button>
-				<IconButton :label="$tn('iconsPage.notificationsLabel')">
+				<IconButton>
 					<Bell />
 				</IconButton>
 			</div>

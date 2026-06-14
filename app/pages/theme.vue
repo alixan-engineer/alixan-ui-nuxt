@@ -36,42 +36,40 @@ const setTheme = (value: ColorModePreference) => {
 			{{ $tn('themePage.description') }}
 		</p>
 		<Info>
-			{{ $tn('themePage.infoPrefix') }}
+			{{ $tn('app.infoPrefix') }}
 			<TextLink href="https://color-mode.nuxtjs.org/" target="_blank">
 				{{ $tn('themePage.infoLink') }}
 			</TextLink>
 		</Info>
 	</header>
 
-	<section id="color-mode" class="space-y-5">
+	<section id="installation" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
-			{{ $tn('themePage.colorModeTitle') }}
+			{{ $tn('themePage.installationTitle') }}
 		</h2>
-		<ExampleBlock :code="installCode">
-			<div class="max-w-md text-center text-muted-foreground leading-7">
-				{{ $tn('themePage.colorModeDescription') }}
-			</div>
-		</ExampleBlock>
-		<ExampleBlock :code="colorModeConfigCode">
-			<div class="max-w-md text-center text-muted-foreground leading-7">
-				{{ $tn('themePage.colorModeConfigStart') }}
-				<code>classSuffix: ''</code>
-				{{ $tn('themePage.colorModeConfigEnd') }}
-			</div>
-		</ExampleBlock>
+		<ExampleBlock :code="installCode" :preview="false" />
+	</section>
+
+	<section id="configuration" class="space-y-5">
+		<h2 class="text-2xl font-semibold">
+			{{ $tn('themePage.configurationTitle') }}
+		</h2>
+		<ExampleBlock
+			path="nuxt.config.ts"
+			:code="colorModeConfigCode"
+			:preview="false"
+		/>
 	</section>
 
 	<section id="tailwind-variant" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
 			{{ $tn('themePage.tailwindVariantTitle') }}
 		</h2>
-		<ExampleBlock :code="tailwindCode">
-			<div class="max-w-md text-center text-muted-foreground leading-7">
-				{{ $tn('themePage.tailwindDescriptionStart') }}
-				<code>bg-background</code>
-				{{ $tn('themePage.tailwindDescriptionEnd') }}
-			</div>
-		</ExampleBlock>
+		<ExampleBlock
+			path="app/assets/css/tailwind.css"
+			:code="tailwindCode"
+			:preview="false"
+		/>
 	</section>
 
 	<section id="usage" class="space-y-5">

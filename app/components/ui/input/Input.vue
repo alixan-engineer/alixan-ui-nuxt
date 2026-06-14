@@ -3,13 +3,13 @@ import { X } from '@lucide/vue';
 import {
 	computed,
 	nextTick,
-	onMounted,
 	ref,
 	useAttrs,
 	useId,
 	useSlots,
 	watch,
 } from 'vue';
+import type { DirectiveBinding } from 'vue';
 
 import { cn } from '~/utils/cn';
 
@@ -74,6 +74,17 @@ const generatedId = useId();
 const inputRef = ref<HTMLInputElement | null>(null);
 const isFocused = ref(false);
 const isTouched = ref(false);
+
+const vFocus = {
+	mounted: (el: HTMLInputElement, binding: DirectiveBinding<boolean>) => {
+		if (!binding.value) return;
+		requestAnimationFrame(() => el.focus());
+	},
+	updated: (el: HTMLInputElement, binding: DirectiveBinding<boolean>) => {
+		if (!binding.value || binding.value === binding.oldValue) return;
+		requestAnimationFrame(() => el.focus());
+	},
+};
 
 const inputId = computed(() => props.id ?? generatedId);
 const messageId = computed(() => `${inputId.value}-message`);
@@ -260,12 +271,6 @@ watch(
 		}
 	},
 );
-
-onMounted(() => {
-	if (props.autofocus) {
-		inputRef.value?.focus();
-	}
-});
 </script>
 
 <template>
@@ -281,6 +286,7 @@ onMounted(() => {
 		<input
 			:id="inputId"
 			ref="inputRef"
+			v-focus="autofocus"
 			v-bind="inputAttrs"
 			v-model="model"
 			:type="type"

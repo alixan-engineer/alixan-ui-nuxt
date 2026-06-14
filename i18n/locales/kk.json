@@ -3,10 +3,25 @@
 		"back": "Alixan UI-ға оралу",
 		"github": "GitHub ашу",
 		"menu": "Мәзірді ашу",
-		"settings": "Баптауларды ашу"
+		"settings": "Баптауларды ашу",
+		"infoPrefix": "Толық ақпарат үшін:"
 	},
 	"actions": {
 		"clear": "Тазарту"
+	},
+	"tooltip": {
+		"demo": {
+			"save": "Қазіргі өзгерістерді сақтау",
+			"info": "Қосымша ақпарат",
+			"shortDescription": "Қысқа сипаттама"
+		}
+	},
+	"docsSearch": {
+		"title": "Құжаттамадан іздеу",
+		"hint": "Беттер",
+		"placeholder": "Құжаттамадан іздеу",
+		"empty": "Беттер табылмады",
+		"reset": "Іздеуді тазалау"
 	},
 	"card": {
 		"demoTitle": "MacBook Pro 14 дюйм",
@@ -164,8 +179,8 @@
 		"lottie": "Lottie",
 		"svgLoader": "SVG Loader",
 		"seo": "SEO",
-		"theme": "Тақырып",
-		"styles": "Стильдер"
+		"iconKitchen": "IconKitchen",
+		"theme": "Тақырып"
 	},
 	"docsTable": {
 		"prop": "Қасиет",
@@ -211,15 +226,43 @@
 	"componentDocs": {
 		"button": {
 			"metaTitle": "Батырма - Alixan UI",
-			"description": "Формалардағы, тулбарлардағы және навигациядағы әрекеттерге арналған батырманы көрсетеді."
+			"description": "Формалардағы, тулбарлардағы және навигациядағы әрекеттерге арналған батырманы көрсетеді.",
+			"usageDescription": "Button стилі екі тәуелсіз prop арқылы құрылады: variant визуалды салмақты, ал color әрекет intent мәнін таңдайды. Әрекет мағынасын өзгертпей, дұрыс акцент алу үшін оларды бірге қолданыңыз.",
+			"loadingDescription": "Button ішінде дайын spinner күйі жоқ. Батырма inline айналып тұрса, пайдаланушы беттен кетіп, әрекет контекстін жоғалтуы мүмкін. Global loader бетті блоктап, бір белсенді операцияны көрсетеді және тәжірибені түсініктірек етеді.",
+			"disabledDescription": "Батырмаларды өшірмеген дұрыс. Әрекетті көрінетін және белсенді қалдырып, неге орындалмайтынын warning хабарламасы арқылы түсіндіріңіз. Осылай пайдаланушы өлі control орнына feedback алады.",
+			"small": "Кіші",
+			"default": "Әдепкі",
+			"large": "Үлкен",
+			"nuxtLink": "NuxtLink",
+			"externalLink": "Сыртқы сілтеме",
+			"newBranch": "Жаңа branch",
+			"continue": "Жалғастыру",
+			"saveChanges": "Өзгерістерді сақтау",
+			"savingChanges": "Өзгерістер сақталуда...",
+			"exportReport": "Есепті экспорттау",
+			"actionUnavailable": "Әрекет қолжетімсіз",
+			"exportUnavailable": "Экспорт есеп генерацияланғаннан кейін қолжетімді болады.",
+			"gotIt": "Түсінікті"
 		},
 		"iconButton": {
 			"metaTitle": "Иконка батырмасы - Alixan UI",
-			"description": "Міндетті accessible label бар тек иконкадан тұратын батырманы көрсетеді."
+			"description": "Ықшам әрекеттерге арналған тек иконкадан тұратын батырманы көрсетеді.",
+			"usageDescription": "IconButton Button сияқты variant және color жүйесін қолданады, бірақ тек иконкаға арналған әрекеттер үшін квадрат пішінді сақтайды.",
+			"loadingDescription": "IconButton ішінде inline spinner жоқ. Inline loading пайдаланушыға беттен кетуге мүмкіндік беріп, әрекет контекстін жоғалтуы мүмкін. Операция бір blocking action ретінде қабылдануы керек болса, global loader қолданыңыз.",
+			"disabledDescription": "Иконка әрекетін үнсіз қолжетімсіз етпеңіз. Оны белсенді қалдырып, пайдаланушы не істеуі керегін түсіндіретін warning dialog көрсетіңіз.",
+			"savingAction": "Әрекет сақталуда...",
+			"actionUnavailable": "Әрекет қолжетімсіз",
+			"exportUnavailable": "Экспорт есеп генерацияланғаннан кейін қолжетімді болады.",
+			"gotIt": "Түсінікті"
 		},
 		"textLink": {
 			"metaTitle": "Мәтін сілтемесі - Alixan UI",
 			"description": "Құжаттама мәтініне, подсказкаларға және сыртқы сілтемелерге арналған inline link, button padding және background styles жоқ."
+		},
+		"tooltip": {
+			"metaTitle": "Tooltip - Alixan UI",
+			"description": "Trigger астында шағын adaptive popover көрсетеді, ал төменде орын жетпесе үстінен көрсетеді.",
+			"htmlTitle": "HTML арқылы"
 		},
 		"chip": {
 			"metaTitle": "Чип - Alixan UI",
@@ -330,34 +373,6 @@
 			"description": "Success, warning, error және info хабарламаларына арналған жеңіл notification stack."
 		}
 	},
-	"stylesPage": {
-		"metaTitle": "Стильдер - Alixan UI",
-		"metaDescription": "Alixan UI құжаттамасында қолданылатын ортақ Tailwind токендері мен утилиталары.",
-		"title": "Стильдер",
-		"description": "Мысалдарда және overlay компоненттерінде қолданылатын ортақ Tailwind токендері мен утилиталары.",
-		"tailwind": {
-			"title": "Tailwind CSS",
-			"description": "Тақырып токендерін, базалық стильдерді және утилиталарды бір жерде сақтау үшін installation ішіндегі ортақ CSS файлын көшіріңіз.",
-			"copyCode": "Кодты көшіру",
-			"copiedCode": "Көшірілді",
-			"viewCode": "Кодты көрсету",
-			"hideCode": "Кодты жасыру"
-		},
-		"textSize": {
-			"title": "Мәтін өлшемі",
-			"descriptionMiddle": "мәніне тең",
-			"descriptionSuffix": "және ықшам label, мәзір элементтері мен тығыз form controls үшін қолданылады."
-		},
-		"island": {
-			"title": "Island",
-			"descriptionPrefix": "Қолданыңыз",
-			"descriptionSuffix": "bordered құжаттама блоктары мен ықшам панельдер үшін. Радиус блок өлшемінен есептеледі және тақырыптың radius шкаласымен шектеледі."
-		},
-		"backdrop": {
-			"title": "Backdrop",
-			"description": "Dialog, Drawer, Global Loader және mobile sidebar үшін overlay күңгірттеуін біріздендіреді."
-		}
-	},
 	"seoPage": {
 		"metaTitle": "SEO - Alixan UI",
 		"metaDescription": "Alixan UI құжаттамасына арналған SEO баптау нұсқаулығы.",
@@ -371,11 +386,7 @@
 			"tnPluginDescription": "seo registry item app/plugins/tn.ts және app/types/tn.d.ts файлдарын да көшіреді, себебі usePageMeta title және description мәндерін $tn арқылы шешеді."
 		},
 		"siteConfig": {
-			"title": "Сайт конфигі",
-			"description": "Доменді, сайт атауын, әдепкі тақырыпты, сипаттаманы және OG суретін бір конфигте сақтаңыз, сонда Nuxt config пен runtime composables бірдей мәндерді қолданады.",
-			"nuxtConfigPrefix": "Қолданыңыз",
-			"nuxtConfigMiddle": "ішінде",
-			"nuxtConfigSuffix": "Nuxt SEO модульдері үшін, мысалы sitemap."
+			"title": "Сайт конфигі"
 		},
 		"pageMeta": {
 			"title": "Бет метасы",
@@ -386,11 +397,12 @@
 			"translationHelper": "Ол ішкі түрде $tn қолданады, сондықтан бет мәндері translation keys бола алады, ал siteConfig defaults жай мәтін болып қала алады."
 		},
 		"initialHead": {
-			"title": "Бастапқы head",
-			"faviconPrefix": "Favicon сілтемелерін бөлек конфигте сақтаңыз. PNG иконкалар",
-			"faviconMiddle": "ішінде, ал",
-			"faviconSuffix": "public түбірінде қала алады.",
-			"appInit": "Әдепкі page meta, құжат тілін және favicon сілтемелерін app түбіріне жақын жерде бір рет инициализациялаңыз."
+			"title": "Бастапқы head"
+		},
+		"iconKitchenRef": {
+			"prefix": "Favicon файлдарын генерациялау үшін",
+			"link": "IconKitchen гайдты",
+			"suffix": " қараңыз."
 		},
 		"robots": {
 			"title": "Robots",
@@ -401,8 +413,25 @@
 			"title": "Sitemap",
 			"description": "Sitemap іздеу роботтарына қолжетімді маршруттарды табуға және қай беттерді қарау керегін түсінуге көмектеседі.",
 			"verify": "Деплойдан кейін sitemap robots.txt ішінде көрсетілген URL арқылы ашылатынын тексеріңіз.",
-			"infoPrefix": "Толығырақ ақпарат үшін өтіңіз:",
 			"infoLink": "Nuxt Sitemap құжаттамасы."
+		}
+	},
+	"iconKitchenPage": {
+		"metaTitle": "IconKitchen - Alixan UI",
+		"title": "IconKitchen",
+		"description": "Favicon файлдарын IconKitchen арқылы генерациялап, Nuxt жобаңызға қосыңыз.",
+		"generate": {
+			"title": "Иконкаларды генерациялау",
+			"infoPrefix": "Favicon preset ретінде осы",
+			"infoLink": "IconKitchen гайдты",
+			"infoSuffix": " қолданыңыз.",
+			"descriptionPrefix": "IconKitchen ішінде иконкалар жиынтығын генерациялап,",
+			"descriptionMiddle": "нұсқасын жүктеңіз, оны",
+			"descriptionSuffix": "ішіне салып, жүктелген web бумасын мына атауға өзгертіңіз:",
+			"descriptionEnd": "."
+		},
+		"manifest": {
+			"title": "Site Manifest"
 		}
 	},
 	"component": {
@@ -433,7 +462,8 @@
 		"globalLoader": "Глобалды жүктеу",
 		"toast": "Хабарлама",
 		"select": "Таңдау",
-		"dropdownMenu": "Ашылмалы мәзір"
+		"dropdownMenu": "Ашылмалы мәзір",
+		"tooltip": "Tooltip"
 	},
 	"validation": {
 		"required": "Өрісті толтырыңыз",
@@ -450,14 +480,13 @@
 		"metaTitle": "Lottie - Alixan UI",
 		"title": "Lottie",
 		"description": "Lottie анимацияларын empty states, қателер және басқа feedback surfaces ішінде жеңіл media ретінде қолданыңыз.",
-		"infoPrefix": "Толығырақ ақпарат үшін өтіңіз:",
 		"infoLink": "Nuxt Lottie құжаттамасы.",
 		"installationTitle": "Орнату",
 		"installationDescription": "Nuxt Lottie модулін орнатыңыз. Команда модульді жобаға қосады және қажетті пакетті орнатады.",
 		"configurationTitle": "Конфигурация",
-		"configDescription": "Компонент атауын баптаңыз және анимацияларды сақтаңыз:",
-		"folderDescriptionStart": "name prop бергенде файл атауын",
-		"folderDescriptionEnd": "кеңейтімінсіз қолданыңыз.",
+		"folderPreviewStart": "JSON анимациясын Lottie ішінен жүктеп алып, оны мына жерге салыңыз:",
+		"folderExamplesPrefix": "Осы жобадағы мысал файлдар:",
+		"folderExamplesMiddle": "және",
 		"usageTitle": "Қолдану",
 		"withEmptyTitle": "Empty арқылы",
 		"emptyTitle": "Бет табылмады",
@@ -468,14 +497,11 @@
 		"metaTitle": "SVG Loader - Alixan UI",
 		"title": "SVG Loader",
 		"description": "Оңтайландырылған SVG файлдарын Nuxt компоненттері ретінде жүктеу үшін nuxt-svgo-loader қолданыңыз.",
-		"infoPrefix": "Толығырақ ақпарат үшін өтіңіз:",
 		"infoLink": "Nuxt SVGO Loader құжаттамасы.",
 		"installationTitle": "Орнату",
 		"installationDescription": "nuxt-svgo-loader модулін орнатыңыз. Команда модульді Nuxt жобаңызға қосады.",
 		"configurationTitle": "Конфигурация",
-		"configurationDescription": "Модульді nuxt.config.ts ішінде тіркеңіз. svgoLoader опциялары vite-svg-loader ішіне беріледі.",
-		"usageTitle": "Қолдану",
-		"usageDescription": "Орнатқаннан кейін SVG файлдарын жасалған SvgoIcon компоненті арқылы көрсетіп, әдеттегі SVG атрибуттарын props ретінде беріңіз."
+		"usageTitle": "Қолдану"
 	},
 	"fontsPage": {
 		"metaTitle": "Қаріптер - Alixan UI",
@@ -484,11 +510,8 @@
 		"installationTitle": "Орнату",
 		"installationDescription": "Қаріптерді Nuxt арқылы жүктегіңіз келсе, Nuxt Google Fonts модулін орнатыңыз.",
 		"configurationTitle": "Конфигурация",
-		"configurationDescriptionStart": "Модульді",
-		"configurationDescriptionEnd": "ішіне қосып, UI ішінде қолданатын family таңдаңыз.",
 		"tailwindTitle": "Tailwind",
-		"tailwindDescriptionStart": "Таңдалған қаріпті",
-		"tailwindDescriptionEnd": "мәніне байланыстырып, жүйе бойынша Tailwind font-sans token қолданыңыз."
+		"infoLink": "Nuxt Fonts құжаттамасы."
 	},
 	"iconsPage": {
 		"metaTitle": "Иконкалар - Alixan UI",
@@ -510,15 +533,10 @@
 		"metaTitle": "Тақырып - Alixan UI",
 		"title": "Тақырып",
 		"description": "Nuxt Color Mode және Alixan UI компоненттері қолданатын CSS айнымалылары арқылы dark mode баптаңыз.",
-		"infoPrefix": "Толығырақ ақпарат үшін өтіңіз:",
 		"infoLink": "Nuxt Color Mode құжаттамасы.",
-		"colorModeTitle": "Color Mode",
-		"colorModeDescription": "System, light және dark theme preferences модуль арқылы басқарылсын десеңіз, Nuxt Color Mode орнатыңыз.",
-		"colorModeConfigStart": "Қолданыңыз",
-		"colorModeConfigEnd": "сонда dark mode Tailwind utilities күтетін dark класын ауыстырады.",
+		"installationTitle": "Орнату",
+		"configurationTitle": "Конфигурация",
 		"tailwindVariantTitle": "Tailwind Variant",
-		"tailwindDescriptionStart": "Light және dark мәндерін CSS айнымалыларына байланыстырып, оларды Tailwind tokens арқылы шығарыңыз, мысалы",
-		"tailwindDescriptionEnd": "және text-foreground.",
 		"usageTitle": "Қолдану",
 		"system": "Жүйелік",
 		"light": "Жарық",
@@ -528,15 +546,14 @@
 		"metaTitle": "i18n - Alixan UI",
 		"title": "i18n",
 		"description": "Alixan UI ресми Nuxt i18n модулін қолданады. Жоба message keys типтелген күйде сақтайды, ал тілді ауыстыру мен persistence модуль арқылы орындалады.",
-		"infoPrefix": "Толығырақ ақпарат үшін өтіңіз:",
 		"infoLink": "Nuxt i18n құжаттамасы.",
 		"installationTitle": "Орнату",
 		"installationDescription": "Nuxt i18n модулін орнатып, оны тіркеңіз:",
 		"setupDescriptionStart": "Қолданыңыз",
 		"setupDescriptionEnd": "сонда әдепкі тіл prefix-сіз қалады, ал басқа locales prefix алады.",
-		"messagesTitle": "Messages",
-		"messagesDescriptionStart": "Locale JSON файлдарын сақтаңыз:",
-		"messagesDescriptionEnd": "file option әр locale-ды өз message file-ымен байланыстырады.",
+		"translationsTitle": "Translations",
+		"translationsDescriptionStart": "Аударма JSON файлдарын сақтаңыз:",
+		"translationsDescriptionEnd": "file option әр locale мәнін өз аударма файлымен байланыстырады.",
 		"usageTitle": "Қолдану",
 		"localizedLinksTitle": "Локализацияланған сілтемелер",
 		"localizedLinksDescriptionStart": "Ішкі Nuxt routes мәндерін Button, IconButton немесе NuxtLink ішіне бермес бұрын",
@@ -606,7 +623,6 @@
 		"loaderShow": "Full-screen loader ашады.",
 		"loaderHide": "Loader жабады.",
 		"loaderLabel": "Spinner астындағы қосымша label.",
-		"accessibleLabel": "Screen readers үшін міндетті accessible label.",
 		"iconButtonVariant": "Icon button визуалды стилі. Ghost әдепкі бойынша қолданылады.",
 		"colorIntent": "Түс intent.",
 		"iconButtonSize": "Квадрат өлшемін және иконка өлшемін басқарады.",
@@ -638,6 +654,10 @@
 		"searchPlaceholder": "Іздеу өрісінің ішіндегі placeholder.",
 		"searchDebounce": "Search event шығарылар алдындағы миллисекундтағы кідіріс.",
 		"searchAutofocus": "Mount кезінде input-қа focus береді.",
+		"tooltipText": "Tooltip контенті. Мәндер translation key болуы мүмкін.",
+		"tooltipDelay": "Tooltip ашылар алдындағы кідіріс, миллисекундпен.",
+		"tooltipTriggerSlot": "Hover немесе focus кезінде tooltip ашатын trigger элементі.",
+		"tooltipContentSlot": "text prop орнына көрсетілетін custom tooltip контенті.",
 		"searchReadonly": "Өрісті оқылатын, бірақ өзгертілмейтін етеді.",
 		"searchEvent": "Debounce кейін trimmed мәнмен шығарылады.",
 		"clearEvent": "Тазарту батырмасы басылғанда шығарылады.",

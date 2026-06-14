@@ -1,11 +1,5 @@
 export const iconButtonApiRows = [
 	{
-		name: 'label',
-		type: 'string',
-		default: '-',
-		description: 'apiReferenceDescriptions.accessibleLabel',
-	},
-	{
 		name: 'variant',
 		type: "'filled' | 'outlined' | 'ghost'",
 		default: "'ghost'",
@@ -40,5 +34,11 @@ export const iconButtonApiRows = [
 		type: "'_blank' | '_self' | '_parent' | '_top'",
 		default: '-',
 		description: 'apiReferenceDescriptions.anchorTarget',
+	},
+	{
+		name: 'tooltip',
+		type: 'string',
+		default: '-',
+		description: 'apiReferenceDescriptions.tooltipText',
 	},
 ];

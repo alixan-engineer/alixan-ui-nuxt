@@ -22,6 +22,7 @@ interface ButtonProps {
 	to?: RouteLocationRaw;
 	href?: string;
 	target?: ButtonTarget;
+	tooltip?: string;
 }
 
 const props = withDefaults(defineProps<ButtonProps>(), {
@@ -33,11 +34,13 @@ const props = withDefaults(defineProps<ButtonProps>(), {
 	to: undefined,
 	href: undefined,
 	target: undefined,
+	tooltip: undefined,
 });
 
 const attrs = useAttrs();
 const slots = useSlots();
 const NuxtLink = resolveComponent('NuxtLink');
+const Tooltip = resolveComponent('Tooltip');
 
 const sizeClasses: Record<ButtonSize, string> = {
 	sm: 'h-9 rounded-lg px-3 text-md',
@@ -88,30 +91,37 @@ const buttonClass = computed(() =>
 		attrs.class,
 	),
 );
+
+const wrapperComponent = computed(() => (props.tooltip ? Tooltip : 'span'));
+const wrapperAttrs = computed(() =>
+	props.tooltip ? { text: props.tooltip } : { class: 'contents' },
+);
 </script>
 
 <template>
-	<component
-		:is="to ? NuxtLink : href ? 'a' : 'button'"
-		v-bind="{ ...attrs, class: undefined }"
-		:to="to"
-		:href="href"
-		:target="target"
-		:type="to || href ? undefined : type"
-		:class="buttonClass"
-	>
-		<span v-if="$slots.leading" class="flex items-center justify-center">
-			<slot name="leading" />
-		</span>
+	<component :is="wrapperComponent" v-bind="wrapperAttrs">
+		<component
+			:is="to ? NuxtLink : href ? 'a' : 'button'"
+			v-bind="{ ...attrs, class: undefined }"
+			:to="to"
+			:href="href"
+			:target="target"
+			:type="to || href ? undefined : type"
+			:class="buttonClass"
+		>
+			<span v-if="$slots.leading" class="flex items-center justify-center">
+				<slot name="leading" />
+			</span>
 
-		<span v-if="hasDefaultSlot || label" class="truncate">
-			<slot>
-				{{ $tn(label) }}
-			</slot>
-		</span>
+			<span v-if="hasDefaultSlot || label" class="truncate">
+				<slot>
+					{{ $tn(label) }}
+				</slot>
+			</span>
 
-		<span v-if="$slots.trailing" class="flex items-center justify-center">
-			<slot name="trailing" />
-		</span>
+			<span v-if="$slots.trailing" class="flex items-center justify-center">
+				<slot name="trailing" />
+			</span>
+		</component>
 	</component>
 </template>
