@@ -1,3 +1,5 @@
+import type { Directive, DirectiveBinding } from 'vue';
+
 interface FocusElementOptions {
 	preventScroll?: boolean;
 	retries?: number;
@@ -9,7 +11,7 @@ export const focusElement = (
 ): void => {
 	if (!element || !import.meta.client) return;
 
-	const retries = options.retries ?? 3;
+	const retries = options.retries ?? 12;
 	const preventScroll = options.preventScroll ?? true;
 	let attempts = 0;
 
@@ -27,4 +29,15 @@ export const focusElement = (
 	};
 
 	requestAnimationFrame(focus);
+};
+
+export const vFocus: Directive<HTMLElement, boolean | undefined> = {
+	mounted: (el, binding: DirectiveBinding<boolean | undefined>) => {
+		if (!binding.value) return;
+		focusElement(el);
+	},
+	updated: (el, binding: DirectiveBinding<boolean | undefined>) => {
+		if (!binding.value || binding.value === binding.oldValue) return;
+		focusElement(el);
+	},
 };

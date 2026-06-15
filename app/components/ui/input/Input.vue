@@ -9,10 +9,9 @@ import {
 	useSlots,
 	watch,
 } from 'vue';
-import type { DirectiveBinding } from 'vue';
 
 import { cn } from '~/utils/cn';
-import { focusElement } from '~/utils/focus';
+import { focusElement, vFocus } from '~/utils/focus';
 
 defineOptions({
 	inheritAttrs: false,
@@ -75,17 +74,6 @@ const generatedId = useId();
 const inputRef = ref<HTMLInputElement | null>(null);
 const isFocused = ref(false);
 const isTouched = ref(false);
-
-const vFocus = {
-	mounted: (el: HTMLInputElement, binding: DirectiveBinding<boolean>) => {
-		if (!binding.value) return;
-		void nextTick(() => focusElement(el));
-	},
-	updated: (el: HTMLInputElement, binding: DirectiveBinding<boolean>) => {
-		if (!binding.value || binding.value === binding.oldValue) return;
-		void nextTick(() => focusElement(el));
-	},
-};
 
 const inputId = computed(() => props.id ?? generatedId);
 const messageId = computed(() => `${inputId.value}-message`);
@@ -293,6 +281,7 @@ watch(
 			:type="type"
 			:placeholder="visiblePlaceholder"
 			:autocomplete="autocomplete"
+			:autofocus="autofocus"
 			:pattern="pattern"
 			:disabled="disabled"
 			:readonly="readonly"
