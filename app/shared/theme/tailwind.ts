@@ -153,7 +153,7 @@ export const tailwindCss = `
 
 	html,
 	body {
-		@apply size-full bg-background text-foreground overflow-hidden;
+		@apply h-full min-h-full w-full bg-background text-foreground overflow-hidden;
 	}
 
 	body {
@@ -179,7 +179,7 @@ export const tailwindCss = `
 	}
 
 	#root {
-		@apply size-full flex flex-col divide-y overflow-y-auto;
+		@apply h-full min-h-full w-full flex flex-col divide-y overflow-y-auto;
 	}
 
 	hr {

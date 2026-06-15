@@ -142,7 +142,7 @@ onBeforeUnmount(() => {
 				v-if="isOpen && (content || $slots.content)"
 				ref="tooltipRef"
 				:style="tooltipStyle"
-				class="fixed z-9999 max-w-64 rounded-lg border bg-popover px-3 py-2 text-md text-popover-foreground shadow-lg"
+				class="pointer-events-none fixed z-9999 max-w-64 rounded-lg border bg-popover px-3 py-2 text-md text-popover-foreground shadow-lg"
 				:class="isPositioned ? '' : 'invisible'"
 				role="tooltip"
 			>
