@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, nextTick, onBeforeUnmount, ref, watch } from 'vue';
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 
 type TooltipPlacement = 'top' | 'bottom';
 
@@ -21,7 +21,9 @@ const triggerRef = ref<HTMLElement | null>(null);
 const tooltipRef = ref<HTMLElement | null>(null);
 const placement = ref<TooltipPlacement>('bottom');
 const tooltipStyle = ref({ left: '0px', top: '0px' });
+const canUseTooltip = ref(false);
 let openTimer: number | undefined;
+let pointerMedia: MediaQueryList | undefined;
 
 const content = computed(() => props.text);
 const delay = computed(() => Math.max(0, props.delay));
@@ -81,11 +83,13 @@ const removeWindowListeners = (): void => {
 
 const openTooltip = (): void => {
 	if (props.disabled) return;
+	if (!canUseTooltip.value) return;
+
 	clearOpenTimer();
 	openTimer = window.setTimeout(() => {
 		isPositioned.value = false;
 		isOpen.value = true;
-		updatePosition();
+		void updatePosition();
 	}, delay.value);
 };
 
@@ -101,6 +105,14 @@ const handleKeydown = (event: KeyboardEvent): void => {
 	}
 };
 
+const updatePointerCapability = (): void => {
+	canUseTooltip.value = Boolean(pointerMedia?.matches);
+
+	if (!canUseTooltip.value) {
+		closeTooltip();
+	}
+};
+
 watch(isOpen, value => {
 	if (value) {
 		addWindowListeners();
@@ -112,17 +124,25 @@ watch(isOpen, value => {
 onBeforeUnmount(() => {
 	clearOpenTimer();
 	removeWindowListeners();
+	pointerMedia?.removeEventListener('change', updatePointerCapability);
+});
+
+onMounted(() => {
+	pointerMedia = window.matchMedia('(hover: hover) and (pointer: fine)');
+	updatePointerCapability();
+	pointerMedia.addEventListener('change', updatePointerCapability);
 });
 </script>
 
 <template>
 	<span
 		ref="triggerRef"
-		class="inline-flex touch-none"
+		class="inline-flex"
 		@mouseenter="openTooltip"
 		@mouseleave="closeTooltip"
 		@focusin="openTooltip"
 		@focusout="closeTooltip"
+		@click="closeTooltip"
 		@keydown="handleKeydown"
 	>
 		<slot />
