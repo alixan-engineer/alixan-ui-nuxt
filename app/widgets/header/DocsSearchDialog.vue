@@ -41,7 +41,6 @@ const openPage = async (to: string): Promise<void> => {
 		<div class="p-4">
 			<Search
 				v-model="query"
-				:autofocus="true"
 				:debounce="0"
 				:placeholder="$tn('docsSearch.placeholder')"
 			/>

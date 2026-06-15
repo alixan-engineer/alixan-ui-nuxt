@@ -1,17 +1,8 @@
 <script setup lang="ts">
 import { X } from '@lucide/vue';
-import {
-	computed,
-	nextTick,
-	ref,
-	useAttrs,
-	useId,
-	useSlots,
-	watch,
-} from 'vue';
+import { computed, nextTick, ref, useAttrs, useId, useSlots, watch } from 'vue';
 
 import { cn } from '~/utils/cn';
-import { focusElement, vFocus } from '~/utils/focus';
 
 defineOptions({
 	inheritAttrs: false,
@@ -249,7 +240,7 @@ const clearValue = async (): Promise<void> => {
 	model.value = '';
 	isTouched.value = true;
 	await nextTick();
-	focusElement(inputRef.value);
+	inputRef.value?.focus();
 };
 
 watch(
@@ -275,7 +266,6 @@ watch(
 		<input
 			:id="inputId"
 			ref="inputRef"
-			v-focus="autofocus"
 			v-bind="inputAttrs"
 			v-model="model"
 			:type="type"

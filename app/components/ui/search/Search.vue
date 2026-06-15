@@ -3,7 +3,6 @@ import { Search as SearchIcon, X as XIcon } from '@lucide/vue';
 import { computed, nextTick, onBeforeUnmount, ref, useAttrs, watch } from 'vue';
 
 import { cn } from '~/utils/cn';
-import { focusElement, vFocus } from '~/utils/focus';
 
 defineOptions({
 	inheritAttrs: false,
@@ -76,7 +75,7 @@ const clearSearch = async (): Promise<void> => {
 	emitSearch('');
 	emit('clear');
 	await nextTick();
-	focusElement(inputRef.value);
+	inputRef.value?.focus();
 };
 
 watch(model, value => {
@@ -94,12 +93,10 @@ onBeforeUnmount(() => clearDebounce());
 	<div :class="rootClass">
 		<SearchIcon
 			class="pointer-events-none absolute left-2.5 top-1/2 size-5 -translate-y-1/2 text-muted-foreground"
-			aria-hidden="true"
 		/>
 
 		<input
 			ref="inputRef"
-			v-focus="autofocus"
 			v-bind="inputAttrs"
 			v-model="model"
 			type="text"
@@ -113,7 +110,6 @@ onBeforeUnmount(() => clearDebounce());
 			v-if="hasValue"
 			type="button"
 			class="absolute right-0.5 top-1/2 inline-flex size-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-lg text-muted-foreground hover:bg-secondary hover:text-foreground focus-visible:bg-secondary focus-visible:text-foreground focus-visible:outline-none"
-			aria-label="Clear search"
 			@click="clearSearch"
 		>
 			<XIcon class="size-5" aria-hidden="true" />
