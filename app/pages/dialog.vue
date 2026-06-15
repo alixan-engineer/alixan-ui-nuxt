@@ -23,7 +23,7 @@ const projectName = ref<string>('Alixan UI');
 
 const openDialog = (): void => {
 	dialog.open(DialogPreviewContent, {
-		width: '520px',
+		width: '420px',
 		height: '400px',
 		title: 'dialogPreview.title',
 		data: {

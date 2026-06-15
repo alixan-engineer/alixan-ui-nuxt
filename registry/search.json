@@ -1,5 +1,5 @@
 {
 	"name": "search",
 	"components": ["Search.vue"],
-	"utils": ["cn.ts"]
+	"utils": ["cn.ts", "focus.ts"]
 }

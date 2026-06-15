@@ -4,6 +4,7 @@ import { computed, nextTick, onBeforeUnmount, ref, useAttrs, watch } from 'vue';
 import type { DirectiveBinding } from 'vue';
 
 import { cn } from '~/utils/cn';
+import { focusElement } from '~/utils/focus';
 
 defineOptions({
 	inheritAttrs: false,
@@ -38,11 +39,11 @@ let shouldSkipNextSearch = false;
 const vFocus = {
 	mounted: (el: HTMLInputElement, binding: DirectiveBinding<boolean>) => {
 		if (!binding.value) return;
-		requestAnimationFrame(() => el.focus());
+		void nextTick(() => focusElement(el));
 	},
 	updated: (el: HTMLInputElement, binding: DirectiveBinding<boolean>) => {
 		if (!binding.value || binding.value === binding.oldValue) return;
-		requestAnimationFrame(() => el.focus());
+		void nextTick(() => focusElement(el));
 	},
 };
 
@@ -87,7 +88,7 @@ const clearSearch = async (): Promise<void> => {
 	emitSearch('');
 	emit('clear');
 	await nextTick();
-	inputRef.value?.focus();
+	focusElement(inputRef.value);
 };
 
 watch(model, value => {

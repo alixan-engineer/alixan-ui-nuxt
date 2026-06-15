@@ -3,5 +3,5 @@
 	"components": ["Input.vue"],
 	"plugins": ["tn.ts"],
 	"types": ["tn.d.ts"],
-	"utils": ["cn.ts"]
+	"utils": ["cn.ts", "focus.ts"]
 }

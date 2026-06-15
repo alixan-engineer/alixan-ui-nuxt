@@ -12,6 +12,7 @@ import {
 import type { DirectiveBinding } from 'vue';
 
 import { cn } from '~/utils/cn';
+import { focusElement } from '~/utils/focus';
 
 defineOptions({
 	inheritAttrs: false,
@@ -78,11 +79,11 @@ const isTouched = ref(false);
 const vFocus = {
 	mounted: (el: HTMLInputElement, binding: DirectiveBinding<boolean>) => {
 		if (!binding.value) return;
-		requestAnimationFrame(() => el.focus());
+		void nextTick(() => focusElement(el));
 	},
 	updated: (el: HTMLInputElement, binding: DirectiveBinding<boolean>) => {
 		if (!binding.value || binding.value === binding.oldValue) return;
-		requestAnimationFrame(() => el.focus());
+		void nextTick(() => focusElement(el));
 	},
 };
 
@@ -260,7 +261,7 @@ const clearValue = async (): Promise<void> => {
 	model.value = '';
 	isTouched.value = true;
 	await nextTick();
-	inputRef.value?.focus();
+	focusElement(inputRef.value);
 };
 
 watch(

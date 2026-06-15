@@ -11,7 +11,7 @@ const projectName = ref('Alixan UI')
 
 const openDialog = () => {
   dialog.open(ProjectDialog, {
-    width: '520px', // maxWidth
+    width: '420px', // maxWidth
     height: '400px', // maxHeight
     title: 'dialogPreview.title',
     data: {
@@ -35,6 +35,7 @@ const openDialog = () => {
     </p>
   </div>
 </template>`;
+
 export const contentCode = `<script setup lang="ts">
 interface ProjectDialogData {
   projectName: string
@@ -64,7 +65,7 @@ const save = () => {
       <Input v-model="projectName" label="dialogPreview.projectName" />
     </div>
 
-    <div class="flex items-center justify-end gap-2 p-4">
+    <div class="grid grid-cols-2 gap-2 p-4">
       <Button variant="outlined" label="dialogPreview.cancel" @click="close" />
       <Button label="dialogPreview.save" @click="save" />
     </div>

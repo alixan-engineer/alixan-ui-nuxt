@@ -26,7 +26,7 @@ const save = (): void => {
 		<div class="flex-1 p-4">
 			<Input v-model="projectName" label="dialogPreview.projectName" />
 		</div>
-		<div class="flex items-center justify-end gap-2 p-4">
+		<div class="grid grid-cols-2 gap-2 p-4">
 			<Button variant="outlined" label="dialogPreview.cancel" @click="close" />
 			<Button label="dialogPreview.save" @click="save" />
 		</div>
