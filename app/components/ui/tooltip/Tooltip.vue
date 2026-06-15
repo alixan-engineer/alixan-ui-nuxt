@@ -85,7 +85,7 @@ const openTooltip = (): void => {
 	openTimer = window.setTimeout(() => {
 		isPositioned.value = false;
 		isOpen.value = true;
-		void updatePosition();
+		updatePosition();
 	}, delay.value);
 };
 
@@ -106,7 +106,6 @@ watch(isOpen, value => {
 		addWindowListeners();
 		return;
 	}
-
 	removeWindowListeners();
 });
 
@@ -119,7 +118,7 @@ onBeforeUnmount(() => {
 <template>
 	<span
 		ref="triggerRef"
-		class="inline-flex"
+		class="inline-flex touch-none"
 		@mouseenter="openTooltip"
 		@mouseleave="closeTooltip"
 		@focusin="openTooltip"
