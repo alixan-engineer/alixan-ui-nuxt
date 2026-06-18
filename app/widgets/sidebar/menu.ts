@@ -12,10 +12,10 @@ export const menuSections: IMenuSection[] = [
 		labelKey: 'sidebar.guides',
 		items: [
 			{ labelKey: 'component.icons', to: '/icons' },
-			{ labelKey: 'guide.svgLoader', to: '/svg-loader' },
 			{ labelKey: 'guide.fonts', to: '/fonts' },
-			{ labelKey: 'guide.lottie', to: '/lottie' },
+			{ labelKey: 'guide.svgLoader', to: '/svg-loader' },
 			{ labelKey: 'guide.theme', to: '/theme' },
+			{ labelKey: 'guide.lottie', to: '/lottie' },
 			{ labelKey: 'guide.i18n', to: '/i18n' },
 			{ labelKey: 'guide.seo', to: '/seo' },
 			{ labelKey: 'guide.iconKitchen', to: '/icon-kitchen' },
