@@ -51,11 +51,10 @@ onMounted(() => setToc(seoPageToc));
 		<h2 class="text-2xl font-semibold">
 			{{ $tn('seoPage.sitemap.title') }}
 		</h2>
-		<ExampleBlock :code="sitemapInstallCode">
-			<div class="max-w-md text-center text-muted-foreground leading-7">
-				{{ $tn('seoPage.installation.sitemapDescription') }}
-			</div>
-		</ExampleBlock>
+		<p class="text-muted-foreground leading-7">
+			{{ $tn('seoPage.installation.sitemapDescription') }}
+		</p>
+		<ExampleBlock :code="sitemapInstallCode" :preview="false" />
 		<p class="text-muted-foreground leading-7">
 			{{ $tn('seoPage.sitemap.description') }}
 			{{ $tn('seoPage.sitemap.verify') }}
