@@ -131,12 +131,12 @@
 		},
 		"addI18n": {
 			"title": "i18n қосу (ұсынылады)",
-			"description": "Alixan UI Nuxt i18n-мен жақсы жұмыс істейді, себебі құжаттама labels, кесте тақырыптары және page meta translation keys қолданады. Қолданбаңызға локализация әлі керек болмаса, бұл қадамды өткізіп жіберуге болады.",
+			"description": "Alixan UI Nuxt i18n-мен жақсы жұмыс істейді, себебі құжаттама labels, кесте тақырыптары және page meta translation keys қолданады. Қолданбаңыз $t арқылы жай мәндерді де өткізсе, missingWarn мәнін false етіңіз.",
 			"commandTitle": "Nuxt i18n орнату"
 		},
-		"translationHelper": {
-			"title": "Аударма helper қосу",
-			"description": "Nuxt i18n кейін глобалды $tn helper қосыңыз. Ол жол translation key ретінде бар-жоғын тексереді және болмаса бастапқы мәнді көрсетеді, сондықтан npm сияқты labels немесе кестедегі жай мәндер missing-key warnings жасамайды."
+		"i18nConfiguration": {
+			"title": "Конфигурация",
+			"infoLink": "Толығырақ i18n гайдынан оқыңыз."
 		}
 	},
 	"homePage": {
@@ -382,8 +382,7 @@
 			"title": "Орнату",
 			"descriptionStart": "Бұл команда көшіреді",
 			"sitemapDescription": "nuxt.config.ts ішіне sitemap баптауларын қоспас бұрын Nuxt Sitemap орнатыңыз.",
-			"seoCommandDescription": "Көшіргеннен кейін site.ts ішіндегі мысал мәндерін өз доменіңізге, жоба атауына, әдепкі тақырыпқа, сипаттамаға және OG суретіне ауыстырыңыз.",
-			"tnPluginDescription": "seo registry item app/plugins/tn.ts және app/types/tn.d.ts файлдарын да көшіреді, себебі usePageMeta title және description мәндерін $tn арқылы шешеді."
+			"seoCommandDescription": "Көшіргеннен кейін site.ts ішіндегі мысал мәндерін өз доменіңізге, жоба атауына, әдепкі тақырыпқа, сипаттамаға және OG суретіне ауыстырыңыз."
 		},
 		"siteConfig": {
 			"title": "Сайт конфигі"
@@ -394,7 +393,7 @@
 			"usagePrefix": "Әр бетте",
 			"usageMiddle": "шақырыңыз. Егер өріс берілмесе, әдепкі мән",
 			"usageSuffix": "ішінен алынады.",
-			"translationHelper": "Ол ішкі түрде $tn қолданады, сондықтан бет мәндері translation keys бола алады, ал siteConfig defaults жай мәтін болып қала алады."
+			"translation": "Ол ішкі түрде useI18n().t қолданады, сондықтан missingWarn өшірілгенде бет мәндері translation keys бола алады, ал siteConfig defaults жай мәтін болып қала алады."
 		},
 		"initialHead": {
 			"title": "Бастапқы head"
@@ -561,12 +560,7 @@
 		"pageMetaTitle": "Page Meta",
 		"pageMetaDescriptionStart": "Page-level SEO translation keys мәндерін",
 		"pageMetaDescriptionMiddle": " ішіне беріңіз. Composable оларды ішкі түрде",
-		"pageMetaDescriptionEnd": "арқылы шешеді.",
-		"translationHelperTitle": "Аударма helper",
-		"translationHelperDescriptionStart": "Template ішінде мән translation key немесе жай мәтін болуы мүмкін кезде глобалды",
-		"translationHelperDescriptionEnd": "helper қолданыңыз.",
-		"seoConnection": "usePageMeta SEO title және description үшін ішкі түрде $tn қолданады, сондықтан локализацияланған metadata қолданғанда i18n және SEO бірге орнатылғаны дұрыс.",
-		"translationTypesDescription": "TypeScript және Vue templates глобалды $tn helper білсін десеңіз, declaration file қосыңыз."
+		"pageMetaDescriptionEnd": "арқылы шешеді."
 	},
 	"apiReferenceDescriptions": {
 		"accordionItems": "Компонент көрсететін аккордеон бөлімдері.",

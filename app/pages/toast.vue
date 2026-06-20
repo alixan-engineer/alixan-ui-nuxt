@@ -25,21 +25,21 @@ const examples: Array<{ label: string; type: ToastType; message: string }> = [
 
 <template>
 	<header class="space-y-3">
-		<h1 class="text-4xl font-semibold">{{ $tn('component.toast') }}</h1>
+		<h1 class="text-4xl font-semibold">{{ $t('component.toast') }}</h1>
 		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
-			{{ $tn('componentDocs.toast.description') }}
+			{{ $t('componentDocs.toast.description') }}
 		</p>
 	</header>
 
 	<section id="installation" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
-			{{ $tn('docsSections.installation') }}
+			{{ $t('docsSections.installation') }}
 		</h2>
 		<InstallCommandBlock component="toast" />
 	</section>
 
 	<section id="usage" class="space-y-5">
-		<h2 class="text-2xl font-semibold">{{ $tn('docsSections.usage') }}</h2>
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.usage') }}</h2>
 		<ExampleBlock path="app.vue" :code="appCode" :preview="false" />
 		<ExampleBlock path="Example.vue" :code="exampleCode">
 			<div class="flex flex-wrap items-center justify-center gap-2">
@@ -49,7 +49,7 @@ const examples: Array<{ label: string; type: ToastType; message: string }> = [
 					variant="outlined"
 					@click="toast.open(item.message, item.type)"
 				>
-					{{ $tn(item.label) }}
+					{{ $t(item.label) }}
 				</Button>
 			</div>
 		</ExampleBlock>
@@ -57,7 +57,7 @@ const examples: Array<{ label: string; type: ToastType; message: string }> = [
 
 	<section id="api-reference" class="space-y-4">
 		<h2 class="text-2xl font-semibold">
-			{{ $tn('docsSections.apiReference') }}
+			{{ $t('docsSections.apiReference') }}
 		</h2>
 		<Table :columns="argumentTableColumns" :rows="toastApi" />
 	</section>

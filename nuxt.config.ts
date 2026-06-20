@@ -40,7 +40,7 @@ export default defineNuxtConfig({
 			'@nuxtjs/i18n',
 			{
 				debug: false,
-				missingWarn: true,
+				missingWarn: false,
 				fallbackWarn: false,
 				defaultLocale: 'en',
 				strategy: 'prefix_except_default',

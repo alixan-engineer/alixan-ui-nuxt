@@ -5,7 +5,5 @@
 		"ToastHost.vue"
 	],
 	"composables": ["useToast.ts"],
-	"plugins": ["tn.ts"],
-	"types": ["tn.d.ts"],
 	"utils": ["cn.ts"]
 }

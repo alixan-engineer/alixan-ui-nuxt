@@ -5,8 +5,8 @@ export const installationPageToc: IPageToc[] = [
 	{ label: 'installationPage.addTailwind.title', href: '#add-tailwind-css' },
 	{ label: 'installationPage.addI18n.title', href: '#add-i18n' },
 	{
-		label: 'installationPage.translationHelper.title',
-		href: '#translation-helper',
+		label: 'installationPage.i18nConfiguration.title',
+		href: '#i18n-configuration',
 	},
 	{
 		label: 'installationPage.installComponent.title',

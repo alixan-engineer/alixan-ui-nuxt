@@ -1,7 +1,5 @@
 {
 	"name": "input",
 	"components": ["Input.vue"],
-	"plugins": ["tn.ts"],
-	"types": ["tn.d.ts"],
 	"utils": ["cn.ts"]
 }

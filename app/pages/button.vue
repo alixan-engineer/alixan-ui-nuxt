@@ -19,7 +19,7 @@ const { setToc } = usePageToc();
 const loader = useGlobalLoader();
 const dialog = useDialog();
 const localePath = useLocalePath();
-const { $tn } = useNuxtApp();
+const { t } = useI18n();
 
 onMounted(() => setToc(buttonPageToc));
 
@@ -35,9 +35,9 @@ const openDisableAlert = (): void => {
 		width: '360px',
 		height: '280px',
 		data: {
-			title: $tn('componentDocs.button.actionUnavailable'),
-			description: $tn('componentDocs.button.exportUnavailable'),
-			buttonLabel: $tn('componentDocs.button.gotIt'),
+			title: t('componentDocs.button.actionUnavailable'),
+			description: t('componentDocs.button.exportUnavailable'),
+			buttonLabel: t('componentDocs.button.gotIt'),
 		},
 	});
 };
@@ -45,24 +45,24 @@ const openDisableAlert = (): void => {
 
 <template>
 	<header class="space-y-3">
-		<h1 class="text-4xl font-semibold">{{ $tn('component.button') }}</h1>
+		<h1 class="text-4xl font-semibold">{{ $t('component.button') }}</h1>
 		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
-			{{ $tn('componentDocs.button.description') }}
+			{{ $t('componentDocs.button.description') }}
 		</p>
 	</header>
 
 	<section id="installation" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
-			{{ $tn('docsSections.installation') }}
+			{{ $t('docsSections.installation') }}
 		</h2>
 		<InstallCommandBlock component="button" />
 	</section>
 
 	<section id="usage" class="space-y-5">
 		<div class="space-y-2">
-			<h2 class="text-2xl font-semibold">{{ $tn('docsSections.usage') }}</h2>
+			<h2 class="text-2xl font-semibold">{{ $t('docsSections.usage') }}</h2>
 			<p class="text-muted-foreground leading-7">
-				{{ $tn('componentDocs.button.usageDescription') }}
+				{{ $t('componentDocs.button.usageDescription') }}
 			</p>
 		</div>
 		<div class="space-y-4">
@@ -74,7 +74,7 @@ const openDisableAlert = (): void => {
 						class="space-y-2"
 					>
 						<p class="text-sm text-muted-foreground">
-							{{ $tn(`variants.${variant}`) }}
+							{{ $t(`variants.${variant}`) }}
 						</p>
 						<div class="flex flex-wrap items-center gap-2">
 							<Button
@@ -83,7 +83,7 @@ const openDisableAlert = (): void => {
 								:variant="variant"
 								:color="color"
 							>
-								{{ $tn(`colors.${color}`) }}
+								{{ $t(`colors.${color}`) }}
 							</Button>
 						</div>
 					</div>
@@ -94,28 +94,28 @@ const openDisableAlert = (): void => {
 
 	<section id="size" class="space-y-4">
 		<h2 class="text-2xl font-semibold tracking-normal">
-			{{ $tn('docsSections.size') }}
+			{{ $t('docsSections.size') }}
 		</h2>
 		<ExampleBlock :code="buttonExamples.size">
 			<div class="flex items-center gap-2">
-				<Button size="sm">{{ $tn('componentDocs.button.small') }}</Button>
-				<Button>{{ $tn('componentDocs.button.default') }}</Button>
-				<Button size="lg">{{ $tn('componentDocs.button.large') }}</Button>
+				<Button size="sm">{{ $t('componentDocs.button.small') }}</Button>
+				<Button>{{ $t('componentDocs.button.default') }}</Button>
+				<Button size="lg">{{ $t('componentDocs.button.large') }}</Button>
 			</div>
 		</ExampleBlock>
 	</section>
 
 	<section id="navigation" class="space-y-4">
 		<h2 class="text-2xl font-semibold tracking-normal">
-			{{ $tn('docsSections.navigation') }}
+			{{ $t('docsSections.navigation') }}
 		</h2>
 		<ExampleBlock :code="buttonExamples.navigation">
 			<div class="flex flex-wrap items-center gap-2">
 				<Button :to="localePath('/icon-button')">
-					{{ $tn('componentDocs.button.nuxtLink') }}
+					{{ $t('componentDocs.button.nuxtLink') }}
 				</Button>
 				<Button href="https://github.com" target="_blank" variant="outlined">
-					{{ $tn('componentDocs.button.externalLink') }}
+					{{ $t('componentDocs.button.externalLink') }}
 				</Button>
 			</div>
 		</ExampleBlock>
@@ -123,7 +123,7 @@ const openDisableAlert = (): void => {
 
 	<section id="with-icon" class="space-y-4">
 		<h2 class="text-2xl font-semibold tracking-normal">
-			{{ $tn('docsSections.withIcon') }}
+			{{ $t('docsSections.withIcon') }}
 		</h2>
 		<ExampleBlock :code="buttonExamples.withIcon">
 			<div class="flex flex-wrap items-center gap-2">
@@ -131,11 +131,11 @@ const openDisableAlert = (): void => {
 					<template #leading>
 						<GitBranch class="size-5" />
 					</template>
-					{{ $tn('componentDocs.button.newBranch') }}
+					{{ $t('componentDocs.button.newBranch') }}
 				</Button>
 
 				<Button variant="outlined">
-					{{ $tn('componentDocs.button.continue') }}
+					{{ $t('componentDocs.button.continue') }}
 					<template #trailing>
 						<ArrowRight class="size-5" />
 					</template>
@@ -147,15 +147,15 @@ const openDisableAlert = (): void => {
 	<section id="loading" class="space-y-4">
 		<div class="space-y-2">
 			<h2 class="text-2xl font-semibold tracking-normal">
-				{{ $tn('docsSections.loading') }}
+				{{ $t('docsSections.loading') }}
 			</h2>
 			<p class="text-muted-foreground leading-7">
-				{{ $tn('componentDocs.button.loadingDescription') }}
+				{{ $t('componentDocs.button.loadingDescription') }}
 			</p>
 		</div>
 		<ExampleBlock :code="buttonExamples.loading">
 			<Button @click="showGlobalLoader">
-				{{ $tn('componentDocs.button.saveChanges') }}
+				{{ $t('componentDocs.button.saveChanges') }}
 			</Button>
 		</ExampleBlock>
 	</section>
@@ -163,22 +163,22 @@ const openDisableAlert = (): void => {
 	<section id="disable" class="space-y-4">
 		<div class="space-y-2">
 			<h2 class="text-2xl font-semibold tracking-normal">
-				{{ $tn('docsSections.disabled') }}
+				{{ $t('docsSections.disabled') }}
 			</h2>
 			<p class="text-muted-foreground leading-7">
-				{{ $tn('componentDocs.button.disabledDescription') }}
+				{{ $t('componentDocs.button.disabledDescription') }}
 			</p>
 		</div>
 		<ExampleBlock :code="buttonExamples.disable">
 			<Button variant="outlined" @click="openDisableAlert">
-				{{ $tn('componentDocs.button.exportReport') }}
+				{{ $t('componentDocs.button.exportReport') }}
 			</Button>
 		</ExampleBlock>
 	</section>
 
 	<section id="api-reference" class="space-y-4">
 		<h2 class="text-2xl font-semibold">
-			{{ $tn('docsSections.apiReference') }}
+			{{ $t('docsSections.apiReference') }}
 		</h2>
 		<Table :columns="propsTableColumns" :rows="buttonApiRows" />
 	</section>

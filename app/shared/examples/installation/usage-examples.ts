@@ -19,49 +19,25 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
 })`;
-export const tnPluginCode = `type TnValue = string | number | boolean | null | undefined
-
-interface I18nTranslator {
-  t: (key: string) => string
-  te: (key: string) => boolean
-}
-
-export default defineNuxtPlugin({
-  name: 'tn',
-  enforce: 'post',
-  setup(nuxtApp) {
-    const { t, te } = nuxtApp.$i18n as I18nTranslator
-
-    const tn = (value: TnValue): string => {
-      if (typeof value !== 'string') return String(value ?? '')
-      return te(value) ? t(value) : value
-    }
-
-    nuxtApp.vueApp.config.globalProperties.$tn = tn
-
-    return {
-      provide: {
-        tn,
+export const i18nConfig = `export default defineNuxtConfig({
+  modules: [
+    [
+      '@nuxtjs/i18n',
+      {
+        missingWarn: false,
+        fallbackWarn: false,
+        defaultLocale: 'en',
+        strategy: 'prefix_except_default',
+        detectBrowserLanguage: false,
+        locales: [
+          { code: 'en', name: 'English', file: 'en.json' },
+          { code: 'ru', name: 'Русский', file: 'ru.json' },
+          { code: 'kk', name: 'Қазақша', file: 'kk.json' },
+        ],
       },
-    }
-  },
+    ],
+  ],
 })`;
-export const tnTypesCode = `type TnValue = string | number | boolean | null | undefined
-type Tn = (value: TnValue) => string
-
-declare module '#app' {
-  interface NuxtApp {
-    $tn: Tn
-  }
-}
-
-declare module 'vue' {
-  interface ComponentCustomProperties {
-    $tn: Tn
-  }
-}
-
-export {}`;
 export const usageCode = `<template>
   <Button color="primary">
     Save changes

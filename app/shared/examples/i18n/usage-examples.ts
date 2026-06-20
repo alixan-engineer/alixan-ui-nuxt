@@ -4,6 +4,8 @@ export const setupCode = `export default defineNuxtConfig({
     [
       '@nuxtjs/i18n',
       {
+        missingWarn: false,
+        fallbackWarn: false,
         defaultLocale: 'en',
         strategy: 'prefix_except_default',
         detectBrowserLanguage: false,
@@ -51,49 +53,6 @@ export const kkTranslationsCode = `{
     "button": "Батырма"
   }
 }`;
-export const tnPluginCode = `type TnValue = string | number | boolean | null | undefined
-
-interface I18nTranslator {
-  t: (key: string) => string
-  te: (key: string) => boolean
-}
-
-export default defineNuxtPlugin({
-  name: 'tn',
-  enforce: 'post',
-  setup(nuxtApp) {
-    const { t, te } = nuxtApp.$i18n as I18nTranslator
-
-    const tn = (value: TnValue): string => {
-      if (typeof value !== 'string') return String(value ?? '')
-      return te(value) ? t(value) : value
-    }
-
-    nuxtApp.vueApp.config.globalProperties.$tn = tn
-
-    return {
-      provide: {
-        tn,
-      },
-    }
-  },
-})`;
-export const tnTypesCode = `type TnValue = string | number | boolean | null | undefined
-type Tn = (value: TnValue) => string
-
-declare module '#app' {
-  interface NuxtApp {
-    $tn: Tn
-  }
-}
-
-declare module 'vue' {
-  interface ComponentCustomProperties {
-    $tn: Tn
-  }
-}
-
-export {}`;
 export const usageCode = `<script setup lang="ts">
 type Locale = 'en' | 'ru' | 'kk'
 
@@ -116,7 +75,7 @@ const changeLocale = async (value: Locale): Promise<void> => {
 <template>
   <div class="space-y-2">
     <p class="px-1 text-sm font-medium text-muted-foreground">
-      {{ $tn('settings.language') }}
+      {{ $t('settings.language') }}
     </p>
     <Select
       :model-value="locale"

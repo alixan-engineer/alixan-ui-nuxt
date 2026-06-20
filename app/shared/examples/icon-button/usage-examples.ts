@@ -115,16 +115,16 @@ const save = () => {
 import { ArrowUpRight } from '@lucide/vue'
 
 const dialog = useDialog()
-const { $tn } = useNuxtApp()
+const { t } = useI18n()
 
 const openAlert = () => {
   dialog.open(AlertDialog, {
     width: '360px',
     height: '280px',
     data: {
-      title: $tn('componentDocs.iconButton.actionUnavailable'),
-      description: $tn('componentDocs.iconButton.exportUnavailable'),
-      buttonLabel: $tn('componentDocs.iconButton.gotIt'),
+      title: t('componentDocs.iconButton.actionUnavailable'),
+      description: t('componentDocs.iconButton.exportUnavailable'),
+      buttonLabel: t('componentDocs.iconButton.gotIt'),
     },
   })
 }

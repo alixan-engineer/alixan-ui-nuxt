@@ -28,10 +28,10 @@ const openDrawer = () => {
 <template>
   <div class="flex flex-wrap items-center gap-3">
     <Button @click="openDrawer">
-      {{ $tn('drawerPreview.openDrawer') }}
+      {{ $t('drawerPreview.openDrawer') }}
     </Button>
     <p class="text-sm text-muted-foreground">
-      {{ $tn('drawerPreview.projectName') }}:
+      {{ $t('drawerPreview.projectName') }}:
       <span class="font-medium text-foreground">{{ projectName }}</span>
     </p>
   </div>

@@ -60,7 +60,7 @@ const isActive = (to: string) =>
 				class="space-y-2"
 			>
 				<p class="px-3 text-sm font-medium text-muted-foreground">
-					{{ $tn(section.labelKey) }}
+					{{ $t(section.labelKey) }}
 				</p>
 				<div class="flex flex-col">
 					<Button
@@ -76,7 +76,7 @@ const isActive = (to: string) =>
 							scrollToTop();
 						"
 					>
-						{{ $tn(item.labelKey) }}
+						{{ $t(item.labelKey) }}
 					</Button>
 				</div>
 			</div>

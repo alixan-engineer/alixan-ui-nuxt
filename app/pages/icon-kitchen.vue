@@ -15,41 +15,41 @@ onMounted(() => setToc(iconKitchenPageToc));
 <template>
 	<header class="space-y-3">
 		<h1 class="text-4xl font-semibold">
-			{{ $tn('iconKitchenPage.title') }}
+			{{ $t('iconKitchenPage.title') }}
 		</h1>
 		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
-			{{ $tn('iconKitchenPage.description') }}
+			{{ $t('iconKitchenPage.description') }}
 		</p>
 	</header>
 
 	<section id="generate" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
-			{{ $tn('iconKitchenPage.generate.title') }}
+			{{ $t('iconKitchenPage.generate.title') }}
 		</h2>
 		<Info>
-			{{ $tn('iconKitchenPage.generate.infoPrefix') }}
+			{{ $t('iconKitchenPage.generate.infoPrefix') }}
 			<TextLink
 				href="https://icon.kitchen/i/H4sIAAAAAAAAA6tWKkvMKU0tVrKqVkpLd87PyS9SslJSTgMDJR2lJISYWaJxSqqFUq2OUm5-SmkOSE-0UmJeSlF-ZgpQZWZ-MZAsT01Siq0FAI3686NWAAAA"
 				target="_blank"
 			>
-				{{ $tn('iconKitchenPage.generate.infoLink') }}
+				{{ $t('iconKitchenPage.generate.infoLink') }}
 			</TextLink>
-			{{ $tn('iconKitchenPage.generate.infoSuffix') }}
+			{{ $t('iconKitchenPage.generate.infoSuffix') }}
 		</Info>
 		<p class="text-muted-foreground leading-7">
-			{{ $tn('iconKitchenPage.generate.descriptionPrefix') }}
+			{{ $t('iconKitchenPage.generate.descriptionPrefix') }}
 			<code>web</code>
-			{{ $tn('iconKitchenPage.generate.descriptionMiddle') }}
+			{{ $t('iconKitchenPage.generate.descriptionMiddle') }}
 			<code>public</code>
-			{{ $tn('iconKitchenPage.generate.descriptionSuffix') }}
+			{{ $t('iconKitchenPage.generate.descriptionSuffix') }}
 			<code>icons</code>
-			{{ $tn('iconKitchenPage.generate.descriptionEnd') }}
+			{{ $t('iconKitchenPage.generate.descriptionEnd') }}
 		</p>
 	</section>
 
 	<section id="manifest" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
-			{{ $tn('iconKitchenPage.manifest.title') }}
+			{{ $t('iconKitchenPage.manifest.title') }}
 		</h2>
 		<ExampleBlock
 			path="public/site.webmanifest"

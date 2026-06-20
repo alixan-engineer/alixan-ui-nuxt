@@ -14,21 +14,21 @@ onMounted(() => setToc(dividerPageToc));
 
 <template>
 	<header class="space-y-3">
-		<h1 class="text-4xl font-semibold">{{ $tn('component.divider') }}</h1>
+		<h1 class="text-4xl font-semibold">{{ $t('component.divider') }}</h1>
 		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
-			{{ $tn('componentDocs.divider.description') }}
+			{{ $t('componentDocs.divider.description') }}
 		</p>
 	</header>
 
 	<section id="installation" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
-			{{ $tn('docsSections.installation') }}
+			{{ $t('docsSections.installation') }}
 		</h2>
 		<InstallCommandBlock component="divider" />
 	</section>
 
 	<section id="usage" class="space-y-5">
-		<h2 class="text-2xl font-semibold">{{ $tn('docsSections.usage') }}</h2>
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.usage') }}</h2>
 		<ExampleBlock :code="usageCode">
 			<div class="w-full max-w-sm space-y-4 text-muted-foreground">
 				<p>Account</p>

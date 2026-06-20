@@ -9,8 +9,7 @@ type ColorModePreference = 'system' | 'light' | 'dark';
 
 const dialog = useDialog();
 const colorMode = useColorMode();
-const { locale, setLocale } = useI18n();
-const { $tn } = useNuxtApp();
+const { locale, setLocale, t } = useI18n();
 const { accentColors, accentTheme, setAccentTheme, createThemeCss } =
 	useTheme();
 
@@ -26,9 +25,9 @@ const themeOptions = computed<
 	Array<{ label: string; value: ColorModePreference }>
 >(() => {
 	return [
-		{ label: $tn('themePage.system'), value: 'system' },
-		{ label: $tn('themePage.light'), value: 'light' },
-		{ label: $tn('themePage.dark'), value: 'dark' },
+		{ label: t('themePage.system'), value: 'system' },
+		{ label: t('themePage.light'), value: 'light' },
+		{ label: t('themePage.dark'), value: 'dark' },
 	];
 });
 
@@ -80,7 +79,7 @@ const openThemeCode = (): void => {
 		<div class="space-y-5 px-3 py-5">
 			<div class="space-y-2">
 				<p class="px-1 text-sm font-medium text-muted-foreground">
-					{{ $tn('settings.language') }}
+					{{ $t('settings.language') }}
 				</p>
 				<Select
 					:model-value="locale"
@@ -91,7 +90,7 @@ const openThemeCode = (): void => {
 
 			<div class="space-y-2">
 				<p class="px-1 text-sm font-medium text-muted-foreground">
-					{{ $tn('settings.theme') }}
+					{{ $t('settings.theme') }}
 				</p>
 				<Select
 					:model-value="colorMode.preference"
@@ -102,13 +101,13 @@ const openThemeCode = (): void => {
 
 			<div class="space-y-2">
 				<p class="px-1 text-sm font-medium text-muted-foreground">
-					{{ $tn('settings.accent') }}
+					{{ $t('settings.accent') }}
 				</p>
 				<div class="grid grid-cols-2 gap-2">
 					<Button
 						v-for="item in accentColorsList"
 						:key="item"
-						:label="$tn(`colors.${item}`)"
+						:label="$t(`colors.${item}`)"
 						class="justify-start"
 						:variant="accentTheme === item ? 'filled' : 'ghost'"
 						:color="accentTheme === item ? 'secondary' : 'default'"
@@ -120,13 +119,13 @@ const openThemeCode = (): void => {
 								:style="{ backgroundColor: getAccentPreviewColor(item) }"
 							/>
 						</template>
-						{{ $tn(`colors.${item}`) }}
+						{{ $t(`colors.${item}`) }}
 					</Button>
 				</div>
 			</div>
 
 			<Button class="w-full" size="sm" color="primary" @click="openThemeCode">
-				{{ $tn('themeSettings.copyStyle') }}
+				{{ $t('themeSettings.copyStyle') }}
 			</Button>
 		</div>
 	</DropdownMenu>

@@ -104,16 +104,16 @@ const save = () => {
 </template>`,
 	disable: `<script setup lang="ts">
 const dialog = useDialog()
-const { $tn } = useNuxtApp()
+const { t } = useI18n()
 
 const openAlert = () => {
   dialog.open(AlertDialog, {
     width: '360px',
     height: '280px',
     data: {
-      title: $tn('componentDocs.button.actionUnavailable'),
-      description: $tn('componentDocs.button.exportUnavailable'),
-      buttonLabel: $tn('componentDocs.button.gotIt'),
+      title: t('componentDocs.button.actionUnavailable'),
+      description: t('componentDocs.button.exportUnavailable'),
+      buttonLabel: t('componentDocs.button.gotIt'),
     },
   })
 }

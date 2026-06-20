@@ -11,7 +11,7 @@ defineProps<{
 		<h2
 			class="flex-1 flex items-center justify-center text-lg font-semibold leading-6"
 		>
-			{{ $tn(title) }}
+			{{ $t(title) }}
 		</h2>
 	</div>
 </template>

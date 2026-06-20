@@ -9,7 +9,7 @@ const props = defineProps<{
 }>();
 
 const toast = useToast();
-const { $tn } = useNuxtApp();
+const { t } = useI18n();
 
 const copyCode = async (): Promise<void> => {
 	if (!import.meta.client) {
@@ -17,7 +17,7 @@ const copyCode = async (): Promise<void> => {
 	}
 
 	await navigator.clipboard.writeText(props.data.code);
-	toast.open($tn('themeSettings.copiedStyle'), 'success');
+	toast.open(t('themeSettings.copiedStyle'), 'success');
 };
 </script>
 
@@ -26,7 +26,7 @@ const copyCode = async (): Promise<void> => {
 		<pre class="flex-1 overflow-auto p-4 text-sm leading-7"><code>{{ data.code }}</code></pre>
 		<div class="flex items-center justify-end p-4">
 			<Button color="primary" @click="copyCode">
-				{{ $tn('themeSettings.copy') }}
+				{{ $t('themeSettings.copy') }}
 			</Button>
 		</div>
 	</div>

@@ -44,7 +44,7 @@ const setTheme = (value: ColorModePreference): void => {
 <template>
   <div class="space-y-2">
     <p class="px-1 text-sm font-medium text-muted-foreground">
-      {{ $tn('settings.theme') }}
+      {{ $t('settings.theme') }}
     </p>
     <Select
       :model-value="colorMode.preference"

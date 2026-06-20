@@ -34,7 +34,7 @@ const getCellValue = (
 						:key="columnIndex"
 						class="px-4 py-3 font-medium"
 					>
-						{{ $tn(column.label) }}
+						{{ $t(column.label) }}
 					</th>
 				</tr>
 			</thead>
@@ -45,7 +45,7 @@ const getCellValue = (
 						:key="columnIndex"
 						class="px-4 py-3"
 					>
-						{{ $tn(getCellValue(column, row, rowIndex)) }}
+						{{ $t(String(getCellValue(column, row, rowIndex))) }}
 					</td>
 				</tr>
 			</tbody>

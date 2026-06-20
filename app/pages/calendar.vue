@@ -18,26 +18,26 @@ const range = ref<{ from: string; to: string } | null>(null);
 
 <template>
 	<header class="space-y-3">
-		<h1 class="text-4xl font-semibold">{{ $tn('component.calendar') }}</h1>
+		<h1 class="text-4xl font-semibold">{{ $t('component.calendar') }}</h1>
 		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
-			{{ $tn('componentDocs.calendar.description') }}
+			{{ $t('componentDocs.calendar.description') }}
 		</p>
 	</header>
 
 	<section id="installation" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
-			{{ $tn('docsSections.installation') }}
+			{{ $t('docsSections.installation') }}
 		</h2>
 		<InstallCommandBlock component="calendar" />
 	</section>
 
 	<section id="day" class="space-y-5">
-		<h2 class="text-2xl font-semibold">{{ $tn('docsSections.day') }}</h2>
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.day') }}</h2>
 		<ExampleBlock :code="examples.day">
 			<div class="w-full max-w-sm">
 				<Calendar
 					v-model="date"
-					:label="$tn('calendarLabels.date')"
+					:label="$t('calendarLabels.date')"
 					:locale="locale"
 				/>
 			</div>
@@ -45,12 +45,12 @@ const range = ref<{ from: string; to: string } | null>(null);
 	</section>
 
 	<section id="range" class="space-y-5">
-		<h2 class="text-2xl font-semibold">{{ $tn('docsSections.range') }}</h2>
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.range') }}</h2>
 		<ExampleBlock :code="examples.range">
 			<div class="w-full max-w-sm">
 				<Calendar
 					v-model="range"
-					:label="$tn('calendarLabels.period')"
+					:label="$t('calendarLabels.period')"
 					mode="range"
 					:locale="locale"
 				/>

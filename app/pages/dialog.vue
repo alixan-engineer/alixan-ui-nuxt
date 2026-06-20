@@ -38,38 +38,38 @@ const openDialog = (): void => {
 
 <template>
 	<header class="space-y-3">
-		<h1 class="text-4xl font-semibold">{{ $tn('component.dialog') }}</h1>
+		<h1 class="text-4xl font-semibold">{{ $t('component.dialog') }}</h1>
 		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
-			{{ $tn('componentDocs.dialog.description') }}
+			{{ $t('componentDocs.dialog.description') }}
 		</p>
 	</header>
 
 	<section id="installation" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
-			{{ $tn('docsSections.installation') }}
+			{{ $t('docsSections.installation') }}
 		</h2>
 		<InstallCommandBlock component="dialog" />
 	</section>
 
 	<section id="usage" class="space-y-5">
-		<h2 class="text-2xl font-semibold">{{ $tn('docsSections.usage') }}</h2>
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.usage') }}</h2>
 
 		<div id="host" class="scroll-mt-24 space-y-3">
-			<h3 class="text-xl font-semibold">{{ $tn('docsSections.host') }}</h3>
+			<h3 class="text-xl font-semibold">{{ $t('docsSections.host') }}</h3>
 			<ExampleBlock :path="'app.vue'" :code="hostCode" :preview="false" />
 		</div>
 
 		<div id="open-dialog" class="scroll-mt-24 space-y-3">
 			<h3 class="text-xl font-semibold">
-				{{ $tn('docsSections.openDialog') }}
+				{{ $t('docsSections.openDialog') }}
 			</h3>
 			<ExampleBlock path="Example.vue" :code="openCode">
 				<div class="flex flex-wrap items-center justify-center gap-3">
 					<Button @click="openDialog">
-						{{ $tn('dialogPreview.openDialog') }}
+						{{ $t('dialogPreview.openDialog') }}
 					</Button>
 					<p class="text-sm text-muted-foreground">
-						{{ $tn('dialogPreview.projectName') }}:
+						{{ $t('dialogPreview.projectName') }}:
 						<span class="font-medium text-foreground">{{ projectName }}</span>
 					</p>
 				</div>
@@ -78,7 +78,7 @@ const openDialog = (): void => {
 
 		<div id="dialog-content" class="scroll-mt-24 space-y-3">
 			<h3 class="text-xl font-semibold">
-				{{ $tn('docsSections.dialogContent') }}
+				{{ $t('docsSections.dialogContent') }}
 			</h3>
 			<ExampleBlock
 				:path="'ProjectDialog.vue'"
@@ -90,7 +90,7 @@ const openDialog = (): void => {
 
 	<section id="api-reference" class="space-y-4">
 		<h2 class="text-2xl font-semibold">
-			{{ $tn('docsSections.apiReference') }}
+			{{ $t('docsSections.apiReference') }}
 		</h2>
 		<Table :columns="propsTableColumns" :rows="dialogServiceApi" />
 	</section>

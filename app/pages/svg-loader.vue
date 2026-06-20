@@ -18,39 +18,39 @@ onMounted(() => setToc(svgLoaderPageToc));
 
 <template>
 	<header class="space-y-3">
-		<h1 class="text-4xl font-semibold">{{ $tn('svgLoaderPage.title') }}</h1>
+		<h1 class="text-4xl font-semibold">{{ $t('svgLoaderPage.title') }}</h1>
 		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
-			{{ $tn('svgLoaderPage.description') }}
+			{{ $t('svgLoaderPage.description') }}
 		</p>
 
 		<Info>
-			{{ $tn('app.infoPrefix') }}
+			{{ $t('app.infoPrefix') }}
 			<TextLink
 				href="https://nuxt.com/modules/nuxt-svgo-loader"
 				target="_blank"
 			>
-				{{ $tn('svgLoaderPage.infoLink') }}
+				{{ $t('svgLoaderPage.infoLink') }}
 			</TextLink>
 		</Info>
 	</header>
 
 	<section id="installation" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
-			{{ $tn('svgLoaderPage.installationTitle') }}
+			{{ $t('svgLoaderPage.installationTitle') }}
 		</h2>
 		<ExampleBlock :code="installCode" :preview="false" />
 	</section>
 
 	<section id="configuration" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
-			{{ $tn('svgLoaderPage.configurationTitle') }}
+			{{ $t('svgLoaderPage.configurationTitle') }}
 		</h2>
 		<ExampleBlock path="nuxt.config.ts" :code="configCode" :preview="false" />
 	</section>
 
 	<section id="usage" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
-			{{ $tn('svgLoaderPage.usageTitle') }}
+			{{ $t('svgLoaderPage.usageTitle') }}
 		</h2>
 		<ExampleBlock path="Example.vue" :code="usageCode" :preview="false" />
 	</section>

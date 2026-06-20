@@ -70,18 +70,26 @@ const updateMenuPosition = (): void => {
 	};
 };
 
+const updateOpenMenuPosition = (): void => {
+	if (!open.value) {
+		return;
+	}
+
+	updateMenuPosition();
+};
+
 const openMenu = async (): Promise<void> => {
 	open.value = true;
 	await nextTick();
 	updateMenuPosition();
-	window.addEventListener('resize', closeMenu);
-	window.addEventListener('scroll', closeMenu, true);
+	window.addEventListener('resize', updateOpenMenuPosition);
+	window.addEventListener('scroll', updateOpenMenuPosition, true);
 };
 
 const closeMenu = (): void => {
 	open.value = false;
-	window.removeEventListener('resize', closeMenu);
-	window.removeEventListener('scroll', closeMenu, true);
+	window.removeEventListener('resize', updateOpenMenuPosition);
+	window.removeEventListener('scroll', updateOpenMenuPosition, true);
 };
 
 const selectOption = (option: AutocompleteOption): void => {
@@ -150,14 +158,14 @@ onBeforeUnmount(closeMenu);
 			<div
 				v-if="open"
 				class="fixed inset-0 z-9998"
-				@mousedown.stop="closeMenu"
+				@pointerdown.stop="closeMenu"
 				@click.stop
 			/>
 			<div
 				v-if="open"
 				class="fixed z-9999 max-h-72 overflow-auto rounded-xl border bg-popover p-1 shadow-md"
 				:style="menuStyle"
-				@mousedown.stop
+				@pointerdown.stop
 			>
 				<button
 					v-for="option in filteredOptions"

@@ -15,7 +15,7 @@ withDefaults(defineProps<GlobalLoaderProps>(), {
 		<div class="flex flex-col items-center gap-4">
 			<Spinner :size="label ? 'md' : 'lg'" />
 			<p v-if="label" class="text-md font-medium text-muted-foreground">
-				{{ $tn(label) }}
+				{{ $t(label) }}
 			</p>
 		</div>
 	</div>

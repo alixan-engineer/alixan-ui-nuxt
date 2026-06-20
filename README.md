@@ -164,7 +164,7 @@ Install Nuxt i18n with:
 npx nuxt module add i18n
 ```
 
-Components and docs use the global `$tn` helper from `app/plugins/tn.ts`. It translates existing i18n keys and falls back to the original string for plain values.
+Components and docs use Nuxt i18n's built-in `$t`. Set `missingWarn: false` in i18n config if plain values can pass through `$t`.
 
 ## 🔎 SEO
 
@@ -173,11 +173,9 @@ The `seo` registry item includes:
 - `app/config/site/site.ts`
 - `app/config/site/favicon.ts`
 - `app/composables/usePageMeta.ts`
-- `app/plugins/tn.ts`
-- `app/types/tn.d.ts`
 
 It gives you a shared place for site URL, title, description, Open Graph image and page-level SEO metadata.
-`usePageMeta` resolves page title and description through `$tn`, so values can be translation keys or plain strings.
+`usePageMeta` resolves page title and description through `useI18n().t`, so values can be translation keys or plain strings when `missingWarn` is disabled.
 
 For sitemap support:
 

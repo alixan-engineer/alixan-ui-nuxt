@@ -207,18 +207,26 @@ const updateMenuPosition = (): void => {
 	};
 };
 
+const updateOpenMenuPosition = (): void => {
+	if (!open.value) {
+		return;
+	}
+
+	updateMenuPosition();
+};
+
 const openCalendar = async (): Promise<void> => {
 	open.value = true;
 	await nextTick();
 	updateMenuPosition();
-	window.addEventListener('resize', closeCalendar);
-	window.addEventListener('scroll', closeCalendar, true);
+	window.addEventListener('resize', updateOpenMenuPosition);
+	window.addEventListener('scroll', updateOpenMenuPosition, true);
 };
 
 const closeCalendar = (): void => {
 	open.value = false;
-	window.removeEventListener('resize', closeCalendar);
-	window.removeEventListener('scroll', closeCalendar, true);
+	window.removeEventListener('resize', updateOpenMenuPosition);
+	window.removeEventListener('scroll', updateOpenMenuPosition, true);
 };
 
 const moveMonth = (step: number): void => {
@@ -341,20 +349,20 @@ onBeforeUnmount(closeCalendar);
 			<div
 				v-if="open"
 				class="fixed inset-0 z-9998"
-				@mousedown.stop="closeCalendar"
+				@pointerdown.stop="closeCalendar"
 				@click.stop
 			/>
 			<div
 				v-if="open"
 				class="fixed z-9999 overflow-auto rounded-2xl border bg-popover p-3 shadow-md"
 				:style="menuStyle"
-				@mousedown.stop
+				@pointerdown.stop
 			>
 				<div class="mb-4 grid grid-cols-[auto_1fr_auto_1fr] items-center gap-2">
 					<button
 						type="button"
 						class="flex size-9 items-center justify-center rounded-xl text-foreground hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none [&_svg]:size-4"
-						:aria-label="$tn('calendarLabels.previousMonth')"
+						:aria-label="$t('calendarLabels.previousMonth')"
 						@click="moveMonth(-1)"
 					>
 						<ChevronLeft />
@@ -363,13 +371,13 @@ onBeforeUnmount(closeCalendar);
 					<Select
 						v-model="selectedMonth"
 						:options="monthOptions"
-						:aria-label="$tn('calendarLabels.month')"
+						:aria-label="$t('calendarLabels.month')"
 					/>
 
 					<button
 						type="button"
 						class="flex size-9 items-center justify-center rounded-xl text-foreground hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none [&_svg]:size-4"
-						:aria-label="$tn('calendarLabels.nextMonth')"
+						:aria-label="$t('calendarLabels.nextMonth')"
 						@click="moveMonth(1)"
 					>
 						<ChevronRight />
@@ -380,7 +388,7 @@ onBeforeUnmount(closeCalendar);
 						:options="
 							yearOptions.map(year => ({ label: String(year), value: year }))
 						"
-						:aria-label="$tn('calendarLabels.year')"
+						:aria-label="$t('calendarLabels.year')"
 					/>
 				</div>
 
@@ -390,7 +398,7 @@ onBeforeUnmount(closeCalendar);
 						:key="preset.value"
 						v-model="selectedPreset"
 						:value="preset.value"
-						:label="$tn(preset.label)"
+						:label="$t(preset.label)"
 					/>
 				</div>
 
@@ -428,7 +436,7 @@ onBeforeUnmount(closeCalendar);
 					class="mx-auto mt-3 block rounded-lg px-3 py-2 text-base font-medium text-destructive hover:bg-destructive/10 focus-visible:bg-destructive/10 focus-visible:outline-none"
 					@click="clearCalendar"
 				>
-					{{ $tn('actions.clear') }}
+					{{ $t('actions.clear') }}
 				</button>
 			</div>
 		</Teleport>

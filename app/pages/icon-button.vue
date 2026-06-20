@@ -19,7 +19,7 @@ const loader = useGlobalLoader();
 const dialog = useDialog();
 const { setToc } = usePageToc();
 const localePath = useLocalePath();
-const { $tn } = useNuxtApp();
+const { t } = useI18n();
 
 onMounted(() => setToc(iconButtonPageToc));
 
@@ -33,9 +33,9 @@ const openDisableAlert = (): void => {
 		width: '360px',
 		height: '280px',
 		data: {
-			title: $tn('componentDocs.iconButton.actionUnavailable'),
-			description: $tn('componentDocs.iconButton.exportUnavailable'),
-			buttonLabel: $tn('componentDocs.iconButton.gotIt'),
+			title: t('componentDocs.iconButton.actionUnavailable'),
+			description: t('componentDocs.iconButton.exportUnavailable'),
+			buttonLabel: t('componentDocs.iconButton.gotIt'),
 		},
 	});
 };
@@ -43,24 +43,24 @@ const openDisableAlert = (): void => {
 
 <template>
 	<header class="space-y-3">
-		<h1 class="text-4xl font-semibold">{{ $tn('component.iconButton') }}</h1>
+		<h1 class="text-4xl font-semibold">{{ $t('component.iconButton') }}</h1>
 		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
-			{{ $tn('componentDocs.iconButton.description') }}
+			{{ $t('componentDocs.iconButton.description') }}
 		</p>
 	</header>
 
 	<section id="installation" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
-			{{ $tn('docsSections.installation') }}
+			{{ $t('docsSections.installation') }}
 		</h2>
 		<InstallCommandBlock component="icon-button" />
 	</section>
 
 	<section id="usage" class="space-y-5">
 		<div class="space-y-2">
-			<h2 class="text-2xl font-semibold">{{ $tn('docsSections.usage') }}</h2>
+			<h2 class="text-2xl font-semibold">{{ $t('docsSections.usage') }}</h2>
 			<p class="text-muted-foreground leading-7">
-				{{ $tn('componentDocs.iconButton.usageDescription') }}
+				{{ $t('componentDocs.iconButton.usageDescription') }}
 			</p>
 		</div>
 		<div class="space-y-4">
@@ -72,7 +72,7 @@ const openDisableAlert = (): void => {
 						class="space-y-2"
 					>
 						<p class="text-sm text-muted-foreground">
-							{{ $tn(`variants.${variant}`) }}
+							{{ $t(`variants.${variant}`) }}
 						</p>
 						<div class="flex flex-wrap items-center gap-2">
 							<IconButton
@@ -91,7 +91,7 @@ const openDisableAlert = (): void => {
 	</section>
 
 	<section id="size" class="space-y-4">
-		<h2 class="text-2xl font-semibold">{{ $tn('docsSections.size') }}</h2>
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.size') }}</h2>
 		<ExampleBlock :code="iconButtonExamples.size">
 			<div class="flex items-center gap-2">
 				<IconButton size="sm">
@@ -108,7 +108,7 @@ const openDisableAlert = (): void => {
 	</section>
 
 	<section id="navigation" class="space-y-4">
-		<h2 class="text-2xl font-semibold">{{ $tn('docsSections.navigation') }}</h2>
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.navigation') }}</h2>
 		<ExampleBlock :code="iconButtonExamples.navigation">
 			<div class="flex items-center gap-2">
 				<IconButton :to="localePath('/icon-button')">
@@ -128,9 +128,9 @@ const openDisableAlert = (): void => {
 
 	<section id="loading" class="space-y-4">
 		<div class="space-y-2">
-			<h2 class="text-2xl font-semibold">{{ $tn('docsSections.loading') }}</h2>
+			<h2 class="text-2xl font-semibold">{{ $t('docsSections.loading') }}</h2>
 			<p class="text-muted-foreground leading-7">
-				{{ $tn('componentDocs.iconButton.loadingDescription') }}
+				{{ $t('componentDocs.iconButton.loadingDescription') }}
 			</p>
 		</div>
 		<ExampleBlock :code="iconButtonExamples.loading">
@@ -142,9 +142,9 @@ const openDisableAlert = (): void => {
 
 	<section id="disable" class="space-y-4">
 		<div class="space-y-2">
-			<h2 class="text-2xl font-semibold">{{ $tn('docsSections.disabled') }}</h2>
+			<h2 class="text-2xl font-semibold">{{ $t('docsSections.disabled') }}</h2>
 			<p class="text-muted-foreground leading-7">
-				{{ $tn('componentDocs.iconButton.disabledDescription') }}
+				{{ $t('componentDocs.iconButton.disabledDescription') }}
 			</p>
 		</div>
 		<ExampleBlock :code="iconButtonExamples.disable">
@@ -156,7 +156,7 @@ const openDisableAlert = (): void => {
 
 	<section id="api-reference" class="space-y-4">
 		<h2 class="text-2xl font-semibold">
-			{{ $tn('docsSections.apiReference') }}
+			{{ $t('docsSections.apiReference') }}
 		</h2>
 		<Table :columns="propsTableColumns" :rows="iconButtonApiRows" />
 	</section>

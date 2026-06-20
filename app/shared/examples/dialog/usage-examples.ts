@@ -27,10 +27,10 @@ const openDialog = () => {
 <template>
   <div class="flex flex-wrap items-center gap-3">
     <Button @click="openDialog">
-      {{ $tn('dialogPreview.openDialog') }}
+      {{ $t('dialogPreview.openDialog') }}
     </Button>
     <p class="text-sm text-muted-foreground">
-      {{ $tn('dialogPreview.projectName') }}:
+      {{ $t('dialogPreview.projectName') }}:
       <span class="font-medium text-foreground">{{ projectName }}</span>
     </p>
   </div>

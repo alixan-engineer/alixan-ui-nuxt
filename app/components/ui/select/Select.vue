@@ -81,20 +81,28 @@ const updateMenuPosition = () => {
 	};
 };
 
+const updateOpenMenuPosition = (): void => {
+	if (!open.value) {
+		return;
+	}
+
+	updateMenuPosition();
+};
+
 const openSelect = async (): Promise<void> => {
 	if (props.disabled) return;
 	open.value = true;
 	await nextTick();
 	updateMenuPosition();
-	window.addEventListener('resize', closeSelect);
-	window.addEventListener('scroll', closeSelect, true);
+	window.addEventListener('resize', updateOpenMenuPosition);
+	window.addEventListener('scroll', updateOpenMenuPosition, true);
 	document.addEventListener('mousedown', closeSelectOnOutside, true);
 };
 
 const closeSelect = () => {
 	open.value = false;
-	window.removeEventListener('resize', closeSelect);
-	window.removeEventListener('scroll', closeSelect, true);
+	window.removeEventListener('resize', updateOpenMenuPosition);
+	window.removeEventListener('scroll', updateOpenMenuPosition, true);
 	document.removeEventListener('mousedown', closeSelectOnOutside, true);
 };
 
@@ -172,7 +180,7 @@ onBeforeUnmount(closeSelect);
 			<div
 				v-if="open && teleport"
 				class="fixed inset-0 z-10000"
-				@mousedown.stop="closeSelect"
+				@pointerdown.stop="closeSelect"
 				@click.stop
 			/>
 			<div
@@ -185,7 +193,7 @@ onBeforeUnmount(closeSelect);
 					)
 				"
 				:style="menuStyle"
-				@mousedown.stop
+				@pointerdown.stop
 			>
 				<button
 					v-for="option in options"

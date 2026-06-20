@@ -256,7 +256,7 @@ watch(
 <template>
 	<div :class="rootClass">
 		<label v-if="visibleLabel" :for="inputId" :class="labelClass">
-			{{ $tn(visibleLabel) }}
+			{{ $t(visibleLabel) }}
 		</label>
 
 		<span v-if="$slots.leading" :class="leadingSlotClass" aria-hidden="true">
@@ -311,7 +311,7 @@ watch(
 					)
 				"
 			>
-				{{ $tn(messageText) }}
+				{{ $t(messageText) }}
 			</p>
 		</Transition>
 	</div>

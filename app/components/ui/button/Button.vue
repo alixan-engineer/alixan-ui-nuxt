@@ -115,7 +115,7 @@ const wrapperAttrs = computed(() =>
 
 			<span v-if="hasDefaultSlot || label" class="truncate">
 				<slot>
-					{{ $tn(label) }}
+					{{ $t(label) }}
 				</slot>
 			</span>
 

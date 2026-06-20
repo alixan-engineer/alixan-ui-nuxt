@@ -131,12 +131,12 @@
 		},
 		"addI18n": {
 			"title": "Add i18n",
-			"description": "Alixan UI works best with Nuxt i18n because documentation labels, table headings and page meta use translation keys. You can skip this step if your app does not need localization yet.",
+			"description": "Alixan UI works best with Nuxt i18n because documentation labels, table headings and page meta use translation keys. Set missingWarn to false if your app also passes plain values through $t.",
 			"commandTitle": "Install Nuxt i18n"
 		},
-		"translationHelper": {
-			"title": "Add Translation Helper",
-			"description": "Add a global $tn helper after Nuxt i18n. It checks whether a string exists as a translation key and falls back to the original value, so labels like npm or regular table values do not create missing-key warnings."
+		"i18nConfiguration": {
+			"title": "Configuration",
+			"infoLink": "Read the i18n guide for details."
 		}
 	},
 	"homePage": {
@@ -382,8 +382,7 @@
 			"title": "Installation",
 			"descriptionStart": "This command copies",
 			"sitemapDescription": "Install Nuxt Sitemap before adding sitemap options to nuxt.config.ts.",
-			"seoCommandDescription": "After copying, replace the example values in site.ts with your own domain, project name, default title, description and OG image.",
-			"tnPluginDescription": "The seo registry item also copies app/plugins/tn.ts and app/types/tn.d.ts because usePageMeta resolves title and description through $tn."
+			"seoCommandDescription": "After copying, replace the example values in site.ts with your own domain, project name, default title, description and OG image."
 		},
 		"siteConfig": {
 			"title": "Site Config"
@@ -394,7 +393,7 @@
 			"usagePrefix": "Call",
 			"usageMiddle": "in each page. If a field is omitted, the default from",
 			"usageSuffix": "is used.",
-			"translationHelper": "It uses $tn internally, so page values can be translation keys while siteConfig defaults can stay plain strings."
+			"translation": "It uses useI18n().t internally, so page values can be translation keys while siteConfig defaults can stay plain strings when missingWarn is disabled."
 		},
 		"initialHead": {
 			"title": "Initial Head"
@@ -561,12 +560,7 @@
 		"pageMetaTitle": "Page Meta",
 		"pageMetaDescriptionStart": "Pass page-level SEO translation keys to",
 		"pageMetaDescriptionMiddle": ". The composable resolves them with",
-		"pageMetaDescriptionEnd": "internally.",
-		"translationHelperTitle": "Translation Helper",
-		"translationHelperDescriptionStart": "Use the global",
-		"translationHelperDescriptionEnd": "helper in templates when a value can be either a translation key or plain text.",
-		"seoConnection": "usePageMeta uses $tn internally for SEO title and description, so i18n and SEO should be installed together when you use localized metadata.",
-		"translationTypesDescription": "Add the declaration file so TypeScript and Vue templates know the global $tn helper."
+		"pageMetaDescriptionEnd": "internally."
 	},
 	"apiReferenceDescriptions": {
 		"accordionItems": "Accordion sections rendered by the component.",

@@ -24,55 +24,54 @@ onMounted(() => setToc(seoPageToc));
 
 <template>
 	<header class="space-y-3">
-		<h1 class="text-4xl font-semibold">{{ $tn('seoPage.title') }}</h1>
+		<h1 class="text-4xl font-semibold">{{ $t('seoPage.title') }}</h1>
 		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
-			{{ $tn('seoPage.description') }}
+			{{ $t('seoPage.description') }}
 		</p>
 	</header>
 
 	<section id="installation" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
-			{{ $tn('seoPage.installation.title') }}
+			{{ $t('seoPage.installation.title') }}
 		</h2>
 		<InstallCommandBlock component="seo" />
 		<div
 			class="rounded-2xl border bg-secondary/50 p-4 text-sm leading-7 text-muted-foreground"
 		>
-			{{ $tn('seoPage.installation.descriptionStart') }}
+			{{ $t('seoPage.installation.descriptionStart') }}
 			<code>app/config/site/site.ts</code>,
 			<code>app/config/site/favicon.ts</code> and
 			<code>app/composables/usePageMeta.ts</code>.
-			{{ $tn('seoPage.installation.seoCommandDescription') }}
-			{{ $tn('seoPage.installation.tnPluginDescription') }}
+			{{ $t('seoPage.installation.seoCommandDescription') }}
 		</div>
 	</section>
 
 	<section id="sitemap" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
-			{{ $tn('seoPage.sitemap.title') }}
+			{{ $t('seoPage.sitemap.title') }}
 		</h2>
 		<p class="text-muted-foreground leading-7">
-			{{ $tn('seoPage.installation.sitemapDescription') }}
+			{{ $t('seoPage.installation.sitemapDescription') }}
 		</p>
 		<ExampleBlock :code="sitemapInstallCode" :preview="false" />
 		<p class="text-muted-foreground leading-7">
-			{{ $tn('seoPage.sitemap.description') }}
-			{{ $tn('seoPage.sitemap.verify') }}
+			{{ $t('seoPage.sitemap.description') }}
+			{{ $t('seoPage.sitemap.verify') }}
 		</p>
 		<Info>
-			{{ $tn('app.infoPrefix') }}
+			{{ $t('app.infoPrefix') }}
 			<TextLink
 				href="https://nuxtseo.com/docs/sitemap/getting-started/installation"
 				target="_blank"
 			>
-				{{ $tn('seoPage.sitemap.infoLink') }}
+				{{ $t('seoPage.sitemap.infoLink') }}
 			</TextLink>
 		</Info>
 	</section>
 
 	<section id="site-config" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
-			{{ $tn('seoPage.siteConfig.title') }}
+			{{ $t('seoPage.siteConfig.title') }}
 		</h2>
 		<ExampleBlock
 			path="app/config/site/site.ts"
@@ -88,14 +87,14 @@ onMounted(() => setToc(seoPageToc));
 
 	<section id="initial-head" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
-			{{ $tn('seoPage.initialHead.title') }}
+			{{ $t('seoPage.initialHead.title') }}
 		</h2>
 		<Info>
-			{{ $tn('seoPage.iconKitchenRef.prefix') }}
+			{{ $t('seoPage.iconKitchenRef.prefix') }}
 			<TextLink :href="localePath('/icon-kitchen')">
-				{{ $tn('seoPage.iconKitchenRef.link') }}
+				{{ $t('seoPage.iconKitchenRef.link') }}
 			</TextLink>
-			{{ $tn('seoPage.iconKitchenRef.suffix') }}
+			{{ $t('seoPage.iconKitchenRef.suffix') }}
 		</Info>
 		<ExampleBlock
 			path="app/config/site/favicon.ts"
@@ -107,34 +106,34 @@ onMounted(() => setToc(seoPageToc));
 
 	<section id="page-meta" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
-			{{ $tn('seoPage.pageMeta.title') }}
+			{{ $t('seoPage.pageMeta.title') }}
 		</h2>
 		<ExampleBlock path="app/composables/usePageMeta.ts" :code="usePageMetaCode">
 			<div class="max-w-md text-center text-muted-foreground leading-7">
 				<code>usePageMeta</code>
-				{{ $tn('seoPage.pageMeta.description') }}
-				{{ $tn('seoPage.pageMeta.translationHelper') }}
+				{{ $t('seoPage.pageMeta.description') }}
+				{{ $t('seoPage.pageMeta.translation') }}
 			</div>
 		</ExampleBlock>
 		<ExampleBlock path="pages/button.vue" :code="pageUsageCode">
 			<div class="max-w-md text-center text-muted-foreground leading-7">
-				{{ $tn('seoPage.pageMeta.usagePrefix') }}
+				{{ $t('seoPage.pageMeta.usagePrefix') }}
 				<code>usePageMeta</code>
-				{{ $tn('seoPage.pageMeta.usageMiddle') }}
+				{{ $t('seoPage.pageMeta.usageMiddle') }}
 				<code>siteConfig</code>
-				{{ $tn('seoPage.pageMeta.usageSuffix') }}
+				{{ $t('seoPage.pageMeta.usageSuffix') }}
 			</div>
 		</ExampleBlock>
 	</section>
 
 	<section id="robots" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
-			{{ $tn('seoPage.robots.title') }}
+			{{ $t('seoPage.robots.title') }}
 		</h2>
 		<p class="text-muted-foreground leading-7">
-			{{ $tn('seoPage.robots.descriptionPrefix') }}
+			{{ $t('seoPage.robots.descriptionPrefix') }}
 			<code>public/robots.txt</code>
-			{{ $tn('seoPage.robots.descriptionSuffix') }}
+			{{ $t('seoPage.robots.descriptionSuffix') }}
 		</p>
 		<ExampleBlock
 			path="public/robots.txt"

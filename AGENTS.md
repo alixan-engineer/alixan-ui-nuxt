@@ -55,7 +55,7 @@ import { ChevronRight, Plus } from '@lucide/vue';
 i18n в проекте считается базовой интеграцией для документации и компонентов.
 
 - Не пиши отображаемый текст прямо в Vue templates, page toc или API reference rows.
-- В Vue templates используй `$tn(value)`. Это глобальный helper из `app/plugins/tn.ts`: если строка существует как i18n key, он вернет перевод, иначе покажет исходную строку без missing-key warning.
+- В Vue templates используй `$t(value)` из Nuxt i18n. Если через `$t` проходят plain values, держи `missingWarn: false` в i18n config.
 - В `usePageMeta` передавай ключи, а не результат `t(...)`:
 
 ```ts
@@ -64,7 +64,7 @@ usePageMeta({
 	description: 'componentDocs.button.description',
 });
 ```
-- `usePageMeta` использует `useNuxtApp().$tn` внутри. Если меняешь SEO registry item, не удаляй `plugins: ["tn.ts"]` и `types: ["tn.d.ts"]`.
+- `usePageMeta` использует `useI18n().t` внутри.
 
 - Для внутренних Nuxt-ссылок в локализованных страницах/виджетах используй `useLocalePath()`:
 
@@ -77,8 +77,8 @@ const localePath = useLocalePath();
 ```
 
 Не оборачивай внешние `href`, `Teleport to="body"` и внутренний pass-through `:to="to"` в базовых компонентах.
-- `Table.vue` показывает `column.label` и `column.getValue(...)` через `$tn(...)`. Поэтому `app/shared/examples/*/api-reference.ts` должен хранить `description: 'apiReferenceDescriptions.someKey'`, а не английский текст.
-- `PageToc.vue` показывает `link.label` через `$tn(...)`. Все `page-toc.ts` должны хранить ключи переводов.
+- `Table.vue` показывает `column.label` и `column.getValue(...)` через `$t(...)`. Поэтому `app/shared/examples/*/api-reference.ts` должен хранить `description: 'apiReferenceDescriptions.someKey'`, а не английский текст.
+- `PageToc.vue` показывает `link.label` через `$t(...)`. Все `page-toc.ts` должны хранить ключи переводов.
 - При добавлении ключей обновляй все три локали: `en`, `ru`, `kk`.
 - После изменений проверяй равенство ключей локалей.
 

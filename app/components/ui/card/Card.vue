@@ -26,21 +26,21 @@ const emit = defineEmits<{
 		<img
 			v-if="image"
 			:src="image"
-			:alt="$tn(imageAlt)"
+			:alt="$t(imageAlt)"
 			class="w-full aspect-auto object-cover"
 		/>
 		<div class="space-y-4 p-4">
 			<div class="space-y-2">
 				<h3 class="text-lg font-semibold leading-6">
-					{{ $tn(title) }}
+					{{ $t(title) }}
 				</h3>
 				<p v-if="description" class="text-md leading-6 text-muted-foreground">
-					{{ $tn(description) }}
+					{{ $t(description) }}
 				</p>
 			</div>
 			<div class="flex items-center justify-between gap-3">
 				<p v-if="price" class="text-lg font-semibold">
-					{{ $tn(price) }}
+					{{ $t(price) }}
 				</p>
 				<Button
 					v-if="button"
@@ -49,7 +49,7 @@ const emit = defineEmits<{
 					color="primary"
 					@click="emit('onTap')"
 				>
-					{{ $tn(button) }}
+					{{ $t(button) }}
 				</Button>
 			</div>
 		</div>

@@ -77,7 +77,7 @@ const selectTab = (index: number) => (selected.value = index);
 					"
 					@click="selectTab(index)"
 				>
-					{{ $tn(tab) }}
+					{{ $t(tab) }}
 				</button>
 			</nav>
 		</div>
@@ -101,7 +101,7 @@ const selectTab = (index: number) => (selected.value = index);
 				"
 				@click="selectTab(index)"
 			>
-				{{ $tn(tab) }}
+				{{ $t(tab) }}
 			</button>
 		</nav>
 	</div>

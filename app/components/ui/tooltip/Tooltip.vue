@@ -166,7 +166,7 @@ onMounted(() => {
 				role="tooltip"
 			>
 				<slot name="content">
-					{{ $tn(content) }}
+					{{ $t(content) }}
 				</slot>
 			</div>
 		</Transition>

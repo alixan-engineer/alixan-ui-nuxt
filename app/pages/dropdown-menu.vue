@@ -18,21 +18,21 @@ const isOpen = ref<boolean>(false);
 
 <template>
 	<header class="space-y-3">
-		<h1 class="text-4xl font-semibold">{{ $tn('component.dropdownMenu') }}</h1>
+		<h1 class="text-4xl font-semibold">{{ $t('component.dropdownMenu') }}</h1>
 		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
-			{{ $tn('componentDocs.dropdownMenu.description') }}
+			{{ $t('componentDocs.dropdownMenu.description') }}
 		</p>
 	</header>
 
 	<section id="installation" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
-			{{ $tn('docsSections.installation') }}
+			{{ $t('docsSections.installation') }}
 		</h2>
 		<InstallCommandBlock component="dropdown-menu" />
 	</section>
 
 	<section id="usage" class="space-y-5">
-		<h2 class="text-2xl font-semibold">{{ $tn('docsSections.usage') }}</h2>
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.usage') }}</h2>
 		<ExampleBlock :code="code">
 			<DropdownMenu
 				v-model:open="isOpen"
@@ -77,7 +77,7 @@ const isOpen = ref<boolean>(false);
 
 	<section id="api-reference" class="space-y-4">
 		<h2 class="text-2xl font-semibold">
-			{{ $tn('docsSections.apiReference') }}
+			{{ $t('docsSections.apiReference') }}
 		</h2>
 		<Table :columns="propsTableColumns" :rows="dropdownProps" />
 	</section>

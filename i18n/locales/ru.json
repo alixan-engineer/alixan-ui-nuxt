@@ -131,12 +131,12 @@
 		},
 		"addI18n": {
 			"title": "Добавьте i18n (рекомендуется)",
-			"description": "Alixan UI лучше всего работает с Nuxt i18n, потому что labels документации, заголовки таблиц и page meta используют ключи переводов. Этот шаг можно пропустить, если приложению пока не нужна локализация.",
+			"description": "Alixan UI лучше всего работает с Nuxt i18n, потому что labels документации, заголовки таблиц и page meta используют ключи переводов. Установите missingWarn в false, если приложение также передает обычные значения через $t.",
 			"commandTitle": "Установить Nuxt i18n"
 		},
-		"translationHelper": {
-			"title": "Добавьте helper переводов",
-			"description": "Добавьте глобальный helper $tn после Nuxt i18n. Он проверяет, существует ли строка как ключ перевода, и иначе показывает исходное значение, поэтому labels вроде npm или обычные значения таблицы не создают missing-key warnings."
+		"i18nConfiguration": {
+			"title": "Конфигурация",
+			"infoLink": "Подробнее в гайде i18n."
 		}
 	},
 	"homePage": {
@@ -382,8 +382,7 @@
 			"title": "Установка",
 			"descriptionStart": "Эта команда копирует",
 			"sitemapDescription": "Установите Nuxt Sitemap до добавления sitemap-настроек в nuxt.config.ts.",
-			"seoCommandDescription": "После копирования замените значения из примера в site.ts на свой домен, название проекта, заголовок по умолчанию, описание и OG-изображение.",
-			"tnPluginDescription": "Registry item seo также копирует app/plugins/tn.ts и app/types/tn.d.ts, потому что usePageMeta разрешает title и description через $tn."
+			"seoCommandDescription": "После копирования замените значения из примера в site.ts на свой домен, название проекта, заголовок по умолчанию, описание и OG-изображение."
 		},
 		"siteConfig": {
 			"title": "Конфиг сайта"
@@ -394,7 +393,7 @@
 			"usagePrefix": "Вызывайте",
 			"usageMiddle": "на каждой странице. Если поле не передано, используется дефолт из",
 			"usageSuffix": ".",
-			"translationHelper": "Он использует $tn внутри, поэтому значения страницы могут быть ключами переводов, а дефолты siteConfig могут оставаться обычными строками."
+			"translation": "Он использует useI18n().t внутри, поэтому значения страницы могут быть ключами переводов, а дефолты siteConfig могут оставаться обычными строками при отключенном missingWarn."
 		},
 		"initialHead": {
 			"title": "Начальный head"
@@ -562,12 +561,7 @@
 		"pageMetaTitle": "Page Meta",
 		"pageMetaDescriptionStart": "Передавайте ключи переводов для page-level SEO в",
 		"pageMetaDescriptionMiddle": ". Composable сам разрешает их через",
-		"pageMetaDescriptionEnd": "внутри.",
-		"translationHelperTitle": "Helper переводов",
-		"translationHelperDescriptionStart": "Используйте глобальный helper",
-		"translationHelperDescriptionEnd": "в templates, когда значение может быть ключом перевода или обычным текстом.",
-		"seoConnection": "usePageMeta использует $tn внутри для SEO title и description, поэтому i18n и SEO лучше устанавливать вместе, если вы используете локализованные метаданные.",
-		"translationTypesDescription": "Добавьте declaration file, чтобы TypeScript и Vue templates знали глобальный helper $tn."
+		"pageMetaDescriptionEnd": "внутри."
 	},
 	"apiReferenceDescriptions": {
 		"accordionItems": "Разделы аккордеона, которые отображает компонент.",

@@ -12,7 +12,7 @@ defineProps<DialogHeaderProps>();
 <template>
 	<div class="h-14 px-4 flex items-center justify-between">
 		<h2 class="text-lg font-semibold">
-			{{ $tn(title) }}
+			{{ $t(title) }}
 		</h2>
 		<IconButton variant="ghost" color="default" @click="close">
 			<X />

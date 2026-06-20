@@ -6,7 +6,5 @@
 		"Spinner.vue"
 	],
 	"composables": ["useGlobalLoader.ts"],
-	"plugins": ["tn.ts"],
-	"types": ["tn.d.ts"],
 	"utils": ["cn.ts"]
 }

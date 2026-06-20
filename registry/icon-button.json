@@ -1,7 +1,5 @@
 {
 	"name": "icon-button",
 	"components": ["IconButton.vue", "Tooltip.vue"],
-	"plugins": ["tn.ts"],
-	"types": ["tn.d.ts"],
 	"utils": ["cn.ts"]
 }

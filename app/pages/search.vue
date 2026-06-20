@@ -27,22 +27,22 @@ const fastDebouncedValue = ref<string>('');
 
 <template>
 	<header class="space-y-3">
-		<h1 class="text-4xl font-semibold">{{ $tn('component.search') }}</h1>
+		<h1 class="text-4xl font-semibold">{{ $t('component.search') }}</h1>
 		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
-			{{ $tn('componentDocs.search.description') }}
+			{{ $t('componentDocs.search.description') }}
 		</p>
 	</header>
 
 	<section id="installation" class="space-y-5">
 		<h2 class="text-2xl font-semibold">
-			{{ $tn('docsSections.installation') }}
+			{{ $t('docsSections.installation') }}
 		</h2>
 		<InstallCommandBlock component="search" />
 	</section>
 
 	<section id="usage" class="space-y-5">
 		<div class="space-y-2">
-			<h2 class="text-2xl font-semibold">{{ $tn('docsSections.usage') }}</h2>
+			<h2 class="text-2xl font-semibold">{{ $t('docsSections.usage') }}</h2>
 			<p class="text-muted-foreground leading-7">
 				Use <code>v-model</code> for the raw value and listen to
 				<code>@search</code> for the debounced value.
@@ -67,7 +67,7 @@ const fastDebouncedValue = ref<string>('');
 
 	<section id="debounce" class="space-y-5">
 		<div class="space-y-2">
-			<h2 class="text-2xl font-semibold">{{ $tn('docsSections.debounce') }}</h2>
+			<h2 class="text-2xl font-semibold">{{ $t('docsSections.debounce') }}</h2>
 			<p class="text-muted-foreground leading-7">
 				Change the delay with the <code>debounce</code> prop. The default is
 				<code>300</code> milliseconds.
@@ -94,7 +94,7 @@ const fastDebouncedValue = ref<string>('');
 	<section id="api-reference" class="space-y-6">
 		<div class="space-y-2">
 			<h2 class="text-2xl font-semibold">
-				{{ $tn('docsSections.apiReference') }}
+				{{ $t('docsSections.apiReference') }}
 			</h2>
 			<h3 class="text-xl font-semibold">Props</h3>
 		</div>

@@ -6,7 +6,7 @@ const props = defineProps<{
 	close: () => void;
 }>();
 
-const { $tn } = useNuxtApp();
+const { t } = useI18n();
 const localePath = useLocalePath();
 const router = useRouter();
 
@@ -21,7 +21,7 @@ const normalizedQuery = computed(() => query.value.trim().toLocaleLowerCase());
 const filteredPages = computed(() => {
 	if (!normalizedQuery.value) return pages.value;
 	return pages.value.filter(page => {
-		const title = $tn(page.labelKey).toLocaleLowerCase();
+		const title = t(page.labelKey).toLocaleLowerCase();
 		const slug = page.to.replace('/', '').toLocaleLowerCase();
 		return (
 			title.includes(normalizedQuery.value) ||
@@ -42,13 +42,13 @@ const openPage = async (to: string): Promise<void> => {
 			<Search
 				v-model="query"
 				:debounce="0"
-				:placeholder="$tn('docsSearch.placeholder')"
+				:placeholder="$t('docsSearch.placeholder')"
 			/>
 		</div>
 
 		<div v-if="filteredPages.length" class="flex-1 overflow-auto p-2">
 			<p class="text-sm text-muted-foreground ml-4 mb-1.5">
-				{{ $tn('docsSearch.hint') }}:
+				{{ $t('docsSearch.hint') }}:
 			</p>
 			<Button
 				v-for="page in filteredPages"
@@ -57,7 +57,7 @@ const openPage = async (to: string): Promise<void> => {
 				class="w-full justify-start"
 				@click="openPage(page.to)"
 			>
-				{{ $tn(page.labelKey) }}
+				{{ $t(page.labelKey) }}
 			</Button>
 		</div>
 
