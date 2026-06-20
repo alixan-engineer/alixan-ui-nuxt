@@ -13,7 +13,6 @@ onMounted(() => setToc(autocompletePageToc));
 
 const city = ref<string | number | null>(null);
 const requiredCity = ref<string | number | null>(null);
-const cities = ref<Array<string | number>>([]);
 const requiredCityError = computed(() =>
 	!requiredCity.value ? 'City is required' : '',
 );
@@ -60,15 +59,6 @@ const options = [
 					:options="options"
 					:error="requiredCityError"
 				/>
-			</div>
-		</ExampleBlock>
-	</section>
-
-	<section id="with-chips" class="space-y-5">
-		<h2 class="text-2xl font-semibold">{{ $t('docsSections.withChips') }}</h2>
-		<ExampleBlock :code="examples.chips">
-			<div class="w-full max-w-sm">
-				<AutocompleteChips v-model="cities" label="Cities" :options="options" />
 			</div>
 		</ExampleBlock>
 	</section>

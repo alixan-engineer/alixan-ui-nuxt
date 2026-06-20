@@ -2,9 +2,7 @@
 	"name": "autocomplete",
 	"components": [
 		"Autocomplete.vue",
-		"AutocompleteChips.vue",
-		"Input.vue",
-		"Button.vue"
+		"Input.vue"
 	],
 	"utils": ["cn.ts"]
 }

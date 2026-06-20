@@ -23,15 +23,4 @@ const error = computed(() => !city.value ? 'City is required' : '')
     :error="error"
   />
 </template>`,
-	chips: `<script setup lang="ts">
-const cities = ref([])
-const options = [
-  { label: 'Almaty', value: 'almaty' },
-  { label: 'Astana', value: 'astana' },
-]
-<\/script>
-
-<template>
-  <AutocompleteChips v-model="cities" label="Cities" :options="options" />
-</template>`,
 };
