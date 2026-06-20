@@ -7,7 +7,9 @@ import { fileURLToPath } from 'node:url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const packageRoot = path.resolve(__dirname, '..');
-const [, , command, componentName, ...flags] = process.argv;
+const [, , command, ...args] = process.argv;
+const flags = args.filter(arg => arg.startsWith('-'));
+const componentNames = args.filter(arg => !arg.startsWith('-'));
 const shouldForce = flags.includes('--force') || flags.includes('-f');
 
 // Resolve project root (Nuxt app)
@@ -114,7 +116,7 @@ const addComponent = name => {
 	const entry = getRegistryEntry(name);
 	if (!entry) {
 		console.error(`Component "${name}" not found in registry.`);
-		return;
+		return false;
 	}
 
 	for (const key of [
@@ -132,6 +134,29 @@ const addComponent = name => {
 	}
 
 	console.log(`\nDone. Added ${name}`);
+	return true;
+};
+
+const addComponents = names => {
+	if (!names.length) {
+		console.error('Specify at least one component.');
+		printHelp();
+		process.exitCode = 1;
+		return;
+	}
+
+	let hasMissingComponents = false;
+
+	for (const name of names) {
+		const added = addComponent(name);
+		if (!added) {
+			hasMissingComponents = true;
+		}
+	}
+
+	if (hasMissingComponents) {
+		process.exitCode = 1;
+	}
 };
 
 // List registry
@@ -155,18 +180,18 @@ const listComponents = () => {
 const printHelp = () => {
 	console.log('Alixan UI CLI\n');
 	console.log('Commands:');
-	console.log('  add <component>      Install component');
-	console.log('  list                 List components');
-	console.log('  add <component> --force  Force overwrite');
+	console.log('  add <component...>          Install one or more components');
+	console.log('  list                        List components');
+	console.log('  add <component...> --force  Force overwrite');
 	console.log('\nExample:');
-	console.log('  npx alixan-ui-nuxt add toast');
+	console.log('  npx alixan-ui-nuxt add button icon-button input');
 	console.log(`\nProject root: ${projectRoot}`);
 };
 
 // Router
 switch (command) {
 	case 'add':
-		addComponent(componentName);
+		addComponents(componentNames);
 		break;
 	case 'list':
 		listComponents();

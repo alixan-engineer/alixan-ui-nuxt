@@ -24,6 +24,10 @@ interface RangePreset {
 	value: RangePresetValue;
 }
 
+interface SelectInstance {
+	close: () => void;
+}
+
 const props = withDefaults(defineProps<CalendarProps>(), {
 	label: 'Date',
 	mode: 'day',
@@ -35,7 +39,10 @@ const model = defineModel<string | { from: string; to: string } | null>({
 });
 
 const open = ref(false);
+const navigationSelectOpen = ref(false);
 const triggerRef = ref<HTMLElement | null>(null);
+const monthSelectRef = ref<SelectInstance | null>(null);
+const yearSelectRef = ref<SelectInstance | null>(null);
 const menuStyle = ref<Record<string, string>>({});
 const currentDate = ref(new Date());
 const rangeDraft = ref<{ from: string; to: string }>({ from: '', to: '' });
@@ -225,8 +232,15 @@ const openCalendar = async (): Promise<void> => {
 
 const closeCalendar = (): void => {
 	open.value = false;
+	navigationSelectOpen.value = false;
 	window.removeEventListener('resize', updateOpenMenuPosition);
 	window.removeEventListener('scroll', updateOpenMenuPosition, true);
+};
+
+const closeNavigationSelect = (): void => {
+	monthSelectRef.value?.close();
+	yearSelectRef.value?.close();
+	navigationSelectOpen.value = false;
 };
 
 const moveMonth = (step: number): void => {
@@ -296,6 +310,7 @@ const clearCalendar = (): void => {
 	model.value = null;
 	rangeDraft.value = { from: '', to: '' };
 	selectedPreset.value = null;
+	closeCalendar();
 };
 
 const isSelected = (day: CalendarDay): boolean => {
@@ -369,9 +384,11 @@ onBeforeUnmount(closeCalendar);
 					</button>
 
 					<Select
+						ref="monthSelectRef"
 						v-model="selectedMonth"
 						:options="monthOptions"
 						:aria-label="$t('calendarLabels.month')"
+						@update:open="navigationSelectOpen = $event"
 					/>
 
 					<button
@@ -384,51 +401,64 @@ onBeforeUnmount(closeCalendar);
 					</button>
 
 					<Select
+						ref="yearSelectRef"
 						v-model="selectedYear"
 						:options="
 							yearOptions.map(year => ({ label: String(year), value: year }))
 						"
 						:aria-label="$t('calendarLabels.year')"
+						@update:open="navigationSelectOpen = $event"
 					/>
 				</div>
 
-				<div v-if="mode === 'range'" class="mb-4 grid grid-cols-4 gap-2">
-					<Checkbox
-						v-for="preset in rangePresets"
-						:key="preset.value"
-						v-model="selectedPreset"
-						:value="preset.value"
-						:label="$t(preset.label)"
-					/>
-				</div>
-
-				<div class="grid grid-cols-7 text-center text-sm text-muted-foreground">
-					<span v-for="day in weekDays" :key="day" class="py-1">
-						{{ day }}
-					</span>
-				</div>
-
-				<div class="mt-1 grid grid-cols-7 gap-y-1">
+				<div class="relative">
 					<button
-						v-for="day in days"
-						:key="day.date"
+						v-if="navigationSelectOpen"
 						type="button"
-						:class="
-							cn(
-								'flex h-10 items-center justify-center rounded-xl text-base hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none',
-								!day.isCurrentMonth
-									? 'text-muted-foreground/60'
-									: 'text-foreground',
-								isInRange(day) ? 'bg-primary/10 text-primary' : '',
-								isSelected(day)
-									? 'border border-primary bg-primary/5 text-primary hover:bg-primary/10'
-									: '',
-							)
-						"
-						@click="selectDay(day)"
-					>
-						{{ day.label }}
-					</button>
+						class="absolute inset-0 z-10 cursor-default"
+						aria-label="Close calendar navigation select"
+						@pointerdown.prevent.stop="closeNavigationSelect"
+						@click.prevent.stop
+					/>
+
+					<div v-if="mode === 'range'" class="mb-4 grid grid-cols-4 gap-2">
+						<Checkbox
+							v-for="preset in rangePresets"
+							:key="preset.value"
+							v-model="selectedPreset"
+							:value="preset.value"
+							:label="$t(preset.label)"
+						/>
+					</div>
+
+					<div class="grid grid-cols-7 text-center text-sm text-muted-foreground">
+						<span v-for="day in weekDays" :key="day" class="py-1">
+							{{ day }}
+						</span>
+					</div>
+
+					<div class="mt-1 grid grid-cols-7 gap-y-1">
+						<button
+							v-for="day in days"
+							:key="day.date"
+							type="button"
+							:class="
+								cn(
+									'flex h-10 items-center justify-center rounded-xl text-base hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none',
+									!day.isCurrentMonth
+										? 'text-muted-foreground/60'
+										: 'text-foreground',
+									isInRange(day) ? 'bg-primary/10 text-primary' : '',
+									isSelected(day)
+										? 'border border-primary bg-primary/5 text-primary hover:bg-primary/10'
+										: '',
+								)
+							"
+							@click="selectDay(day)"
+						>
+							{{ day.label }}
+						</button>
+					</div>
 				</div>
 
 				<button

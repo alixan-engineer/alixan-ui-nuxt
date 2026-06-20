@@ -34,6 +34,7 @@ const props = withDefaults(defineProps<SelectProps>(), {
 
 const emit = defineEmits<{
 	change: [option: SelectOption];
+	'update:open': [value: boolean];
 }>();
 
 const model = defineModel<SelectValue | null>({ default: null });
@@ -92,6 +93,7 @@ const updateOpenMenuPosition = (): void => {
 const openSelect = async (): Promise<void> => {
 	if (props.disabled) return;
 	open.value = true;
+	emit('update:open', true);
 	await nextTick();
 	updateMenuPosition();
 	window.addEventListener('resize', updateOpenMenuPosition);
@@ -100,7 +102,10 @@ const openSelect = async (): Promise<void> => {
 };
 
 const closeSelect = () => {
+	if (!open.value) return;
+
 	open.value = false;
+	emit('update:open', false);
 	window.removeEventListener('resize', updateOpenMenuPosition);
 	window.removeEventListener('scroll', updateOpenMenuPosition, true);
 	document.removeEventListener('mousedown', closeSelectOnOutside, true);
@@ -122,6 +127,10 @@ const selectOption = (option: SelectOption) => {
 	emit('change', option);
 	closeSelect();
 };
+
+defineExpose({
+	close: closeSelect,
+});
 
 onBeforeUnmount(closeSelect);
 </script>

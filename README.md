@@ -26,10 +26,10 @@ Alixan UI Nuxt is not a runtime component package. The CLI copies component sour
 
 ## 🚀 Quick Start
 
-Add a component from your project root:
+Add one or more components from your project root:
 
 ```bash
-npx alixan-ui-nuxt add button
+npx alixan-ui-nuxt add button icon-button input
 ```
 
 This copies the component and required utilities into your app:
@@ -109,9 +109,7 @@ Available registry items include:
 Example:
 
 ```bash
-npx alixan-ui-nuxt add dialog
-npx alixan-ui-nuxt add toast
-npx alixan-ui-nuxt add seo
+npx alixan-ui-nuxt add dialog toast seo
 ```
 
 ## 🧰 CLI
@@ -119,7 +117,7 @@ npx alixan-ui-nuxt add seo
 The package exposes one CLI command:
 
 ```bash
-npx alixan-ui-nuxt add <component>
+npx alixan-ui-nuxt add <component...>
 ```
 
 The CLI reads the registry, copies source files into your project, and keeps component paths folder-based:
