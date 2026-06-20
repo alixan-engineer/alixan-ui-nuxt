@@ -180,8 +180,8 @@ onBeforeUnmount(closeSelect);
 			<div
 				v-if="open && teleport"
 				class="fixed inset-0 z-10000"
-				@pointerdown.stop="closeSelect"
-				@click.stop
+				@pointerdown.prevent.stop="closeSelect"
+				@click.prevent.stop
 			/>
 			<div
 				v-if="open"

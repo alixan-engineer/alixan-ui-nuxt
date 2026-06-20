@@ -70,26 +70,18 @@ const updateMenuPosition = (): void => {
 	};
 };
 
-const updateOpenMenuPosition = (): void => {
-	if (!open.value) {
+const openMenu = async (): Promise<void> => {
+	if (open.value) {
 		return;
 	}
 
-	updateMenuPosition();
-};
-
-const openMenu = async (): Promise<void> => {
 	open.value = true;
 	await nextTick();
 	updateMenuPosition();
-	window.addEventListener('resize', updateOpenMenuPosition);
-	window.addEventListener('scroll', updateOpenMenuPosition, true);
 };
 
 const closeMenu = (): void => {
 	open.value = false;
-	window.removeEventListener('resize', updateOpenMenuPosition);
-	window.removeEventListener('scroll', updateOpenMenuPosition, true);
 };
 
 const selectOption = (option: AutocompleteOption): void => {
