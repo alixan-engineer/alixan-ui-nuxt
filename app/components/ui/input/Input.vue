@@ -1,6 +1,15 @@
 <script setup lang="ts">
 import { X } from '@lucide/vue';
-import { computed, nextTick, ref, useAttrs, useId, useSlots, watch } from 'vue';
+import {
+	computed,
+	nextTick,
+	onMounted,
+	ref,
+	useAttrs,
+	useId,
+	useSlots,
+	watch,
+} from 'vue';
 
 import { cn } from '~/utils/cn';
 
@@ -232,13 +241,16 @@ const handleInput = (event: Event): void => {
 	emit('input', event);
 };
 
-const clearValue = async (): Promise<void> => {
-	if (props.disabled || props.readonly) {
-		return;
-	}
-
+const clearValue = async () => {
+	if (props.disabled || props.readonly) return;
 	model.value = '';
 	isTouched.value = true;
+	await nextTick();
+	inputRef.value?.focus();
+};
+
+const focusInput = async () => {
+	if (!props.autofocus || props.disabled) return;
 	await nextTick();
 	inputRef.value?.focus();
 };
@@ -251,6 +263,10 @@ watch(
 		}
 	},
 );
+
+onMounted(() => {
+	focusInput();
+});
 </script>
 
 <template>

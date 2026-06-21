@@ -1,4 +1,5 @@
 import type { Component } from 'vue';
+import { markRaw } from 'vue';
 import { shallowRef } from 'vue';
 
 export type DrawerPosition = 'top' | 'right' | 'bottom' | 'left';
@@ -21,7 +22,7 @@ const drawerState = shallowRef<DrawerState | null>(null);
 export const useDrawer = () => {
 	const open = (component: Component, options: DrawerOpenOptions = {}): void => {
 		drawerState.value = {
-			component,
+			component: markRaw(component),
 			options,
 		};
 	};

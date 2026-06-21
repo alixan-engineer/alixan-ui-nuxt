@@ -1,6 +1,14 @@
 <script setup lang="ts">
 import { Search as SearchIcon, X as XIcon } from '@lucide/vue';
-import { computed, nextTick, onBeforeUnmount, ref, useAttrs, watch } from 'vue';
+import {
+	computed,
+	nextTick,
+	onBeforeUnmount,
+	onMounted,
+	ref,
+	useAttrs,
+	watch,
+} from 'vue';
 
 import { cn } from '~/utils/cn';
 
@@ -68,12 +76,18 @@ const scheduleSearch = (value: string): void => {
 	}, debounceDelay.value);
 };
 
-const clearSearch = async (): Promise<void> => {
+const clearSearch = async () => {
 	shouldSkipNextSearch = true;
 	model.value = '';
 	clearDebounce();
 	emitSearch('');
 	emit('clear');
+	await nextTick();
+	inputRef.value?.focus();
+};
+
+const focusInput = async () => {
+	if (!props.autofocus) return;
 	await nextTick();
 	inputRef.value?.focus();
 };
@@ -84,6 +98,10 @@ watch(model, value => {
 		return;
 	}
 	scheduleSearch(value);
+});
+
+onMounted(() => {
+	focusInput();
 });
 
 onBeforeUnmount(() => clearDebounce());

@@ -3,20 +3,22 @@ const toast = useToast();
 </script>
 
 <template>
-	<Teleport to="body">
-		<TransitionGroup
-			name="toast-list"
-			tag="div"
-			class="fixed left-1/2 top-5 z-9999 px-4 flex w-full max-w-110 -translate-x-1/2 flex-col gap-3"
-		>
-			<Toast
-				v-for="message in toast.messages.value"
-				:key="message.id"
-				:toast="message"
-				@close="toast.remove(message.id)"
-			/>
-		</TransitionGroup>
-	</Teleport>
+	<ClientOnly>
+		<Teleport to="body">
+			<TransitionGroup
+				name="toast-list"
+				tag="div"
+				class="fixed left-1/2 top-5 z-9999 px-4 flex w-full max-w-110 -translate-x-1/2 flex-col gap-3"
+			>
+				<Toast
+					v-for="message in toast.messages.value"
+					:key="message.id"
+					:toast="message"
+					@close="toast.remove(message.id)"
+				/>
+			</TransitionGroup>
+		</Teleport>
+	</ClientOnly>
 </template>
 
 <style scoped lang="scss">

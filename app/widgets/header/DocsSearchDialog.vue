@@ -40,6 +40,7 @@ const openPage = async (to: string): Promise<void> => {
 	<div class="size-full flex flex-col">
 		<div class="p-4">
 			<Search
+				autofocus
 				v-model="query"
 				:debounce="0"
 				:placeholder="$t('docsSearch.placeholder')"
@@ -54,9 +55,14 @@ const openPage = async (to: string): Promise<void> => {
 				v-for="page in filteredPages"
 				:key="page.to"
 				variant="ghost"
-				class="w-full justify-start"
+				class="w-full justify-start gap-3"
 				@click="openPage(page.to)"
 			>
+				<template #leading>
+					<div
+						class="border-muted-foreground aspect-square size-4 rounded-full border border-dashed"
+					/>
+				</template>
 				{{ $t(page.labelKey) }}
 			</Button>
 		</div>

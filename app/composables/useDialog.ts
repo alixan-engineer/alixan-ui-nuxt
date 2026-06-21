@@ -1,4 +1,5 @@
 import type { Component } from 'vue';
+import { markRaw } from 'vue';
 import { shallowRef } from 'vue';
 
 export interface DialogOpenOptions {
@@ -18,7 +19,7 @@ const dialogState = shallowRef<DialogState | null>(null);
 export const useDialog = () => {
 	const open = (component: Component, options: DialogOpenOptions = {}): void => {
 		dialogState.value = {
-			component,
+			component: markRaw(component),
 			options,
 		};
 	};

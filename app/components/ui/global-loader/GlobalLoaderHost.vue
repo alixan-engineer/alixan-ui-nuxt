@@ -3,16 +3,18 @@ const loader = useGlobalLoader();
 </script>
 
 <template>
-	<Teleport to="body">
-		<Transition name="global-loader">
-			<div
-				v-if="loader.state.value.open"
-				class="backdrop z-70 flex items-center justify-center p-4"
-			>
-				<GlobalLoader :label="loader.state.value.label" />
-			</div>
-		</Transition>
-	</Teleport>
+	<ClientOnly>
+		<Teleport to="body">
+			<Transition name="global-loader">
+				<div
+					v-if="loader.state.value.open"
+					class="backdrop z-70 flex items-center justify-center p-4"
+				>
+					<GlobalLoader :label="loader.state.value.label" />
+				</div>
+			</Transition>
+		</Teleport>
+	</ClientOnly>
 </template>
 
 <style scoped>
