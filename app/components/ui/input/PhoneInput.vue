@@ -23,6 +23,7 @@ const normalizedCountryCode = computed(() => props.countryCode.trim() || '+7');
 const countryCodeDigits = computed(() =>
 	normalizedCountryCode.value.replace(/\D/g, ''),
 );
+const maxDigits = computed(() => (props.mask.match(/#/g) ?? []).length);
 const hasValue = computed(() => inputValue.value.length > 0);
 const showPrefix = computed(() => isFocused.value || hasValue.value);
 const visiblePlaceholder = computed(() =>
@@ -56,14 +57,27 @@ const applyMask = (value: string): string => {
 		.replace(/[\s()-]+$/g, '');
 };
 
-const stripCountryCode = (value: string): string => {
+const getNationalDigits = (value: string): string => {
+	const trimmedValue = value.trim();
 	const digits = value.replace(/\D/g, '');
+	const hasExplicitCountryCode =
+		normalizedCountryCode.value.length > 0 &&
+		trimmedValue.startsWith(normalizedCountryCode.value);
+	const hasOverflowCountryCode =
+		maxDigits.value > 0 &&
+		digits.length > maxDigits.value &&
+		countryCodeDigits.value.length > 0 &&
+		digits.startsWith(countryCodeDigits.value);
 
-	if (countryCodeDigits.value && digits.startsWith(countryCodeDigits.value)) {
-		return digits.slice(countryCodeDigits.value.length);
+	if (hasExplicitCountryCode || hasOverflowCountryCode) {
+		const nextDigits = digits.slice(countryCodeDigits.value.length);
+
+		return maxDigits.value > 0
+			? nextDigits.slice(0, maxDigits.value)
+			: nextDigits;
 	}
 
-	return digits;
+	return maxDigits.value > 0 ? digits.slice(0, maxDigits.value) : digits;
 };
 
 const handleFocus = (): void => {
@@ -77,7 +91,7 @@ const handleBlur = (): void => {
 watch(
 	() => model.value,
 	(value) => {
-		const nextValue = applyMask(stripCountryCode(String(value ?? '')));
+		const nextValue = applyMask(getNationalDigits(String(value ?? '')));
 
 		if (nextValue !== inputValue.value) {
 			inputValue.value = nextValue;
@@ -89,9 +103,12 @@ watch(
 watch(
 	[inputValue, normalizedCountryCode],
 	() => {
-		const nextValue = inputValue.value
-			? `${normalizedCountryCode.value} ${inputValue.value}`
-			: '';
+		const nextValue = getNationalDigits(inputValue.value);
+		const nextInputValue = applyMask(nextValue);
+
+		if (nextInputValue !== inputValue.value) {
+			inputValue.value = nextInputValue;
+		}
 
 		if (nextValue !== String(model.value ?? '')) {
 			model.value = nextValue;
@@ -104,7 +121,6 @@ watch(
 	<Input
 		v-model="inputValue"
 		type="tel"
-		:mask="mask"
 		:placeholder="visiblePlaceholder"
 		:autofocus="autofocus"
 		:style="inputStyle"
