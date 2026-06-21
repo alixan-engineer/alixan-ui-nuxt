@@ -1,6 +1,6 @@
 export const appCode = `<template>
   <NuxtPage />
-  <ToastHost /> <!-- Add ToastHost once near the root of your app. -->
+  <ToastHost /> <!-- Add ToastHost once near the root. It renders only on the client. -->
 </template>`;
 
 export const exampleCode = `<script setup lang="ts">

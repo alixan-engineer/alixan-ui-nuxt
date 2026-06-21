@@ -549,6 +549,7 @@
 		"installationDescription": "Nuxt i18n модулін орнатып, оны тіркеңіз:",
 		"setupDescriptionStart": "Қолданыңыз",
 		"setupDescriptionEnd": "сонда әдепкі тіл prefix-сіз қалады, ал басқа locales prefix алады.",
+		"vueI18nConfigDescription": "Сыртқы vueI18n config файлын көрсетіп, i18n warnings мәндерін өшіріңіз:",
 		"translationsTitle": "Translations",
 		"translationsDescriptionStart": "Аударма JSON файлдарын сақтаңыз:",
 		"translationsDescriptionEnd": "file option әр locale мәнін өз аударма файлымен байланыстырады.",

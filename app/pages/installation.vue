@@ -8,6 +8,7 @@ import {
 	nuxtConfig,
 	rootIdConfig,
 	usageCode,
+	vueI18nConfig,
 } from '~/shared/examples/installation/usage-examples';
 import { accentColors } from '~/shared/theme/colors';
 
@@ -205,6 +206,23 @@ const currentTailwindCss = computed(() =>
 				/>
 			</div>
 			<pre class="p-4 text-sm leading-7"><code>{{ i18nConfig }}</code></pre>
+		</div>
+
+		<p class="text-muted-foreground leading-7">
+			{{ $t('i18nPage.vueI18nConfigDescription') }}
+			<code>i18n/configs/i18n.config.ts</code>.
+		</p>
+
+		<div class="island">
+			<div class="px-4 py-3 flex items-center gap-3 border-b">
+				<span>i18n/configs/i18n.config.ts</span>
+				<div class="flex-1" />
+				<CopyButton
+					:text="vueI18nConfig"
+					:label="$t('installationPage.copyCode')"
+				/>
+			</div>
+			<pre class="p-4 text-sm leading-7"><code>{{ vueI18nConfig }}</code></pre>
 		</div>
 	</section>
 

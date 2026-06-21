@@ -549,6 +549,7 @@
 		"installationDescription": "Install the Nuxt i18n module, then register it in",
 		"setupDescriptionStart": "Use",
 		"setupDescriptionEnd": "to keep the default language without a prefix and prefix all other locales.",
+		"vueI18nConfigDescription": "Point vueI18n to the external config file and disable i18n warnings in",
 		"translationsTitle": "Translations",
 		"translationsDescriptionStart": "Keep locale JSON files in",
 		"translationsDescriptionEnd": "The file option maps each locale to its translation file.",

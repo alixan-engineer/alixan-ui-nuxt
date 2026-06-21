@@ -9,6 +9,7 @@ import {
 	ruTranslationsCode,
 	setupCode,
 	usageCode,
+	vueI18nConfigCode,
 } from '~/shared/examples/i18n/usage-examples';
 
 usePageMeta({
@@ -71,6 +72,15 @@ const changeLocale = async (value: Locale): Promise<void> => {
 			{{ $t('i18nPage.setupDescriptionEnd') }}
 		</p>
 		<ExampleBlock path="nuxt.config.ts" :code="setupCode" :preview="false" />
+		<p class="text-muted-foreground leading-7">
+			{{ $t('i18nPage.vueI18nConfigDescription') }}
+			<code>i18n/configs/i18n.config.ts</code>.
+		</p>
+		<ExampleBlock
+			path="i18n/configs/i18n.config.ts"
+			:code="vueI18nConfigCode"
+			:preview="false"
+		/>
 	</section>
 
 	<section id="translations" class="space-y-5">

@@ -164,6 +164,38 @@ npx nuxt module add i18n
 
 Components and docs use Nuxt i18n's built-in `$t`. Set `missingWarn: false` in i18n config if plain values can pass through `$t`.
 
+The Nuxt module points to a separate Vue i18n config file:
+
+```ts
+export default defineNuxtConfig({
+	modules: ['@nuxtjs/i18n'],
+	i18n: {
+		vueI18n: './configs/i18n.config.ts',
+		defaultLocale: 'en',
+		strategy: 'prefix_except_default',
+		detectBrowserLanguage: false,
+		locales: [
+			{ code: 'en', name: 'English', file: 'en.json' },
+			{ code: 'ru', name: 'Русский', file: 'ru.json' },
+			{ code: 'kk', name: 'Қазақша', file: 'kk.json' },
+		],
+	},
+});
+```
+
+```ts
+// i18n/configs/i18n.config.ts
+export default {
+	// Disable warnings because some UI props intentionally pass plain strings through $t.
+	missingWarn: false,
+	fallbackWarn: false,
+};
+```
+
+## 🪟 Client-only overlays
+
+`DialogHost`, `DrawerHost` and `ToastHost` should be mounted once near the root of the app. These hosts render their overlay content through `ClientOnly`, so dialog, drawer and toast UI is client-side only.
+
 ## 🔎 SEO
 
 The `seo` registry item includes:
@@ -228,6 +260,9 @@ cli/
   index.js
 registry/
   *.json
+i18n/
+  configs/i18n.config.ts
+  locales/*.json
 ```
 
 ## 📄 License

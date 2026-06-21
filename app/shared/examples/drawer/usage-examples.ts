@@ -1,6 +1,6 @@
 export const appCode = `<template>
   <NuxtPage />
-  <DrawerHost /> <!-- Add DrawerHost once near the root of your app. -->
+  <DrawerHost /> <!-- Add DrawerHost once near the root. It renders only on the client. -->
 </template>`;
 
 export const usageCode = `<script setup lang="ts">

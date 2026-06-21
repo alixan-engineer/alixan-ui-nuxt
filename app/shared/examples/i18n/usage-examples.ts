@@ -1,23 +1,23 @@
 export const installCode = `npx nuxt module add i18n`;
 export const setupCode = `export default defineNuxtConfig({
-  modules: [
-    [
-      '@nuxtjs/i18n',
-      {
-        missingWarn: false,
-        fallbackWarn: false,
-        defaultLocale: 'en',
-        strategy: 'prefix_except_default',
-        detectBrowserLanguage: false,
-        locales: [
-          { code: 'en', name: 'English', file: 'en.json' },
-          { code: 'ru', name: 'Русский', file: 'ru.json' },
-          { code: 'kk', name: 'Қазақша', file: 'kk.json' },
-        ],
-      },
+  modules: ['@nuxtjs/i18n'],
+  i18n: {
+    vueI18n: './configs/i18n.config.ts',
+    defaultLocale: 'en',
+    strategy: 'prefix_except_default',
+    detectBrowserLanguage: false,
+    locales: [
+      { code: 'en', name: 'English', file: 'en.json' },
+      { code: 'ru', name: 'Русский', file: 'ru.json' },
+      { code: 'kk', name: 'Қазақша', file: 'kk.json' },
     ],
-  ],
+  },
 })`;
+export const vueI18nConfigCode = `export default {
+  // Disable warnings because some UI props intentionally pass plain strings through $t.
+  missingWarn: false,
+  fallbackWarn: false,
+}`;
 export const enTranslationsCode = `{
   "app": {
     "settings": "Open settings"

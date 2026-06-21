@@ -1,6 +1,6 @@
 export const hostCode = `<template>
   <NuxtPage />
-  <DialogHost /> <!-- Add DialogHost once near the root of your app. -->
+  <DialogHost /> <!-- Add DialogHost once near the root. It renders only on the client. -->
 </template>`;
 
 export const openCode = `<script setup lang="ts">
