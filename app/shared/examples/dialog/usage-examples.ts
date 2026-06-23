@@ -61,7 +61,7 @@ const save = () => {
 
 <template>
   <div class="size-full flex flex-col divide-y">
-    <div class="flex-1 p-4">
+    <div class="flex-1 p-6">
       <Input v-model="projectName" label="dialogPreview.projectName" />
     </div>
 
