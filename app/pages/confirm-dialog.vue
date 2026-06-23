@@ -21,12 +21,12 @@ const openConfirm = (): void => {
 		width: '360px',
 		height: '240px',
 		data: {
-			title: 'Delete item?',
-			description: 'This action cannot be undone.',
-			cancelLabel: 'Cancel',
-			submitLabel: 'Delete',
+			title: 'confirmDialogPreview.title',
+			description: 'confirmDialogPreview.description',
+			cancelLabel: 'actions.cancel',
+			submitLabel: 'confirmDialogPreview.delete',
 			submitColor: 'destructive',
-			onSubmit: () => toast.open('Deleted', 'success'),
+			onSubmit: () => toast.open('confirmDialogPreview.deleted', 'success'),
 		},
 	});
 };
@@ -50,7 +50,9 @@ const openConfirm = (): void => {
 	<section id="usage" class="space-y-5">
 		<h2 class="text-2xl font-semibold">{{ $t('docsSections.usage') }}</h2>
 		<ExampleBlock :code="code">
-			<Button color="destructive" @click="openConfirm">Delete</Button>
+			<Button color="destructive" @click="openConfirm">
+				{{ $t('confirmDialogPreview.delete') }}
+			</Button>
 		</ExampleBlock>
 	</section>
 

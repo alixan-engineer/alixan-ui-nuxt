@@ -8,10 +8,10 @@ const openConfirm = () => {
     width: '360px',
     height: '240px',
     data: {
-      title: 'Delete item?',
-      description: 'This action cannot be undone.',
-      cancelLabel: 'Cancel',
-      submitLabel: 'Delete',
+      title: 'confirmDialogPreview.title',
+      description: 'confirmDialogPreview.description',
+      cancelLabel: 'actions.cancel',
+      submitLabel: 'confirmDialogPreview.delete',
       submitColor: 'destructive',
       onSubmit: () => console.log('confirmed'),
     },
@@ -21,6 +21,6 @@ const openConfirm = () => {
 
 <template>
   <Button color="destructive" @click="openConfirm">
-    Delete
+    {{ $t('confirmDialogPreview.delete') }}
   </Button>
 </template>`;

@@ -18,8 +18,6 @@ usePageMeta({
 const loader = useGlobalLoader();
 const dialog = useDialog();
 const { setToc } = usePageToc();
-const localePath = useLocalePath();
-const { t } = useI18n();
 
 onMounted(() => setToc(iconButtonPageToc));
 
@@ -33,9 +31,9 @@ const openDisableAlert = (): void => {
 		width: '360px',
 		height: '280px',
 		data: {
-			title: t('componentDocs.iconButton.actionUnavailable'),
-			description: t('componentDocs.iconButton.exportUnavailable'),
-			buttonLabel: t('componentDocs.iconButton.gotIt'),
+			title: 'componentDocs.iconButton.actionUnavailable',
+			description: 'componentDocs.iconButton.exportUnavailable',
+			buttonLabel: 'componentDocs.iconButton.gotIt',
 		},
 	});
 };
@@ -111,7 +109,7 @@ const openDisableAlert = (): void => {
 		<h2 class="text-2xl font-semibold">{{ $t('docsSections.navigation') }}</h2>
 		<ExampleBlock :code="iconButtonExamples.navigation">
 			<div class="flex items-center gap-2">
-				<IconButton :to="localePath('/icon-button')">
+				<IconButton :to="$localePath('/icon-button')">
 					<ArrowUpRight />
 				</IconButton>
 

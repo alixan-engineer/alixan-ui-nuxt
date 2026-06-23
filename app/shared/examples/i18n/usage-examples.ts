@@ -84,12 +84,8 @@ const changeLocale = async (value: Locale): Promise<void> => {
     />
   </div>
 </template>`;
-export const localePathCode = `<script setup lang="ts">
-const localePath = useLocalePath()
-<\/script>
-
-<template>
-  <Button :to="localePath('/button')">
+export const localePathCode = `<template>
+  <Button :to="$localePath('/button')">
     Button
   </Button>
 </template>`;

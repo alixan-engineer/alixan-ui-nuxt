@@ -7,7 +7,6 @@ usePageMeta({
 });
 
 const { setToc } = usePageToc();
-const localePath = useLocalePath();
 
 onMounted(() => setToc([]));
 
@@ -47,13 +46,13 @@ const features = [
 			</div>
 
 			<div class="flex flex-wrap gap-3">
-				<Button :to="localePath('/installation')" color="primary">
+				<Button :to="$localePath('/installation')" color="primary">
 					{{ $t('homePage.actions.getStarted') }}
 					<template #trailing>
 						<ArrowRight class="size-5" />
 					</template>
 				</Button>
-				<Button :to="localePath('/button')" variant="outlined" color="default">
+				<Button :to="$localePath('/button')" variant="outlined" color="default">
 					{{ $t('homePage.actions.browseComponents') }}
 				</Button>
 			</div>

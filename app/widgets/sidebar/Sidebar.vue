@@ -68,7 +68,7 @@ const isActive = (to: string) =>
 						:key="item.labelKey"
 						class="justify-start"
 						size="sm"
-						:to="localePath(item.to)"
+						:to="$localePath(item.to)"
 						:variant="isActive(item.to) ? 'filled' : 'ghost'"
 						:color="isActive(item.to) ? 'primary' : 'default'"
 						@click="

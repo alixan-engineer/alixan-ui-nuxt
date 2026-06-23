@@ -7,7 +7,11 @@
 		"infoPrefix": "Для более подробной информации перейдите в"
 	},
 	"actions": {
-		"clear": "Очистить"
+		"clear": "Очистить",
+		"cancel": "Отмена",
+		"confirm": "Подтвердить",
+		"close": "Закрыть",
+		"ok": "OK"
 	},
 	"tooltip": {
 		"demo": {
@@ -89,6 +93,35 @@
 		"openDialog": "Открыть диалог",
 		"cancel": "Отмена",
 		"save": "Сохранить"
+	},
+	"confirmDialogPreview": {
+		"title": "Удалить элемент?",
+		"description": "Это действие нельзя отменить.",
+		"delete": "Удалить",
+		"deleted": "Удалено"
+	},
+	"alertDialogPreview": {
+		"actionUnavailable": "Действие недоступно",
+		"featureUnavailable": "Эта функция пока недоступна. Попробуйте позже.",
+		"gotIt": "Понятно",
+		"projectSaved": "Проект сохранен",
+		"changesSaved": "Изменения успешно сохранены.",
+		"done": "Готово",
+		"imageMedia": "Изображение",
+		"imageMediaDescription": "Используйте нативный тег img, когда диалогу нужно статичное изображение.",
+		"iconMedia": "Иконка",
+		"iconMediaDescription": "Передайте импортированный Vue-компонент, когда нужна иконка.",
+		"openAlert": "Открыть сообщение",
+		"openError": "Открыть ошибку",
+		"openSuccess": "Открыть успех",
+		"openImage": "Открыть изображение",
+		"openIcon": "Открыть иконку"
+	},
+	"dropdownPreview": {
+		"openMenu": "Открыть меню",
+		"profile": "Профиль",
+		"settings": "Настройки",
+		"deleteWorkspace": "Удалить {name}"
 	},
 	"errorPage": {
 		"notFoundTitle": "Страница не найдена",
@@ -466,6 +499,7 @@
 	},
 	"validation": {
 		"required": "Заполните поле",
+		"email": "Введите корректный email",
 		"usernamePattern": "Только буквы и цифры",
 		"iinPattern": "ИИН должен содержать 12 цифр"
 	},
@@ -658,10 +692,12 @@
 		"clearEvent": "Вызывается при клике на кнопку очистки.",
 		"selectModelValue": "Выбранное значение option, используемое через v-model.",
 		"selectPlaceholder": "Текст, отображаемый когда option не выбран.",
-		"selectOptions": "Список options с label, value и optional disabled.",
-		"selectDisabled": "Отключает взаимодействие с select.",
-		"selectTeleport": "Телепортирует menu в body. Оставляйте true для nested popovers; ставьте false только если menu должна остаться внутри local layout.",
-		"statusTone": "Семантический тон статуса.",
+			"selectOptions": "Список options с label, value и optional disabled.",
+			"selectDisabled": "Отключает взаимодействие с select.",
+			"selectTeleport": "Телепортирует menu в body. Оставляйте true для nested popovers; ставьте false только если menu должна остаться внутри local layout.",
+			"selectRequired": "Показывает сообщение обязательного поля, если option не выбрана.",
+			"selectError": "Внешнее сообщение валидации, отображаемое после взаимодействия с select.",
+			"statusTone": "Семантический тон статуса.",
 		"statusSize": "Управляет высотой, padding и gap.",
 		"switchLabel": "Опциональный label рядом со switch.",
 		"switchDisabled": "Отключает взаимодействие со switch.",

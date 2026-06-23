@@ -74,12 +74,11 @@ import IconButton from '@/components/ui/icon-button/IconButton.vue'
 import { ArrowUpRight } from '@lucide/vue'
 import IconButton from '@/components/ui/icon-button/IconButton.vue'
 
-const localePath = useLocalePath()
 <\/script>
 
 <template>
   <div class="flex items-center gap-2">
-    <IconButton :to="localePath('/icon-button')">
+    <IconButton :to="$localePath('/icon-button')">
       <ArrowUpRight />
     </IconButton>
 
@@ -115,16 +114,15 @@ const save = () => {
 import { ArrowUpRight } from '@lucide/vue'
 
 const dialog = useDialog()
-const { t } = useI18n()
 
 const openAlert = () => {
   dialog.open(AlertDialog, {
     width: '360px',
     height: '280px',
     data: {
-      title: t('componentDocs.iconButton.actionUnavailable'),
-      description: t('componentDocs.iconButton.exportUnavailable'),
-      buttonLabel: t('componentDocs.iconButton.gotIt'),
+      title: 'componentDocs.iconButton.actionUnavailable',
+      description: 'componentDocs.iconButton.exportUnavailable',
+      buttonLabel: 'componentDocs.iconButton.gotIt',
     },
   })
 }

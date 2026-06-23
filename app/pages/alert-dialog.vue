@@ -27,9 +27,9 @@ const openAlert = (): void => {
 		width: '360px',
 		height: '280px',
 		data: {
-			title: 'Action unavailable',
-			description: 'This feature is not available yet. Try again later.',
-			buttonLabel: 'Got it',
+			title: 'alertDialogPreview.actionUnavailable',
+			description: 'alertDialogPreview.featureUnavailable',
+			buttonLabel: 'alertDialogPreview.gotIt',
 			buttonColor: 'destructive',
 			mediaComponent: 'Lottie',
 			mediaProps: {
@@ -47,9 +47,9 @@ const openSuccessAlert = (): void => {
 		width: '360px',
 		height: '280px',
 		data: {
-			title: 'Project saved',
-			description: 'Your changes were saved successfully.',
-			buttonLabel: 'Done',
+			title: 'alertDialogPreview.projectSaved',
+			description: 'alertDialogPreview.changesSaved',
+			buttonLabel: 'alertDialogPreview.done',
 			buttonColor: 'primary',
 			mediaComponent: 'Lottie',
 			mediaProps: {
@@ -67,10 +67,9 @@ const openImageAlert = (): void => {
 		width: '360px',
 		height: '280px',
 		data: {
-			title: 'Image media',
-			description:
-				'Use the native img tag when the dialog needs a static image.',
-			buttonLabel: 'Close',
+			title: 'alertDialogPreview.imageMedia',
+			description: 'alertDialogPreview.imageMediaDescription',
+			buttonLabel: 'actions.close',
 			mediaComponent: 'img',
 			mediaProps: {
 				src: successIcon,
@@ -86,9 +85,9 @@ const openIconAlert = (): void => {
 		width: '360px',
 		height: '280px',
 		data: {
-			title: 'Icon media',
-			description: 'Pass an imported Vue component when you need an icon.',
-			buttonLabel: 'Done',
+			title: 'alertDialogPreview.iconMedia',
+			description: 'alertDialogPreview.iconMediaDescription',
+			buttonLabel: 'alertDialogPreview.done',
 			buttonColor: 'primary',
 			mediaComponent: CheckCircle,
 			mediaProps: {
@@ -118,19 +117,27 @@ const openIconAlert = (): void => {
 		<h2 class="text-2xl font-semibold">{{ $t('docsSections.usage') }}</h2>
 
 		<ExampleBlock :code="errorCode">
-			<Button color="destructive" @click="openAlert">Open error</Button>
+			<Button color="destructive" @click="openAlert">
+				{{ $t('alertDialogPreview.openError') }}
+			</Button>
 		</ExampleBlock>
 
 		<ExampleBlock :code="successCode">
-			<Button color="primary" @click="openSuccessAlert">Open success</Button>
+			<Button color="primary" @click="openSuccessAlert">
+				{{ $t('alertDialogPreview.openSuccess') }}
+			</Button>
 		</ExampleBlock>
 
 		<ExampleBlock :code="imageCode">
-			<Button @click="openImageAlert">Open image</Button>
+			<Button @click="openImageAlert">
+				{{ $t('alertDialogPreview.openImage') }}
+			</Button>
 		</ExampleBlock>
 
 		<ExampleBlock :code="iconCode">
-			<Button color="primary" @click="openIconAlert">Open icon</Button>
+			<Button color="primary" @click="openIconAlert">
+				{{ $t('alertDialogPreview.openIcon') }}
+			</Button>
 		</ExampleBlock>
 	</section>
 

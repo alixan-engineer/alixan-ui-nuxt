@@ -39,6 +39,7 @@ const range = ref<{ from: string; to: string } | null>(null);
 					v-model="date"
 					:label="$t('calendarLabels.date')"
 					:locale="locale"
+					date-format="dd.mm.yyyy"
 				/>
 			</div>
 		</ExampleBlock>

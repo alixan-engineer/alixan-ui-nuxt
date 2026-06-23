@@ -17,7 +17,6 @@ usePageMeta({
 });
 
 const { setToc } = usePageToc();
-const localePath = useLocalePath();
 
 onMounted(() => setToc(seoPageToc));
 </script>
@@ -91,7 +90,7 @@ onMounted(() => setToc(seoPageToc));
 		</h2>
 		<Info>
 			{{ $t('seoPage.iconKitchenRef.prefix') }}
-			<TextLink :href="localePath('/icon-kitchen')">
+			<TextLink :href="$localePath('/icon-kitchen')">
 				{{ $t('seoPage.iconKitchenRef.link') }}
 			</TextLink>
 			{{ $t('seoPage.iconKitchenRef.suffix') }}

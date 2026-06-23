@@ -18,13 +18,11 @@ import Button from '@/components/ui/button/Button.vue'
 </template>`,
 	navigation: `<script setup lang="ts">
 import Button from '@/components/ui/button/Button.vue'
-
-const localePath = useLocalePath()
 <\/script>
 
 <template>
   <div class="flex items-center gap-2">
-    <Button :to="localePath('/icon-button')">
+    <Button :to="$localePath('/icon-button')">
       NuxtLink
     </Button>
 
@@ -104,16 +102,15 @@ const save = () => {
 </template>`,
 	disable: `<script setup lang="ts">
 const dialog = useDialog()
-const { t } = useI18n()
 
 const openAlert = () => {
   dialog.open(AlertDialog, {
     width: '360px',
     height: '280px',
     data: {
-      title: t('componentDocs.button.actionUnavailable'),
-      description: t('componentDocs.button.exportUnavailable'),
-      buttonLabel: t('componentDocs.button.gotIt'),
+      title: 'componentDocs.button.actionUnavailable',
+      description: 'componentDocs.button.exportUnavailable',
+      buttonLabel: 'componentDocs.button.gotIt',
     },
   })
 }

@@ -19,7 +19,6 @@ usePageMeta({
 
 const { createThemeCss } = useTheme();
 const { setToc } = usePageToc();
-const localePath = useLocalePath();
 
 onMounted(() => setToc(installationPageToc));
 
@@ -191,7 +190,7 @@ const currentTailwindCss = computed(() =>
 
 		<Info>
 			{{ $t('app.infoPrefix') }}
-			<TextLink :href="localePath('/i18n')">
+			<TextLink :href="$localePath('/i18n')">
 				{{ $t('installationPage.i18nConfiguration.infoLink') }}
 			</TextLink>
 		</Info>

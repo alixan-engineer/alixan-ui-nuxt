@@ -23,7 +23,7 @@ const save = (): void => {
 
 <template>
 	<div class="size-full flex flex-col divide-y">
-		<div class="flex-1 p-4">
+		<div class="flex-1 p-6">
 			<Input v-model="projectName" label="dialogPreview.projectName" />
 		</div>
 		<div class="grid grid-cols-2 gap-2 p-4">

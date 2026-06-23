@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Check, ChevronDown } from '@lucide/vue';
-import { computed, nextTick, ref } from 'vue';
+import { computed, nextTick, ref, useId } from 'vue';
 
 import { cn } from '~/utils/cn';
 
@@ -22,6 +22,8 @@ interface SelectProps {
 	options?: SelectOption[];
 	disabled?: boolean;
 	teleport?: boolean;
+	required?: boolean;
+	error?: string;
 }
 
 const props = withDefaults(defineProps<SelectProps>(), {
@@ -30,6 +32,8 @@ const props = withDefaults(defineProps<SelectProps>(), {
 	options: () => [],
 	disabled: false,
 	teleport: true,
+	required: false,
+	error: '',
 });
 
 const emit = defineEmits<{
@@ -42,7 +46,9 @@ const model = defineModel<SelectValue | null>({ default: null });
 const triggerRef = ref<HTMLElement | null>(null);
 const menuRef = ref<HTMLElement | null>(null);
 const open = ref(false);
+const isTouched = ref(false);
 const menuStyle = ref<Record<string, string>>({});
+const generatedId = useId();
 
 const selectedOption = computed(
 	() => props.options.find(option => option.value === model.value) ?? null,
@@ -53,6 +59,18 @@ const isFocused = computed(() => open.value || hasSelectedValue.value);
 
 const selectedLabel = computed(
 	() => selectedOption.value?.label ?? props.placeholder,
+);
+const messageId = computed(() => `${generatedId}-message`);
+const validationError = computed(() => {
+	if (props.required && !hasSelectedValue.value) {
+		return 'validation.required';
+	}
+
+	return '';
+});
+const errorMessage = computed(() => props.error || validationError.value);
+const visibleError = computed(() =>
+	isTouched.value && errorMessage.value ? errorMessage.value : '',
 );
 
 const updateMenuPosition = () => {
@@ -104,6 +122,7 @@ const openSelect = async (): Promise<void> => {
 const closeSelect = () => {
 	if (!open.value) return;
 
+	isTouched.value = true;
 	open.value = false;
 	emit('update:open', false);
 	window.removeEventListener('resize', updateOpenMenuPosition);
@@ -123,6 +142,7 @@ const toggleSelect = () => (open.value ? closeSelect() : openSelect());
 
 const selectOption = (option: SelectOption) => {
 	if (option.disabled) return;
+	isTouched.value = true;
 	model.value = option.value;
 	emit('change', option);
 	closeSelect();
@@ -136,7 +156,16 @@ onBeforeUnmount(closeSelect);
 </script>
 
 <template>
-	<div :class="cn('relative w-full', label ? 'min-h-14' : '', $attrs.class)">
+	<div
+		:class="
+			cn(
+				'relative w-full',
+				label ? 'min-h-20' : '',
+				visibleError ? 'space-y-1' : '',
+				$attrs.class,
+			)
+		"
+	>
 		<label
 			v-if="label"
 			:class="
@@ -144,21 +173,28 @@ onBeforeUnmount(closeSelect);
 					'pointer-events-none absolute left-3 z-10 px-1 text-base font-normal transition-all duration-200 text-muted-foreground',
 					isFocused ? 'top-1.5 text-xs' : 'top-4',
 					disabled ? 'text-muted-foreground/50' : '',
+					visibleError ? 'text-destructive!' : '',
 				)
 			"
 		>
-			{{ label }}
+			{{ $t(label) }}
 		</label>
 
 		<button
 			ref="triggerRef"
 			type="button"
 			:disabled="disabled"
+			:aria-invalid="visibleError ? true : undefined"
+			:aria-describedby="visibleError ? messageId : undefined"
 			:class="
 				cn(
 					'flex w-full items-center justify-between gap-2 border px-4 text-left hover:bg-secondary/40 focus-visible:bg-secondary/40 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50',
 					label ? 'h-14 rounded-2xl pt-2' : 'h-11 rounded-xl',
-					open ? 'border-primary' : 'border-border',
+					visibleError
+						? 'border-destructive text-destructive hover:border-destructive focus-visible:border-destructive'
+						: open
+							? 'border-primary'
+							: 'border-border',
 				)
 			"
 			@click="toggleSelect"
@@ -172,7 +208,7 @@ onBeforeUnmount(closeSelect);
 					)
 				"
 			>
-				{{ selectedLabel }}
+				{{ $t(selectedLabel) }}
 			</span>
 			<ChevronDown
 				:class="
@@ -180,10 +216,22 @@ onBeforeUnmount(closeSelect);
 						'size-5 text-muted-foreground transition-transform',
 						open ? 'rotate-180' : '',
 						label && 'mb-1.5',
+						visibleError ? 'text-destructive!' : '',
 					)
 				"
 			/>
 		</button>
+
+		<Transition name="select-message" mode="out-in">
+			<p
+				v-if="visibleError"
+				:id="messageId"
+				:key="visibleError"
+				class="px-3 text-sm font-medium text-destructive"
+			>
+				{{ $t(visibleError) }}
+			</p>
+		</Transition>
 
 		<Teleport to="body" :disabled="!teleport">
 			<div
@@ -217,10 +265,34 @@ onBeforeUnmount(closeSelect);
 					"
 					@click="selectOption(option)"
 				>
-					<span class="min-w-0 flex-1 truncate">{{ option.label }}</span>
+					<span class="min-w-0 flex-1 truncate">{{ $t(option.label) }}</span>
 					<Check v-if="model === option.value" class="size-4" />
 				</button>
 			</div>
 		</Teleport>
 	</div>
 </template>
+
+<style scoped lang="scss">
+.select-message-enter-active,
+.select-message-leave-active {
+	transition:
+		opacity 160ms ease,
+		transform 160ms ease,
+		max-height 180ms ease;
+}
+
+.select-message-enter-from,
+.select-message-leave-to {
+	max-height: 0;
+	opacity: 0;
+	transform: translateY(-4px);
+}
+
+.select-message-enter-to,
+.select-message-leave-from {
+	max-height: 32px;
+	opacity: 1;
+	transform: translateY(0);
+}
+</style>

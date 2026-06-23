@@ -13,11 +13,38 @@ const { setToc } = usePageToc();
 onMounted(() => setToc(selectPageToc));
 
 const value = ref<string | number | null>('cupertino');
+const requiredValue = ref<string | number | null>(null);
 const options = [
 	{ label: 'Cupertino', value: 'cupertino' },
 	{ label: 'Material', value: 'material' },
 	{ label: 'Fluent', value: 'fluent', disabled: true },
 ];
+
+const usageCode = `<script setup lang="ts">
+const value = ref('cupertino')
+const options = [
+  { label: 'Cupertino', value: 'cupertino' },
+  { label: 'Material', value: 'material' },
+  { label: 'Fluent', value: 'fluent', disabled: true },
+]
+<\/script>
+
+<template>
+  <Select v-model="value" label="Design" :options="options" />
+</template>`;
+
+const validationCode = `<script setup lang="ts">
+const value = ref(null)
+const options = [
+  { label: 'Cupertino', value: 'cupertino' },
+  { label: 'Material', value: 'material' },
+  { label: 'Fluent', value: 'fluent', disabled: true },
+]
+<\/script>
+
+<template>
+  <Select v-model="value" label="Design" :options="options" required />
+</template>`;
 </script>
 
 <template>
@@ -37,10 +64,22 @@ const options = [
 
 	<section id="usage" class="space-y-5">
 		<h2 class="text-2xl font-semibold">{{ $t('docsSections.usage') }}</h2>
-		<ExampleBlock
-			code='<Select v-model="value" label="Design" :options="options" />'
-		>
+		<ExampleBlock :code="usageCode">
 			<Select v-model="value" label="Design" :options="options" />
+		</ExampleBlock>
+	</section>
+
+	<section id="validation" class="space-y-5">
+		<h2 class="text-2xl font-semibold">{{ $t('docsSections.validation') }}</h2>
+		<ExampleBlock :code="validationCode">
+			<div class="w-full max-w-sm">
+				<Select
+					v-model="requiredValue"
+					label="Design"
+					:options="options"
+					required
+				/>
+			</div>
 		</ExampleBlock>
 	</section>
 

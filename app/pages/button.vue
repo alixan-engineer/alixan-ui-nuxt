@@ -18,8 +18,6 @@ usePageMeta({
 const { setToc } = usePageToc();
 const loader = useGlobalLoader();
 const dialog = useDialog();
-const localePath = useLocalePath();
-const { t } = useI18n();
 
 onMounted(() => setToc(buttonPageToc));
 
@@ -35,9 +33,9 @@ const openDisableAlert = (): void => {
 		width: '360px',
 		height: '280px',
 		data: {
-			title: t('componentDocs.button.actionUnavailable'),
-			description: t('componentDocs.button.exportUnavailable'),
-			buttonLabel: t('componentDocs.button.gotIt'),
+			title: 'componentDocs.button.actionUnavailable',
+			description: 'componentDocs.button.exportUnavailable',
+			buttonLabel: 'componentDocs.button.gotIt',
 		},
 	});
 };
@@ -111,7 +109,7 @@ const openDisableAlert = (): void => {
 		</h2>
 		<ExampleBlock :code="buttonExamples.navigation">
 			<div class="flex flex-wrap items-center gap-2">
-				<Button :to="localePath('/icon-button')">
+				<Button :to="$localePath('/icon-button')">
 					{{ $t('componentDocs.button.nuxtLink') }}
 				</Button>
 				<Button href="https://github.com" target="_blank" variant="outlined">

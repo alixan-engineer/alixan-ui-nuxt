@@ -45,9 +45,12 @@ const handleAction = (): void => {
 		</div>
 
 		<div class="space-y-2">
-			<h1 class="text-xl font-semibold">{{ data?.title }}</h1>
-			<p class="text-base leading-6 text-muted-foreground">
-				{{ data?.description }}
+			<h1 class="text-xl font-semibold">{{ $t(data?.title ?? '') }}</h1>
+			<p
+				v-if="data?.description"
+				class="text-base leading-6 text-muted-foreground"
+			>
+				{{ $t(data.description) }}
 			</p>
 		</div>
 
@@ -57,7 +60,7 @@ const handleAction = (): void => {
 			size="sm"
 			@click="handleAction"
 		>
-			{{ data?.buttonLabel ?? 'OK' }}
+			{{ $t(data?.buttonLabel ?? 'actions.ok') }}
 		</Button>
 	</div>
 </template>

@@ -14,7 +14,7 @@ export const alertDialogProps = [
 	{
 		name: 'data.buttonLabel',
 		type: 'string',
-		default: "'OK'",
+		default: "'actions.ok'",
 		description: 'apiReferenceDescriptions.primaryActionLabel',
 	},
 	{

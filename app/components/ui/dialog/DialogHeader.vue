@@ -10,7 +10,7 @@ defineProps<DialogHeaderProps>();
 </script>
 
 <template>
-	<div class="h-14 px-4 flex items-center justify-between">
+	<div class="h-16 pl-6 pr-2.5 flex items-center justify-between">
 		<h2 class="text-lg font-semibold">
 			{{ $t(title) }}
 		</h2>

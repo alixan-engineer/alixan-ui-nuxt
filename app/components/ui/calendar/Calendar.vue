@@ -11,6 +11,7 @@ interface CalendarProps {
 	label?: string;
 	mode?: CalendarMode;
 	locale?: string;
+	dateFormat?: string;
 }
 
 interface CalendarDay {
@@ -32,6 +33,7 @@ const props = withDefaults(defineProps<CalendarProps>(), {
 	label: 'Date',
 	mode: 'day',
 	locale: undefined,
+	dateFormat: 'dd.mm.yyyy',
 });
 
 const model = defineModel<string | { from: string; to: string } | null>({
@@ -104,18 +106,6 @@ const selectedYear = computed({
 	},
 });
 
-const displayValue = computed(() => {
-	if (!model.value) {
-		return '';
-	}
-
-	if (typeof model.value === 'string') {
-		return model.value;
-	}
-
-	return [model.value.from, model.value.to].filter(Boolean).join(' - ');
-});
-
 const formatDate = (date: Date): string => {
 	const year = date.getFullYear();
 	const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -123,6 +113,31 @@ const formatDate = (date: Date): string => {
 
 	return `${year}-${month}-${day}`;
 };
+
+const formatDisplayDate = (value: string): string => {
+	const [year = '', month = '', day = ''] = value.split('-');
+
+	return props.dateFormat
+		.replace(/yyyy/g, year)
+		.replace(/MM/g, month)
+		.replace(/mm/g, month)
+		.replace(/dd/g, day);
+};
+
+const displayValue = computed(() => {
+	if (!model.value) {
+		return '';
+	}
+
+	if (typeof model.value === 'string') {
+		return formatDisplayDate(model.value);
+	}
+
+	return [model.value.from, model.value.to]
+		.filter(Boolean)
+		.map(formatDisplayDate)
+		.join(' - ');
+});
 
 const addDays = (date: Date, days: number): Date => {
 	const nextDate = new Date(date);

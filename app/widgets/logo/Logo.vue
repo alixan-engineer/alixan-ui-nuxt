@@ -1,9 +1,5 @@
-<script setup lang="ts">
-const localePath = useLocalePath();
-</script>
-
 <template>
-	<NuxtLink :to="localePath('/')" class="flex items-center gap-2">
+	<NuxtLink :to="$localePath('/')" class="flex items-center gap-2">
 		<svg
 			width="128"
 			height="128"

@@ -7,7 +7,11 @@
 		"infoPrefix": "For more detailed information, visit the"
 	},
 	"actions": {
-		"clear": "Clear"
+		"clear": "Clear",
+		"cancel": "Cancel",
+		"confirm": "Confirm",
+		"close": "Close",
+		"ok": "OK"
 	},
 	"tooltip": {
 		"demo": {
@@ -89,6 +93,35 @@
 		"openDialog": "Open dialog",
 		"cancel": "Cancel",
 		"save": "Save"
+	},
+	"confirmDialogPreview": {
+		"title": "Delete item?",
+		"description": "This action cannot be undone.",
+		"delete": "Delete",
+		"deleted": "Deleted"
+	},
+	"alertDialogPreview": {
+		"actionUnavailable": "Action unavailable",
+		"featureUnavailable": "This feature is not available yet. Try again later.",
+		"gotIt": "Got it",
+		"projectSaved": "Project saved",
+		"changesSaved": "Your changes were saved successfully.",
+		"done": "Done",
+		"imageMedia": "Image media",
+		"imageMediaDescription": "Use the native img tag when the dialog needs a static image.",
+		"iconMedia": "Icon media",
+		"iconMediaDescription": "Pass an imported Vue component when you need an icon.",
+		"openAlert": "Open alert",
+		"openError": "Open error",
+		"openSuccess": "Open success",
+		"openImage": "Open image",
+		"openIcon": "Open icon"
+	},
+	"dropdownPreview": {
+		"openMenu": "Open menu",
+		"profile": "Profile",
+		"settings": "Settings",
+		"deleteWorkspace": "Delete {name}"
 	},
 	"errorPage": {
 		"notFoundTitle": "Page not found",
@@ -465,6 +498,7 @@
 	},
 	"validation": {
 		"required": "This field is required",
+		"email": "Enter a valid email",
 		"usernamePattern": "Only letters and numbers",
 		"iinPattern": "IIN must contain 12 digits"
 	},
@@ -657,10 +691,12 @@
 		"clearEvent": "Emitted when the clear button is clicked.",
 		"selectModelValue": "Selected option value used by v-model.",
 		"selectPlaceholder": "Text shown when no option is selected.",
-		"selectOptions": "Options list with label, value and optional disabled.",
-		"selectDisabled": "Disables select interaction.",
-		"selectTeleport": "Teleports menu to body. Keep true for nested popovers; set false only when the menu must stay inside the local layout.",
-		"statusTone": "Semantic status tone.",
+			"selectOptions": "Options list with label, value and optional disabled.",
+			"selectDisabled": "Disables select interaction.",
+			"selectTeleport": "Teleports menu to body. Keep true for nested popovers; set false only when the menu must stay inside the local layout.",
+			"selectRequired": "Shows the required validation message when no option is selected.",
+			"selectError": "External validation message shown after the select is touched.",
+			"statusTone": "Semantic status tone.",
 		"statusSize": "Controls height, padding and gap.",
 		"switchLabel": "Optional label rendered next to the switch.",
 		"switchDisabled": "Disables switch interaction.",

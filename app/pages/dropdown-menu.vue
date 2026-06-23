@@ -41,33 +41,34 @@ const isOpen = ref<boolean>(false);
 				position="bottomLeft"
 			>
 				<template #trigger>
-					<Button variant="outlined">Open menu</Button>
+					<Button variant="outlined">
+						{{ $t('dropdownPreview.openMenu') }}
+					</Button>
 				</template>
 
 				<template #default>
 					<div class="p-1">
-						<button
-							class="flex h-9 w-full items-center rounded-xl px-3 text-left text-md hover:bg-secondary"
+						<Button class="w-full justify-start" size="sm" variant="ghost">
+							{{ $t('dropdownPreview.profile') }}
+						</Button>
+						<Button class="w-full justify-start" size="sm" variant="ghost">
+							{{ $t('dropdownPreview.settings') }}
+						</Button>
+						<Button
+							class="w-full justify-start"
+							size="sm"
+							variant="ghost"
+							color="destructive"
 						>
-							Profile
-						</button>
-						<button
-							class="flex h-9 w-full items-center rounded-xl px-3 text-left text-md hover:bg-secondary"
-						>
-							Settings
-						</button>
-						<button
-							class="flex h-9 w-full items-center rounded-xl px-3 text-left text-md text-destructive hover:bg-destructive/10"
-						>
-							Delete Alixan UI
-						</button>
+							{{ $t('dropdownPreview.deleteWorkspace', { name: 'Alixan UI' }) }}
+						</Button>
 						<Button
 							class="mt-1 w-full"
 							size="sm"
 							variant="ghost"
 							@click="isOpen = false"
 						>
-							Close
+							{{ $t('actions.close') }}
 						</Button>
 					</div>
 				</template>

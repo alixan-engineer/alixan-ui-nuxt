@@ -1,3 +1,8 @@
+<script lang="ts">
+let openDialogCount = 0;
+let openDialogStack: symbol[] = [];
+</script>
+
 <script setup lang="ts">
 import { computed, watch } from 'vue';
 import { cn } from '~/utils/cn';
@@ -25,6 +30,7 @@ const emit = defineEmits<{
 }>();
 
 const open = defineModel<boolean>({ default: false });
+const dialogToken = Symbol('dialog');
 
 const dialogStyle = computed(() => {
 	return {
@@ -45,25 +51,49 @@ const handleOverlayMouseDown = (): void => {
 };
 
 const handleKeydown = (event: KeyboardEvent): void => {
-	if (event.key === 'Escape' && open.value) {
+	const isTopDialog =
+		openDialogStack[openDialogStack.length - 1] === dialogToken;
+
+	if (event.key === 'Escape' && open.value && isTopDialog) {
 		closeDialog();
 	}
 };
 
-watch(open, value => {
-	if (!import.meta.client) {
-		return;
-	}
+const lockBodyScroll = (): void => {
+	openDialogStack = [...openDialogStack, dialogToken];
+	openDialogCount = openDialogStack.length;
+	document.body.style.overflow = 'hidden';
+};
 
-	if (value) {
-		document.addEventListener('keydown', handleKeydown);
-		document.body.style.overflow = 'hidden';
-		return;
-	}
+const unlockBodyScroll = (): void => {
+	openDialogStack = openDialogStack.filter(token => token !== dialogToken);
+	openDialogCount = openDialogStack.length;
 
-	document.removeEventListener('keydown', handleKeydown);
-	document.body.style.overflow = '';
-});
+	if (openDialogCount === 0) {
+		document.body.style.overflow = '';
+	}
+};
+
+watch(
+	open,
+	(value, oldValue) => {
+		if (!import.meta.client) {
+			return;
+		}
+
+		if (value && !oldValue) {
+			document.addEventListener('keydown', handleKeydown);
+			lockBodyScroll();
+			return;
+		}
+
+		if (!value && oldValue) {
+			document.removeEventListener('keydown', handleKeydown);
+			unlockBodyScroll();
+		}
+	},
+	{ immediate: true },
+);
 
 onBeforeUnmount(() => {
 	if (!import.meta.client) {
@@ -71,7 +101,10 @@ onBeforeUnmount(() => {
 	}
 
 	document.removeEventListener('keydown', handleKeydown);
-	document.body.style.overflow = '';
+
+	if (open.value) {
+		unlockBodyScroll();
+	}
 });
 </script>
 

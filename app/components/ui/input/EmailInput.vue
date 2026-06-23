@@ -19,7 +19,7 @@ const emailError = computed(() => {
 		return '';
 	}
 
-	return 'Введите корректный email';
+	return 'validation.email';
 });
 </script>
 

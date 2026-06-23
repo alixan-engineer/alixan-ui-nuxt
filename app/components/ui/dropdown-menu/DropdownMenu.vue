@@ -192,7 +192,7 @@ onBeforeUnmount(() => {
 				<div
 					v-if="open"
 					ref="popoverRef"
-					class="fixed z-9999 overflow-auto rounded-2xl border bg-background p-1 shadow-2xl origin-top-left"
+					class="fixed z-9999 overflow-auto rounded-2xl border bg-popover p-1 shadow-2xl origin-top-left"
 					:style="popoverStyle"
 					@mousedown.stop
 					@click.stop

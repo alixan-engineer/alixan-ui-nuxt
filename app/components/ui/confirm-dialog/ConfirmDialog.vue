@@ -2,13 +2,13 @@
 type DialogButtonColor = 'default' | 'primary' | 'secondary' | 'destructive';
 
 interface ConfirmDialogData {
-	title?: string;
+	title: string;
 	description?: string;
-	cancelLabel?: string;
-	submitLabel?: string;
+	cancelLabel: string;
+	submitLabel: string;
 	submitColor?: DialogButtonColor;
 	onCancel?: () => void;
-	onSubmit?: () => void;
+	onSubmit?: () => unknown | Promise<unknown>;
 }
 
 const props = defineProps<{
@@ -16,14 +16,25 @@ const props = defineProps<{
 	close: () => void;
 }>();
 
+const isSubmitting = ref(false);
+
 const cancel = (): void => {
 	props.data?.onCancel?.();
 	props.close();
 };
 
-const submit = (): void => {
-	props.data?.onSubmit?.();
-	props.close();
+const submit = async (): Promise<void> => {
+	if (isSubmitting.value) {
+		return;
+	}
+
+	isSubmitting.value = true;
+	try {
+		await props.data?.onSubmit?.();
+		props.close();
+	} finally {
+		isSubmitting.value = false;
+	}
 };
 </script>
 
@@ -31,19 +42,23 @@ const submit = (): void => {
 	<div class="size-full flex flex-col p-5">
 		<div class="flex-1 space-y-3 text-center">
 			<h2 class="text-xl font-semibold">
-				{{ data?.title }}
+				{{ $t(data?.title ?? '') }}
 			</h2>
-			<p class="text-base leading-6 text-muted-foreground">
-				{{ data?.description }}
+			<p v-if="data?.description" class="text-base leading-6 text-muted-foreground">
+				{{ $t(data.description) }}
 			</p>
 		</div>
 
 		<div class="grid grid-cols-2 gap-2">
 			<Button variant="outlined" @click="cancel">
-				{{ data?.cancelLabel ?? 'Cancel' }}
+				{{ $t(data?.cancelLabel ?? 'actions.cancel') }}
 			</Button>
-			<Button :color="data?.submitColor ?? 'primary'" @click="submit">
-				{{ data?.submitLabel ?? 'Confirm' }}
+			<Button
+				:color="data?.submitColor ?? 'primary'"
+				:disabled="isSubmitting"
+				@click="submit"
+			>
+				{{ $t(data?.submitLabel ?? 'actions.confirm') }}
 			</Button>
 		</div>
 	</div>

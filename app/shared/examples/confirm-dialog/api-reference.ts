@@ -14,13 +14,13 @@ export const confirmDialogProps = [
 	{
 		name: 'data.cancelLabel',
 		type: 'string',
-		default: "'Cancel'",
+		default: '-',
 		description: 'apiReferenceDescriptions.cancelActionLabel',
 	},
 	{
 		name: 'data.submitLabel',
 		type: 'string',
-		default: "'Confirm'",
+		default: '-',
 		description: 'apiReferenceDescriptions.submitActionLabel',
 	},
 	{
@@ -37,7 +37,7 @@ export const confirmDialogProps = [
 	},
 	{
 		name: 'data.onSubmit',
-		type: '() => void',
+		type: '() => unknown | Promise<unknown>',
 		default: '-',
 		description: 'apiReferenceDescriptions.submitCallback',
 	},

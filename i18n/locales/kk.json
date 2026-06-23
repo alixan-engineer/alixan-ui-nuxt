@@ -7,7 +7,11 @@
 		"infoPrefix": "Толық ақпарат үшін:"
 	},
 	"actions": {
-		"clear": "Тазарту"
+		"clear": "Тазарту",
+		"cancel": "Бас тарту",
+		"confirm": "Растау",
+		"close": "Жабу",
+		"ok": "OK"
 	},
 	"tooltip": {
 		"demo": {
@@ -89,6 +93,35 @@
 		"openDialog": "Диалог ашу",
 		"cancel": "Бас тарту",
 		"save": "Сақтау"
+	},
+	"confirmDialogPreview": {
+		"title": "Элементті жою керек пе?",
+		"description": "Бұл әрекетті қайтару мүмкін емес.",
+		"delete": "Жою",
+		"deleted": "Жойылды"
+	},
+	"alertDialogPreview": {
+		"actionUnavailable": "Әрекет қолжетімсіз",
+		"featureUnavailable": "Бұл функция әзірге қолжетімсіз. Кейінірек қайталап көріңіз.",
+		"gotIt": "Түсінікті",
+		"projectSaved": "Жоба сақталды",
+		"changesSaved": "Өзгерістер сәтті сақталды.",
+		"done": "Дайын",
+		"imageMedia": "Сурет",
+		"imageMediaDescription": "Диалогқа статикалық сурет керек болса, native img тегін қолданыңыз.",
+		"iconMedia": "Иконка",
+		"iconMediaDescription": "Иконка керек болса, импортталған Vue компонентін беріңіз.",
+		"openAlert": "Хабарламаны ашу",
+		"openError": "Қатені ашу",
+		"openSuccess": "Сәтті хабарды ашу",
+		"openImage": "Суретті ашу",
+		"openIcon": "Иконканы ашу"
+	},
+	"dropdownPreview": {
+		"openMenu": "Мәзірді ашу",
+		"profile": "Профиль",
+		"settings": "Баптаулар",
+		"deleteWorkspace": "{name} жою"
 	},
 	"errorPage": {
 		"notFoundTitle": "Бет табылмады",
@@ -465,6 +498,7 @@
 	},
 	"validation": {
 		"required": "Өрісті толтырыңыз",
+		"email": "Дұрыс email енгізіңіз",
 		"usernamePattern": "Тек әріптер мен сандар",
 		"iinPattern": "ЖСН 12 цифрдан тұруы керек"
 	},
@@ -657,10 +691,12 @@
 		"clearEvent": "Тазарту батырмасы басылғанда шығарылады.",
 		"selectModelValue": "v-model арқылы қолданылатын таңдалған option мәні.",
 		"selectPlaceholder": "Option таңдалмаған кезде көрсетілетін мәтін.",
-		"selectOptions": "Label, value және optional disabled бар options тізімі.",
-		"selectDisabled": "Select-пен әрекеттесуді өшіреді.",
-		"selectTeleport": "Menu-ды body ішіне teleport етеді. Nested popovers үшін true қалдырыңыз; menu local layout ішінде қалуы керек болса ғана false қойыңыз.",
-		"statusTone": "Статустың семантикалық тоны.",
+			"selectOptions": "Label, value және optional disabled бар options тізімі.",
+			"selectDisabled": "Select-пен әрекеттесуді өшіреді.",
+			"selectTeleport": "Menu-ды body ішіне teleport етеді. Nested popovers үшін true қалдырыңыз; menu local layout ішінде қалуы керек болса ғана false қойыңыз.",
+			"selectRequired": "Option таңдалмаса, міндетті өріс хабарын көрсетеді.",
+			"selectError": "Select-пен әрекеттескеннен кейін көрсетілетін сыртқы валидация хабары.",
+			"statusTone": "Статустың семантикалық тоны.",
 		"statusSize": "Биіктікті, padding және gap басқарады.",
 		"switchLabel": "Switch жанындағы қосымша label.",
 		"switchDisabled": "Switch-пен әрекеттесуді өшіреді.",

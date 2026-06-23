@@ -35,4 +35,16 @@ export const selectProps = [
 		default: 'true',
 		description: 'apiReferenceDescriptions.selectTeleport',
 	},
+	{
+		name: 'required',
+		type: 'boolean',
+		default: 'false',
+		description: 'apiReferenceDescriptions.selectRequired',
+	},
+	{
+		name: 'error',
+		type: 'string',
+		default: "''",
+		description: 'apiReferenceDescriptions.selectError',
+	},
 ];
