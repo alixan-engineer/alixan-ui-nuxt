@@ -6,14 +6,33 @@ const userMenu = `<DropdownMenu width="300px" position="bottomRight">
   </template>
   <div class="flex items-center gap-3 border-b p-3">
     <Avatar :name="$t('userMenu.userName')" />
-    <div><p class="font-semibold">{{ $t('userMenu.userName') }}</p><p class="text-sm text-muted-foreground">{{ $t('userMenu.administrator') }}</p></div>
+    <div>
+      <p class="font-semibold">{{ $t('userMenu.userName') }}</p>
+      <p class="text-sm text-muted-foreground">
+        {{ $t('userMenu.administrator') }}
+      </p>
+    </div>
   </div>
   <div class="space-y-1 p-1">
-    <Button variant="ghost" size="md" class="w-full justify-start"><template #leading><UserRound /></template>{{ $t('sidebarDemo.profile') }}</Button>
-    <Button variant="ghost" size="md" class="w-full justify-start"><template #leading><Settings /></template>{{ $t('sidebarDemo.settings') }}</Button>
+    <Button variant="ghost" size="md" class="w-full justify-start">
+      <template #leading><UserRound /></template>
+      {{ $t('sidebarDemo.profile') }}
+    </Button>
+    <Button variant="ghost" size="md" class="w-full justify-start">
+      <template #leading><Settings /></template>
+      {{ $t('sidebarDemo.settings') }}
+    </Button>
   </div>
   <div class="border-t p-1">
-    <Button variant="ghost" color="destructive" size="md" class="w-full justify-start"><template #leading><LogOut /></template>{{ $t('sidebarDemo.signOut') }}</Button>
+    <Button
+      variant="ghost"
+      color="destructive"
+      size="md"
+      class="w-full justify-start"
+    >
+      <template #leading><LogOut /></template>
+      {{ $t('sidebarDemo.signOut') }}
+    </Button>
   </div>
 </DropdownMenu>`;
 
@@ -22,7 +41,7 @@ export const examples = {
 import { LogOut, Menu, Settings, UserRound } from '@lucide/vue';
 <\/script>
 
-<div data-scroll-container class="h-80 overflow-y-auto">
+<div data-scroll-container class="h-80 w-full max-w-110 overflow-y-auto">
   <AppBar variant="compact" title="appBar.dashboard">
     <template #leading>
       <IconButton :aria-label="$t('appBar.openMenu')" size="md"><Menu /></IconButton>
@@ -34,16 +53,21 @@ import { LogOut, Menu, Settings, UserRound } from '@lucide/vue';
   </AppBar>
 </div>`,
 	silver: `<script setup lang="ts">
-import { ChevronLeft, LogOut, Settings, UserRound } from '@lucide/vue';
+import { ChevronLeft, EllipsisVertical, Share } from '@lucide/vue';
 <\/script>
 
-<div data-scroll-container class="h-80 overflow-y-auto">
+<div data-scroll-container class="h-80 w-full max-w-110 overflow-y-auto">
   <AppBar variant="silver" title="appBar.storeTitle">
     <template #leading>
       <IconButton :aria-label="$t('appBar.back')" size="md"><ChevronLeft /></IconButton>
     </template>
     <template #trailing>
-      ${userMenu}
+      <IconButton :aria-label="$t('appBar.share')" size="md">
+        <Share />
+      </IconButton>
+      <IconButton :aria-label="$t('appBar.more')" size="md">
+        <EllipsisVertical />
+      </IconButton>
     </template>
     <div class="min-h-120 space-y-3 p-4">{{ $t('appBar.scrollHint') }}</div>
   </AppBar>

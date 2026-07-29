@@ -1,5 +1,8 @@
 <script setup lang="ts">
+import type { XControl } from '~/composables/useXControl';
+
 interface IinInputProps {
+	control: XControl<string | number | null>;
 	label?: string;
 	autofocus?: boolean;
 	required?: boolean;
@@ -11,10 +14,8 @@ const props = withDefaults(defineProps<IinInputProps>(), {
 	required: false,
 });
 
-const model = defineModel<string | number | null>({ default: '' });
-
 const iinError = computed(() => {
-	const value = String(model.value ?? '');
+	const value = String(props.control.value ?? '');
 	const digits = value.replace(/\D/g, '');
 
 	if (!value || digits.length === 12) {
@@ -27,7 +28,7 @@ const iinError = computed(() => {
 
 <template>
 	<Input
-		v-model="model"
+		:control="props.control"
 		type="text"
 		:label="props.label"
 		:autofocus="props.autofocus"

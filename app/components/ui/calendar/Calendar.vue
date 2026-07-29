@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { CalendarDays, ChevronLeft, ChevronRight } from '@lucide/vue';
-import { computed, nextTick, ref, watch } from 'vue';
+import { computed, nextTick, ref, watch, watchEffect } from 'vue';
 
 import { cn } from '~/utils/cn';
 
@@ -137,6 +137,11 @@ const displayValue = computed(() => {
 		.filter(Boolean)
 		.map(formatDisplayDate)
 		.join(' - ');
+});
+const displayControl = useXControl('');
+
+watchEffect(() => {
+	displayControl.setValue(displayValue.value);
 });
 
 const addDays = (date: Date, days: number): Date => {
@@ -363,7 +368,7 @@ onBeforeUnmount(closeCalendar);
 <template>
 	<div ref="triggerRef" class="relative w-full">
 		<Input
-			:model-value="displayValue"
+			:control="displayControl"
 			:label="label"
 			class="cursor-pointer"
 			readonly

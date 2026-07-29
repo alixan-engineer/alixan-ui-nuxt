@@ -303,7 +303,7 @@
 		},
 		"accordion": {
 			"metaTitle": "Аккордеон - Alixan UI",
-			"description": "Вертикальный disclosure-компонент для сгруппированного контента, вдохновленный shadcn-vue и адаптированный под Nuxt auto-import.",
+			"description": "Вертикальный disclosure-компонент Alixan UI для последовательного раскрытия сгруппированного вспомогательного контента.",
 			"demo": {
 				"accessibleTitle": "Он доступен?",
 				"accessibleContent": "Да. Trigger использует нативную кнопку и передает aria-expanded для screen readers.",
@@ -362,11 +362,11 @@
 		},
 		"otp": {
 			"metaTitle": "OTP поле - Alixan UI",
-			"description": "Небольшое one-time password поле, вдохновленное shadcn-vue и упрощенное для Nuxt auto-import и прямых output events."
+			"description": "Поле Alixan UI для коротких одноразовых кодов с предсказуемыми ячейками и прямыми output events."
 		},
 		"checkbox": {
 			"metaTitle": "Чекбокс - Alixan UI",
-			"description": "Круглый чекбокс в стиле iOS для boolean, одиночного значения и множественного выбора."
+			"description": "Круглый чекбокс Alixan UI для boolean, одиночного значения и множественного выбора."
 		},
 		"select": {
 			"metaTitle": "Выбор - Alixan UI",
@@ -514,16 +514,21 @@
 	},
 	"list": { "demoTitle": "Профиль", "demoDescription": "Личные данные и настройки аккаунта", "securityTitle": "Безопасность", "securityDescription": "Пароль и способы входа", "edit": "Изменить", "delete": "Удалить", "profileOpened": "Профиль открыт", "editStarted": "Редактирование профиля", "deleteStarted": "Удаление профиля", "clickTitle": "Клик", "clickDescription": "Передача обработчика клика превращает ListTile в кнопку и автоматически добавляет pointer, hover и клавиатурный focus.", "actionsTitle": "Действия в trailing", "borderTitle": "Граница", "borderDescription": "Inset добавляет разделитель Alixan UI по линии контента. Block оборачивает каждый ListTile отдельной рамкой.", "insetTitle": "Inset", "blockTitle": "Block", "contacts": { "aruzhan": "Аружан Сарсенова", "aruzhanPhone": "+7 701 123 45 67", "daniyar": "Данияр Алиев", "daniyarPhone": "+7 702 234 56 78", "aidana": "Айдана Нурланкызы", "aidanaPhone": "+7 705 345 67 89" } },
 	"island": { "demoTitle": "Обзор", "demoSubtitle": "Контакты", "demoDesc": "Последняя информация об аккаунте", "demoContent": "Содержимое размещается в слоте по умолчанию.", "outsideTitle": "Заголовок снаружи" },
-	"appBar": { "compactTitle": "Компактный", "silverTitle": "Silver", "dashboard": "Главная", "storeTitle": "Магазин", "openMenu": "Открыть меню", "profile": "Профиль", "scrollHint": "Прокрутите, чтобы увидеть переход панели навигации.", "back": "Назад", "more": "Ещё" },
+	"appBar": { "compactTitle": "Компактный", "silverTitle": "Silver", "dashboard": "Главная", "storeTitle": "Магазин", "openMenu": "Открыть меню", "profile": "Профиль", "scrollHint": "Прокрутите, чтобы увидеть переход панели навигации.", "back": "Назад", "share": "Поделиться", "more": "Ещё" },
 	"userMenu": { "userName": "Alixan", "administrator": "Администратор" },
-	"sidebarDemo": { "brand": "Alixan UI", "home": "Главная", "content": "Контент страницы размещается в центрированном адаптивном контейнере.", "workspace": "Рабочее пространство", "management": "Управление", "dashboard": "Главная", "dashboardDescription": "Обзор текущего рабочего пространства.", "orders": "Заказы", "ordersDescription": "Просмотр и управление заказами клиентов.", "analytics": "Аналитика", "analyticsDescription": "Основные показатели продукта.", "team": "Команда", "teamDescription": "Участники и права доступа.", "settings": "Настройки", "settingsDescription": "Настройки рабочего пространства.", "activity": "Активность", "activityDescription": "Последние изменения рабочего пространства.", "guideTitle": "Гайд Alixan UI", "silverGuide": "Используйте Silver, когда странице нужен крупный заголовок, который при прокрутке сворачивается в App Bar.", "bottomNavigationRule": "Не используйте Silver App Bar на экранах с Bottom Navigation Bar. Для таких экранов выбирайте Compact, чтобы уровни навигации оставались понятными.", "accountMenu": "Открыть меню аккаунта", "profile": "Профиль", "preferences": "Настройки", "signOut": "Выйти", "pageExamples": "Полные примеры страниц", "overview": "Обзор", "orderReady": "Готов к обработке", "weeklySales": "Продажи за неделю", "report": "Отчёт", "workspaceName": "Название пространства", "notifications": "Уведомления", "reports": "Отчёты", "memberName": "Участник Alixan {index}", "defaultFile": "layouts/default.vue", "dashboardFile": "pages/index.vue", "ordersFile": "pages/orders.vue", "analyticsFile": "pages/analytics.vue", "teamFile": "pages/team.vue", "settingsFile": "pages/settings.vue" },
-	"bottomNavigation": { "home": "Главная", "events": "События", "profile": "Профиль" },
+	"sidebarDemo": { "brand": "Alixan UI", "home": "Главная", "content": "Контент страницы размещается в центрированном адаптивном контейнере.", "workspace": "Рабочее пространство", "management": "Управление", "dashboard": "Главная", "dashboardDescription": "Обзор текущего рабочего пространства.", "orders": "Заказы", "ordersDescription": "Просмотр и управление заказами клиентов.", "analytics": "Аналитика", "analyticsDescription": "Основные показатели продукта.", "team": "Команда", "teamDescription": "Участники и права доступа.", "settings": "Настройки", "settingsDescription": "Настройки рабочего пространства.", "activity": "Активность", "activityDescription": "Последние изменения рабочего пространства.", "guideTitle": "Гайд Alixan UI", "silverGuide": "Используйте Silver, когда странице нужен крупный заголовок, который при прокрутке сворачивается в App Bar.", "bottomNavigationRule": "Не используйте Silver App Bar на экранах с Bottom Navigation Bar. Для таких экранов выбирайте Compact, чтобы уровни навигации оставались понятными.", "accountMenu": "Открыть меню аккаунта", "profile": "Профиль", "preferences": "Настройки", "signOut": "Выйти", "overview": "Обзор", "orderReady": "Готов к обработке", "weeklySales": "Продажи за неделю", "report": "Отчёт", "workspaceName": "Название пространства", "notifications": "Уведомления", "reports": "Отчёты", "memberName": "Участник Alixan {index}" },
+	"bottomNavigation": { "home": "Главная", "events": "События", "profile": "Профиль", "pageContent": "Страница «{page}» — прокручиваемый router outlet" },
 	"validation": {
 		"required": "Заполните поле",
 		"email": "Введите корректный email",
+		"minLength": "Введите минимум {min} символов",
+		"maxLength": "Введите не более {max} символов",
+		"pattern": "Введите корректное значение",
 		"usernamePattern": "Только буквы и цифры",
 		"iinPattern": "ИИН должен содержать 12 цифр"
 	},
+	"inputActions": { "clear": "Очистить поле", "showPassword": "Показать пароль", "hidePassword": "Скрыть пароль" },
+	"inputValidation": { "check": "Проверить валидацию", "parentInvalid": "Состояние invalid в родителе", "xControlApi": "API XControl", "usageDescription": "Label поднимается при фокусе или наличии значения. Используйте XControl для значения и состояния валидации." },
 	"inputLabels": {
 		"iin": "ИИН"
 	},
@@ -562,7 +567,7 @@
 		"title": "Шрифты",
 		"description": "Alixan UI использует Geist для документации, но компоненты не требуют конкретный шрифт. Вы можете установить любой шрифт и сопоставить его с Tailwind tokens.",
 		"installationTitle": "Установка",
-		"installationDescription": "Установите модуль Nuxt Google Fonts, если хотите загружать шрифты через Nuxt.",
+		"installationDescription": "Установите настроенный модуль загрузки шрифтов, если хотите загружать их через Nuxt.",
 		"configurationTitle": "Конфигурация",
 		"tailwindTitle": "Tailwind",
 		"infoLink": "в документацию Nuxt Fonts."
@@ -678,7 +683,15 @@
 		"iconButtonSize": "Управляет квадратным размером и размером иконки.",
 		"iconButtonNuxtLink": "Отображает icon button как NuxtLink, если значение передано.",
 		"iconButtonNativeAnchor": "Отображает icon button как нативную ссылку, если значение передано.",
-		"inputModelValue": "Значение поля, используемое через v-model.",
+		"inputControl": "Необязательный XControl, который хранит значение, состояние валидации и маркеры взаимодействия с полем.",
+		"xControlValue": "Текущее значение, которым управляет control.",
+		"xControlValidity": "Вычисляемые маркеры валидности на основе текущих ошибок.",
+		"xControlTouched": "Показывает, покинул ли пользователь поле или была запрошена валидация.",
+		"xControlDirty": "Показывает, изменялось ли значение через поле.",
+		"xControlDisabled": "Вычисляемые состояния enabled и disabled, используемые Input.",
+		"xControlSetValue": "Программно обновляет значение control.",
+		"xControlReset": "Сбрасывает значение, ошибки и маркеры взаимодействия.",
+		"xControlToggleDisabled": "Отключает или включает control и связанный Input.",
 		"inputId": "Пользовательский id. Генерируется автоматически, если не передан.",
 		"floatingLabel": "Текст floating label.",
 		"inputType": "Нативный type поля.",
@@ -698,6 +711,7 @@
 		"inputClearButton": "Показывает кнопку очистки, когда у поля есть значение и нет trailing slot.",
 		"inputInvalid": "Реактивное состояние валидности, доступное через ref компонента.",
 		"inputErrors": "Текущие ошибки по ключам required, min, max, pattern или external.",
+		"inputTouched": "Показывает, потеряло ли поле фокус или было проверено явно.",
 		"inputHasError": "Проверяет наличие конкретной ошибки валидации.",
 		"inputValidate": "Помечает поле как touched и возвращает результат валидации.",
 		"infoContent": "Информационное содержимое блока.",
@@ -715,6 +729,7 @@
 		"islandDesc": "Необязательное описание под заголовком.",
 		"islandContent": "Содержимое основной области блока.",
 		"islandHeaderPosition": "Размещает заголовок и описание внутри island или над его рамкой.",
+		"islandContentClass": "Дополнительные классы для внутреннего контейнера Island с рамкой.",
 		"otpModelValue": "OTP значение, используемое через v-model.",
 		"otpLength": "Количество OTP цифр. Значение ограничивается диапазоном от 4 до 8.",
 		"otpChange": "Вызывается при каждом изменении OTP значения.",
@@ -764,7 +779,7 @@
 		"appBarVariant": "Компактная панель или большой заголовок в стиле Silver.",
 		"appBarSticky": "Закрепляет панель сверху контейнера прокрутки.",
 		"appBarDivider": "Постоянно показывает разделитель для Compact и добавляет его при прокрутке для Silver.",
-		"appBarTitleAlign": "Responsive центрирует заголовок до md и выравнивает слева начиная с md. Start и center принудительно задают одно выравнивание.",
+		"appBarTitleAlign": "Responsive центрирует заголовок в App Bar уже 48rem и выравнивает слева в более широком App Bar. Start и center принудительно задают одно выравнивание.",
 		"appBarScrollTarget": "Явный элемент или селектор прокрутки. По умолчанию используется ближайший контейнер.",
 		"appBarLeading": "Ведущее действие навигации.",
 		"appBarTrailing": "Завершающие действия навигации.",

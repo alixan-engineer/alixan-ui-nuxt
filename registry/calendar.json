@@ -8,5 +8,6 @@
 		"Tooltip.vue",
 		"Select.vue"
 	],
+	"composables": ["useXControl.ts"],
 	"utils": ["cn.ts"]
 }

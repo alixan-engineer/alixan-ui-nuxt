@@ -11,7 +11,7 @@ withDefaults(defineProps<InfoBoxProps>(), {
 </script>
 
 <template>
-	<div class="island flex-row items-center gap-3 p-4">
+	<Island content-class="flex flex-row items-center gap-3 p-4">
 		<span
 			v-if="icon"
 			class="flex size-9 shrink-0 items-center justify-center rounded-full bg-card text-card-foreground"
@@ -21,5 +21,5 @@ withDefaults(defineProps<InfoBoxProps>(), {
 		<p class="min-w-0 text-base leading-7">
 			<slot />
 		</p>
-	</div>
+	</Island>
 </template>

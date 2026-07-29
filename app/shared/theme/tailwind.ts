@@ -7,8 +7,9 @@ export const tailwindCss = `
 	/* Set your own font. */
 	--font-sans: 'Geist', ui-sans-serif, system-ui, sans-serif;
 
-	/* Used for Text, Button and etc... */
+	/* Alixan UI text sizes. */
 	--text-md: 15px;
+	--text-xm: 17px;
 
 	/* Default container */
 	--container-container: 1500px;
@@ -193,13 +194,6 @@ export const tailwindCss = `
 	input[type='number'] {
 		-moz-appearance: textfield;
 	}
-}
-
-/* Used UI blocks. */
-@utility island {
-	@apply flex flex-col border overflow-hidden;
-
-	border-radius: clamp(var(--radius-md), 20%, var(--radius-2xl));
 }
 
 /* Used for dialog, drawer and overlays. */

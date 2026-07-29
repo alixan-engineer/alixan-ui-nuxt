@@ -5,7 +5,12 @@ export const sidebarApiRows = [
 	{ name: 'brand', type: 'string', default: "'Alixan UI'", description: 'apiReferenceDescriptions.sidebarBrand' },
 	{ name: 'container', type: 'boolean', default: 'true', description: 'apiReferenceDescriptions.sidebarContainer' },
 	{ name: 'contentClass', type: 'string', default: '-', description: 'apiReferenceDescriptions.sidebarContentClass' },
-	{ name: 'mode', type: "'responsive' | 'mobile' | 'desktop'", default: "'responsive'", description: 'apiReferenceDescriptions.sidebarMode' },
+	{
+		name: 'mode',
+		type: "'responsive' | 'mobile' | 'desktop'",
+		default: "'responsive'",
+		description: 'apiReferenceDescriptions.sidebarMode',
+	},
 	{ name: 'contained', type: 'boolean', default: 'false', description: 'apiReferenceDescriptions.sidebarContained' },
 	{ name: 'sidebar-header', type: 'slot', default: '-', description: 'apiReferenceDescriptions.sidebarHeader' },
 	{ name: 'navigation', type: 'slot', default: '-', description: 'apiReferenceDescriptions.sidebarNavigation' },

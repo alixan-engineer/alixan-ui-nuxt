@@ -6,7 +6,7 @@
 	/* Set your own font. */
 	--font-sans: 'Geist', ui-sans-serif, system-ui, sans-serif;
 
-	/* Used for Button with "sm" size and etc... */
+	/* Alixan UI text sizes. */
 	--text-md: 15px;
 	--text-xm: 17px;
 
@@ -190,13 +190,6 @@
 	input[type='number'] {
 		-moz-appearance: textfield;
 	}
-}
-
-/* @Deprecated */
-@utility island {
-	@apply flex flex-col border overflow-hidden;
-
-	border-radius: clamp(var(--radius-md), 20%, var(--radius-2xl));
 }
 
 @utility backdrop {

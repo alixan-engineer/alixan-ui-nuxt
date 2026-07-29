@@ -23,7 +23,7 @@ const activeCommand = computed(
 </script>
 
 <template>
-	<div class="island">
+	<Island content-class="p-0">
 		<div class="flex items-center gap-4 border-b">
 			<Tabs v-model="selectedTab" :tabs="tabs" design="material" />
 			<div class="flex-1" />
@@ -31,5 +31,5 @@ const activeCommand = computed(
 		</div>
 
 		<pre class="p-4 text-md"><code>{{ activeCommand }}</code></pre>
-	</div>
+	</Island>
 </template>

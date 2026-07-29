@@ -31,7 +31,7 @@ const emit = defineEmits<{
 }>();
 
 const model = defineModel<AutocompleteValue | null>({ default: null });
-const query = ref('');
+const query = useXControl('');
 const open = ref(false);
 const triggerRef = ref<HTMLElement | null>(null);
 const inputKey = ref(0);
@@ -120,7 +120,7 @@ onBeforeUnmount(closeMenu);
 	<div ref="triggerRef" class="relative w-full">
 		<Input
 			:key="inputKey"
-			v-model="query"
+			:control="query"
 			:label="label"
 			:error="error"
 			:autofocus="autofocus || shouldFocusInput"

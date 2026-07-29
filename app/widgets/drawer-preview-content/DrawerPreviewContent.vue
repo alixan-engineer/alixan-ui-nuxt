@@ -9,10 +9,10 @@ const props = defineProps<{
 	close: () => void;
 }>();
 
-const projectName = ref('');
+const projectName = useXControl('');
 
 onMounted(() => {
-	projectName.value = props.data.projectName;
+	projectName.setValue(props.data.projectName);
 });
 
 const save = (): void => {
@@ -24,7 +24,7 @@ const save = (): void => {
 <template>
 	<div class="size-full flex flex-col divide-y">
 		<div class="flex-1 space-y-3 p-4">
-			<Input v-model="projectName" label="drawerPreview.projectName" />
+			<Input :control="projectName" label="drawerPreview.projectName" />
 		</div>
 		<div class="grid grid-cols-2 gap-2 p-4">
 			<Button variant="outlined" label="drawerPreview.cancel" @click="close" />

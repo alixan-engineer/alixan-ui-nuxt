@@ -3,8 +3,18 @@ export const appBarProps = [
 	{ name: 'variant', type: "'compact' | 'silver'", default: "'compact'", description: 'apiReferenceDescriptions.appBarVariant' },
 	{ name: 'sticky', type: 'boolean', default: 'true', description: 'apiReferenceDescriptions.appBarSticky' },
 	{ name: 'showDividerOnScroll', type: 'boolean', default: 'true', description: 'apiReferenceDescriptions.appBarDivider' },
-	{ name: 'titleAlign', type: "'responsive' | 'start' | 'center'", default: "'responsive'", description: 'apiReferenceDescriptions.appBarTitleAlign' },
-	{ name: 'scrollTarget', type: 'HTMLElement | string | null', default: 'null', description: 'apiReferenceDescriptions.appBarScrollTarget' },
+	{
+		name: 'titleAlign',
+		type: "'responsive' | 'start' | 'center'",
+		default: "'responsive'",
+		description: 'apiReferenceDescriptions.appBarTitleAlign',
+	},
+	{
+		name: 'scrollTarget',
+		type: 'HTMLElement | string | null',
+		default: 'null',
+		description: 'apiReferenceDescriptions.appBarScrollTarget',
+	},
 ];
 
 export const appBarSlots = [

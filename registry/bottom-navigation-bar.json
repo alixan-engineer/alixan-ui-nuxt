@@ -1,5 +1,5 @@
 {
 	"name": "bottom-navigation-bar",
-	"components": ["BottomNavigationBar.vue"],
+	"components": ["BottomNavigationBar.vue", "AppBar.vue"],
 	"utils": ["cn.ts"]
 }

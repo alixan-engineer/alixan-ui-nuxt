@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
 
+import type { XControl } from '~/composables/useXControl';
+
 interface PhoneInputProps {
+	control: XControl<string | number | null>;
 	countryCode?: string;
 	mask?: string;
 	placeholder?: string;
@@ -15,16 +18,14 @@ const props = withDefaults(defineProps<PhoneInputProps>(), {
 	autofocus: false,
 });
 
-const model = defineModel<string | number | null>({ default: '' });
-const inputValue = ref('');
 const isFocused = ref(false);
-
+const displayControl = useXControl('');
 const normalizedCountryCode = computed(() => props.countryCode.trim() || '+7');
 const countryCodeDigits = computed(() =>
 	normalizedCountryCode.value.replace(/\D/g, ''),
 );
 const maxDigits = computed(() => (props.mask.match(/#/g) ?? []).length);
-const hasValue = computed(() => inputValue.value.length > 0);
+const hasValue = computed(() => displayControl.value.length > 0);
 const showPrefix = computed(() => isFocused.value || hasValue.value);
 const visiblePlaceholder = computed(() =>
 	showPrefix.value
@@ -43,14 +44,10 @@ const applyMask = (value: string): string => {
 
 	return props.mask
 		.split('')
-		.map((symbol) => {
-			if (symbol !== '#') {
-				return symbol;
-			}
-
+		.map(symbol => {
+			if (symbol !== '#') return symbol;
 			const digit = digits[digitIndex];
 			digitIndex += 1;
-
 			return digit ?? '';
 		})
 		.join('')
@@ -58,75 +55,69 @@ const applyMask = (value: string): string => {
 };
 
 const getNationalDigits = (value: string): string => {
-	const trimmedValue = value.trim();
 	const digits = value.replace(/\D/g, '');
-	const hasExplicitCountryCode =
-		normalizedCountryCode.value.length > 0 &&
-		trimmedValue.startsWith(normalizedCountryCode.value);
-	const hasOverflowCountryCode =
-		maxDigits.value > 0 &&
+	const hasCountryCode =
 		digits.length > maxDigits.value &&
 		countryCodeDigits.value.length > 0 &&
 		digits.startsWith(countryCodeDigits.value);
+	const nationalDigits = hasCountryCode
+		? digits.slice(countryCodeDigits.value.length)
+		: digits;
 
-	if (hasExplicitCountryCode || hasOverflowCountryCode) {
-		const nextDigits = digits.slice(countryCodeDigits.value.length);
-
-		return maxDigits.value > 0
-			? nextDigits.slice(0, maxDigits.value)
-			: nextDigits;
-	}
-
-	return maxDigits.value > 0 ? digits.slice(0, maxDigits.value) : digits;
-};
-
-const handleFocus = (): void => {
-	isFocused.value = true;
-};
-
-const handleBlur = (): void => {
-	isFocused.value = false;
+	return nationalDigits.slice(0, maxDigits.value || undefined);
 };
 
 watch(
-	() => model.value,
-	(value) => {
-		const nextValue = applyMask(getNationalDigits(String(value ?? '')));
-
-		if (nextValue !== inputValue.value) {
-			inputValue.value = nextValue;
+	() => props.control.value,
+	value => {
+		const formattedValue = applyMask(getNationalDigits(String(value ?? '')));
+		if (formattedValue !== displayControl.value) {
+			displayControl.setValue(formattedValue);
 		}
 	},
 	{ immediate: true },
 );
 
 watch(
-	[inputValue, normalizedCountryCode],
-	() => {
-		const nextValue = getNationalDigits(inputValue.value);
-		const nextInputValue = applyMask(nextValue);
-
-		if (nextInputValue !== inputValue.value) {
-			inputValue.value = nextInputValue;
-		}
-
-		if (nextValue !== String(model.value ?? '')) {
-			model.value = nextValue;
+	() => displayControl.value,
+	value => {
+		const nationalDigits = getNationalDigits(value);
+		if (nationalDigits !== String(props.control.value ?? '')) {
+			props.control.setValue(nationalDigits, {
+				markAsDirty: displayControl.dirty,
+			});
 		}
 	},
+);
+
+watch(
+	() => displayControl.touched,
+	touched => {
+		if (touched) props.control.markAsTouched();
+	},
+);
+
+watch(
+	() => props.control.disabled,
+	disabled => {
+		if (disabled) displayControl.disable();
+		else displayControl.enable();
+	},
+	{ immediate: true },
 );
 </script>
 
 <template>
 	<Input
-		v-model="inputValue"
+		:control="displayControl"
 		type="tel"
+		:mask="props.mask"
 		:placeholder="visiblePlaceholder"
-		:autofocus="autofocus"
+		:autofocus="props.autofocus"
 		:style="inputStyle"
 		autocomplete="off"
-		@focus="handleFocus"
-		@blur="handleBlur"
+		@focus="isFocused = true"
+		@blur="isFocused = false"
 	>
 		<template v-if="showPrefix" #leading>
 			<span class="text-base font-medium text-foreground">

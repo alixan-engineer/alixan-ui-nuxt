@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { Eye, EyeOff } from '@lucide/vue';
+import type { XControl } from '~/composables/useXControl';
 
 interface PasswordInputProps {
+	control: XControl<string | number | null>;
 	label?: string;
 	autofocus?: boolean;
 	min?: number;
@@ -9,7 +11,7 @@ interface PasswordInputProps {
 	required?: boolean;
 }
 
-withDefaults(defineProps<PasswordInputProps>(), {
+const props = withDefaults(defineProps<PasswordInputProps>(), {
 	label: 'Password',
 	autofocus: false,
 	min: undefined,
@@ -17,13 +19,12 @@ withDefaults(defineProps<PasswordInputProps>(), {
 	required: false,
 });
 
-const model = defineModel<string | number | null>({ default: '' });
 const isVisible = ref(false);
 </script>
 
 <template>
 	<Input
-		v-model="model"
+		:control="props.control"
 		:label="label"
 		:type="isVisible ? 'text' : 'password'"
 		:autofocus="autofocus"
@@ -32,15 +33,16 @@ const isVisible = ref(false);
 		:required="required"
 	>
 		<template #trailing>
-			<button
-				type="button"
-				class="flex size-9 items-center justify-center rounded-lg hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none [&_svg]:size-5"
-				:aria-label="isVisible ? 'Hide password' : 'Show password'"
+			<IconButton
+				variant="ghost"
+				color="default"
+				size="sm"
+				:aria-label="$t(isVisible ? 'inputActions.hidePassword' : 'inputActions.showPassword')"
 				@click="isVisible = !isVisible"
 			>
 				<EyeOff v-if="isVisible" />
 				<Eye v-else />
-			</button>
+			</IconButton>
 		</template>
 	</Input>
 </template>

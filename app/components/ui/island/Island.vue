@@ -9,6 +9,7 @@ interface IslandProps {
 	subtitle?: string;
 	description?: string;
 	headerPosition?: 'inside' | 'outside';
+	contentClass?: string;
 }
 
 withDefaults(defineProps<IslandProps>(), {
@@ -16,6 +17,7 @@ withDefaults(defineProps<IslandProps>(), {
 	subtitle: undefined,
 	description: undefined,
 	headerPosition: 'outside',
+	contentClass: undefined,
 });
 
 const attrs = useAttrs();
@@ -33,7 +35,11 @@ const attrs = useAttrs();
 			:description="description"
 			class="ml-8"
 		/>
-		<div class="overflow-hidden rounded-4xl border bg-background p-4">
+		<div
+			:class="
+				cn('overflow-hidden rounded-3xl border bg-background p-4', contentClass)
+			"
+		>
 			<IslandHeader
 				v-if="headerPosition === 'inside'"
 				:title="title"

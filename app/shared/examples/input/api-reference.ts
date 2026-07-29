@@ -1,9 +1,9 @@
 export const inputProps = [
 	{
-		name: 'modelValue',
-		type: 'string | number | null',
-		default: "''",
-		description: 'apiReferenceDescriptions.inputModelValue',
+		name: 'control',
+		type: 'XControl<string | number | null>',
+		default: '-',
+		description: 'apiReferenceDescriptions.inputControl',
 	},
 	{
 		name: 'id',
@@ -68,7 +68,7 @@ export const inputProps = [
 	{
 		name: 'patternMessage',
 		type: 'string',
-		default: "'Некорректный формат'",
+		default: "'validation.pattern'",
 		description: 'apiReferenceDescriptions.patternMessage',
 	},
 	{
@@ -109,29 +109,71 @@ export const inputProps = [
 	},
 ];
 
-export const inputExposed = [
+export const xControlApiRows = [
 	{
-		name: 'invalid',
-		type: 'boolean',
-		default: 'false',
-		description: 'apiReferenceDescriptions.inputInvalid',
+		name: 'value',
+		type: 'T',
+		default: '-',
+		description: 'apiReferenceDescriptions.xControlValue',
 	},
 	{
 		name: 'errors',
-		type: 'Partial<Record<InputErrorKey, string>>',
+		type: 'Record<string, string>',
 		default: '{}',
 		description: 'apiReferenceDescriptions.inputErrors',
 	},
 	{
-		name: 'hasError(error)',
-		type: '(error: InputErrorKey) => boolean',
+		name: 'valid / invalid',
+		type: 'boolean',
+		default: 'true / false',
+		description: 'apiReferenceDescriptions.xControlValidity',
+	},
+	{
+		name: 'touched / untouched',
+		type: 'boolean',
+		default: 'false / true',
+		description: 'apiReferenceDescriptions.xControlTouched',
+	},
+	{
+		name: 'dirty / pristine',
+		type: 'boolean',
+		default: 'false / true',
+		description: 'apiReferenceDescriptions.xControlDirty',
+	},
+	{
+		name: 'disabled / enabled',
+		type: 'boolean',
+		default: 'false / true',
+		description: 'apiReferenceDescriptions.xControlDisabled',
+	},
+	{
+		name: 'setValue(value)',
+		type: '(value: T) => void',
 		default: '-',
-		description: 'apiReferenceDescriptions.inputHasError',
+		description: 'apiReferenceDescriptions.xControlSetValue',
+	},
+	{
+		name: 'reset(value?)',
+		type: '(value?: T) => void',
+		default: '-',
+		description: 'apiReferenceDescriptions.xControlReset',
 	},
 	{
 		name: 'validate()',
 		type: '() => boolean',
 		default: '-',
 		description: 'apiReferenceDescriptions.inputValidate',
+	},
+	{
+		name: 'hasError(key)',
+		type: '(key: string) => boolean',
+		default: '-',
+		description: 'apiReferenceDescriptions.inputHasError',
+	},
+	{
+		name: 'disable() / enable()',
+		type: '() => void',
+		default: '-',
+		description: 'apiReferenceDescriptions.xControlToggleDisabled',
 	},
 ];

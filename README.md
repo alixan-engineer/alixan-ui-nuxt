@@ -74,37 +74,75 @@ Use the documented `app/assets/css/tailwind.css` file for theme tokens, color va
 
 ## 🧩 Components
 
-Available registry items include:
+Every registry item is source code that becomes part of your application. Start with
+the smallest component that matches the interaction, then compose larger flows from
+the same tokens and states.
 
-- `button`
-- `icon-button`
-- `text-link`
-- `chip`
-- `accordion`
-- `tabs`
-- `switch`
-- `status`
-- `empty`
-- `divider`
-- `input`
-- `email-input`
-- `password-input`
-- `phone-input`
-- `username-input`
-- `otp`
-- `checkbox`
-- `select`
-- `search`
-- `autocomplete`
-- `calendar`
-- `dialog`
-- `alert-dialog`
-- `confirm-dialog`
-- `drawer`
-- `dropdown-menu`
-- `global-loader`
-- `toast`
-- `seo`
+### Actions and navigation
+
+| Component | Use it for |
+| --- | --- |
+| `button` | Primary, secondary and destructive text actions. Choose one visually dominant action per surface and use quieter variants for alternatives. |
+| `icon-button` | Compact actions whose icon is universally recognizable. Always provide an accessible label and use a text Button when the meaning could be ambiguous. |
+| `text-link` | Inline navigation inside paragraphs, hints and documentation. It preserves reading flow without adding button padding. |
+| `app-bar` | Page-level navigation and actions. Compact keeps a stable 56px bar; Silver adds a large title that collapses while its own content container scrolls. |
+| `sidebar` | Responsive application shells with persistent desktop navigation, a mobile overlay and an independently scrolling router outlet. |
+| `bottom-navigation-bar` | Three to five primary mobile destinations. Keep it fixed below the router outlet and use the selected destination as the Compact App Bar title. |
+| `tabs` | Switching between closely related views without changing the page hierarchy. Avoid tabs for sequential workflows. |
+
+### Forms and selection
+
+| Component | Use it for |
+| --- | --- |
+| `input` | General text entry with floating labels, masks and validation. Create an `XControl` for every field to own its value and form state. |
+| `email-input` | Email entry with the Input interaction model and email-format validation. |
+| `password-input` | Secret text entry with a built-in visibility action and optional length rules. |
+| `phone-input` | Kazakhstan-friendly phone entry with a visible country prefix and formatted national number. |
+| `username-input` | Account names restricted to letters and numbers with sensible default length limits. |
+| `iin-input` | Kazakhstan IIN entry with numeric masking and a 12-digit validation rule. |
+| `otp` | Short one-time verification codes split into predictable character cells. Use it only for codes, not passwords or recovery phrases. |
+| `checkbox` | Independent boolean choices or selection of several values from a group. |
+| `switch` | Settings that take effect immediately when turned on or off. Use Checkbox when a value is submitted as part of a form. |
+| `select` | Choosing one predefined option when displaying every option inline would consume too much space. |
+| `autocomplete` | Selecting one predefined option while filtering a longer list by text. It is not a free-form Input. |
+| `calendar` | Selecting a day or date range with month/year navigation and common range presets. |
+| `search` | Search queries that benefit from debounce, a search affordance and a clear action. |
+
+### Content and data display
+
+| Component | Use it for |
+| --- | --- |
+| `accordion` | Progressive disclosure of secondary information. Keep labels descriptive so users can predict the hidden content. |
+| `avatar` | A user image with an initials fallback. Supply a meaningful name even when an image URL is available. |
+| `card` | A self-contained content preview with media, supporting information and one main action. |
+| `chip` | Compact filters, selected values and removable metadata. Do not use it as the primary page action. |
+| `divider` | A subtle boundary between related content groups when spacing alone is insufficient. |
+| `info-box` | Supporting notes, constraints and guidance that should remain visible without interrupting the flow. |
+| `island` | A grouped content surface with an optional inside or outside header. Use it to establish page rhythm, not to wrap every element. |
+| `list` | Repeated rows with consistent leading, content and trailing regions, including interactive rows and trailing actions. |
+| `status` | Short semantic states such as success, warning, information and error. Keep labels concise. |
+| `table` | Structured records whose columns need explicit labels and value mapping. Prefer List for narrow mobile summaries. |
+| `tooltip` | Brief clarification for icon actions or unfamiliar controls. Essential information must remain visible outside a tooltip. |
+
+### Feedback and overlays
+
+| Component | Use it for |
+| --- | --- |
+| `dialog` | Focused forms and decisions that must be completed or dismissed before returning to the page. |
+| `alert-dialog` | Blocking information with one acknowledgement action. It should not ask the user to make a choice. |
+| `confirm-dialog` | Explicit confirmation of consequential actions with clear cancel and submit labels. |
+| `drawer` | Secondary workflows and supporting details that benefit from more vertical space, especially on mobile. |
+| `dropdown-menu` | A compact set of contextual actions anchored to a trigger. Keep frequent actions directly visible instead. |
+| `empty` | No-data, no-results and recoverable error states with a useful explanation and next action. |
+| `global-loader` | Blocking application work during which navigation or duplicate actions would be unsafe. |
+| `spinner` | Local loading inside a bounded region where the rest of the interface remains usable. |
+| `toast` | Non-blocking feedback after an action. Use Dialog for information that requires acknowledgement. |
+
+### Project integration
+
+| Registry item | Use it for |
+| --- | --- |
+| `seo` | Shared site metadata, localized page metadata, favicon links and social previews. |
 
 Example:
 
@@ -137,7 +175,7 @@ The docs include examples for:
 - Tailwind CSS setup
 - dark mode with Nuxt Color Mode
 - accent colors
-- shared utilities such as `island` and `backdrop`
+- the shared `backdrop` utility for overlays
 - copying generated theme CSS
 
 Install Nuxt Color Mode with:

@@ -303,7 +303,7 @@
 		},
 		"accordion": {
 			"metaTitle": "Accordion - Alixan UI",
-			"description": "A vertical disclosure component for grouped content, inspired by shadcn-vue and adapted for Nuxt auto-import.",
+			"description": "An Alixan UI vertical disclosure component for progressively revealing grouped supporting content.",
 			"demo": {
 				"accessibleTitle": "Is it accessible?",
 				"accessibleContent": "Yes. The trigger uses a native button and exposes aria-expanded for screen readers.",
@@ -362,11 +362,11 @@
 		},
 		"otp": {
 			"metaTitle": "OTP Input - Alixan UI",
-			"description": "A small one-time password input inspired by shadcn-vue, simplified for Nuxt auto-import and direct output events."
+			"description": "An Alixan UI input for short one-time verification codes with predictable cells and direct output events."
 		},
 		"checkbox": {
 			"metaTitle": "Checkbox - Alixan UI",
-			"description": "A circular iOS-style checkbox for boolean, single-value and multiple-value selection."
+			"description": "A circular Alixan UI checkbox for boolean, single-value and multiple-value selection."
 		},
 		"select": {
 			"metaTitle": "Select - Alixan UI",
@@ -513,16 +513,21 @@
 	},
 	"list": { "demoTitle": "Profile", "demoDescription": "Personal details and account settings", "securityTitle": "Security", "securityDescription": "Password and sign-in methods", "edit": "Edit", "delete": "Delete", "profileOpened": "Profile opened", "editStarted": "Editing profile", "deleteStarted": "Deleting profile", "clickTitle": "Click", "clickDescription": "Passing a click handler makes ListTile a button and adds pointer, hover and keyboard focus styles automatically.", "actionsTitle": "Trailing Actions", "borderTitle": "Border", "borderDescription": "Inset adds an Alixan UI divider aligned with the content. Block wraps every ListTile in its own bordered surface.", "insetTitle": "Inset", "blockTitle": "Block", "contacts": { "aruzhan": "Aruzhan Sarsenova", "aruzhanPhone": "+7 701 123 45 67", "daniyar": "Daniyar Aliyev", "daniyarPhone": "+7 702 234 56 78", "aidana": "Aidana Nurlankyzy", "aidanaPhone": "+7 705 345 67 89" } },
 	"island": { "demoTitle": "Overview", "demoSubtitle": "Contacts", "demoDesc": "Your latest account information", "demoContent": "Content is placed inside the default slot.", "outsideTitle": "Outside Header" },
-	"appBar": { "compactTitle": "Compact", "silverTitle": "Silver", "dashboard": "Dashboard", "storeTitle": "Store", "openMenu": "Open menu", "profile": "Profile", "scrollHint": "Scroll to see the navigation bar transition.", "back": "Back", "more": "More" },
+	"appBar": { "compactTitle": "Compact", "silverTitle": "Silver", "dashboard": "Dashboard", "storeTitle": "Store", "openMenu": "Open menu", "profile": "Profile", "scrollHint": "Scroll to see the navigation bar transition.", "back": "Back", "share": "Share", "more": "More" },
 	"userMenu": { "userName": "Alixan", "administrator": "Administrator" },
-	"sidebarDemo": { "brand": "Alixan UI", "home": "Home", "content": "Page content is placed in a centered responsive container.", "workspace": "Workspace", "management": "Management", "dashboard": "Dashboard", "dashboardDescription": "Overview of the current workspace.", "orders": "Orders", "ordersDescription": "Review and manage customer orders.", "analytics": "Analytics", "analyticsDescription": "Track the main product metrics.", "team": "Team", "teamDescription": "Manage members and access.", "settings": "Settings", "settingsDescription": "Configure the application workspace.", "activity": "Activity", "activityDescription": "Latest workspace updates.", "guideTitle": "Alixan UI guide", "silverGuide": "Use Silver when the page needs a prominent title that collapses into the App Bar while scrolling.", "bottomNavigationRule": "Do not use the Silver App Bar on screens that include a Bottom Navigation Bar. Use Compact for those screens so both navigation levels remain clear.", "accountMenu": "Open account menu", "profile": "Profile", "preferences": "Preferences", "signOut": "Sign out", "pageExamples": "Complete page examples", "overview": "Overview", "orderReady": "Ready for processing", "weeklySales": "Weekly sales", "report": "Report", "workspaceName": "Workspace name", "notifications": "Notifications", "reports": "Reports", "memberName": "Alixan member {index}", "defaultFile": "layouts/default.vue", "dashboardFile": "pages/index.vue", "ordersFile": "pages/orders.vue", "analyticsFile": "pages/analytics.vue", "teamFile": "pages/team.vue", "settingsFile": "pages/settings.vue" },
-	"bottomNavigation": { "home": "Home", "events": "Events", "profile": "Profile" },
+	"sidebarDemo": { "brand": "Alixan UI", "home": "Home", "content": "Page content is placed in a centered responsive container.", "workspace": "Workspace", "management": "Management", "dashboard": "Dashboard", "dashboardDescription": "Overview of the current workspace.", "orders": "Orders", "ordersDescription": "Review and manage customer orders.", "analytics": "Analytics", "analyticsDescription": "Track the main product metrics.", "team": "Team", "teamDescription": "Manage members and access.", "settings": "Settings", "settingsDescription": "Configure the application workspace.", "activity": "Activity", "activityDescription": "Latest workspace updates.", "guideTitle": "Alixan UI guide", "silverGuide": "Use Silver when the page needs a prominent title that collapses into the App Bar while scrolling.", "bottomNavigationRule": "Do not use the Silver App Bar on screens that include a Bottom Navigation Bar. Use Compact for those screens so both navigation levels remain clear.", "accountMenu": "Open account menu", "profile": "Profile", "preferences": "Preferences", "signOut": "Sign out", "overview": "Overview", "orderReady": "Ready for processing", "weeklySales": "Weekly sales", "report": "Report", "workspaceName": "Workspace name", "notifications": "Notifications", "reports": "Reports", "memberName": "Alixan member {index}" },
+	"bottomNavigation": { "home": "Home", "events": "Events", "profile": "Profile", "pageContent": "{page} page — scrollable router outlet" },
 	"validation": {
 		"required": "This field is required",
 		"email": "Enter a valid email",
+		"minLength": "Enter at least {min} characters",
+		"maxLength": "Enter no more than {max} characters",
+		"pattern": "Enter a valid value",
 		"usernamePattern": "Only letters and numbers",
 		"iinPattern": "IIN must contain 12 digits"
 	},
+	"inputActions": { "clear": "Clear input", "showPassword": "Show password", "hidePassword": "Hide password" },
+	"inputValidation": { "check": "Check validation", "parentInvalid": "Parent invalid state", "xControlApi": "XControl API", "usageDescription": "The label moves when the input is focused or has a value. Use XControl for the value and validation state." },
 	"inputLabels": {
 		"iin": "IIN"
 	},
@@ -561,7 +566,7 @@
 		"title": "Fonts",
 		"description": "Alixan UI uses Geist for documentation, but components do not require a specific font. You can install any font and map it to Tailwind tokens.",
 		"installationTitle": "Installation",
-		"installationDescription": "Install the Nuxt Google Fonts module when you want fonts to be loaded through Nuxt.",
+		"installationDescription": "Install the configured Nuxt font-loading module when you want fonts to be loaded through Nuxt.",
 		"configurationTitle": "Configuration",
 		"tailwindTitle": "Tailwind",
 		"infoLink": "Nuxt Fonts documentation."
@@ -677,7 +682,15 @@
 		"iconButtonSize": "Controls square size and icon size.",
 		"iconButtonNuxtLink": "Renders the icon button as a NuxtLink when provided.",
 		"iconButtonNativeAnchor": "Renders the icon button as a native anchor when provided.",
-		"inputModelValue": "Input value used by v-model.",
+		"inputControl": "Optional XControl that owns the value, validation state and form interaction markers.",
+		"xControlValue": "Current value owned by the control.",
+		"xControlValidity": "Derived validity markers based on the current errors.",
+		"xControlTouched": "Tracks whether the user has left the field or validation was requested.",
+		"xControlDirty": "Tracks whether the value was changed through the field.",
+		"xControlDisabled": "Derived enabled and disabled state used by Input.",
+		"xControlSetValue": "Updates the control value programmatically.",
+		"xControlReset": "Resets the value, errors and interaction markers.",
+		"xControlToggleDisabled": "Disables or enables the control and its Input.",
 		"inputId": "Custom id. Generated automatically when omitted.",
 		"floatingLabel": "Floating label text.",
 		"inputType": "Native input type.",
@@ -697,6 +710,7 @@
 		"inputClearButton": "Shows a clear button when the input has a value and no trailing slot.",
 		"inputInvalid": "Reactive validity state exposed through the component ref.",
 		"inputErrors": "Current validation errors keyed by required, min, max, pattern or external.",
+		"inputTouched": "Whether the input has been blurred or validated explicitly.",
 		"inputHasError": "Checks whether a particular validation error is active.",
 		"inputValidate": "Marks the input as touched and returns whether it is valid.",
 		"infoContent": "Informational content rendered in the surface.",
@@ -714,6 +728,7 @@
 		"islandDesc": "Optional description displayed below the heading.",
 		"islandContent": "Content rendered inside the island body.",
 		"islandHeaderPosition": "Places the title and description inside the island or above its border.",
+		"islandContentClass": "Additional classes for the bordered island content container.",
 		"otpModelValue": "OTP value used by v-model.",
 		"otpLength": "Number of OTP digits. Values are clamped between 4 and 8.",
 		"otpChange": "Emitted on every OTP value change.",
@@ -763,7 +778,7 @@
 		"appBarVariant": "Compact toolbar or Silver-style large title.",
 		"appBarSticky": "Keeps the bar pinned to the top of its scroll container.",
 		"appBarDivider": "Shows a permanent divider for Compact and a scroll-aware divider for Silver.",
-		"appBarTitleAlign": "Responsive centers the title below md and aligns it left from md. Start and center force one alignment.",
+		"appBarTitleAlign": "Responsive centers the title in App Bars narrower than 48rem and aligns it left in wider App Bars. Start and center force one alignment.",
 		"appBarScrollTarget": "Explicit scroll element or selector. The nearest scroll container is used by default.",
 		"appBarLeading": "Leading navigation action.",
 		"appBarTrailing": "Trailing navigation actions.",

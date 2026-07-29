@@ -34,6 +34,11 @@ const isCollapsed = ref(false);
 let scrollElement: HTMLElement | Window | null = null;
 let titleObserver: IntersectionObserver | null = null;
 
+const forwardedAttrs = computed(() => {
+	const { class: _class, ...rest } = attrs;
+	return rest;
+});
+
 const compactTitleVisible = computed(
 	() => props.variant === 'compact' || isCollapsed.value,
 );
@@ -41,6 +46,29 @@ const dividerVisible = computed(
 	() =>
 		props.showDividerOnScroll &&
 		(props.variant === 'compact' || isScrolled.value || isCollapsed.value),
+);
+const toolbarClass = computed(() =>
+	cn(
+		'grid h-[55px] items-center px-2',
+		props.titleAlign === 'start'
+			? 'grid-cols-[auto_minmax(0,1fr)_auto] gap-2'
+			: props.titleAlign === 'responsive'
+				? 'grid-cols-[minmax(2.75rem,1fr)_minmax(0,auto)_minmax(2.75rem,1fr)] @[48rem]:grid-cols-[auto_minmax(0,1fr)_auto] @[48rem]:gap-2'
+				: 'grid-cols-[minmax(2.75rem,1fr)_minmax(0,auto)_minmax(2.75rem,1fr)]',
+	),
+);
+const titleClass = computed(() =>
+	cn(
+		'min-w-0 transition duration-200 motion-reduce:transition-none',
+		props.titleAlign === 'start'
+			? 'justify-self-start'
+			: props.titleAlign === 'center'
+				? 'justify-self-center'
+				: 'justify-self-center @[48rem]:justify-self-start',
+		compactTitleVisible.value
+			? 'translate-y-0 opacity-100'
+			: '-translate-y-1 opacity-0',
+	),
 );
 
 const resolveScrollElement = (): HTMLElement | Window => {
@@ -104,55 +132,40 @@ watch(
 </script>
 
 <template>
-	<div ref="rootRef" :class="cn('contents', attrs.class)" v-bind="{ ...attrs, class: undefined }">
+	<div
+		ref="rootRef"
+		v-bind="forwardedAttrs"
+		:class="cn('contents', attrs.class)"
+	>
 		<header
 			:class="
 				cn(
-					'z-30 w-full border-b bg-background pt-[env(safe-area-inset-top)] transition-colors duration-200 motion-reduce:transition-none',
+					'@container z-30 w-full border-b bg-background pt-[env(safe-area-inset-top)] transition-colors duration-200 motion-reduce:transition-none',
 					sticky ? 'sticky top-0' : '',
 					dividerVisible ? 'border-border' : 'border-transparent',
 				)
 			"
 		>
-			<div
-				:class="
-					cn(
-						'grid h-[55px] items-center px-4',
-						titleAlign === 'start'
-							? 'grid-cols-[auto_minmax(0,1fr)_auto] gap-2'
-							: titleAlign === 'responsive'
-								? 'max-md:grid-cols-[minmax(2.75rem,1fr)_minmax(0,auto)_minmax(2.75rem,1fr)] md:grid-cols-[auto_minmax(0,1fr)_auto] md:gap-2'
-								: 'grid-cols-[minmax(2.75rem,1fr)_minmax(0,auto)_minmax(2.75rem,1fr)]',
-					)
-				"
-			>
-				<div class="flex min-w-0 items-center justify-start">
+			<div :class="toolbarClass">
+				<div
+					class="flex min-w-0 items-center justify-start [&_a]:size-11 [&_a]:rounded-xl [&_a_svg]:size-7 [&_button]:size-11 [&_button]:rounded-xl [&_button_svg]:size-7"
+				>
 					<slot name="leading" />
 				</div>
 
-				<div
-					:class="
-						cn(
-							'min-w-0 transition duration-200 motion-reduce:transition-none',
-							titleAlign === 'start'
-								? 'justify-self-start'
-								: titleAlign === 'center'
-									? 'justify-self-center'
-									: 'max-md:justify-self-center md:justify-self-start',
-							compactTitleVisible ? 'translate-y-0 opacity-100' : '-translate-y-1 opacity-0',
-						)
-					"
-				>
+				<div :class="titleClass">
 					<component
 						:is="variant === 'compact' ? 'h1' : 'div'"
-						class="truncate text-[17px] font-semibold leading-[22px]"
+						class="truncate text-xl font-semibold leading-[30px]"
 						:aria-hidden="variant === 'silver' ? !compactTitleVisible : undefined"
 					>
 						<slot name="title">{{ $t(title) }}</slot>
 					</component>
 				</div>
 
-				<div class="flex min-w-0 items-center justify-end gap-1">
+				<div
+					class="flex min-w-0 items-center justify-end gap-1 [&_a]:size-11 [&_a]:rounded-xl [&_a_svg]:size-7 [&_button]:size-11 [&_button]:rounded-xl [&_button_svg]:size-7"
+				>
 					<slot name="trailing" />
 				</div>
 			</div>

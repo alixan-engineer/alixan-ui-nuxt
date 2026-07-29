@@ -9,14 +9,7 @@ import {
 } from '@lucide/vue';
 import { sidebarApiRows } from '~/shared/examples/sidebar/api-reference';
 import { sidebarPageToc } from '~/shared/examples/sidebar/page-toc';
-import {
-	analyticsPage,
-	dashboardPage,
-	layoutUsage,
-	ordersPage,
-	settingsPage,
-	teamPage,
-} from '~/shared/examples/sidebar/usage-examples';
+import { layoutUsage } from '~/shared/examples/sidebar/usage-examples';
 import { propsTableColumns } from '~/shared/examples/table-columns';
 
 usePageMeta({
@@ -28,8 +21,8 @@ const { setToc } = usePageToc();
 
 onMounted(() => setToc(sidebarPageToc));
 
-const sidebarOpen = ref(true);
-const mobileSidebarOpen = ref(true);
+const sidebarOpen = ref(false);
+const mobileSidebarOpen = ref(false);
 const desktopSidebarRef = ref<{ scrollToTop: () => void } | null>(null);
 const mobileSidebarRef = ref<{ scrollToTop: () => void } | null>(null);
 const activePage = ref('dashboard');
@@ -107,7 +100,7 @@ const selectMobilePage = (id: string, close: () => void): void => {
 
 	<section id="usage" class="space-y-5">
 		<h2 class="text-2xl font-semibold">{{ $t('docsSections.usage') }}</h2>
-		<ExampleBlock :code="layoutUsage">
+		<ExampleBlock path="layouts/default.vue" :code="layoutUsage">
 			<div class="w-full flex flex-col gap-10">
 				<div
 					class="h-150 w-full overflow-hidden rounded-3xl border bg-background"
@@ -215,7 +208,6 @@ const selectMobilePage = (id: string, close: () => void): void => {
 								:key="currentPage.id"
 								variant="silver"
 								:title="currentPage.title"
-								title-align="center"
 							>
 								<template #leading
 									><IconButton
@@ -232,46 +224,6 @@ const selectMobilePage = (id: string, close: () => void): void => {
 				</div>
 			</div>
 		</ExampleBlock>
-	</section>
-
-	<section id="page-examples" class="space-y-6">
-		<h2 class="text-2xl font-semibold">{{ $t('sidebarDemo.pageExamples') }}</h2>
-		<div class="space-y-6">
-			<div class="space-y-3">
-				<h3 class="text-xl font-semibold">
-					{{ $t('sidebarDemo.defaultFile') }}
-				</h3>
-				<ExampleBlock :code="layoutUsage" :preview="false" />
-			</div>
-			<div class="space-y-3">
-				<h3 class="text-xl font-semibold">
-					{{ $t('sidebarDemo.dashboardFile') }}
-				</h3>
-				<ExampleBlock :code="dashboardPage" :preview="false" />
-			</div>
-			<div class="space-y-3">
-				<h3 class="text-xl font-semibold">
-					{{ $t('sidebarDemo.ordersFile') }}
-				</h3>
-				<ExampleBlock :code="ordersPage" :preview="false" />
-			</div>
-			<div class="space-y-3">
-				<h3 class="text-xl font-semibold">
-					{{ $t('sidebarDemo.analyticsFile') }}
-				</h3>
-				<ExampleBlock :code="analyticsPage" :preview="false" />
-			</div>
-			<div class="space-y-3">
-				<h3 class="text-xl font-semibold">{{ $t('sidebarDemo.teamFile') }}</h3>
-				<ExampleBlock :code="teamPage" :preview="false" />
-			</div>
-			<div class="space-y-3">
-				<h3 class="text-xl font-semibold">
-					{{ $t('sidebarDemo.settingsFile') }}
-				</h3>
-				<ExampleBlock :code="settingsPage" :preview="false" />
-			</div>
-		</div>
 	</section>
 
 	<section id="guide" class="space-y-3">

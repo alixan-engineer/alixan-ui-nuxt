@@ -12,7 +12,7 @@ withDefaults(
 </script>
 
 <template>
-	<div class="island min-w-0 divide-y overflow-hidden">
+	<Island class="min-w-0" content-class="divide-y p-0">
 		<div v-if="path" class="px-4 py-3 border-b">
 			{{ path }}
 		</div>
@@ -31,5 +31,5 @@ withDefaults(
 				class="overflow-x-auto p-4 pr-12 text-sm leading-7"
 			><code>{{ code }}</code></pre>
 		</div>
-	</div>
+	</Island>
 </template>

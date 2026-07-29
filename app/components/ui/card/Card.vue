@@ -22,7 +22,7 @@ const emit = defineEmits<{
 </script>
 
 <template>
-	<article class="island overflow-hidden bg-background">
+	<Island content-class="p-0">
 		<img
 			v-if="image"
 			:src="image"
@@ -53,5 +53,5 @@ const emit = defineEmits<{
 				</Button>
 			</div>
 		</div>
-	</article>
+	</Island>
 </template>

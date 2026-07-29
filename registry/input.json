@@ -1,5 +1,6 @@
 {
 	"name": "input",
 	"components": ["Input.vue", "IconButton.vue", "Tooltip.vue"],
+	"composables": ["useXControl.ts"],
 	"utils": ["cn.ts"]
 }

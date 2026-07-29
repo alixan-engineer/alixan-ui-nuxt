@@ -1,5 +1,8 @@
 <script setup lang="ts">
+import type { XControl } from '~/composables/useXControl';
+
 interface UsernameInputProps {
+	control: XControl<string | number | null>;
 	label?: string;
 	autofocus?: boolean;
 	min?: number;
@@ -7,7 +10,7 @@ interface UsernameInputProps {
 	required?: boolean;
 }
 
-withDefaults(defineProps<UsernameInputProps>(), {
+const props = withDefaults(defineProps<UsernameInputProps>(), {
 	label: 'Username',
 	autofocus: false,
 	min: 3,
@@ -15,12 +18,11 @@ withDefaults(defineProps<UsernameInputProps>(), {
 	required: true,
 });
 
-const model = defineModel<string | number | null>({ default: '' });
 </script>
 
 <template>
 	<Input
-		v-model="model"
+		:control="props.control"
 		:label="label"
 		:autofocus="autofocus"
 		:min="min"

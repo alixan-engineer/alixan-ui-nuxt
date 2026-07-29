@@ -3,14 +3,16 @@ import { X } from '@lucide/vue';
 import {
 	computed,
 	nextTick,
-	onMounted,
+	onBeforeUnmount,
 	ref,
 	useAttrs,
 	useId,
 	useSlots,
 	watch,
+	watchEffect,
 } from 'vue';
 
+import type { XControl } from '~/composables/useXControl';
 import { cn } from '~/utils/cn';
 
 defineOptions({
@@ -19,6 +21,7 @@ defineOptions({
 
 type InputType = 'text' | 'email' | 'password' | 'tel' | 'url' | 'number';
 type InputAutocomplete = 'on' | 'off';
+type InputValue = string | number | null;
 
 interface InputProps {
 	id?: string;
@@ -38,6 +41,7 @@ interface InputProps {
 	pattern?: string;
 	patternMessage?: string;
 	mask?: string;
+	control: XControl<InputValue>;
 }
 
 const props = withDefaults(defineProps<InputProps>(), {
@@ -56,7 +60,7 @@ const props = withDefaults(defineProps<InputProps>(), {
 	min: undefined,
 	max: undefined,
 	pattern: undefined,
-	patternMessage: 'Некорректный формат',
+	patternMessage: 'validation.pattern',
 	mask: undefined,
 });
 
@@ -66,22 +70,23 @@ const emit = defineEmits<{
 	input: [event: Event];
 }>();
 
-const model = defineModel<string | number | null>({ default: '' });
-
 const attrs = useAttrs();
 const slots = useSlots();
 const generatedId = useId();
 const inputRef = ref<HTMLInputElement | null>(null);
 const isFocused = ref(false);
-const isTouched = ref(false);
+const inputValue = computed<InputValue>({
+	get: () => props.control.value,
+	set: value => {
+		props.control.setValue(value, { markAsDirty: true });
+	},
+});
 
 const inputId = computed(() => props.id ?? generatedId);
 const messageId = computed(() => `${inputId.value}-message`);
 const hasLeading = computed(() => Boolean(slots.leading));
 const hasTrailing = computed(() => Boolean(slots.trailing));
-const visibleLabel = computed(() => props.label);
-const visiblePlaceholder = computed(() => props.placeholder);
-const stringValue = computed(() => String(model.value ?? ''));
+const stringValue = computed(() => String(inputValue.value ?? ''));
 const hasValue = computed(() => stringValue.value.length > 0);
 
 const matchesPattern = (value: string, pattern: string): boolean => {
@@ -92,16 +97,18 @@ const matchesPattern = (value: string, pattern: string): boolean => {
 	}
 };
 type InputErrorKey = 'required' | 'min' | 'max' | 'pattern' | 'external';
+type InputErrors = Partial<Record<InputErrorKey, string>>;
 
-const errors = computed<Partial<Record<InputErrorKey, string>>>(() => {
+const errors = computed<InputErrors>(() => {
 	const value = stringValue.value.trim();
-	const result: Partial<Record<InputErrorKey, string>> = {};
+	const result: InputErrors = {};
+
 	if (props.required && !value) result.required = 'validation.required';
-	if (props.min !== undefined && stringValue.value.length < props.min) {
-		result.min = `Минимум ${props.min} символов`;
+	if (value && props.min !== undefined && stringValue.value.length < props.min) {
+		result.min = 'validation.minLength';
 	}
-	if (props.max !== undefined && stringValue.value.length > props.max) {
-		result.max = `Максимум ${props.max} символов`;
+	if (value && props.max !== undefined && stringValue.value.length > props.max) {
+		result.max = 'validation.maxLength';
 	}
 	if (props.pattern && value && !matchesPattern(value, props.pattern)) {
 		result.pattern = props.patternMessage;
@@ -110,17 +117,15 @@ const errors = computed<Partial<Record<InputErrorKey, string>>>(() => {
 	return result;
 });
 
-const validationError = computed(() => {
-	return (
-		errors.value.required ||
-		errors.value.min ||
-		errors.value.max ||
-		errors.value.pattern ||
-		''
-	);
-});
-const errorMessage = computed(() => props.error || validationError.value);
+const currentErrors = computed<InputErrors>(() =>
+	props.control.errors,
+);
+const errorMessage = computed(
+	() => Object.values(currentErrors.value).find(Boolean) ?? '',
+);
 const invalid = computed(() => Boolean(errorMessage.value));
+const isTouched = computed(() => props.control.touched);
+const isDisabled = computed(() => props.disabled || props.control.disabled);
 const visibleError = computed(() =>
 	isTouched.value && errorMessage.value ? errorMessage.value : '',
 );
@@ -130,7 +135,7 @@ const hasClearButton = computed(
 		props.hasClearButton &&
 		!hasTrailing.value &&
 		hasValue.value &&
-		!props.disabled &&
+		!isDisabled.value &&
 		!props.readonly,
 );
 const hasTrailingAction = computed(
@@ -161,17 +166,16 @@ const inputClass = computed(() =>
 		'w-full border border-border placeholder:text-muted-foreground/70 hover:border-foreground/20 focus:outline-none focus:border-primary',
 		inputBaseClass,
 		props.type === 'password' ? 'text-sm tracking-wider' : '',
-		visibleLabel.value ? 'pt-2' : '',
+		props.label ? 'pt-2' : '',
 		hasLeading.value ? leadingPaddingClass : '',
 		hasTrailingAction.value ? trailingPaddingClass : '',
 		visibleError.value
 			? 'border-destructive text-destructive hover:border-destructive focus:border-destructive!'
 			: '',
-		props.disabled
+		isDisabled.value
 			? 'cursor-not-allowed bg-secondary text-muted-foreground opacity-70'
 			: '',
 		props.readonly ? 'cursor-default' : '',
-		attrs.class,
 	),
 );
 
@@ -233,68 +237,68 @@ const handleFocus = (event: FocusEvent): void => {
 
 const handleBlur = (event: FocusEvent): void => {
 	isFocused.value = false;
-	isTouched.value = true;
+	props.control.markAsTouched();
 	emit('blur', event);
 };
 
 const handleInput = (event: Event): void => {
 	const target = event.target as HTMLInputElement;
-
-	if (props.mask) {
-		model.value = applyMask(target.value);
-	}
+	inputValue.value = props.mask ? applyMask(target.value) : target.value;
 
 	emit('input', event);
 };
 
 const clearValue = async () => {
-	if (props.disabled || props.readonly) return;
-	model.value = '';
-	isTouched.value = true;
+	if (isDisabled.value || props.readonly) return;
+	inputValue.value = '';
+	props.control.markAsTouched();
 	await nextTick();
 	inputRef.value?.focus();
 };
 
-const focusInput = async () => {
-	if (!props.autofocus || props.disabled) return;
-	await nextTick();
-	inputRef.value?.focus();
-};
-
-const hasError = (error: InputErrorKey): boolean =>
-	Boolean(errors.value[error]);
 const validate = (): boolean => {
-	isTouched.value = true;
-	return !invalid.value;
+	props.control.setErrors({ ...errors.value });
+	return Object.keys(errors.value).length === 0;
 };
-
-defineExpose({ errors, hasError, invalid, isTouched, validate });
 
 watch(
 	() => props.mask,
 	() => {
 		if (props.mask && hasValue.value) {
-			model.value = applyMask(stringValue.value);
+			inputValue.value = applyMask(stringValue.value);
 		}
 	},
 );
 
-onMounted(() => {
-	focusInput();
+watchEffect(() => {
+	props.control.setErrors({ ...errors.value });
 });
+
+watch(
+	() => props.control,
+	(control, previousControl) => {
+		previousControl?.setValidator();
+		control.setValidator(validate);
+	},
+	{ immediate: true },
+);
+
+onBeforeUnmount(() => {
+	props.control.setValidator();
+});
+
 </script>
 
 <template>
 	<div :class="rootClass">
-		<label v-if="visibleLabel" :for="inputId" :class="labelClass">
-			{{ $t(visibleLabel) }}
+		<label v-if="label" :for="inputId" :class="labelClass">
+			{{ $t(label) }}
 		</label>
 
 		<span
 			v-if="$slots.leading"
 			:class="leadingSlotClass"
 			aria-hidden="true"
-			tabindex="-1"
 		>
 			<slot name="leading" />
 		</span>
@@ -303,13 +307,14 @@ onMounted(() => {
 			:id="inputId"
 			ref="inputRef"
 			v-bind="inputAttrs"
-			v-model="model"
+			:value="inputValue"
 			:type="type"
-			:placeholder="visiblePlaceholder"
+			:placeholder="placeholder"
 			:autocomplete="autocomplete"
 			:autofocus="autofocus"
+			:required="required"
 			:pattern="pattern"
-			:disabled="disabled"
+			:disabled="isDisabled"
 			:readonly="readonly"
 			:aria-invalid="visibleError ? true : undefined"
 			:aria-describedby="hasMessage ? messageId : undefined"
@@ -326,8 +331,8 @@ onMounted(() => {
 		<IconButton
 			v-else-if="hasClearButton"
 			:class="trailingSlotClass"
+			:aria-label="$t('inputActions.clear')"
 			size="sm"
-			tabindex="-1"
 			@mousedown.prevent
 			@click="clearValue"
 		>
@@ -346,7 +351,7 @@ onMounted(() => {
 					)
 				"
 			>
-				{{ $t(messageText) }}
+				{{ $t(messageText, { min, max }) }}
 			</p>
 		</Transition>
 	</div>

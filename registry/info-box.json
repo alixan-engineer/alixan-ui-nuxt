@@ -1,4 +1,5 @@
 {
 	"name": "info-box",
-	"components": ["InfoBox.vue"]
+	"components": ["InfoBox.vue", "Island.vue", "IslandHeader.vue"],
+	"utils": ["cn.ts"]
 }

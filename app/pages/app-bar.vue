@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ChevronLeft, Menu } from '@lucide/vue';
+import { ChevronLeft, EllipsisVertical, Menu, Share } from '@lucide/vue';
 import { appBarProps, appBarSlots } from '~/shared/examples/app-bar/api-reference';
 import { appBarPageToc } from '~/shared/examples/app-bar/page-toc';
 import { examples } from '~/shared/examples/app-bar/usage-examples';
@@ -22,7 +22,7 @@ onMounted(() => setToc(appBarPageToc));
 	<section id="compact" class="space-y-5">
 		<h2 class="text-2xl font-semibold">{{ $t('appBar.compactTitle') }}</h2>
 		<ExampleBlock :code="examples.compact">
-			<div data-scroll-container class="h-80 w-full max-w-lg overflow-y-auto rounded-2xl border bg-background">
+			<div data-scroll-container class="h-80 w-full max-w-110 overflow-y-auto rounded-2xl border bg-background">
 				<AppBar variant="compact" title="appBar.dashboard">
 					<template #leading><IconButton :aria-label="$t('appBar.openMenu')" size="md"><Menu /></IconButton></template>
 					<template #trailing>
@@ -36,11 +36,16 @@ onMounted(() => setToc(appBarPageToc));
 	<section id="silver" class="space-y-5">
 		<h2 class="text-2xl font-semibold">{{ $t('appBar.silverTitle') }}</h2>
 		<ExampleBlock :code="examples.silver">
-			<div data-scroll-container class="h-80 w-full max-w-lg overflow-y-auto rounded-2xl border bg-background">
+			<div data-scroll-container class="h-80 w-full max-w-110 overflow-y-auto rounded-2xl border bg-background">
 				<AppBar variant="silver" title="appBar.storeTitle">
 					<template #leading><IconButton :aria-label="$t('appBar.back')" size="md"><ChevronLeft /></IconButton></template>
 					<template #trailing>
-						<UserMenuPreview />
+						<IconButton :aria-label="$t('appBar.share')" size="md">
+							<Share />
+						</IconButton>
+						<IconButton :aria-label="$t('appBar.more')" size="md">
+							<EllipsisVertical />
+						</IconButton>
 					</template>
 					<div class="min-h-120 p-4 text-muted-foreground">{{ $t('appBar.scrollHint') }}</div>
 				</AppBar>

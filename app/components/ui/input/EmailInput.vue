@@ -1,5 +1,8 @@
 <script setup lang="ts">
+import type { XControl } from '~/composables/useXControl';
+
 interface EmailInputProps {
+	control: XControl<string | number | null>;
 	label?: string;
 	autofocus?: boolean;
 	required?: boolean;
@@ -11,9 +14,8 @@ const props = withDefaults(defineProps<EmailInputProps>(), {
 	required: false,
 });
 
-const model = defineModel<string | number | null>({ default: '' });
 const emailError = computed(() => {
-	const value = String(model.value ?? '');
+	const value = String(props.control.value ?? '');
 
 	if (!value || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
 		return '';
@@ -25,7 +27,7 @@ const emailError = computed(() => {
 
 <template>
 	<Input
-		v-model="model"
+		:control="props.control"
 		type="email"
 		:label="props.label"
 		:autofocus="props.autofocus"

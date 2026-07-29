@@ -1,40 +1,42 @@
 export const examples = {
 	usage: `<script setup lang="ts">
-const value = ref('')
+const control = useXControl('')
 <\/script>
 
 <template>
-  <Input v-model="value" label="Name" />
+  <Input :control="control" label="Name" />
 </template>`,
 	state: `<script setup lang="ts">
-const value = ref('readonly@example.com')
+const readonlyControl = useXControl('readonly@example.com')
+const disabledControl = useXControl('')
+const errorControl = useXControl('')
 <\/script>
 
 <template>
   <div class="grid w-full gap-3">
-    <Input v-model="value" label="Readonly" readonly />
-    <Input label="Disabled" disabled />
-    <Input label="Required" error="Required field" />
+    <Input :control="readonlyControl" label="Readonly" readonly />
+    <Input :control="disabledControl" label="Disabled" disabled />
+    <Input :control="errorControl" label="Required" error="Required field" />
  </div>
 </template>`,
 	withIcon: `<script setup lang="ts">
 import { Eye, EyeOff, Lock, Mail } from '@lucide/vue'
 
-const email = ref('')
-const password = ref('')
+const emailControl = useXControl('')
+const passwordControl = useXControl('')
 const isPasswordVisible = ref(false)
 <\/script>
 
 <template>
   <div class="grid w-full gap-3">
-    <EmailInput v-model="email">
+    <EmailInput :control="emailControl">
       <template #leading>
         <Mail class="size-5" />
       </template>
     </EmailInput>
 
     <Input
-      v-model="password"
+      :control="passwordControl"
       label="Password"
       :type="isPasswordVisible ? 'text' : 'password'"
     >
@@ -56,61 +58,69 @@ const isPasswordVisible = ref(false)
   </div>
 </template>`,
 	requiredExample: `<script setup lang="ts">
-const value = ref('')
+const control = useXControl('')
+
+const check = () => {
+  control.validate()
+}
 <\/script>
 
 <template>
-  <Input v-model="value" label="Username" required :min="3" :max="20" />
+  <Input :control="control" label="Username" required :min="3" :max="20" />
+  <Button @click="check">{{ $t('inputValidation.check') }}</Button>
+  <span>
+    {{ $t('inputValidation.parentInvalid') }}: {{ control.invalid }}
+  </span>
 </template>`,
 	emailExample: `<script setup lang="ts">
-const email = ref('')
+const control = useXControl('')
 <\/script>
 
 <template>
-  <EmailInput v-model="email" required />
+  <EmailInput :control="control" required />
 </template>`,
 	passwordExample: `<script setup lang="ts">
-const password = ref('')
+const control = useXControl('')
 <\/script>
 
 <template>
   <PasswordInput
-    v-model="password"
+    :control="control"
     required
     :min="8"
     :max="32"
   />
 </template>`,
 	lengthExample: `<script setup lang="ts">
-const value = ref('')
+const control = useXControl('')
 <\/script>
 
 <template>
-  <Input v-model="value" label="Code" :min="6" :max="12" hint="6-12 characters" />
+  <Input :control="control" label="Code" :min="6" :max="12" hint="6-12 characters" />
 </template>`,
 	phoneExample: `<script setup lang="ts">
-const phone = ref('')
+const control = useXControl('')
 <\/script>
 
 <template>
   <PhoneInput
-    v-model="phone"
+    :control="control"
     country-code="+7"
     placeholder="777 777 77 77"
   />
 </template>`,
 	usernameExample: `<script setup lang="ts">
-const username = ref('')
+const control = useXControl('')
 <\/script>
 
 <template>
-  <UsernameInput v-model="username" />
+  <UsernameInput :control="control" />
 </template>`,
 	iinExample: `<script setup lang="ts">
-const iin = ref('')
+const control = useXControl('')
 <\/script>
 
 <template>
-  <IinInput v-model="iin" required />
+  <IinInput :control="control" required />
 </template>`,
 };

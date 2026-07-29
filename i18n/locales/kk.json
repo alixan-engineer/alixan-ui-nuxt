@@ -303,7 +303,7 @@
 		},
 		"accordion": {
 			"metaTitle": "Аккордеон - Alixan UI",
-			"description": "Топталған контентке арналған вертикалды disclosure компоненті, shadcn-vue шабытында жасалған және Nuxt auto-import үшін бейімделген.",
+			"description": "Топталған қосымша контентті біртіндеп ашуға арналған Alixan UI вертикалды disclosure компоненті.",
 			"demo": {
 				"accessibleTitle": "Ол қолжетімді ме?",
 				"accessibleContent": "Иә. Trigger native button қолданады және screen readers үшін aria-expanded береді.",
@@ -362,11 +362,11 @@
 		},
 		"otp": {
 			"metaTitle": "OTP өрісі - Alixan UI",
-			"description": "shadcn-vue шабытындағы, Nuxt auto-import және direct output events үшін жеңілдетілген шағын one-time password input."
+			"description": "Болжамды ұяшықтары және direct output events бар қысқа бір реттік кодтарға арналған Alixan UI өрісі."
 		},
 		"checkbox": {
 			"metaTitle": "Чекбокс - Alixan UI",
-			"description": "Boolean, бір мән және бірнеше мән таңдауға арналған iOS стиліндегі дөңгелек чекбокс."
+			"description": "Boolean, бір мән және бірнеше мән таңдауға арналған дөңгелек Alixan UI чекбоксы."
 		},
 		"select": {
 			"metaTitle": "Таңдау - Alixan UI",
@@ -513,16 +513,21 @@
 	},
 	"list": { "demoTitle": "Профиль", "demoDescription": "Жеке деректер және аккаунт баптаулары", "securityTitle": "Қауіпсіздік", "securityDescription": "Құпиясөз және кіру тәсілдері", "edit": "Өзгерту", "delete": "Жою", "profileOpened": "Профиль ашылды", "editStarted": "Профильді өңдеу", "deleteStarted": "Профильді жою", "clickTitle": "Клик", "clickDescription": "Клик өңдеушісін беру ListTile-ды button етіп, pointer, hover және keyboard focus стильдерін автоматты қосады.", "actionsTitle": "Trailing әрекеттері", "borderTitle": "Шекара", "borderDescription": "Inset контент сызығымен Alixan UI divider қосады. Block әр ListTile-ды жеке рамкамен қоршайды.", "insetTitle": "Inset", "blockTitle": "Block", "contacts": { "aruzhan": "Аружан Сәрсенова", "aruzhanPhone": "+7 701 123 45 67", "daniyar": "Данияр Әлиев", "daniyarPhone": "+7 702 234 56 78", "aidana": "Айдана Нұрланқызы", "aidanaPhone": "+7 705 345 67 89" } },
 	"island": { "demoTitle": "Шолу", "demoSubtitle": "Контактілер", "demoDesc": "Аккаунт туралы соңғы ақпарат", "demoContent": "Контент default slot ішінде орналасады.", "outsideTitle": "Сыртқы header" },
-	"appBar": { "compactTitle": "Ықшам", "silverTitle": "Silver", "dashboard": "Басты бет", "storeTitle": "Дүкен", "openMenu": "Мәзірді ашу", "profile": "Профиль", "scrollHint": "Навигация панелінің ауысуын көру үшін айналдырыңыз.", "back": "Артқа", "more": "Тағы" },
+	"appBar": { "compactTitle": "Ықшам", "silverTitle": "Silver", "dashboard": "Басты бет", "storeTitle": "Дүкен", "openMenu": "Мәзірді ашу", "profile": "Профиль", "scrollHint": "Навигация панелінің ауысуын көру үшін айналдырыңыз.", "back": "Артқа", "share": "Бөлісу", "more": "Тағы" },
 	"userMenu": { "userName": "Alixan", "administrator": "Әкімші" },
-	"sidebarDemo": { "brand": "Alixan UI", "home": "Басты бет", "content": "Бет контенті ортаға тураланған бейімделгіш контейнерге орналасады.", "workspace": "Жұмыс кеңістігі", "management": "Басқару", "dashboard": "Басты бет", "dashboardDescription": "Ағымдағы жұмыс кеңістігінің шолуы.", "orders": "Тапсырыстар", "ordersDescription": "Клиент тапсырыстарын қарау және басқару.", "analytics": "Аналитика", "analyticsDescription": "Өнімнің негізгі көрсеткіштері.", "team": "Команда", "teamDescription": "Қатысушылар мен қолжетімділікті басқару.", "settings": "Баптаулар", "settingsDescription": "Жұмыс кеңістігін баптау.", "activity": "Белсенділік", "activityDescription": "Жұмыс кеңістігіндегі соңғы өзгерістер.", "guideTitle": "Alixan UI гайды", "silverGuide": "Бетке айналдыру кезінде App Bar ішіне жиналатын ірі тақырып қажет болғанда Silver қолданыңыз.", "bottomNavigationRule": "Bottom Navigation Bar бар экрандарда Silver App Bar қолданбаңыз. Навигация деңгейлері түсінікті болуы үшін мұндай экрандарда Compact таңдаңыз.", "accountMenu": "Аккаунт мәзірін ашу", "profile": "Профиль", "preferences": "Баптаулар", "signOut": "Шығу", "pageExamples": "Беттердің толық мысалдары", "overview": "Шолу", "orderReady": "Өңдеуге дайын", "weeklySales": "Апталық сатылым", "report": "Есеп", "workspaceName": "Жұмыс кеңістігінің атауы", "notifications": "Хабарландырулар", "reports": "Есептер", "memberName": "Alixan қатысушысы {index}", "defaultFile": "layouts/default.vue", "dashboardFile": "pages/index.vue", "ordersFile": "pages/orders.vue", "analyticsFile": "pages/analytics.vue", "teamFile": "pages/team.vue", "settingsFile": "pages/settings.vue" },
-	"bottomNavigation": { "home": "Басты бет", "events": "Оқиғалар", "profile": "Профиль" },
+	"sidebarDemo": { "brand": "Alixan UI", "home": "Басты бет", "content": "Бет контенті ортаға тураланған бейімделгіш контейнерге орналасады.", "workspace": "Жұмыс кеңістігі", "management": "Басқару", "dashboard": "Басты бет", "dashboardDescription": "Ағымдағы жұмыс кеңістігінің шолуы.", "orders": "Тапсырыстар", "ordersDescription": "Клиент тапсырыстарын қарау және басқару.", "analytics": "Аналитика", "analyticsDescription": "Өнімнің негізгі көрсеткіштері.", "team": "Команда", "teamDescription": "Қатысушылар мен қолжетімділікті басқару.", "settings": "Баптаулар", "settingsDescription": "Жұмыс кеңістігін баптау.", "activity": "Белсенділік", "activityDescription": "Жұмыс кеңістігіндегі соңғы өзгерістер.", "guideTitle": "Alixan UI гайды", "silverGuide": "Бетке айналдыру кезінде App Bar ішіне жиналатын ірі тақырып қажет болғанда Silver қолданыңыз.", "bottomNavigationRule": "Bottom Navigation Bar бар экрандарда Silver App Bar қолданбаңыз. Навигация деңгейлері түсінікті болуы үшін мұндай экрандарда Compact таңдаңыз.", "accountMenu": "Аккаунт мәзірін ашу", "profile": "Профиль", "preferences": "Баптаулар", "signOut": "Шығу", "overview": "Шолу", "orderReady": "Өңдеуге дайын", "weeklySales": "Апталық сатылым", "report": "Есеп", "workspaceName": "Жұмыс кеңістігінің атауы", "notifications": "Хабарландырулар", "reports": "Есептер", "memberName": "Alixan қатысушысы {index}" },
+	"bottomNavigation": { "home": "Басты бет", "events": "Оқиғалар", "profile": "Профиль", "pageContent": "«{page}» беті — айналдырылатын router outlet" },
 	"validation": {
 		"required": "Өрісті толтырыңыз",
 		"email": "Дұрыс email енгізіңіз",
+		"minLength": "Кемінде {min} таңба енгізіңіз",
+		"maxLength": "{max} таңбадан артық енгізбеңіз",
+		"pattern": "Дұрыс мән енгізіңіз",
 		"usernamePattern": "Тек әріптер мен сандар",
 		"iinPattern": "ЖСН 12 цифрдан тұруы керек"
 	},
+	"inputActions": { "clear": "Өрісті тазарту", "showPassword": "Құпиясөзді көрсету", "hidePassword": "Құпиясөзді жасыру" },
+	"inputValidation": { "check": "Валидацияны тексеру", "parentInvalid": "Ата-анадағы invalid күйі", "xControlApi": "XControl API", "usageDescription": "Фокус немесе мән болғанда label жоғары көтеріледі. Мән мен валидация күйі үшін XControl қолданыңыз." },
 	"inputLabels": {
 		"iin": "ЖСН"
 	},
@@ -561,7 +566,7 @@
 		"title": "Қаріптер",
 		"description": "Alixan UI құжаттама үшін Geist қолданады, бірақ компоненттер нақты қаріпті талап етпейді. Кез келген қаріпті орнатып, оны Tailwind tokens-пен байланыстыра аласыз.",
 		"installationTitle": "Орнату",
-		"installationDescription": "Қаріптерді Nuxt арқылы жүктегіңіз келсе, Nuxt Google Fonts модулін орнатыңыз.",
+		"installationDescription": "Қаріптерді Nuxt арқылы жүктеу үшін бапталған қаріп жүктеу модулін орнатыңыз.",
 		"configurationTitle": "Конфигурация",
 		"tailwindTitle": "Tailwind",
 		"infoLink": "Nuxt Fonts құжаттамасы."
@@ -677,7 +682,15 @@
 		"iconButtonSize": "Квадрат өлшемін және иконка өлшемін басқарады.",
 		"iconButtonNuxtLink": "Мән берілсе, icon button-ды NuxtLink ретінде көрсетеді.",
 		"iconButtonNativeAnchor": "Мән берілсе, icon button-ды нативті сілтеме ретінде көрсетеді.",
-		"inputModelValue": "v-model арқылы қолданылатын input мәні.",
+		"inputControl": "Мәнді, валидация күйін және өріспен әрекеттесу маркерлерін сақтайтын қосымша XControl.",
+		"xControlValue": "Control басқаратын ағымдағы мән.",
+		"xControlValidity": "Ағымдағы қателерге негізделген есептелетін валидтілік маркерлері.",
+		"xControlTouched": "Пайдаланушы өрістен шыққанын немесе валидация сұралғанын көрсетеді.",
+		"xControlDirty": "Мән өріс арқылы өзгертілгенін көрсетеді.",
+		"xControlDisabled": "Input пайдаланатын есептелетін enabled және disabled күйлері.",
+		"xControlSetValue": "Control мәнін бағдарламалық түрде жаңартады.",
+		"xControlReset": "Мәнді, қателерді және әрекеттесу маркерлерін қалпына келтіреді.",
+		"xControlToggleDisabled": "Control және байланысқан Input компонентін өшіреді немесе қосады.",
 		"inputId": "Custom id. Берілмесе автоматты түрде жасалады.",
 		"floatingLabel": "Floating label мәтіні.",
 		"inputType": "Нативті input type.",
@@ -697,6 +710,7 @@
 		"inputClearButton": "Input-та мән бар және trailing slot жоқ кезде тазарту батырмасын көрсетеді.",
 		"inputInvalid": "Компонент ref арқылы қолжетімді реактивті validity күйі.",
 		"inputErrors": "required, min, max, pattern немесе external кілттері бойынша ағымдағы қателер.",
+		"inputTouched": "Өріс фокусты жоғалтқанын немесе қолмен тексерілгенін көрсетеді.",
 		"inputHasError": "Белгілі бір validation қатесінің бар-жоғын тексереді.",
 		"inputValidate": "Input-ты touched деп белгілеп, validity нәтижесін қайтарады.",
 		"infoContent": "Блокта көрсетілетін ақпараттық контент.",
@@ -714,6 +728,7 @@
 		"islandDesc": "Heading астындағы қосымша description.",
 		"islandContent": "Island body ішінде көрсетілетін контент.",
 		"islandHeaderPosition": "Title мен description-ды island ішінде немесе оның рамкасының үстінде орналастырады.",
+		"islandContentClass": "Island ішкі жиектелген контейнеріне арналған қосымша кластар.",
 		"otpModelValue": "v-model арқылы қолданылатын OTP мәні.",
 		"otpLength": "OTP цифрларының саны. Мән 4 пен 8 аралығында шектеледі.",
 		"otpChange": "OTP мәні әр өзгерген сайын шығарылады.",
@@ -763,7 +778,7 @@
 		"appBarVariant": "Ықшам панель немесе Silver стиліндегі үлкен тақырып.",
 		"appBarSticky": "Панельді айналдыру контейнерінің жоғарғы жағына бекітеді.",
 		"appBarDivider": "Compact үшін бөлгішті тұрақты көрсетеді, ал Silver үшін айналдыру кезінде қосады.",
-		"appBarTitleAlign": "Responsive тақырыпты md-ге дейін ортаға, md-ден бастап солға туралайды. Start және center бір туралауды мәжбүрлі түрде орнатады.",
+		"appBarTitleAlign": "Responsive тақырыпты 48rem-нен тар App Bar ішінде ортаға, ал кең App Bar ішінде солға туралайды. Start және center бір туралауды мәжбүрлі түрде орнатады.",
 		"appBarScrollTarget": "Айналдыру элементі немесе селекторы. Әдепкіде ең жақын контейнер қолданылады.",
 		"appBarLeading": "Навигацияның бастапқы әрекеті.",
 		"appBarTrailing": "Навигацияның соңғы әрекеттері.",

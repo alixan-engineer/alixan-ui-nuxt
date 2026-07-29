@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Eye, EyeOff, Lock, Mail } from '@lucide/vue';
-import { inputExposed, inputProps } from '~/shared/examples/input/api-reference';
+import { inputProps, xControlApiRows } from '~/shared/examples/input/api-reference';
 import { inputPageToc } from '~/shared/examples/input/page-toc';
 import { examples } from '~/shared/examples/input/usage-examples';
 import { propsTableColumns } from '~/shared/examples/table-columns';
@@ -14,18 +14,24 @@ const { setToc } = usePageToc();
 
 onMounted(() => setToc(inputPageToc));
 
-const usageValue = ref<string>('');
-const stateValue = ref<string>('readonly@example.com');
-const iconValue = ref<string>('');
-const passwordValue = ref<string>('');
+const usageControl = useXControl('');
+const readonlyControl = useXControl('readonly@example.com');
+const disabledControl = useXControl('');
+const errorControl = useXControl('');
+const iconControl = useXControl('');
+const passwordControl = useXControl('');
 const isPasswordVisible = ref<boolean>(false);
-const requiredValue = ref<string>('');
-const emailExampleValue = ref<string>('');
-const passwordExampleValue = ref<string>('');
-const lengthExampleValue = ref<string>('');
-const phoneValue = ref<string>('');
-const usernameValue = ref<string>('');
-const iinValue = ref<string>('');
+const validationControl = useXControl('');
+const emailControl = useXControl('');
+const passwordExampleControl = useXControl('');
+const lengthControl = useXControl('');
+const phoneControl = useXControl('');
+const usernameControl = useXControl('');
+const iinControl = useXControl('');
+
+const checkFromParent = (): void => {
+	validationControl.validate();
+};
 </script>
 
 <template>
@@ -51,13 +57,12 @@ const iinValue = ref<string>('');
 		<div class="space-y-2">
 			<h2 class="text-2xl font-semibold">{{ $t('docsSections.usage') }}</h2>
 			<p class="text-muted-foreground leading-7">
-				The label moves when the input is focused or has a value. Use
-				<code>v-model</code> for two-way binding.
+				{{ $t('inputValidation.usageDescription') }}
 			</p>
 		</div>
 		<ExampleBlock :code="examples.usage">
 			<div class="w-full max-w-sm">
-				<Input v-model="usageValue" label="Name" />
+				<Input :control="usageControl" label="Name" />
 			</div>
 		</ExampleBlock>
 	</section>
@@ -66,9 +71,9 @@ const iinValue = ref<string>('');
 		<h2 class="text-2xl font-semibold">{{ $t('docsSections.state') }}</h2>
 		<ExampleBlock :code="examples.state">
 			<div class="grid w-full max-w-sm gap-3">
-				<Input v-model="stateValue" label="Readonly" readonly />
-				<Input label="Disabled" disabled />
-				<Input label="Required" error="Required field" />
+				<Input :control="readonlyControl" label="Readonly" readonly />
+				<Input :control="disabledControl" label="Disabled" disabled />
+				<Input :control="errorControl" label="Required" error="Required field" />
 			</div>
 		</ExampleBlock>
 	</section>
@@ -76,14 +81,23 @@ const iinValue = ref<string>('');
 	<section id="validation" class="space-y-4">
 		<h2 class="text-2xl font-semibold">{{ $t('docsSections.validation') }}</h2>
 		<ExampleBlock :code="examples.requiredExample">
-			<div class="w-full max-w-sm">
+			<div class="w-full max-w-sm space-y-3">
 				<Input
-					v-model="requiredValue"
+					:control="validationControl"
 					label="Username"
 					required
 					:min="3"
 					:max="20"
 				/>
+				<div class="flex items-center gap-3">
+					<Button size="sm" @click="checkFromParent">
+						{{ $t('inputValidation.check') }}
+					</Button>
+					<span class="text-sm text-muted-foreground">
+						{{ $t('inputValidation.parentInvalid') }}:
+						{{ validationControl.invalid }}
+					</span>
+				</div>
 			</div>
 		</ExampleBlock>
 	</section>
@@ -93,7 +107,7 @@ const iinValue = ref<string>('');
 		<ExampleBlock :code="examples.lengthExample">
 			<div class="w-full max-w-sm">
 				<Input
-					v-model="lengthExampleValue"
+					:control="lengthControl"
 					label="Code"
 					:min="6"
 					:max="12"
@@ -107,14 +121,14 @@ const iinValue = ref<string>('');
 		<h2 class="text-2xl font-semibold">{{ $t('docsSections.withIcon') }}</h2>
 		<ExampleBlock :code="examples.withIcon">
 			<div class="grid w-full max-w-sm gap-3">
-				<EmailInput v-model="iconValue">
+				<EmailInput :control="iconControl">
 					<template #leading>
 						<Mail class="size-5" />
 					</template>
 				</EmailInput>
 
 				<Input
-					v-model="passwordValue"
+					:control="passwordControl"
 					label="Password"
 					:type="isPasswordVisible ? 'text' : 'password'"
 				>
@@ -154,7 +168,7 @@ const iinValue = ref<string>('');
 				</div>
 				<ExampleBlock :code="examples.usernameExample">
 					<div class="w-full max-w-sm mx-auto">
-						<UsernameInput v-model="usernameValue" />
+						<UsernameInput :control="usernameControl" />
 					</div>
 				</ExampleBlock>
 			</div>
@@ -166,7 +180,7 @@ const iinValue = ref<string>('');
 				</div>
 				<ExampleBlock :code="examples.emailExample">
 					<div class="w-full max-w-sm mx-auto">
-						<EmailInput v-model="emailExampleValue" required />
+						<EmailInput :control="emailControl" required />
 					</div>
 				</ExampleBlock>
 			</div>
@@ -179,7 +193,7 @@ const iinValue = ref<string>('');
 				<ExampleBlock :code="examples.passwordExample">
 					<div class="w-full max-w-sm mx-auto">
 						<PasswordInput
-							v-model="passwordExampleValue"
+							:control="passwordExampleControl"
 							required
 							:min="8"
 							:max="32"
@@ -200,7 +214,7 @@ const iinValue = ref<string>('');
 				<ExampleBlock :code="examples.phoneExample">
 					<div class="w-full max-w-sm mx-auto">
 						<PhoneInput
-							v-model="phoneValue"
+							:control="phoneControl"
 							country-code="+7"
 							placeholder="777 777 77 77"
 						/>
@@ -215,7 +229,7 @@ const iinValue = ref<string>('');
 				</div>
 				<ExampleBlock :code="examples.iinExample">
 					<div class="w-full max-w-sm mx-auto">
-						<IinInput v-model="iinValue" required />
+						<IinInput :control="iinControl" required />
 					</div>
 				</ExampleBlock>
 			</div>
@@ -227,6 +241,9 @@ const iinValue = ref<string>('');
 			{{ $t('docsSections.apiReference') }}
 		</h2>
 		<Table :columns="propsTableColumns" :rows="inputProps" />
-		<Table :columns="propsTableColumns" :rows="inputExposed" />
+		<h3 class="pt-4 text-xl font-semibold">
+			{{ $t('inputValidation.xControlApi') }}
+		</h3>
+		<Table :columns="propsTableColumns" :rows="xControlApiRows" />
 	</section>
 </template>
