@@ -22,11 +22,12 @@ const emit = defineEmits<{
 </script>
 
 <template>
-	<Island content-class="p-0">
+	<Island content-class="p-0!">
 		<img
 			v-if="image"
 			:src="image"
 			:alt="$t(imageAlt)"
+			loading="lazy"
 			class="w-full aspect-auto object-cover"
 		/>
 		<div class="space-y-4 p-4">
@@ -39,16 +40,10 @@ const emit = defineEmits<{
 				</p>
 			</div>
 			<div class="flex items-center justify-between gap-3">
-				<p v-if="price" class="text-lg font-semibold">
+				<p v-if="price" class="text-2xl font-semibold">
 					{{ $t(price) }}
 				</p>
-				<Button
-					v-if="button"
-					class="ml-auto"
-					size="sm"
-					color="primary"
-					@click="emit('onTap')"
-				>
+				<Button v-if="button" color="primary" @click="emit('onTap')">
 					{{ $t(button) }}
 				</Button>
 			</div>

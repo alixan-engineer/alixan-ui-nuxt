@@ -49,7 +49,7 @@ const currentTailwindCss = computed(() =>
 			</p>
 		</div>
 
-		<Island content-class="p-0">
+		<Island>
 			<div class="px-4 py-3 flex items-center gap-3 border-b">
 				<Terminal class="size-5 text-muted-foreground" />
 				<span>Terminal</span>
@@ -62,7 +62,7 @@ const currentTailwindCss = computed(() =>
 			<pre class="p-4 text-md"><code>{{ commands.createProject }}</code></pre>
 		</Island>
 
-		<Island content-class="p-0">
+		<Island>
 			<div class="px-4 py-3 flex items-center gap-3 border-b">
 				<span>nuxt.config.ts</span>
 				<div class="flex-1" />
@@ -85,7 +85,7 @@ const currentTailwindCss = computed(() =>
 			</p>
 		</div>
 
-		<Island content-class="p-0">
+		<Island>
 			<div class="px-4 py-3 flex items-center gap-3 border-b">
 				<Terminal class="size-5 text-muted-foreground" />
 				<span>
@@ -100,7 +100,7 @@ const currentTailwindCss = computed(() =>
 			<pre class="p-4 text-md"><code>{{ commands.addTailwind }}</code></pre>
 		</Island>
 
-		<Island content-class="p-0">
+		<Island>
 			<div class="px-4 py-3 flex items-center gap-3 border-b">
 				<span>app/assets/css/tailwind.css</span>
 				<div class="flex-1" />
@@ -139,7 +139,7 @@ const currentTailwindCss = computed(() =>
 			</span>
 		</div>
 
-		<Island content-class="p-0">
+		<Island>
 			<div class="px-4 py-3 flex items-center gap-3 border-b">
 				<span>nuxt.config.ts</span>
 				<div class="flex-1" />
@@ -162,7 +162,7 @@ const currentTailwindCss = computed(() =>
 			</p>
 		</div>
 
-		<Island content-class="p-0">
+		<Island>
 			<div class="px-4 py-3 flex items-center gap-3 border-b">
 				<Terminal class="size-5 text-muted-foreground" />
 				<span>{{ $t('installationPage.addI18n.commandTitle') }}</span>
@@ -195,7 +195,7 @@ const currentTailwindCss = computed(() =>
 			</TextLink>
 		</InfoBox>
 
-		<Island content-class="p-0">
+		<Island>
 			<div class="px-4 py-3 flex items-center gap-3 border-b">
 				<span>nuxt.config.ts</span>
 				<div class="flex-1" />
@@ -212,7 +212,7 @@ const currentTailwindCss = computed(() =>
 			<code>i18n/configs/i18n.config.ts</code>.
 		</p>
 
-		<Island content-class="p-0">
+		<Island>
 			<div class="px-4 py-3 flex items-center gap-3 border-b">
 				<span>i18n/configs/i18n.config.ts</span>
 				<div class="flex-1" />
@@ -258,7 +258,7 @@ const currentTailwindCss = computed(() =>
 			</p>
 		</div>
 
-		<Island content-class="p-0">
+		<Island>
 			<div class="min-h-40 p-8 flex items-center justify-center">
 				<Button color="primary">
 					{{ $t('installationPage.useComponent.previewButton') }}

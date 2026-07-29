@@ -34,7 +34,7 @@ const deleteProfile = () => toast.open('list.deleteStarted', 'warning');
 `;
 
 const contactLeading = `    <template #leading>
-      <img :src="contact.image" alt="" class="size-12 rounded-full object-cover" />
+      <img :src="contact.image" alt="" loading="lazy" class="size-12 rounded-full object-cover" />
     </template>`;
 
 export const examples = {

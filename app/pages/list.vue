@@ -67,6 +67,7 @@ const deleteProfile = () => toast.open('list.deleteStarted', 'warning');
 						<img
 							:src="contact.image"
 							alt=""
+							loading="lazy"
 							class="size-12 rounded-full object-cover"
 						/>
 					</template>
@@ -92,6 +93,7 @@ const deleteProfile = () => toast.open('list.deleteStarted', 'warning');
 						<img
 							:src="contact.image"
 							alt=""
+							loading="lazy"
 							class="size-12 rounded-full object-cover"
 						/>
 					</template>
@@ -139,6 +141,7 @@ const deleteProfile = () => toast.open('list.deleteStarted', 'warning');
 						<img
 							:src="contact.image"
 							alt=""
+							loading="lazy"
 							class="size-12 rounded-full object-cover"
 						/>
 					</template>
@@ -158,6 +161,7 @@ const deleteProfile = () => toast.open('list.deleteStarted', 'warning');
 						<img
 							:src="contact.image"
 							alt=""
+							loading="lazy"
 							class="size-12 rounded-full object-cover"
 						/>
 					</template>

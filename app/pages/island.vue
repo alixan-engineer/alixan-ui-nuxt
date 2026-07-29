@@ -56,6 +56,7 @@ onMounted(() => setToc(islandPageToc));
 					subtitle="island.demoSubtitle"
 					description="island.demoDesc"
 					header-position="inside"
+					content-class="p-4 rounded-4xl"
 				>
 					<List divider="inset">
 						<ListTile
@@ -64,12 +65,14 @@ onMounted(() => setToc(islandPageToc));
 							:title="contact.title"
 							:description="contact.description"
 						>
-							<template #leading
-								><img
+							<template #leading>
+								<img
 									:src="contact.image"
-									alt=""
+									alt="img"
+									loading="lazy"
 									class="size-11 rounded-full object-cover"
-							/></template>
+								/>
+							</template>
 						</ListTile>
 					</List>
 				</Island>
@@ -86,6 +89,7 @@ onMounted(() => setToc(islandPageToc));
 					subtitle="island.demoSubtitle"
 					description="island.demoDesc"
 					header-position="outside"
+					content-class="p-4 rounded-4xl"
 				>
 					<List divider="inset">
 						<ListTile
@@ -94,12 +98,14 @@ onMounted(() => setToc(islandPageToc));
 							:title="contact.title"
 							:description="contact.description"
 						>
-							<template #leading
-								><img
+							<template #leading>
+								<img
 									:src="contact.image"
-									alt=""
+									alt="img"
+									loading="lazy"
 									class="size-11 rounded-full object-cover"
-							/></template>
+								/>
+							</template>
 						</ListTile>
 					</List>
 				</Island>

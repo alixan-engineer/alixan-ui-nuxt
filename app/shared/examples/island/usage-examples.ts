@@ -16,7 +16,7 @@ const content = `  <List divider="inset">
       :description="contact.description"
     >
       <template #leading>
-        <img :src="contact.image" alt="" class="size-11 rounded-full object-cover" />
+        <img :src="contact.image" alt="" loading="lazy" class="size-11 rounded-full object-cover" />
       </template>
     </ListTile>
   </List>`;
@@ -27,6 +27,7 @@ export const examples = {
   subtitle="island.demoSubtitle"
   description="island.demoDesc"
   header-position="inside"
+  content-class="p-4 rounded-4xl"
 >
 ${content}
 </Island>`,
@@ -35,6 +36,7 @@ ${content}
   subtitle="island.demoSubtitle"
   description="island.demoDesc"
   header-position="outside"
+  content-class="p-4 rounded-4xl"
 >
 ${content}
 </Island>`,

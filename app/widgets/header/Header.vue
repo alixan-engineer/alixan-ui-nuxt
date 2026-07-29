@@ -29,7 +29,7 @@ const emit = defineEmits<{
 				target="_blank"
 				tooltip="Github"
 			>
-				<img :src="githubIcon" alt="" class="size-6 dark:invert" />
+				<img :src="githubIcon" alt="" loading="lazy" class="size-6 dark:invert" />
 			</IconButton>
 			<HeaderSettings />
 		</div>

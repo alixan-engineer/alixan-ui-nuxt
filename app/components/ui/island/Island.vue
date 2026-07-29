@@ -37,7 +37,7 @@ const attrs = useAttrs();
 		/>
 		<div
 			:class="
-				cn('overflow-hidden rounded-3xl border bg-background p-4', contentClass)
+				cn('overflow-hidden rounded-2xl border bg-background', contentClass)
 			"
 		>
 			<IslandHeader
