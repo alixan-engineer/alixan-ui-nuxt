@@ -23,7 +23,7 @@ onMounted(() => setToc(svgLoaderPageToc));
 			{{ $t('svgLoaderPage.description') }}
 		</p>
 
-		<Info>
+		<InfoBox>
 			{{ $t('app.infoPrefix') }}
 			<TextLink
 				href="https://nuxt.com/modules/nuxt-svgo-loader"
@@ -31,7 +31,7 @@ onMounted(() => setToc(svgLoaderPageToc));
 			>
 				{{ $t('svgLoaderPage.infoLink') }}
 			</TextLink>
-		</Info>
+		</InfoBox>
 	</header>
 
 	<section id="installation" class="space-y-5">

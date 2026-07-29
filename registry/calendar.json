@@ -4,6 +4,8 @@
 		"Calendar.vue",
 		"Checkbox.vue",
 		"Input.vue",
+		"IconButton.vue",
+		"Tooltip.vue",
 		"Select.vue"
 	],
 	"utils": ["cn.ts"]

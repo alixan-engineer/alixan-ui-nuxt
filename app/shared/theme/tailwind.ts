@@ -48,14 +48,6 @@ export const tailwindCss = `
 	--radius-lg: var(--radius);
 	--radius-xl: calc(var(--radius) + 2px);
 
-	--color-sidebar-background: var(--sidebar-background);
-	--color-sidebar-foreground: var(--sidebar-foreground);
-	--color-sidebar-primary: var(--sidebar-primary);
-	--color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-	--color-sidebar-accent: var(--sidebar-accent);
-	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-	--color-sidebar-border: var(--sidebar-border);
-	--color-sidebar-ring: var(--sidebar-ring);
 }
 
 :root {
@@ -89,14 +81,6 @@ export const tailwindCss = `
 	--input: oklch(0.92 0.004 286.32);
 	--ring: oklch(0.708 0 0);
 
-	--sidebar-background: oklch(0.985 0 0);
-	--sidebar-foreground: oklch(0.141 0.005 285.823);
-	--sidebar-primary: oklch(0.141 0.005 285.823);
-	--sidebar-primary-foreground: oklch(0.985 0 0);
-	--sidebar-accent: oklch(92% 0 0);
-	--sidebar-accent-foreground: oklch(0.21 0.006 285.885);
-	--sidebar-border: oklch(0.92 0.004 286.32);
-	--sidebar-ring: oklch(0.708 0 0);
 }
 
 .dark {
@@ -128,14 +112,6 @@ export const tailwindCss = `
 	--input: oklch(1 0 0 / 15%);
 	--ring: oklch(0.556 0 0);
 
-	--sidebar-background: oklch(0.21 0.006 285.885);
-	--sidebar-foreground: oklch(0.985 0 0);
-	--sidebar-primary: oklch(0.985 0 0);
-	--sidebar-primary-foreground: oklch(0.141 0.005 285.823);
-	--sidebar-accent: oklch(0.274 0.006 286.033);
-	--sidebar-accent-foreground: oklch(0.985 0 0);
-	--sidebar-border: oklch(1 0 0 / 10%);
-	--sidebar-ring: oklch(0.439 0 0);
 }
 
 @layer base {

@@ -10,7 +10,7 @@ const onTap = () => {
 
 <template>
 	<Card
-		image="/mac.webp"
+		image="/examples/mac.webp"
 		title="card.demoTitle"
 		description="card.demoDescription"
 		price="$640"

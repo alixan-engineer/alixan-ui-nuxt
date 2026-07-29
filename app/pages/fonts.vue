@@ -21,7 +21,7 @@ onMounted(() => setToc(fontsPageToc));
 		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
 			{{ $t('fontsPage.description') }}
 		</p>
-		<Info>
+		<InfoBox>
 			{{ $t('app.infoPrefix') }}
 			<TextLink
 				href="https://google-fonts.nuxtjs.org/getting-started/setup"
@@ -29,7 +29,7 @@ onMounted(() => setToc(fontsPageToc));
 			>
 				{{ $t('fontsPage.infoLink') }}
 			</TextLink>
-		</Info>
+		</InfoBox>
 	</header>
 
 	<section id="installation" class="space-y-5">

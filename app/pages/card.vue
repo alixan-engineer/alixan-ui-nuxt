@@ -39,7 +39,7 @@ const onTap = () => {
 		<ExampleBlock :code="examples.usage">
 			<div class="w-full max-w-sm">
 				<Card
-					image="/mac.webp"
+					image="/examples/mac.webp"
 					title="card.demoTitle"
 					description="card.demoDescription"
 					price="$640"

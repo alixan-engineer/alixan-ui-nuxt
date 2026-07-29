@@ -23,12 +23,12 @@ onMounted(() => setToc(iconsPageToc));
 			{{ $t('iconsPage.description') }}
 		</p>
 
-		<Info>
+		<InfoBox>
 			{{ $t('iconsPage.infoPrefix') }}
 			<TextLink href="https://lucide.dev/icons/?focus=" target="_blank">
 				{{ $t('iconsPage.infoLink') }}
 			</TextLink>
-		</Info>
+		</InfoBox>
 	</header>
 
 	<section id="installation" class="space-y-5">

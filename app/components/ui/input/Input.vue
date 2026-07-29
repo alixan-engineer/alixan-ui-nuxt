@@ -83,6 +83,7 @@ const visibleLabel = computed(() => props.label);
 const visiblePlaceholder = computed(() => props.placeholder);
 const stringValue = computed(() => String(model.value ?? ''));
 const hasValue = computed(() => stringValue.value.length > 0);
+
 const matchesPattern = (value: string, pattern: string): boolean => {
 	try {
 		return new RegExp(`^(?:${pattern})$`).test(value);
@@ -90,30 +91,36 @@ const matchesPattern = (value: string, pattern: string): boolean => {
 		return true;
 	}
 };
-const validationError = computed(() => {
+type InputErrorKey = 'required' | 'min' | 'max' | 'pattern' | 'external';
+
+const errors = computed<Partial<Record<InputErrorKey, string>>>(() => {
 	const value = stringValue.value.trim();
-
-	if (props.required && !value) {
-		return 'validation.required';
-	}
-
+	const result: Partial<Record<InputErrorKey, string>> = {};
+	if (props.required && !value) result.required = 'validation.required';
 	if (props.min !== undefined && stringValue.value.length < props.min) {
-		return `Минимум ${props.min} символов`;
+		result.min = `Минимум ${props.min} символов`;
 	}
-
 	if (props.max !== undefined && stringValue.value.length > props.max) {
-		return `Максимум ${props.max} символов`;
+		result.max = `Максимум ${props.max} символов`;
 	}
-
-	if (props.pattern && value) {
-		if (!matchesPattern(value, props.pattern)) {
-			return props.patternMessage;
-		}
+	if (props.pattern && value && !matchesPattern(value, props.pattern)) {
+		result.pattern = props.patternMessage;
 	}
+	if (props.error) result.external = props.error;
+	return result;
+});
 
-	return '';
+const validationError = computed(() => {
+	return (
+		errors.value.required ||
+		errors.value.min ||
+		errors.value.max ||
+		errors.value.pattern ||
+		''
+	);
 });
 const errorMessage = computed(() => props.error || validationError.value);
+const invalid = computed(() => Boolean(errorMessage.value));
 const visibleError = computed(() =>
 	isTouched.value && errorMessage.value ? errorMessage.value : '',
 );
@@ -134,7 +141,6 @@ const hasMessage = computed(() => Boolean(messageText.value));
 
 const inputAttrs = computed(() => {
 	const { class: _class, ...rest } = attrs;
-
 	return rest;
 });
 
@@ -255,6 +261,15 @@ const focusInput = async () => {
 	inputRef.value?.focus();
 };
 
+const hasError = (error: InputErrorKey): boolean =>
+	Boolean(errors.value[error]);
+const validate = (): boolean => {
+	isTouched.value = true;
+	return !invalid.value;
+};
+
+defineExpose({ errors, hasError, invalid, isTouched, validate });
+
 watch(
 	() => props.mask,
 	() => {
@@ -275,7 +290,12 @@ onMounted(() => {
 			{{ $t(visibleLabel) }}
 		</label>
 
-		<span v-if="$slots.leading" :class="leadingSlotClass" aria-hidden="true">
+		<span
+			v-if="$slots.leading"
+			:class="leadingSlotClass"
+			aria-hidden="true"
+			tabindex="-1"
+		>
 			<slot name="leading" />
 		</span>
 
@@ -303,17 +323,16 @@ onMounted(() => {
 			<slot name="trailing" />
 		</span>
 
-		<button
+		<IconButton
 			v-else-if="hasClearButton"
-			type="button"
 			:class="trailingSlotClass"
-			class="rounded-lg p-1 hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none"
-			aria-label="Clear input"
+			size="sm"
+			tabindex="-1"
 			@mousedown.prevent
 			@click="clearValue"
 		>
-			<X class="size-5" />
-		</button>
+			<X />
+		</IconButton>
 
 		<Transition name="input-message" mode="out-in">
 			<p

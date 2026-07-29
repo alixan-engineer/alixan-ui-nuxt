@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Eye, EyeOff, Lock, Mail } from '@lucide/vue';
-import { inputProps } from '~/shared/examples/input/api-reference';
+import { inputExposed, inputProps } from '~/shared/examples/input/api-reference';
 import { inputPageToc } from '~/shared/examples/input/page-toc';
 import { examples } from '~/shared/examples/input/usage-examples';
 import { propsTableColumns } from '~/shared/examples/table-columns';
@@ -227,5 +227,6 @@ const iinValue = ref<string>('');
 			{{ $t('docsSections.apiReference') }}
 		</h2>
 		<Table :columns="propsTableColumns" :rows="inputProps" />
+		<Table :columns="propsTableColumns" :rows="inputExposed" />
 	</section>
 </template>

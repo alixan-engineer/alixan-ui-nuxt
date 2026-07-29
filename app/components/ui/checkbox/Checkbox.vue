@@ -106,7 +106,7 @@ const toggleFromControl = (event: MouseEvent): void => {
 			v-if="label"
 			:class="
 				cn(
-					'text-base leading-none',
+					'select-none text-base leading-none',
 					disabled
 						? 'cursor-not-allowed text-muted-foreground'
 						: 'cursor-pointer text-foreground',

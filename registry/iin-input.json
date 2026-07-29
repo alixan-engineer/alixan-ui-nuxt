@@ -2,7 +2,9 @@
 	"name": "iin-input",
 	"components": [
 		"IinInput.vue",
-		"Input.vue"
+		"Input.vue",
+		"IconButton.vue",
+		"Tooltip.vue"
 	],
 	"utils": ["cn.ts"]
 }

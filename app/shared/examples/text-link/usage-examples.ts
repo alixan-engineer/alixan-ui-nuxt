@@ -9,11 +9,11 @@ export const examples = {
   </p>
 </template>`,
 	externalLink: `<template>
-  <Info>
+  <InfoBox>
     For more detailed information, visit the
     <TextLink href="https://i18n.nuxtjs.org/" target="_blank">
       Nuxt i18n documentation.
     </TextLink>
-  </Info>
+  </InfoBox>
 </template>`,
 };

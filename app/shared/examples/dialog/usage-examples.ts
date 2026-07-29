@@ -66,7 +66,7 @@ const save = () => {
     </div>
 
     <div class="grid grid-cols-2 gap-2 p-4">
-      <Button variant="outlined" label="dialogPreview.cancel" @click="close" />
+      <Button color="secondary" label="dialogPreview.cancel" @click="close" />
       <Button label="dialogPreview.save" @click="save" />
     </div>
   </div>

@@ -57,7 +57,7 @@ onMounted(() => setToc(seoPageToc));
 			{{ $t('seoPage.sitemap.description') }}
 			{{ $t('seoPage.sitemap.verify') }}
 		</p>
-		<Info>
+		<InfoBox>
 			{{ $t('app.infoPrefix') }}
 			<TextLink
 				href="https://nuxtseo.com/docs/sitemap/getting-started/installation"
@@ -65,7 +65,7 @@ onMounted(() => setToc(seoPageToc));
 			>
 				{{ $t('seoPage.sitemap.infoLink') }}
 			</TextLink>
-		</Info>
+		</InfoBox>
 	</section>
 
 	<section id="site-config" class="space-y-5">
@@ -88,13 +88,13 @@ onMounted(() => setToc(seoPageToc));
 		<h2 class="text-2xl font-semibold">
 			{{ $t('seoPage.initialHead.title') }}
 		</h2>
-		<Info>
+		<InfoBox>
 			{{ $t('seoPage.iconKitchenRef.prefix') }}
 			<TextLink :href="$localePath('/icon-kitchen')">
 				{{ $t('seoPage.iconKitchenRef.link') }}
 			</TextLink>
 			{{ $t('seoPage.iconKitchenRef.suffix') }}
-		</Info>
+		</InfoBox>
 		<ExampleBlock
 			path="app/config/site/favicon.ts"
 			:code="faviconCode"

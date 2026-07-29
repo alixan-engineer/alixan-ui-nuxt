@@ -42,12 +42,8 @@ export const useTheme = () => {
 		const replacements: CssVariableReplacement[] = [
 			[':root', '--primary', colors.primary],
 			[':root', '--primary-foreground', colors.primaryForeground],
-			[':root', '--sidebar-primary', colors.primary],
-			[':root', '--sidebar-primary-foreground', colors.primaryForeground],
 			['.dark', '--primary', darkPrimary],
 			['.dark', '--primary-foreground', darkPrimaryForeground],
-			['.dark', '--sidebar-primary', darkPrimary],
-			['.dark', '--sidebar-primary-foreground', darkPrimaryForeground],
 		];
 		return replacements.reduce(
 			(currentCss, [selector, variable, value]) =>
@@ -69,11 +65,6 @@ export const useTheme = () => {
 		document.documentElement.style.setProperty('--primary', primary);
 		document.documentElement.style.setProperty(
 			'--primary-foreground',
-			primaryForeground,
-		);
-		document.documentElement.style.setProperty('--sidebar-primary', primary);
-		document.documentElement.style.setProperty(
-			'--sidebar-primary-foreground',
 			primaryForeground,
 		);
 	};

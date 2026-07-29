@@ -3,11 +3,11 @@ import { cn } from '~/utils/cn';
 import { scrollToTop } from '~/utils/scroll-to-top';
 import { menuSections } from './menu';
 
-interface Props {
+interface DocsSidebarProps {
 	sidebarToggle: boolean;
 }
 
-defineProps<Props>();
+defineProps<DocsSidebarProps>();
 
 const emit = defineEmits<{
 	close: [];

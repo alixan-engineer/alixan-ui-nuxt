@@ -1,0 +1,4 @@
+{
+	"name": "info-box",
+	"components": ["InfoBox.vue"]
+}

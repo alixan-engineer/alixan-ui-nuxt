@@ -2,7 +2,9 @@
 	"name": "phone-input",
 	"components": [
 		"PhoneInput.vue",
-		"Input.vue"
+		"Input.vue",
+		"IconButton.vue",
+		"Tooltip.vue"
 	],
 	"utils": ["cn.ts"]
 }

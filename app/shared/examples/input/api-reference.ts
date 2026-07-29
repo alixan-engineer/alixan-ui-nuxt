@@ -108,3 +108,30 @@ export const inputProps = [
 		description: 'apiReferenceDescriptions.inputClearButton',
 	},
 ];
+
+export const inputExposed = [
+	{
+		name: 'invalid',
+		type: 'boolean',
+		default: 'false',
+		description: 'apiReferenceDescriptions.inputInvalid',
+	},
+	{
+		name: 'errors',
+		type: 'Partial<Record<InputErrorKey, string>>',
+		default: '{}',
+		description: 'apiReferenceDescriptions.inputErrors',
+	},
+	{
+		name: 'hasError(error)',
+		type: '(error: InputErrorKey) => boolean',
+		default: '-',
+		description: 'apiReferenceDescriptions.inputHasError',
+	},
+	{
+		name: 'validate()',
+		type: '() => boolean',
+		default: '-',
+		description: 'apiReferenceDescriptions.inputValidate',
+	},
+];

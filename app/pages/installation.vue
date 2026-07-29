@@ -188,12 +188,12 @@ const currentTailwindCss = computed(() =>
 			</p>
 		</div>
 
-		<Info>
+		<InfoBox>
 			{{ $t('app.infoPrefix') }}
 			<TextLink :href="$localePath('/i18n')">
 				{{ $t('installationPage.i18nConfiguration.infoLink') }}
 			</TextLink>
-		</Info>
+		</InfoBox>
 
 		<div class="island">
 			<div class="px-4 py-3 flex items-center gap-3 border-b">

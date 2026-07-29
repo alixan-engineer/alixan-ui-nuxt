@@ -38,6 +38,13 @@ const iconClasses: Record<ToastType, string> = {
 	error: 'bg-black/10 text-white dark:bg-white/20',
 	info: 'bg-black/10 text-white dark:bg-white/20',
 };
+
+const closeIconClasses: Record<ToastType, string> = {
+	success: 'text-white',
+	warning: 'text-amber-950',
+	error: 'text-white',
+	info: 'text-white',
+};
 </script>
 
 <template>
@@ -64,13 +71,13 @@ const iconClasses: Record<ToastType, string> = {
 			{{ $t(toast.message) }}
 		</p>
 
-		<button
-			type="button"
+		<IconButton
 			:aria-label="$t('toast.close')"
-			class="flex size-9 shrink-0 items-center justify-center rounded-lg text-current hover:bg-black/10 focus-visible:bg-black/10 focus-visible:outline-none dark:hover:bg-white/15 dark:focus-visible:bg-white/15 [&_svg]:size-4"
+			size="sm"
+			:class="closeIconClasses[toast.type]"
 			@click="emit('close')"
 		>
 			<X />
-		</button>
+		</IconButton>
 	</div>
 </template>

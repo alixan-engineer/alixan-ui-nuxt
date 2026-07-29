@@ -1,0 +1,5 @@
+{
+	"name": "app-bar",
+	"components": ["AppBar.vue"],
+	"utils": ["cn.ts"]
+}

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, resolveComponent, useAttrs } from 'vue';
 import type { RouteLocationRaw } from 'vue-router';
+
 import { cn } from '~/utils/cn';
 
 defineOptions({
@@ -39,7 +40,7 @@ const NuxtLink = resolveComponent('NuxtLink');
 const Tooltip = resolveComponent('Tooltip');
 
 const sizeClasses: Record<IconButtonSize, string> = {
-	sm: 'size-9 rounded-lg [&_svg]:size-4',
+	sm: 'size-9 rounded-lg [&_svg]:size-5',
 	md: 'size-11 rounded-xl [&_svg]:size-6',
 	lg: 'size-12 rounded-2xl [&_svg]:size-7',
 };
@@ -70,7 +71,7 @@ const toneClasses: Record<
 	},
 	ghost: {
 		default:
-			'border-transparent bg-transparent text-foreground hover:bg-secondary hover:text-secondary-foreground focus-visible:bg-secondary focus-visible:text-secondary-foreground',
+			'border-transparent bg-transparent hover:bg-black/10 focus-visible:bg-black/10 dark:hover:bg-white/15 dark:focus-visible:bg-white/15',
 		primary:
 			'border-transparent bg-transparent text-primary hover:bg-primary/10 focus-visible:bg-primary/10',
 		secondary:

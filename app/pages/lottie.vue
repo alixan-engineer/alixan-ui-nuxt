@@ -25,12 +25,12 @@ onMounted(() => setToc(lottiePageToc));
 		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
 			{{ $t('lottiePage.description') }}
 		</p>
-		<Info>
+		<InfoBox>
 			{{ $t('app.infoPrefix') }}
 			<TextLink href="https://nuxt.com/modules/lottie" target="_blank">
 				{{ $t('lottiePage.infoLink') }}
 			</TextLink>
-		</Info>
+		</InfoBox>
 	</header>
 
 	<section id="installation" class="space-y-5">
@@ -51,7 +51,7 @@ onMounted(() => setToc(lottiePageToc));
 				<code>app/assets/lottie</code>.
 			</div>
 		</ExampleBlock>
-		<Info>
+		<InfoBox>
 			{{ $t('lottiePage.folderExamplesPrefix') }}
 			<TextLink :href="errorLottieUrl" download="error.json">
 				<code>app/assets/lottie/error.json</code>
@@ -60,7 +60,7 @@ onMounted(() => setToc(lottiePageToc));
 			<TextLink :href="successLottieUrl" download="success.json">
 				<code>app/assets/lottie/success.json</code> </TextLink
 			>.
-		</Info>
+		</InfoBox>
 	</section>
 
 	<section id="usage" class="space-y-5">

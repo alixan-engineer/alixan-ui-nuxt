@@ -35,12 +35,12 @@ const setTheme = (value: ColorModePreference) => {
 		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
 			{{ $t('themePage.description') }}
 		</p>
-		<Info>
+		<InfoBox>
 			{{ $t('app.infoPrefix') }}
 			<TextLink href="https://color-mode.nuxtjs.org/" target="_blank">
 				{{ $t('themePage.infoLink') }}
 			</TextLink>
-		</Info>
+		</InfoBox>
 	</header>
 
 	<section id="installation" class="space-y-5">

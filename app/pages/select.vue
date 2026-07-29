@@ -12,18 +12,18 @@ const { setToc } = usePageToc();
 
 onMounted(() => setToc(selectPageToc));
 
-const value = ref<string | number | null>('cupertino');
+const value = ref<string | number | null>('alixan');
 const requiredValue = ref<string | number | null>(null);
 const options = [
-	{ label: 'Cupertino', value: 'cupertino' },
+	{ label: 'Alixan UI', value: 'alixan' },
 	{ label: 'Material', value: 'material' },
 	{ label: 'Fluent', value: 'fluent', disabled: true },
 ];
 
 const usageCode = `<script setup lang="ts">
-const value = ref('cupertino')
+const value = ref('alixan')
 const options = [
-  { label: 'Cupertino', value: 'cupertino' },
+  { label: 'Alixan UI', value: 'alixan' },
   { label: 'Material', value: 'material' },
   { label: 'Fluent', value: 'fluent', disabled: true },
 ]
@@ -36,7 +36,7 @@ const options = [
 const validationCode = `<script setup lang="ts">
 const value = ref(null)
 const options = [
-  { label: 'Cupertino', value: 'cupertino' },
+  { label: 'Alixan UI', value: 'alixan' },
   { label: 'Material', value: 'material' },
   { label: 'Fluent', value: 'fluent', disabled: true },
 ]

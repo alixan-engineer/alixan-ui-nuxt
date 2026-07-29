@@ -43,12 +43,12 @@ const changeLocale = async (value: Locale): Promise<void> => {
 		<p class="max-w-2xl text-lg leading-8 text-muted-foreground">
 			{{ $t('i18nPage.description') }}
 		</p>
-		<Info>
+		<InfoBox>
 			{{ $t('app.infoPrefix') }}
 			<TextLink href="https://i18n.nuxtjs.org/" target="_blank">
 				{{ $t('i18nPage.infoLink') }}
 			</TextLink>
-		</Info>
+		</InfoBox>
 	</header>
 
 	<section id="installation" class="space-y-5">

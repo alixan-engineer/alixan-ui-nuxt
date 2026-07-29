@@ -1,5 +1,5 @@
 {
 	"name": "input",
-	"components": ["Input.vue"],
+	"components": ["Input.vue", "IconButton.vue", "Tooltip.vue"],
 	"utils": ["cn.ts"]
 }

@@ -1,0 +1,5 @@
+{
+	"name": "list",
+	"components": ["List.vue", "ListTile.vue"],
+	"utils": ["cn.ts"]
+}

@@ -45,12 +45,12 @@ onMounted(() => setToc(textLinkPageToc));
 			{{ $t('docsSections.externalLink') }}
 		</h2>
 		<ExampleBlock :code="examples.externalLink">
-			<Info>
+			<InfoBox>
 				For more detailed information, visit the
 				<TextLink href="https://i18n.nuxtjs.org/" target="_blank">
 					Nuxt i18n documentation.
 				</TextLink>
-			</Info>
+			</InfoBox>
 		</ExampleBlock>
 	</section>
 

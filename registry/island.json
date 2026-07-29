@@ -1,0 +1,5 @@
+{
+	"name": "island",
+	"components": ["Island.vue", "IslandHeader.vue"],
+	"utils": ["cn.ts"]
+}

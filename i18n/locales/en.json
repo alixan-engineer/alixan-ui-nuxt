@@ -29,7 +29,7 @@
 	},
 	"card": {
 		"demoTitle": "MacBook Pro 14-inch",
-		"demoDescription": "Powerful laptop with Apple Silicon performance, a stunning Liquid Retina display, and all-day battery life.",
+		"demoDescription": "Powerful laptop with fast performance, a vivid display, and all-day battery life.",
 		"addToCart": "Add to cart",
 		"addedToCard": "Item added to cart"
 	},
@@ -202,6 +202,7 @@
 		"introduction": "Introduction",
 		"installation": "Installation",
 		"guides": "Guides",
+		"layouts": "Layouts",
 		"components": "Components",
 		"forms": "Forms",
 		"overlays": "Overlays"
@@ -312,6 +313,7 @@
 				"slotsContent": "Yes. Use title and content slots when you need custom markup for each item."
 			}
 		},
+		"avatar": { "metaTitle": "Avatar - Alixan UI", "description": "A circular user image or initials fallback with Alixan UI sizing and card colors." },
 		"tabs": {
 			"metaTitle": "Tabs - Alixan UI",
 			"description": "A compact segmented navigation component for switching between views.",
@@ -326,7 +328,7 @@
 		},
 		"status": {
 			"metaTitle": "Status - Alixan UI",
-			"description": "A soft Cupertino-inspired status pill for success, warning, info and error states."
+			"description": "An Alixan UI status pill for success, warning, info and error states."
 		},
 		"spinner": {
 			"metaTitle": "Spinner - Alixan UI",
@@ -336,6 +338,12 @@
 			"metaTitle": "Card - Alixan UI",
 			"description": "A simple island card for product previews with image, content, price and action."
 		},
+		"infoBox": { "metaTitle": "InfoBox - Alixan UI", "description": "A quiet information surface for notes and supporting guidance.", "demo": "Use InfoBox to separate helpful context from the main content." },
+		"list": { "metaTitle": "List - Alixan UI", "description": "An Alixan UI list row with leading, title, description and trailing areas." },
+		"island": { "metaTitle": "Island - Alixan UI", "description": "A grouped Alixan UI content surface with an optional title and description." },
+		"appBar": { "metaTitle": "App Bar - Alixan UI", "description": "An Alixan UI navigation bar with compact and Silver variants." },
+		"sidebar": { "metaTitle": "Sidebar - Alixan UI", "description": "An Alixan UI application shell with responsive navigation, App Bar and a centered content container." },
+		"bottomNavigationBar": { "metaTitle": "Bottom Navigation Bar - Alixan UI", "description": "A 50px bottom navigation bar for switching between primary mobile destinations." },
 		"empty": {
 			"metaTitle": "Empty - Alixan UI",
 			"description": "A centered empty state for missing data, empty search results and error pages."
@@ -382,7 +390,7 @@
 		},
 		"alertDialog": {
 			"metaTitle": "Alert Dialog - Alixan UI",
-			"description": "A compact Cupertino-style message dialog for clear blocking feedback."
+			"description": "A compact Alixan UI message dialog for clear blocking feedback."
 		},
 		"confirmDialog": {
 			"metaTitle": "Confirm Dialog - Alixan UI",
@@ -477,11 +485,18 @@
 		"autocomplete": "Autocomplete",
 		"calendar": "Calendar",
 		"accordion": "Accordion",
+		"avatar": "Avatar",
 		"tabs": "Tabs",
 		"switch": "Switch",
 		"status": "Status",
 		"spinner": "Spinner",
 		"card": "Card",
+		"infoBox": "InfoBox",
+		"list": "List",
+		"island": "Island",
+		"appBar": "App Bar",
+		"sidebar": "Sidebar",
+		"bottomNavigationBar": "Bottom Navigation Bar",
 		"empty": "Empty",
 		"divider": "Divider",
 		"table": "Table",
@@ -496,6 +511,12 @@
 		"dropdownMenu": "Dropdown Menu",
 		"tooltip": "Tooltip"
 	},
+	"list": { "demoTitle": "Profile", "demoDescription": "Personal details and account settings", "securityTitle": "Security", "securityDescription": "Password and sign-in methods", "edit": "Edit", "delete": "Delete", "profileOpened": "Profile opened", "editStarted": "Editing profile", "deleteStarted": "Deleting profile", "clickTitle": "Click", "clickDescription": "Passing a click handler makes ListTile a button and adds pointer, hover and keyboard focus styles automatically.", "actionsTitle": "Trailing Actions", "borderTitle": "Border", "borderDescription": "Inset adds an Alixan UI divider aligned with the content. Block wraps every ListTile in its own bordered surface.", "insetTitle": "Inset", "blockTitle": "Block", "contacts": { "aruzhan": "Aruzhan Sarsenova", "aruzhanPhone": "+7 701 123 45 67", "daniyar": "Daniyar Aliyev", "daniyarPhone": "+7 702 234 56 78", "aidana": "Aidana Nurlankyzy", "aidanaPhone": "+7 705 345 67 89" } },
+	"island": { "demoTitle": "Overview", "demoSubtitle": "Contacts", "demoDesc": "Your latest account information", "demoContent": "Content is placed inside the default slot.", "outsideTitle": "Outside Header" },
+	"appBar": { "compactTitle": "Compact", "silverTitle": "Silver", "dashboard": "Dashboard", "storeTitle": "Store", "openMenu": "Open menu", "profile": "Profile", "scrollHint": "Scroll to see the navigation bar transition.", "back": "Back", "more": "More" },
+	"userMenu": { "userName": "Alixan", "administrator": "Administrator" },
+	"sidebarDemo": { "brand": "Alixan UI", "home": "Home", "content": "Page content is placed in a centered responsive container.", "workspace": "Workspace", "management": "Management", "dashboard": "Dashboard", "dashboardDescription": "Overview of the current workspace.", "orders": "Orders", "ordersDescription": "Review and manage customer orders.", "analytics": "Analytics", "analyticsDescription": "Track the main product metrics.", "team": "Team", "teamDescription": "Manage members and access.", "settings": "Settings", "settingsDescription": "Configure the application workspace.", "activity": "Activity", "activityDescription": "Latest workspace updates.", "guideTitle": "Alixan UI guide", "silverGuide": "Use Silver when the page needs a prominent title that collapses into the App Bar while scrolling.", "bottomNavigationRule": "Do not use the Silver App Bar on screens that include a Bottom Navigation Bar. Use Compact for those screens so both navigation levels remain clear.", "accountMenu": "Open account menu", "profile": "Profile", "preferences": "Preferences", "signOut": "Sign out", "pageExamples": "Complete page examples", "overview": "Overview", "orderReady": "Ready for processing", "weeklySales": "Weekly sales", "report": "Report", "workspaceName": "Workspace name", "notifications": "Notifications", "reports": "Reports", "memberName": "Alixan member {index}", "defaultFile": "layouts/default.vue", "dashboardFile": "pages/index.vue", "ordersFile": "pages/orders.vue", "analyticsFile": "pages/analytics.vue", "teamFile": "pages/team.vue", "settingsFile": "pages/settings.vue" },
+	"bottomNavigation": { "home": "Home", "events": "Events", "profile": "Profile" },
 	"validation": {
 		"required": "This field is required",
 		"email": "Enter a valid email",
@@ -674,6 +695,25 @@
 		"inputDisabled": "Disables input interaction.",
 		"inputReadonly": "Makes the input readable but not editable.",
 		"inputClearButton": "Shows a clear button when the input has a value and no trailing slot.",
+		"inputInvalid": "Reactive validity state exposed through the component ref.",
+		"inputErrors": "Current validation errors keyed by required, min, max, pattern or external.",
+		"inputHasError": "Checks whether a particular validation error is active.",
+		"inputValidate": "Marks the input as touched and returns whether it is valid.",
+		"infoContent": "Informational content rendered in the surface.",
+		"infoIcon": "Optional icon component displayed before the content.",
+		"listDivider": "Uses inset Alixan UI dividers or renders every tile as a separate block.",
+		"listClick": "Makes the tile interactive and enables pointer, hover and keyboard focus states.",
+		"listTitle": "Primary row text.",
+		"listDescription": "Optional supporting row text.",
+		"listLeading": "Content displayed before the text, such as an icon or avatar.",
+		"listTitleSlot": "Custom title content.",
+		"listDescriptionSlot": "Custom description content.",
+		"listTrailing": "Content displayed after the text, such as a value or chevron.",
+		"islandTitle": "Optional heading displayed above the content.",
+		"islandSubtitle": "Optional secondary heading displayed below the title.",
+		"islandDesc": "Optional description displayed below the heading.",
+		"islandContent": "Content rendered inside the island body.",
+		"islandHeaderPosition": "Places the title and description inside the island or above its border.",
 		"otpModelValue": "OTP value used by v-model.",
 		"otpLength": "Number of OTP digits. Values are clamped between 4 and 8.",
 		"otpChange": "Emitted on every OTP value change.",
@@ -718,7 +758,37 @@
 		"cardImageAlt": "Accessible alt text for the image.",
 		"cardTitle": "Main card title.",
 		"cardPrice": "Price text shown next to the action button.",
-		"cardButtonEvent": "Emitted when the button is clicked."
+		"cardButtonEvent": "Emitted when the button is clicked.",
+		"appBarTitle": "Navigation title. Translation keys are supported.",
+		"appBarVariant": "Compact toolbar or Silver-style large title.",
+		"appBarSticky": "Keeps the bar pinned to the top of its scroll container.",
+		"appBarDivider": "Shows a permanent divider for Compact and a scroll-aware divider for Silver.",
+		"appBarTitleAlign": "Responsive centers the title below md and aligns it left from md. Start and center force one alignment.",
+		"appBarScrollTarget": "Explicit scroll element or selector. The nearest scroll container is used by default.",
+		"appBarLeading": "Leading navigation action.",
+		"appBarTrailing": "Trailing navigation actions.",
+		"appBarTitleSlot": "Custom compact title content.",
+		"appBarLargeTitleSlot": "Custom Silver-style large title content.",
+		"appBarContent": "Scrollable page content rendered below the bar.",
+		"sidebarOpen": "Controls the sidebar on mobile.",
+		"sidebarWidth": "Sidebar width on desktop.",
+		"sidebarBackdrop": "Closes the mobile sidebar when its backdrop is clicked.",
+		"sidebarBrand": "Default brand name displayed next to the Alixan UI logo.",
+		"sidebarHeader": "Brand or workspace header.",
+		"sidebarNavigation": "Sidebar navigation content.",
+		"sidebarFooter": "Footer actions or account controls.",
+		"sidebarContainer": "Wraps page content in the centered max-width container.",
+		"sidebarContentClass": "Additional classes for the content wrapper.",
+		"sidebarAppBar": "App Bar area with open, close and toggle helpers.",
+		"sidebarContent": "Main page content. Renders NuxtPage as the router outlet when the slot is not provided.",
+		"avatarName": "User name used to generate initials when no image is provided.",
+		"avatarImg": "Optional avatar image URL. When provided, the image is displayed instead of initials.",
+		"avatarAlt": "Accessible image description. The name is used by default.",
+		"avatarSize": "Controls the avatar diameter and fallback text size.",
+		"sidebarMode": "Selects responsive behavior or forces the mobile or desktop presentation.",
+		"sidebarContained": "Keeps the mobile overlay inside the local container for embedded previews.",
+		"bottomNavigationModelValue": "Index of the active destination.",
+		"bottomNavigationItems": "Navigation destinations with a label, icon and optional Nuxt route."
 	},
 	"toast": {
 		"close": "Close toast"

@@ -26,7 +26,7 @@ onMounted(() => setToc(iconKitchenPageToc));
 		<h2 class="text-2xl font-semibold">
 			{{ $t('iconKitchenPage.generate.title') }}
 		</h2>
-		<Info>
+		<InfoBox>
 			{{ $t('iconKitchenPage.generate.infoPrefix') }}
 			<TextLink
 				href="https://icon.kitchen/i/H4sIAAAAAAAAA6tWKkvMKU0tVrKqVkpLd87PyS9SslJSTgMDJR2lJISYWaJxSqqFUq2OUm5-SmkOSE-0UmJeSlF-ZgpQZWZ-MZAsT01Siq0FAI3686NWAAAA"
@@ -35,7 +35,7 @@ onMounted(() => setToc(iconKitchenPageToc));
 				{{ $t('iconKitchenPage.generate.infoLink') }}
 			</TextLink>
 			{{ $t('iconKitchenPage.generate.infoSuffix') }}
-		</Info>
+		</InfoBox>
 		<p class="text-muted-foreground leading-7">
 			{{ $t('iconKitchenPage.generate.descriptionPrefix') }}
 			<code>web</code>

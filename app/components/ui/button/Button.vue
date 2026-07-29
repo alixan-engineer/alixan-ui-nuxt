@@ -45,7 +45,7 @@ const Tooltip = resolveComponent('Tooltip');
 const sizeClasses: Record<ButtonSize, string> = {
 	sm: 'h-9 rounded-lg px-3 text-md',
 	md: 'h-11 rounded-xl px-4 text-base',
-	lg: 'h-12 rounded-2xl px-5 text-base',
+	lg: 'h-12 rounded-2xl px-5 text-lg',
 };
 
 const toneClasses: Record<ButtonVariant, Record<ButtonColor, string>> = {

@@ -2,7 +2,9 @@
 	"name": "toast",
 	"components": [
 		"Toast.vue",
-		"ToastHost.vue"
+		"ToastHost.vue",
+		"IconButton.vue",
+		"Tooltip.vue"
 	],
 	"composables": ["useToast.ts"],
 	"utils": ["cn.ts"]

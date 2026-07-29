@@ -2,7 +2,9 @@
 	"name": "email-input",
 	"components": [
 		"EmailInput.vue",
-		"Input.vue"
+		"Input.vue",
+		"IconButton.vue",
+		"Tooltip.vue"
 	],
 	"utils": ["cn.ts"]
 }

@@ -50,7 +50,7 @@ const submit = async (): Promise<void> => {
 		</div>
 
 		<div class="grid grid-cols-2 gap-2">
-			<Button variant="outlined" @click="cancel">
+			<Button color="secondary" @click="cancel">
 				{{ $t(data?.cancelLabel ?? 'actions.cancel') }}
 			</Button>
 			<Button
