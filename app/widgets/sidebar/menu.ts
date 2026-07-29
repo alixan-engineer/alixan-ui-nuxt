@@ -24,10 +24,14 @@ export const menuSections: IMenuSection[] = [
 	{
 		labelKey: 'sidebar.layouts',
 		items: [
-			{ labelKey: 'component.appBar', to: '/app-bar' },
-			{ labelKey: 'component.sidebar', to: '/sidebar' },
-			{ labelKey: 'component.bottomNavigationBar', to: '/bottom-navigation-bar' },
-			{ labelKey: 'component.island', to: '/island' },
+			{ labelKey: 'component.appBar', to: '/app-bar', new: true },
+			{ labelKey: 'component.sidebar', to: '/sidebar', new: true },
+			{
+				labelKey: 'component.bottomNavigationBar',
+				to: '/bottom-navigation-bar',
+				new: true,
+			},
+			{ labelKey: 'component.island', to: '/island', new: true },
 		],
 	},
 	{
@@ -41,8 +45,8 @@ export const menuSections: IMenuSection[] = [
 			{ labelKey: 'component.accordion', to: '/accordion' },
 			{ labelKey: 'component.avatar', to: '/avatar' },
 			{ labelKey: 'component.tabs', to: '/tabs' },
-			{ labelKey: 'component.infoBox', to: '/info-box' },
-			{ labelKey: 'component.list', to: '/list' },
+			{ labelKey: 'component.infoBox', to: '/info-box', new: true },
+			{ labelKey: 'component.list', to: '/list', new: true },
 			{ labelKey: 'component.switch', to: '/switch' },
 			{ labelKey: 'component.status', to: '/status' },
 			{ labelKey: 'component.spinner', to: '/spinner' },
@@ -54,7 +58,7 @@ export const menuSections: IMenuSection[] = [
 	{
 		labelKey: 'sidebar.forms',
 		items: [
-			{ labelKey: 'component.input', to: '/input' },
+			{ labelKey: 'component.input', to: '/input', new: true },
 			{ labelKey: 'component.otp', to: '/otp' },
 			{ labelKey: 'component.checkbox', to: '/checkbox' },
 			{ labelKey: 'component.select', to: '/select' },

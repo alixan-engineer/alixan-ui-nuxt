@@ -156,7 +156,7 @@ watch(
 				<div :class="titleClass">
 					<component
 						:is="variant === 'compact' ? 'h1' : 'div'"
-						class="truncate text-xl font-semibold leading-[30px]"
+						class="truncate text-xl font-semibold leading-7.5"
 						:aria-hidden="variant === 'silver' ? !compactTitleVisible : undefined"
 					>
 						<slot name="title">{{ $t(title) }}</slot>
@@ -172,7 +172,7 @@ watch(
 		</header>
 
 		<div v-if="variant === 'silver'" ref="largeTitleRef" class="px-4 pb-2 pt-5">
-			<h1 class="line-clamp-2 text-[34px] font-bold leading-[41px] tracking-tight">
+			<h1 class="line-clamp-2 text-[34px] font-bold leading-10.25 tracking-tight">
 				<slot name="largeTitle">{{ $t(title) }}</slot>
 			</h1>
 		</div>

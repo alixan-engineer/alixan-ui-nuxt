@@ -205,7 +205,8 @@
 		"layouts": "Макеттер",
 		"components": "Компоненттер",
 		"forms": "Формалар",
-		"overlays": "Оверлейлер"
+		"overlays": "Оверлейлер",
+		"new": "NEW"
 	},
 	"guide": {
 		"fonts": "Қаріптер",
@@ -512,7 +513,7 @@
 		"tooltip": "Tooltip"
 	},
 	"list": { "demoTitle": "Профиль", "demoDescription": "Жеке деректер және аккаунт баптаулары", "securityTitle": "Қауіпсіздік", "securityDescription": "Құпиясөз және кіру тәсілдері", "edit": "Өзгерту", "delete": "Жою", "profileOpened": "Профиль ашылды", "editStarted": "Профильді өңдеу", "deleteStarted": "Профильді жою", "clickTitle": "Клик", "clickDescription": "Клик өңдеушісін беру ListTile-ды button етіп, pointer, hover және keyboard focus стильдерін автоматты қосады.", "actionsTitle": "Trailing әрекеттері", "borderTitle": "Шекара", "borderDescription": "Inset контент сызығымен Alixan UI divider қосады. Block әр ListTile-ды жеке рамкамен қоршайды.", "insetTitle": "Inset", "blockTitle": "Block", "contacts": { "aruzhan": "Аружан Сәрсенова", "aruzhanPhone": "+7 701 123 45 67", "daniyar": "Данияр Әлиев", "daniyarPhone": "+7 702 234 56 78", "aidana": "Айдана Нұрланқызы", "aidanaPhone": "+7 705 345 67 89" } },
-	"island": { "demoTitle": "Шолу", "demoSubtitle": "Контактілер", "demoDesc": "Аккаунт туралы соңғы ақпарат", "demoContent": "Контент default slot ішінде орналасады.", "outsideTitle": "Сыртқы header" },
+	"island": { "demoTitle": "Шолу", "demoDesc": "Аккаунт туралы соңғы ақпарат", "demoContent": "Контент default slot ішінде орналасады.", "outsideTitle": "Сыртқы header" },
 	"appBar": { "compactTitle": "Ықшам", "silverTitle": "Silver", "dashboard": "Басты бет", "storeTitle": "Дүкен", "openMenu": "Мәзірді ашу", "profile": "Профиль", "scrollHint": "Навигация панелінің ауысуын көру үшін айналдырыңыз.", "back": "Артқа", "share": "Бөлісу", "more": "Тағы" },
 	"userMenu": { "userName": "Alixan", "administrator": "Әкімші" },
 	"sidebarDemo": { "brand": "Alixan UI", "home": "Басты бет", "content": "Бет контенті ортаға тураланған бейімделгіш контейнерге орналасады.", "workspace": "Жұмыс кеңістігі", "management": "Басқару", "dashboard": "Басты бет", "dashboardDescription": "Ағымдағы жұмыс кеңістігінің шолуы.", "orders": "Тапсырыстар", "ordersDescription": "Клиент тапсырыстарын қарау және басқару.", "analytics": "Аналитика", "analyticsDescription": "Өнімнің негізгі көрсеткіштері.", "team": "Команда", "teamDescription": "Қатысушылар мен қолжетімділікті басқару.", "settings": "Баптаулар", "settingsDescription": "Жұмыс кеңістігін баптау.", "activity": "Белсенділік", "activityDescription": "Жұмыс кеңістігіндегі соңғы өзгерістер.", "guideTitle": "Alixan UI гайды", "silverGuide": "Бетке айналдыру кезінде App Bar ішіне жиналатын ірі тақырып қажет болғанда Silver қолданыңыз.", "bottomNavigationRule": "Bottom Navigation Bar бар экрандарда Silver App Bar қолданбаңыз. Навигация деңгейлері түсінікті болуы үшін мұндай экрандарда Compact таңдаңыз.", "accountMenu": "Аккаунт мәзірін ашу", "profile": "Профиль", "preferences": "Баптаулар", "signOut": "Шығу", "overview": "Шолу", "orderReady": "Өңдеуге дайын", "weeklySales": "Апталық сатылым", "report": "Есеп", "workspaceName": "Жұмыс кеңістігінің атауы", "notifications": "Хабарландырулар", "reports": "Есептер", "memberName": "Alixan қатысушысы {index}" },
@@ -724,7 +725,6 @@
 		"listDescriptionSlot": "Кастом description контенті.",
 		"listTrailing": "Мәтіннен кейінгі контент, мысалы value немесе chevron.",
 		"islandTitle": "Контент үстіндегі қосымша heading.",
-		"islandSubtitle": "Негізгі title астындағы қосымша subtitle.",
 		"islandDesc": "Heading астындағы қосымша description.",
 		"islandContent": "Island body ішінде көрсетілетін контент.",
 		"islandHeaderPosition": "Title мен description-ды island ішінде немесе оның рамкасының үстінде орналастырады.",

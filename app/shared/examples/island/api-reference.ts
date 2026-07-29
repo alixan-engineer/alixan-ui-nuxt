@@ -1,6 +1,5 @@
 export const islandProps = [
 	{ name: 'title', type: 'string', default: '-', description: 'apiReferenceDescriptions.islandTitle' },
-	{ name: 'subtitle', type: 'string', default: '-', description: 'apiReferenceDescriptions.islandSubtitle' },
 	{ name: 'description', type: 'string', default: '-', description: 'apiReferenceDescriptions.islandDesc' },
 	{
 		name: 'headerPosition',

@@ -59,14 +59,16 @@ const isActive = (to: string) =>
 				:key="section.labelKey"
 				class="space-y-2"
 			>
-				<p class="px-3 text-sm font-medium text-muted-foreground">
+				<p class="px-3 text-xs font-semibold text-muted-foreground uppercase">
 					{{ $t(section.labelKey) }}
 				</p>
 				<div class="flex flex-col">
 					<Button
 						v-for="item in section.items"
 						:key="item.labelKey"
-						class="justify-start"
+						:class="
+							cn('justify-start', item.new && '[&>span:last-child]:ml-auto')
+						"
 						size="sm"
 						:to="$localePath(item.to)"
 						:variant="isActive(item.to) ? 'filled' : 'ghost'"
@@ -77,6 +79,21 @@ const isActive = (to: string) =>
 						"
 					>
 						{{ $t(item.labelKey) }}
+						<template #trailing>
+							<span
+								v-if="item.new"
+								:class="
+									cn(
+										'rounded-md px-1.5 py-0.5 text-[10px] font-bold leading-none tracking-wide',
+										isActive(item.to)
+											? 'bg-primary-foreground/15 text-primary-foreground'
+											: 'bg-primary/10 text-primary',
+									)
+								"
+							>
+								{{ $t('sidebar.new') }}
+							</span>
+						</template>
 					</Button>
 				</div>
 			</div>

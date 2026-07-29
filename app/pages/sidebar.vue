@@ -21,9 +21,7 @@ const { setToc } = usePageToc();
 
 onMounted(() => setToc(sidebarPageToc));
 
-const sidebarOpen = ref(false);
 const mobileSidebarOpen = ref(false);
-const desktopSidebarRef = ref<{ scrollToTop: () => void } | null>(null);
 const mobileSidebarRef = ref<{ scrollToTop: () => void } | null>(null);
 const activePage = ref('dashboard');
 const pages = [
@@ -71,14 +69,8 @@ const currentPage = computed(
 const selectPage = (id: string, close: () => void): void => {
 	activePage.value = id;
 	nextTick(() => {
-		desktopSidebarRef.value?.scrollToTop();
 		mobileSidebarRef.value?.scrollToTop();
 	});
-	if (window.matchMedia('(max-width: 1279px)').matches) close();
-};
-
-const selectMobilePage = (id: string, close: () => void): void => {
-	selectPage(id, close);
 	close();
 };
 </script>
@@ -101,70 +93,7 @@ const selectMobilePage = (id: string, close: () => void): void => {
 	<section id="usage" class="space-y-5">
 		<h2 class="text-2xl font-semibold">{{ $t('docsSections.usage') }}</h2>
 		<ExampleBlock path="layouts/default.vue" :code="layoutUsage">
-			<div class="w-full flex flex-col gap-10">
-				<div
-					class="h-150 w-full overflow-hidden rounded-3xl border bg-background"
-				>
-					<Sidebar
-						ref="desktopSidebarRef"
-						v-model:open="sidebarOpen"
-						width="224px"
-						mode="desktop"
-						contained
-					>
-						<template #navigation="{ close }">
-							<div class="space-y-8">
-								<div
-									v-for="section in sections"
-									:key="section.label"
-									class="space-y-1"
-								>
-									<p
-										class="px-3 text-xs font-semibold uppercase text-muted-foreground"
-									>
-										{{ $t(section.label) }}
-									</p>
-									<Button
-										v-for="page in section.pages"
-										:key="page.id"
-										:variant="activePage === page.id ? 'filled' : 'ghost'"
-										:color="activePage === page.id ? 'primary' : 'default'"
-										size="md"
-										class="w-full justify-start"
-										@click="selectPage(page.id, close)"
-									>
-										<template #leading>
-											<component :is="page.icon" class="size-4" />
-										</template>
-										{{ $t(page.title) }}
-									</Button>
-								</div>
-							</div>
-						</template>
-
-						<template #app-bar="{ toggle }">
-							<AppBar
-								:key="currentPage.id"
-								variant="silver"
-								:title="currentPage.title"
-							>
-								<template #leading>
-									<IconButton
-										:aria-label="$t('appBar.openMenu')"
-										size="md"
-										@click="toggle"
-										><Menu
-									/></IconButton>
-								</template>
-								<template #trailing>
-									<UserMenuPreview />
-								</template>
-							</AppBar>
-						</template>
-
-						<div class="h-375 rounded-2xl bg-secondary" />
-					</Sidebar>
-				</div>
+			<div class="relative z-0 w-full">
 				<div
 					class="mx-auto h-150 w-110 max-w-full overflow-hidden rounded-3xl border bg-background"
 				>
@@ -194,7 +123,7 @@ const selectMobilePage = (id: string, close: () => void): void => {
 										:color="activePage === page.id ? 'primary' : 'default'"
 										size="md"
 										class="w-full justify-start"
-										@click="selectMobilePage(page.id, close)"
+										@click="selectPage(page.id, close)"
 									>
 										<template #leading
 											><component :is="page.icon" class="size-4" /></template

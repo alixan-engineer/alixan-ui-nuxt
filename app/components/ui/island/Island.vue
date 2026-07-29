@@ -6,7 +6,6 @@ defineOptions({ inheritAttrs: false });
 
 interface IslandProps {
 	title?: string;
-	subtitle?: string;
 	description?: string;
 	headerPosition?: 'inside' | 'outside';
 	contentClass?: string;
@@ -14,7 +13,6 @@ interface IslandProps {
 
 withDefaults(defineProps<IslandProps>(), {
 	title: undefined,
-	subtitle: undefined,
 	description: undefined,
 	headerPosition: 'outside',
 	contentClass: undefined,
@@ -25,15 +23,14 @@ const attrs = useAttrs();
 
 <template>
 	<section
-		:class="cn('block h-fit space-y-5', attrs.class)"
+		:class="cn('flex h-fit flex-col gap-2', attrs.class)"
 		v-bind="{ ...attrs, class: undefined }"
 	>
 		<IslandHeader
 			v-if="headerPosition === 'outside'"
 			:title="title"
-			:subtitle="subtitle"
 			:description="description"
-			class="ml-8"
+			class="ml-4"
 		/>
 		<div
 			:class="
@@ -43,7 +40,6 @@ const attrs = useAttrs();
 			<IslandHeader
 				v-if="headerPosition === 'inside'"
 				:title="title"
-				:subtitle="subtitle"
 				:description="description"
 				class="p-4"
 			/>

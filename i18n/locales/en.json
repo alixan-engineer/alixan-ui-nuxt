@@ -205,7 +205,8 @@
 		"layouts": "Layouts",
 		"components": "Components",
 		"forms": "Forms",
-		"overlays": "Overlays"
+		"overlays": "Overlays",
+		"new": "NEW"
 	},
 	"guide": {
 		"fonts": "Fonts",
@@ -512,7 +513,7 @@
 		"tooltip": "Tooltip"
 	},
 	"list": { "demoTitle": "Profile", "demoDescription": "Personal details and account settings", "securityTitle": "Security", "securityDescription": "Password and sign-in methods", "edit": "Edit", "delete": "Delete", "profileOpened": "Profile opened", "editStarted": "Editing profile", "deleteStarted": "Deleting profile", "clickTitle": "Click", "clickDescription": "Passing a click handler makes ListTile a button and adds pointer, hover and keyboard focus styles automatically.", "actionsTitle": "Trailing Actions", "borderTitle": "Border", "borderDescription": "Inset adds an Alixan UI divider aligned with the content. Block wraps every ListTile in its own bordered surface.", "insetTitle": "Inset", "blockTitle": "Block", "contacts": { "aruzhan": "Aruzhan Sarsenova", "aruzhanPhone": "+7 701 123 45 67", "daniyar": "Daniyar Aliyev", "daniyarPhone": "+7 702 234 56 78", "aidana": "Aidana Nurlankyzy", "aidanaPhone": "+7 705 345 67 89" } },
-	"island": { "demoTitle": "Overview", "demoSubtitle": "Contacts", "demoDesc": "Your latest account information", "demoContent": "Content is placed inside the default slot.", "outsideTitle": "Outside Header" },
+	"island": { "demoTitle": "Overview", "demoDesc": "Your latest account information", "demoContent": "Content is placed inside the default slot.", "outsideTitle": "Outside Header" },
 	"appBar": { "compactTitle": "Compact", "silverTitle": "Silver", "dashboard": "Dashboard", "storeTitle": "Store", "openMenu": "Open menu", "profile": "Profile", "scrollHint": "Scroll to see the navigation bar transition.", "back": "Back", "share": "Share", "more": "More" },
 	"userMenu": { "userName": "Alixan", "administrator": "Administrator" },
 	"sidebarDemo": { "brand": "Alixan UI", "home": "Home", "content": "Page content is placed in a centered responsive container.", "workspace": "Workspace", "management": "Management", "dashboard": "Dashboard", "dashboardDescription": "Overview of the current workspace.", "orders": "Orders", "ordersDescription": "Review and manage customer orders.", "analytics": "Analytics", "analyticsDescription": "Track the main product metrics.", "team": "Team", "teamDescription": "Manage members and access.", "settings": "Settings", "settingsDescription": "Configure the application workspace.", "activity": "Activity", "activityDescription": "Latest workspace updates.", "guideTitle": "Alixan UI guide", "silverGuide": "Use Silver when the page needs a prominent title that collapses into the App Bar while scrolling.", "bottomNavigationRule": "Do not use the Silver App Bar on screens that include a Bottom Navigation Bar. Use Compact for those screens so both navigation levels remain clear.", "accountMenu": "Open account menu", "profile": "Profile", "preferences": "Preferences", "signOut": "Sign out", "overview": "Overview", "orderReady": "Ready for processing", "weeklySales": "Weekly sales", "report": "Report", "workspaceName": "Workspace name", "notifications": "Notifications", "reports": "Reports", "memberName": "Alixan member {index}" },
@@ -724,7 +725,6 @@
 		"listDescriptionSlot": "Custom description content.",
 		"listTrailing": "Content displayed after the text, such as a value or chevron.",
 		"islandTitle": "Optional heading displayed above the content.",
-		"islandSubtitle": "Optional secondary heading displayed below the title.",
 		"islandDesc": "Optional description displayed below the heading.",
 		"islandContent": "Content rendered inside the island body.",
 		"islandHeaderPosition": "Places the title and description inside the island or above its border.",

@@ -9,8 +9,11 @@ usePageMeta({
 	title: 'componentDocs.bottomNavigationBar.metaTitle',
 	description: 'componentDocs.bottomNavigationBar.description',
 });
+
 const { setToc } = usePageToc();
+
 onMounted(() => setToc(bottomNavigationBarPageToc));
+
 const selected = ref(0);
 const routerOutlet = useTemplateRef<HTMLElement>('routerOutlet');
 const items = [
@@ -49,20 +52,22 @@ watch(selected, async () => {
 		<h2 class="text-2xl font-semibold">{{ $t('docsSections.usage') }}</h2>
 		<ExampleBlock :code="usage">
 			<div
-				class="flex h-96 w-full max-w-110 flex-col overflow-hidden rounded-2xl border bg-background"
+				class="relative z-0 flex h-96 w-full max-w-110 flex-col overflow-hidden rounded-2xl border bg-background"
 			>
 				<AppBar variant="compact" :title="selectedTitle" />
-				<main
+				<div
 					ref="routerOutlet"
 					data-router-outlet
 					class="min-h-0 flex-1 overflow-y-auto"
 				>
 					<div
-						class="flex min-h-[800px] items-center justify-center text-muted-foreground"
+						class="flex min-h-200 items-center justify-center text-muted-foreground"
 					>
-						{{ $t('bottomNavigation.pageContent', { page: $t(selectedTitle) }) }}
+						{{
+							$t('bottomNavigation.pageContent', { page: $t(selectedTitle) })
+						}}
 					</div>
-				</main>
+				</div>
 				<BottomNavigationBar v-model="selected" :items="items" />
 			</div>
 		</ExampleBlock>

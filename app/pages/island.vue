@@ -53,10 +53,8 @@ onMounted(() => setToc(islandPageToc));
 			<div class="w-full max-w-xl">
 				<Island
 					title="island.demoTitle"
-					subtitle="island.demoSubtitle"
 					description="island.demoDesc"
 					header-position="inside"
-					content-class="p-4 rounded-4xl"
 				>
 					<List divider="inset">
 						<ListTile
@@ -86,10 +84,8 @@ onMounted(() => setToc(islandPageToc));
 			<div class="w-full max-w-xl">
 				<Island
 					title="island.demoTitle"
-					subtitle="island.demoSubtitle"
 					description="island.demoDesc"
 					header-position="outside"
-					content-class="p-4 rounded-4xl"
 				>
 					<List divider="inset">
 						<ListTile

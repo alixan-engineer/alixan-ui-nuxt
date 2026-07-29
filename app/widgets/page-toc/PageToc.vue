@@ -26,17 +26,17 @@ const observeSections = async () => {
 	const sectionElements = props.links
 		.map(link => document.getElementById(link.href.slice(1)))
 		.filter((element): element is HTMLElement => Boolean(element));
-	
-		if (!sectionElements.length) return;
+
+	if (!sectionElements.length) return;
 
 	observer = new IntersectionObserver(
 		entries => {
 			const visibleIds = entries
 				.filter(entry => entry.isIntersecting)
 				.map(entry => `#${entry.target.id}`);
-			
-				if (!visibleIds.length) return;
-			
+
+			if (!visibleIds.length) return;
+
 			const lastVisibleLink = props.links
 				.filter(link => visibleIds.includes(link.href))
 				.at(-1);
@@ -71,8 +71,8 @@ const scrollToLink = (href: string): void => {
 		<div
 			class="sticky top-14 h-[calc(100svh-3.5rem)] overflow-y-auto px-4 py-6 space-y-3"
 		>
-			<p class="text-sm font-medium text-muted-foreground">
-				{{ $t('pageToc.title') }}
+			<p class="text-xs font-semibold text-muted-foreground uppercase">
+				{{ $t('pageToc.title') }}:
 			</p>
 			<nav class="space-y-2 text-sm">
 				<a
@@ -82,9 +82,9 @@ const scrollToLink = (href: string): void => {
 					@click.prevent="scrollToLink(link.href)"
 					:class="
 						cn(
-							'block hover:text-foreground text-md',
+							'block hover:text-foreground hover:underline text-md',
 							activeHref === link.href
-								? 'font-bold text-foreground'
+								? 'font-bold text-foreground underline'
 								: 'font-normal text-muted-foreground/80',
 							link.child ? 'pl-4' : '',
 						)

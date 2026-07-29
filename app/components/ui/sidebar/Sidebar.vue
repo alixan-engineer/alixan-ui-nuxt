@@ -132,7 +132,7 @@ defineExpose({ scrollToTop });
 			>
 				<div
 					v-if="open && mode !== 'desktop'"
-					:class="cn('backdrop z-40', contained ? '!absolute' : '', mode === 'responsive' ? 'xl:hidden' : '')"
+					:class="cn('backdrop z-40', contained ? 'absolute!' : '', mode === 'responsive' ? 'xl:hidden' : '')"
 					@click="handleBackdrop"
 				/>
 			</Transition>

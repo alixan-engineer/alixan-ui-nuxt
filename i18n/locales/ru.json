@@ -205,7 +205,8 @@
 		"layouts": "Макеты",
 		"components": "Компоненты",
 		"forms": "Формы",
-		"overlays": "Оверлеи"
+		"overlays": "Оверлеи",
+		"new": "NEW"
 	},
 	"guide": {
 		"fonts": "Шрифты",
@@ -513,7 +514,7 @@
 		"tooltip": "Tooltip"
 	},
 	"list": { "demoTitle": "Профиль", "demoDescription": "Личные данные и настройки аккаунта", "securityTitle": "Безопасность", "securityDescription": "Пароль и способы входа", "edit": "Изменить", "delete": "Удалить", "profileOpened": "Профиль открыт", "editStarted": "Редактирование профиля", "deleteStarted": "Удаление профиля", "clickTitle": "Клик", "clickDescription": "Передача обработчика клика превращает ListTile в кнопку и автоматически добавляет pointer, hover и клавиатурный focus.", "actionsTitle": "Действия в trailing", "borderTitle": "Граница", "borderDescription": "Inset добавляет разделитель Alixan UI по линии контента. Block оборачивает каждый ListTile отдельной рамкой.", "insetTitle": "Inset", "blockTitle": "Block", "contacts": { "aruzhan": "Аружан Сарсенова", "aruzhanPhone": "+7 701 123 45 67", "daniyar": "Данияр Алиев", "daniyarPhone": "+7 702 234 56 78", "aidana": "Айдана Нурланкызы", "aidanaPhone": "+7 705 345 67 89" } },
-	"island": { "demoTitle": "Обзор", "demoSubtitle": "Контакты", "demoDesc": "Последняя информация об аккаунте", "demoContent": "Содержимое размещается в слоте по умолчанию.", "outsideTitle": "Заголовок снаружи" },
+	"island": { "demoTitle": "Обзор", "demoDesc": "Последняя информация об аккаунте", "demoContent": "Содержимое размещается в слоте по умолчанию.", "outsideTitle": "Заголовок снаружи" },
 	"appBar": { "compactTitle": "Компактный", "silverTitle": "Silver", "dashboard": "Главная", "storeTitle": "Магазин", "openMenu": "Открыть меню", "profile": "Профиль", "scrollHint": "Прокрутите, чтобы увидеть переход панели навигации.", "back": "Назад", "share": "Поделиться", "more": "Ещё" },
 	"userMenu": { "userName": "Alixan", "administrator": "Администратор" },
 	"sidebarDemo": { "brand": "Alixan UI", "home": "Главная", "content": "Контент страницы размещается в центрированном адаптивном контейнере.", "workspace": "Рабочее пространство", "management": "Управление", "dashboard": "Главная", "dashboardDescription": "Обзор текущего рабочего пространства.", "orders": "Заказы", "ordersDescription": "Просмотр и управление заказами клиентов.", "analytics": "Аналитика", "analyticsDescription": "Основные показатели продукта.", "team": "Команда", "teamDescription": "Участники и права доступа.", "settings": "Настройки", "settingsDescription": "Настройки рабочего пространства.", "activity": "Активность", "activityDescription": "Последние изменения рабочего пространства.", "guideTitle": "Гайд Alixan UI", "silverGuide": "Используйте Silver, когда странице нужен крупный заголовок, который при прокрутке сворачивается в App Bar.", "bottomNavigationRule": "Не используйте Silver App Bar на экранах с Bottom Navigation Bar. Для таких экранов выбирайте Compact, чтобы уровни навигации оставались понятными.", "accountMenu": "Открыть меню аккаунта", "profile": "Профиль", "preferences": "Настройки", "signOut": "Выйти", "overview": "Обзор", "orderReady": "Готов к обработке", "weeklySales": "Продажи за неделю", "report": "Отчёт", "workspaceName": "Название пространства", "notifications": "Уведомления", "reports": "Отчёты", "memberName": "Участник Alixan {index}" },
@@ -725,7 +726,6 @@
 		"listDescriptionSlot": "Пользовательское содержимое описания.",
 		"listTrailing": "Контент после текста, например значение или шеврон.",
 		"islandTitle": "Необязательный заголовок над содержимым.",
-		"islandSubtitle": "Необязательный подзаголовок под основным заголовком.",
 		"islandDesc": "Необязательное описание под заголовком.",
 		"islandContent": "Содержимое основной области блока.",
 		"islandHeaderPosition": "Размещает заголовок и описание внутри island или над его рамкой.",

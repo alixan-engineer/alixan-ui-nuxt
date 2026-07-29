@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, watch } from 'vue';
+import { computed, ref, watch } from 'vue';
 
 import { cn } from '~/utils/cn';
 
@@ -30,12 +30,27 @@ const emit = defineEmits<{
 }>();
 
 const open = defineModel<boolean>({ default: false });
+const dragOffset = ref(0);
+const isDragging = ref(false);
+const isSettling = ref(false);
+
+let dragStartY = 0;
+let dragStartTime = 0;
 
 const drawerStyle = computed(() => {
+	const dragStyle =
+		props.position === 'bottom' && (isDragging.value || isSettling.value)
+			? {
+					transform: `translateY(${dragOffset.value}px)`,
+					transition: isDragging.value ? 'none' : 'transform 200ms ease-out',
+				}
+			: {};
+
 	if (props.position === 'top' || props.position === 'bottom') {
 		return {
 			maxWidth: props.width,
 			maxHeight: props.height,
+			...dragStyle,
 		};
 	}
 
@@ -67,8 +82,59 @@ const transitionClass = computed(() => {
 });
 
 const closeDrawer = (): void => {
+	dragOffset.value = 0;
+	isDragging.value = false;
+	isSettling.value = false;
 	open.value = false;
 	emit('close');
+};
+
+const handleTouchStart = (event: TouchEvent): void => {
+	if (props.position !== 'bottom' || event.touches.length !== 1) return;
+
+	const scrollContainer = (event.target as HTMLElement).closest<HTMLElement>(
+		'[data-drawer-scroll]',
+	);
+	if (scrollContainer && scrollContainer.scrollTop > 0) return;
+
+	dragStartY = event.touches[0]?.clientY ?? 0;
+	dragStartTime = performance.now();
+	dragOffset.value = 0;
+	isSettling.value = false;
+	isDragging.value = true;
+};
+
+const handleTouchMove = (event: TouchEvent): void => {
+	if (!isDragging.value || event.touches.length !== 1) return;
+
+	const offset = (event.touches[0]?.clientY ?? dragStartY) - dragStartY;
+	if (offset <= 0) {
+		dragOffset.value = 0;
+		return;
+	}
+
+	event.preventDefault();
+	dragOffset.value = offset;
+};
+
+const handleTouchEnd = (): void => {
+	if (!isDragging.value) return;
+
+	const elapsed = Math.max(performance.now() - dragStartTime, 1);
+	const velocity = dragOffset.value / elapsed;
+	const shouldClose = dragOffset.value >= 96 || velocity >= 0.6;
+	isDragging.value = false;
+
+	if (shouldClose) {
+		closeDrawer();
+		return;
+	}
+
+	isSettling.value = true;
+	dragOffset.value = 0;
+	window.setTimeout(() => {
+		isSettling.value = false;
+	}, 200);
 };
 
 const handleOverlayMouseDown = (): void => {
@@ -145,6 +211,10 @@ onBeforeUnmount(() => {
 						role="dialog"
 						aria-modal="true"
 						@mousedown.stop
+						@touchstart="handleTouchStart"
+						@touchmove="handleTouchMove"
+						@touchend="handleTouchEnd"
+						@touchcancel="handleTouchEnd"
 					>
 						<DrawerHeader
 							v-if="title"
@@ -152,7 +222,7 @@ onBeforeUnmount(() => {
 							:close="closeDrawer"
 							class="border-b"
 						/>
-						<div class="flex-1 overflow-auto">
+						<div data-drawer-scroll class="flex-1 overflow-auto">
 							<slot />
 						</div>
 					</aside>

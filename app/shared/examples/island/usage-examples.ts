@@ -24,19 +24,15 @@ const content = `  <List divider="inset">
 export const examples = {
 	usage: `${setup}<Island
   title="island.demoTitle"
-  subtitle="island.demoSubtitle"
   description="island.demoDesc"
   header-position="inside"
-  content-class="p-4 rounded-4xl"
 >
 ${content}
 </Island>`,
 	outside: `${setup}<Island
   title="island.demoTitle"
-  subtitle="island.demoSubtitle"
   description="island.demoDesc"
   header-position="outside"
-  content-class="p-4 rounded-4xl"
 >
 ${content}
 </Island>`,
