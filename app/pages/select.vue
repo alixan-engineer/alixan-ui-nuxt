@@ -16,16 +16,16 @@ const value = ref<string | number | null>('alixan');
 const requiredValue = ref<string | number | null>(null);
 const options = [
 	{ label: 'Alixan UI', value: 'alixan' },
-	{ label: 'Material', value: 'material' },
-	{ label: 'Fluent', value: 'fluent', disabled: true },
+	{ label: 'Cupertino', value: 'cupertino' },
+	{ label: 'Material', value: 'material', disabled: true },
 ];
 
 const usageCode = `<script setup lang="ts">
 const value = ref('alixan')
 const options = [
   { label: 'Alixan UI', value: 'alixan' },
-  { label: 'Material', value: 'material' },
-  { label: 'Fluent', value: 'fluent', disabled: true },
+  { label: 'Cupertino', value: 'cupertino' },
+  { label: 'Material', value: 'material', disabled: true },
 ]
 <\/script>
 
@@ -37,8 +37,8 @@ const validationCode = `<script setup lang="ts">
 const value = ref(null)
 const options = [
   { label: 'Alixan UI', value: 'alixan' },
-  { label: 'Material', value: 'material' },
-  { label: 'Fluent', value: 'fluent', disabled: true },
+  { label: 'Cupertino', value: 'cupertino' },
+  { label: 'Material', value: 'material', disabled: true },
 ]
 <\/script>
 

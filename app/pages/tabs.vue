@@ -41,7 +41,7 @@ const fullSelected = ref<number>(0);
 		<h2 class="text-2xl font-semibold">{{ $t('docsSections.usage') }}</h2>
 		<ExampleBlock :code="examples.usage">
 			<div class="grid gap-4">
-				<Tabs v-model="selected" :tabs="tabs" design="alixan" />
+				<Tabs v-model="selected" :tabs="tabs" design="cupertino" />
 				<Tabs v-model="materialSelected" :tabs="tabs" design="material" />
 			</div>
 		</ExampleBlock>

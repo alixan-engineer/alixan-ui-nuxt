@@ -4,7 +4,7 @@ import { cn } from '~/utils/cn';
 
 defineOptions({ inheritAttrs: false });
 
-type TabsDesign = 'material' | 'alixan';
+type TabsDesign = 'material' | 'cupertino';
 
 interface TabsProps {
 	tabs?: string[];
@@ -14,7 +14,7 @@ interface TabsProps {
 
 const props = withDefaults(defineProps<TabsProps>(), {
 	tabs: () => [],
-	design: 'alixan',
+	design: 'cupertino',
 	full: false,
 });
 

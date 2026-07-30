@@ -10,16 +10,41 @@ const pages = [
   { title: 'sidebarDemo.team', to: '/team', icon: Users },
   { title: 'sidebarDemo.settings', to: '/settings', icon: Settings },
 ];
+const sections = [
+  { label: 'sidebarDemo.workspace', pages: pages.slice(0, 3) },
+  { label: 'sidebarDemo.management', pages: pages.slice(3) },
+];
 const title = computed(() => String(route.meta.title ?? 'sidebarDemo.dashboard'));
 </script>
 
 <template>
   <Sidebar v-model:open="open">
+    <template #logo>
+      <NuxtLink to="/" class="flex items-center gap-2 font-semibold">
+        <img src="/icons/icon-192.png" alt="" class="size-8" />
+        <span>Alixan UI</span>
+      </NuxtLink>
+    </template>
     <template #navigation="{ close }">
-      <Button v-for="page in pages" :key="page.to" :to="page.to" variant="ghost" class="w-full justify-start" @click="close">
-        <template #leading><component :is="page.icon" /></template>
-        {{ $t(page.title) }}
-      </Button>
+      <div class="space-y-8">
+        <div v-for="section in sections" :key="section.label" class="space-y-1">
+          <p class="px-3 text-xs font-semibold uppercase text-muted-foreground">
+            {{ $t(section.label) }}
+          </p>
+          <Button
+            v-for="page in section.pages"
+            :key="page.to"
+            :to="page.to"
+            variant="ghost"
+            size="sm"
+            class="w-full justify-start"
+            @click="close"
+          >
+            <template #leading><component :is="page.icon" class="size-4" /></template>
+            {{ $t(page.title) }}
+          </Button>
+        </div>
+      </div>
     </template>
     <template #app-bar="{ toggle }">
       <AppBar variant="silver" :title="title">

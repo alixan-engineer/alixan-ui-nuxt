@@ -13,8 +13,8 @@ export const tabsProps = [
 	},
 	{
 		name: 'design',
-		type: "'material' | 'alixan'",
-		default: "'alixan'",
+		type: "'material' | 'cupertino'",
+		default: "'cupertino'",
 		description: 'apiReferenceDescriptions.tabsDesign',
 	},
 	{

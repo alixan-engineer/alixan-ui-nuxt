@@ -104,6 +104,9 @@ const selectPage = (id: string, close: () => void): void => {
 						contained
 						width="240px"
 					>
+						<template #logo>
+							<Logo />
+						</template>
 						<template #navigation="{ close }">
 							<div class="space-y-8">
 								<div
@@ -121,13 +124,14 @@ const selectPage = (id: string, close: () => void): void => {
 										:key="page.id"
 										:variant="activePage === page.id ? 'filled' : 'ghost'"
 										:color="activePage === page.id ? 'primary' : 'default'"
-										size="md"
+										size="sm"
 										class="w-full justify-start"
 										@click="selectPage(page.id, close)"
 									>
-										<template #leading
-											><component :is="page.icon" class="size-4" /></template
-										>{{ $t(page.title) }}
+										<template #leading>
+											<component :is="page.icon" class="size-4" />
+										</template>
+										{{ $t(page.title) }}
 									</Button>
 								</div>
 							</div>
@@ -138,17 +142,21 @@ const selectPage = (id: string, close: () => void): void => {
 								variant="silver"
 								:title="currentPage.title"
 							>
-								<template #leading
-									><IconButton
+								<template #leading>
+									<IconButton
 										:aria-label="$t('appBar.openMenu')"
 										size="md"
 										@click="toggle"
-										><Menu /></IconButton
-								></template>
-								<template #trailing><UserMenuPreview /></template>
+									>
+										<Menu />
+									</IconButton>
+								</template>
+								<template #trailing>
+									<UserMenuPreview />
+								</template>
 							</AppBar>
 						</template>
-						<div class="h-[1500px] rounded-2xl bg-secondary" />
+						<div class="h-175 rounded-2xl bg-secondary" />
 					</Sidebar>
 				</div>
 			</div>

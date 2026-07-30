@@ -6,7 +6,7 @@ const selected = ref(0)
 
 <template>
   <div class="grid gap-4">
-    <Tabs v-model="selected" :tabs="tabs" design="alixan" />
+    <Tabs v-model="selected" :tabs="tabs" design="cupertino" />
     <Tabs v-model="selected" :tabs="tabs" design="material" />
   </div>
 </template>`,

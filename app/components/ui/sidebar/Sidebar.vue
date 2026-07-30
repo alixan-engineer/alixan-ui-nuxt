@@ -6,7 +6,6 @@ defineOptions({ inheritAttrs: false });
 interface SidebarProps {
 	width?: string;
 	closeOnBackdrop?: boolean;
-	brand?: string;
 	container?: boolean;
 	contentClass?: string;
 	mode?: 'responsive' | 'mobile' | 'desktop';
@@ -16,7 +15,6 @@ interface SidebarProps {
 const props = withDefaults(defineProps<SidebarProps>(), {
 	width: '280px',
 	closeOnBackdrop: true,
-	brand: 'Alixan UI',
 	container: true,
 	contentClass: undefined,
 	mode: 'responsive',
@@ -51,9 +49,7 @@ const asideClass = computed(() =>
 			: props.contained || props.mode === 'mobile'
 				? 'absolute !h-full'
 				: 'fixed',
-		props.mode === 'responsive'
-			? 'xl:static xl:z-auto xl:translate-x-0'
-			: '',
+		props.mode === 'responsive' ? 'xl:static xl:z-auto xl:translate-x-0' : '',
 		open.value
 			? cn(
 					props.mode === 'mobile' ? '' : 'translate-x-0',
@@ -70,7 +66,8 @@ const asideClass = computed(() =>
 
 const asideStyle = computed(() => ({
 	'--sidebar-width': props.width,
-	width: props.mode === 'desktop' ? (open.value ? props.width : '0px') : undefined,
+	width:
+		props.mode === 'desktop' ? (open.value ? props.width : '0px') : undefined,
 	transform:
 		props.mode === 'mobile'
 			? open.value
@@ -132,7 +129,13 @@ defineExpose({ scrollToTop });
 			>
 				<div
 					v-if="open && mode !== 'desktop'"
-					:class="cn('backdrop z-40', contained ? 'absolute!' : '', mode === 'responsive' ? 'xl:hidden' : '')"
+					:class="
+						cn(
+							'backdrop z-40',
+							contained ? 'absolute!' : '',
+							mode === 'responsive' ? 'xl:hidden' : '',
+						)
+					"
 					@click="handleBackdrop"
 				/>
 			</Transition>
@@ -141,19 +144,11 @@ defineExpose({ scrollToTop });
 		<aside :class="asideClass" :style="asideStyle">
 			<header class="flex h-14 shrink-0 items-center border-b px-4">
 				<slot name="sidebar-header" :close="close">
-					<div class="flex items-center gap-2 whitespace-nowrap">
-						<svg viewBox="0 0 128 128" aria-hidden="true" class="size-8 shrink-0">
-							<rect width="128" height="128" rx="30" fill="#050505" />
-							<path d="M29 91 54.8 37h18.4L99 91H81.2L64 53.7 46.8 91H29Z" fill="white" />
-							<path d="M52 91 64 65l12 26H52Z" fill="#050505" />
-							<path d="M82.8 39.2 99 91H81.2l-8.9-27.6 10.5-24.2Z" fill="#46cca6" />
-						</svg>
-						<span class="text-lg font-semibold">{{ $t(brand) }}</span>
-					</div>
+					<slot name="logo" />
 				</slot>
 			</header>
 
-			<nav class="min-h-0 flex-1 px-3 py-4">
+			<nav class="flex-1 px-2 py-4">
 				<slot name="navigation" :close="close" />
 			</nav>
 
@@ -162,15 +157,21 @@ defineExpose({ scrollToTop });
 			</footer>
 		</aside>
 
-		<main class="flex min-w-0 flex-1 flex-col overflow-hidden">
-			<div ref="bodyRef" data-scroll-container class="min-h-0 flex-1 overflow-y-auto">
+		<main class="flex-1 flex flex-col overflow-hidden">
+			<div
+				ref="bodyRef"
+				data-scroll-container
+				class="min-h-0 flex-1 overflow-y-auto"
+			>
 				<slot name="app-bar" :open="open" :close="close" :toggle="toggle" />
 				<div
-					:class="cn(
-						'w-full px-4 py-6 sm:px-6 lg:px-8',
-						container ? 'mx-auto max-w-container' : '',
-						contentClass,
-					)"
+					:class="
+						cn(
+							'w-full px-4 py-6 sm:px-6 lg:px-8',
+							container ? 'mx-auto max-w-container' : '',
+							contentClass,
+						)
+					"
 				>
 					<slot><NuxtPage /></slot>
 				</div>

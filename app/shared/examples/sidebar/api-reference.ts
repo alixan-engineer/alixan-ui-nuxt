@@ -2,7 +2,6 @@ export const sidebarApiRows = [
 	{ name: 'v-model:open', type: 'boolean', default: 'false', description: 'apiReferenceDescriptions.sidebarOpen' },
 	{ name: 'width', type: 'string', default: "'280px'", description: 'apiReferenceDescriptions.sidebarWidth' },
 	{ name: 'closeOnBackdrop', type: 'boolean', default: 'true', description: 'apiReferenceDescriptions.sidebarBackdrop' },
-	{ name: 'brand', type: 'string', default: "'Alixan UI'", description: 'apiReferenceDescriptions.sidebarBrand' },
 	{ name: 'container', type: 'boolean', default: 'true', description: 'apiReferenceDescriptions.sidebarContainer' },
 	{ name: 'contentClass', type: 'string', default: '-', description: 'apiReferenceDescriptions.sidebarContentClass' },
 	{
@@ -12,6 +11,7 @@ export const sidebarApiRows = [
 		description: 'apiReferenceDescriptions.sidebarMode',
 	},
 	{ name: 'contained', type: 'boolean', default: 'false', description: 'apiReferenceDescriptions.sidebarContained' },
+	{ name: 'logo', type: 'slot', default: '-', description: 'apiReferenceDescriptions.sidebarLogo' },
 	{ name: 'sidebar-header', type: 'slot', default: '-', description: 'apiReferenceDescriptions.sidebarHeader' },
 	{ name: 'navigation', type: 'slot', default: '-', description: 'apiReferenceDescriptions.sidebarNavigation' },
 	{ name: 'sidebar-footer', type: 'slot', default: '-', description: 'apiReferenceDescriptions.sidebarFooter' },

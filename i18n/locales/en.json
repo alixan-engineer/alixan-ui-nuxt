@@ -788,7 +788,7 @@
 		"sidebarOpen": "Controls the sidebar on mobile.",
 		"sidebarWidth": "Sidebar width on desktop.",
 		"sidebarBackdrop": "Closes the mobile sidebar when its backdrop is clicked.",
-		"sidebarBrand": "Default brand name displayed next to the Alixan UI logo.",
+		"sidebarLogo": "Logo content displayed in the default sidebar header.",
 		"sidebarHeader": "Brand or workspace header.",
 		"sidebarNavigation": "Sidebar navigation content.",
 		"sidebarFooter": "Footer actions or account controls.",
