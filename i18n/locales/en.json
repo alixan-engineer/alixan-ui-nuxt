@@ -314,7 +314,10 @@
 				"slotsContent": "Yes. Use title and content slots when you need custom markup for each item."
 			}
 		},
-		"avatar": { "metaTitle": "Avatar - Alixan UI", "description": "A circular user image or initials fallback with Alixan UI sizing and card colors." },
+		"avatar": {
+			"metaTitle": "Avatar - Alixan UI",
+			"description": "A circular user image or initials fallback with Alixan UI sizing and card colors."
+		},
 		"tabs": {
 			"metaTitle": "Tabs - Alixan UI",
 			"description": "A compact segmented navigation component for switching between views.",
@@ -339,12 +342,31 @@
 			"metaTitle": "Card - Alixan UI",
 			"description": "A simple island card for product previews with image, content, price and action."
 		},
-		"infoBox": { "metaTitle": "InfoBox - Alixan UI", "description": "A quiet information surface for notes and supporting guidance.", "demo": "Use InfoBox to separate helpful context from the main content." },
-		"list": { "metaTitle": "List - Alixan UI", "description": "An Alixan UI list row with leading, title, description and trailing areas." },
-		"island": { "metaTitle": "Island - Alixan UI", "description": "A grouped Alixan UI content surface with an optional title and description." },
-		"appBar": { "metaTitle": "App Bar - Alixan UI", "description": "An Alixan UI navigation bar with compact and Silver variants." },
-		"sidebar": { "metaTitle": "Sidebar - Alixan UI", "description": "An Alixan UI application shell with responsive navigation, App Bar and a centered content container." },
-		"bottomNavigationBar": { "metaTitle": "Bottom Navigation Bar - Alixan UI", "description": "A 50px bottom navigation bar for switching between primary mobile destinations." },
+		"infoBox": {
+			"metaTitle": "InfoBox - Alixan UI",
+			"description": "A quiet information surface for notes and supporting guidance.",
+			"demo": "Use InfoBox to separate helpful context from the main content."
+		},
+		"list": {
+			"metaTitle": "List - Alixan UI",
+			"description": "An Alixan UI list row with leading, title, description and trailing areas."
+		},
+		"island": {
+			"metaTitle": "Island - Alixan UI",
+			"description": "A grouped Alixan UI content surface with an optional title and description."
+		},
+		"appBar": {
+			"metaTitle": "App Bar - Alixan UI",
+			"description": "An Alixan UI navigation bar with compact and Silver variants."
+		},
+		"sidebar": {
+			"metaTitle": "Sidebar - Alixan UI",
+			"description": "An Alixan UI application shell with responsive navigation, App Bar and a centered content container."
+		},
+		"bottomNavigationBar": {
+			"metaTitle": "Bottom Navigation Bar - Alixan UI",
+			"description": "A 50px bottom navigation bar for switching between primary mobile destinations."
+		},
 		"empty": {
 			"metaTitle": "Empty - Alixan UI",
 			"description": "A centered empty state for missing data, empty search results and error pages."
@@ -412,6 +434,10 @@
 		"toast": {
 			"metaTitle": "Toast - Alixan UI",
 			"description": "A lightweight notification stack for success, warning, error and info messages."
+		},
+		"scaffold": {
+			"metaTitle": "Scaffold - Alixan UI",
+			"description": "Provides a basic layout structure for a page, including a header, content area, and footer."
 		}
 	},
 	"seoPage": {
@@ -510,14 +536,94 @@
 		"toast": "Toast",
 		"select": "Select",
 		"dropdownMenu": "Dropdown Menu",
-		"tooltip": "Tooltip"
+		"tooltip": "Tooltip",
+		"scaffold": "Scaffold"
 	},
-	"list": { "demoTitle": "Profile", "demoDescription": "Personal details and account settings", "securityTitle": "Security", "securityDescription": "Password and sign-in methods", "edit": "Edit", "delete": "Delete", "profileOpened": "Profile opened", "editStarted": "Editing profile", "deleteStarted": "Deleting profile", "clickTitle": "Click", "clickDescription": "Passing a click handler makes ListTile a button and adds pointer, hover and keyboard focus styles automatically.", "actionsTitle": "Trailing Actions", "borderTitle": "Border", "borderDescription": "Inset adds an Alixan UI divider aligned with the content. Block wraps every ListTile in its own bordered surface.", "insetTitle": "Inset", "blockTitle": "Block", "contacts": { "aruzhan": "Aruzhan Sarsenova", "aruzhanPhone": "+7 701 123 45 67", "daniyar": "Daniyar Aliyev", "daniyarPhone": "+7 702 234 56 78", "aidana": "Aidana Nurlankyzy", "aidanaPhone": "+7 705 345 67 89" } },
-	"island": { "demoTitle": "Overview", "demoDesc": "Your latest account information", "demoContent": "Content is placed inside the default slot.", "outsideTitle": "Outside Header" },
-	"appBar": { "compactTitle": "Compact", "silverTitle": "Silver", "dashboard": "Dashboard", "storeTitle": "Store", "openMenu": "Open menu", "profile": "Profile", "scrollHint": "Scroll to see the navigation bar transition.", "back": "Back", "share": "Share", "more": "More" },
+	"list": {
+		"demoTitle": "Profile",
+		"demoDescription": "Personal details and account settings",
+		"securityTitle": "Security",
+		"securityDescription": "Password and sign-in methods",
+		"edit": "Edit",
+		"delete": "Delete",
+		"profileOpened": "Profile opened",
+		"editStarted": "Editing profile",
+		"deleteStarted": "Deleting profile",
+		"clickTitle": "Click",
+		"clickDescription": "Passing a click handler makes ListTile a button and adds pointer, hover and keyboard focus styles automatically.",
+		"actionsTitle": "Trailing Actions",
+		"borderTitle": "Border",
+		"borderDescription": "Inset adds an Alixan UI divider aligned with the content. Block wraps every ListTile in its own bordered surface.",
+		"insetTitle": "Inset",
+		"blockTitle": "Block",
+		"contacts": {
+			"aruzhan": "Aruzhan Sarsenova",
+			"aruzhanPhone": "+7 701 123 45 67",
+			"daniyar": "Daniyar Aliyev",
+			"daniyarPhone": "+7 702 234 56 78",
+			"aidana": "Aidana Nurlankyzy",
+			"aidanaPhone": "+7 705 345 67 89"
+		}
+	},
+	"island": {
+		"demoTitle": "Overview",
+		"demoDesc": "Your latest account information",
+		"demoContent": "Content is placed inside the default slot.",
+		"outsideTitle": "Outside Header"
+	},
+	"appBar": {
+		"compactTitle": "Compact",
+		"silverTitle": "Silver",
+		"dashboard": "Dashboard",
+		"storeTitle": "Store",
+		"openMenu": "Open menu",
+		"profile": "Profile",
+		"scrollHint": "Scroll to see the navigation bar transition.",
+		"back": "Back",
+		"share": "Share",
+		"more": "More"
+	},
 	"userMenu": { "userName": "Alixan", "administrator": "Administrator" },
-	"sidebarDemo": { "brand": "Alixan UI", "home": "Home", "content": "Page content is placed in a centered responsive container.", "workspace": "Workspace", "management": "Management", "dashboard": "Dashboard", "dashboardDescription": "Overview of the current workspace.", "orders": "Orders", "ordersDescription": "Review and manage customer orders.", "analytics": "Analytics", "analyticsDescription": "Track the main product metrics.", "team": "Team", "teamDescription": "Manage members and access.", "settings": "Settings", "settingsDescription": "Configure the application workspace.", "activity": "Activity", "activityDescription": "Latest workspace updates.", "guideTitle": "Alixan UI guide", "silverGuide": "Use Silver when the page needs a prominent title that collapses into the App Bar while scrolling.", "bottomNavigationRule": "Do not use the Silver App Bar on screens that include a Bottom Navigation Bar. Use Compact for those screens so both navigation levels remain clear.", "accountMenu": "Open account menu", "profile": "Profile", "preferences": "Preferences", "signOut": "Sign out", "overview": "Overview", "orderReady": "Ready for processing", "weeklySales": "Weekly sales", "report": "Report", "workspaceName": "Workspace name", "notifications": "Notifications", "reports": "Reports", "memberName": "Alixan member {index}" },
-	"bottomNavigation": { "home": "Home", "events": "Events", "profile": "Profile", "pageContent": "{page} page — scrollable router outlet" },
+	"sidebarDemo": {
+		"brand": "Alixan UI",
+		"home": "Home",
+		"content": "Page content is placed in a centered responsive container.",
+		"workspace": "Workspace",
+		"management": "Management",
+		"dashboard": "Dashboard",
+		"dashboardDescription": "Overview of the current workspace.",
+		"orders": "Orders",
+		"ordersDescription": "Review and manage customer orders.",
+		"analytics": "Analytics",
+		"analyticsDescription": "Track the main product metrics.",
+		"team": "Team",
+		"teamDescription": "Manage members and access.",
+		"settings": "Settings",
+		"settingsDescription": "Configure the application workspace.",
+		"activity": "Activity",
+		"activityDescription": "Latest workspace updates.",
+		"guideTitle": "Alixan UI guide",
+		"silverGuide": "Use Silver when the page needs a prominent title that collapses into the App Bar while scrolling.",
+		"bottomNavigationRule": "Do not use the Silver App Bar on screens that include a Bottom Navigation Bar. Use Compact for those screens so both navigation levels remain clear.",
+		"accountMenu": "Open account menu",
+		"profile": "Profile",
+		"preferences": "Preferences",
+		"signOut": "Sign out",
+		"overview": "Overview",
+		"orderReady": "Ready for processing",
+		"weeklySales": "Weekly sales",
+		"report": "Report",
+		"workspaceName": "Workspace name",
+		"notifications": "Notifications",
+		"reports": "Reports",
+		"memberName": "Alixan member {index}"
+	},
+	"bottomNavigation": {
+		"home": "Home",
+		"events": "Events",
+		"profile": "Profile",
+		"pageContent": "{page} page — scrollable router outlet"
+	},
 	"validation": {
 		"required": "This field is required",
 		"email": "Enter a valid email",
@@ -527,8 +633,17 @@
 		"usernamePattern": "Only letters and numbers",
 		"iinPattern": "IIN must contain 12 digits"
 	},
-	"inputActions": { "clear": "Clear input", "showPassword": "Show password", "hidePassword": "Hide password" },
-	"inputValidation": { "check": "Check validation", "parentInvalid": "Parent invalid state", "xControlApi": "XControl API", "usageDescription": "The label moves when the input is focused or has a value. Use XControl for the value and validation state." },
+	"inputActions": {
+		"clear": "Clear input",
+		"showPassword": "Show password",
+		"hidePassword": "Hide password"
+	},
+	"inputValidation": {
+		"check": "Check validation",
+		"parentInvalid": "Parent invalid state",
+		"xControlApi": "XControl API",
+		"usageDescription": "The label moves when the input is focused or has a value. Use XControl for the value and validation state."
+	},
 	"inputLabels": {
 		"iin": "IIN"
 	},
@@ -746,12 +861,12 @@
 		"clearEvent": "Emitted when the clear button is clicked.",
 		"selectModelValue": "Selected option value used by v-model.",
 		"selectPlaceholder": "Text shown when no option is selected.",
-			"selectOptions": "Options list with label, value and optional disabled.",
-			"selectDisabled": "Disables select interaction.",
-			"selectTeleport": "Teleports menu to body. Keep true for nested popovers; set false only when the menu must stay inside the local layout.",
-			"selectRequired": "Shows the required validation message when no option is selected.",
-			"selectError": "External validation message shown after the select is touched.",
-			"statusTone": "Semantic status tone.",
+		"selectOptions": "Options list with label, value and optional disabled.",
+		"selectDisabled": "Disables select interaction.",
+		"selectTeleport": "Teleports menu to body. Keep true for nested popovers; set false only when the menu must stay inside the local layout.",
+		"selectRequired": "Shows the required validation message when no option is selected.",
+		"selectError": "External validation message shown after the select is touched.",
+		"statusTone": "Semantic status tone.",
 		"statusSize": "Controls height, padding and gap.",
 		"switchLabel": "Optional label rendered next to the switch.",
 		"switchDisabled": "Disables switch interaction.",
@@ -803,7 +918,10 @@
 		"sidebarMode": "Selects responsive behavior or forces the mobile or desktop presentation.",
 		"sidebarContained": "Keeps the mobile overlay inside the local container for embedded previews.",
 		"bottomNavigationModelValue": "Index of the active destination.",
-		"bottomNavigationItems": "Navigation destinations with a label, icon and optional Nuxt route."
+		"bottomNavigationItems": "Navigation destinations with a label, icon and optional Nuxt route.",
+		"scaffoldAppBarSlot": "Displays the top application bar.",
+		"scaffoldBodySlot": "Displays the main scrollable content area.",
+		"scaffoldBottomNavigationBarSlot": "Displays the bottom navigation bar."
 	},
 	"toast": {
 		"close": "Close toast"

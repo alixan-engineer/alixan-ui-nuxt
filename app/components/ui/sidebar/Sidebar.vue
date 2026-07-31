@@ -76,23 +76,19 @@ const asideStyle = computed(() => ({
 			: undefined,
 }));
 
-const close = (): void => {
-	open.value = false;
-};
+const close = () => (open.value = false);
 
-const toggle = (): void => {
-	open.value = !open.value;
-};
+const toggle = () => (open.value = !open.value);
 
-const handleBackdrop = (): void => {
+const handleBackdrop = () => {
 	if (props.closeOnBackdrop) close();
 };
 
-const syncWithScreen = (event?: MediaQueryListEvent | MediaQueryList): void => {
+const syncWithScreen = (event?: MediaQueryListEvent | MediaQueryList) => {
 	open.value = !(event?.matches ?? desktopMedia?.matches ?? true);
 };
 
-const scrollToTop = (): void => {
+const scrollToTop = () => {
 	bodyRef.value?.scrollTo({ top: 0 });
 };
 
@@ -173,7 +169,9 @@ defineExpose({ scrollToTop });
 						)
 					"
 				>
-					<slot><NuxtPage /></slot>
+					<slot>
+						<NuxtPage />
+					</slot>
 				</div>
 			</div>
 		</main>

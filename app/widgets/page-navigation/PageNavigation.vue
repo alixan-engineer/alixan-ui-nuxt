@@ -2,7 +2,7 @@
 import { ArrowLeft, ArrowRight } from '@lucide/vue';
 import { computed } from 'vue';
 import { scrollToTop } from '~/utils/scroll-to-top';
-import { menuSections } from '~/widgets/sidebar/menu';
+import { menuSections } from '~/widgets/docs-sidebar/menu';
 
 const route = useRoute();
 const localePath = useLocalePath();

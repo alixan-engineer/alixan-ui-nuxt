@@ -67,8 +67,10 @@ onMounted(() => setToc(emptyPageToc));
 			{{ $t('docsSections.apiReference') }}
 		</h2>
 		<Table :columns="propsTableColumns" :rows="emptyProps" />
+	</section>
 
-		<h3 class="pt-4 text-xl font-semibold">Slots</h3>
+	<section id="slots" class="space-y-4">
+		<h2 class="text-lg font-semibold">Slots</h2>
 		<Table :columns="slotTableColumns" :rows="emptySlots" />
 	</section>
 </template>

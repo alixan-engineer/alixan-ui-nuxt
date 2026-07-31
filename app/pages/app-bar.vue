@@ -38,7 +38,7 @@ onMounted(() => setToc(appBarPageToc));
 		<ExampleBlock :code="examples.compact">
 			<div
 				data-scroll-container
-				class="relative z-0 h-80 w-full max-w-110 overflow-y-auto rounded-2xl border bg-background"
+				class="relative z-0 h-80 w-full max-w-110 overflow-y-auto rounded-2xl border"
 			>
 				<AppBar variant="compact" title="appBar.dashboard">
 					<template #leading>
@@ -62,13 +62,14 @@ onMounted(() => setToc(appBarPageToc));
 		<ExampleBlock :code="examples.silver">
 			<div
 				data-scroll-container
-				class="relative z-0 h-80 w-full max-w-110 overflow-hidden overflow-y-auto rounded-2xl border bg-background"
+				class="relative z-0 h-80 w-full max-w-110 overflow-hidden overflow-y-auto rounded-2xl border"
 			>
 				<AppBar variant="silver" title="appBar.storeTitle">
-					<template #leading
-						><IconButton :aria-label="$t('appBar.back')" size="md"
-							><ChevronLeft /></IconButton
-					></template>
+					<template #leading>
+						<IconButton :aria-label="$t('appBar.back')" size="md">
+							<ChevronLeft />
+						</IconButton>
+					</template>
 					<template #trailing>
 						<IconButton :aria-label="$t('appBar.share')" size="md">
 							<Share />

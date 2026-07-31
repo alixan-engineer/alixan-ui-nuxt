@@ -314,7 +314,10 @@
 				"slotsContent": "Иә. Әр элементке custom markup керек болғанда title және content slots қолданыңыз."
 			}
 		},
-		"avatar": { "metaTitle": "Avatar - Alixan UI", "description": "Alixan UI өлшемдері мен card түстері бар дөңгелек пайдаланушы суреті немесе инициалдар." },
+		"avatar": {
+			"metaTitle": "Avatar - Alixan UI",
+			"description": "Alixan UI өлшемдері мен card түстері бар дөңгелек пайдаланушы суреті немесе инициалдар."
+		},
 		"tabs": {
 			"metaTitle": "Табтар - Alixan UI",
 			"description": "Көріністер арасында ауысуға арналған ықшам segmented навигация компоненті.",
@@ -339,12 +342,31 @@
 			"metaTitle": "Карточка - Alixan UI",
 			"description": "Суреті, контенті, бағасы және әрекеті бар product preview үшін қарапайым island карточка."
 		},
-		"infoBox": { "metaTitle": "InfoBox - Alixan UI", "description": "Ескертпелер мен қосымша түсіндірмелерге арналған ақпараттық блок.", "demo": "Пайдалы контексті негізгі мазмұннан бөлу үшін InfoBox қолданыңыз." },
-		"list": { "metaTitle": "List - Alixan UI", "description": "Leading, title, description және trailing аймақтары бар Alixan UI тізім жолы." },
-		"island": { "metaTitle": "Island - Alixan UI", "description": "Қосымша title және description бар Alixan UI топталған контент блогы." },
-		"appBar": { "metaTitle": "App Bar - Alixan UI", "description": "Compact және Silver нұсқалары бар Alixan UI навигация панелі." },
-		"sidebar": { "metaTitle": "Sidebar - Alixan UI", "description": "Бейімделгіш навигациясы, App Bar және ортаға тураланған контейнері бар Alixan UI қолданба қаңқасы." },
-		"bottomNavigationBar": { "metaTitle": "Bottom Navigation Bar - Alixan UI", "description": "Негізгі мобильді бөлімдер арасында ауысуға арналған биіктігі 50 px төменгі панель." },
+		"infoBox": {
+			"metaTitle": "InfoBox - Alixan UI",
+			"description": "Ескертпелер мен қосымша түсіндірмелерге арналған ақпараттық блок.",
+			"demo": "Пайдалы контексті негізгі мазмұннан бөлу үшін InfoBox қолданыңыз."
+		},
+		"list": {
+			"metaTitle": "List - Alixan UI",
+			"description": "Leading, title, description және trailing аймақтары бар Alixan UI тізім жолы."
+		},
+		"island": {
+			"metaTitle": "Island - Alixan UI",
+			"description": "Қосымша title және description бар Alixan UI топталған контент блогы."
+		},
+		"appBar": {
+			"metaTitle": "App Bar - Alixan UI",
+			"description": "Compact және Silver нұсқалары бар Alixan UI навигация панелі."
+		},
+		"sidebar": {
+			"metaTitle": "Sidebar - Alixan UI",
+			"description": "Бейімделгіш навигациясы, App Bar және ортаға тураланған контейнері бар Alixan UI қолданба қаңқасы."
+		},
+		"bottomNavigationBar": {
+			"metaTitle": "Bottom Navigation Bar - Alixan UI",
+			"description": "Негізгі мобильді бөлімдер арасында ауысуға арналған биіктігі 50 px төменгі панель."
+		},
 		"empty": {
 			"metaTitle": "Бос күй - Alixan UI",
 			"description": "Дерек жоқ кезде, іздеу нәтижелері бос болғанда және error pages үшін центрленген empty state."
@@ -412,6 +434,10 @@
 		"toast": {
 			"metaTitle": "Хабарлама - Alixan UI",
 			"description": "Success, warning, error және info хабарламаларына арналған жеңіл notification stack."
+		},
+		"scaffold": {
+			"metaTitle": "Қаңқа - Alixan UI",
+			"description": "Беттің негізгі макет құрылымын, соның ішінде тақырып, мазмұн аймағы және төменгі колонтитулды қамтамасыз етеді."
 		}
 	},
 	"seoPage": {
@@ -492,12 +518,12 @@
 		"status": "Статус",
 		"spinner": "Спиннер",
 		"card": "Карточка",
-		"infoBox": "InfoBox",
+		"infoBox": "Ақпараттық блок",
 		"list": "Тізім",
 		"island": "Блок",
-		"appBar": "App Bar",
-		"sidebar": "Sidebar",
-		"bottomNavigationBar": "Bottom Navigation Bar",
+		"appBar": "Қолданба жолағы",
+		"sidebar": "Бүйірлік панель",
+		"bottomNavigationBar": "Төменгі навигация жолағы",
 		"empty": "Бос күй",
 		"divider": "Бөлгіш",
 		"table": "Кесте",
@@ -510,14 +536,94 @@
 		"toast": "Хабарлама",
 		"select": "Таңдау",
 		"dropdownMenu": "Ашылмалы мәзір",
-		"tooltip": "Tooltip"
+		"tooltip": "Көмекші кеңес",
+		"scaffold": "Қаңқа"
 	},
-	"list": { "demoTitle": "Профиль", "demoDescription": "Жеке деректер және аккаунт баптаулары", "securityTitle": "Қауіпсіздік", "securityDescription": "Құпиясөз және кіру тәсілдері", "edit": "Өзгерту", "delete": "Жою", "profileOpened": "Профиль ашылды", "editStarted": "Профильді өңдеу", "deleteStarted": "Профильді жою", "clickTitle": "Клик", "clickDescription": "Клик өңдеушісін беру ListTile-ды button етіп, pointer, hover және keyboard focus стильдерін автоматты қосады.", "actionsTitle": "Trailing әрекеттері", "borderTitle": "Шекара", "borderDescription": "Inset контент сызығымен Alixan UI divider қосады. Block әр ListTile-ды жеке рамкамен қоршайды.", "insetTitle": "Inset", "blockTitle": "Block", "contacts": { "aruzhan": "Аружан Сәрсенова", "aruzhanPhone": "+7 701 123 45 67", "daniyar": "Данияр Әлиев", "daniyarPhone": "+7 702 234 56 78", "aidana": "Айдана Нұрланқызы", "aidanaPhone": "+7 705 345 67 89" } },
-	"island": { "demoTitle": "Шолу", "demoDesc": "Аккаунт туралы соңғы ақпарат", "demoContent": "Контент default slot ішінде орналасады.", "outsideTitle": "Сыртқы header" },
-	"appBar": { "compactTitle": "Ықшам", "silverTitle": "Silver", "dashboard": "Басты бет", "storeTitle": "Дүкен", "openMenu": "Мәзірді ашу", "profile": "Профиль", "scrollHint": "Навигация панелінің ауысуын көру үшін айналдырыңыз.", "back": "Артқа", "share": "Бөлісу", "more": "Тағы" },
+	"list": {
+		"demoTitle": "Профиль",
+		"demoDescription": "Жеке деректер және аккаунт баптаулары",
+		"securityTitle": "Қауіпсіздік",
+		"securityDescription": "Құпиясөз және кіру тәсілдері",
+		"edit": "Өзгерту",
+		"delete": "Жою",
+		"profileOpened": "Профиль ашылды",
+		"editStarted": "Профильді өңдеу",
+		"deleteStarted": "Профильді жою",
+		"clickTitle": "Клик",
+		"clickDescription": "Клик өңдеушісін беру ListTile-ды button етіп, pointer, hover және keyboard focus стильдерін автоматты қосады.",
+		"actionsTitle": "Trailing әрекеттері",
+		"borderTitle": "Шекара",
+		"borderDescription": "Inset контент сызығымен Alixan UI divider қосады. Block әр ListTile-ды жеке рамкамен қоршайды.",
+		"insetTitle": "Inset",
+		"blockTitle": "Block",
+		"contacts": {
+			"aruzhan": "Аружан Сәрсенова",
+			"aruzhanPhone": "+7 701 123 45 67",
+			"daniyar": "Данияр Әлиев",
+			"daniyarPhone": "+7 702 234 56 78",
+			"aidana": "Айдана Нұрланқызы",
+			"aidanaPhone": "+7 705 345 67 89"
+		}
+	},
+	"island": {
+		"demoTitle": "Шолу",
+		"demoDesc": "Аккаунт туралы соңғы ақпарат",
+		"demoContent": "Контент default slot ішінде орналасады.",
+		"outsideTitle": "Сыртқы header"
+	},
+	"appBar": {
+		"compactTitle": "Ықшам",
+		"silverTitle": "Silver",
+		"dashboard": "Басты бет",
+		"storeTitle": "Дүкен",
+		"openMenu": "Мәзірді ашу",
+		"profile": "Профиль",
+		"scrollHint": "Навигация панелінің ауысуын көру үшін айналдырыңыз.",
+		"back": "Артқа",
+		"share": "Бөлісу",
+		"more": "Тағы"
+	},
 	"userMenu": { "userName": "Alixan", "administrator": "Әкімші" },
-	"sidebarDemo": { "brand": "Alixan UI", "home": "Басты бет", "content": "Бет контенті ортаға тураланған бейімделгіш контейнерге орналасады.", "workspace": "Жұмыс кеңістігі", "management": "Басқару", "dashboard": "Басты бет", "dashboardDescription": "Ағымдағы жұмыс кеңістігінің шолуы.", "orders": "Тапсырыстар", "ordersDescription": "Клиент тапсырыстарын қарау және басқару.", "analytics": "Аналитика", "analyticsDescription": "Өнімнің негізгі көрсеткіштері.", "team": "Команда", "teamDescription": "Қатысушылар мен қолжетімділікті басқару.", "settings": "Баптаулар", "settingsDescription": "Жұмыс кеңістігін баптау.", "activity": "Белсенділік", "activityDescription": "Жұмыс кеңістігіндегі соңғы өзгерістер.", "guideTitle": "Alixan UI гайды", "silverGuide": "Бетке айналдыру кезінде App Bar ішіне жиналатын ірі тақырып қажет болғанда Silver қолданыңыз.", "bottomNavigationRule": "Bottom Navigation Bar бар экрандарда Silver App Bar қолданбаңыз. Навигация деңгейлері түсінікті болуы үшін мұндай экрандарда Compact таңдаңыз.", "accountMenu": "Аккаунт мәзірін ашу", "profile": "Профиль", "preferences": "Баптаулар", "signOut": "Шығу", "overview": "Шолу", "orderReady": "Өңдеуге дайын", "weeklySales": "Апталық сатылым", "report": "Есеп", "workspaceName": "Жұмыс кеңістігінің атауы", "notifications": "Хабарландырулар", "reports": "Есептер", "memberName": "Alixan қатысушысы {index}" },
-	"bottomNavigation": { "home": "Басты бет", "events": "Оқиғалар", "profile": "Профиль", "pageContent": "«{page}» беті — айналдырылатын router outlet" },
+	"sidebarDemo": {
+		"brand": "Alixan UI",
+		"home": "Басты бет",
+		"content": "Бет контенті ортаға тураланған бейімделгіш контейнерге орналасады.",
+		"workspace": "Жұмыс кеңістігі",
+		"management": "Басқару",
+		"dashboard": "Басты бет",
+		"dashboardDescription": "Ағымдағы жұмыс кеңістігінің шолуы.",
+		"orders": "Тапсырыстар",
+		"ordersDescription": "Клиент тапсырыстарын қарау және басқару.",
+		"analytics": "Аналитика",
+		"analyticsDescription": "Өнімнің негізгі көрсеткіштері.",
+		"team": "Команда",
+		"teamDescription": "Қатысушылар мен қолжетімділікті басқару.",
+		"settings": "Баптаулар",
+		"settingsDescription": "Жұмыс кеңістігін баптау.",
+		"activity": "Белсенділік",
+		"activityDescription": "Жұмыс кеңістігіндегі соңғы өзгерістер.",
+		"guideTitle": "Alixan UI гайды",
+		"silverGuide": "Бетке айналдыру кезінде App Bar ішіне жиналатын ірі тақырып қажет болғанда Silver қолданыңыз.",
+		"bottomNavigationRule": "Bottom Navigation Bar бар экрандарда Silver App Bar қолданбаңыз. Навигация деңгейлері түсінікті болуы үшін мұндай экрандарда Compact таңдаңыз.",
+		"accountMenu": "Аккаунт мәзірін ашу",
+		"profile": "Профиль",
+		"preferences": "Баптаулар",
+		"signOut": "Шығу",
+		"overview": "Шолу",
+		"orderReady": "Өңдеуге дайын",
+		"weeklySales": "Апталық сатылым",
+		"report": "Есеп",
+		"workspaceName": "Жұмыс кеңістігінің атауы",
+		"notifications": "Хабарландырулар",
+		"reports": "Есептер",
+		"memberName": "Alixan қатысушысы {index}"
+	},
+	"bottomNavigation": {
+		"home": "Басты бет",
+		"events": "Оқиғалар",
+		"profile": "Профиль",
+		"pageContent": "«{page}» беті — айналдырылатын router outlet"
+	},
 	"validation": {
 		"required": "Өрісті толтырыңыз",
 		"email": "Дұрыс email енгізіңіз",
@@ -527,8 +633,17 @@
 		"usernamePattern": "Тек әріптер мен сандар",
 		"iinPattern": "ЖСН 12 цифрдан тұруы керек"
 	},
-	"inputActions": { "clear": "Өрісті тазарту", "showPassword": "Құпиясөзді көрсету", "hidePassword": "Құпиясөзді жасыру" },
-	"inputValidation": { "check": "Валидацияны тексеру", "parentInvalid": "Ата-анадағы invalid күйі", "xControlApi": "XControl API", "usageDescription": "Фокус немесе мән болғанда label жоғары көтеріледі. Мән мен валидация күйі үшін XControl қолданыңыз." },
+	"inputActions": {
+		"clear": "Өрісті тазарту",
+		"showPassword": "Құпиясөзді көрсету",
+		"hidePassword": "Құпиясөзді жасыру"
+	},
+	"inputValidation": {
+		"check": "Валидацияны тексеру",
+		"parentInvalid": "Ата-анадағы invalid күйі",
+		"xControlApi": "XControl API",
+		"usageDescription": "Фокус немесе мән болғанда label жоғары көтеріледі. Мән мен валидация күйі үшін XControl қолданыңыз."
+	},
 	"inputLabels": {
 		"iin": "ЖСН"
 	},
@@ -746,12 +861,12 @@
 		"clearEvent": "Тазарту батырмасы басылғанда шығарылады.",
 		"selectModelValue": "v-model арқылы қолданылатын таңдалған option мәні.",
 		"selectPlaceholder": "Option таңдалмаған кезде көрсетілетін мәтін.",
-			"selectOptions": "Label, value және optional disabled бар options тізімі.",
-			"selectDisabled": "Select-пен әрекеттесуді өшіреді.",
-			"selectTeleport": "Menu-ды body ішіне teleport етеді. Nested popovers үшін true қалдырыңыз; menu local layout ішінде қалуы керек болса ғана false қойыңыз.",
-			"selectRequired": "Option таңдалмаса, міндетті өріс хабарын көрсетеді.",
-			"selectError": "Select-пен әрекеттескеннен кейін көрсетілетін сыртқы валидация хабары.",
-			"statusTone": "Статустың семантикалық тоны.",
+		"selectOptions": "Label, value және optional disabled бар options тізімі.",
+		"selectDisabled": "Select-пен әрекеттесуді өшіреді.",
+		"selectTeleport": "Menu-ды body ішіне teleport етеді. Nested popovers үшін true қалдырыңыз; menu local layout ішінде қалуы керек болса ғана false қойыңыз.",
+		"selectRequired": "Option таңдалмаса, міндетті өріс хабарын көрсетеді.",
+		"selectError": "Select-пен әрекеттескеннен кейін көрсетілетін сыртқы валидация хабары.",
+		"statusTone": "Статустың семантикалық тоны.",
 		"statusSize": "Биіктікті, padding және gap басқарады.",
 		"switchLabel": "Switch жанындағы қосымша label.",
 		"switchDisabled": "Switch-пен әрекеттесуді өшіреді.",
@@ -803,11 +918,15 @@
 		"sidebarMode": "Бейімделгіш әрекетті таңдайды немесе мобильді не десктоп көрінісін мәжбүрлі орнатады.",
 		"sidebarContained": "Енгізілген мысалдар үшін мобильді overlay-ді жергілікті контейнермен шектейді.",
 		"bottomNavigationModelValue": "Белсенді бөлім индексі.",
-		"bottomNavigationItems": "Белгісі, иконкасы және қосымша Nuxt маршруты бар навигация бөлімдері."
+		"bottomNavigationItems": "Белгісі, иконкасы және қосымша Nuxt маршруты бар навигация бөлімдері.",
+		"scaffoldAppBarSlot": "Қолданбаның жоғарғы тақтасын көрсетеді.",
+		"scaffoldBodySlot": "Негізгі айналдырылатын мазмұн аймағын көрсетеді.",
+		"scaffoldBottomNavigationBarSlot": "Төменгі навигация тақтасын көрсетеді."
 	},
 	"toast": {
 		"close": "Хабарламаны жабу"
 	},
 	"Alixan UI - Nuxt UI Components": "Alixan UI - Nuxt UI компоненттері",
-	"Modern, minimal and production-ready UI components for Nuxt 4, Vue 3 and TypeScript.": "Nuxt 4, Vue 3 және TypeScript үшін заманауи, минимал және production-ready UI компоненттері."
+	"Modern, minimal and production-ready UI components for Nuxt 4, Vue 3 and TypeScript.": "Nuxt 4, Vue 3 және TypeScript үшін заманауи, минимал және production-ready UI компоненттері.",
+	"scaffold": {}
 }

@@ -24,6 +24,7 @@ export const menuSections: IMenuSection[] = [
 	{
 		labelKey: 'sidebar.layouts',
 		items: [
+			{ labelKey: 'component.scaffold', to: '/scaffold', new: true },
 			{ labelKey: 'component.appBar', to: '/app-bar', new: true },
 			{ labelKey: 'component.sidebar', to: '/sidebar', new: true },
 			{

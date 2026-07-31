@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { IMenuItem } from '~/interfaces/sidebar/sidebar.interface';
-import { menuSections } from '~/widgets/sidebar/menu';
+import { menuSections } from '~/widgets/docs-sidebar/menu';
 
 const props = defineProps<{
 	close: () => void;

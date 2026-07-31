@@ -314,7 +314,10 @@
 				"slotsContent": "Да. Используйте title и content slots, когда нужна своя разметка для каждого элемента."
 			}
 		},
-		"avatar": { "metaTitle": "Avatar - Alixan UI", "description": "Круглое изображение пользователя или инициалы с размерами и цветами card из Alixan UI." },
+		"avatar": {
+			"metaTitle": "Avatar - Alixan UI",
+			"description": "Круглое изображение пользователя или инициалы с размерами и цветами card из Alixan UI."
+		},
 		"tabs": {
 			"metaTitle": "Табы - Alixan UI",
 			"description": "Компактная segmented-навигация для переключения между представлениями.",
@@ -339,12 +342,31 @@
 			"metaTitle": "Карточка - Alixan UI",
 			"description": "Простая island-карточка для product preview с изображением, контентом, ценой и действием."
 		},
-		"infoBox": { "metaTitle": "InfoBox - Alixan UI", "description": "Спокойный информационный блок для заметок и дополнительных пояснений.", "demo": "Используйте InfoBox, чтобы отделить полезный контекст от основного содержимого." },
-		"list": { "metaTitle": "List - Alixan UI", "description": "Строка списка Alixan UI с leading, заголовком, описанием и trailing." },
-		"island": { "metaTitle": "Island - Alixan UI", "description": "Сгруппированный блок Alixan UI с необязательными заголовком и описанием." },
-		"appBar": { "metaTitle": "App Bar - Alixan UI", "description": "Панель навигации Alixan UI с вариантами Compact и Silver." },
-		"sidebar": { "metaTitle": "Sidebar - Alixan UI", "description": "Каркас приложения Alixan UI с адаптивной навигацией, App Bar и центрированным контейнером." },
-		"bottomNavigationBar": { "metaTitle": "Bottom Navigation Bar - Alixan UI", "description": "Нижняя панель высотой 50 px для переключения основных мобильных разделов." },
+		"infoBox": {
+			"metaTitle": "InfoBox - Alixan UI",
+			"description": "Спокойный информационный блок для заметок и дополнительных пояснений.",
+			"demo": "Используйте InfoBox, чтобы отделить полезный контекст от основного содержимого."
+		},
+		"list": {
+			"metaTitle": "List - Alixan UI",
+			"description": "Строка списка Alixan UI с leading, заголовком, описанием и trailing."
+		},
+		"island": {
+			"metaTitle": "Island - Alixan UI",
+			"description": "Сгруппированный блок Alixan UI с необязательными заголовком и описанием."
+		},
+		"appBar": {
+			"metaTitle": "App Bar - Alixan UI",
+			"description": "Панель навигации Alixan UI с вариантами Compact и Silver."
+		},
+		"sidebar": {
+			"metaTitle": "Sidebar - Alixan UI",
+			"description": "Каркас приложения Alixan UI с адаптивной навигацией, App Bar и центрированным контейнером."
+		},
+		"bottomNavigationBar": {
+			"metaTitle": "Bottom Navigation Bar - Alixan UI",
+			"description": "Нижняя панель высотой 50 px для переключения основных мобильных разделов."
+		},
 		"empty": {
 			"metaTitle": "Пустое состояние - Alixan UI",
 			"description": "Центрированный empty state для отсутствующих данных, пустых результатов поиска и error pages."
@@ -412,6 +434,10 @@
 		"toast": {
 			"metaTitle": "Уведомление - Alixan UI",
 			"description": "Легкий notification stack для success, warning, error и info сообщений."
+		},
+		"scaffold": {
+			"metaTitle": "Каркас - Alixan UI",
+			"description": "Предоставляет базовую структуру макета для страницы, включая заголовок, область контента и подвал."
 		}
 	},
 	"seoPage": {
@@ -493,12 +519,12 @@
 		"status": "Статус",
 		"spinner": "Спиннер",
 		"card": "Карточка",
-		"infoBox": "InfoBox",
+		"infoBox": "Информационный блок",
 		"list": "Список",
 		"island": "Блок",
-		"appBar": "App Bar",
-		"sidebar": "Sidebar",
-		"bottomNavigationBar": "Bottom Navigation Bar",
+		"appBar": "Панель приложения",
+		"sidebar": "Боковая панель",
+		"bottomNavigationBar": "Нижняя панель навигации",
 		"empty": "Пустое состояние",
 		"divider": "Разделитель",
 		"table": "Таблица",
@@ -511,14 +537,94 @@
 		"toast": "Уведомление",
 		"select": "Выбор",
 		"dropdownMenu": "Выпадающее меню",
-		"tooltip": "Tooltip"
+		"tooltip": "Подсказка",
+		"scaffold": "Каркас"
 	},
-	"list": { "demoTitle": "Профиль", "demoDescription": "Личные данные и настройки аккаунта", "securityTitle": "Безопасность", "securityDescription": "Пароль и способы входа", "edit": "Изменить", "delete": "Удалить", "profileOpened": "Профиль открыт", "editStarted": "Редактирование профиля", "deleteStarted": "Удаление профиля", "clickTitle": "Клик", "clickDescription": "Передача обработчика клика превращает ListTile в кнопку и автоматически добавляет pointer, hover и клавиатурный focus.", "actionsTitle": "Действия в trailing", "borderTitle": "Граница", "borderDescription": "Inset добавляет разделитель Alixan UI по линии контента. Block оборачивает каждый ListTile отдельной рамкой.", "insetTitle": "Inset", "blockTitle": "Block", "contacts": { "aruzhan": "Аружан Сарсенова", "aruzhanPhone": "+7 701 123 45 67", "daniyar": "Данияр Алиев", "daniyarPhone": "+7 702 234 56 78", "aidana": "Айдана Нурланкызы", "aidanaPhone": "+7 705 345 67 89" } },
-	"island": { "demoTitle": "Обзор", "demoDesc": "Последняя информация об аккаунте", "demoContent": "Содержимое размещается в слоте по умолчанию.", "outsideTitle": "Заголовок снаружи" },
-	"appBar": { "compactTitle": "Компактный", "silverTitle": "Silver", "dashboard": "Главная", "storeTitle": "Магазин", "openMenu": "Открыть меню", "profile": "Профиль", "scrollHint": "Прокрутите, чтобы увидеть переход панели навигации.", "back": "Назад", "share": "Поделиться", "more": "Ещё" },
+	"list": {
+		"demoTitle": "Профиль",
+		"demoDescription": "Личные данные и настройки аккаунта",
+		"securityTitle": "Безопасность",
+		"securityDescription": "Пароль и способы входа",
+		"edit": "Изменить",
+		"delete": "Удалить",
+		"profileOpened": "Профиль открыт",
+		"editStarted": "Редактирование профиля",
+		"deleteStarted": "Удаление профиля",
+		"clickTitle": "Клик",
+		"clickDescription": "Передача обработчика клика превращает ListTile в кнопку и автоматически добавляет pointer, hover и клавиатурный focus.",
+		"actionsTitle": "Действия в trailing",
+		"borderTitle": "Граница",
+		"borderDescription": "Inset добавляет разделитель Alixan UI по линии контента. Block оборачивает каждый ListTile отдельной рамкой.",
+		"insetTitle": "Inset",
+		"blockTitle": "Block",
+		"contacts": {
+			"aruzhan": "Аружан Сарсенова",
+			"aruzhanPhone": "+7 701 123 45 67",
+			"daniyar": "Данияр Алиев",
+			"daniyarPhone": "+7 702 234 56 78",
+			"aidana": "Айдана Нурланкызы",
+			"aidanaPhone": "+7 705 345 67 89"
+		}
+	},
+	"island": {
+		"demoTitle": "Обзор",
+		"demoDesc": "Последняя информация об аккаунте",
+		"demoContent": "Содержимое размещается в слоте по умолчанию.",
+		"outsideTitle": "Заголовок снаружи"
+	},
+	"appBar": {
+		"compactTitle": "Компактный",
+		"silverTitle": "Silver",
+		"dashboard": "Главная",
+		"storeTitle": "Магазин",
+		"openMenu": "Открыть меню",
+		"profile": "Профиль",
+		"scrollHint": "Прокрутите, чтобы увидеть переход панели навигации.",
+		"back": "Назад",
+		"share": "Поделиться",
+		"more": "Ещё"
+	},
 	"userMenu": { "userName": "Alixan", "administrator": "Администратор" },
-	"sidebarDemo": { "brand": "Alixan UI", "home": "Главная", "content": "Контент страницы размещается в центрированном адаптивном контейнере.", "workspace": "Рабочее пространство", "management": "Управление", "dashboard": "Главная", "dashboardDescription": "Обзор текущего рабочего пространства.", "orders": "Заказы", "ordersDescription": "Просмотр и управление заказами клиентов.", "analytics": "Аналитика", "analyticsDescription": "Основные показатели продукта.", "team": "Команда", "teamDescription": "Участники и права доступа.", "settings": "Настройки", "settingsDescription": "Настройки рабочего пространства.", "activity": "Активность", "activityDescription": "Последние изменения рабочего пространства.", "guideTitle": "Гайд Alixan UI", "silverGuide": "Используйте Silver, когда странице нужен крупный заголовок, который при прокрутке сворачивается в App Bar.", "bottomNavigationRule": "Не используйте Silver App Bar на экранах с Bottom Navigation Bar. Для таких экранов выбирайте Compact, чтобы уровни навигации оставались понятными.", "accountMenu": "Открыть меню аккаунта", "profile": "Профиль", "preferences": "Настройки", "signOut": "Выйти", "overview": "Обзор", "orderReady": "Готов к обработке", "weeklySales": "Продажи за неделю", "report": "Отчёт", "workspaceName": "Название пространства", "notifications": "Уведомления", "reports": "Отчёты", "memberName": "Участник Alixan {index}" },
-	"bottomNavigation": { "home": "Главная", "events": "События", "profile": "Профиль", "pageContent": "Страница «{page}» — прокручиваемый router outlet" },
+	"sidebarDemo": {
+		"brand": "Alixan UI",
+		"home": "Главная",
+		"content": "Контент страницы размещается в центрированном адаптивном контейнере.",
+		"workspace": "Рабочее пространство",
+		"management": "Управление",
+		"dashboard": "Главная",
+		"dashboardDescription": "Обзор текущего рабочего пространства.",
+		"orders": "Заказы",
+		"ordersDescription": "Просмотр и управление заказами клиентов.",
+		"analytics": "Аналитика",
+		"analyticsDescription": "Основные показатели продукта.",
+		"team": "Команда",
+		"teamDescription": "Участники и права доступа.",
+		"settings": "Настройки",
+		"settingsDescription": "Настройки рабочего пространства.",
+		"activity": "Активность",
+		"activityDescription": "Последние изменения рабочего пространства.",
+		"guideTitle": "Гайд Alixan UI",
+		"silverGuide": "Используйте Silver, когда странице нужен крупный заголовок, который при прокрутке сворачивается в App Bar.",
+		"bottomNavigationRule": "Не используйте Silver App Bar на экранах с Bottom Navigation Bar. Для таких экранов выбирайте Compact, чтобы уровни навигации оставались понятными.",
+		"accountMenu": "Открыть меню аккаунта",
+		"profile": "Профиль",
+		"preferences": "Настройки",
+		"signOut": "Выйти",
+		"overview": "Обзор",
+		"orderReady": "Готов к обработке",
+		"weeklySales": "Продажи за неделю",
+		"report": "Отчёт",
+		"workspaceName": "Название пространства",
+		"notifications": "Уведомления",
+		"reports": "Отчёты",
+		"memberName": "Участник Alixan {index}"
+	},
+	"bottomNavigation": {
+		"home": "Главная",
+		"events": "События",
+		"profile": "Профиль",
+		"pageContent": "Страница «{page}» — прокручиваемый router outlet"
+	},
 	"validation": {
 		"required": "Заполните поле",
 		"email": "Введите корректный email",
@@ -528,8 +634,17 @@
 		"usernamePattern": "Только буквы и цифры",
 		"iinPattern": "ИИН должен содержать 12 цифр"
 	},
-	"inputActions": { "clear": "Очистить поле", "showPassword": "Показать пароль", "hidePassword": "Скрыть пароль" },
-	"inputValidation": { "check": "Проверить валидацию", "parentInvalid": "Состояние invalid в родителе", "xControlApi": "API XControl", "usageDescription": "Label поднимается при фокусе или наличии значения. Используйте XControl для значения и состояния валидации." },
+	"inputActions": {
+		"clear": "Очистить поле",
+		"showPassword": "Показать пароль",
+		"hidePassword": "Скрыть пароль"
+	},
+	"inputValidation": {
+		"check": "Проверить валидацию",
+		"parentInvalid": "Состояние invalid в родителе",
+		"xControlApi": "API XControl",
+		"usageDescription": "Label поднимается при фокусе или наличии значения. Используйте XControl для значения и состояния валидации."
+	},
 	"inputLabels": {
 		"iin": "ИИН"
 	},
@@ -747,12 +862,12 @@
 		"clearEvent": "Вызывается при клике на кнопку очистки.",
 		"selectModelValue": "Выбранное значение option, используемое через v-model.",
 		"selectPlaceholder": "Текст, отображаемый когда option не выбран.",
-			"selectOptions": "Список options с label, value и optional disabled.",
-			"selectDisabled": "Отключает взаимодействие с select.",
-			"selectTeleport": "Телепортирует menu в body. Оставляйте true для nested popovers; ставьте false только если menu должна остаться внутри local layout.",
-			"selectRequired": "Показывает сообщение обязательного поля, если option не выбрана.",
-			"selectError": "Внешнее сообщение валидации, отображаемое после взаимодействия с select.",
-			"statusTone": "Семантический тон статуса.",
+		"selectOptions": "Список options с label, value и optional disabled.",
+		"selectDisabled": "Отключает взаимодействие с select.",
+		"selectTeleport": "Телепортирует menu в body. Оставляйте true для nested popovers; ставьте false только если menu должна остаться внутри local layout.",
+		"selectRequired": "Показывает сообщение обязательного поля, если option не выбрана.",
+		"selectError": "Внешнее сообщение валидации, отображаемое после взаимодействия с select.",
+		"statusTone": "Семантический тон статуса.",
 		"statusSize": "Управляет высотой, padding и gap.",
 		"switchLabel": "Опциональный label рядом со switch.",
 		"switchDisabled": "Отключает взаимодействие со switch.",
@@ -804,7 +919,10 @@
 		"sidebarMode": "Выбирает адаптивное поведение или принудительный мобильный либо десктопный вид.",
 		"sidebarContained": "Ограничивает мобильный overlay локальным контейнером для встроенных примеров.",
 		"bottomNavigationModelValue": "Индекс активного раздела.",
-		"bottomNavigationItems": "Разделы навигации с подписью, иконкой и необязательным маршрутом Nuxt."
+		"bottomNavigationItems": "Разделы навигации с подписью, иконкой и необязательным маршрутом Nuxt.",
+		"scaffoldAppBarSlot": "Отображает верхнюю панель приложения.",
+		"scaffoldBodySlot": "Отображает основную прокручиваемую область содержимого.",
+		"scaffoldBottomNavigationBarSlot": "Отображает нижнюю панель навигации."
 	},
 	"toast": {
 		"close": "Закрыть уведомление"

@@ -17,7 +17,10 @@ withDefaults(
 			{{ path }}
 		</div>
 
-		<div v-if="preview" class="min-h-65 p-4 sm:p-8 flex items-center justify-center">
+		<div
+			v-if="preview"
+			class="min-h-65 p-4 sm:p-8 flex items-center justify-center"
+		>
 			<slot />
 		</div>
 

@@ -24,6 +24,7 @@ export const emptyProps = [
 		description: 'apiReferenceDescriptions.optionalActionColor',
 	},
 ];
+
 export const emptySlots = [
 	{
 		name: 'default',
