@@ -583,7 +583,6 @@
 		"dashboard": "Dashboard",
 		"storeTitle": "Store",
 		"profile": "Profile",
-		"scrollHint": "Scroll to see the navigation bar transition.",
 		"back": "Back",
 		"share": "Share",
 		"more": "More"
@@ -889,17 +888,6 @@
 		"cardTitle": "Main card title.",
 		"cardPrice": "Price text shown next to the action button.",
 		"cardButtonEvent": "Emitted when the button is clicked.",
-		"appBarTitle": "Navigation title. Translation keys are supported.",
-		"appBarVariant": "Compact toolbar or Silver-style large title.",
-		"appBarSticky": "Keeps the bar pinned to the top of its scroll container.",
-		"appBarDivider": "Shows a permanent divider for Compact and a scroll-aware divider for Silver.",
-		"appBarTitleAlign": "Responsive centers the title in App Bars narrower than 48rem and aligns it left in wider App Bars. Start and center force one alignment.",
-		"appBarScrollTarget": "Explicit scroll element or selector. The nearest scroll container is used by default.",
-		"appBarLeading": "Leading navigation action.",
-		"appBarTrailing": "Trailing navigation actions.",
-		"appBarTitleSlot": "Custom compact title content.",
-		"appBarLargeTitleSlot": "Custom Silver-style large title content.",
-		"appBarContent": "Scrollable page content rendered below the bar.",
 		"avatarName": "User name used to generate initials when no image is provided.",
 		"avatarImg": "Optional avatar image URL. When provided, the image is displayed instead of initials.",
 		"avatarAlt": "Accessible image description. The name is used by default.",
@@ -917,7 +905,12 @@
 		"sidebarLogo": "Content displayed in the sidebar logo area.",
 		"sidebarFooter": "Content displayed at the bottom of the sidebar.",
 		"layoutSidebar": "Content displayed in the sidebar area of the layout.",
-		"layoutScaffold": "Main scaffold content displayed alongside the sidebar."
+		"layoutScaffold": "Main scaffold content displayed alongside the sidebar.",
+		"appBarTitle": "The title displayed in the app bar.",
+		"appBarTitleAlign": "Controls the title alignment. Responsive centers the title on smaller screens and aligns it to the start on larger screens.",
+		"appBarLeading": "Content displayed at the start of the app bar, such as a menu or back button.",
+		"appBarTrailing": "Content displayed at the end of the app bar, such as actions or an avatar.",
+		"silverAppBarObserver": "Content observed by Silver App Bar. When it scrolls out of view, the compact title appears and the divider becomes visible."
 	},
 	"toast": {
 		"close": "Close toast"

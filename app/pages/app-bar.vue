@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ChevronLeft, EllipsisVertical, Menu, Share } from '@lucide/vue';
+import { ArrowLeft, Ellipsis, Menu, Share } from '@lucide/vue';
 import {
 	appBarProps,
 	appBarSlots,
@@ -39,23 +39,26 @@ onMounted(() => setToc(appBarPageToc));
 	<section id="compact" class="space-y-5">
 		<h2 class="text-2xl font-semibold">{{ $t('appBar.compactTitle') }}</h2>
 		<ExampleBlock :code="examples.compact">
-			<div
-				data-scroll-container
-				class="relative z-0 h-80 w-full max-w-110 overflow-y-auto rounded-2xl border"
-			>
-				<AppBar variant="compact" title="appBar.dashboard">
-					<template #leading>
-						<IconButton>
-							<Menu />
-						</IconButton>
+			<div class="w-full max-w-110 h-80 border rounded-2xl overflow-hidden">
+				<Scaffold>
+					<template #app-bar>
+						<AppBar title="appBar.dashboard">
+							<template #leading>
+								<IconButton>
+									<Menu />
+								</IconButton>
+							</template>
+							<template #trailing>
+								<Avatar name="Alixan" />
+							</template>
+						</AppBar>
 					</template>
-					<template #trailing>
-						<Avatar name="Alixan" />
+					<template #body>
+						<div class="h-90 mx-4 my-8 border rounded-2xl p-6 text-xm">
+							Page content
+						</div>
 					</template>
-					<div class="min-h-120 p-4 text-muted-foreground">
-						{{ $t('appBar.scrollHint') }}
-					</div>
-				</AppBar>
+				</Scaffold>
 			</div>
 		</ExampleBlock>
 	</section>
@@ -65,28 +68,34 @@ onMounted(() => setToc(appBarPageToc));
 		<p class="text-muted-foreground">{{ $t('appBar.silverGuide') }}</p>
 		<ExampleBlock :code="examples.silver">
 			<div class="w-full max-w-110 h-90 border rounded-2xl overflow-hidden">
-				<Layout data-scroll-container>
-					<template #app-bar>
-						<AppBar variant="silver" title="appBar.storeTitle">
+				<Scaffold>
+					<template #body>
+						<SilverAppBar title="appBar.dashboard">
 							<template #leading>
-								<IconButton :aria-label="$t('appBar.back')" size="md">
-									<ChevronLeft />
+								<IconButton>
+									<ArrowLeft />
 								</IconButton>
 							</template>
 							<template #trailing>
-								<IconButton :aria-label="$t('appBar.share')" size="md">
+								<IconButton>
 									<Share />
 								</IconButton>
-								<IconButton :aria-label="$t('appBar.more')" size="md">
-									<EllipsisVertical />
+								<IconButton>
+									<Ellipsis />
 								</IconButton>
 							</template>
-							<div class="min-h-120 p-4 text-muted-foreground">
-								{{ $t('appBar.scrollHint') }}
-							</div>
-						</AppBar>
+							<template #observer>
+								<h1 class="m-4 text-3xl font-semibold">
+									{{ $t('appBar.dashboard') }}
+								</h1>
+							</template>
+						</SilverAppBar>
+
+						<div class="h-90 mx-4 my-8 border rounded-2xl p-6 text-xm">
+							Page content
+						</div>
 					</template>
-				</Layout>
+				</Scaffold>
 			</div>
 		</ExampleBlock>
 	</section>
@@ -99,7 +108,7 @@ onMounted(() => setToc(appBarPageToc));
 	</section>
 
 	<section id="slots" class="space-y-4">
-		<h2 class="text-lg font-semibold">Slots</h2>
+		<h3 class="text-lg font-semibold">Slots</h3>
 		<Table :columns="slotTableColumns" :rows="appBarSlots" />
 	</section>
 </template>
