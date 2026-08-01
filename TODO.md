@@ -1,4 +1,0 @@
-- [x] исправить AppBar и SilverAppBar
-- [ ] BNB selected сделать по id, а не по index чтобы Sidebar и BNB была одна концепция
-- [ ] Для icon button, button добавить актив эффект а то при нажатии touch нет эффекта
-- [ ] создать Full Example блок в Layout

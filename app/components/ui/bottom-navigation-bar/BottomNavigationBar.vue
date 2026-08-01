@@ -1,69 +1,55 @@
 <script setup lang="ts">
+import type { Component } from 'vue';
+
 import { cn } from '~/utils/cn';
 
 interface BottomNavigationItem {
+	id: string;
 	label: string;
-	icon: Component;
-	to?: string;
+	icon?: Component;
 	disabled?: boolean;
 }
 
 interface BottomNavigationBarProps {
-	items?: BottomNavigationItem[];
+	items: BottomNavigationItem[];
 }
 
-const props = withDefaults(defineProps<BottomNavigationBarProps>(), {
-	items: () => [],
-});
+defineProps<BottomNavigationBarProps>();
 
-const selected = defineModel<number>({ default: 0 });
-const NuxtLink = resolveComponent('NuxtLink');
+const selected = defineModel<string>();
 
-const safeSelected = computed(() =>
-	Math.min(Math.max(selected.value, 0), Math.max(props.items.length - 1, 0)),
-);
-
-const select = (index: number, disabled?: boolean) => {
-	if (!disabled) selected.value = index;
+const selectItem = (item: BottomNavigationItem) => {
+	if (item.disabled) return;
+	selected.value = item.id;
 };
 </script>
 
 <template>
-	<nav
-		class="flex h-12.5 w-full shrink-0 items-center justify-center border-t bg-background"
-	>
-		<component
-			:is="item.to ? NuxtLink : 'button'"
-			v-for="(item, index) in items"
-			:key="`${item.label}-${index}`"
-			:to="item.to"
-			:type="item.to ? undefined : 'button'"
-			:aria-current="safeSelected === index ? 'page' : undefined"
-			:aria-disabled="item.disabled || undefined"
+	<nav class="w-full h-12.5 flex items-center border-t bg-background">
+		<button
+			v-for="item in items"
+			:key="item.id"
+			type="button"
+			:disabled="item.disabled"
 			:class="
 				cn(
-					'flex h-12.5 min-w-0 flex-1 flex-col items-center justify-center focus-visible:bg-secondary focus-visible:outline-none',
-					safeSelected === index ? 'text-foreground' : 'text-muted-foreground',
-					item.disabled ? 'pointer-events-none opacity-40' : '',
+					'flex-1 h-full',
+					'flex flex-col items-center justify-center',
+					'transition-all',
+					'disabled:pointer-events-none disabled:opacity-50',
+					selected === item.id ? 'text-primary' : 'text-muted-foreground',
 				)
 			"
-			@click="select(index, item.disabled)"
+			@click="selectItem(item)"
 		>
-			<span
-				class="flex size-8.5 shrink-0 items-center justify-center [&_svg]:size-6"
-			>
-				<component :is="item.icon" />
-			</span>
+			<component v-if="item.icon" :is="item.icon" class="size-6" />
 			<span
 				:class="
-					cn(
-						'max-w-full truncate text-xs leading-4',
-						safeSelected === index ? 'font-semibold' : 'font-normal',
-					)
+					cn('text-xs', selected === item.id ? 'font-semibold' : 'font-medium')
 				"
 			>
 				{{ $t(item.label) }}
 			</span>
-		</component>
+		</button>
 	</nav>
 </template>

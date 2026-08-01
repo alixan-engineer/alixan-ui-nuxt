@@ -51,33 +51,33 @@ const sizeClasses: Record<ButtonSize, string> = {
 const toneClasses: Record<ButtonVariant, Record<ButtonColor, string>> = {
 	filled: {
 		default:
-			'border-foreground bg-foreground text-background hover:bg-foreground/90 focus-visible:bg-foreground/90',
+			'border-foreground bg-foreground text-background hover:bg-foreground/90 active:bg-foreground/80 focus-visible:bg-foreground/90',
 		primary:
-			'border-primary bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:bg-primary/90',
+			'border-primary bg-primary text-primary-foreground hover:bg-primary/90 active:bg-primary/80 focus-visible:bg-primary/90',
 		secondary:
-			'border-secondary bg-secondary text-secondary-foreground hover:bg-secondary/80 focus-visible:bg-secondary/80',
+			'border-secondary bg-secondary text-secondary-foreground hover:bg-secondary/80 active:bg-secondary/70 focus-visible:bg-secondary/80',
 		destructive:
-			'border-destructive bg-destructive text-destructive-foreground hover:bg-destructive/90 focus-visible:bg-destructive/90',
+			'border-destructive bg-destructive text-destructive-foreground hover:bg-destructive/90 active:bg-destructive/80 focus-visible:bg-destructive/90',
 	},
 	outlined: {
 		default:
-			'border-border bg-transparent text-foreground hover:bg-secondary hover:text-secondary-foreground focus-visible:bg-secondary focus-visible:text-secondary-foreground',
+			'border-border bg-transparent text-foreground hover:bg-secondary active:bg-secondary/80 hover:text-secondary-foreground active:text-secondary-foreground focus-visible:bg-secondary focus-visible:text-secondary-foreground',
 		primary:
-			'border-primary/25 bg-transparent text-primary hover:bg-primary/10 focus-visible:bg-primary/10',
+			'border-primary/25 bg-transparent text-primary hover:bg-primary/10 active:bg-primary/20 focus-visible:bg-primary/10',
 		secondary:
-			'border-border bg-secondary/70 text-secondary-foreground hover:bg-secondary focus-visible:bg-secondary',
+			'border-border bg-secondary/70 text-secondary-foreground hover:bg-secondary active:bg-secondary/80 focus-visible:bg-secondary',
 		destructive:
-			'border-destructive/25 bg-transparent text-destructive hover:bg-destructive/10 focus-visible:bg-destructive/10',
+			'border-destructive/25 bg-transparent text-destructive hover:bg-destructive/10 active:bg-destructive/20 focus-visible:bg-destructive/10',
 	},
 	ghost: {
 		default:
-			'border-transparent bg-transparent text-foreground hover:bg-secondary hover:text-secondary-foreground focus-visible:bg-secondary focus-visible:text-secondary-foreground',
+			'border-transparent bg-transparent text-foreground hover:bg-secondary active:bg-secondary/80 hover:text-secondary-foreground active:text-secondary-foreground focus-visible:bg-secondary focus-visible:text-secondary-foreground',
 		primary:
-			'border-transparent bg-transparent text-primary hover:bg-primary/10 focus-visible:bg-primary/10',
+			'border-transparent bg-transparent text-primary hover:bg-primary/10 active:bg-primary/20 focus-visible:bg-primary/10',
 		secondary:
-			'border-transparent bg-transparent text-secondary-foreground hover:bg-secondary focus-visible:bg-secondary',
+			'border-transparent bg-transparent text-secondary-foreground hover:bg-secondary active:bg-secondary/80 focus-visible:bg-secondary',
 		destructive:
-			'border-transparent bg-transparent text-destructive hover:bg-destructive/10 focus-visible:bg-destructive/10',
+			'border-transparent bg-transparent text-destructive hover:bg-destructive/10 active:bg-destructive/20 focus-visible:bg-destructive/10',
 	},
 };
 

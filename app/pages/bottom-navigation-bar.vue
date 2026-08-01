@@ -14,12 +14,17 @@ const { setToc } = usePageToc();
 
 onMounted(() => setToc(bottomNavigationBarPageToc));
 
-const selected = ref<number>(0);
 const items = [
-	{ label: 'bottomNavigation.home', icon: House },
-	{ label: 'bottomNavigation.events', icon: CalendarDays },
-	{ label: 'bottomNavigation.profile', icon: UserRound },
+	{ id: 'home', label: 'bottomNavigation.home', icon: House },
+	{ id: 'events', label: 'bottomNavigation.events', icon: CalendarDays },
+	{ id: 'profile', label: 'bottomNavigation.profile', icon: UserRound },
 ];
+
+const selected = ref<string>('home');
+
+const selectedItem = computed(() =>
+	items.find(item => item.id === selected.value),
+);
 </script>
 
 <template>
@@ -45,7 +50,11 @@ const items = [
 			<div class="w-full max-w-110 h-90 border rounded-2xl overflow-hidden">
 				<Scaffold>
 					<template #app-bar>
-						<AppBar variant="compact" :title="items[selected]!.label" />
+						<AppBar
+							variant="compact"
+							:title="selectedItem?.label ?? ''"
+							title-align="center"
+						/>
 					</template>
 					<template #body>
 						<NuxtPage />

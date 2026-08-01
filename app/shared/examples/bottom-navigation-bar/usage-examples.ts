@@ -1,21 +1,25 @@
 export const usage = `<script setup lang="ts">
 import { CalendarDays, House, UserRound } from '@lucide/vue';
 
-const selected = ref<number>(0);
-
 const items = [
-	{ label: 'bottomNavigation.home', icon: House },
-	{ label: 'bottomNavigation.events', icon: CalendarDays },
-	{ label: 'bottomNavigation.profile', icon: UserRound },
+	{ id: 'home', label: 'bottomNavigation.home', icon: House },
+	{ id: 'events', label: 'bottomNavigation.events', icon: CalendarDays },
+	{ id: 'profile', label: 'bottomNavigation.profile', icon: UserRound },
 ];
+
+const selected = ref<string>('home');
+
+const selectedItem = computed(() =>
+	items.find((item) => item.id === selected.value),
+);
 </script>
 
 <template>
 	<Scaffold>
 		<template #app-bar>
 			<AppBar
-				variant="compact"
-				:title="items[selected]!.label"
+				:title="selectedItem?.label ?? ''"
+				title-align="center"
 			/>
 		</template>
 

@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { Eye, EyeOff, Lock, Mail } from '@lucide/vue';
-import { inputProps, xControlApiRows } from '~/shared/examples/input/api-reference';
+import {
+	inputProps,
+	xControlApiRows,
+} from '~/shared/examples/input/api-reference';
 import { inputPageToc } from '~/shared/examples/input/page-toc';
 import { examples } from '~/shared/examples/input/usage-examples';
 import { propsTableColumns } from '~/shared/examples/table-columns';
@@ -73,7 +76,7 @@ const checkFromParent = (): void => {
 			<div class="grid w-full max-w-sm gap-3">
 				<Input :control="readonlyControl" label="Readonly" readonly />
 				<Input :control="disabledControl" label="Disabled" disabled />
-				<Input :control="errorControl" label="Required" error="Required field" />
+				<Input :control="errorControl" label="Error" error="Error state" />
 			</div>
 		</ExampleBlock>
 	</section>
