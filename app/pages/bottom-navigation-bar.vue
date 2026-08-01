@@ -14,21 +14,12 @@ const { setToc } = usePageToc();
 
 onMounted(() => setToc(bottomNavigationBarPageToc));
 
-const selected = ref(0);
-const routerOutlet = useTemplateRef<HTMLElement>('routerOutlet');
+const selected = ref<number>(0);
 const items = [
 	{ label: 'bottomNavigation.home', icon: House },
 	{ label: 'bottomNavigation.events', icon: CalendarDays },
 	{ label: 'bottomNavigation.profile', icon: UserRound },
 ];
-const selectedTitle = computed(
-	() => items[selected.value]?.label ?? 'bottomNavigation.home',
-);
-
-watch(selected, async () => {
-	await nextTick();
-	routerOutlet.value?.scrollTo({ top: 0 });
-});
 </script>
 
 <template>
@@ -51,24 +42,18 @@ watch(selected, async () => {
 	<section id="usage" class="space-y-5">
 		<h2 class="text-2xl font-semibold">{{ $t('docsSections.usage') }}</h2>
 		<ExampleBlock :code="usage">
-			<div
-				class="relative z-0 flex h-96 w-full max-w-110 flex-col overflow-hidden rounded-2xl border bg-background"
-			>
-				<AppBar variant="compact" :title="selectedTitle" />
-				<div
-					ref="routerOutlet"
-					data-router-outlet
-					class="min-h-0 flex-1 overflow-y-auto"
-				>
-					<div
-						class="flex min-h-200 items-center justify-center text-muted-foreground"
-					>
-						{{
-							$t('bottomNavigation.pageContent', { page: $t(selectedTitle) })
-						}}
-					</div>
-				</div>
-				<BottomNavigationBar v-model="selected" :items="items" />
+			<div class="w-full max-w-110 h-90 border rounded-2xl overflow-hidden">
+				<Scaffold>
+					<template #app-bar>
+						<AppBar variant="compact" :title="items[selected]!.label" />
+					</template>
+					<template #body>
+						<NuxtPage />
+					</template>
+					<template #bottom-navigation-bar>
+						<BottomNavigationBar v-model="selected" :items="items" />
+					</template>
+				</Scaffold>
 			</div>
 		</ExampleBlock>
 	</section>

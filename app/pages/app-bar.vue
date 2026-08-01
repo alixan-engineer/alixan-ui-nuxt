@@ -6,7 +6,10 @@ import {
 } from '~/shared/examples/app-bar/api-reference';
 import { appBarPageToc } from '~/shared/examples/app-bar/page-toc';
 import { examples } from '~/shared/examples/app-bar/usage-examples';
-import { propsTableColumns } from '~/shared/examples/table-columns';
+import {
+	propsTableColumns,
+	slotTableColumns,
+} from '~/shared/examples/table-columns';
 
 usePageMeta({
 	title: 'componentDocs.appBar.metaTitle',
@@ -42,12 +45,12 @@ onMounted(() => setToc(appBarPageToc));
 			>
 				<AppBar variant="compact" title="appBar.dashboard">
 					<template #leading>
-						<IconButton :aria-label="$t('appBar.openMenu')" size="md">
+						<IconButton>
 							<Menu />
 						</IconButton>
 					</template>
 					<template #trailing>
-						<UserMenuPreview />
+						<Avatar name="Alixan" />
 					</template>
 					<div class="min-h-120 p-4 text-muted-foreground">
 						{{ $t('appBar.scrollHint') }}
@@ -59,29 +62,31 @@ onMounted(() => setToc(appBarPageToc));
 
 	<section id="silver" class="space-y-5">
 		<h2 class="text-2xl font-semibold">{{ $t('appBar.silverTitle') }}</h2>
+		<p class="text-muted-foreground">{{ $t('appBar.silverGuide') }}</p>
 		<ExampleBlock :code="examples.silver">
-			<div
-				data-scroll-container
-				class="relative z-0 h-80 w-full max-w-110 overflow-hidden overflow-y-auto rounded-2xl border"
-			>
-				<AppBar variant="silver" title="appBar.storeTitle">
-					<template #leading>
-						<IconButton :aria-label="$t('appBar.back')" size="md">
-							<ChevronLeft />
-						</IconButton>
+			<div class="w-full max-w-110 h-90 border rounded-2xl overflow-hidden">
+				<Layout data-scroll-container>
+					<template #app-bar>
+						<AppBar variant="silver" title="appBar.storeTitle">
+							<template #leading>
+								<IconButton :aria-label="$t('appBar.back')" size="md">
+									<ChevronLeft />
+								</IconButton>
+							</template>
+							<template #trailing>
+								<IconButton :aria-label="$t('appBar.share')" size="md">
+									<Share />
+								</IconButton>
+								<IconButton :aria-label="$t('appBar.more')" size="md">
+									<EllipsisVertical />
+								</IconButton>
+							</template>
+							<div class="min-h-120 p-4 text-muted-foreground">
+								{{ $t('appBar.scrollHint') }}
+							</div>
+						</AppBar>
 					</template>
-					<template #trailing>
-						<IconButton :aria-label="$t('appBar.share')" size="md">
-							<Share />
-						</IconButton>
-						<IconButton :aria-label="$t('appBar.more')" size="md">
-							<EllipsisVertical />
-						</IconButton>
-					</template>
-					<div class="min-h-120 p-4 text-muted-foreground">
-						{{ $t('appBar.scrollHint') }}
-					</div>
-				</AppBar>
+				</Layout>
 			</div>
 		</ExampleBlock>
 	</section>
@@ -91,6 +96,10 @@ onMounted(() => setToc(appBarPageToc));
 			{{ $t('docsSections.apiReference') }}
 		</h2>
 		<Table :columns="propsTableColumns" :rows="appBarProps" />
-		<Table :columns="propsTableColumns" :rows="appBarSlots" />
+	</section>
+
+	<section id="slots" class="space-y-4">
+		<h2 class="text-lg font-semibold">Slots</h2>
+		<Table :columns="slotTableColumns" :rows="appBarSlots" />
 	</section>
 </template>

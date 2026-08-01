@@ -48,7 +48,9 @@ const openPage = async (to: string): Promise<void> => {
 		</div>
 
 		<div v-if="filteredPages.length" class="flex-1 overflow-auto p-2">
-			<p class="text-sm text-muted-foreground ml-4 mb-1.5">
+			<p
+				class="text-xs font-semibold text-muted-foreground uppercase ml-4 mb-1.5"
+			>
 				{{ $t('docsSearch.hint') }}:
 			</p>
 			<Button

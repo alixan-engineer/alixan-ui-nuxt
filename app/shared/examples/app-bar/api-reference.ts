@@ -18,9 +18,9 @@ export const appBarProps = [
 ];
 
 export const appBarSlots = [
-	{ name: 'leading', type: 'slot', default: '-', description: 'apiReferenceDescriptions.appBarLeading' },
-	{ name: 'trailing', type: 'slot', default: '-', description: 'apiReferenceDescriptions.appBarTrailing' },
-	{ name: 'title', type: 'slot', default: '-', description: 'apiReferenceDescriptions.appBarTitleSlot' },
-	{ name: 'largeTitle', type: 'slot', default: '-', description: 'apiReferenceDescriptions.appBarLargeTitleSlot' },
-	{ name: 'default', type: 'slot', default: '-', description: 'apiReferenceDescriptions.appBarContent' },
+	{ name: 'leading', description: 'apiReferenceDescriptions.appBarLeading' },
+	{ name: 'trailing', description: 'apiReferenceDescriptions.appBarTrailing' },
+	{ name: 'title', description: 'apiReferenceDescriptions.appBarTitleSlot' },
+	{ name: 'largeTitle', description: 'apiReferenceDescriptions.appBarLargeTitleSlot' },
+	{ name: 'default', description: 'apiReferenceDescriptions.appBarContent' },
 ];

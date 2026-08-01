@@ -1,6 +1,6 @@
 import type { IPageToc } from '~/interfaces/page-toc/page-toc.interface';
 
-export const sidebarPageToc: IPageToc[] = [
+export const layoutPageToc: IPageToc[] = [
 	{ label: 'docsSections.installation', href: '#installation' },
 	{ label: 'docsSections.usage', href: '#usage' },
 	{ label: 'docsSections.apiReference', href: '#api-reference' },

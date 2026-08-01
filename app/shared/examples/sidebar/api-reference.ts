@@ -1,20 +1,31 @@
 export const sidebarApiRows = [
-	{ name: 'v-model:open', type: 'boolean', default: 'false', description: 'apiReferenceDescriptions.sidebarOpen' },
-	{ name: 'width', type: 'string', default: "'280px'", description: 'apiReferenceDescriptions.sidebarWidth' },
-	{ name: 'closeOnBackdrop', type: 'boolean', default: 'true', description: 'apiReferenceDescriptions.sidebarBackdrop' },
-	{ name: 'container', type: 'boolean', default: 'true', description: 'apiReferenceDescriptions.sidebarContainer' },
-	{ name: 'contentClass', type: 'string', default: '-', description: 'apiReferenceDescriptions.sidebarContentClass' },
 	{
-		name: 'mode',
-		type: "'responsive' | 'mobile' | 'desktop'",
-		default: "'responsive'",
-		description: 'apiReferenceDescriptions.sidebarMode',
+		name: 'sections',
+		type: 'SidebarSection[]',
+		default: '-',
+		description: 'apiReferenceDescriptions.sidebarSections',
 	},
-	{ name: 'contained', type: 'boolean', default: 'false', description: 'apiReferenceDescriptions.sidebarContained' },
-	{ name: 'logo', type: 'slot', default: '-', description: 'apiReferenceDescriptions.sidebarLogo' },
-	{ name: 'sidebar-header', type: 'slot', default: '-', description: 'apiReferenceDescriptions.sidebarHeader' },
-	{ name: 'navigation', type: 'slot', default: '-', description: 'apiReferenceDescriptions.sidebarNavigation' },
-	{ name: 'sidebar-footer', type: 'slot', default: '-', description: 'apiReferenceDescriptions.sidebarFooter' },
-	{ name: 'app-bar', type: 'slot', default: '-', description: 'apiReferenceDescriptions.sidebarAppBar' },
-	{ name: 'default', type: 'slot', default: '-', description: 'apiReferenceDescriptions.sidebarContent' },
+	{
+		name: 'selected',
+		type: 'string',
+		default: '-',
+		description: 'apiReferenceDescriptions.sidebarSelected',
+	},
+	{
+		name: '@select',
+		type: '(id: string) => void',
+		default: '-',
+		description: 'apiReferenceDescriptions.sidebarSelect',
+	},
+];
+
+export const sidebarSlots = [
+	{
+		name: 'logo',
+		description: 'apiReferenceDescriptions.sidebarLogo',
+	},
+	{
+		name: 'sidebarFooter',
+		description: 'apiReferenceDescriptions.sidebarFooter',
+	},
 ];

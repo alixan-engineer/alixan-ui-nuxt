@@ -1,6 +1,8 @@
 export const examples = {
 	usage: `
 <script setup lang="ts">
+import Card from '@/components/ui/card/Card.vue';
+
 const toast = useToast();
 
 const onTap = () => {

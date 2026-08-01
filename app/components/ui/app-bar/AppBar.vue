@@ -1,5 +1,13 @@
 <script setup lang="ts">
-import { computed, nextTick, onBeforeUnmount, onMounted, ref, useAttrs, watch } from 'vue';
+import {
+	computed,
+	nextTick,
+	onBeforeUnmount,
+	onMounted,
+	ref,
+	useAttrs,
+	watch,
+} from 'vue';
 
 import { cn } from '~/utils/cn';
 
@@ -42,21 +50,28 @@ const forwardedAttrs = computed(() => {
 const compactTitleVisible = computed(
 	() => props.variant === 'compact' || isCollapsed.value,
 );
+
 const dividerVisible = computed(
 	() =>
 		props.showDividerOnScroll &&
 		(props.variant === 'compact' || isScrolled.value || isCollapsed.value),
 );
+
 const toolbarClass = computed(() =>
 	cn(
 		'grid h-[55px] items-center px-2',
 		props.titleAlign === 'start'
 			? 'grid-cols-[auto_minmax(0,1fr)_auto] gap-2'
-			: props.titleAlign === 'responsive'
-				? 'grid-cols-[minmax(2.75rem,1fr)_minmax(0,auto)_minmax(2.75rem,1fr)] @[48rem]:grid-cols-[auto_minmax(0,1fr)_auto] @[48rem]:gap-2'
-				: 'grid-cols-[minmax(2.75rem,1fr)_minmax(0,auto)_minmax(2.75rem,1fr)]',
+			: props.titleAlign === 'center'
+				? 'grid-cols-[minmax(2.75rem,1fr)_minmax(0,auto)_minmax(2.75rem,1fr)]'
+				: [
+						'grid-cols-[minmax(2.75rem,1fr)_minmax(0,auto)_minmax(2.75rem,1fr)]',
+						'xl:grid-cols-[auto_minmax(0,1fr)_auto]',
+						'xl:gap-2',
+					],
 	),
 );
+
 const titleClass = computed(() =>
 	cn(
 		'min-w-0 transition duration-200 motion-reduce:transition-none',
@@ -64,7 +79,7 @@ const titleClass = computed(() =>
 			? 'justify-self-start'
 			: props.titleAlign === 'center'
 				? 'justify-self-center'
-				: 'justify-self-center @[48rem]:justify-self-start',
+				: 'justify-self-center xl:justify-self-start',
 		compactTitleVisible.value
 			? 'translate-y-0 opacity-100'
 			: '-translate-y-1 opacity-0',
@@ -76,8 +91,9 @@ const resolveScrollElement = (): HTMLElement | Window => {
 	if (typeof props.scrollTarget === 'string') {
 		return document.querySelector<HTMLElement>(props.scrollTarget) ?? window;
 	}
-
-	return rootRef.value?.closest<HTMLElement>('[data-scroll-container]') ?? window;
+	return (
+		rootRef.value?.closest<HTMLElement>('[data-scroll-container]') ?? window
+	);
 };
 
 const getScrollTop = (): number =>
@@ -101,7 +117,9 @@ const connect = async (): Promise<void> => {
 	await nextTick();
 
 	scrollElement = resolveScrollElement();
-	scrollElement.addEventListener('scroll', syncScrolledState, { passive: true });
+	scrollElement.addEventListener('scroll', syncScrolledState, {
+		passive: true,
+	});
 	syncScrolledState();
 	isCollapsed.value = false;
 
@@ -124,7 +142,9 @@ const connect = async (): Promise<void> => {
 };
 
 onMounted(connect);
+
 onBeforeUnmount(disconnect);
+
 watch(
 	() => [props.variant, props.scrollTarget],
 	() => connect(),
@@ -157,7 +177,6 @@ watch(
 					<component
 						:is="variant === 'compact' ? 'h1' : 'div'"
 						class="truncate text-xl font-semibold leading-7.5"
-						:aria-hidden="variant === 'silver' ? !compactTitleVisible : undefined"
 					>
 						<slot name="title">{{ $t(title) }}</slot>
 					</component>
@@ -172,7 +191,9 @@ watch(
 		</header>
 
 		<div v-if="variant === 'silver'" ref="largeTitleRef" class="px-4 pb-2 pt-5">
-			<h1 class="line-clamp-2 text-[34px] font-bold leading-10.25 tracking-tight">
+			<h1
+				class="line-clamp-2 text-[34px] font-bold leading-10.25 tracking-tight"
+			>
 				<slot name="largeTitle">{{ $t(title) }}</slot>
 			</h1>
 		</div>

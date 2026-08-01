@@ -32,7 +32,7 @@ withDefaults(
 			/>
 			<pre
 				class="overflow-x-auto p-4 pr-12 text-sm leading-7"
-			><code>{{ code }}</code></pre>
+			><code>{{ code.trim() }}</code></pre>
 		</div>
 	</Island>
 </template>

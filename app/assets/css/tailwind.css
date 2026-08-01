@@ -152,7 +152,7 @@
 	}
 
 	#root {
-		@apply h-full min-h-full w-full flex flex-col divide-y overflow-y-auto;
+		@apply size-full min-h-full flex flex-col divide-y overflow-y-auto;
 	}
 
 	hr {
@@ -193,5 +193,5 @@
 }
 
 @utility backdrop {
-	@apply fixed inset-0 bg-black/30 dark:bg-black/80;
+	@apply absolute inset-0 bg-black/30 dark:bg-black/80;
 }

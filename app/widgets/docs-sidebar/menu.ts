@@ -24,15 +24,15 @@ export const menuSections: IMenuSection[] = [
 	{
 		labelKey: 'sidebar.layouts',
 		items: [
+			{ labelKey: 'component.layout', to: '/layout', new: true },
 			{ labelKey: 'component.scaffold', to: '/scaffold', new: true },
-			{ labelKey: 'component.appBar', to: '/app-bar', new: true },
 			{ labelKey: 'component.sidebar', to: '/sidebar', new: true },
+			{ labelKey: 'component.appBar', to: '/app-bar', new: true },
 			{
 				labelKey: 'component.bottomNavigationBar',
 				to: '/bottom-navigation-bar',
 				new: true,
 			},
-			{ labelKey: 'component.island', to: '/island', new: true },
 		],
 	},
 	{
@@ -46,6 +46,7 @@ export const menuSections: IMenuSection[] = [
 			{ labelKey: 'component.accordion', to: '/accordion' },
 			{ labelKey: 'component.avatar', to: '/avatar' },
 			{ labelKey: 'component.tabs', to: '/tabs' },
+			{ labelKey: 'component.island', to: '/island', new: true },
 			{ labelKey: 'component.infoBox', to: '/info-box', new: true },
 			{ labelKey: 'component.list', to: '/list', new: true },
 			{ labelKey: 'component.switch', to: '/switch' },

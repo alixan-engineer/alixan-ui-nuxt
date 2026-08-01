@@ -361,7 +361,7 @@
 		},
 		"sidebar": {
 			"metaTitle": "Sidebar - Alixan UI",
-			"description": "An Alixan UI application shell with responsive navigation, App Bar and a centered content container."
+			"description": "A responsive sidebar for organizing application navigation into sections with selectable pages, icons and custom content."
 		},
 		"bottomNavigationBar": {
 			"metaTitle": "Bottom Navigation Bar - Alixan UI",
@@ -438,6 +438,10 @@
 		"scaffold": {
 			"metaTitle": "Scaffold - Alixan UI",
 			"description": "Provides a basic layout structure for a page, including a header, content area, and footer."
+		},
+		"layout": {
+			"metaTitle": "Layout - Alixan UI",
+			"description": "Layout components help you structure pages and organize content into consistent application layouts."
 		}
 	},
 	"seoPage": {
@@ -537,7 +541,8 @@
 		"select": "Select",
 		"dropdownMenu": "Dropdown Menu",
 		"tooltip": "Tooltip",
-		"scaffold": "Scaffold"
+		"scaffold": "Scaffold",
+		"layout": "Layout"
 	},
 	"list": {
 		"demoTitle": "Profile",
@@ -574,16 +579,15 @@
 	"appBar": {
 		"compactTitle": "Compact",
 		"silverTitle": "Silver",
+		"silverGuide": "Use Silver when the page needs a prominent title that collapses into the App Bar while scrolling. Do not use the Silver App Bar on screens that include a Bottom Navigation Bar. Use Compact for those screens so both navigation levels remain clear.",
 		"dashboard": "Dashboard",
 		"storeTitle": "Store",
-		"openMenu": "Open menu",
 		"profile": "Profile",
 		"scrollHint": "Scroll to see the navigation bar transition.",
 		"back": "Back",
 		"share": "Share",
 		"more": "More"
 	},
-	"userMenu": { "userName": "Alixan", "administrator": "Administrator" },
 	"sidebarDemo": {
 		"brand": "Alixan UI",
 		"home": "Home",
@@ -602,9 +606,6 @@
 		"settingsDescription": "Configure the application workspace.",
 		"activity": "Activity",
 		"activityDescription": "Latest workspace updates.",
-		"guideTitle": "Alixan UI guide",
-		"silverGuide": "Use Silver when the page needs a prominent title that collapses into the App Bar while scrolling.",
-		"bottomNavigationRule": "Do not use the Silver App Bar on screens that include a Bottom Navigation Bar. Use Compact for those screens so both navigation levels remain clear.",
 		"accountMenu": "Open account menu",
 		"profile": "Profile",
 		"preferences": "Preferences",
@@ -621,8 +622,7 @@
 	"bottomNavigation": {
 		"home": "Home",
 		"events": "Events",
-		"profile": "Profile",
-		"pageContent": "{page} page — scrollable router outlet"
+		"profile": "Profile"
 	},
 	"validation": {
 		"required": "This field is required",
@@ -900,17 +900,6 @@
 		"appBarTitleSlot": "Custom compact title content.",
 		"appBarLargeTitleSlot": "Custom Silver-style large title content.",
 		"appBarContent": "Scrollable page content rendered below the bar.",
-		"sidebarOpen": "Controls the sidebar on mobile.",
-		"sidebarWidth": "Sidebar width on desktop.",
-		"sidebarBackdrop": "Closes the mobile sidebar when its backdrop is clicked.",
-		"sidebarLogo": "Logo content displayed in the default sidebar header.",
-		"sidebarHeader": "Brand or workspace header.",
-		"sidebarNavigation": "Sidebar navigation content.",
-		"sidebarFooter": "Footer actions or account controls.",
-		"sidebarContainer": "Wraps page content in the centered max-width container.",
-		"sidebarContentClass": "Additional classes for the content wrapper.",
-		"sidebarAppBar": "App Bar area with open, close and toggle helpers.",
-		"sidebarContent": "Main page content. Renders NuxtPage as the router outlet when the slot is not provided.",
 		"avatarName": "User name used to generate initials when no image is provided.",
 		"avatarImg": "Optional avatar image URL. When provided, the image is displayed instead of initials.",
 		"avatarAlt": "Accessible image description. The name is used by default.",
@@ -921,7 +910,14 @@
 		"bottomNavigationItems": "Navigation destinations with a label, icon and optional Nuxt route.",
 		"scaffoldAppBarSlot": "Displays the top application bar.",
 		"scaffoldBodySlot": "Displays the main scrollable content area.",
-		"scaffoldBottomNavigationBarSlot": "Displays the bottom navigation bar."
+		"scaffoldBottomNavigationBarSlot": "Displays the bottom navigation bar.",
+		"sidebarSections": "Defines the navigation sections and pages displayed in the sidebar.",
+		"sidebarSelected": "The ID of the currently selected page.",
+		"sidebarSelect": "Emitted when a page is selected. Receives the selected page ID.",
+		"sidebarLogo": "Content displayed in the sidebar logo area.",
+		"sidebarFooter": "Content displayed at the bottom of the sidebar.",
+		"layoutSidebar": "Content displayed in the sidebar area of the layout.",
+		"layoutScaffold": "Main scaffold content displayed alongside the sidebar."
 	},
 	"toast": {
 		"close": "Close toast"

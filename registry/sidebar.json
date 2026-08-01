@@ -1,5 +1,6 @@
 {
 	"name": "sidebar",
-	"components": ["Sidebar.vue", "AppBar.vue"],
+	"components": ["Sidebar.vue"],
+	"composables": ["useSidebar.ts"],
 	"utils": ["cn.ts"]
 }

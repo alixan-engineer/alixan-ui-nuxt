@@ -1,10 +1,5 @@
 {
 	"name": "card",
-	"components": [
-		"Card.vue",
-		"Button.vue",
-		"Island.vue",
-		"IslandHeader.vue"
-	],
+	"components": ["Card.vue", "Button.vue", "Island.vue", "IslandHeader.vue"],
 	"utils": ["cn.ts"]
 }

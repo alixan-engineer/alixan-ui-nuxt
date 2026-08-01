@@ -7,10 +7,16 @@ import {
 	ShoppingBag,
 	Users,
 } from '@lucide/vue';
-import { sidebarApiRows } from '~/shared/examples/sidebar/api-reference';
+import {
+	sidebarApiRows,
+	sidebarSlots,
+} from '~/shared/examples/sidebar/api-reference';
 import { sidebarPageToc } from '~/shared/examples/sidebar/page-toc';
-import { layoutUsage } from '~/shared/examples/sidebar/usage-examples';
-import { propsTableColumns } from '~/shared/examples/table-columns';
+import { examples } from '~/shared/examples/sidebar/usage-examples';
+import {
+	propsTableColumns,
+	slotTableColumns,
+} from '~/shared/examples/table-columns';
 
 usePageMeta({
 	title: 'componentDocs.sidebar.metaTitle',
@@ -21,57 +27,54 @@ const { setToc } = usePageToc();
 
 onMounted(() => setToc(sidebarPageToc));
 
-const mobileSidebarOpen = ref(false);
-const mobileSidebarRef = ref<{ scrollToTop: () => void } | null>(null);
-const activePage = ref('dashboard');
-const pages = [
-	{
-		id: 'dashboard',
-		title: 'sidebarDemo.dashboard',
-		description: 'sidebarDemo.dashboardDescription',
-		icon: House,
-	},
-	{
-		id: 'orders',
-		title: 'sidebarDemo.orders',
-		description: 'sidebarDemo.ordersDescription',
-		icon: ShoppingBag,
-	},
-	{
-		id: 'analytics',
-		title: 'sidebarDemo.analytics',
-		description: 'sidebarDemo.analyticsDescription',
-		icon: BarChart3,
-	},
-	{
-		id: 'team',
-		title: 'sidebarDemo.team',
-		description: 'sidebarDemo.teamDescription',
-		icon: Users,
-	},
-	{
-		id: 'settings',
-		title: 'sidebarDemo.settings',
-		description: 'sidebarDemo.settingsDescription',
-		icon: Settings,
-	},
-];
+const sidebar = useSidebar();
 
 const sections = [
-	{ label: 'sidebarDemo.workspace', pages: pages.slice(0, 3) },
-	{ label: 'sidebarDemo.management', pages: pages.slice(3) },
+	{
+		label: 'sidebarDemo.workspace',
+		pages: [
+			{
+				id: 'dashboard',
+				title: 'sidebarDemo.dashboard',
+				description: 'sidebarDemo.dashboardDescription',
+				icon: House,
+			},
+			{
+				id: 'orders',
+				title: 'sidebarDemo.orders',
+				description: 'sidebarDemo.ordersDescription',
+				icon: ShoppingBag,
+			},
+		],
+	},
+	{
+		label: 'sidebarDemo.management',
+		pages: [
+			{
+				id: 'analytics',
+				title: 'sidebarDemo.analytics',
+				description: 'sidebarDemo.analyticsDescription',
+				icon: BarChart3,
+			},
+			{
+				id: 'team',
+				title: 'sidebarDemo.team',
+				description: 'sidebarDemo.teamDescription',
+				icon: Users,
+			},
+			{
+				id: 'settings',
+				title: 'sidebarDemo.settings',
+				description: 'sidebarDemo.settingsDescription',
+				icon: Settings,
+			},
+		],
+	},
 ];
+const selected = ref<string>(sections[0]!.pages[0]!.id);
 
-const currentPage = computed(
-	() => pages.find(page => page.id === activePage.value) ?? pages[0]!,
-);
-
-const selectPage = (id: string, close: () => void): void => {
-	activePage.value = id;
-	nextTick(() => {
-		mobileSidebarRef.value?.scrollToTop();
-	});
-	close();
+const selectPage = (id: string) => {
+	selected.value = id;
 };
 </script>
 
@@ -92,83 +95,45 @@ const selectPage = (id: string, close: () => void): void => {
 
 	<section id="usage" class="space-y-5">
 		<h2 class="text-2xl font-semibold">{{ $t('docsSections.usage') }}</h2>
-		<ExampleBlock path="layouts/default.vue" :code="layoutUsage">
-			<div class="relative z-0 w-full">
-				<div
-					class="mx-auto h-150 w-110 max-w-full overflow-hidden rounded-3xl border bg-background"
-				>
-					<Sidebar
-						ref="mobileSidebarRef"
-						v-model:open="mobileSidebarOpen"
-						mode="mobile"
-						contained
-						width="240px"
-					>
-						<template #logo>
-							<Logo />
-						</template>
-						<template #navigation="{ close }">
-							<div class="space-y-8">
-								<div
-									v-for="section in sections"
-									:key="section.label"
-									class="space-y-1"
-								>
-									<p
-										class="px-3 text-xs font-semibold uppercase text-muted-foreground"
-									>
-										{{ $t(section.label) }}
-									</p>
-									<Button
-										v-for="page in section.pages"
-										:key="page.id"
-										:variant="activePage === page.id ? 'filled' : 'ghost'"
-										:color="activePage === page.id ? 'primary' : 'default'"
-										size="sm"
-										class="w-full justify-start"
-										@click="selectPage(page.id, close)"
-									>
-										<template #leading>
-											<component :is="page.icon" class="size-4" />
-										</template>
-										{{ $t(page.title) }}
-									</Button>
-								</div>
-							</div>
-						</template>
-						<template #app-bar="{ toggle }">
-							<AppBar
-								:key="currentPage.id"
-								variant="silver"
-								:title="currentPage.title"
-							>
-								<template #leading>
-									<IconButton
-										:aria-label="$t('appBar.openMenu')"
-										size="md"
-										@click="toggle"
-									>
-										<Menu />
-									</IconButton>
-								</template>
-								<template #trailing>
-									<UserMenuPreview />
-								</template>
-							</AppBar>
-						</template>
-						<div class="h-175 rounded-2xl bg-secondary" />
-					</Sidebar>
-				</div>
+		<ExampleBlock :code="examples.default">
+			<div class="w-full h-80 border rounded-2xl overflow-hidden">
+				<Layout>
+					<template #sidebar>
+						<Sidebar
+							:sections="sections"
+							:selected="selected"
+							@select="selectPage"
+						>
+							<template #logo>
+								<h1 class="text-2xl font-semibold">Logo</h1>
+							</template>
+							<template #sidebarFooter> Footer </template>
+						</Sidebar>
+					</template>
+
+					<template #scaffold>
+						<Scaffold>
+							<template #app-bar>
+								<AppBar variant="compact" title="appBar.dashboard">
+									<template #leading>
+										<IconButton
+											variant="ghost"
+											color="default"
+											@click="sidebar.toggle()"
+										>
+											<Menu />
+										</IconButton>
+									</template>
+								</AppBar>
+							</template>
+							<template #body>
+								<NuxtPage />
+							</template>
+						</Scaffold>
+					</template>
+				</Layout>
 			</div>
 		</ExampleBlock>
-	</section>
-
-	<section id="guide" class="space-y-3">
-		<h2 class="text-2xl font-semibold">{{ $t('sidebarDemo.guideTitle') }}</h2>
-		<p class="text-muted-foreground">{{ $t('sidebarDemo.silverGuide') }}</p>
-		<p class="text-muted-foreground">
-			{{ $t('sidebarDemo.bottomNavigationRule') }}
-		</p>
 	</section>
 
 	<section id="api-reference" class="space-y-4">
@@ -176,5 +141,10 @@ const selectPage = (id: string, close: () => void): void => {
 			{{ $t('docsSections.apiReference') }}
 		</h2>
 		<Table :columns="propsTableColumns" :rows="sidebarApiRows" />
+	</section>
+
+	<section id="slots" class="space-y-4">
+		<h2 class="text-lg font-semibold">Slots</h2>
+		<Table :columns="slotTableColumns" :rows="sidebarSlots" />
 	</section>
 </template>
