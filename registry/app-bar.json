@@ -1,5 +1,5 @@
 {
 	"name": "app-bar",
-	"components": ["AppBar.vue"],
+	"components": ["AppBar.vue", "SilverAppBar.vue"],
 	"utils": ["cn.ts"]
 }
