@@ -1,0 +1,4 @@
+{
+	"name": "virtual-scroller",
+	"components": ["VirtualScroller.vue"]
+}

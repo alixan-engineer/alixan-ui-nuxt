@@ -123,7 +123,6 @@ watch(() => [model.value, safeLength.value], syncFromModel, {
 					inputmode="numeric"
 					autocomplete="one-time-code"
 					maxlength="1"
-					aria-label="OTP digit"
 					:class="
 						cn(
 							'size-12 rounded-2xl border text-center text-lg font-semibold text-foreground hover:border-foreground/20 focus:border-primary focus:outline-none',
@@ -137,7 +136,6 @@ watch(() => [model.value, safeLength.value], syncFromModel, {
 				<span
 					v-if="hasSeparatorAfter(index)"
 					class="h-px w-3 rounded-full bg-border"
-					aria-hidden="true"
 				/>
 			</template>
 		</div>

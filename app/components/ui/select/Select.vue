@@ -184,8 +184,6 @@ onBeforeUnmount(closeSelect);
 			ref="triggerRef"
 			type="button"
 			:disabled="disabled"
-			:aria-invalid="visibleError ? true : undefined"
-			:aria-describedby="visibleError ? messageId : undefined"
 			:class="
 				cn(
 					'flex w-full items-center justify-between gap-2 border px-4 text-left hover:bg-secondary/40 focus-visible:bg-secondary/40 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50',

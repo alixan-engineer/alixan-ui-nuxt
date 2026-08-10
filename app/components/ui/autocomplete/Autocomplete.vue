@@ -133,7 +133,6 @@ onBeforeUnmount(closeMenu);
 					v-if="selectedOption"
 					type="button"
 					class="rounded-lg p-1 hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none"
-					aria-label="Clear autocomplete"
 					@mousedown.prevent
 					@click.stop="clearSelection"
 				>

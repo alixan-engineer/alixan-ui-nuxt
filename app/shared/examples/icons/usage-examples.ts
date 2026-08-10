@@ -2,6 +2,8 @@ export const installCode = `npm install @lucide/vue`;
 
 export const lucideCode = `<script setup lang="ts">
 import { Bell, Search } from '@lucide/vue'
+import Button from '@/components/ui/button/Button.vue'
+import IconButton from '@/components/ui/icon-button/IconButton.vue'
 <\/script>
 
 <template>

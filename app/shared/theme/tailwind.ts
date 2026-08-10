@@ -164,9 +164,6 @@ export const tailwindCss = `
 	}
 
 	button:not(:disabled),
-	[role='button']:not(:disabled) {
-		cursor: pointer;
-	}
 	p,
 	span {
 		color: inherit;

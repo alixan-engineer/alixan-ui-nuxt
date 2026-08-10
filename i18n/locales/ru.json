@@ -204,6 +204,7 @@
 		"guides": "Гайды",
 		"layouts": "Макеты",
 		"components": "Компоненты",
+		"utilities": "Утилиты",
 		"forms": "Формы",
 		"overlays": "Оверлеи",
 		"new": "NEW"
@@ -258,6 +259,10 @@
 		"username": "Username"
 	},
 	"componentDocs": {
+		"virtualScroller": {
+			"metaTitle": "Virtual Scroller - Alixan UI",
+			"description": "Эффективно отображает большие адаптивные сетки, монтируя только видимые строки."
+		},
 		"button": {
 			"metaTitle": "Кнопка - Alixan UI",
 			"description": "Отображает кнопку для действий в формах, тулбарах и навигации.",
@@ -307,7 +312,7 @@
 			"description": "Вертикальный disclosure-компонент Alixan UI для последовательного раскрытия сгруппированного вспомогательного контента.",
 			"demo": {
 				"accessibleTitle": "Он доступен?",
-				"accessibleContent": "Да. Trigger использует нативную кнопку и передает aria-expanded для screen readers.",
+				"accessibleContent": "Да. Trigger использует нативную кнопку.",
 				"styledTitle": "Он стилизован?",
 				"styledContent": "Да. Он использует такие же чистые отступы, скругления и muted typography, как Alixan UI.",
 				"slotsTitle": "Можно использовать slots?",
@@ -506,6 +511,7 @@
 		}
 	},
 	"component": {
+		"virtualScroller": "Виртуальный скроллер",
 		"button": "Кнопка",
 		"iconButton": "Иконка-кнопка",
 		"icons": "Иконки",
@@ -874,6 +880,15 @@
 		"tableRows": "Строки данных, отображаемые таблицей.",
 		"tableColumnValue": "Arrow function, которая возвращает значение ячейки из объекта строки.",
 		"tableMinWidth": "Опциональный Tailwind class для управления горизонтальным overflow.",
+		"virtualScrollerItems": "Элементы, отображаемые виртуальной сеткой.",
+		"virtualScrollerItemKey": "Стабильный ключ элемента или функция, которая его возвращает.",
+		"virtualScrollerRowHeight": "Фиксированная высота строки сетки в пикселях вместе с отступом.",
+		"virtualScrollerMinColumnWidth": "Минимальная ширина колонки для расчета их адаптивного количества.",
+		"virtualScrollerGap": "Отступ между строками и колонками в пикселях.",
+		"virtualScrollerOverscan": "Дополнительные строки над и под видимой областью.",
+		"virtualScrollerGridClass": "Классы позиционированной сетки видимых элементов.",
+		"virtualScrollerDefaultSlot": "Отображает видимый элемент и передает его исходный индекс.",
+		"virtualScrollerHeaderSlot": "Необязательный контент перед виртуальной сеткой.",
 		"tabsModelValue": "Индекс выбранного tab, используемый через v-model.",
 		"tabsList": "Список labels вкладок.",
 		"tabsDesign": "Визуальный стиль tabs.",

@@ -47,8 +47,6 @@ const sizeClasses: Record<AvatarSize, string> = {
 				attrs.class,
 			)
 		"
-		:role="img ? undefined : 'img'"
-		:aria-label="img ? undefined : $t(name)"
 		v-bind="{ ...attrs, class: undefined }"
 	>
 		<img
@@ -58,6 +56,6 @@ const sizeClasses: Record<AvatarSize, string> = {
 			loading="lazy"
 			class="size-full object-cover"
 		/>
-		<span v-else aria-hidden="true">{{ initials }}</span>
+		<span v-else>{{ initials }}</span>
 	</span>
 </template>

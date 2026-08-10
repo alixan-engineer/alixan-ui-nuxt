@@ -1,5 +1,8 @@
 export const usage = `<script setup lang="ts">
 import { CalendarDays, House, UserRound } from '@lucide/vue';
+import AppBar from '@/components/ui/app-bar/AppBar.vue';
+import BottomNavigationBar from '@/components/ui/bottom-navigation-bar/BottomNavigationBar.vue';
+import Scaffold from '@/components/ui/scaffold/Scaffold.vue';
 
 const items = [
 	{ id: 'home', label: 'bottomNavigation.home', icon: House },

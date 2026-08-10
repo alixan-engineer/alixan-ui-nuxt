@@ -204,6 +204,7 @@
 		"guides": "Guides",
 		"layouts": "Layouts",
 		"components": "Components",
+		"utilities": "Utilities",
 		"forms": "Forms",
 		"overlays": "Overlays",
 		"new": "NEW"
@@ -258,6 +259,10 @@
 		"username": "Username"
 	},
 	"componentDocs": {
+		"virtualScroller": {
+			"metaTitle": "Virtual Scroller - Alixan UI",
+			"description": "Efficiently renders large responsive grids by mounting only the visible rows."
+		},
 		"button": {
 			"metaTitle": "Button - Alixan UI",
 			"description": "Displays a button for actions in forms, toolbars and navigation.",
@@ -307,7 +312,7 @@
 			"description": "An Alixan UI vertical disclosure component for progressively revealing grouped supporting content.",
 			"demo": {
 				"accessibleTitle": "Is it accessible?",
-				"accessibleContent": "Yes. The trigger uses a native button and exposes aria-expanded for screen readers.",
+				"accessibleContent": "Yes. The trigger uses a native button.",
 				"styledTitle": "Is it styled?",
 				"styledContent": "Yes. It follows the same clean spacing, rounded corners and muted typography as Alixan UI.",
 				"slotsTitle": "Can I use slots?",
@@ -505,6 +510,7 @@
 		}
 	},
 	"component": {
+		"virtualScroller": "Virtual Scroller",
 		"button": "Button",
 		"iconButton": "Icon Button",
 		"icons": "Icons",
@@ -873,6 +879,15 @@
 		"tableRows": "Data rows rendered by the table.",
 		"tableColumnValue": "Arrow function that returns the cell value from a row object.",
 		"tableMinWidth": "Optional Tailwind class for horizontal overflow control.",
+		"virtualScrollerItems": "Items rendered by the virtual grid.",
+		"virtualScrollerItemKey": "Stable item key or a function that returns one.",
+		"virtualScrollerRowHeight": "Fixed height of one grid row in pixels, including its gap.",
+		"virtualScrollerMinColumnWidth": "Minimum column width used to calculate the responsive column count.",
+		"virtualScrollerGap": "Gap between rows and columns in pixels.",
+		"virtualScrollerOverscan": "Extra rows rendered above and below the viewport.",
+		"virtualScrollerGridClass": "Classes applied to the positioned grid of visible items.",
+		"virtualScrollerDefaultSlot": "Renders a visible item and exposes its source index.",
+		"virtualScrollerHeaderSlot": "Optional content that scrolls before the virtualized grid.",
 		"tabsModelValue": "Selected tab index used by v-model.",
 		"tabsList": "List of tab labels.",
 		"tabsDesign": "Visual style of the tabs.",

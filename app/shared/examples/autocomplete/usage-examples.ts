@@ -1,5 +1,7 @@
 export const examples = {
 	usage: `<script setup lang="ts">
+import Autocomplete from '@/components/ui/autocomplete/Autocomplete.vue'
+
 const city = ref(null)
 const options = [
   { label: 'Almaty', value: 'almaty' },
@@ -11,6 +13,8 @@ const options = [
   <Autocomplete v-model="city" label="City" :options="options" />
 </template>`,
 	validation: `<script setup lang="ts">
+import Autocomplete from '@/components/ui/autocomplete/Autocomplete.vue'
+
 const city = ref(null)
 const error = computed(() => !city.value ? 'City is required' : '')
 <\/script>

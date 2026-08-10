@@ -6,6 +6,8 @@ const contactsCode = `const contacts = [
 
 const clickSetup = `<script setup lang="ts">
 import { ChevronRight } from '@lucide/vue';
+import List from '@/components/ui/list/List.vue';
+import ListTile from '@/components/ui/list/ListTile.vue';
 
 ${contactsCode}
 
@@ -16,6 +18,9 @@ const openContact = () => toast.open('list.profileOpened', 'info');
 `;
 
 const borderSetup = `<script setup lang="ts">
+import List from '@/components/ui/list/List.vue';
+import ListTile from '@/components/ui/list/ListTile.vue';
+
 ${contactsCode}
 <\/script>
 
@@ -23,6 +28,9 @@ ${contactsCode}
 
 const actionsSetup = `<script setup lang="ts">
 import { Pencil, Trash2 } from '@lucide/vue';
+import IconButton from '@/components/ui/icon-button/IconButton.vue';
+import List from '@/components/ui/list/List.vue';
+import ListTile from '@/components/ui/list/ListTile.vue';
 
 ${contactsCode}
 

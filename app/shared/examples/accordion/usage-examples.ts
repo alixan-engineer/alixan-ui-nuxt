@@ -1,4 +1,6 @@
 export const usageCode = `<script setup lang="ts">
+import Accordion from '@/components/ui/accordion/Accordion.vue'
+
 const activeItem = ref('item-1')
 
 const items = [
@@ -19,6 +21,8 @@ const items = [
   <Accordion v-model="activeItem" :items="items" />
 </template>`;
 export const multipleCode = `<script setup lang="ts">
+import Accordion from '@/components/ui/accordion/Accordion.vue'
+
 const activeItems = ref(['item-1'])
 <\/script>
 

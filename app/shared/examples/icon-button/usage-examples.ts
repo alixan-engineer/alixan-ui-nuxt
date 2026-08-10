@@ -93,6 +93,7 @@ import IconButton from '@/components/ui/icon-button/IconButton.vue'
 </template>`,
 	loading: `<script setup lang="ts">
 import { ArrowUpRight } from '@lucide/vue'
+import IconButton from '@/components/ui/icon-button/IconButton.vue'
 
 const loader = useGlobalLoader()
 
@@ -112,6 +113,8 @@ const save = () => {
 </template>`,
 	disable: `<script setup lang="ts">
 import { ArrowUpRight } from '@lucide/vue'
+import AlertDialog from '@/components/ui/alert-dialog/AlertDialog.vue'
+import IconButton from '@/components/ui/icon-button/IconButton.vue'
 
 const dialog = useDialog()
 

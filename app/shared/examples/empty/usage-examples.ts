@@ -1,5 +1,9 @@
 export const examples = {
-	usage: `<template>
+	usage: `<script setup lang="ts">
+import Empty from '@/components/ui/empty/Empty.vue'
+<\/script>
+
+<template>
   <Empty
     title="No results"
     description="Try changing filters or search query."
@@ -8,7 +12,11 @@ export const examples = {
     @action="resetFilters"
   />
 </template>`,
-	withMedia: `<template>
+	withMedia: `<script setup lang="ts">
+import Empty from '@/components/ui/empty/Empty.vue'
+<\/script>
+
+<template>
   <Empty
     title="Page not found"
     description="The page you are looking for does not exist or has been moved."

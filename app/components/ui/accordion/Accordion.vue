@@ -67,7 +67,6 @@ const toggleItem = (item: AccordionItem): void => {
 			<button
 				type="button"
 				:disabled="item.disabled"
-				:aria-expanded="isOpen(item.value)"
 				:class="
 					cn(
 						'min-h-12 w-full flex items-center justify-between gap-4 px-4 py-3 text-left text-md font-medium hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none disabled:pointer-events-none disabled:text-muted-foreground',

@@ -298,7 +298,6 @@ onBeforeUnmount(() => {
 		<span
 			v-if="$slots.leading"
 			:class="leadingSlotClass"
-			aria-hidden="true"
 		>
 			<slot name="leading" />
 		</span>
@@ -316,8 +315,6 @@ onBeforeUnmount(() => {
 			:pattern="pattern"
 			:disabled="isDisabled"
 			:readonly="readonly"
-			:aria-invalid="visibleError ? true : undefined"
-			:aria-describedby="hasMessage ? messageId : undefined"
 			:class="inputClass"
 			@focus="handleFocus"
 			@blur="handleBlur"
@@ -331,7 +328,6 @@ onBeforeUnmount(() => {
 		<IconButton
 			v-else-if="hasClearButton"
 			:class="trailingSlotClass"
-			:aria-label="$t('inputActions.clear')"
 			size="sm"
 			@mousedown.prevent
 			@click="clearValue"

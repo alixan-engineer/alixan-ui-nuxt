@@ -86,6 +86,8 @@ import Button from '@/components/ui/button/Button.vue'
   </div>
 </template>`,
 	loading: `<script setup lang="ts">
+import Button from '@/components/ui/button/Button.vue'
+
 const loader = useGlobalLoader()
 
 const save = () => {
@@ -101,6 +103,9 @@ const save = () => {
   <Button @click="save">Save changes</Button>
 </template>`,
 	disable: `<script setup lang="ts">
+import AlertDialog from '@/components/ui/alert-dialog/AlertDialog.vue'
+import Button from '@/components/ui/button/Button.vue'
+
 const dialog = useDialog()
 
 const openAlert = () => {

@@ -130,7 +130,7 @@ onBeforeUnmount(() => clearDebounce());
 			class="absolute right-0.5 top-1/2 inline-flex size-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-lg text-muted-foreground hover:bg-secondary hover:text-foreground focus-visible:bg-secondary focus-visible:text-foreground focus-visible:outline-none"
 			@click="clearSearch"
 		>
-			<XIcon class="size-5" aria-hidden="true" />
+			<XIcon class="size-5" />
 		</button>
 	</div>
 </template>

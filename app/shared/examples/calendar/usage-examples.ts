@@ -1,5 +1,7 @@
 export const examples = {
 	day: `<script setup lang="ts">
+import Calendar from '@/components/ui/calendar/Calendar.vue'
+
 const date = ref(null)
 const { locale } = useI18n()
 <\/script>
@@ -8,6 +10,8 @@ const { locale } = useI18n()
   <Calendar v-model="date" :label="$t('calendarLabels.date')" :locale="locale" date-format="dd.mm.yyyy" />
 </template>`,
 	range: `<script setup lang="ts">
+import Calendar from '@/components/ui/calendar/Calendar.vue'
+
 const range = ref(null)
 const { locale } = useI18n()
 <\/script>

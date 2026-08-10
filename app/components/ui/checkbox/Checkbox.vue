@@ -81,8 +81,6 @@ const toggleFromControl = (event: MouseEvent): void => {
 			:id="checkboxId"
 			v-bind="{ ...attrs, class: undefined }"
 			type="button"
-			role="checkbox"
-			:aria-checked="checked"
 			:disabled="disabled"
 			:class="
 				cn(

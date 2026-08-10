@@ -21,6 +21,8 @@ const options = [
 ];
 
 const usageCode = `<script setup lang="ts">
+import Select from '@/components/ui/select/Select.vue'
+
 const value = ref('alixan')
 const options = [
   { label: 'Alixan UI', value: 'alixan' },
@@ -34,6 +36,8 @@ const options = [
 </template>`;
 
 const validationCode = `<script setup lang="ts">
+import Select from '@/components/ui/select/Select.vue'
+
 const value = ref(null)
 const options = [
   { label: 'Alixan UI', value: 'alixan' },

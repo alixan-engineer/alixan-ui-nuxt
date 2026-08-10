@@ -1,5 +1,6 @@
 export const code = `<script setup lang="ts">
 import ConfirmDialog from '~/components/ui/confirm-dialog/ConfirmDialog.vue'
+import Button from '@/components/ui/button/Button.vue'
 
 const dialog = useDialog()
 

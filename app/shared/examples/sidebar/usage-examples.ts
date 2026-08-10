@@ -11,7 +11,7 @@ import {
 } from 'lucide-vue-next';
 
 import AppBar from '@/components/ui/app-bar/AppBar.vue';
-import IconButton from '@/components/ui/button/IconButton.vue';
+import IconButton from '@/components/ui/icon-button/IconButton.vue';
 import Layout from '@/components/ui/layout/Layout.vue';
 import Scaffold from '@/components/ui/scaffold/Scaffold.vue';
 import Sidebar from '@/components/ui/sidebar/Sidebar.vue';

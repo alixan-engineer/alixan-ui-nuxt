@@ -1,4 +1,7 @@
 export const code = `<script setup lang="ts">
+import Button from '@/components/ui/button/Button.vue'
+import DropdownMenu from '@/components/ui/dropdown-menu/DropdownMenu.vue'
+
 const open = ref(false)
 
 const data = {

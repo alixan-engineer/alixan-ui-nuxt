@@ -54,6 +54,8 @@ export const kkTranslationsCode = `{
   }
 }`;
 export const usageCode = `<script setup lang="ts">
+import Select from '@/components/ui/select/Select.vue'
+
 type Locale = 'en' | 'ru' | 'kk'
 
 const { locale, setLocale } = useI18n()
@@ -84,7 +86,11 @@ const changeLocale = async (value: Locale): Promise<void> => {
     />
   </div>
 </template>`;
-export const localePathCode = `<template>
+export const localePathCode = `<script setup lang="ts">
+import Button from '@/components/ui/button/Button.vue'
+<\/script>
+
+<template>
   <Button :to="$localePath('/button')">
     Button
   </Button>

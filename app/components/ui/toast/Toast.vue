@@ -72,7 +72,6 @@ const closeIconClasses: Record<ToastType, string> = {
 		</p>
 
 		<IconButton
-			:aria-label="$t('toast.close')"
 			size="sm"
 			:class="closeIconClasses[toast.type]"
 			@click="emit('close')"

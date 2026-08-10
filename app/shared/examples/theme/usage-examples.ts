@@ -26,6 +26,8 @@ export const tailwindCode = `@import 'tailwindcss';
   --foreground: oklch(0.985 0 0);
 }`;
 export const usageCode = `<script setup lang="ts">
+import Select from '@/components/ui/select/Select.vue'
+
 type ColorModePreference = 'system' | 'light' | 'dark'
 
 const colorMode = useColorMode()

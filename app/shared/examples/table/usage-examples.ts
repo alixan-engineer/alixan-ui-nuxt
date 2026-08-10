@@ -1,4 +1,6 @@
 export const tableUsageCode = `<script setup lang="ts">
+import Table from '@/components/ui/table/Table.vue'
+
 const columns = [
   { label: 'Name', getValue: row => row.name },
   { label: 'Type', getValue: row => row.type },

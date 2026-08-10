@@ -208,8 +208,6 @@ onBeforeUnmount(() => {
 								$attrs.class,
 							)
 						"
-						role="dialog"
-						aria-modal="true"
 						@mousedown.stop
 						@touchstart="handleTouchStart"
 						@touchmove="handleTouchMove"

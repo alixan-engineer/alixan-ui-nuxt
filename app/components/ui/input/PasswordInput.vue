@@ -37,7 +37,6 @@ const isVisible = ref(false);
 				variant="ghost"
 				color="default"
 				size="sm"
-				:aria-label="$t(isVisible ? 'inputActions.hidePassword' : 'inputActions.showPassword')"
 				@click="isVisible = !isVisible"
 			>
 				<EyeOff v-if="isVisible" />

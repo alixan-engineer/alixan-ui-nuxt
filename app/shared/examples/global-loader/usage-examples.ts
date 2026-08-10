@@ -1,9 +1,15 @@
-export const appCode = `<template>
+export const appCode = `<script setup lang="ts">
+import GlobalLoaderHost from '@/components/ui/global-loader/GlobalLoaderHost.vue'
+<\/script>
+
+<template>
   <NuxtPage />
   <GlobalLoaderHost /> <!-- Add GlobalLoaderHost once near the root of your app. -->
 </template>`;
 
 export const usageCode = `<script setup lang="ts">
+import Button from '@/components/ui/button/Button.vue'
+
 const loader = useGlobalLoader()
 
 const load = () => {

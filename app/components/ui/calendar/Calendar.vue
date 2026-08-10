@@ -397,7 +397,6 @@ onBeforeUnmount(closeCalendar);
 					<button
 						type="button"
 						class="flex size-9 items-center justify-center rounded-xl text-foreground hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none [&_svg]:size-4"
-						:aria-label="$t('calendarLabels.previousMonth')"
 						@click="moveMonth(-1)"
 					>
 						<ChevronLeft />
@@ -407,14 +406,12 @@ onBeforeUnmount(closeCalendar);
 						ref="monthSelectRef"
 						v-model="selectedMonth"
 						:options="monthOptions"
-						:aria-label="$t('calendarLabels.month')"
 						@update:open="navigationSelectOpen = $event"
 					/>
 
 					<button
 						type="button"
 						class="flex size-9 items-center justify-center rounded-xl text-foreground hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none [&_svg]:size-4"
-						:aria-label="$t('calendarLabels.nextMonth')"
 						@click="moveMonth(1)"
 					>
 						<ChevronRight />
@@ -426,7 +423,6 @@ onBeforeUnmount(closeCalendar);
 						:options="
 							yearOptions.map(year => ({ label: String(year), value: year }))
 						"
-						:aria-label="$t('calendarLabels.year')"
 						@update:open="navigationSelectOpen = $event"
 					/>
 				</div>
@@ -436,7 +432,6 @@ onBeforeUnmount(closeCalendar);
 						v-if="navigationSelectOpen"
 						type="button"
 						class="absolute inset-0 z-10 cursor-default"
-						aria-label="Close calendar navigation select"
 						@pointerdown.prevent.stop="closeNavigationSelect"
 						@click.prevent.stop
 					/>

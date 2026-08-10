@@ -58,6 +58,12 @@ export const menuSections: IMenuSection[] = [
 		],
 	},
 	{
+		labelKey: 'sidebar.utilities',
+		items: [
+			{ labelKey: 'component.virtualScroller', to: '/virtual-scroller', new: true },
+		],
+	},
+	{
 		labelKey: 'sidebar.forms',
 		items: [
 			{ labelKey: 'component.input', to: '/input', new: true },

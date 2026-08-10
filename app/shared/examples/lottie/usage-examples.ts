@@ -15,7 +15,11 @@ export const folderCode = `app/
 export const usageCode = `<template>
   <Lottie name="error" :loop="false" width="160px" height="140px" />
 </template>`;
-export const emptyCode = `<template>
+export const emptyCode = `<script setup lang="ts">
+import Empty from '@/components/ui/empty/Empty.vue'
+<\/script>
+
+<template>
   <Empty
     title="Page not found"
     description="The page you are looking for does not exist or has been moved."

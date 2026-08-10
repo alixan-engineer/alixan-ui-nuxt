@@ -1,5 +1,7 @@
 export const examples = {
 	usage: `<script setup lang="ts">
+import Search from '@/components/ui/search/Search.vue'
+
 const value = ref('')
 const debouncedValue = ref('')
 <\/script>
@@ -12,6 +14,8 @@ const debouncedValue = ref('')
   />
 </template>`,
 	debounce: `<script setup lang="ts">
+import Search from '@/components/ui/search/Search.vue'
+
 const value = ref('')
 const debouncedValue = ref('')
 <\/script>

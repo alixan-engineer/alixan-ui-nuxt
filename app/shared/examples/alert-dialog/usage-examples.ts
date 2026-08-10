@@ -1,5 +1,6 @@
 export const errorCode = `<script setup lang="ts">
 import AlertDialog from '~/components/ui/alert-dialog/AlertDialog.vue'
+import Button from '@/components/ui/button/Button.vue'
 
 const dialog = useDialog()
 
@@ -31,6 +32,7 @@ const openAlert = () => {
 </template>`;
 export const successCode = `<script setup lang="ts">
 import AlertDialog from '~/components/ui/alert-dialog/AlertDialog.vue'
+import Button from '@/components/ui/button/Button.vue'
 
 const dialog = useDialog()
 
@@ -64,6 +66,7 @@ export const imageCode = `<script setup lang="ts">
 import successIcon from '~/assets/icons/success.svg'
 
 import AlertDialog from '~/components/ui/alert-dialog/AlertDialog.vue'
+import Button from '@/components/ui/button/Button.vue'
 
 const dialog = useDialog()
 
@@ -95,6 +98,7 @@ export const iconCode = `<script setup lang="ts">
 import { CheckCircle } from '@lucide/vue'
 
 import AlertDialog from '~/components/ui/alert-dialog/AlertDialog.vue'
+import Button from '@/components/ui/button/Button.vue'
 
 const dialog = useDialog()
 

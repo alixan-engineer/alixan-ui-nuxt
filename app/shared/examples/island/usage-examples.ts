@@ -1,4 +1,8 @@
 const setup = `<script setup lang="ts">
+import Island from '@/components/ui/island/Island.vue'
+import List from '@/components/ui/list/List.vue'
+import ListTile from '@/components/ui/list/ListTile.vue'
+
 const contacts = [
   { title: 'list.contacts.aruzhan', description: 'list.contacts.aruzhanPhone', image: '/examples/contact-avatar.webp' },
   { title: 'list.contacts.daniyar', description: 'list.contacts.daniyarPhone', image: '/examples/contact-daniyar.webp' },

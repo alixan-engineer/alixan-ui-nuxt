@@ -1,5 +1,7 @@
 export const examples = {
 	usage: `<script setup lang="ts">
+import Checkbox from '@/components/ui/checkbox/Checkbox.vue'
+
 const accepted = ref(false)
 const selectedPeriod = ref('7d')
 const selectedOptions = ref(['email'])

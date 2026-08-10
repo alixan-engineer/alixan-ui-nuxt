@@ -4,7 +4,7 @@ import { Menu } from '@lucide/vue';
 
 import AppBar from '@/components/ui/app-bar/AppBar.vue';
 import Avatar from '@/components/ui/avatar/Avatar.vue';
-import IconButton from '@/components/ui/button/IconButton.vue';
+import IconButton from '@/components/ui/icon-button/IconButton.vue';
 import Scaffold from '@/components/ui/scaffold/Scaffold.vue';
 <\/script>
 
@@ -35,7 +35,7 @@ import Scaffold from '@/components/ui/scaffold/Scaffold.vue';
 	silver: `<script setup lang="ts">
 import { ArrowLeft, Ellipsis, Share } from '@lucide/vue';
 
-import IconButton from '@/components/ui/button/IconButton.vue';
+import IconButton from '@/components/ui/icon-button/IconButton.vue';
 import Scaffold from '@/components/ui/scaffold/Scaffold.vue';
 import SilverAppBar from '@/components/ui/app-bar/SilverAppBar.vue';
 <\/script>

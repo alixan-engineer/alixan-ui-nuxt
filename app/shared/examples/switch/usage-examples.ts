@@ -1,5 +1,7 @@
 export const examples = {
 	usage: `<script setup lang="ts">
+import Switch from '@/components/ui/switch/Switch.vue'
+
 const checked = ref(false)
 <\/script>
 

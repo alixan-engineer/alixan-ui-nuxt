@@ -5,8 +5,9 @@ export const commands = {
 };
 export const rootIdConfig = `export default defineNuxtConfig({
   app: {
-    rootId: 'root', // Change appId to root.
+    rootId: 'root',
   },
+  components: [{ path: '~/components', pathPrefix: false }],
 })`;
 export const nuxtConfig = `import tailwindcss from '@tailwindcss/vite'
 
@@ -38,7 +39,11 @@ export const vueI18nConfig = `export default {
   missingWarn: false,
   fallbackWarn: false,
 }`;
-export const usageCode = `<template>
+export const usageCode = `<script setup lang="ts">
+import Button from '@/components/ui/button/Button.vue'
+<\/script>
+
+<template>
   <Button color="primary">
     Save changes
   </Button>

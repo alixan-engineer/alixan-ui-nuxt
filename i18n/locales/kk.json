@@ -204,6 +204,7 @@
 		"guides": "Гайдтар",
 		"layouts": "Макеттер",
 		"components": "Компоненттер",
+		"utilities": "Утилиталар",
 		"forms": "Формалар",
 		"overlays": "Оверлейлер",
 		"new": "NEW"
@@ -258,6 +259,10 @@
 		"username": "Username"
 	},
 	"componentDocs": {
+		"virtualScroller": {
+			"metaTitle": "Virtual Scroller - Alixan UI",
+			"description": "Тек көрінетін жолдарды орнатып, үлкен бейімделгіш торларды тиімді көрсетеді."
+		},
 		"button": {
 			"metaTitle": "Батырма - Alixan UI",
 			"description": "Формалардағы, тулбарлардағы және навигациядағы әрекеттерге арналған батырманы көрсетеді.",
@@ -307,7 +312,7 @@
 			"description": "Топталған қосымша контентті біртіндеп ашуға арналған Alixan UI вертикалды disclosure компоненті.",
 			"demo": {
 				"accessibleTitle": "Ол қолжетімді ме?",
-				"accessibleContent": "Иә. Trigger native button қолданады және screen readers үшін aria-expanded береді.",
+				"accessibleContent": "Иә. Trigger native button қолданады.",
 				"styledTitle": "Ол стильденген бе?",
 				"styledContent": "Иә. Ол Alixan UI сияқты таза аралықтарды, скругленияны және muted typography қолданады.",
 				"slotsTitle": "Slots қолдануға бола ма?",
@@ -505,6 +510,7 @@
 		}
 	},
 	"component": {
+		"virtualScroller": "Виртуалды скроллер",
 		"button": "Батырма",
 		"iconButton": "Иконка батырмасы",
 		"icons": "Иконкалар",
@@ -873,6 +879,15 @@
 		"tableRows": "Кесте көрсететін деректер жолдары.",
 		"tableColumnValue": "Жол объектісінен ұяшық мәнін қайтаратын arrow function.",
 		"tableMinWidth": "Горизонталды overflow басқаруға арналған қосымша Tailwind class.",
+		"virtualScrollerItems": "Виртуалды тор көрсететін элементтер.",
+		"virtualScrollerItemKey": "Элементтің тұрақты кілті немесе оны қайтаратын функция.",
+		"virtualScrollerRowHeight": "Тор жолының аралықпен бірге пиксельдегі тұрақты биіктігі.",
+		"virtualScrollerMinColumnWidth": "Бейімделгіш бағандар санын есептеуге арналған ең кіші баған ені.",
+		"virtualScrollerGap": "Жолдар мен бағандар арасындағы пиксельдік аралық.",
+		"virtualScrollerOverscan": "Көрінетін аймақтың үстінде және астында көрсетілетін қосымша жолдар.",
+		"virtualScrollerGridClass": "Көрінетін элементтердің позицияланған торына қолданылатын кластар.",
+		"virtualScrollerDefaultSlot": "Көрінетін элементті көрсетіп, оның бастапқы индексін береді.",
+		"virtualScrollerHeaderSlot": "Виртуалды тордың алдындағы қосымша контент.",
 		"tabsModelValue": "v-model арқылы қолданылатын таңдалған tab индексі.",
 		"tabsList": "Tab labels тізімі.",
 		"tabsDesign": "Tabs визуалды стилі.",
@@ -916,6 +931,5 @@
 		"close": "Хабарламаны жабу"
 	},
 	"Alixan UI - Nuxt UI Components": "Alixan UI - Nuxt UI компоненттері",
-	"Modern, minimal and production-ready UI components for Nuxt 4, Vue 3 and TypeScript.": "Nuxt 4, Vue 3 және TypeScript үшін заманауи, минимал және production-ready UI компоненттері.",
-	"scaffold": {}
+	"Modern, minimal and production-ready UI components for Nuxt 4, Vue 3 and TypeScript.": "Nuxt 4, Vue 3 және TypeScript үшін заманауи, минимал және production-ready UI компоненттері."
 }

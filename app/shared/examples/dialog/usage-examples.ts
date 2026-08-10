@@ -1,10 +1,15 @@
-export const hostCode = `<template>
+export const hostCode = `<script setup lang="ts">
+import DialogHost from '@/components/ui/dialog/DialogHost.vue'
+<\/script>
+
+<template>
   <NuxtPage />
   <DialogHost /> <!-- Add DialogHost once near the root. It renders only on the client. -->
 </template>`;
 
 export const openCode = `<script setup lang="ts">
 import ProjectDialog from '~/components/ProjectDialog.vue'
+import Button from '@/components/ui/button/Button.vue'
 
 const dialog = useDialog()
 const projectName = ref('Alixan UI')
@@ -37,6 +42,9 @@ const openDialog = () => {
 </template>`;
 
 export const contentCode = `<script setup lang="ts">
+import Button from '@/components/ui/button/Button.vue'
+import Input from '@/components/ui/input/Input.vue'
+
 interface ProjectDialogData {
   projectName: string
   onSave: (value: string) => void

@@ -163,7 +163,6 @@ onMounted(() => {
 				:style="tooltipStyle"
 				class="pointer-events-none fixed z-9999 max-w-64 rounded-lg border bg-popover px-3 py-2 text-md text-popover-foreground shadow-lg"
 				:class="isPositioned ? '' : 'invisible'"
-				role="tooltip"
 			>
 				<slot name="content">
 					{{ $t(content) }}

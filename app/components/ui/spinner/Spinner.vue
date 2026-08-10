@@ -38,7 +38,7 @@ const spinnerClass = computed(() =>
 </script>
 
 <template>
-	<div :class="rootClass" role="status">
-		<div :class="spinnerClass" aria-hidden="true" />
+	<div :class="rootClass">
+		<div :class="spinnerClass" />
 	</div>
 </template>

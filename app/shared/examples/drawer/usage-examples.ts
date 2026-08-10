@@ -1,10 +1,15 @@
-export const appCode = `<template>
+export const appCode = `<script setup lang="ts">
+import DrawerHost from '@/components/ui/drawer/DrawerHost.vue'
+<\/script>
+
+<template>
   <NuxtPage />
   <DrawerHost /> <!-- Add DrawerHost once near the root. It renders only on the client. -->
 </template>`;
 
 export const usageCode = `<script setup lang="ts">
 import WorkspaceDrawer from '~/components/WorkspaceDrawer.vue'
+import Button from '@/components/ui/button/Button.vue'
 
 const drawer = useDrawer()
 const projectName = ref('Alixan UI')
@@ -38,6 +43,9 @@ const openDrawer = () => {
 </template>`;
 
 export const contentCode = `<script setup lang="ts">
+import Button from '@/components/ui/button/Button.vue'
+import Input from '@/components/ui/input/Input.vue'
+
 interface WorkspaceDrawerData {
   projectName: string
   onSave: (value: string) => void
