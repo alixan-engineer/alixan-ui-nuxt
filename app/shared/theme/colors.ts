@@ -16,8 +16,9 @@ export const accentColors: Record<
 		darkPrimaryForeground: 'oklch(0.141 0.005 285.823)',
 	},
 	blue: {
-		primary: 'oklch(0.488 0.243 264.376)',
+		primary: 'oklch(0.6321 0.2018 254.09)',
 		primaryForeground: 'oklch(0.97 0.014 254.604)',
+		darkPrimary: 'oklch(0.651471 0.191972 251.4696)',
 	},
 	green: {
 		primary: 'oklch(0.723 0.219 142.18)',
