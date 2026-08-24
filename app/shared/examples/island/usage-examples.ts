@@ -12,32 +12,36 @@ const contacts = [
 
 `;
 
-const content = `  <List divider="inset">
-    <ListTile
-      v-for="contact in contacts"
-      :key="contact.title"
-      :title="contact.title"
-      :description="contact.description"
-    >
-      <template #leading>
-        <img :src="contact.image" alt="" loading="lazy" class="size-11 rounded-full object-cover" />
-      </template>
-    </ListTile>
-  </List>`;
+const content = `<List divider="inset">
+      <ListTile
+        v-for="contact in contacts"
+        :key="contact.title"
+        :title="contact.title"
+        :description="contact.description"
+      >
+        <template #leading>
+          <img :src="contact.image" alt="" loading="lazy" class="size-11 rounded-full object-cover" />
+        </template>
+      </ListTile>
+    </List>`;
 
 export const examples = {
-	usage: `${setup}<Island
-  title="island.demoTitle"
-  description="island.demoDesc"
-  header-position="inside"
->
-${content}
-</Island>`,
-	outside: `${setup}<Island
-  title="island.demoTitle"
-  description="island.demoDesc"
-  header-position="outside"
->
-${content}
-</Island>`,
+	usage: `${setup}<template>
+  <Island
+    title="island.demoTitle"
+    description="island.demoDesc"
+    header-position="inside"
+  >
+    ${content}
+  </Island>
+</template>`,
+	outside: `${setup}<template>
+  <Island
+    title="island.demoTitle"
+    description="island.demoDesc"
+    header-position="outside"
+  >
+    ${content}
+  </Island>
+</template>`,
 };

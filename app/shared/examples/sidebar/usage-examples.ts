@@ -8,7 +8,7 @@ import {
 	Settings,
 	ShoppingBag,
 	Users,
-} from 'lucide-vue-next';
+} from '@lucide/vue';
 
 import AppBar from '@/components/ui/app-bar/AppBar.vue';
 import IconButton from '@/components/ui/icon-button/IconButton.vue';
@@ -26,13 +26,11 @@ const sections = [
 			{
 				id: 'dashboard',
 				title: 'sidebarDemo.dashboard',
-				description: 'sidebarDemo.dashboardDescription',
 				icon: House,
 			},
 			{
 				id: 'orders',
 				title: 'sidebarDemo.orders',
-				description: 'sidebarDemo.ordersDescription',
 				icon: ShoppingBag,
 			},
 		],
@@ -43,19 +41,16 @@ const sections = [
 			{
 				id: 'analytics',
 				title: 'sidebarDemo.analytics',
-				description: 'sidebarDemo.analyticsDescription',
 				icon: BarChart3,
 			},
 			{
 				id: 'team',
 				title: 'sidebarDemo.team',
-				description: 'sidebarDemo.teamDescription',
 				icon: Users,
 			},
 			{
 				id: 'settings',
 				title: 'sidebarDemo.settings',
-				description: 'sidebarDemo.settingsDescription',
 				icon: Settings,
 			},
 		],
