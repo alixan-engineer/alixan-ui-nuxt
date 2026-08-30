@@ -73,13 +73,12 @@ const visibleError = computed(() =>
 	isTouched.value && errorMessage.value ? errorMessage.value : '',
 );
 
-const updateMenuPosition = () => {
+const updateMenuPosition = async (): Promise<void> => {
 	const trigger = triggerRef.value;
 
 	if (!trigger || !import.meta.client) return;
 
 	const rect = trigger.getBoundingClientRect();
-	const width = rect.width;
 	const offset = 4;
 
 	if (!props.teleport) {
@@ -92,20 +91,43 @@ const updateMenuPosition = () => {
 		return;
 	}
 
+	const viewportWidth = window.innerWidth;
+	const viewportHeight = window.innerHeight;
+	const width = Math.min(rect.width, viewportWidth - 16);
+
 	menuStyle.value = {
-		top: `${rect.bottom + offset}px`,
-		left: `${rect.left}px`,
-		minWidth: `${width}px`,
-		maxWidth: `${Math.min(width, window.innerWidth - 16)}px`,
+		width: `${width}px`,
+		left: `${Math.max(8, Math.min(rect.left, viewportWidth - width - 8))}px`,
+		top: '8px',
+		visibility: 'hidden',
+	};
+
+	await nextTick();
+
+	const menuHeight = menuRef.value?.getBoundingClientRect().height ?? 0;
+	const spaceBelow = viewportHeight - rect.bottom - offset - 8;
+	const spaceAbove = rect.top - offset - 8;
+	const openAbove = spaceBelow < menuHeight && spaceAbove > spaceBelow;
+	const availableHeight = Math.max(0, openAbove ? spaceAbove : spaceBelow);
+	const height = Math.min(menuHeight, availableHeight);
+	const rawTop = openAbove ? rect.top - height - offset : rect.bottom + offset;
+	const top = Math.max(8, Math.min(rawTop, viewportHeight - height - 8));
+
+	menuStyle.value = {
+		width: `${width}px`,
+		maxHeight: `${availableHeight}px`,
+		left: `${Math.max(8, Math.min(rect.left, viewportWidth - width - 8))}px`,
+		top: `${top}px`,
+		visibility: 'visible',
 	};
 };
 
-const updateOpenMenuPosition = (): void => {
+const updateOpenMenuPosition = async (): Promise<void> => {
 	if (!open.value) {
 		return;
 	}
 
-	updateMenuPosition();
+	await updateMenuPosition();
 };
 
 const openSelect = async (): Promise<void> => {
@@ -113,7 +135,7 @@ const openSelect = async (): Promise<void> => {
 	open.value = true;
 	emit('update:open', true);
 	await nextTick();
-	updateMenuPosition();
+	await updateMenuPosition();
 	window.addEventListener('resize', updateOpenMenuPosition);
 	window.addEventListener('scroll', updateOpenMenuPosition, true);
 	document.addEventListener('mousedown', closeSelectOnOutside, true);
