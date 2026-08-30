@@ -10,7 +10,7 @@ defineOptions({
 
 type IconButtonVariant = 'filled' | 'outlined' | 'ghost';
 type IconButtonColor = 'default' | 'primary' | 'secondary' | 'destructive';
-type IconButtonSize = 'sm' | 'md' | 'lg';
+type IconButtonSize = 'sm' | 'md' | 'lg' | 'responsive';
 type IconButtonTarget = '_blank' | '_self' | '_parent' | '_top';
 
 interface IconButtonProps {
@@ -43,6 +43,8 @@ const sizeClasses: Record<IconButtonSize, string> = {
 	sm: 'size-9 rounded-lg [&_svg]:size-5',
 	md: 'size-11 rounded-xl [&_svg]:size-6',
 	lg: 'size-12 rounded-2xl [&_svg]:size-7',
+	responsive:
+		'size-9 rounded-lg [&_svg]:size-5 md:size-12 md:rounded-2xl md:[&_svg]:size-7',
 };
 
 const toneClasses: Record<

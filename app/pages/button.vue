@@ -99,6 +99,9 @@ const openDisableAlert = (): void => {
 				<Button size="sm">{{ $t('componentDocs.button.small') }}</Button>
 				<Button>{{ $t('componentDocs.button.default') }}</Button>
 				<Button size="lg">{{ $t('componentDocs.button.large') }}</Button>
+				<Button size="responsive">
+					{{ $t('componentDocs.button.responsive') }}
+				</Button>
 			</div>
 		</ExampleBlock>
 	</section>

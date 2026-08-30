@@ -68,6 +68,9 @@ import IconButton from '@/components/ui/icon-button/IconButton.vue'
     <IconButton size="lg">
       <ArrowUpRight />
     </IconButton>
+    <IconButton size="responsive">
+      <ArrowUpRight />
+    </IconButton>
   </div>
 </template>`,
 	navigation: `<script setup lang="ts">

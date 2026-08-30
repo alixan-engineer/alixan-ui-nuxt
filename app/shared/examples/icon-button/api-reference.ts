@@ -13,7 +13,7 @@ export const iconButtonApiRows = [
 	},
 	{
 		name: 'size',
-		type: "'sm' | 'md' | 'lg'",
+		type: "'sm' | 'md' | 'lg' | 'responsive'",
 		default: "'md'",
 		description: 'apiReferenceDescriptions.iconButtonSize',
 	},

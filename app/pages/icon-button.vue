@@ -101,6 +101,9 @@ const openDisableAlert = (): void => {
 				<IconButton size="lg">
 					<ArrowUpRight />
 				</IconButton>
+				<IconButton size="responsive">
+					<ArrowUpRight />
+				</IconButton>
 			</div>
 		</ExampleBlock>
 	</section>

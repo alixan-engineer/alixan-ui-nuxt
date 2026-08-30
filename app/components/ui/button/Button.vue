@@ -10,7 +10,7 @@ defineOptions({
 
 type ButtonVariant = 'filled' | 'outlined' | 'ghost';
 type ButtonColor = 'default' | 'primary' | 'secondary' | 'destructive';
-type ButtonSize = 'sm' | 'md' | 'lg';
+type ButtonSize = 'sm' | 'md' | 'lg' | 'responsive';
 type ButtonTarget = '_blank' | '_self' | '_parent' | '_top';
 
 interface ButtonProps {
@@ -46,6 +46,8 @@ const sizeClasses: Record<ButtonSize, string> = {
 	sm: 'h-9 rounded-lg px-3 text-md [&_svg]:size-5',
 	md: 'h-11 rounded-xl px-4 text-base [&_svg]:size-6',
 	lg: 'h-12 rounded-2xl px-5 text-lg [&_svg]:size-7',
+	responsive:
+		'h-9 rounded-lg px-3 text-md [&_svg]:size-5 md:h-12 md:rounded-2xl md:px-5 md:text-lg md:[&_svg]:size-7',
 };
 
 const toneClasses: Record<ButtonVariant, Record<ButtonColor, string>> = {

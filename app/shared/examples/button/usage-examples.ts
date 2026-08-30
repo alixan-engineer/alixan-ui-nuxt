@@ -14,6 +14,9 @@ import Button from '@/components/ui/button/Button.vue'
     <Button size="lg">
       Large
     </Button>
+    <Button size="responsive">
+      Responsive
+    </Button>
   </div>
 </template>`,
 	navigation: `<script setup lang="ts">
