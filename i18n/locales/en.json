@@ -324,11 +324,33 @@
 			"metaTitle": "Avatar - Alixan UI",
 			"description": "A circular user image or initials fallback with Alixan UI sizing and card colors."
 		},
+		"stepper": {
+			"metaTitle": "Stepper",
+			"description": "Shows progress through active, completed, and upcoming steps. Supports horizontal and vertical layouts.",
+			"vertical": "Vertical",
+			"demo": {
+				"details": "Details",
+				"payment": "Payment",
+				"confirmation": "Confirmation",
+				"previous": "Previous",
+				"next": "Next"
+			}
+		},
 		"tabs": {
+			"swipeTitle": "Swipeable tabs",
+			"swipeDescription": "Drag the tab row with touch or mouse, with momentum and automatic positioning of the selected tab. Buttons stay on one line at their content width. Swiping only moves the row; select a tab by clicking it. TabsSwiper has no full option and requires Swiper. Install the dependency before adding the component.",
+			"swiperProps": "TabsSwiper props",
 			"metaTitle": "Tabs - Alixan UI",
 			"description": "A compact segmented navigation component for switching between views.",
 			"demo": {
 				"account": "Account",
+				"all": "All products",
+				"active": "Active",
+				"paused": "Paused",
+				"problems": "Problems",
+				"belowMinimum": "Below minimum",
+				"atMinimum": "At minimum",
+				"favorites": "Favorites",
 				"password": "Password"
 			}
 		},
@@ -524,6 +546,7 @@
 		"calendar": "Calendar",
 		"accordion": "Accordion",
 		"avatar": "Avatar",
+		"stepper": "Stepper",
 		"tabs": "Tabs",
 		"switch": "Switch",
 		"status": "Status",
@@ -686,7 +709,7 @@
 	"fontsPage": {
 		"metaTitle": "Fonts - Alixan UI",
 		"title": "Fonts",
-		"description": "Alixan UI uses Geist for documentation, but components do not require a specific font. You can install any font and map it to Tailwind tokens.",
+		"description": "Alixan UI uses Inter for documentation, but components do not require a specific font. You can install any font and map it to Tailwind tokens.",
 		"installationTitle": "Installation",
 		"installationDescription": "Install the configured Nuxt font-loading module when you want fonts to be loaded through Nuxt.",
 		"configurationTitle": "Configuration",
@@ -745,6 +768,10 @@
 		"pageMetaDescriptionEnd": "internally."
 	},
 	"apiReferenceDescriptions": {
+		"tabsSwiperCounts": "Optional counts displayed next to tab labels, in the same order as tabs. Zero values are shown.",
+		"stepperSteps": "Ordered steps with unique IDs and labels. Labels accept translation keys or plain text.",
+		"stepperSelected": "Active step matched by ID. Earlier steps are completed. If omitted or unknown, all steps are upcoming. Update selected from the parent; the component only displays progress.",
+		"stepperDirection": "Layout direction of steps and connecting lines.",
 		"accordionItems": "Accordion sections rendered by the component.",
 		"accordionModelValue": "Controlled open item value. Use an array with multiple mode.",
 		"accordionMultiple": "Allows more than one item to stay open.",

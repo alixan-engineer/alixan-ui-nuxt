@@ -23,7 +23,14 @@ export default defineNuxtConfig({
 	],
 	modules: [
 		'@nuxtjs/sitemap',
-		['@nuxtjs/google-fonts', { families: { Geist: { wght: '200..900' } } }],
+		[
+			'@nuxtjs/google-fonts',
+			{
+				families: { Inter: { wght: '200..900' } },
+				display: 'swap',
+				preload: false,
+			},
+		],
 		'@nuxtjs/i18n',
 		'nuxt-lottie',
 		'@nuxtjs/color-mode',

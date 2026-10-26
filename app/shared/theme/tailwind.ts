@@ -5,7 +5,7 @@ export const tailwindCss = `
 
 @theme {
 	/* Set your own font. */
-	--font-sans: 'Geist', ui-sans-serif, system-ui, sans-serif;
+	--font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
 
 	/* Alixan UI text sizes. */
 	--text-md: 15px;

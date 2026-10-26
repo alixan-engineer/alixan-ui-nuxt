@@ -19,7 +19,7 @@ const emit = defineEmits<{
 			>
 				<Menu />
 			</IconButton>
-			<Logo class="ml-4" />
+			<Logo class="ml-4 max-lg:hidden" />
 			<div class="flex-1" />
 			<HeaderSearch class="mr-2" />
 			<IconButton

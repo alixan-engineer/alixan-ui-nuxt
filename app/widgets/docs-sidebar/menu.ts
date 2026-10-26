@@ -46,6 +46,7 @@ export const menuSections: IMenuSection[] = [
 			{ labelKey: 'component.accordion', to: '/accordion' },
 			{ labelKey: 'component.avatar', to: '/avatar' },
 			{ labelKey: 'component.tabs', to: '/tabs' },
+			{ labelKey: 'component.stepper', to: '/stepper', new: true },
 			{ labelKey: 'component.island', to: '/island', new: true },
 			{ labelKey: 'component.infoBox', to: '/info-box', new: true },
 			{ labelKey: 'component.list', to: '/list', new: true },

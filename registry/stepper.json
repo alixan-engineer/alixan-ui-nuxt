@@ -1,0 +1,5 @@
+{
+	"name": "stepper",
+	"components": ["Stepper.vue"],
+	"utils": ["cn.ts"]
+}

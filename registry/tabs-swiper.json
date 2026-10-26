@@ -1,0 +1,5 @@
+{
+	"name": "tabs-swiper",
+	"components": ["TabsSwiper.vue"],
+	"utils": ["cn.ts"]
+}

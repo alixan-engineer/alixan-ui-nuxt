@@ -68,7 +68,7 @@ const selectTab = (index: number) => (selected.value = index);
 					type="button"
 					:class="
 						cn(
-							'h-full px-4 text-center text-base focus-visible:bg-secondary focus-visible:outline-none',
+							'h-full cursor-pointer px-4 text-center text-base focus-visible:bg-secondary focus-visible:outline-none',
 							tabButtonClass,
 							safeSelected === index
 								? 'font-medium text-primary'
@@ -92,7 +92,7 @@ const selectTab = (index: number) => (selected.value = index);
 				type="button"
 				:class="
 					cn(
-						'h-full rounded-xl px-3 text-center text-base focus-visible:outline-none',
+						'h-full cursor-pointer rounded-xl px-3 text-center text-base focus-visible:outline-none',
 						tabButtonClass,
 						safeSelected === index
 							? 'bg-background text-foreground'

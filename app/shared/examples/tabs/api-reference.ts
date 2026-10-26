@@ -24,3 +24,13 @@ export const tabsProps = [
 		description: 'apiReferenceDescriptions.tabsFull',
 	},
 ];
+
+export const tabsSwiperProps = [
+	...tabsProps.filter(prop => prop.name !== 'full'),
+	{
+		name: 'counts',
+		type: 'number[]',
+		default: 'undefined',
+		description: 'apiReferenceDescriptions.tabsSwiperCounts',
+	},
+];

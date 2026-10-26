@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { propsTableColumns } from '~/shared/examples/table-columns';
-import { tabsProps } from '~/shared/examples/tabs/api-reference';
+import { tabsProps, tabsSwiperProps } from '~/shared/examples/tabs/api-reference';
 import { tabsPageToc } from '~/shared/examples/tabs/page-toc';
 import { examples } from '~/shared/examples/tabs/usage-examples';
 
@@ -20,6 +20,18 @@ const tabs: string[] = [
 const selected = ref<number>(0);
 const materialSelected = ref<number>(0);
 const fullSelected = ref<number>(0);
+const swipeSelected = ref(0);
+const materialSwipeSelected = ref(0);
+const swipeTabs = [
+	'componentDocs.tabs.demo.all',
+	'componentDocs.tabs.demo.active',
+	'componentDocs.tabs.demo.paused',
+	'componentDocs.tabs.demo.problems',
+	'componentDocs.tabs.demo.belowMinimum',
+	'componentDocs.tabs.demo.atMinimum',
+	'componentDocs.tabs.demo.favorites',
+];
+const swipeCounts = [128, 84, 16, 9, 7, 12, 18];
 </script>
 
 <template>
@@ -56,10 +68,31 @@ const fullSelected = ref<number>(0);
 		</ExampleBlock>
 	</section>
 
+	<section id="swipe" class="space-y-5">
+		<h2 class="text-2xl font-semibold">{{ $t('componentDocs.tabs.swipeTitle') }}</h2>
+		<p class="text-muted-foreground">{{ $t('componentDocs.tabs.swipeDescription') }}</p>
+		<ExampleBlock :code="examples.swipeInstall" :preview="false" />
+		<InstallCommandBlock component="tabs-swiper" />
+		<ExampleBlock :code="examples.swipe">
+			<div class="w-full min-w-0 space-y-8">
+				<div class="mx-auto w-full max-w-sm space-y-3">
+					<TabsSwiper v-model="swipeSelected" :tabs="swipeTabs" :counts="swipeCounts" />
+					<p class="text-sm text-muted-foreground">{{ $t(swipeTabs[swipeSelected]!) }}</p>
+				</div>
+				<div class="mx-auto w-full max-w-sm space-y-3">
+					<TabsSwiper v-model="materialSwipeSelected" :tabs="swipeTabs" :counts="swipeCounts" design="material" />
+					<p class="text-sm text-muted-foreground">{{ $t(swipeTabs[materialSwipeSelected]!) }}</p>
+				</div>
+			</div>
+		</ExampleBlock>
+	</section>
+
 	<section id="api-reference" class="space-y-4">
 		<h2 class="text-2xl font-semibold">
 			{{ $t('docsSections.apiReference') }}
 		</h2>
 		<Table :columns="propsTableColumns" :rows="tabsProps" />
+		<h3 class="text-xl font-semibold">{{ $t('componentDocs.tabs.swiperProps') }}</h3>
+		<Table :columns="propsTableColumns" :rows="tabsSwiperProps" />
 	</section>
 </template>
