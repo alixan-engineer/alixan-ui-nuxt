@@ -3,6 +3,10 @@
 	"version": "3.2.6",
 	"type": "module",
 	"private": false,
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/alixan-engineer/alixan-ui-nuxt.git"
+	},
 	"bin": {
 		"alixan-ui-nuxt": "./cli/index.js"
 	},
